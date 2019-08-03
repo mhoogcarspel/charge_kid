@@ -52,6 +52,14 @@ func hit(bullet: PhysicsBody2D):
 
 
 
+func activate() -> void:
+	fill()
+
+func deactivate() -> void:
+	empty()
+
+
+
 func _ready() -> void:
 	if not Engine.editor_hint:
 		if state == "Full":
