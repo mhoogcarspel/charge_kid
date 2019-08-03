@@ -8,7 +8,7 @@ export(float) var gravity_acceleration
 export(float) var max_fall_speed
 export(float) var horizontal_acceleration
 export(float) var horizontal_max_speed
-export(float) var jump_velocity
+export(float) var jump_height
 export(float) var shoot_offset
 export(float) var boost_distance
 
@@ -17,6 +17,7 @@ var velocity := Vector2()
 onready var facing: float = 1
 onready var boost_time: float = $AnimationPlayer.get_animation("Boosting").length
 onready var boost_speed: float = boost_distance/boost_time
+onready var jump_velocity: float = sqrt(2*jump_height*gravity_acceleration)
 
 onready var can_shoot: bool = true
 onready var can_boost: bool = true
