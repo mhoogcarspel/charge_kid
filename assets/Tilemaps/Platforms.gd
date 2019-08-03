@@ -5,7 +5,7 @@ extends TileMap
 # var b = "text"
 
 # Called when the node enters the scene tree for the first time.
-func hit() -> void:
+func hit(argument) -> void:
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

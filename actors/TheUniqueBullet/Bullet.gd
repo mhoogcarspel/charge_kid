@@ -16,6 +16,8 @@ onready var rigid_state: bool = false
 onready var interacting: bool = false
 onready var fuel_charge_state: bool = false
 
+
+
 func _process(delta):
 	if standard_state:
 		track_distance(delta)
