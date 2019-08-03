@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://actors/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://actors/TheUniqueBullet/Bullet.tscn" type="PackedScene" id=2]
@@ -9,10 +9,10 @@
 [ext_resource path="res://assets/particle2.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4.5, 6.06252 )
+extents = Vector2( 4.42775, 6.06252 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 4.5, 0.5 )
+extents = Vector2( 4.5, 0.231199 )
 
 [sub_resource type="Animation" id=3]
 length = 0.1
@@ -200,6 +200,9 @@ tracks/1/keys = {
 "values": [ Vector2( 5, 1 ), Vector2( 5, -1 ), Vector2( 5, 1 ), Vector2( 4, 2 ), Vector2( 0, 2 ), Vector2( 2, 0 ), Vector2( 4, 2 ), Vector2( 5, 2 ) ]
 }
 
+[sub_resource type="CircleShape2D" id=8]
+radius = 1.5291
+
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
 ]]
@@ -239,13 +242,12 @@ zoom = Vector2( 0.5, 0.5 )
 position = Vector2( -0.5, 2 )
 shape = SubResource( 1 )
 
-[node name="StaticBody2D" type="KinematicBody2D" parent="."]
+[node name="PlatformSentinel" type="Area2D" parent="."]
 editor/display_folded = true
 position = Vector2( -0.5, 7.5 )
-collision_layer = 2
-collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformSentinel"]
+position = Vector2( 0, 0.513487 )
 shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -332,5 +334,25 @@ one_shot = true
 [node name="DropTimer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
+[node name="LeftAreaChecker" type="Area2D" parent="."]
+position = Vector2( -1.46172, 1.71437 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftAreaChecker"]
+position = Vector2( -4.28448, 0.0921392 )
+shape = SubResource( 8 )
+
+[node name="RightAreaChecker" type="Area2D" parent="."]
+position = Vector2( 9.00215, 1.71437 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightAreaChecker"]
+position = Vector2( -4.28448, 0.0921392 )
+shape = SubResource( 8 )
 [connection signal="timeout" from="BoostTimer" to="." method="_on_BoostTimer_timeout"]
 [connection signal="timeout" from="DropTimer" to="." method="_on_DropTimer_timeout"]

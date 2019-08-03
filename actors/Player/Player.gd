@@ -27,10 +27,13 @@ onready var is_jumping: bool = false
 onready var is_moving: bool = false
 onready var is_boosting: bool = false
 onready var just_boosted: bool = false
+onready var on_platform: bool = false
 
 
 
 func _physics_process(delta):
+	
+	on_platform = is_on_platform()
 	
 	if is_on_floor():
 		$CoyoteTimer.start()
@@ -75,16 +78,18 @@ func get_directional_inputs() -> Vector2:
 	return directionals
 
 func drop() -> void:
-	if Input.is_action_just_pressed("ui_down") && $DropTimer.is_stopped() && is_on_floor():
-		$StaticBody2D.set_collision_layer_bit(1, false)
-		$StaticBody2D.set_collision_mask_bit(1, false)
-		$DropTimer.start()
+	if Input.is_action_just_pressed("ui_down") && $DropTimer.is_stopped() && is_on_floor() && is_on_platform():
+			$CollisionShape2D.disabled = true
+			$DropTimer.start()
 
 func _on_DropTimer_timeout():
-	$StaticBody2D.set_collision_layer_bit(1, true)
-	$StaticBody2D.set_collision_mask_bit(1, true)
+	$CollisionShape2D.disabled = false
 
-
+func is_on_platform() -> bool:
+	for body in $PlatformSentinel.get_overlapping_bodies():
+		if body.is_in_group("platform"):
+			return true
+	return false
 
 func jump() -> void:
 	if !$CoyoteTimer.is_stopped() && Input.is_action_just_pressed("ui_jump") && !is_jumping && !is_boosting:
@@ -121,16 +126,31 @@ func recharge_fuel() -> void:
 func shoot() -> void:
 	if Input.is_action_just_pressed("ui_shoot") && can_shoot:
 		var bullet_instance = bullet.instance()
-		bullet_instance.direction = Vector2(facing, 0)
-		bullet_instance.position = self.position + Vector2(facing*shoot_offset, 0)
-		get_parent().add_child(bullet_instance)
-		print("Shooterino MAH FRIEND")
-		is_shooting = true
+		var bullet_positon = self.position + Vector2(facing*shoot_offset, 0)
+		var allow: bool
+		if facing < 0:
+			allow = check_for_blocks($LeftAreaChecker)
+		else:
+			allow = check_for_blocks($RightAreaChecker)
 		
-		if !god_mode:
-			can_shoot = false
+		if allow:
+			bullet_instance.direction = Vector2(facing, 0)
+			bullet_instance.position = bullet_positon 
+			get_parent().add_child(bullet_instance)
+			print("Shooterino MAH FRIEND")
+			is_shooting = true
+			if !god_mode:
+				can_shoot = false
+		else:
+			$PlayerSprite/ProjectileParticles/ProjectileHit.emitting = true
+			yield($PlayerSprite/ProjectileParticles/ProjectileHit, "visibility_changed")
+			$PlayerSprite/ProjectileParticles/ProjectileHit.emitting = true
 
-
+func check_for_blocks(Sensor: Area2D) -> bool:
+	for body in Sensor.get_overlapping_bodies():
+		if body.is_in_group("blocks"):
+			return false
+	return true
 
 func hit(projectile: PhysicsBody2D) -> void:
 	projectile.velocity = 0
