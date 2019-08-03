@@ -80,6 +80,8 @@ func charge_bullet() -> void:
 	$ProjectileParticles.emitting = false
 	$FuelChargeParticles.emitting = true
 	$FuelChargeParticles/CPUParticles2D.emitting = true
+	self.set_collision_mask_bit(0, false)
+	self.set_collision_layer_bit(0, false)
 
 func destroy() -> void:
 	$ProjectileParticles.emitting = false
