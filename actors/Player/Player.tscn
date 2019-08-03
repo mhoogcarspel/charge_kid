@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://actors/Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://assets/industrial.v2.png" type="Texture" id=2]
-[ext_resource path="res://actors/Player/PlayerSprite.gd" type="Script" id=3]
+[ext_resource path="res://actors/TheUniqueBullet/Bullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/industrial.v2.png" type="Texture" id=3]
+[ext_resource path="res://actors/Player/PlayerSprite.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4.57833, 6.06252 )
@@ -89,17 +90,16 @@ tracks/0/keys = {
 "player",
 ]]
 script = ExtResource( 1 )
+bullet = ExtResource( 2 )
 
 [node name="PlayerSprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 vframes = 4
 hframes = 8
 frame = 12
 region_enabled = true
 region_rect = Rect2( 0, 256, 128, 64 )
-script = ExtResource( 3 )
-
-[node name="CoyoteTimer" type="Timer" parent="."]
+script = ExtResource( 4 )
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 current = true
@@ -115,4 +115,3 @@ anims/Idle = SubResource( 3 )
 anims/Interacting = SubResource( 4 )
 anims/Shooting = SubResource( 5 )
 anims/Walking = SubResource( 6 )
-[connection signal="timeout" from="CoyoteTimer" to="." method="_on_CoyoteTimer_timeout"]
