@@ -12,13 +12,16 @@ onready var delta_S := Vector2 ()
 onready var standart_state: bool = true
 onready var return_state: bool = false
 onready var rigid_state: bool = false
+onready var interacting: bool = false
 
-func _physics_process(delta):
+func _process(delta):
 	if standart_state:
 		track_distance(delta)
-		if delta_S.length() > distance:
-			standart_state = false
-			return_state = true
+		if !is_interacting():
+			if delta_S.length() > distance:
+				print("U'e")
+				standart_state = false
+				return_state = true
 		move_bullet()
 	if !standart_state:
 		if return_state:
@@ -26,6 +29,14 @@ func _physics_process(delta):
 			move_bullet()
 		else:
 			gravity(delta)
+
+func is_interacting() -> bool:
+	for body in $HitBox.get_overlapping_bodies():
+		if body.is_in_group("interactable"):
+			print("Interacting")
+			self.distance += 46
+			return true
+	return false
 
 func activate_rigid_body() -> void:
 	$PhysicalCollider.disabled = false
@@ -49,7 +60,7 @@ func gravity(delta: float) -> void:
 	linear_velocity.y +=  gravity_accel*delta
 
 func _on_HitBox_body_exited(body):
-	if body.is_in_group("interactable"):
+	if body.is_in_group("interactable") && !return_state:
 		print("Interactable")
 		standart_state = false
 		return_state = false
