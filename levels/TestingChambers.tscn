@@ -1,19 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/Tilemaps/SolidBlocks.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/Tilemaps/SolidBlocks.gd" type="Script" id=2]
-[ext_resource path="res://actors/Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://actors/Player/Player.tscn" type="PackedScene" id=2]
 
 [node name="TestingChambers" type="Node"]
 
-[node name="TileMap" parent="." groups=[
-"interactable",
-] instance=ExtResource( 1 )]
-tile_data = PoolIntArray( 1114137, 1, 0, 1114149, 1, 0, 1179673, 1, 0, 1179685, 1, 0, 1245209, 1, 0, 1245221, 1, 0, 1310720, 0, 0, 1310721, 0, 1, 1310722, 0, 1, 1310723, 0, 1, 1310724, 0, 1, 1310725, 0, 1, 1310726, 0, 1, 1310727, 0, 1, 1310728, 0, 1, 1310729, 0, 1, 1310730, 0, 1, 1310731, 0, 1, 1310732, 0, 1, 1310733, 0, 1, 1310734, 0, 1, 1310735, 0, 1, 1310736, 0, 1, 1310737, 0, 1, 1310738, 0, 1, 1310739, 0, 1, 1310740, 0, 1, 1310741, 0, 1, 1310742, 0, 1, 1310743, 0, 1, 1310744, 0, 1, 1310745, 0, 1, 1310746, 0, 1, 1310747, 0, 1, 1310748, 0, 1, 1310749, 0, 1, 1310750, 0, 1, 1310751, 0, 1, 1310752, 0, 1, 1310753, 0, 1, 1310754, 0, 1, 1310755, 0, 1, 1310756, 0, 1, 1310757, 0, 1, 1310758, 0, 1, 1310759, 0, 2 )
-script = ExtResource( 2 )
+[node name="TileMap" parent="." instance=ExtResource( 1 )]
+tile_data = PoolIntArray( 1114149, 1, 0, 1179685, 1, 0, 1245221, 1, 0, 1310720, 0, 0, 1310721, 0, 1, 1310722, 0, 1, 1310723, 0, 1, 1310724, 0, 1, 1310725, 0, 1, 1310726, 0, 1, 1310727, 0, 1, 1310728, 0, 1, 1310729, 0, 1, 1310730, 0, 1, 1310731, 0, 1, 1310732, 0, 1, 1310733, 0, 1, 1310734, 0, 1, 1310735, 0, 1, 1310736, 0, 1, 1310737, 0, 1, 1310738, 0, 1, 1310739, 0, 1, 1310740, 0, 1, 1310741, 0, 1, 1310742, 0, 1, 1310743, 0, 1, 1310744, 0, 1, 1310745, 0, 1, 1310746, 0, 1, 1310747, 0, 1, 1310748, 0, 1, 1310749, 0, 1, 1310750, 0, 1, 1310751, 0, 1, 1310752, 0, 1, 1310753, 0, 1, 1310754, 0, 1, 1310755, 0, 1, 1310756, 0, 1, 1310757, 0, 1, 1310758, 0, 1, 1310759, 0, 2 )
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
+[node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 361.306, 295.972 )
+god_mode = true
 gravity_acceleration = 500.0
 max_fall_speed = 200.0
 horizontal_acceleration = 100.0
