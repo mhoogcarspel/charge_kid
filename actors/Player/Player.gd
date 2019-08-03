@@ -8,11 +8,7 @@ export(float) var gravity_acceleration
 export(float) var max_fall_speed
 export(float) var horizontal_acceleration
 export(float) var horizontal_max_speed
-
-export(int) var number_of_jumps
 export(float) var jump_velocity
-export(float) var jump_control
-
 export(float) var shoot_offset
 
 var velocity := Vector2()
@@ -20,19 +16,18 @@ var velocity := Vector2()
 onready var facing : float = 1
 
 onready var can_shoot: bool = true
-onready var can_jump: bool = true
+onready var can_boost: bool = true
 
 onready var is_shooting: bool = false
 onready var is_jumping: bool = false
 onready var is_moving: bool = false
 
-func _ready():
-	if god_mode:
-		number_of_jumps = 9999999
+
 
 func _physics_process(delta):
-	if number_of_jumps > 0:
-		can_jump = true
+	
+	if is_on_floor():
+		$CoyoteTimer.start()
 	
 	shoot()
 	if !is_shooting:
@@ -60,29 +55,30 @@ func move(direction: Vector2, delta: float) -> void:
 	velocity.y += gravity_acceleration*delta
 
 func jump() -> void:
-	if can_jump && Input.is_action_just_pressed("ui_jump") && number_of_jumps > 0:
+	if !$CoyoteTimer.is_stopped() && Input.is_action_just_pressed("ui_jump") && !is_jumping:
 		print("JUMP MAH FRIEND")
 		velocity.y = -jump_velocity
-		
-		if !god_mode:
-			can_jump = false
-		
 		is_jumping = true
-		number_of_jumps -= 1
 		
 	if Input.is_action_just_released("ui_jump") && velocity.y < 0:
-		velocity.y *= jump_control
+		velocity.y = 0
+	
+	if velocity.y >= 0 and is_jumping:
+		is_jumping = false
+
+
 
 func get_directional_inputs() -> Vector2:
 	var directionals = Vector2(
-	Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	, 0 )
-	#directionals.normalized()
+					Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
+					0 )
 	return directionals
 
 
 func is_airborne() -> bool:
 	return !self.is_on_floor()
+
+
 
 func shoot() -> void:
 	if Input.is_action_just_pressed("ui_shoot") && can_shoot:
@@ -96,6 +92,15 @@ func shoot() -> void:
 		if !god_mode:
 			can_shoot = false
 
+
+
 func hit(projectile: PhysicsBody2D) -> void:
 	self.can_shoot = true
 	projectile.queue_free()
+
+
+
+
+
+
+
