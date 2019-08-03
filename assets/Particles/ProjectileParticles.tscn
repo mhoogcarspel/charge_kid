@@ -3,12 +3,16 @@
 [ext_resource path="res://assets/particle1.png" type="Texture" id=1]
 
 [sub_resource type="Curve" id=1]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.568652, 0.6309 ), -1.29531, -1.29531, 0, 0, Vector2( 0.83754, 0.0412999 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.854703, 0 ), 0.0, 0.0, 0, 0 ]
 
 [node name="ProjectileParticles" type="CPUParticles2D"]
-lifetime = 0.2
+amount = 12
+lifetime = 0.12
+local_coords = false
 texture = ExtResource( 1 )
-emission_shape = 2
-emission_rect_extents = Vector2( 4, 4 )
+emission_shape = 1
+emission_sphere_radius = 1.0
 gravity = Vector2( 0, 0 )
+scale_amount = 0.5
+scale_amount_random = 0.5
 scale_amount_curve = SubResource( 1 )

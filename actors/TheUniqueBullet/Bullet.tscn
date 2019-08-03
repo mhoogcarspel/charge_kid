@@ -7,8 +7,12 @@
 extents = Vector2( 3.14868, 3.10244 )
 
 [node name="Bullet" type="Area2D"]
+input_pickable = false
+gravity = 0.0
+linear_damp = 0.0
+angular_damp = 0.0
 script = ExtResource( 1 )
-bullet_velocity = 1000.0
+bullet_velocity = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
