@@ -36,9 +36,11 @@ func move(direction: Vector2, delta: float) -> void:
 	if direction.x != 0:
 		velocity.x += direction.x*horizontal_acceleration*delta
 		facing = direction.x/abs(direction.x)
+		is_moving = true
 	
 	else:
 		velocity.x = 0
+		is_moving = false
 	
 	velocity.y += gravity_acceleration*delta
 

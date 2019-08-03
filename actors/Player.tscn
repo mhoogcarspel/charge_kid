@@ -4,6 +4,9 @@
 [ext_resource path="res://assets/industrial.v2.png" type="Texture" id=2]
 [ext_resource path="res://actors/Sprite.gd" type="Script" id=3]
 
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 4.57833, 6.06252 )
+
 [sub_resource type="Animation" id=1]
 resource_name = "Airborne"
 length = 0.1
@@ -86,9 +89,6 @@ tracks/0/keys = {
 "values": [ 8, 9, 10, 11, 12, 13, 14, 15 ]
 }
 
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 4.57833, 6.06252 )
-
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
@@ -96,16 +96,10 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 8
+frame = 12
 region_enabled = true
 region_rect = Rect2( 0, 256, 128, 64 )
 script = ExtResource( 3 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
-anims/Airborne = SubResource( 1 )
-anims/Idle = SubResource( 2 )
-anims/Interacting = SubResource( 3 )
-anims/Shooting = SubResource( 4 )
-anims/Walking = SubResource( 5 )
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 
@@ -116,4 +110,11 @@ zoom = Vector2( 0.5, 0.5 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.485966, 1.94387 )
 shape = SubResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Airborne = SubResource( 1 )
+anims/Idle = SubResource( 2 )
+anims/Interacting = SubResource( 3 )
+anims/Shooting = SubResource( 4 )
+anims/Walking = SubResource( 5 )
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_CoyoteTimer_timeout"]

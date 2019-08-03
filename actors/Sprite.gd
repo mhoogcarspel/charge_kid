@@ -1,9 +1,11 @@
 extends Sprite
 
 onready var player:KinematicBody2D = self.get_parent()
+onready var animation_player:AnimationPlayer = player.get_node("AnimationPlayer")
 
 func _process(delta):
 	flip_sprite(player.facing)
+	play_move_animation(player.is_moving)
 	pass
 
 func flip_sprite(facing) -> void:
@@ -14,6 +16,6 @@ func flip_sprite(facing) -> void:
 
 func play_move_animation(is_moving) -> void:
 	if is_moving:
-		$AnimationPlayer.play("Walking")
+		animation_player.play("Walking")
 	else:
-		$AnimationPlayer.play("Idle")
+		animation_player.play("Idle")
