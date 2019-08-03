@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://actors/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://actors/TheUniqueBullet/Bullet.tscn" type="PackedScene" id=2]
@@ -160,6 +160,14 @@ tracks/1/keys = {
 "values": [ Vector2( 5, 1 ), Vector2( 5, -1 ), Vector2( 5, 1 ), Vector2( 4, 2 ), Vector2( 0, 2 ), Vector2( 2, 0 ), Vector2( 4, 2 ), Vector2( 5, 2 ) ]
 }
 
+[sub_resource type="Gradient" id=7]
+offsets = PoolRealArray( 0, 0.411043, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="Gradient" id=8]
+offsets = PoolRealArray( 0, 0.556291, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0.309804, 0.470588, 1, 1, 0.309804, 0.470588, 0 )
+
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
 ]]
@@ -170,12 +178,12 @@ bullet = ExtResource( 2 )
 texture = ExtResource( 3 )
 vframes = 4
 hframes = 8
-frame = 17
 region_enabled = true
 region_rect = Rect2( 0, 256, 128, 64 )
 script = ExtResource( 4 )
 
 [node name="ProjectileParticles" parent="PlayerSprite" instance=ExtResource( 5 )]
+editor/display_folded = true
 position = Vector2( 5, 2 )
 z_index = -1
 lifetime = 0.2
@@ -200,3 +208,25 @@ anims/Idle = SubResource( 3 )
 anims/Interacting = SubResource( 4 )
 anims/Shooting = SubResource( 5 )
 anims/Walking = SubResource( 6 )
+
+[node name="FeetParticles" type="CPUParticles2D" parent="."]
+position = Vector2( 0, 8 )
+amount = 16
+lifetime = 0.5
+emission_shape = 2
+emission_rect_extents = Vector2( 8, 0 )
+gravity = Vector2( 0, -50 )
+initial_velocity = 0.0
+color_ramp = SubResource( 7 )
+
+[node name="PropulsorParticles" type="CPUParticles2D" parent="."]
+position = Vector2( 0, 8 )
+rotation = 1.5708
+amount = 80
+lifetime = 0.3
+emission_shape = 2
+emission_rect_extents = Vector2( 0, 3 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 115.0
+color_ramp = SubResource( 8 )
