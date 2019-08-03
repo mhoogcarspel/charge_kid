@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 export(PackedScene) var bullet
 
+export(bool) var god_mode
+
 export(float) var gravity_acceleration
 export(float) var max_fall_speed
 export(float) var horizontal_acceleration
@@ -23,6 +25,10 @@ onready var can_jump: bool = true
 onready var is_shooting: bool = false
 onready var is_jumping: bool = false
 onready var is_moving: bool = false
+
+func _ready():
+	if god_mode:
+		number_of_jumps = 9999999
 
 func _physics_process(delta):
 	if number_of_jumps > 0:
@@ -58,8 +64,11 @@ func jump() -> void:
 	if can_jump && Input.is_action_just_pressed("ui_jump") && number_of_jumps > 0:
 		print("JUMP MAH FRIEND")
 		velocity.y = -jump_velocity
-		can_jump = false
-		#is_jumping = true
+		
+		if !god_mode:
+			can_jump = false
+		
+		is_jumping = true
 		number_of_jumps -= 1
 		
 	if Input.is_action_just_released("ui_jump") && velocity.y < 0:
@@ -72,8 +81,6 @@ func get_directional_inputs() -> Vector2:
 	#directionals.normalized()
 	return directionals
 
-func _on_CoyoteTimer_timeout() -> void:
-	can_jump = false
 
 func is_airborne() -> bool:
 	return !self.is_on_floor()
@@ -86,4 +93,6 @@ func shoot() -> void:
 		get_parent().add_child(bullet_instance)
 		print("Shooterino MAH FRIEND")
 		is_shooting = true
-		can_shoot = false
+		
+		if !god_mode:
+			can_shoot = false
