@@ -96,6 +96,6 @@ func shoot() -> void:
 		if !god_mode:
 			can_shoot = false
 
-func hit(projectile: Area2D) -> void:
+func hit(projectile: PhysicsBody2D) -> void:
 	self.can_shoot = true
 	projectile.queue_free()
