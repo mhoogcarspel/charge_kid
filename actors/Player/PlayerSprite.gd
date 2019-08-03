@@ -14,13 +14,13 @@ func _process(delta):
 		yield(animation_player, "animation_finished")
 		player.is_shooting = false
 
-func flip_sprite(facing) -> void:
+func flip_sprite(facing: float) -> void:
 	if facing > 0 && flip_h:
 		flip_h = false
 	elif facing < 0 && !flip_h:
 		flip_h = true
 
-func play_move_animation(is_moving) -> void:
+func play_move_animation(is_moving:bool) -> void:
 	if is_moving:
 		animation_player.play("Walking")
 	else:
