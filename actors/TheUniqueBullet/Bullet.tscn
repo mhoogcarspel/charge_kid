@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://actors/TheUniqueBullet/Bullet.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/Particles/ProjectileParticles.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3.14868, 3.10244 )
@@ -14,6 +14,4 @@ bullet_velocity = 1000.0
 shape = SubResource( 1 )
 disabled = true
 
-[node name="BulletSprite" type="Sprite" parent="."]
-scale = Vector2( 0.1, 0.1 )
-texture = ExtResource( 2 )
+[node name="ProjectileParticles" parent="." instance=ExtResource( 2 )]
