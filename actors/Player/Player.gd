@@ -25,6 +25,7 @@ onready var is_shooting: bool = false
 onready var is_jumping: bool = false
 onready var is_moving: bool = false
 onready var is_boosting: bool = false
+onready var just_boosted: bool = false
 
 
 
@@ -60,12 +61,17 @@ func move(direction: Vector2, delta: float) -> void:
 	
 	if !is_boosting:
 		velocity.y += gravity_acceleration*delta
+		if just_boosted:
+			velocity.y += 2*gravity_acceleration*delta
+			if velocity.y >= 0:
+				just_boosted = false
 
 func get_directional_inputs() -> Vector2:
 	var directionals = Vector2(
 					Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
 					0 )
 	return directionals
+
 
 
 func jump() -> void:
@@ -89,10 +95,10 @@ func boost() -> void:
 		$FeetParticles.emitting = false
 		velocity = Vector2(0, -boost_speed)
 		$BoostTimer.start(boost_time)
-		gravity_acceleration = 0.0
 
 func _on_BoostTimer_timeout():
 	is_boosting = false
+	just_boosted = true
 
 func recharge_fuel() -> void:
 	can_boost = true
@@ -117,6 +123,8 @@ func shoot() -> void:
 func hit(projectile: PhysicsBody2D) -> void:
 	projectile.velocity = 0
 	self.can_shoot = true
+	if projectile.fuel_charge_state:
+		recharge_fuel()
 	print("HIT")
 	projectile.destroy()
 
