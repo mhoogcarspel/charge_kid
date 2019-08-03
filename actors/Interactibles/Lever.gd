@@ -1,5 +1,7 @@
 extends StaticBody2D
 
+export(Array,NodePath) var nodes
+
 onready var is_active:bool = false
 
 func _ready():
@@ -15,8 +17,8 @@ func hit(bullet:PhysicsBody2D):
 	else:
 		$Lever/AnimationPlayer.play("Activate")
 		is_active = true
-	for object in  $Linked.get_children():
-		toggle(object)
+	for nodepath in  nodes:
+		toggle(get_node(nodepath))
 	if !bullet.rigid_state && bullet.standard_state:
 		bullet.standard_state = false
 		bullet.return_state = true
