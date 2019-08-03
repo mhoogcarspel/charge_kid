@@ -517,6 +517,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 [node name="SolidBlocks" type="TileMap" groups=[
 "blocks",
 ]]
+z_index = -5
 tile_set = SubResource( 29 )
 cell_size = Vector2( 16, 16 )
 format = 1

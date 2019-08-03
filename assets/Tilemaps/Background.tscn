@@ -972,6 +972,7 @@
 93/z_index = 0
 
 [node name="Background" type="TileMap"]
+z_index = -10
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
