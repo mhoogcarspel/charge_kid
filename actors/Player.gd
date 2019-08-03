@@ -13,18 +13,25 @@ export(float) var jump_control
 var velocity := Vector2()
 
 onready var facing : float = 1
-onready var is_moving: bool = false
+
+onready var can_shoot: bool = true
 onready var can_jump: bool = true
 
+onready var is_shooting: bool = false
+onready var is_jumping: bool = false
+onready var is_moving: bool = false
+
 func _physics_process(delta):
-	if self.is_on_floor() && number_of_jumps > 0 && !can_jump:
+	if number_of_jumps > 0:
 		print("JUMP AGAIN MAH FRIEND")
 		can_jump = true
 	
-	move(get_directional_inputs(), delta)
-	jump()
-	damping()
-	velocity = move_and_slide(velocity, Vector2(0,-1))
+	shoot()
+	if !is_shooting:
+		velocity = move_and_slide(velocity, Vector2(0,-1))
+		move(get_directional_inputs(), delta)
+		jump()
+		damping()
 	
 
 
@@ -49,6 +56,7 @@ func jump() -> void:
 		print("JUMP MAH FRIEND")
 		velocity.y = -jump_velocity
 		can_jump = false
+		#is_jumping = true
 		number_of_jumps -= 1
 		
 	if Input.is_action_just_released("ui_jump") && velocity.y < 0:
@@ -66,3 +74,9 @@ func _on_CoyoteTimer_timeout() -> void:
 
 func is_airborne() -> bool:
 	return !self.is_on_floor()
+
+func shoot() -> void:
+	if Input.is_action_just_pressed("ui_shoot") && can_shoot:
+		print("Shooterino MAH FRIEND")
+		is_shooting = true
+		can_shoot = false
