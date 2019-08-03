@@ -43,7 +43,8 @@ func _physics_process(delta):
 		jump()
 		damping()
 		boost()
-	
+		drop()
+
 
 
 func damping() -> void:
@@ -72,6 +73,16 @@ func get_directional_inputs() -> Vector2:
 					Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
 					0 )
 	return directionals
+
+func drop() -> void:
+	if Input.is_action_just_pressed("ui_down") && $DropTimer.is_stopped() && is_on_floor():
+		$StaticBody2D.set_collision_layer_bit(1, false)
+		$StaticBody2D.set_collision_mask_bit(1, false)
+		$DropTimer.start()
+
+func _on_DropTimer_timeout():
+	$StaticBody2D.set_collision_layer_bit(1, true)
+	$StaticBody2D.set_collision_mask_bit(1, true)
 
 
 
@@ -133,6 +144,7 @@ func hit(projectile: PhysicsBody2D) -> void:
 
 func is_airborne() -> bool:
 	return !self.is_on_floor()
+
 
 
 
