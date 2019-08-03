@@ -1,12 +1,13 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://actors/Interactibles/Lever.gd" type="Script" id=1]
-[ext_resource path="res://actors/Interactibles/Lever.tscn" type="PackedScene" id=2]
+[ext_resource path="res://actors/Interactables/Lever.gd" type="Script" id=1]
+[ext_resource path="res://actors/Interactables/Lever.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6.92253, 5.11762 )
 
 [node name="LeverBody" type="StaticBody2D"]
+z_index = -4
 collision_layer = 4
 collision_mask = 4
 script = ExtResource( 1 )
@@ -15,5 +16,6 @@ script = ExtResource( 1 )
 frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 2.9978 )
 shape = SubResource( 1 )
