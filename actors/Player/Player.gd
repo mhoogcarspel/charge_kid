@@ -32,7 +32,6 @@ func _ready():
 
 func _physics_process(delta):
 	if number_of_jumps > 0:
-		print("JUMP AGAIN MAH FRIEND")
 		can_jump = true
 	
 	shoot()
@@ -96,3 +95,6 @@ func shoot() -> void:
 		
 		if !god_mode:
 			can_shoot = false
+
+func hit() -> void:
+	self.can_shoot = true

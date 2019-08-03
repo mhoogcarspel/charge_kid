@@ -3,8 +3,8 @@
 [ext_resource path="res://actors/TheUniqueBullet/Bullet.gd" type="Script" id=1]
 [ext_resource path="res://assets/Particles/ProjectileParticles.tscn" type="PackedScene" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 3.14868, 3.10244 )
+[sub_resource type="CircleShape2D" id=1]
+radius = 5.43182
 
 [node name="Bullet" type="Area2D"]
 input_pickable = false
@@ -13,9 +13,12 @@ linear_damp = 0.0
 angular_damp = 0.0
 script = ExtResource( 1 )
 bullet_velocity = 200.0
+distance = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
-disabled = true
 
 [node name="ProjectileParticles" parent="." instance=ExtResource( 2 )]
+
+[node name="DespawnTimer" type="Timer" parent="."]
+[connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
