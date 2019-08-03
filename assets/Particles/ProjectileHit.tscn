@@ -6,6 +6,7 @@
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.654468, 0.5704 ), -1.53819, -1.53819, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
 [node name="ProjectileHit" type="CPUParticles2D"]
+z_index = 1
 emitting = false
 lifetime = 0.3
 one_shot = true

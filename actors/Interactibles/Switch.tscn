@@ -25,7 +25,7 @@ load_path = "res://.import/industrial.v2.png-623709b22a2fa36ad7a63e2694483d61.st
 [node name="Switch" type="Sprite"]
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 80, 208, 32, 32 )
+region_rect = Rect2( 64, 192, 64, 64 )
 
 [node name="Sprite" type="Sprite" parent="."]
 visible = false

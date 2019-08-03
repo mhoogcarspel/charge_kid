@@ -213,7 +213,6 @@ region_rect = Rect2( 0, 256, 128, 64 )
 script = ExtResource( 4 )
 
 [node name="ProjectileParticles" parent="PlayerSprite" instance=ExtResource( 5 )]
-editor/display_folded = true
 position = Vector2( 5, 2 )
 z_index = -1
 lifetime = 0.2
@@ -303,4 +302,5 @@ gravity = Vector2( 0, 0 )
 initial_velocity = 50.0
 initial_velocity_random = 0.75
 damping = 40.0
+scale_amount = 2.0
 color = Color( 1, 0.309804, 0.470588, 1 )
