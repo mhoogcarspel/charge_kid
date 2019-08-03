@@ -18,6 +18,7 @@ angular_damp = 0.0
 script = ExtResource( 1 )
 despawn_timer = 0.15
 velocity = 200.0
+velocity_fuel = 350.0
 distance = 100.0
 gravity_accel = 400.0
 deflect_velocity = 150.0
@@ -36,5 +37,11 @@ shape = SubResource( 2 )
 disabled = true
 
 [node name="FuelChargeParticles" parent="." instance=ExtResource( 3 )]
+emitting = false
+
+[node name="CPUParticles2D" parent="FuelChargeParticles" index="0"]
+emitting = false
 [connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]
 [connection signal="body_exited" from="HitBox" to="." method="_on_HitBox_body_exited"]
+
+[editable path="FuelChargeParticles"]

@@ -2,6 +2,7 @@ extends RigidBody2D
 
 export(float) var despawn_timer
 export(float) var velocity
+export(float) var velocity_fuel
 export(float) var distance
 export(float) var gravity_accel
 export(float) var deflect_velocity
@@ -9,22 +10,22 @@ export(float) var deflect_velocity
 onready var player:KinematicBody2D = get_tree().get_nodes_in_group("player")[0]
 onready var direction: Vector2
 onready var delta_S := Vector2 ()
-onready var standart_state: bool = true
+onready var standard_state: bool = true
 onready var return_state: bool = false
 onready var rigid_state: bool = false
 onready var interacting: bool = false
 onready var fuel_charge_state: bool = false
 
 func _process(delta):
-	if standart_state:
+	if standard_state:
 		track_distance(delta)
 		if !is_interacting():
 			if delta_S.length() > distance:
 				print("U'e")
-				standart_state = false
+				standard_state = false
 				return_state = true
 		move_bullet()
-	if !standart_state:
+	if !standard_state:
 		if return_state:
 			get_player_direction()
 			move_bullet()
@@ -44,8 +45,6 @@ func activate_rigid_body() -> void:
 
 func _on_HitBox_body_entered(body):
 	if !body.is_in_group("bullet"):
-		$DespawnTimer.start(despawn_timer)
-		yield($DespawnTimer, "timeout")
 		body.hit(self)
 
 func move_bullet() -> void:
@@ -63,7 +62,7 @@ func gravity(delta: float) -> void:
 func _on_HitBox_body_exited(body):
 	if body.is_in_group("interactable") && !return_state:
 		print("Interactable")
-		standart_state = false
+		standard_state = false
 		return_state = false
 		rigid_state = true
 		$PhysicalCollider.set_deferred("disabled", false)
@@ -73,9 +72,21 @@ func _on_HitBox_body_exited(body):
 			linear_velocity = Vector2(1, -1).normalized()*deflect_velocity
 
 func charge_bullet() -> void:
-	standart_state = false
+	standard_state = false
 	fuel_charge_state = true
 	return_state = true
+	velocity = velocity_fuel
 	$ProjectileParticles.emitting = false
 	$FuelChargeParticles.emitting = true
 	$FuelChargeParticles/CPUParticles2D.emitting = true
+
+func destroy() -> void:
+	$ProjectileParticles.emitting = false
+	$FuelChargeParticles.emitting = false
+	$FuelChargeParticles/CPUParticles2D.emitting = false
+	linear_velocity = Vector2()
+	var death_timer = Timer.new()
+	get_parent().add_child(death_timer)
+	death_timer.start(0.2)
+	yield(death_timer, "timeout")
+	self.queue_free()

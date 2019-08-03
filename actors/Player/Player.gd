@@ -115,8 +115,10 @@ func shoot() -> void:
 
 
 func hit(projectile: PhysicsBody2D) -> void:
+	projectile.velocity = 0
 	self.can_shoot = true
-	projectile.queue_free()
+	print("HIT")
+	projectile.destroy()
 
 
 

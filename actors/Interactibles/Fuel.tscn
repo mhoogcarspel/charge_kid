@@ -6,10 +6,13 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3.21612, 7.55041 )
 
-[node name="Fuel" type="StaticBody2D"]
+[node name="Fuel" type="StaticBody2D" groups=[
+"fuel",
+]]
 script = ExtResource( 1 )
 
 [node name="FuelTank" parent="." instance=ExtResource( 2 )]
+frame = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 0.385536 )
