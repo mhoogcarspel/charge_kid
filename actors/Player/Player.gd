@@ -55,14 +55,20 @@ func damping() -> void:
 	velocity.y = clamp(velocity.y, -boost_speed, max_fall_speed)
 
 func move(direction: Vector2, delta: float) -> void:
-	if direction.x != 0:
+	if (direction.x*velocity.x > 0 && velocity.x != 0) or (velocity.x == 0 && direction.x != 0):
 		velocity.x += direction.x*horizontal_acceleration*delta
 		facing = direction.x/abs(direction.x)
 		is_moving = true
 	
 	else:
-		velocity.x = 0
-		is_moving = false
+		if velocity.x > 0:
+			velocity.x -= 4*horizontal_acceleration*delta
+			velocity.x = clamp(velocity.x, 0, horizontal_max_speed)
+		elif velocity.x < 0:
+			velocity.x += 4*horizontal_acceleration*delta
+			velocity.x = clamp(velocity.x, -horizontal_max_speed, 0)
+		else:
+			is_moving = false
 	
 	if !is_boosting:
 		velocity.y += gravity_acceleration*delta

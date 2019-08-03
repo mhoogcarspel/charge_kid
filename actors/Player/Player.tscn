@@ -225,6 +225,7 @@ region_rect = Rect2( 0, 256, 128, 64 )
 script = ExtResource( 4 )
 
 [node name="ProjectileParticles" parent="PlayerSprite" instance=ExtResource( 5 )]
+editor/display_folded = true
 position = Vector2( 5, 2 )
 z_index = -1
 lifetime = 0.2
@@ -239,11 +240,13 @@ current = true
 zoom = Vector2( 0.5, 0.5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( -0.5, 2 )
 shape = SubResource( 1 )
 
 [node name="PlatformSentinel" type="Area2D" parent="."]
 editor/display_folded = true
+visible = false
 position = Vector2( -0.5, 7.5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformSentinel"]
@@ -336,6 +339,8 @@ wait_time = 0.2
 one_shot = true
 
 [node name="LeftAreaChecker" type="Area2D" parent="."]
+editor/display_folded = true
+visible = false
 position = Vector2( -1.46172, 1.71437 )
 __meta__ = {
 "_edit_group_": true
@@ -346,6 +351,8 @@ position = Vector2( -4.28448, 0.0921392 )
 shape = SubResource( 8 )
 
 [node name="RightAreaChecker" type="Area2D" parent="."]
+editor/display_folded = true
+visible = false
 position = Vector2( 9.00215, 1.71437 )
 __meta__ = {
 "_edit_group_": true
