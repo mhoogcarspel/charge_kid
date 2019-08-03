@@ -41,7 +41,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "Boosting"
-length = 0.3
+length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("PlayerSprite:visible")
 tracks/0/interp = 1
@@ -209,6 +209,7 @@ horizontal_acceleration = 100.0
 horizontal_max_speed = 50.0
 jump_velocity = 200.0
 shoot_offset = 12.0
+boost_distance = 64.0
 
 [node name="PlayerSprite" type="Sprite" parent="."]
 texture = ExtResource( 3 )

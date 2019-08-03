@@ -9,11 +9,19 @@ extents = Vector2( 3.21612, 7.55041 )
 [node name="Fuel" type="StaticBody2D" groups=[
 "fuel",
 ]]
+z_index = -4
+collision_layer = 4
+collision_mask = 4
 script = ExtResource( 1 )
+refill_time = 2.0
 
 [node name="FuelTank" parent="." instance=ExtResource( 2 )]
 frame = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 0.385536 )
 shape = SubResource( 1 )
+
+[node name="RefillTime" type="Timer" parent="."]
+[connection signal="timeout" from="RefillTime" to="." method="_on_RefillTime_timeout"]
