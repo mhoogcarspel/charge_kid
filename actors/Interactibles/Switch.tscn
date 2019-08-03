@@ -22,7 +22,7 @@ shader_param/color = Color( 0, 0, 0, 1 )
 [sub_resource type="StreamTexture" id=3]
 load_path = "res://.import/industrial.v2.png-623709b22a2fa36ad7a63e2694483d61.stex"
 
-[node name="Interactible" type="Sprite"]
+[node name="Switch" type="Sprite"]
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 80, 208, 32, 32 )
