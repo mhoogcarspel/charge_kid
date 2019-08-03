@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://actors/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://actors/TheUniqueBullet/Bullet.tscn" type="PackedScene" id=2]
@@ -9,9 +9,12 @@
 [ext_resource path="res://assets/particle2.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4.57833, 6.06252 )
+extents = Vector2( 4.5, 6.06252 )
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 4.5, 0.5 )
+
+[sub_resource type="Animation" id=3]
 length = 0.1
 loop = true
 tracks/0/type = "value"
@@ -39,8 +42,7 @@ tracks/1/keys = {
 "values": [ Vector2( 5, 2 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Boosting"
+[sub_resource type="Animation" id=4]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("PlayerSprite:visible")
@@ -103,7 +105,7 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -131,7 +133,7 @@ tracks/1/keys = {
 "values": [ Vector2( 5, 3 ), Vector2( 5, 3 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("PlayerSprite:frame")
@@ -170,7 +172,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -234,16 +236,24 @@ current = true
 zoom = Vector2( 0.5, 0.5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( -0.485966, 1.94387 )
+position = Vector2( -0.5, 2 )
 shape = SubResource( 1 )
 
+[node name="StaticBody2D" type="KinematicBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( -0.5, 7.5 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 2 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Airborne = SubResource( 2 )
-anims/Boosting = SubResource( 3 )
-anims/Idle = SubResource( 4 )
-anims/Shooting = SubResource( 5 )
-anims/Walking = SubResource( 6 )
+anims/Airborne = SubResource( 3 )
+anims/Boosting = SubResource( 4 )
+anims/Idle = SubResource( 5 )
+anims/Shooting = SubResource( 6 )
+anims/Walking = SubResource( 7 )
 
 [node name="FeetParticles" type="CPUParticles2D" parent="."]
 position = Vector2( 0, 8 )
@@ -318,4 +328,9 @@ one_shot = true
 
 [node name="BoostTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="DropTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
 [connection signal="timeout" from="BoostTimer" to="." method="_on_BoostTimer_timeout"]
+[connection signal="timeout" from="DropTimer" to="." method="_on_DropTimer_timeout"]
