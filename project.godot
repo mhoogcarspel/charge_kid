@@ -24,6 +24,11 @@ gdscript/warnings/unused_variable=false
 gdscript/warnings/unused_class_variable=false
 gdscript/warnings/unused_argument=false
 
+[display]
+
+window/size/resizable=false
+window/stretch/shrink=1.5
+
 [input]
 
 ui_accept={
