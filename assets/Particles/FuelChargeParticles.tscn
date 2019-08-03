@@ -10,6 +10,7 @@ _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
 [node name="FuelChargeParticles" type="CPUParticles2D"]
+emitting = false
 lifetime = 0.3
 local_coords = false
 texture = ExtResource( 1 )
@@ -23,6 +24,7 @@ __meta__ = {
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 scale = Vector2( -1, 1 )
+emitting = false
 amount = 16
 lifetime = 0.6
 local_coords = false

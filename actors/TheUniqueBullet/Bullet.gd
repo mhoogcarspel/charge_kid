@@ -13,6 +13,7 @@ onready var standart_state: bool = true
 onready var return_state: bool = false
 onready var rigid_state: bool = false
 onready var interacting: bool = false
+onready var fuel_charge_state: bool = false
 
 func _process(delta):
 	if standart_state:
@@ -70,5 +71,11 @@ func _on_HitBox_body_exited(body):
 			linear_velocity = Vector2(-1, -1).normalized()*deflect_velocity
 		else:
 			linear_velocity = Vector2(1, -1).normalized()*deflect_velocity
-		
-		pass
+
+func charge_bullet() -> void:
+	standart_state = false
+	fuel_charge_state = true
+	return_state = true
+	$ProjectileParticles.emitting = false
+	$FuelChargeParticles.emitting = true
+	$FuelChargeParticles/CPUParticles2D.emitting = true
