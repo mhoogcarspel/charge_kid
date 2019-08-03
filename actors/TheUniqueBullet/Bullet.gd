@@ -27,6 +27,7 @@ func _process(delta):
 		move_bullet()
 	if !standard_state:
 		if return_state:
+			$PhysicalCollider.disabled = false
 			get_player_direction()
 			move_bullet()
 		else:
