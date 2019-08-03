@@ -14,13 +14,5 @@ script = ExtResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 361.306, 295.972 )
-gravity_acceleration = 500.0
-max_fall_speed = 200.0
-horizontal_acceleration = 100.0
-horizontal_max_speed = 50.0
-number_of_jumps = 1
-jump_velocity = 200.0
-jump_control = 0.2
-shoot_offset = 12.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

@@ -203,6 +203,12 @@ tracks/1/keys = {
 ]]
 script = ExtResource( 1 )
 bullet = ExtResource( 2 )
+gravity_acceleration = 500.0
+max_fall_speed = 200.0
+horizontal_acceleration = 100.0
+horizontal_max_speed = 50.0
+jump_velocity = 200.0
+shoot_offset = 12.0
 
 [node name="PlayerSprite" type="Sprite" parent="."]
 texture = ExtResource( 3 )
@@ -304,3 +310,7 @@ initial_velocity_random = 0.75
 damping = 40.0
 scale_amount = 2.0
 color = Color( 1, 0.309804, 0.470588, 1 )
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
