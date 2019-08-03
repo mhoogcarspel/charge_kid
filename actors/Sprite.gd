@@ -5,8 +5,11 @@ onready var animation_player:AnimationPlayer = player.get_node("AnimationPlayer"
 
 func _process(delta):
 	flip_sprite(player.facing)
-	play_move_animation(player.is_moving)
-	pass
+	if player.is_on_floor():
+		play_move_animation(player.is_moving)
+	else:
+		animation_player.play("Airborne")
+		
 
 func flip_sprite(facing) -> void:
 	if facing > 0 && flip_h:
