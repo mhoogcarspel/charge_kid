@@ -116,6 +116,8 @@ func boost() -> void:
 		is_boosting = true
 		can_boost = false
 		$FeetParticles.emitting = false
+		$FeetParticles2.emitting = false
+		$FeetParticles3.emitting = false
 		velocity = Vector2(0, -boost_speed)
 		$BoostTimer.start(boost_time)
 
@@ -126,6 +128,8 @@ func _on_BoostTimer_timeout():
 func recharge_fuel() -> void:
 	can_boost = true
 	$FeetParticles.emitting = true
+	$FeetParticles2.emitting = true
+	$FeetParticles3.emitting = true
 
 
 

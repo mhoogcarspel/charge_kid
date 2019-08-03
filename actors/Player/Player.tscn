@@ -206,6 +206,8 @@ radius = 1.5291
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
 ]]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource( 1 )
 bullet = ExtResource( 2 )
 gravity_acceleration = 500.0
@@ -248,6 +250,8 @@ shape = SubResource( 1 )
 editor/display_folded = true
 visible = false
 position = Vector2( -0.5, 7.5 )
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformSentinel"]
 position = Vector2( 0, 0.513487 )
@@ -262,12 +266,43 @@ anims/Walking = SubResource( 7 )
 
 [node name="FeetParticles" type="CPUParticles2D" parent="."]
 position = Vector2( 0, 8 )
-amount = 16
+rotation = -0.174533
+amount = 20
 lifetime = 0.5
-emission_shape = 2
-emission_rect_extents = Vector2( 8, 0 )
-gravity = Vector2( 0, -50 )
-initial_velocity = 0.0
+local_coords = false
+spread = 10.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 75.0
+initial_velocity_random = 1.0
+damping = 50.0
+color = Color( 1, 0.309804, 0.470588, 1 )
+
+[node name="FeetParticles2" type="CPUParticles2D" parent="."]
+position = Vector2( 0, 8 )
+rotation = 0.174533
+scale = Vector2( -1, 1 )
+amount = 20
+lifetime = 0.5
+local_coords = false
+spread = 10.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 75.0
+initial_velocity_random = 1.0
+damping = 50.0
+color = Color( 1, 0.309804, 0.470588, 1 )
+
+[node name="FeetParticles3" type="CPUParticles2D" parent="."]
+position = Vector2( 0, 8 )
+rotation = 1.5708
+scale = Vector2( -1, 1 )
+amount = 20
+lifetime = 0.5
+local_coords = false
+spread = 80.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 50.0
+initial_velocity_random = 1.0
+damping = 50.0
 color = Color( 1, 0.309804, 0.470588, 1 )
 
 [node name="BoostParticles1" type="CPUParticles2D" parent="."]
