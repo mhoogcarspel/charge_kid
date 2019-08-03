@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node",
+"class": "Block",
+"language": "GDScript",
+"path": "res://assets/Tilemaps/Blocks.gd"
+} ]
 _global_script_class_icons={
-
+"Block": ""
 }
 
 [application]

@@ -24,6 +24,7 @@ shader_param/color = Color( 0, 0, 0, 1 )
 load_path = "res://.import/industrial.v2.png-623709b22a2fa36ad7a63e2694483d61.stex"
 
 [node name="Switch" type="Sprite"]
+editor/display_folded = true
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 64, 192, 64, 64 )
