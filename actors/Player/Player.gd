@@ -1,14 +1,17 @@
 extends KinematicBody2D
 
+export(PackedScene) var bullet
+
 export(float) var gravity_acceleration
 export(float) var max_fall_speed
 export(float) var horizontal_acceleration
 export(float) var horizontal_max_speed
 
 export(int) var number_of_jumps
-export(float) var coyote_jump_timer
 export(float) var jump_velocity
 export(float) var jump_control
+
+export(float) var shoot_offset
 
 var velocity := Vector2()
 
@@ -77,6 +80,10 @@ func is_airborne() -> bool:
 
 func shoot() -> void:
 	if Input.is_action_just_pressed("ui_shoot") && can_shoot:
+		var bullet_instance = bullet.instance()
+		bullet_instance.direction = Vector2(facing, 0)
+		bullet_instance.position = self.position + Vector2(facing*shoot_offset, 0)
+		get_parent().add_child(bullet_instance)
 		print("Shooterino MAH FRIEND")
 		is_shooting = true
 		can_shoot = false
