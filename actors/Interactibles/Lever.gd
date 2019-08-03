@@ -1,8 +1,27 @@
-extends Sprite
+extends StaticBody2D
 
-func hit(projectile:Area2D):
+onready var is_active:bool = false
+
+func _ready():
+	if is_active:
+		$Lever.frame = 4
+	else:
+		$Lever.frame = 0
+
+func hit(bullet:PhysicsBody2D):
+	if is_active:
+		$Lever/AnimationPlayer.play("Deactivate")
+		is_active = false
+	else:
+		$Lever/AnimationPlayer.play("Activate")
+		is_active = true
 	for object in  $Linked.get_children():
 		toggle(object)
+	if !bullet.rigid_state && bullet.standard_state:
+		bullet.standard_state = false
+		bullet.return_state = true
+	
+	print(is_active)
 
 func toggle(object:Node) -> void:
 	if object.is_active:
