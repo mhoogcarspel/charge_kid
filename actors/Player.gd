@@ -63,3 +63,6 @@ func get_directional_inputs() -> Vector2:
 
 func _on_CoyoteTimer_timeout() -> void:
 	can_jump = false
+
+func is_airborne() -> bool:
+	return !self.is_on_floor()
