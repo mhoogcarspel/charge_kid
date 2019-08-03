@@ -11,9 +11,11 @@ tile_data = PoolIntArray( 1310720, 0, 0, 1310721, 0, 1, 1310722, 0, 1, 1310723, 
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 58.9473, 303.158 )
-gravity_acceleration = 100.0
+gravity_acceleration = 500.0
+max_fall_speed = 200.0
 horizontal_acceleration = 100.0
 horizontal_max_speed = 50.0
-number_of_jumps = 1.0
+number_of_jumps = 500
 coyote_jump_timer = 1.0
-jump_velocity = 300.0
+jump_velocity = 200.0
+jump_control = 0.2
