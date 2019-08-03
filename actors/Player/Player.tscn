@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://actors/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://actors/TheUniqueBullet/Bullet.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://actors/Player/PlayerSprite.gd" type="Script" id=4]
 [ext_resource path="res://assets/Particles/ProjectileParticles.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/Particles/ProjectileHit.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/particle2.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4.57833, 6.06252 )
@@ -39,6 +40,70 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=3]
+resource_name = "Boosting"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BoostParticles1:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BoostParticles2:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BoostParticles3:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BoostParticles4:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=4]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -64,33 +129,6 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 5, 3 ), Vector2( 5, 3 ) ]
-}
-
-[sub_resource type="Animation" id=4]
-length = 0.4
-tracks/0/type = "value"
-tracks/0/path = NodePath("PlayerSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 24, 25, 26, 27 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("PlayerSprite/ProjectileParticles:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -6, 3 ), Vector2( -6, 1 ), Vector2( -6, 0 ), Vector2( -6, 2 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -170,12 +208,12 @@ bullet = ExtResource( 2 )
 texture = ExtResource( 3 )
 vframes = 4
 hframes = 8
-frame = 17
 region_enabled = true
 region_rect = Rect2( 0, 256, 128, 64 )
 script = ExtResource( 4 )
 
 [node name="ProjectileParticles" parent="PlayerSprite" instance=ExtResource( 5 )]
+editor/display_folded = true
 position = Vector2( 5, 2 )
 z_index = -1
 lifetime = 0.2
@@ -196,7 +234,73 @@ shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Airborne = SubResource( 2 )
-anims/Idle = SubResource( 3 )
-anims/Interacting = SubResource( 4 )
+anims/Boosting = SubResource( 3 )
+anims/Idle = SubResource( 4 )
 anims/Shooting = SubResource( 5 )
 anims/Walking = SubResource( 6 )
+
+[node name="FeetParticles" type="CPUParticles2D" parent="."]
+position = Vector2( 0, 8 )
+amount = 16
+lifetime = 0.5
+emission_shape = 2
+emission_rect_extents = Vector2( 8, 0 )
+gravity = Vector2( 0, -50 )
+initial_velocity = 0.0
+color = Color( 1, 0.309804, 0.470588, 1 )
+
+[node name="BoostParticles1" type="CPUParticles2D" parent="."]
+z_index = -2
+emitting = false
+amount = 3
+lifetime = 0.3
+one_shot = true
+local_coords = false
+texture = ExtResource( 7 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 0.0
+
+[node name="BoostParticles2" type="CPUParticles2D" parent="."]
+position = Vector2( 0, 8 )
+emitting = false
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+local_coords = false
+spread = 30.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 125.0
+initial_velocity_random = 0.75
+damping = 70.0
+color = Color( 1, 0.309804, 0.470588, 1 )
+
+[node name="BoostParticles3" type="CPUParticles2D" parent="."]
+position = Vector2( 0, 8 )
+scale = Vector2( -1, 1 )
+emitting = false
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+local_coords = false
+spread = 30.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 125.0
+initial_velocity_random = 0.75
+damping = 70.0
+color = Color( 1, 0.309804, 0.470588, 1 )
+
+[node name="BoostParticles4" type="CPUParticles2D" parent="."]
+position = Vector2( 0, 8 )
+emitting = false
+amount = 12
+lifetime = 0.9
+one_shot = true
+explosiveness = 1.0
+local_coords = false
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 50.0
+initial_velocity_random = 0.75
+damping = 40.0
+color = Color( 1, 0.309804, 0.470588, 1 )
