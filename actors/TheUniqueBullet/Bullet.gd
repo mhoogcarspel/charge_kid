@@ -24,8 +24,6 @@ func move(direction: Vector2, delta:float):
 
 
 func _on_Bullet_body_entered(body):
-	body.hit()
 	$DespawnTimer.start(0.15)
 	yield($DespawnTimer, "timeout")
-	if body.is_in_group("player"):
-		self.queue_free()
+	body.hit(self)

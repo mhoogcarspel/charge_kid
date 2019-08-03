@@ -17,6 +17,6 @@ horizontal_max_speed = 50.0
 number_of_jumps = 1
 jump_velocity = 200.0
 jump_control = 0.2
-shoot_offset = 10.0
+shoot_offset = 12.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
