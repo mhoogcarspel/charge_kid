@@ -11,3 +11,9 @@ func flip_sprite(facing) -> void:
 		flip_h = false
 	elif facing < 0 && !flip_h:
 		flip_h = true
+
+func play_move_animation(is_moving) -> void:
+	if is_moving:
+		$AnimationPlayer.play("Walking")
+	else:
+		$AnimationPlayer.play("Idle")

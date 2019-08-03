@@ -13,6 +13,7 @@ export(float) var jump_control
 var velocity := Vector2()
 
 onready var facing : float = 1
+onready var is_moving: bool = false
 onready var can_jump: bool = true
 
 func _physics_process(delta):
