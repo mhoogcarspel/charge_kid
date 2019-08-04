@@ -1,6 +1,6 @@
 extends Area2D
 
-onready var main = get_tree().get_nodes_in_group("main")
+onready var main = get_tree().get_nodes_in_group("main")[0]
 
 export(PackedScene) var next_stage
 
