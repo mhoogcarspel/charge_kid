@@ -65,9 +65,7 @@ func _physics_process(delta):
 		damping()
 		boost()
 		drop()
-	
-	if is_jumping:
-		print(velocity.y)
+
 
 
 

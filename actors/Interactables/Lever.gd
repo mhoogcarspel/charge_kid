@@ -29,7 +29,7 @@ func hit(bullet:PhysicsBody2D):
 
 
 func toggle(object:Node) -> void:
-	if object.is_active:
+	if object.is_active():
 		object.deactivate()
 	else:
 		object.activate()
