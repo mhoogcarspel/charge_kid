@@ -13,6 +13,7 @@ func _ready():
 
 func hit(bullet:PhysicsBody2D):
 	add_child(particles.instance())
+	$SFX.play()
 	if is_active:
 		$Lever/AnimationPlayer.play("Deactivate")
 		is_active = false

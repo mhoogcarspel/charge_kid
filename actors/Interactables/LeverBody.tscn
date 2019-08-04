@@ -19,3 +19,5 @@ frame = 4
 visible = false
 position = Vector2( 0, 2.9978 )
 shape = SubResource( 1 )
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
