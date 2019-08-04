@@ -12,14 +12,15 @@ var has_fuel: bool
 
 
 func change_state(new_state: String) -> void:
-	if new_state == "Full":
-		has_fuel = true
-		$FuelTank.frame = 6
-		state = new_state
-	elif new_state == "Empty":
-		has_fuel = false
-		$FuelTank.frame = 0
-		state = new_state
+	if Engine.editor_hint:
+		if new_state == "Full":
+			has_fuel = true
+			$FuelTank.frame = 6
+			state = new_state
+		elif new_state == "Empty":
+			has_fuel = false
+			$FuelTank.frame = 0
+			state = new_state
 
 
 
@@ -73,6 +74,13 @@ func _ready() -> void:
 
 func _on_RefillTime_timeout():
 	fill()
+
+func _on_PlayerDetector_body_entered(body):
+	if body.is_in_group("player") and is_full():
+		body.recharge_fuel()
+		empty()
+
+
 
 
 

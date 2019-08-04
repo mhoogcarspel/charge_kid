@@ -43,6 +43,7 @@ shape = SubResource( 3 )
 disabled = true
 
 [node name="FuelChargeParticles" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
 emitting = false
 
 [node name="CPUParticles2D" parent="FuelChargeParticles" index="0"]
