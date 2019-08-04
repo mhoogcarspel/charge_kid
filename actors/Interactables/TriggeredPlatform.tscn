@@ -3,7 +3,6 @@
 [ext_resource path="res://actors/Interactables/TriggeredPlatform.gd" type="Script" id=1]
 [ext_resource path="res://assets/industrial.v2.png" type="Texture" id=2]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "Activate"
 length = 0.2
@@ -31,6 +30,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:z_index")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.15 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ -4, 0 ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -60,6 +71,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:z_index")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, -4 ]
 }
 
 [sub_resource type="RectangleShape2D" id=3]
