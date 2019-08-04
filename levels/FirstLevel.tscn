@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/Tilemaps/SolidBlocks.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Tilemaps/Platforms.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://actors/Interactables/FuelTank.tscn" type="PackedScene" id=8]
 [ext_resource path="res://levels/AreaLabel.gd" type="Script" id=9]
 [ext_resource path="res://levels/AreaLabel2.gd" type="Script" id=10]
+[ext_resource path="res://levels/Area2D3.gd" type="Script" id=11]
 
 [node name="FirstLevel" type="Node2D"]
 
@@ -85,10 +86,12 @@ script = ExtResource( 9 )
 polygon = PoolVector2Array( 8, 16, 304, 16, 304, 184, 8, 184 )
 
 [node name="Timer" type="Timer" parent="Area2D"]
-wait_time = 120.0
+wait_time = 60.0
 one_shot = true
 
 [node name="Area2D2" type="Area2D" parent="."]
+editor/display_folded = true
+visible = false
 position = Vector2( 120, 112 )
 script = ExtResource( 10 )
 
@@ -96,9 +99,18 @@ script = ExtResource( 10 )
 polygon = PoolVector2Array( 40, 128, 120, 128, 120, 184, 40, 184 )
 
 [node name="Timer" type="Timer" parent="Area2D2"]
-wait_time = 120.0
+wait_time = 30.0
 one_shot = true
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_Area2D_body_exited"]
-[connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="Area2D2" to="Area2D2" method="_on_Area2D_body_exited"]
+
+[node name="Area2D3" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( 120, 112 )
+script = ExtResource( 11 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D3"]
+position = Vector2( 376, 8 )
+polygon = PoolVector2Array( 16, 128, 288, 128, 288, 184, 16, 184 )
+
+[node name="Timer" type="Timer" parent="Area2D3"]
+wait_time = 60.0
+one_shot = true
