@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends KinematicBody2D
 
 export(float) var despawn_timer
 export(float) var velocity
@@ -7,6 +7,7 @@ export(float) var distance
 export(float) var gravity_accel
 export(float) var deflect_velocity
 export(bool) var is_standing
+export(float) var dissipation
 
 onready var player: KinematicBody2D = get_tree().get_nodes_in_group("player")[0]
 onready var direction: Vector2
@@ -16,6 +17,7 @@ var return_state: bool
 var rigid_state: bool
 var interacting: bool
 var fuel_charge_state: bool
+var linear_velocity: Vector2
 
 
 
@@ -49,6 +51,7 @@ func _physics_process(delta):
 			move_bullet()
 		else:
 			gravity(delta)
+	linear_velocity = move_and_slide(linear_velocity)
 
 func is_interacting() -> bool:
 	for body in $HitBox.get_overlapping_bodies():
