@@ -11,6 +11,7 @@ func _ready():
 		$Lever.frame = 0
 
 func hit(bullet:PhysicsBody2D):
+	bullet.get_node("ProjectileHit").emitting = true
 	if is_active:
 		$Lever/AnimationPlayer.play("Deactivate")
 		is_active = false

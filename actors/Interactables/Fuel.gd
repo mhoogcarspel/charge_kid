@@ -43,6 +43,7 @@ func empty() -> void:
 			$RefillTime.start(refill_time)
 
 func hit(bullet: PhysicsBody2D):
+	bullet.get_node("ProjectileHit").emitting = true
 	if is_full():
 		bullet.charge_bullet()
 		$FuelTank/AnimationPlayer.play("Hit")
