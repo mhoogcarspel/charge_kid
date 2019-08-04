@@ -7,7 +7,7 @@
 [ext_resource path="res://actors/Interactables/SwitchBody.tscn" type="PackedScene" id=5]
 [ext_resource path="res://actors/Interactables/TriggeredPlatform.tscn" type="PackedScene" id=6]
 [ext_resource path="res://actors/TheUniqueBullet/Bullet.tscn" type="PackedScene" id=7]
-[ext_resource path="res://actors/Interactables/Fuel.tscn" type="PackedScene" id=8]
+[ext_resource path="res://actors/Interactables/FuelTank.tscn" type="PackedScene" id=8]
 
 [node name="FirstLevel" type="Node2D"]
 
@@ -48,14 +48,6 @@ active = true
 position = Vector2( 264, 168 )
 is_standing = true
 
-[node name="Fuel" parent="." instance=ExtResource( 8 )]
-position = Vector2( 752, 280.385 )
-state = ""
-
-[node name="Fuel2" parent="." instance=ExtResource( 8 )]
-position = Vector2( 752, 216.386 )
-state = ""
-
 [node name="SwitchBody2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 856, 152 )
 nodes = [ NodePath("../TriggeredPlatform4"), NodePath("../TriggeredPlatform5"), NodePath("../TriggeredPlatform6") ]
@@ -74,3 +66,9 @@ active = true
 position = Vector2( 848, 216.386 )
 rotation = -1.5708
 active = true
+
+[node name="FuelTank" parent="." instance=ExtResource( 8 )]
+position = Vector2( 752, 280 )
+
+[node name="FuelTank2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 752, 216 )
