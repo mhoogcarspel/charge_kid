@@ -8,7 +8,7 @@
 [ext_resource path="res://actors/Interactables/SwitchBody.tscn" type="PackedScene" id=6]
 [ext_resource path="res://actors/Interactables/TriggeredPlatform.tscn" type="PackedScene" id=7]
 [ext_resource path="res://common/FinishLine.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Menu/FinalScreen.tscn" type="PackedScene" id=9]
+[ext_resource path="res://menu/FinalScreen.tscn" type="PackedScene" id=9]
 
 [node name="ThirdLevel" type="Node2D"]
 
@@ -39,15 +39,12 @@ nodes = [ NodePath("../FuelTank"), NodePath("../TriggeredPlatform"), NodePath(".
 
 [node name="TriggeredPlatform" parent="." instance=ExtResource( 7 )]
 position = Vector2( 168, 168 )
-active = false
 
 [node name="TriggeredPlatform3" parent="." instance=ExtResource( 7 )]
 position = Vector2( 152, 168 )
-active = false
 
 [node name="TriggeredPlatform2" parent="." instance=ExtResource( 7 )]
 position = Vector2( 184, 168 )
-active = false
 
 [node name="FuelTank2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 520, 264 )
@@ -64,5 +61,6 @@ next_stage = ExtResource( 9 )
 
 [node name="CollisionShape2D" parent="FinishLine" index="0"]
 position = Vector2( 8, 0 )
+scale = Vector2( 1, 2 )
 
 [editable path="FinishLine"]
