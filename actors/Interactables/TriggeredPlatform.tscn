@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://actors/Interactables/TriggeredPlatform.gd" type="Script" id=1]
 [ext_resource path="res://assets/industrial.v2.png" type="Texture" id=2]
-
+[ext_resource path="res://assets/SFX/270310__littlerobotsoundfactory__explosion-04.wav" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Activate"
@@ -78,6 +78,7 @@ anims/Deactivate = SubResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 hframes = 4
+frame = 3
 region_enabled = true
 region_rect = Rect2( 0, 176, 64, 16 )
 
@@ -85,3 +86,6 @@ region_rect = Rect2( 0, 176, 64, 16 )
 visible = false
 position = Vector2( 0, -6.5 )
 shape = SubResource( 3 )
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )

@@ -8,6 +8,7 @@ export(Array,NodePath) var nodes
 func hit(projectile:PhysicsBody2D) -> void:
 	add_child(particles.instance())
 	if !is_active:
+		$SFX.play()
 		is_active = true
 		$Switch.activate()
 		$Timer.start()

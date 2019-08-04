@@ -52,6 +52,7 @@ func _ready():
 
 
 func activate() -> void:
+	$SFX.play()
 	if not is_active():
 		$AnimationPlayer.play("Activate")
 		active = true
