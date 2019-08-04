@@ -1,8 +1,7 @@
 extends MarginContainer
 
-func _ready():
-	pass # Replace with function body.
-
+export(PackedScene) var Game
+export(PackedScene) var Credits
 
 
 func _on_StartGame_pressed():
