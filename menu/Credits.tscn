@@ -80,7 +80,7 @@ margin_right = 530.0
 margin_bottom = 25.0
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 3 )
-text = "Ayrton Makoto Sato"
+text = "Ayrton Makoto Euzebio Sato"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
 margin_top = 222.0
