@@ -195,6 +195,15 @@ func is_airborne() -> bool:
 
 
 
+func write(text: String) -> void:
+	$Label.set_text(text)
+	$LabelTimer.start()
+
+func _on_LabelTimer_timeout():
+	$Label.set_text(" ")
+
+
+
 
 
 
