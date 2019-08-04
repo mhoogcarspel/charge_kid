@@ -169,10 +169,10 @@ func shoot() -> void:
 			is_shooting = true
 			if !god_mode:
 				can_shoot = false
-		else:
-			$PlayerSprite/ProjectileParticles/ProjectileHit.emitting = true
-			yield($PlayerSprite/ProjectileParticles/ProjectileHit, "visibility_changed")
-			$PlayerSprite/ProjectileParticles/ProjectileHit.emitting = true
+#		else:
+#			$PlayerSprite/ProjectileParticles/ProjectileHit.emitting = true
+#			yield($PlayerSprite/ProjectileParticles/ProjectileHit, "visibility_changed")
+#			$PlayerSprite/ProjectileParticles/ProjectileHit.emitting = true
 
 func check_for_blocks(Sensor: Area2D) -> bool:
 	for body in Sensor.get_overlapping_bodies():
