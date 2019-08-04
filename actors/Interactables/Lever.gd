@@ -3,6 +3,7 @@ extends StaticBody2D
 export(Array,NodePath) var nodes
 
 onready var is_active:bool = false
+onready var particles = preload("res://assets/Particles/ProjectileHit.tscn")
 
 func _ready():
 	if is_active:
@@ -11,7 +12,7 @@ func _ready():
 		$Lever.frame = 0
 
 func hit(bullet:PhysicsBody2D):
-	bullet.get_node("ProjectileHit").emitting = true
+	add_child(particles.instance())
 	if is_active:
 		$Lever/AnimationPlayer.play("Deactivate")
 		is_active = false
@@ -23,8 +24,8 @@ func hit(bullet:PhysicsBody2D):
 	if !bullet.rigid_state && bullet.standard_state:
 		bullet.standard_state = false
 		bullet.return_state = true
-	
-	print(is_active)
+
+
 
 func toggle(object:Node) -> void:
 	if object.is_active:

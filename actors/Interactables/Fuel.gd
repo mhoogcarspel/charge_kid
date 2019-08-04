@@ -6,6 +6,7 @@ extends StaticBody2D
 export (String, "Full", "Empty") var state setget change_state
 export (float) var refill_time
 
+onready var particles = preload("res://assets/Particles/ProjectileHit.tscn")
 var has_fuel: bool
 
 
@@ -43,10 +44,10 @@ func empty() -> void:
 			$RefillTime.start(refill_time)
 
 func hit(bullet: PhysicsBody2D):
-	bullet.get_node("ProjectileHit").emitting = true
 	if is_full():
 		bullet.charge_bullet()
 		$FuelTank/AnimationPlayer.play("Hit")
+		add_child(particles.instance())
 		has_fuel = false
 		if refill_time > 0:
 			$RefillTime.start(refill_time)

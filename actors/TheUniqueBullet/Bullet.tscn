@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://actors/TheUniqueBullet/Bullet.gd" type="Script" id=1]
-[ext_resource path="res://assets/Particles/ProjectileHit.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/Particles/ProjectileParticles.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/Particles/FuelChargeParticles.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/Particles/ProjectileParticles.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/Particles/FuelChargeParticles.tscn" type="PackedScene" id=3]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.1
@@ -28,9 +27,7 @@ distance = 100.0
 gravity_accel = 400.0
 deflect_velocity = 150.0
 
-[node name="ProjectileHit" parent="." instance=ExtResource( 2 )]
-
-[node name="ProjectileParticles" parent="." instance=ExtResource( 3 )]
+[node name="ProjectileParticles" parent="." instance=ExtResource( 2 )]
 
 [node name="DespawnTimer" type="Timer" parent="."]
 
@@ -45,7 +42,7 @@ shape = SubResource( 2 )
 shape = SubResource( 3 )
 disabled = true
 
-[node name="FuelChargeParticles" parent="." instance=ExtResource( 4 )]
+[node name="FuelChargeParticles" parent="." instance=ExtResource( 3 )]
 emitting = false
 
 [node name="CPUParticles2D" parent="FuelChargeParticles" index="0"]

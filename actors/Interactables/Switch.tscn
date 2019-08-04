@@ -4,7 +4,6 @@
 [ext_resource path="res://actors/Interactables/Switch.gd" type="Script" id=2]
 [ext_resource path="res://actors/Interactables/Sprite.gd" type="Script" id=3]
 
-
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 render_mode unshaded;
@@ -25,13 +24,13 @@ shader_param/color = Color( 0, 0, 0, 1 )
 load_path = "res://.import/industrial.v2.png-623709b22a2fa36ad7a63e2694483d61.stex"
 
 [node name="Switch" type="Sprite"]
-editor/display_folded = true
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 64, 192, 64, 64 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 material = SubResource( 2 )
 texture = SubResource( 3 )
 region_enabled = true

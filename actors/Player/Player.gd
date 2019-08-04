@@ -3,6 +3,8 @@ extends KinematicBody2D
 export(PackedScene) var bullet
 
 export(bool) var god_mode
+export(bool) var has_projectile
+export(bool) var has_fuel
 
 export(float) var gravity_acceleration
 export(float) var max_fall_speed
@@ -19,8 +21,8 @@ onready var boost_time: float = $AnimationPlayer.get_animation("Boosting").lengt
 onready var boost_speed: float = boost_distance/boost_time
 onready var jump_velocity: float = sqrt(2*jump_height*gravity_acceleration)
 
-onready var can_shoot: bool = true
-onready var can_boost: bool = true
+var can_shoot: bool
+var can_boost: bool
 
 onready var is_shooting: bool = false
 onready var is_jumping: bool = false
@@ -30,6 +32,19 @@ onready var just_boosted: bool = false
 onready var on_platform: bool = false
 
 
+func _ready():
+	if has_projectile:
+		can_shoot = true
+	else:
+		can_shoot = false
+	
+	if has_fuel:
+		can_boost = true
+	else:
+		can_boost = false
+		$FeetParticles.emitting = false
+		$FeetParticles2.emitting = false
+		$FeetParticles3.emitting = false
 
 func _physics_process(delta):
 	
@@ -103,7 +118,7 @@ func jump() -> void:
 		velocity.y = -jump_velocity
 		is_jumping = true
 		
-	if Input.is_action_just_released("ui_jump") && velocity.y < 0:
+	if Input.is_action_just_released("ui_jump") && velocity.y < 0 && !is_boosting:
 		velocity.y = 0
 	
 	if velocity.y >= 0 and is_jumping:
@@ -115,6 +130,7 @@ func boost() -> void:
 	if can_boost && Input.is_action_just_pressed("ui_boost") && !is_boosting:
 		is_boosting = true
 		can_boost = false
+		is_jumping = false
 		$FeetParticles.emitting = false
 		$FeetParticles2.emitting = false
 		$FeetParticles3.emitting = false
@@ -138,6 +154,8 @@ func shoot() -> void:
 		var bullet_instance = bullet.instance()
 		var bullet_positon = self.position + Vector2(facing*shoot_offset, 0)
 		var allow: bool
+		velocity = Vector2.ZERO
+		
 		if facing < 0:
 			allow = check_for_blocks($LeftAreaChecker)
 		else:

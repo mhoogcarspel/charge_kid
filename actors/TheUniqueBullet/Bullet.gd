@@ -6,24 +6,39 @@ export(float) var velocity_fuel
 export(float) var distance
 export(float) var gravity_accel
 export(float) var deflect_velocity
+export(bool) var is_standing
 
-onready var player:KinematicBody2D = get_tree().get_nodes_in_group("player")[0]
+onready var player: KinematicBody2D = get_tree().get_nodes_in_group("player")[0]
 onready var direction: Vector2
 onready var delta_S := Vector2 ()
-onready var standard_state: bool = true
-onready var return_state: bool = false
-onready var rigid_state: bool = false
-onready var interacting: bool = false
-onready var fuel_charge_state: bool = false
+var standard_state: bool
+var return_state: bool
+var rigid_state: bool
+var interacting: bool
+var fuel_charge_state: bool
 
 
 
-func _process(delta):
+func _ready():
+	if is_standing:
+		activate_rigid_body()
+		standard_state = false
+		return_state = false
+		rigid_state = true
+		interacting = false
+		fuel_charge_state = false
+	else:
+		standard_state = true
+		return_state = false
+		rigid_state = false
+		interacting = false
+		fuel_charge_state = false
+
+func _physics_process(delta):
 	if standard_state:
 		track_distance(delta)
 		if !is_interacting():
 			if delta_S.length() > distance:
-				print("U'e")
 				standard_state = false
 				return_state = true
 		move_bullet()
@@ -47,7 +62,7 @@ func activate_rigid_body() -> void:
 	$PhysicalCollider.disabled = false
 
 func _on_HitBox_body_entered(body):
-	if !body.is_in_group("bullet"):
+	if not body.is_in_group("bullet"):
 		body.hit(self)
 
 func move_bullet() -> void:

@@ -55,6 +55,9 @@ func activate() -> void:
 	if not is_active():
 		$AnimationPlayer.play("Activate")
 		active = true
+	else:
+		$AnimationPlayer.play("Deactivate")
+		active = false
 
 func deactivate() -> void:
 	if is_active():

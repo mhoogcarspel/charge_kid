@@ -27,4 +27,4 @@ state = "Full"
 [node name="LeverBody" parent="." groups=[
 "blocks",
 ] instance=ExtResource( 5 )]
-position = Vector2( 600, 254 )
+position = Vector2( 548, 312 )
