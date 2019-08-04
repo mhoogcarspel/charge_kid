@@ -54,6 +54,7 @@ func empty() -> void:
 
 func hit(bullet: PhysicsBody2D):
 	if is_full():
+		$SFX.play()
 		bullet.charge_bullet()
 		$AnimationPlayer.play("Hit")
 		add_child(particles.instance())

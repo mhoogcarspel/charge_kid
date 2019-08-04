@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://actors/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://actors/TheUniqueBullet/Bullet.tscn" type="PackedScene" id=2]
@@ -7,6 +7,11 @@
 [ext_resource path="res://assets/Particles/ProjectileParticles.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/particle2.png" type="Texture" id=6]
 [ext_resource path="res://assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://assets/SFX/270320__littlerobotsoundfactory__jump-00.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/SFX/270307__littlerobotsoundfactory__explosion-01.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/SFX/270335__littlerobotsoundfactory__shoot-03.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/SFX/270340__littlerobotsoundfactory__pickup-01.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/SFX/270341__littlerobotsoundfactory__pickup-04.wav" type="AudioStream" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4.42775, 6.06252 )
@@ -395,6 +400,28 @@ align = 1
 [node name="LabelTimer" type="Timer" parent="."]
 wait_time = 20.0
 one_shot = true
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="Jump" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 8 )
+bus = "SFX"
+
+[node name="SuperJump" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 9 )
+bus = "SFX"
+
+[node name="Shoot" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 10 )
+bus = "SFX"
+
+[node name="BulletPickup" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 11 )
+bus = "SFX"
+
+[node name="FuelPickup" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 12 )
+bus = "SFX"
 [connection signal="timeout" from="BoostTimer" to="." method="_on_BoostTimer_timeout"]
 [connection signal="timeout" from="DropTimer" to="." method="_on_DropTimer_timeout"]
 [connection signal="timeout" from="LabelTimer" to="." method="_on_LabelTimer_timeout"]

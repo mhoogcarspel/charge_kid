@@ -114,7 +114,7 @@ func is_on_platform() -> bool:
 
 func jump() -> void:
 	if !$CoyoteTimer.is_stopped() && Input.is_action_just_pressed("ui_jump") && !is_jumping && !is_boosting:
-		print("JUMP MAH FRIEND")
+		$SFX/Jump.play()
 		velocity.y = -jump_velocity
 		is_jumping = true
 		
@@ -128,6 +128,7 @@ func jump() -> void:
 
 func boost() -> void:
 	if can_boost && Input.is_action_just_pressed("ui_boost") && !is_boosting:
+		$SFX/SuperJump.play()
 		is_boosting = true
 		can_boost = false
 		is_jumping = false
@@ -142,6 +143,7 @@ func _on_BoostTimer_timeout():
 	just_boosted = true
 
 func recharge_fuel() -> void:
+	$SFX/FuelPickup.play()
 	can_boost = true
 	$FeetParticles.emitting = true
 	$FeetParticles2.emitting = true
@@ -151,6 +153,7 @@ func recharge_fuel() -> void:
 
 func shoot() -> void:
 	if Input.is_action_just_pressed("ui_shoot") && can_shoot:
+		$SFX/Shoot.play()
 		var bullet_instance = bullet.instance()
 		var bullet_positon = self.position + Vector2(facing*shoot_offset, 0)
 		var allow: bool
@@ -181,6 +184,8 @@ func check_for_blocks(Sensor: Area2D) -> bool:
 	return true
 
 func hit(projectile: PhysicsBody2D) -> void:
+	if projectile.rigid_state:
+		$SFX/BulletPickup.play()
 	projectile.velocity = 0
 	self.can_shoot = true
 	if projectile.fuel_charge_state:

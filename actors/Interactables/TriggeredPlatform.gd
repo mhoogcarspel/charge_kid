@@ -52,6 +52,7 @@ func _ready():
 
 
 func activate() -> void:
+	$SFX.play()
 	if not is_active():
 		$AnimationPlayer.play("Activate")
 		active = true
@@ -66,6 +67,11 @@ func deactivate() -> void:
 
 func is_active() -> bool:
 	return active
+
+func hit(bullet: PhysicsBody2D) -> void:
+	if !bullet.rigid_state && bullet.standard_state:
+		bullet.standard_state = false
+		bullet.return_state = true
 
 
 
