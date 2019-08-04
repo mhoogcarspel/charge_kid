@@ -5,6 +5,7 @@ export(PackedScene) var bullet
 export(bool) var god_mode
 export(bool) var has_projectile
 export(bool) var has_fuel
+export(float) var level_length
 
 export(float) var gravity_acceleration
 export(float) var max_fall_speed
@@ -38,6 +39,8 @@ func _ready():
 	else:
 		can_shoot = false
 	
+	$PlayerCamera.limit_right = level_length
+	
 	if has_fuel:
 		can_boost = true
 	else:
@@ -62,12 +65,15 @@ func _physics_process(delta):
 		damping()
 		boost()
 		drop()
+	
+	if is_jumping:
+		print(velocity.y)
 
 
 
 func damping() -> void:
 	velocity.x = clamp(velocity.x, -horizontal_max_speed, horizontal_max_speed)
-	velocity.y = clamp(velocity.y, -boost_speed, max_fall_speed)
+	velocity.y = clamp(velocity.y, -3000, max_fall_speed)
 
 func move(direction: Vector2, delta: float) -> void:
 	if (direction.x*velocity.x > 0 && velocity.x != 0) or (velocity.x == 0 && direction.x != 0):

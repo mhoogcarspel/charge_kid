@@ -203,11 +203,11 @@ has_projectile = true
 has_fuel = true
 gravity_acceleration = 500.0
 max_fall_speed = 200.0
-horizontal_acceleration = 100.0
-horizontal_max_speed = 50.0
-jump_height = 24.0
+horizontal_acceleration = 150.0
+horizontal_max_speed = 75.0
+jump_height = 40.0
 shoot_offset = 12.0
-boost_distance = 64.0
+boost_distance = 96.0
 
 [node name="PlayerSprite" type="Sprite" parent="."]
 editor/display_folded = true
@@ -402,6 +402,7 @@ wait_time = 5.0
 one_shot = true
 
 [node name="SFX" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="Jump" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 8 )
