@@ -38,6 +38,9 @@ func is_full() -> bool:
 func is_empty() -> bool:
 	return not has_fuel
 
+func is_active() -> bool:
+	return false
+
 
 
 func fill() -> void:
