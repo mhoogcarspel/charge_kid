@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://actors/Interactables/Lever.gd" type="Script" id=1]
 [ext_resource path="res://actors/Interactables/Lever.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/SFX/270309__littlerobotsoundfactory__craft-00.wav" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6.92253, 5.11762 )
@@ -21,3 +22,4 @@ position = Vector2( 0, 2.9978 )
 shape = SubResource( 1 )
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
