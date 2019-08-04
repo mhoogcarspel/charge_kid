@@ -9,7 +9,7 @@
 [ext_resource path="res://actors/Interactables/FuelTank.tscn" type="PackedScene" id=7]
 [ext_resource path="res://actors/Interactables/LeverBody.tscn" type="PackedScene" id=8]
 [ext_resource path="res://common/FinishLine.tscn" type="PackedScene" id=9]
-[ext_resource path="res://menu/FinalScreen.tscn" type="PackedScene" id=10]
+[ext_resource path="res://levels/ThirdLevel.tscn" type="PackedScene" id=10]
 [ext_resource path="res://levels/Area2D.gd" type="Script" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
