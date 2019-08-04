@@ -4,11 +4,11 @@ export(PackedScene) var Game
 export(PackedScene) var Credits
 
 func _on_StartGame_pressed():
-	print("Start Game")
+	self.get_parent().change_scene(Game)
 
 
 func _on_Credits_pressed():
-	print("Credits")
+	self.get_parent().change_scene(Credits)
 
 
 func _on_Quit_pressed():
