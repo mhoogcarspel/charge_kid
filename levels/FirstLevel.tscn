@@ -151,6 +151,7 @@ next_stage = ExtResource( 13 )
 position = Vector2( 4.94759, 5.4058 )
 
 [node name="Area2D4" type="Area2D" parent="."]
+editor/display_folded = true
 script = ExtResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4"]
