@@ -50,9 +50,9 @@ custom_constants/separation = 40
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
-margin_top = 118.0
+margin_top = 111.0
 margin_right = 539.0
-margin_bottom = 182.0
+margin_bottom = 175.0
 custom_constants/separation = 19
 alignment = 1
 
@@ -83,9 +83,9 @@ custom_fonts/font = SubResource( 3 )
 text = "Ayrton Makoto Euzebio Sato"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
-margin_top = 222.0
+margin_top = 215.0
 margin_right = 539.0
-margin_bottom = 300.0
+margin_bottom = 307.0
 custom_constants/separation = 19
 alignment = 1
 
@@ -98,28 +98,29 @@ text = "Sound Effects"
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/VBoxContainer3"]
 margin_top = 39.0
 margin_right = 539.0
-margin_bottom = 78.0
+margin_bottom = 92.0
 alignment = 1
 
 [node name="SFX" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer3/VBoxContainer"]
 margin_right = 539.0
-margin_bottom = 25.0
+margin_bottom = 39.0
 custom_fonts/font = SubResource( 2 )
 text = "All sound effects are made by the freesound user 
-LittleRobotSoundFactory"
+LittleRobotSoundFactory
+lincensed under CC BY 3.0"
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer3/VBoxContainer"]
-margin_top = 29.0
+margin_top = 43.0
 margin_right = 539.0
-margin_bottom = 39.0
+margin_bottom = 53.0
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 3 )
 text = "https://freesound.org/people/LittleRobotSoundFactory/"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
-margin_top = 340.0
+margin_top = 347.0
 margin_right = 539.0
-margin_bottom = 420.0
+margin_bottom = 427.0
 custom_constants/separation = 19
 alignment = 1
 
@@ -156,9 +157,9 @@ custom_fonts/font = SubResource( 5 )
 text = "https://0x72.itch.io/"
 
 [node name="Back" type="Button" parent="HBoxContainer/VBoxContainer"]
-margin_top = 460.0
+margin_top = 467.0
 margin_right = 539.0
-margin_bottom = 482.0
+margin_bottom = 489.0
 focus_mode = 0
 custom_fonts/font = SubResource( 6 )
 enabled_focus_mode = 0
