@@ -1,10 +1,10 @@
 extends MarginContainer
 
-export(PackedScene) var Game
+export(PackedScene) var next_scene
 export(PackedScene) var Credits
 
 func _on_StartGame_pressed():
-	self.get_parent().change_scene(Game)
+	self.get_parent().change_scene(next_scene)
 
 
 func _on_Credits_pressed():

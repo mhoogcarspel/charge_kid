@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "ButtonGetter",
 "language": "GDScript",
 "path": "res://common/ButtonGetter.gd"
+}, {
+"base": "Label",
+"class": "LabelBaseModel",
+"language": "GDScript",
+"path": "res://common/LabelBaseModel.gd"
 } ]
 _global_script_class_icons={
 "Block": "",
-"ButtonGetter": ""
+"ButtonGetter": "",
+"LabelBaseModel": ""
 }
 
 [application]

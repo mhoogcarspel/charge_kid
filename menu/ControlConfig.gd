@@ -1,4 +1,4 @@
-extends Control
+extends MarginContainer
 
 export var next_scene:PackedScene
 
@@ -26,14 +26,14 @@ func _input(event):
 				$VBoxContainer/Error.text = ""
 				control_handler.change_key_binding(actions.keys()[controls_iterator], event)
 				controls_iterator += 1
-				if controls_iterator > actions.size():
-					pass
+				if controls_iterator == actions.size():
+					get_parent().change_scene(next_scene)
 			else:
 				$VBoxContainer/Error.text = "\nERROR: You already assigned that key to another action,\n try another key."
 		else:
 			configuring = true
-		
-		$VBoxContainer/HBoxContainer/MessageControls.text = "Press a key to " + actions[actions.keys()[controls_iterator]]
+		if controls_iterator < actions.size():
+			$VBoxContainer/HBoxContainer/MessageControls.text = "Press a key to " + actions[actions.keys()[controls_iterator]]
 
 func just_pressed(event: InputEvent) -> bool:
 	return event.is_pressed() and !event.is_echo()

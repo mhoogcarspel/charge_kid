@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://menu/StartMenu.gd" type="Script" id=1]
-[ext_resource path="res://levels/FirstLevel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://menu/ControlConfig.tscn" type="PackedScene" id=2]
 [ext_resource path="res://menu/Credits.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf" type="DynamicFontData" id=4]
 
@@ -22,7 +22,7 @@ font_data = ExtResource( 4 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
-Game = ExtResource( 2 )
+next_scene = ExtResource( 2 )
 Credits = ExtResource( 3 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
