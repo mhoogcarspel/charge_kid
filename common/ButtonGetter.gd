@@ -34,3 +34,15 @@ func find_and_erase_another_action_with_same_key(exception: String, key: InputEv
 			return false
 	
 	return true
+
+func find_another_action_with_same_key(exception: String, key: InputEvent) -> bool:
+	for action in InputMap.get_actions():
+		if action != exception && key_in_list(key, InputMap.get_action_list(action)):
+			return true
+	return false
+
+func key_in_list(key:InputEvent, list: Array) -> bool:
+	for action in list:
+		if action.as_text() == key.as_text():
+			return true
+	return false
