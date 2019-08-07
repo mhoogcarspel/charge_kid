@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Block",
 "language": "GDScript",
 "path": "res://assets/Tilemaps/Blocks.gd"
+}, {
+"base": "Object",
+"class": "ButtonGetter",
+"language": "GDScript",
+"path": "res://common/ButtonGetter.gd"
 } ]
 _global_script_class_icons={
-"Block": ""
+"Block": "",
+"ButtonGetter": ""
 }
 
 [application]
