@@ -20,7 +20,7 @@ func _ready():
 	$VBoxContainer/HBoxContainer/MessageControls.text = " Time to decide your controls. \n We recommend zxc + arrows or equivalent. \n Press any key when you're ready."
 
 func _input(event):
-	if event is InputEventKey and just_pressed(event):
+	if event is InputEventKey || event is InputEventJoypadButton and just_pressed(event):
 		if configuring:
 			if !control_handler.find_another_action_with_same_key(actions.keys()[controls_iterator], event):
 				$VBoxContainer/Error.text = ""
