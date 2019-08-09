@@ -18,7 +18,7 @@ onready var actions_dictionary: Dictionary = {
 
 func _ready():
 	var file = File.new()
-	file.open("buttons_name", File.WRITE)
+	file.open("buttons_map", File.WRITE)
 	for action in actions_dictionary.keys():
 		var label = LabelBaseModel.new()
 		$VBoxContainer/Keymap/Actions.add_child(label)
@@ -27,7 +27,7 @@ func _ready():
 		$VBoxContainer/Keymap/Buttons.add_child(label2)
 		label2.set("custom_colors/font_color", Color(PINK))
 		label2.text = InputMap.get_action_list(action)[0].as_text()
-		file.store_string(InputMap.get_action_list(action)[0].as_text() + '\n')
+		file.store_string(InputMap.get_action_list(action)[0].as_text() + ":action = " + action +'\n')
 	file.close()
 	
 	var label = LabelBaseModel.new()
