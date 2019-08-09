@@ -19,6 +19,12 @@ func _init(actions_list: PoolStringArray = []):
 	}
 	print_map()
 
+func reinit(actions_list: PoolStringArray = []):
+	if actions_list.size() > 0:
+		erase_all_actions()
+	for action in actions_list:
+		InputMap.add_action(action)
+
 func erase_all_actions() -> void:
 	for action in InputMap.get_actions():
 		if action != "ui_cancel":

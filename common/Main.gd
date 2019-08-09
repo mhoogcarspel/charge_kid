@@ -12,7 +12,7 @@ onready var actions: Dictionary = {
 	"ui_down": "Down"
 	}
 
-onready var control_handler = ButtonGetter.new(actions.keys())
+onready var control_handler = ButtonGetter.new()
 
 var actual_scene: PackedScene
 
