@@ -11,7 +11,8 @@ onready var actions: Dictionary = {
 	"ui_up": "Up",
 	"ui_down": "Down"
 	}
-onready var control_handler = ButtonGetter.new(actions.keys())
+
+onready var control_handler = get_parent().control_handler
 onready var controls_iterator: int = 0
 onready var configuring: bool = false
 onready var key_pressed:InputEventKey = null

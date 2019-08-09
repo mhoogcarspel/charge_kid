@@ -3,6 +3,7 @@ extends MarginContainer
 export var game: PackedScene
 export var control_remap: PackedScene
 
+onready var control_handler = get_parent().control_handler
 onready var YELLOW:String = "#f7ff00"
 onready var RED:String ="#ff0000"
 onready var PINK:String = "#ff4f78"
@@ -26,13 +27,14 @@ func _ready():
 		var label2 = LabelBaseModel.new()
 		$VBoxContainer/Keymap/Buttons.add_child(label2)
 		label2.set("custom_colors/font_color", Color(PINK))
-		label2.text = InputMap.get_action_list(action)[0].as_text()
-		file.store_string(InputMap.get_action_list(action)[0].as_text() + ":action = " + action +'\n')
+		label2.text = control_handler.get_button_name(action)
+		file.store_string(InputMap.get_action_list(action)[0].as_text() + ":action = " + action + ":" + control_handler.get_button_name(action) + '\n')
 	file.close()
 	
 	var label = LabelBaseModel.new()
 	$VBoxContainer/HBoxContainer.add_child(label)
-	label.text = "\nThis is your control map.\n Press " + InputMap.get_action_list("ui_jump")[0].as_text() + " to confirm or " + InputMap.get_action_list("ui_shoot")[0].as_text() + " to remap"
+	label.text = "\nThis is your control map.\n Press " + control_handler.get_button_name("ui_jump") + " to confirm or " + control_handler.get_button_name("ui_shoot") + " to remap"
+
 
 func _input(event):
 	if event.is_action("ui_jump"):

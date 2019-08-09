@@ -1,0 +1,7 @@
+InputEventJoypadButton : button_index=0, pressed=true, pressure=0:action = ui_jump:Gamepad button A
+InputEventJoypadButton : button_index=2, pressed=true, pressure=0:action = ui_shoot:Gamepad button B
+InputEventJoypadButton : button_index=1, pressed=true, pressure=0:action = ui_boost:Gamepad button X
+InputEventJoypadButton : button_index=14, pressed=true, pressure=0:action = ui_left:DPAD Left
+InputEventJoypadButton : button_index=15, pressed=true, pressure=0:action = ui_right:DPAD Right
+InputEventJoypadButton : button_index=12, pressed=true, pressure=0:action = ui_up:DPAD Up
+InputEventJoypadButton : button_index=13, pressed=true, pressure=0:action = ui_down:DPAD Down

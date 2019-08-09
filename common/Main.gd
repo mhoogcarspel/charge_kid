@@ -2,6 +2,18 @@ extends Node
 
 export(PackedScene) var start_scene
 
+onready var actions: Dictionary = {
+	"ui_jump": "Jump",
+	"ui_shoot": "Shoot",
+	"ui_boost": "Boost",
+	"ui_left": "Left",
+	"ui_right": "Right",
+	"ui_up": "Up",
+	"ui_down": "Down"
+	}
+
+onready var control_handler = ButtonGetter.new(actions.keys())
+
 var actual_scene: PackedScene
 
 func _ready():

@@ -1,10 +1,23 @@
 extends Object
 class_name ButtonGetter
 
-func _init(actions_list: PoolStringArray):
-	erase_all_actions()
+onready var gamepad_map: Dictionary
+func print_map():
+	for key in gamepad_map.keys():
+		print(key)
+
+func _init(actions_list: PoolStringArray = []):
+	if actions_list.size() > 0:
+		erase_all_actions()
 	for action in actions_list:
 		InputMap.add_action(action)
+	self.gamepad_map = {
+	"Face Button Bottom":"Gamepad button A",
+	"Face Button Top":"Gamepad button Y",
+	"Face Button Left":"Gamepad button B",
+	"Face Button Right":"Gamepad button X"
+	}
+	print_map()
 
 func erase_all_actions() -> void:
 	for action in InputMap.get_actions():
@@ -46,3 +59,16 @@ func key_in_list(key:InputEvent, list: Array) -> bool:
 		if action.as_text() == key.as_text():
 			return true
 	return false
+
+func get_button_name(action: String) -> String:
+	var button_string: String
+	
+	if InputMap.get_action_list(action)[0] is InputEventJoypadButton:
+		button_string = Input.get_joy_button_string(InputMap.get_action_list(action)[0].button_index)
+		if button_string in self.gamepad_map.keys():
+			button_string = self.gamepad_map[button_string]
+		
+	else:
+		button_string = InputMap.get_action_list(action)[0].as_text()
+	
+	return button_string
