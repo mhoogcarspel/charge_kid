@@ -8,12 +8,20 @@
 [ext_resource path="res://actors/Interactables/TriggeredPlatform.tscn" type="PackedScene" id=6]
 [ext_resource path="res://actors/TheUniqueBullet/Bullet.tscn" type="PackedScene" id=7]
 [ext_resource path="res://actors/Interactables/FuelTank.tscn" type="PackedScene" id=8]
-[ext_resource path="res://levels/AreaLabel.gd" type="Script" id=9]
-[ext_resource path="res://levels/AreaLabel2.gd" type="Script" id=10]
-[ext_resource path="res://levels/Area2D3.gd" type="Script" id=11]
+[ext_resource path="res://levels/Messages/ShootMessage.gd" type="Script" id=9]
+[ext_resource path="res://levels/Messages/JumpMessage.gd" type="Script" id=10]
+[ext_resource path="res://levels/Messages/BoostMessage.gd" type="Script" id=11]
 [ext_resource path="res://common/FinishLine.tscn" type="PackedScene" id=12]
 [ext_resource path="res://levels/SecondLevel.tscn" type="PackedScene" id=13]
-[ext_resource path="res://levels/Area2D4.gd" type="Script" id=14]
+[ext_resource path="res://levels/Messages/EasterEgg01.gd" type="Script" id=14]
+
+
+
+
+
+
+
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16.0902, 50.0108 )
@@ -85,7 +93,6 @@ position = Vector2( 752, 216 )
 
 [node name="Area2D" type="Area2D" parent="."]
 editor/display_folded = true
-visible = false
 position = Vector2( 120, 112 )
 script = ExtResource( 9 )
 
@@ -98,7 +105,6 @@ one_shot = true
 
 [node name="Area2D2" type="Area2D" parent="."]
 editor/display_folded = true
-visible = false
 position = Vector2( 120, 112 )
 script = ExtResource( 10 )
 

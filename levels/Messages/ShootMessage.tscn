@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://levels/Messages/ShootMessage.gd" type="Script" id=1]
+
+[node name="ShootMessage" type="Area2D"]
+editor/display_folded = true
+position = Vector2( 120, 112 )
+script = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 8, 16, 304, 16, 304, 184, 8, 184 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
