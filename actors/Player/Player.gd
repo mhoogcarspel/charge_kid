@@ -8,7 +8,6 @@ export(bool) var has_fuel
 export(float) var level_length
 
 export(float) var gravity_acceleration
-export(float) var max_fall_speed
 export(float) var horizontal_acceleration
 export(float) var horizontal_max_speed
 export(float) var jump_height
@@ -21,6 +20,7 @@ onready var facing: float = 1
 onready var boost_time: float = $AnimationPlayer.get_animation("Boosting").length
 onready var boost_speed: float = boost_distance/boost_time
 onready var jump_velocity: float = sqrt(2*jump_height*gravity_acceleration)
+onready var max_fall_speed: float = jump_velocity
 
 var can_shoot: bool
 var can_boost: bool

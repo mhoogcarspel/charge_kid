@@ -49,6 +49,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=4]
 length = 0.4
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("BoostParticles1:emitting")
 tracks/0/interp = 1
@@ -56,10 +57,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ true, false ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BoostParticles2:emitting")
@@ -128,7 +129,8 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=6]
-length = 0.2
+length = 0.12
+step = 0.06
 tracks/0/type = "value"
 tracks/0/path = NodePath("PlayerSprite:frame")
 tracks/0/interp = 1
@@ -136,7 +138,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
+"times": PoolRealArray( 0, 0.06 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 16, 17 ]
@@ -200,14 +202,12 @@ __meta__ = {
 }
 bullet = ExtResource( 2 )
 has_projectile = true
-has_fuel = true
 gravity_acceleration = 500.0
-max_fall_speed = 200.0
-horizontal_acceleration = 150.0
-horizontal_max_speed = 75.0
+horizontal_acceleration = 300.0
+horizontal_max_speed = 100.0
 jump_height = 40.0
 shoot_offset = 12.0
-boost_distance = 96.0
+boost_distance = 64.0
 
 [node name="PlayerSprite" type="Sprite" parent="."]
 editor/display_folded = true
@@ -300,9 +300,8 @@ color = Color( 1, 0.309804, 0.470588, 1 )
 [node name="BoostParticles1" type="CPUParticles2D" parent="."]
 z_index = -2
 emitting = false
-amount = 3
-lifetime = 0.3
-one_shot = true
+amount = 5
+lifetime = 0.5
 local_coords = false
 texture = ExtResource( 6 )
 spread = 0.0

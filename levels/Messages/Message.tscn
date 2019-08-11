@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://levels/Messages/EasterEgg01.gd" type="Script" id=1]
+[ext_resource path="res://levels/Messages/Message.gd" type="Script" id=1]
 
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16.0902, 50.0108 )
+extents = Vector2( 24, 32 )
 
-[node name="EasterEgg01" type="Area2D"]
+[node name="Message" type="Area2D"]
 editor/display_folded = true
 script = ExtResource( 1 )
 
