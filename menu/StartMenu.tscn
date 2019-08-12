@@ -1,12 +1,11 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://menu/StartMenu.gd" type="Script" id=1]
 [ext_resource path="res://levels/Level01.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Menu/ControlConfig.tscn" type="PackedScene" id=3]
+[ext_resource path="res://menu/ControlConfig.tscn" type="PackedScene" id=3]
 [ext_resource path="res://menu/Credits.tscn" type="PackedScene" id=4]
 [ext_resource path="res://menu/StartMenu.tres" type="ButtonGroup" id=5]
 [ext_resource path="res://assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://Menu/StartMenu.tres" type="ButtonGroup" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -85,7 +84,7 @@ focus_neighbour_top = NodePath("../StartGame")
 focus_neighbour_bottom = NodePath("../Credits")
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
-group = ExtResource( 7 )
+group = ExtResource( 5 )
 text = "Controls"
 flat = true
 
