@@ -56,7 +56,6 @@ func _physics_process(delta):
 func is_interacting() -> bool:
 	for body in $HitBox.get_overlapping_bodies():
 		if body.is_in_group("interactable"):
-			print("Interacting")
 			self.distance += 46
 			return true
 	return false
@@ -82,7 +81,6 @@ func gravity(delta: float) -> void:
 
 func _on_HitBox_body_exited(body):
 	if body.is_in_group("interactable") && !return_state:
-		print("Interactable")
 		standard_state = false
 		return_state = false
 		rigid_state = true

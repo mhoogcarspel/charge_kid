@@ -172,7 +172,6 @@ func shoot() -> void:
 			bullet_instance.direction = Vector2(facing, 0)
 			bullet_instance.position = bullet_positon 
 			get_parent().add_child(bullet_instance)
-			print("Shooterino MAH FRIEND")
 			is_shooting = true
 			if !god_mode:
 				can_shoot = false
@@ -194,7 +193,6 @@ func hit(projectile: PhysicsBody2D) -> void:
 	self.can_shoot = true
 	if projectile.fuel_charge_state:
 		recharge_fuel()
-	print("HIT")
 	projectile.destroy()
 
 
