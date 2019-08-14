@@ -84,3 +84,9 @@ func is_keyboard_or_gamepad_key(event: InputEvent) -> bool:
 
 func just_pressed(event:InputEvent) -> bool:
 	return event.is_pressed() and !event.is_echo()
+
+func equalize_equivalent_keys(action1: String, action2: String):
+	for event in InputMap.get_action_list(action2):
+		InputMap.action_erase_event(action2, event)
+	for event in InputMap.get_action_list(action1):
+		InputMap.action_add_event(action2, event)
