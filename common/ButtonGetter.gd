@@ -23,11 +23,11 @@ func reinit(actions_list: PoolStringArray = []):
 	if actions_list.size() > 0:
 		erase_all_actions()
 	for action in actions_list:
-		InputMap.add_action(action)
+		if not action in actions_list:
+			InputMap.add_action(action)
 
 func erase_all_actions() -> void:
-	for action in InputMap.get_actions():
-		if action != "ui_cancel":
+	for action in actions_list:
 			InputMap.erase_action(action)
 
 func change_key_binding(action: String, key: InputEvent) -> bool:
@@ -44,7 +44,7 @@ func change_key_binding(action: String, key: InputEvent) -> bool:
 	return true
 
 func find_and_erase_another_action_with_same_key(exception: String, key: InputEvent) -> bool:
-	for action in InputMap.get_actions():
+	for action in actions_list:
 		if action != exception && key in InputMap.get_action_list(action):
 			InputMap.action_erase_event(action, key)
 		
@@ -55,7 +55,7 @@ func find_and_erase_another_action_with_same_key(exception: String, key: InputEv
 	return true
 
 func find_another_action_with_same_key(exception: String, key: InputEvent) -> bool:
-	for action in InputMap.get_actions():
+	for action in actions_list:
 		if action != exception && key_in_list(key, InputMap.get_action_list(action)):
 			return true
 	return false
