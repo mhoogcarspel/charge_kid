@@ -36,13 +36,11 @@ func change_key_binding(action: String, key: InputEvent) -> bool:
 	
 	return true
 
-func find_and_erase_another_action_with_same_key(exception: String, key: InputEvent) -> bool:
+func find_and_erase_another_action_with_same_key(exception: String, key: InputEvent):
 	for action in actions_list:
 		if action != exception && key_in_list(key, InputMap.get_action_list(action)):
 			for event in InputMap.get_action_list(action):
 				InputMap.action_erase_event(action, event)
-	
-	return true
 
 func find_another_action_with_same_key(exception: String, key: InputEvent) -> bool:
 	for action in actions_list:

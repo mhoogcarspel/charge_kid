@@ -2,6 +2,7 @@ extends Popup
 
 onready var action: String
 onready var control_handler: ButtonGetter
+onready var configured: bool = false
 
 func _ready():
 	popup_centered()
@@ -13,14 +14,15 @@ func parse(action: String, control_handler: ButtonGetter):
 	self.control_handler = control_handler
 
 func _input(event):
-	if control_handler.is_keyboard_or_gamepad_key(event) and control_handler.just_pressed(event):
+	if control_handler.is_keyboard_or_gamepad_key(event) and control_handler.just_pressed(event) and !configured:
 		control_handler.find_and_erase_another_action_with_same_key(action, event)
 		control_handler.change_key_binding(action, event)
-			
-		self.exit()
+		configured = true
+		#self.exit()
 
-func display_error():
-	pass
+func _process(delta):
+	if configured and !Input.is_action_pressed(action):
+		self.exit()
 
 func exit():
 	get_tree().paused = false

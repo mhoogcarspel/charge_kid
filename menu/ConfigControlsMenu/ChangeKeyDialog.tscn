@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://menu/ConfigControlsMenu/ChangeKeyDialog.gd" type="Script" id=1]
-[ext_resource path="res://common/LabelBaseModel.gd" type="Script" id=2]
+[ext_resource path="res://assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://common/LabelBaseModel.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
 
 [node name="ConfigControlsDialog" type="PopupDialog"]
-margin_right = 78.0
-margin_bottom = 20.0
+margin_right = 200.0
+margin_bottom = 42.0
 popup_exclusive = true
 script = ExtResource( 1 )
 
@@ -14,5 +18,9 @@ margin_left = 4.0
 margin_top = 4.0
 margin_right = 72.0
 margin_bottom = 18.0
-text = "Texto Aqui"
-script = ExtResource( 2 )
+custom_fonts/font = SubResource( 1 )
+text = "Press a key 
+to map"
+align = 1
+valign = 1
+script = ExtResource( 3 )
