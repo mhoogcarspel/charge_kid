@@ -19,5 +19,9 @@ onready var actions_dictionary: Dictionary = {
 func _ready():
 	for key in actions_dictionary:
 		var button = button_model.instance()
-		button.parse(key, actions_dictionary[key], control_handler)
+		button.parse(self, key, actions_dictionary[key], control_handler)
 		$CenterContainer/VBoxContainer.add_child(button)
+	$CenterContainer/VBoxContainer.get_children()[0].grab_focus()
+
+func add_popup(dialog_box: PopupDialog):
+	$CenterContainer.add_child(dialog_box)

@@ -31,7 +31,7 @@ func erase_all_actions() -> void:
 			InputMap.erase_action(action)
 
 func change_key_binding(action: String, key: InputEvent) -> bool:
-	if InputMap.get_action_list(action):
+	if InputMap.get_action_list(action).size() >= 1:
 		for old_event in InputMap.get_action_list(action):
 			InputMap.action_erase_event(action, old_event)
 	
