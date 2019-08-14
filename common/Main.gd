@@ -21,11 +21,6 @@ func _ready():
 	add_child(start)
 	actual_scene = start_scene
 
-func _process(delta):
-	if Input.is_action_just_released("ui_reset") && get_tree().get_nodes_in_group("player").size() > 0:
-		change_scene(actual_scene) #Reset function
-		pass
-
 func back_to_start():
 	change_scene(start_scene)
 
