@@ -78,3 +78,9 @@ func get_button_name(action: String) -> String:
 		button_string = InputMap.get_action_list(action)[0].as_text()
 	
 	return button_string
+
+func is_keyboard_or_gamepad_key(event: InputEvent) -> bool:
+	return event is InputEventKey or event is InputEventJoypadButton
+
+func just_pressed(event:InputEvent) -> bool:
+	return event.is_pressed() and !event.is_echo()
