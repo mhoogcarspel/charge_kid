@@ -17,10 +17,17 @@ onready var actions_dictionary: Dictionary = {
 	}
 
 func _ready():
+	var previous_button: Button = null
 	for key in actions_dictionary:
 		var button = button_model.instance()
 		button.parse(self, key, actions_dictionary[key], control_handler)
 		$CenterContainer/VBoxContainer/Map.add_child(button)
+	
+	$CenterContainer/VBoxContainer/Back/Button.focus_neighbour_bottom = $CenterContainer/VBoxContainer/Map.get_children()[0].get_path()
+	$CenterContainer/VBoxContainer/Map.get_children()[0].focus_neighbour_top = $CenterContainer/VBoxContainer/Back/Button.get_path()
+	$CenterContainer/VBoxContainer/Back/Button.focus_neighbour_top = $CenterContainer/VBoxContainer/Map.get_children()[-1].get_path()
+	$CenterContainer/VBoxContainer/Map.get_children()[-1].focus_neighbour_bottom = $CenterContainer/VBoxContainer/Back/Button.get_path()
+	
 	$CenterContainer/VBoxContainer/Map.get_children()[0].grab_focus()
 
 func add_popup(dialog_box: PopupDialog):
