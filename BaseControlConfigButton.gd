@@ -18,5 +18,5 @@ func _process(delta):
 
 func _on_BaseControlConfigButton_pressed():
 	var popup = dialog_popup.instance()
-	popup.parse(action, control_handler)
+	popup.parse(key, control_handler)
 	menu.add_popup(popup)

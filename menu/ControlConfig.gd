@@ -18,7 +18,6 @@ onready var configuring: bool = false
 onready var key_pressed:InputEventKey = null
 
 func _ready():
-	control_handler.reinit(actions.keys())
 	$VBoxContainer/HBoxContainer/MessageControls.text = " Time to decide your controls. \n We recommend zxc + arrows or equivalent. \n Press any key when you're ready."
 
 func _input(event):

@@ -19,13 +19,6 @@ func _init(actions_list: Array = []):
 	}
 	print_map()
 
-func reinit(actions_list: PoolStringArray = []):
-	if actions_list.size() > 0:
-		erase_all_actions()
-	for action in actions_list:
-		if not action in actions_list:
-			InputMap.add_action(action)
-
 func erase_all_actions() -> void:
 	for action in actions_list:
 			InputMap.erase_action(action)
@@ -45,12 +38,9 @@ func change_key_binding(action: String, key: InputEvent) -> bool:
 
 func find_and_erase_another_action_with_same_key(exception: String, key: InputEvent) -> bool:
 	for action in actions_list:
-		if action != exception && key in InputMap.get_action_list(action):
-			InputMap.action_erase_event(action, key)
-		
-		if InputMap.get_action_list(action):
-			print("Failed to erase keys on ButtonGetter.gd -> InputMap.action_erase_event(action, key)")
-			return false
+		if action != exception && key_in_list(key, InputMap.get_action_list(action)):
+			for event in InputMap.get_action_list(action):
+				InputMap.action_erase_event(action, event)
 	
 	return true
 
@@ -68,6 +58,9 @@ func key_in_list(key:InputEvent, list: Array) -> bool:
 
 func get_button_name(action: String) -> String:
 	var button_string: String
+	
+	if InputMap.get_action_list(action).size() == 0:
+		return " "
 	
 	if InputMap.get_action_list(action)[0] is InputEventJoypadButton:
 		button_string = Input.get_joy_button_string(InputMap.get_action_list(action)[0].button_index)
