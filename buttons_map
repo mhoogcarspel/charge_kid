@@ -1,7 +1,0 @@
-Z:action = ui_jump:Z
-X:action = ui_shoot:X
-C:action = ui_boost:C
-Left:action = ui_left:Left
-Right:action = ui_right:Right
-Up:action = ui_up:Up
-Down:action = ui_down:Down
