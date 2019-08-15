@@ -34,5 +34,5 @@ func add_popup(dialog_box: PopupDialog):
 	$CenterContainer.add_child(dialog_box)
 
 func _on_Button_pressed():
-	var next_scene = load("res://menu/StartMenu.tscn")
+	var next_scene = load("res://menu/start_menu/StartMenu.tscn")
 	get_parent().change_scene(next_scene)
