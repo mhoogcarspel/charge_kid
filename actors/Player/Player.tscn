@@ -397,7 +397,7 @@ custom_fonts/font = SubResource( 9 )
 align = 1
 
 [node name="LabelTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 2.0
 one_shot = true
 
 [node name="SFX" type="Node" parent="."]

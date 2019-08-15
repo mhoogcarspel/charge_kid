@@ -6,14 +6,13 @@ onready var particles = preload("res://assets/Particles/ProjectileHit.tscn")
 export(Array,NodePath) var nodes
 
 func hit(projectile:PhysicsBody2D) -> void:
-	add_child(particles.instance())
+	$SFX.play()
+	$Switch.activate()
 	if !is_active:
-		$SFX.play()
+		add_child(particles.instance())
 		is_active = true
-		$Switch.activate()
 		$Timer.start()
-	else:
-		.hit(projectile)
+	.hit(projectile)
 
 func _on_Timer_timeout():
 	for nodepath in nodes:

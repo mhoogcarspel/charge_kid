@@ -13,7 +13,10 @@ uniform vec4 color: hint_color;
 void fragment ()
 {
 	COLOR = texture(TEXTURE , UV);
-	COLOR.rgb += color.rgb;
+	if (color != vec4(0.0, 0.0, 0.0, 1.0))
+	{
+		COLOR.rgb = color.rgb;
+	}
 }"
 
 [sub_resource type="ShaderMaterial" id=2]

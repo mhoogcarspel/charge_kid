@@ -8,7 +8,7 @@
 extents = Vector2( 17, 17 )
 
 [node name="SwitchBody" type="StaticBody2D" groups=[
-"interactable",
+"blocks",
 ]]
 script = ExtResource( 1 )
 

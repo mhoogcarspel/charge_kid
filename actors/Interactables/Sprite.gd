@@ -9,7 +9,7 @@ func activate() -> void:
 	self.add_child(timer)
 	
 	self.visible = true
-	self.get_material().set_shader_param("color", Color(1,1,1,1))
+	self.get_material().set_shader_param("color", Color(0.96, 0.96, 0.89, 1))
 	timer.start(0.2)
 	yield(timer, "timeout")
 	self.get_material().set_shader_param("color", Color(0,0,0,1))

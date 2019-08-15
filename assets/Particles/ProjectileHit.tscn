@@ -9,7 +9,8 @@ _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.654468, 0.5704 ), -1.53819
 [node name="ProjectileHit" type="CPUParticles2D"]
 z_index = 1
 emitting = false
-lifetime = 0.7
+amount = 20
+lifetime = 1.2
 one_shot = true
 explosiveness = 1.0
 local_coords = false

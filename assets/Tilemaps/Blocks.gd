@@ -7,4 +7,4 @@ func hit(bullet: PhysicsBody2D) -> void:
 		bullet.return_state = true
 	else:
 		bullet.linear_velocity.x = 0
-	pass
+
