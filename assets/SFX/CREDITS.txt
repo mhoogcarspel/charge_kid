@@ -9,3 +9,5 @@
 270340__littlerobotsoundfactory__pickup-01.wav sound made by the freesound user LittleRobotSoundFactory licensed under CC BY 3.0 
 270341__littlerobotsoundfactory__pickup-04.wav sound made by the freesound user LittleRobotSoundFactory licensed under CC BY 3.0 
 
+LittleRobotSoundFactory FreeSound page:
+https://freesound.org/people/LittleRobotSoundFactory/
