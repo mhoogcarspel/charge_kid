@@ -14,6 +14,7 @@ onready var direction: Vector2
 onready var delta_S := Vector2 ()
 var standard_state: bool
 var return_state: bool
+var hold_state: bool
 var rigid_state: bool
 var interacting: bool
 var fuel_charge_state: bool
@@ -26,12 +27,14 @@ func _ready():
 		activate_rigid_body()
 		standard_state = false
 		return_state = false
+		hold_state = false
 		rigid_state = true
 		interacting = false
 		fuel_charge_state = false
 	else:
 		standard_state = true
 		return_state = false
+		hold_state = false
 		rigid_state = false
 		interacting = false
 		fuel_charge_state = false
@@ -47,11 +50,18 @@ func _physics_process(delta):
 	if !standard_state:
 		if return_state:
 			$PhysicalCollider.disabled = false
-			get_player_direction()
-			move_bullet()
+			if Input.is_action_pressed("ui_shoot"):
+				linear_velocity = Vector2.ZERO
+				hold_state = true
+			else:
+				get_player_direction()
+				move_bullet()
+				hold_state = false
 		else:
 			gravity(delta)
 	linear_velocity = move_and_slide(linear_velocity)
+
+
 
 func is_interacting() -> bool:
 	for body in $HitBox.get_overlapping_bodies():
