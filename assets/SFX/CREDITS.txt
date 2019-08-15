@@ -1,0 +1,11 @@
+270302__littlerobotsoundfactory__collect-point-02.wav sound made by the freesound user LittleRobotSoundFactory licensed under CC BY 3.0
+270307__littlerobotsoundfactory__explosion-01.wav sound made by the freesound user LittleRobotSoundFactory licensed under CC BY 3.0 
+270309__littlerobotsoundfactory__craft-00.wav sound made by the freesound user LittleRobotSoundFactory licensed under CC BY 3.0 
+270310__littlerobotsoundfactory__explosion-04.wav sound made by the freesound user LittleRobotSoundFactory licensed under CC BY 3.0 
+270317__littlerobotsoundfactory__jump-01.wav sound made by the freesound user LittleRobotSoundFactory licensed under CC BY 3.0 
+270320__littlerobotsoundfactory__jump-00.wav sound made by the freesound user LittleRobotSoundFactory licensed under CC BY 3.0 
+270324__littlerobotsoundfactory__menu-navigate-00.wav sound made by the freesound user LittleRobotSoundFactory licensed under CC BY 3.0
+270335__littlerobotsoundfactory__shoot-03.wav sound made by the freesound user LittleRobotSoundFactory licensed under CC BY 3.0 
+270340__littlerobotsoundfactory__pickup-01.wav sound made by the freesound user LittleRobotSoundFactory licensed under CC BY 3.0 
+270341__littlerobotsoundfactory__pickup-04.wav sound made by the freesound user LittleRobotSoundFactory licensed under CC BY 3.0 
+
