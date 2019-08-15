@@ -123,7 +123,7 @@ func jump() -> void:
 		is_jumping = true
 		
 	if Input.is_action_just_released("ui_jump") && velocity.y < 0 && !is_boosting:
-		velocity.y = 0
+		velocity.y /= 5
 	
 	if velocity.y >= 0 and is_jumping:
 		is_jumping = false
