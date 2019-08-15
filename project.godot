@@ -32,7 +32,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="gmtk-jam"
+config/name="Charge Kid"
 run/main_scene="res://common/Main.tscn"
 config/icon="res://icon.png"
 
