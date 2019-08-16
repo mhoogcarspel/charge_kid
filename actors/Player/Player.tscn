@@ -47,7 +47,7 @@ tracks/1/keys = {
 "values": [ Vector2( 5, 2 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 length = 1.5
 loop = true
 step = 0.25
@@ -76,7 +76,7 @@ tracks/1/keys = {
 "values": [ Vector2( 5, 3 ), Vector2( 5, 3 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 length = 0.12
 step = 0.06
 tracks/0/type = "value"
@@ -104,7 +104,7 @@ tracks/1/keys = {
 "values": [ Vector2( 5, 2 ), Vector2( 5, 2 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -132,17 +132,17 @@ tracks/1/keys = {
 "values": [ Vector2( 5, 1 ), Vector2( 5, -1 ), Vector2( 5, 1 ), Vector2( 4, 2 ), Vector2( 0, 2 ), Vector2( 2, 0 ), Vector2( 4, 2 ), Vector2( 5, 2 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=8]
+[sub_resource type="CircleShape2D" id=7]
 radius = 1.5291
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=8]
 size = 8
 font_data = ExtResource( 7 )
 
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
 ]]
-collision_layer = 3
+collision_layer = 0
 collision_mask = 3
 script = ExtResource( 1 )
 __meta__ = {
@@ -200,9 +200,9 @@ shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Airborne = SubResource( 3 )
-anims/Idle = SubResource( 5 )
-anims/Shooting = SubResource( 6 )
-anims/Walking = SubResource( 7 )
+anims/Idle = SubResource( 4 )
+anims/Shooting = SubResource( 5 )
+anims/Walking = SubResource( 6 )
 
 [node name="FeetParticles" type="CPUParticles2D" parent="."]
 position = Vector2( 0, 8 )
@@ -322,7 +322,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftAreaChecker"]
 position = Vector2( -4.28448, 0.0921392 )
-shape = SubResource( 8 )
+shape = SubResource( 7 )
 
 [node name="RightAreaChecker" type="Area2D" parent="."]
 editor/display_folded = true
@@ -334,14 +334,14 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightAreaChecker"]
 position = Vector2( -4.28448, 0.0921392 )
-shape = SubResource( 8 )
+shape = SubResource( 7 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = -100.0
 margin_top = -36.0
 margin_right = 100.0
 margin_bottom = -23.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 8 )
 align = 1
 
 [node name="LabelTimer" type="Timer" parent="."]
