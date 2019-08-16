@@ -50,7 +50,7 @@ func _physics_process(delta):
 	if !standard_state:
 		if return_state:
 			$PhysicalCollider.disabled = false
-			if Input.is_action_pressed("ui_shoot"):
+			if Input.is_action_pressed("ui_shoot") and !fuel_charge_state:
 				linear_velocity = Vector2.ZERO
 				hold_state = true
 			else:
@@ -104,6 +104,7 @@ func charge_bullet() -> void:
 	standard_state = false
 	fuel_charge_state = true
 	return_state = true
+	hold_state = false
 	velocity = velocity_fuel
 	$ProjectileParticles.emitting = false
 	$FuelChargeParticles.emitting = true

@@ -10,7 +10,7 @@ func _process(delta):
 	if player.is_on_floor() && !player.is_shooting && !player.is_boosting:
 		play_move_animation(player.is_moving)
 	elif player.is_boosting:
-		animation_player.play("Boosting")
+		animation_player.play("Airborne")
 	elif !player.is_shooting:
 		animation_player.play("Airborne")
 	else:
