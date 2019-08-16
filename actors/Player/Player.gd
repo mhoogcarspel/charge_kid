@@ -33,6 +33,7 @@ onready var is_bullet_boosting: bool = false
 onready var just_boosted: bool = false
 onready var just_bullet_boosted: bool = false
 onready var on_platform: bool = false
+onready var label_time: float = 2.0
 
 
 func _ready():
@@ -247,9 +248,9 @@ func is_airborne() -> bool:
 
 
 
-func write(text: String) -> void:
+func write(text: String, factor: float = 1.0) -> void:
 	$Label.set_text(text)
-	$LabelTimer.start()
+	$LabelTimer.start(label_time*factor)
 
 func _on_LabelTimer_timeout():
 	$Label.set_text(" ")

@@ -46,7 +46,11 @@ func is_active() -> bool:
 func fill() -> void:
 	if is_empty():
 		$AnimationPlayer.play("Fill")
+		yield($AnimationPlayer, "animation_finished")
 		has_fuel = true
+		for body in $PlayerHitbox.get_overlapping_bodies():
+			if body.is_in_group("player"):
+				_on_PlayerHitbox_body_entered(body)
 
 func empty() -> void:
 	if is_full():
