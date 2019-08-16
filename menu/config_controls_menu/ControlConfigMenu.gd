@@ -6,21 +6,12 @@ onready var control_handler = get_parent().control_handler
 onready var YELLOW:String = "#f7ff00"
 onready var RED:String ="#ff0000"
 onready var PINK:String = "#ff4f78"
-onready var actions_dictionary: Dictionary = {
-	"ui_jump": "Jump",
-	"ui_shoot": "Shoot",
-	"ui_boost": "Boost",
-	"ui_left": "Left",
-	"ui_right": "Right",
-	"ui_up": "Up",
-	"ui_down": "Down"
-	}
 
 func _ready():
 	var previous_button: Button = null
-	for key in actions_dictionary:
+	for key in control_handler.actions_dictionary.keys():
 		var button = button_model.instance()
-		button.parse(self, key, actions_dictionary[key], control_handler)
+		button.parse(self, key, control_handler.actions_dictionary[key], control_handler)
 		$CenterContainer/VBoxContainer/Map.add_child(button)
 	
 	$CenterContainer/VBoxContainer/Back/Button.focus_neighbour_bottom = $CenterContainer/VBoxContainer/Map.get_children()[0].get_path()

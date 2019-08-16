@@ -1,6 +1,7 @@
 extends Node
 
 export(PackedScene) var start_scene
+export(PackedScene) var pause_menu
 
 onready var actions: Dictionary = {
 	"ui_jump": "Jump",
@@ -9,10 +10,11 @@ onready var actions: Dictionary = {
 	"ui_left": "Left",
 	"ui_right": "Right",
 	"ui_up": "Up",
-	"ui_down": "Down"
+	"ui_down": "Down",
+	"ui_pause": "Pause/Back"
 	}
 
-onready var control_handler = ButtonGetter.new(actions.keys())
+onready var control_handler = ButtonGetter.new(actions)
 
 var actual_scene: PackedScene
 
@@ -30,4 +32,7 @@ func change_scene(next_scene: PackedScene) -> void:
 	var scene_instance = next_scene.instance()
 	self.call_deferred("add_child", scene_instance)
 	actual_scene = next_scene
-	 
+
+func _process(delta):
+	if Input.is_action_just_pressed("ui_pause") and !get_tree().get_nodes_in_group("player").empty():
+		pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://menu/credits/Credits.gd" type="Script" id=1]
 [ext_resource path="res://assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf" type="DynamicFontData" id=2]
@@ -25,6 +25,13 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=6]
 font_data = ExtResource( 2 )
+
+[sub_resource type="InputEventAction" id=7]
+action = "ui_pause"
+pressed = true
+
+[sub_resource type="ShortCut" id=8]
+shortcut = SubResource( 7 )
 
 [node name="Credits" type="MarginContainer"]
 anchor_left = 0.5
@@ -161,6 +168,7 @@ margin_top = 467.0
 margin_right = 539.0
 margin_bottom = 489.0
 custom_fonts/font = SubResource( 6 )
+shortcut = SubResource( 8 )
 text = "Back"
 flat = true
 clip_text = true

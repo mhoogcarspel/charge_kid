@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://menu/start_menu/StartMenu.gd" type="Script" id=1]
 [ext_resource path="res://levels/Level01.tscn" type="PackedScene" id=2]
@@ -6,12 +6,6 @@
 [ext_resource path="res://menu/credits/Credits.tscn" type="PackedScene" id=4]
 [ext_resource path="res://menu/start_menu/StartMenu.tres" type="ButtonGroup" id=5]
 [ext_resource path="res://assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf" type="DynamicFontData" id=6]
-
-
-
-
-
-
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -28,6 +22,13 @@ font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 6 )
+
+[sub_resource type="InputEventAction" id=6]
+action = "ui_pause"
+pressed = true
+
+[sub_resource type="ShortCut" id=7]
+shortcut = SubResource( 6 )
 
 [node name="StartMenu" type="MarginContainer"]
 anchor_right = 1.0
@@ -114,6 +115,7 @@ focus_neighbour_top = NodePath("../Credits")
 focus_neighbour_bottom = NodePath("../StartGame")
 custom_fonts/font = SubResource( 5 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+shortcut = SubResource( 7 )
 group = ExtResource( 5 )
 text = "Quit"
 flat = true

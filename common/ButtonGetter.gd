@@ -2,14 +2,16 @@ extends Object
 class_name ButtonGetter
 
 onready var gamepad_map: Dictionary
+onready var actions_dictionary: Dictionary
 onready var actions_list: Array
 func print_map():
 	for key in gamepad_map.keys():
 		print(key)
 
-func _init(actions_list: Array = []):
+func _init(actions_dictionary: Dictionary):
 	
-	self.actions_list = actions_list.duplicate()
+	self.actions_dictionary = actions_dictionary.duplicate()
+	self.actions_list = actions_dictionary.keys().duplicate()
 	
 	self.gamepad_map = {
 	"Face Button Bottom":"Gamepad button A",
