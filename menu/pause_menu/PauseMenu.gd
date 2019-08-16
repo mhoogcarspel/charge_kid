@@ -1,11 +1,10 @@
 extends Popup
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+export(PackedScene) var control_menu
+onready var control_handler : ButtonGetter = get_parent().control_handler
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	print(control_handler.actions_dictionary)
 	self.margin_right = OS.window_size.x/2
 	self.margin_bottom = OS.window_size.y/2
 	$CenterContainer/VBoxContainer/VBoxContainer.get_children()[0].grab_focus()
@@ -24,7 +23,7 @@ func _on_Resume_pressed():
 
 
 func _on_Controls_pressed():
-	pass # Replace with function body.
+	pass
 
 
 func _on_Quit_pressed():
