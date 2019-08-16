@@ -6,6 +6,8 @@ extends Popup
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	self.margin_right = OS.window_size.x/2
+	self.margin_bottom = OS.window_size.y/2
 	$CenterContainer/VBoxContainer/VBoxContainer.get_children()[0].grab_focus()
 	popup()
 	self.pause_mode = PAUSE_MODE_PROCESS

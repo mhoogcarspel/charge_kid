@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://menu/config_controls_menu/ControlConfigMenu.gd" type="Script" id=1]
 [ext_resource path="res://menu/config_controls_menu/BaseControlConfigButton.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://menu/config_controls_menu/ConfigButtonGroup.tres" type="ButtonGroup" id=4]
+[ext_resource path="res://assets/Tilemaps/DialogBoxTileMap.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://menu/config_controls_menu/ConfigButtonGroup.tres" type="ButtonGroup" id=5]
 
 [sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 3 )
+font_data = ExtResource( 4 )
 
 [sub_resource type="InputEventAction" id=2]
 action = "ui_pause"
@@ -20,6 +21,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
 button_model = ExtResource( 2 )
+
+[node name="TileMap" parent="." instance=ExtResource( 3 )]
+format = 1
+tile_data = PoolIntArray( 458763, 0, 0, 458764, 1, 0, 458765, 1, 0, 458766, 1, 0, 458767, 1, 0, 458768, 1, 0, 458769, 1, 0, 458770, 1, 0, 458771, 1, 0, 458772, 2, 0, 524299, 6, 0, 524300, 8, 0, 524301, 8, 0, 524302, 8, 0, 524303, 8, 0, 524304, 8, 0, 524305, 8, 0, 524306, 8, 0, 524307, 8, 0, 524308, 7, 0, 589835, 6, 0, 589836, 8, 0, 589837, 8, 0, 589838, 8, 0, 589839, 8, 0, 589840, 8, 0, 589841, 8, 0, 589842, 8, 0, 589843, 8, 0, 589844, 7, 0, 655371, 6, 0, 655372, 8, 0, 655373, 8, 0, 655374, 8, 0, 655375, 8, 0, 655376, 8, 0, 655377, 8, 0, 655378, 8, 0, 655379, 8, 0, 655380, 7, 0, 720907, 6, 0, 720908, 8, 0, 720909, 8, 0, 720910, 8, 0, 720911, 8, 0, 720912, 8, 0, 720913, 8, 0, 720914, 8, 0, 720915, 8, 0, 720916, 7, 0, 786443, 6, 0, 786444, 8, 0, 786445, 8, 0, 786446, 8, 0, 786447, 8, 0, 786448, 8, 0, 786449, 8, 0, 786450, 8, 0, 786451, 8, 0, 786452, 7, 0, 851979, 6, 0, 851980, 8, 0, 851981, 8, 0, 851982, 8, 0, 851983, 8, 0, 851984, 8, 0, 851985, 8, 0, 851986, 8, 0, 851987, 8, 0, 851988, 7, 0, 917515, 6, 0, 917516, 8, 0, 917517, 8, 0, 917518, 8, 0, 917519, 8, 0, 917520, 8, 0, 917521, 8, 0, 917522, 8, 0, 917523, 8, 0, 917524, 7, 0, 983051, 5, 0, 983052, 4, 0, 983053, 4, 0, 983054, 4, 0, 983055, 4, 0, 983056, 4, 0, 983057, 4, 0, 983058, 4, 0, 983059, 4, 0, 983060, 3, 0 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 margin_right = 1024.0
@@ -44,7 +49,7 @@ margin_right = 76.0
 margin_bottom = 22.0
 custom_fonts/font = SubResource( 1 )
 shortcut = SubResource( 3 )
-group = ExtResource( 4 )
+group = ExtResource( 5 )
 text = "Back"
 flat = true
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Back/Button" to="." method="_on_Button_pressed"]

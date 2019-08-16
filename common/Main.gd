@@ -35,4 +35,4 @@ func change_scene(next_scene: PackedScene) -> void:
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_pause") and !get_tree().get_nodes_in_group("player").empty():
-		pass
+		self.add_child(pause_menu.instance())
