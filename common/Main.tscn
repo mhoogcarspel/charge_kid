@@ -7,6 +7,7 @@
 [node name="Main" type="Node" groups=[
 "main",
 ]]
+pause_mode = 2
 script = ExtResource( 1 )
 start_scene = ExtResource( 2 )
 pause_menu = ExtResource( 3 )
