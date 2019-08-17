@@ -258,7 +258,7 @@
 14/shapes = [  ]
 14/z_index = 0
 
-[sub_resource type="TileSet" id=10]
+[sub_resource type="TileSet" id=4]
 13/name = "backgrounds4.png 13"
 13/texture = ExtResource( 1 )
 13/tex_offset = Vector2( 0, 0 )
@@ -970,6 +970,7 @@
 14/z_index = 0
 
 [node name="BackgroundBack" type="Node2D"]
+z_index = -11
 
 [node name="WallProps" type="TileMap" parent="."]
 z_index = -10
@@ -988,7 +989,7 @@ cell_size = Vector2( 16, 16 )
 format = 1
 
 [node name="Generators" type="TileMap" parent="."]
-tile_set = SubResource( 10 )
+tile_set = SubResource( 4 )
 cell_size = Vector2( 16, 16 )
 format = 1
 
