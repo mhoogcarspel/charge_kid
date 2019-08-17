@@ -118,12 +118,10 @@ func get_directional_inputs() -> Vector2:
 func drop() -> void:
 	if Input.is_action_just_pressed("ui_down") && $DropTimer.is_stopped() && is_on_floor() && is_on_platform():
 		self.set_collision_mask_bit(1,false)
-		#$CollisionShape2D.disabled = true
 		$DropTimer.start()
 
 func _on_DropTimer_timeout():
 	self.set_collision_mask_bit(1,true)
-	#$CollisionShape2D.disabled = false
 
 func is_on_platform() -> bool:
 	for body in $PlatformSentinel.get_overlapping_bodies():

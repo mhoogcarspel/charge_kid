@@ -2,6 +2,8 @@ extends Sprite
 
 onready var player:KinematicBody2D = self.get_parent()
 onready var animation_player:AnimationPlayer = player.get_node("AnimationPlayer")
+onready var step: int = 0
+onready var is_player_airborne: bool = false setget falling_sentinel
 
 func _process(delta):
 	$ProjectileParticles.emitting = player.can_shoot
@@ -17,8 +19,24 @@ func _process(delta):
 		animation_player.play("Shooting")
 		yield(animation_player, "animation_finished")
 		player.is_shooting = false
+	
+	self.is_player_airborne = player.is_airborne()
 
 
+func step_sound() -> void:
+	if step == 0:
+		player.get_node("SFX/Step").pitch_scale = 1.0
+	elif step == 1:
+		player.get_node("SFX/Step").pitch_scale = 1.5
+	player.get_node("SFX/Step").play()
+	step += 1
+	step = step%2
+
+func falling_sentinel(new_value) -> void:
+	if new_value == false and is_player_airborne == true:
+		step = 0
+		step_sound()
+	is_player_airborne = new_value
 
 
 func flip_sprite(facing: float) -> void:

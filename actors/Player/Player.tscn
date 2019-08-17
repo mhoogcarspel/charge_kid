@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://actors/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://actors/TheUniqueBullet/Bullet.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/SFX/270335__littlerobotsoundfactory__shoot-03.wav" type="AudioStream" id=10]
 [ext_resource path="res://assets/SFX/270340__littlerobotsoundfactory__pickup-01.wav" type="AudioStream" id=11]
 [ext_resource path="res://assets/SFX/270341__littlerobotsoundfactory__pickup-04.wav" type="AudioStream" id=12]
+[ext_resource path="res://assets/SFX/270338__littlerobotsoundfactory__open-01.wav" type="AudioStream" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4.42775, 6.06252 )
@@ -130,6 +131,23 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 5, 1 ), Vector2( 5, -1 ), Vector2( 5, 1 ), Vector2( 4, 2 ), Vector2( 0, 2 ), Vector2( 2, 0 ), Vector2( 4, 2 ), Vector2( 5, 2 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("PlayerSprite")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "step_sound"
+}, {
+"args": [  ],
+"method": "step_sound"
+} ]
 }
 
 [sub_resource type="CircleShape2D" id=7]
@@ -348,7 +366,6 @@ align = 1
 one_shot = true
 
 [node name="SFX" type="Node" parent="."]
-editor/display_folded = true
 
 [node name="Jump" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 8 )
@@ -368,6 +385,10 @@ bus = "SFX"
 
 [node name="FuelPickup" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 12 )
+bus = "SFX"
+
+[node name="Step" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 13 )
 bus = "SFX"
 [connection signal="timeout" from="BoostTimer" to="." method="_on_BoostTimer_timeout"]
 [connection signal="timeout" from="DropTimer" to="." method="_on_DropTimer_timeout"]
