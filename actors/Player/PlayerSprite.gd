@@ -25,17 +25,18 @@ func _process(delta):
 
 func step_sound() -> void:
 	if step == 0:
-		player.get_node("SFX/Step").pitch_scale = 1.0
+		player.get_node("SFX/Step").pitch_scale = 0.8
+		player.get_node("SFX/Step").play()
+		step = 1
 	elif step == 1:
-		player.get_node("SFX/Step").pitch_scale = 1.5
-	player.get_node("SFX/Step").play()
-	step += 1
-	step = step%2
+		player.get_node("SFX/Step").pitch_scale = 0.9
+		player.get_node("SFX/Step").play()
+		step = 0
+
 
 func falling_sentinel(new_value) -> void:
 	if new_value == false and is_player_airborne == true:
-		step = 0
-		step_sound()
+		player.get_node("SFX/Land").play()
 	is_player_airborne = new_value
 
 

@@ -139,9 +139,15 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.2, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "step_sound"
+}, {
+"args": [  ],
+"method": "step_sound"
+}, {
 "args": [  ],
 "method": "step_sound"
 }, {
@@ -369,6 +375,7 @@ one_shot = true
 
 [node name="Jump" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 8 )
+volume_db = -8.0
 bus = "SFX"
 
 [node name="SuperJump" type="AudioStreamPlayer" parent="SFX"]
@@ -389,6 +396,12 @@ bus = "SFX"
 
 [node name="Step" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 13 )
+volume_db = -10.0
+bus = "SFX"
+
+[node name="Land" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 13 )
+pitch_scale = 1.8
 bus = "SFX"
 [connection signal="timeout" from="BoostTimer" to="." method="_on_BoostTimer_timeout"]
 [connection signal="timeout" from="DropTimer" to="." method="_on_DropTimer_timeout"]

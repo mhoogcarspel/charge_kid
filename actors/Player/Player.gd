@@ -150,7 +150,6 @@ func boost() -> void:
 		if is_holding_bullet() or is_bullet_boosting:
 			var bullet = get_tree().get_nodes_in_group("bullet")[0]
 			velocity = (bullet.position - self.position)/boost_time
-			self.add_collision_exception_with(bullet)
 			is_bullet_boosting = true
 		else:
 			velocity = Vector2(0, -boost_speed)
