@@ -34,6 +34,7 @@ onready var just_boosted: bool = false
 onready var just_bullet_boosted: bool = false
 onready var on_platform: bool = false
 onready var label_time: float = 2.0
+onready var boost_velocity: Vector2 = Vector2.ZERO
 
 
 func _ready():
@@ -63,6 +64,10 @@ func _physics_process(delta):
 	
 	if !is_shooting:
 		velocity = move_and_slide(velocity, Vector2(0,-1))
+		if is_bullet_boosting and boost_velocity != velocity:
+			$BoostTimer.stop()
+			_on_BoostTimer_timeout()
+		
 		move(get_directional_inputs(), delta)
 		jump()
 		boost()
@@ -147,14 +152,39 @@ func jump() -> void:
 
 func boost() -> void:
 	if can_boost && Input.is_action_just_pressed("ui_boost") && !is_boosting:
+		
+		### BULLET BOOST ######################################################################
 		if is_holding_bullet() or is_bullet_boosting:
 			var bullet = get_tree().get_nodes_in_group("bullet")[0]
-			velocity = (bullet.position - self.position)/boost_time
+			var relative_position = (bullet.position - self.position)
 			is_bullet_boosting = true
+			
+			# Calculating boost time. Boost speed must be at least equal to normal boost speed and at
+			# most equal to two times normal boost speed.
+			
+			# First case: projectile is close enough to have a shorter boost time with normal boost speed.
+			if relative_position.length()/boost_time < boost_speed:
+				velocity = relative_position.normalized()*boost_speed
+				$BoostTimer.start(relative_position.length()/boost_speed)
+				
+			# Second case: projectile is too far to have normal speed but too close to double speed.
+			elif relative_position.length()/boost_time < 2*boost_time:
+				velocity = relative_position/boost_time
+				$BoostTimer.start(boost_time)
+				
+			# Final case: projectile is far enough for double speed and more than normal boost time.
+			else:
+				velocity = relative_position.normalized()*2*boost_speed
+				$BoostTimer.start(relative_position.length()/(2*boost_time))
+		#######################################################################################
+		
+		### NORMAL BOOST ######################################################################
 		else:
 			velocity = Vector2(0, -boost_speed)
+			$BoostTimer.start(boost_time)
+		#######################################################################################
 		
-		$BoostTimer.start(boost_time)
+		boost_velocity = velocity
 		$SFX/SuperJump.play()
 		is_boosting = true
 		can_boost = false
