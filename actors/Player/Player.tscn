@@ -272,7 +272,7 @@ color = Color( 1, 0.309804, 0.470588, 1 )
 [node name="BoostParticles1" type="CPUParticles2D" parent="."]
 z_index = -2
 emitting = false
-amount = 5
+amount = 9
 lifetime = 0.5
 local_coords = false
 texture = ExtResource( 6 )

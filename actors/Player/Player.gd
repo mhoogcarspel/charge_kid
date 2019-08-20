@@ -64,9 +64,14 @@ func _physics_process(delta):
 	
 	if !is_shooting:
 		velocity = move_and_slide(velocity, Vector2(0,-1))
+		
+		# If you touch a wall during a bullet jump, this code puts the velocity back
+		# in the direction of the bullet
 		if is_bullet_boosting and boost_velocity != velocity:
-			$BoostTimer.stop()
-			_on_BoostTimer_timeout()
+			var bullet = get_tree().get_nodes_in_group("bullet")[0]
+			var relative_position = (bullet.position - self.position)
+			velocity = relative_position.normalized()*boost_velocity.length()
+			boost_velocity = velocity
 		
 		move(get_directional_inputs(), delta)
 		jump()
