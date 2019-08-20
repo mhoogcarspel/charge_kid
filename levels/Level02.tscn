@@ -11,7 +11,9 @@
 [ext_resource path="res://common/FinishLine.tscn" type="PackedScene" id=9]
 [ext_resource path="res://levels/Level03.tscn" type="PackedScene" id=10]
 
-[node name="Level02" type="Node2D"]
+[node name="Level02" type="Node2D" groups=[
+"level",
+]]
 
 [node name="BackgroundBack" parent="." instance=ExtResource( 1 )]
 editor/display_folded = true

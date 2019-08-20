@@ -3,11 +3,14 @@ extends Popup
 onready var action: String
 onready var control_handler: ButtonGetter
 onready var configured: bool = false
+onready var menu: MarginContainer
 
 func _ready():
 	popup_centered()
+	menu.pause_mode = PAUSE_MODE_STOP
 	self.pause_mode = PAUSE_MODE_PROCESS
-	get_tree().paused = true
+	if !menu.pause_menu:
+		get_tree().paused = true
 
 func parse(action: String, control_handler: ButtonGetter):
 	self.action = action
@@ -29,6 +32,8 @@ func _process(delta):
 		self.exit()
 
 func exit():
-	get_tree().paused = false
+	menu.pause_mode = PAUSE_MODE_PROCESS
 	self.pause_mode = PAUSE_MODE_INHERIT
+	if !menu.pause_menu:
+		get_tree().paused = false
 	self.queue_free()

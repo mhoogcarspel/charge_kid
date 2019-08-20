@@ -9,7 +9,6 @@
 font_data = ExtResource( 3 )
 
 [node name="ConfigControlsDialog" type="PopupDialog"]
-visible = true
 margin_right = 513.0
 margin_bottom = 65.0
 popup_exclusive = true

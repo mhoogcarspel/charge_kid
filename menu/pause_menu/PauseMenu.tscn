@@ -7,15 +7,14 @@
 [ext_resource path="res://common/LabelBaseModel.gd" type="Script" id=5]
 [ext_resource path="res://menu/ButtonModel.tscn" type="PackedScene" id=6]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 4 )
 
-[node name="PauseMenu" type="Popup"]
-margin_right = 512.0
-margin_bottom = 384.0
+[node name="PauseMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-popup_exclusive = true
 script = ExtResource( 1 )
 control_menu = ExtResource( 2 )
 
@@ -35,16 +34,16 @@ tile_data = PoolIntArray( 589837, 0, 0, 589838, 1, 0, 589839, 1, 0, 589840, 1, 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 432.0
-margin_top = 307.0
+margin_top = 320.0
 margin_right = 592.0
-margin_bottom = 461.0
+margin_bottom = 448.0
 custom_constants/separation = 38
 alignment = 1
 
 [node name="Title" type="Label" parent="CenterContainer/VBoxContainer"]
 margin_right = 160.0
 margin_bottom = 16.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Pause Menu"
 script = ExtResource( 5 )
 

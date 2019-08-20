@@ -28,14 +28,15 @@ func back_to_start():
 
 func change_scene(next_scene: PackedScene) -> void:
 	for scene in self.get_children():
-		scene.queue_free()
+		if !scene.is_in_group("hud_container"):
+			scene.queue_free()
 	var scene_instance = next_scene.instance()
 	self.call_deferred("add_child", scene_instance)
 	actual_scene = next_scene
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_pause") and !get_tree().get_nodes_in_group("player").empty() and !get_tree().paused:
-		self.add_child(pause_menu.instance())
+		$HudContainer.add_child(pause_menu.instance())
 
 
 
