@@ -180,7 +180,7 @@ func boost() -> void:
 			# Final case: projectile is far enough for double speed and more than normal boost time.
 			else:
 				velocity = relative_position.normalized()*2*boost_speed
-				$BoostTimer.start(relative_position.length()/(2*boost_time))
+				$BoostTimer.start(relative_position.length()/(2*boost_speed))
 		#######################################################################################
 		
 		### NORMAL BOOST ######################################################################
