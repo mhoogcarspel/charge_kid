@@ -20,7 +20,7 @@ func hit(bullet:PhysicsBody2D):
 	else:
 		$Lever/AnimationPlayer.play("Activate")
 		is_active = true
-	for nodepath in  nodes:
+	for nodepath in nodes:
 		toggle(get_node(nodepath))
 	if !bullet.rigid_state && bullet.standard_state:
 		bullet.standard_state = false
@@ -33,3 +33,19 @@ func toggle(object:Node) -> void:
 		object.deactivate()
 	else:
 		object.activate()
+
+
+
+func _on_PlayerHitbox_body_entered(body):
+	if body.is_in_group("player"):
+		if is_active:
+			$Lever/AnimationPlayer.play("Deactivate")
+			is_active = false
+		else:
+			$Lever/AnimationPlayer.play("Activate")
+			is_active = true
+		for nodepath in nodes:
+			toggle(get_node(nodepath))
+
+
+

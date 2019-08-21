@@ -17,3 +17,14 @@ func hit(projectile:PhysicsBody2D) -> void:
 func _on_Timer_timeout():
 	for nodepath in nodes:
 		get_node(nodepath).activate()
+
+
+
+func activate() -> void:
+	if not is_active:
+		$Switch.activate()
+		is_active = true
+		$Timer.start()
+	else:
+		$Switch.deactivate()
+		is_active = false
