@@ -45,3 +45,6 @@ func _on_Button_pressed():
 		get_parent().pause_mode = PAUSE_MODE_PROCESS
 		get_parent().refocus()
 		self.queue_free()
+
+
+

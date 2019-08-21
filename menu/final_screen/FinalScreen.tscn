@@ -27,4 +27,5 @@ margin_top = 360.0
 margin_right = 960.0
 margin_bottom = 408.0
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "Thanks for playing!!"

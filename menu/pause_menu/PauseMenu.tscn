@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://menu/pause_menu/PauseMenu.gd" type="Script" id=1]
 [ext_resource path="res://menu/config_controls_menu/ControlConfigMenu.tscn" type="PackedScene" id=2]
@@ -9,6 +9,12 @@
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 4 )
+
+[sub_resource type="InputEventAction" id=2]
+action = "ui_pause"
+
+[sub_resource type="ShortCut" id=3]
+shortcut = SubResource( 2 )
 
 [node name="PauseMenu" type="Control"]
 anchor_right = 1.0
@@ -29,8 +35,7 @@ margin_right = 512.0
 margin_bottom = 384.0
 
 [node name="TileMap" parent="CenterContainer" instance=ExtResource( 3 )]
-format = 1
-tile_data = PoolIntArray( 589837, 0, 0, 589838, 1, 0, 589839, 1, 0, 589840, 1, 0, 589841, 1, 0, 589842, 2, 0, 655373, 6, 0, 655374, 8, 0, 655375, 8, 0, 655376, 8, 0, 655377, 8, 0, 655378, 7, 0, 720909, 6, 0, 720910, 8, 0, 720911, 8, 0, 720912, 8, 0, 720913, 8, 0, 720914, 7, 0, 786445, 6, 0, 786446, 8, 0, 786447, 8, 0, 786448, 8, 0, 786449, 8, 0, 786450, 7, 0, 851981, 6, 0, 851982, 8, 0, 851983, 8, 0, 851984, 8, 0, 851985, 8, 0, 851986, 7, 0, 917517, 5, 0, 917518, 4, 0, 917519, 4, 0, 917520, 4, 0, 917521, 4, 0, 917522, 3, 0 )
+tile_data = PoolIntArray( 589837, 0, 0, 589838, 0, 1, 589839, 0, 1, 589840, 0, 1, 589841, 0, 1, 589842, 0, 2, 655373, 0, 65536, 655374, 0, 65537, 655375, 0, 65537, 655376, 0, 65537, 655377, 0, 65537, 655378, 0, 65538, 720909, 0, 65536, 720910, 0, 65537, 720911, 0, 65537, 720912, 0, 65537, 720913, 0, 65537, 720914, 0, 65538, 786445, 0, 65536, 786446, 0, 65537, 786447, 0, 65537, 786448, 0, 65537, 786449, 0, 65537, 786450, 0, 65538, 851981, 0, 65536, 851982, 0, 65537, 851983, 0, 65537, 851984, 0, 65537, 851985, 0, 65537, 851986, 0, 65538, 917517, 0, 131072, 917518, 0, 131073, 917519, 0, 131073, 917520, 0, 131073, 917521, 0, 131073, 917522, 0, 131074 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 432.0
@@ -44,6 +49,7 @@ alignment = 1
 margin_right = 160.0
 margin_bottom = 16.0
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "Pause Menu"
 script = ExtResource( 5 )
 
@@ -54,20 +60,24 @@ margin_bottom = 128.0
 alignment = 1
 
 [node name="Resume" parent="CenterContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
-margin_right = 160.0
+margin_left = 26.0
+margin_right = 134.0
 margin_bottom = 22.0
 focus_neighbour_top = NodePath("../Quit")
+shortcut = SubResource( 3 )
 text = "Resume"
 
 [node name="Controls" parent="CenterContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
+margin_left = 10.0
 margin_top = 26.0
-margin_right = 160.0
+margin_right = 150.0
 margin_bottom = 48.0
 text = "Controls"
 
 [node name="Quit" parent="CenterContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
+margin_left = 42.0
 margin_top = 52.0
-margin_right = 160.0
+margin_right = 118.0
 margin_bottom = 74.0
 focus_neighbour_bottom = NodePath("../Resume")
 text = "Quit"

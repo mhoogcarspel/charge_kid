@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://menu/credits/Credits.gd" type="Script" id=1]
 [ext_resource path="res://assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf" type="DynamicFontData" id=2]
@@ -19,19 +19,19 @@ font_data = ExtResource( 2 )
 size = 11
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=5]
-size = 11
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="DynamicFont" id=7]
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=6]
-font_data = ExtResource( 2 )
-
-[sub_resource type="InputEventAction" id=7]
+[sub_resource type="InputEventAction" id=8]
 action = "ui_pause"
 pressed = true
 
-[sub_resource type="ShortCut" id=8]
-shortcut = SubResource( 7 )
+[sub_resource type="ShortCut" id=9]
+shortcut = SubResource( 8 )
 
 [node name="Credits" type="MarginContainer"]
 anchor_left = 0.5
@@ -57,9 +57,9 @@ custom_constants/separation = 40
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
-margin_top = 111.0
+margin_top = 118.0
 margin_right = 539.0
-margin_bottom = 175.0
+margin_bottom = 182.0
 custom_constants/separation = 19
 alignment = 1
 
@@ -67,6 +67,7 @@ alignment = 1
 margin_right = 539.0
 margin_bottom = 20.0
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "Game by"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
@@ -79,6 +80,7 @@ alignment = 1
 margin_right = 539.0
 margin_bottom = 11.0
 custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "Rafael de Lima Bordoni"
 
 [node name="Ayrton" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer/VBoxContainer"]
@@ -87,12 +89,13 @@ margin_right = 539.0
 margin_bottom = 25.0
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "Ayrton Makoto Euzebio Sato"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
-margin_top = 215.0
+margin_top = 222.0
 margin_right = 539.0
-margin_bottom = 307.0
+margin_bottom = 314.0
 custom_constants/separation = 19
 alignment = 1
 
@@ -100,6 +103,7 @@ alignment = 1
 margin_right = 539.0
 margin_bottom = 20.0
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "Sound Effects"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/VBoxContainer3"]
@@ -112,6 +116,7 @@ alignment = 1
 margin_right = 539.0
 margin_bottom = 39.0
 custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "All sound effects are made by the freesound user 
 LittleRobotSoundFactory
 lincensed under CC BY 3.0"
@@ -122,12 +127,13 @@ margin_right = 539.0
 margin_bottom = 53.0
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "https://freesound.org/people/LittleRobotSoundFactory/"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
-margin_top = 347.0
+margin_top = 354.0
 margin_right = 539.0
-margin_bottom = 427.0
+margin_bottom = 419.0
 custom_constants/separation = 19
 alignment = 1
 
@@ -135,41 +141,42 @@ alignment = 1
 margin_right = 539.0
 margin_bottom = 20.0
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "Sprites"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/VBoxContainer2"]
 margin_top = 39.0
 margin_right = 539.0
-margin_bottom = 80.0
+margin_bottom = 65.0
 alignment = 1
 
 [node name="industrial_v2" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer2/VBoxContainer"]
 margin_right = 539.0
 margin_bottom = 11.0
 custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "industrial.v2.png by 0x72 is licensed under CC-0"
 
-[node name="industrial_v1" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer2/VBoxContainer"]
+[node name="Page" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer2/VBoxContainer"]
 margin_top = 15.0
 margin_right = 539.0
 margin_bottom = 26.0
 custom_fonts/font = SubResource( 4 )
-text = "industrial.v1.png by 0x72 is licensed under CC-0"
-
-[node name="Page" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer2/VBoxContainer"]
-margin_top = 30.0
-margin_right = 539.0
-margin_bottom = 41.0
-custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "https://0x72.itch.io/"
 
 [node name="Back" type="Button" parent="HBoxContainer/VBoxContainer"]
-margin_top = 467.0
-margin_right = 539.0
-margin_bottom = 489.0
-custom_fonts/font = SubResource( 6 )
-shortcut = SubResource( 8 )
+margin_left = 231.0
+margin_top = 459.0
+margin_right = 307.0
+margin_bottom = 481.0
+size_flags_horizontal = 4
+custom_styles/hover = SubResource( 5 )
+custom_styles/focus = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
+custom_colors/font_color_hover = Color( 1, 0.309804, 0.470588, 1 )
+shortcut = SubResource( 9 )
 text = "Back"
 flat = true
-clip_text = true
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Back" to="." method="_on_Back_pressed"]
