@@ -146,6 +146,7 @@ func jump() -> void:
 		$SFX/Jump.play()
 		velocity.y = -jump_velocity
 		is_jumping = true
+		$CoyoteTimer.stop()
 		
 	if Input.is_action_just_released("ui_jump") && velocity.y < 0 && !is_boosting:
 		velocity.y /= 4
