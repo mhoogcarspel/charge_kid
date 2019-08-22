@@ -6,6 +6,7 @@
 270317__littlerobotsoundfactory__jump-01.wav sound made by the freesound user LittleRobotSoundFactory licensed under CC BY 3.0 
 270320__littlerobotsoundfactory__jump-00.wav sound made by the freesound user LittleRobotSoundFactory licensed under CC BY 3.0 
 270324__littlerobotsoundfactory__menu-navigate-00.wav sound made by the freesound user LittleRobotSoundFactory licensed under CC BY 3.0
+270321__littlerobotsoundfactory__menu-navigate-01.wav sound made by the freesound user LittleRobotSoundFactory licensed under CC BY 3.0
 270322__littlerobotsoundfactory__menu-navigate-02.wav sound made by the freesound user LittleRobotSoundFactory licensed under CC BY 3.0
 270338__littlerobotsoundfactory__open-01.wav sound made by the freesound user LittleRobotSoundFactory licensed under CC BY 3.0
 270343__littlerobotsoundfactory__shoot-01.wav sound made by the freesound user LittleRobotSoundFactory licensed under CC BY 3.0
