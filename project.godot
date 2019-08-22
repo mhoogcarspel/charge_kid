@@ -14,20 +14,56 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://assets/Tilemaps/Blocks.gd"
 }, {
+"base": "State",
+"class": "BulletBaseState",
+"language": "GDScript",
+"path": "res://actors/TheUniqueBullet/States/BulletBaseState.gd"
+}, {
 "base": "Object",
 "class": "ButtonGetter",
 "language": "GDScript",
 "path": "res://common/ButtonGetter.gd"
 }, {
+"base": "BulletBaseState",
+"class": "FuelChargeState",
+"language": "GDScript",
+"path": "res://actors/TheUniqueBullet/States/FuelChargeState.gd"
+}, {
 "base": "Label",
 "class": "LabelBaseModel",
 "language": "GDScript",
 "path": "res://common/LabelBaseModel.gd"
+}, {
+"base": "BulletBaseState",
+"class": "ReturnState",
+"language": "GDScript",
+"path": "res://actors/TheUniqueBullet/States/ReturnState.gd"
+}, {
+"base": "BulletBaseState",
+"class": "StandartState",
+"language": "GDScript",
+"path": "res://actors/TheUniqueBullet/States/StandartState.gd"
+}, {
+"base": "BulletBaseState",
+"class": "StandingState",
+"language": "GDScript",
+"path": "res://actors/TheUniqueBullet/States/StandingState.gd"
+}, {
+"base": "Object",
+"class": "State",
+"language": "GDScript",
+"path": "res://actors/State.gd"
 } ]
 _global_script_class_icons={
 "Block": "",
+"BulletBaseState": "",
 "ButtonGetter": "",
-"LabelBaseModel": ""
+"FuelChargeState": "",
+"LabelBaseModel": "",
+"ReturnState": "",
+"StandartState": "",
+"StandingState": "",
+"State": ""
 }
 
 [application]
