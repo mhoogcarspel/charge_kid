@@ -1,4 +1,5 @@
 270302__littlerobotsoundfactory__collect-point-02.wav sound made by the freesound user LittleRobotSoundFactory licensed under CC BY 3.0
+270308__littlerobotsoundfactory__explosion-00.wav sound made by the freesound user LittleRobotSoundFactory licensed under CC BY 3.0 
 270307__littlerobotsoundfactory__explosion-01.wav sound made by the freesound user LittleRobotSoundFactory licensed under CC BY 3.0 
 270309__littlerobotsoundfactory__craft-00.wav sound made by the freesound user LittleRobotSoundFactory licensed under CC BY 3.0 
 270310__littlerobotsoundfactory__explosion-04.wav sound made by the freesound user LittleRobotSoundFactory licensed under CC BY 3.0

@@ -35,6 +35,7 @@ onready var just_bullet_boosted: bool = false
 onready var on_platform: bool = false
 onready var label_time: float = 2.0
 onready var boost_velocity: Vector2 = Vector2.ZERO
+onready var is_dying: bool = false
 
 
 func _ready():
@@ -55,28 +56,29 @@ func _ready():
 
 func _physics_process(delta):
 	
-	on_platform = is_on_platform()
-	
-	if is_on_floor():
-		$CoyoteTimer.start()
-	
-	shoot()
-	
-	if !is_shooting:
-		velocity = move_and_slide(velocity, Vector2(0,-1))
+	if not is_dying:
+		on_platform = is_on_platform()
 		
-		# If you touch a wall during a bullet jump, this code puts the velocity back
-		# in the direction of the bullet
-		if is_bullet_boosting and boost_velocity != velocity:
-			var bullet = get_tree().get_nodes_in_group("bullet")[0]
-			var relative_position = (bullet.position - self.position)
-			velocity = relative_position.normalized()*boost_velocity.length()
-			boost_velocity = velocity
+		if is_on_floor():
+			$CoyoteTimer.start()
 		
-		move(get_directional_inputs(), delta)
-		jump()
-		boost()
-		drop()
+		shoot()
+		
+		if !is_shooting:
+			velocity = move_and_slide(velocity, Vector2(0,-1))
+			
+			# If you touch a wall during a bullet jump, this code puts the velocity back
+			# in the direction of the bullet
+			if is_bullet_boosting and boost_velocity != velocity:
+				var bullet = get_tree().get_nodes_in_group("bullet")[0]
+				var relative_position = (bullet.position - self.position)
+				velocity = relative_position.normalized()*boost_velocity.length()
+				boost_velocity = velocity
+			
+			move(get_directional_inputs(), delta)
+			jump()
+			boost()
+			drop()
 
 
 
@@ -251,10 +253,8 @@ func shoot() -> void:
 			is_shooting = true
 			if !god_mode:
 				can_shoot = false
-#		else:
-#			$PlayerSprite/ProjectileParticles/ProjectileHit.emitting = true
-#			yield($PlayerSprite/ProjectileParticles/ProjectileHit, "visibility_changed")
-#			$PlayerSprite/ProjectileParticles/ProjectileHit.emitting = true
+
+
 
 func check_for_blocks(Sensor: Area2D) -> bool:
 	for body in Sensor.get_overlapping_bodies():
@@ -288,12 +288,29 @@ func write(text: String, factor: float = 1.0) -> void:
 func _on_LabelTimer_timeout():
 	$Label.set_text(" ")
 
+func _on_SpikesSentinel_body_entered(body):
+	if body.is_in_group("spikes"):
+		kill()
 
+func kill() -> void:
+	is_dying = true
+	$SFX/Death.play()
+	$PlayerSprite.visible = false
+	$DeathParticles.emitting = true
+	$FeetParticles.emitting = false
+	$FeetParticles2.emitting = false
+	$FeetParticles3.emitting = false
+	var timer = Timer.new()
+	add_child(timer)
+	timer.start(0.5)
+	yield(timer, "timeout")
+	reset()
 
-
-
-
-
-
+func reset() -> void:
+	if get_tree().get_nodes_in_group("main").size() > 0:
+		var main = get_tree().get_nodes_in_group("main")[0]
+		main.change_scene(main.actual_scene)
+	else:
+		get_tree().reload_current_scene()
 
 
