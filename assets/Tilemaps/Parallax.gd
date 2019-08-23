@@ -1,19 +1,13 @@
 extends Node2D
 
-
-
 export (float) var ratio = 2
-
-onready var player = get_tree().get_nodes_in_group("player")[0]
-onready var camera: Camera2D = player.get_node("PlayerCamera")
+var camera: Camera2D
 
 
 
 func _process(delta):
-	player = get_tree().get_nodes_in_group("player")[0]
-	if player != null:
-		camera = player.get_node("PlayerCamera")
-	if camera != null:
+	if get_tree().get_nodes_in_group("camera").size() > 0:
+		camera = get_tree().get_nodes_in_group("camera")[0]
 		position.x = camera.get_camera_screen_center().x/ratio - 128
 
 

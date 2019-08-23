@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/Tilemaps/BackgroundBack.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Tilemaps/Parallax.gd" type="Script" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://actors/Interactables/TriggeredPlatform.tscn" type="PackedScene" id=10]
 [ext_resource path="res://actors/Interactables/LeverBody.tscn" type="PackedScene" id=11]
 [ext_resource path="res://actors/Interactables/Timer.tscn" type="PackedScene" id=12]
+[ext_resource path="res://common/FinishLine.tscn" type="PackedScene" id=13]
+[ext_resource path="res://levels/Level04.tscn" type="PackedScene" id=14]
 
 [node name="Level03" type="Node2D" groups=[
 "level",
@@ -166,6 +168,12 @@ scale = Vector2( 1, -1 )
 time = 1.8
 nodes = [ NodePath("../FuelTank3") ]
 
+[node name="FinishLine" parent="." instance=ExtResource( 13 )]
+editor/display_folded = true
+visible = false
+position = Vector2( 1088, 40 )
+next_stage = ExtResource( 14 )
+
 [editable path="BackgroundBack"]
 
 [editable path="BackgroundFront"]
@@ -175,3 +183,5 @@ nodes = [ NodePath("../FuelTank3") ]
 [editable path="HoldMessage"]
 
 [editable path="Message"]
+
+[editable path="FinishLine"]

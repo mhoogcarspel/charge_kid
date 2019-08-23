@@ -205,12 +205,16 @@ gravity = Vector2( 0, -500 )
 scale_amount = 0.2
 scale_amount_random = 0.2
 
-[node name="PlayerCamera" type="Camera2D" parent="."]
+[node name="PlayerCamera" type="Camera2D" parent="." groups=[
+"camera",
+]]
 current = true
 zoom = Vector2( 0.5, 0.5 )
 limit_left = 0
 limit_top = 0
 limit_bottom = 384
+smoothing_enabled = true
+smoothing_speed = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
