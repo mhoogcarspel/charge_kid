@@ -62,7 +62,7 @@ func empty() -> void:
 func hit(bullet: PhysicsBody2D):
 	if is_full():
 		$SFX.play()
-		bullet.charge_bullet()
+		bullet.change_state("FuelChargeState")
 		$AnimationPlayer.play("Hit")
 		add_child(particles.instance())
 		has_fuel = false
