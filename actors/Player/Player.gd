@@ -24,6 +24,8 @@ onready var max_fall_speed: float = jump_velocity
 
 var can_shoot: bool
 var can_boost: bool
+var checkpoint: Vector2
+var pre_checkpoint: Vector2
 
 onready var is_shooting: bool = false
 onready var is_jumping: bool = false
@@ -53,6 +55,9 @@ func _ready():
 		$FeetParticles.emitting = false
 		$FeetParticles2.emitting = false
 		$FeetParticles3.emitting = false
+	
+	if get_node_or_null("PlayerCamera") != null:
+		$PlayerCamera.current = true
 
 func _physics_process(delta):
 	
@@ -79,6 +84,10 @@ func _physics_process(delta):
 			jump()
 			boost()
 			drop()
+		
+		# Checkpoint setter.
+		if is_on_floor():
+			pre_checkpoint = position
 
 
 
@@ -309,7 +318,15 @@ func kill() -> void:
 func reset() -> void:
 	if get_tree().get_nodes_in_group("main").size() > 0:
 		var main = get_tree().get_nodes_in_group("main")[0]
-		main.change_scene(main.actual_scene)
+		var next_player = main.player_scene.instance()
+		next_player.position = checkpoint
+		next_player.level_length = self.level_length
+		
+		if get_tree().get_nodes_in_group("bullet").size() > 0:
+			get_tree().get_nodes_in_group("bullet")[0].queue_free()
+		
+		get_parent().add_child(next_player)
+		self.queue_free()
 	else:
 		get_tree().reload_current_scene()
 

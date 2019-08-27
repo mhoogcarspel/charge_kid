@@ -37,6 +37,8 @@ func step_sound() -> void:
 func falling_sentinel(new_value) -> void:
 	if new_value == false and is_player_airborne == true:
 		player.get_node("SFX/Land").play()
+	elif new_value == true and is_player_airborne == false:
+		player.checkpoint = player.pre_checkpoint
 	is_player_airborne = new_value
 
 

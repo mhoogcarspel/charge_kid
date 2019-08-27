@@ -15,6 +15,7 @@ onready var actions: Dictionary = {
 	}
 
 onready var control_handler = ButtonGetter.new(actions)
+onready var player_scene: PackedScene = preload("res://actors/Player/Player.tscn")
 
 var actual_scene: PackedScene
 
