@@ -17,7 +17,7 @@ collision_layer = 0
 script = ExtResource( 1 )
 initial_state = "StandingState"
 velocity = 200.0
-velocity_fuel = 350.0
+velocity_fuel = 300.0
 range_distance = 116.0
 gravity_accel = 400.0
 
@@ -34,7 +34,6 @@ shape = SubResource( 1 )
 
 [node name="PhysicalCollider" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
-disabled = true
 
 [node name="FuelChargeParticles" parent="." instance=ExtResource( 3 )]
 emitting = false
