@@ -46,6 +46,7 @@ func change_state(state: String) -> void:
 	states[state].enter()
 
 func destroy() -> void:
+	states[stack[0]].exit()
 	$ProjectileParticles.emitting = false
 	$FuelChargeParticles.emitting = false
 	$FuelChargeParticles/CPUParticles2D.emitting = false
