@@ -1,20 +1,23 @@
 extends BulletBaseState
 class_name ReturnState
 
-onready var player: KinematicBody2D = get_tree().get_nodes_in_group("player")[0]
-
 var velocity: float
+var direction: Vector2
+var player: KinematicBody2D
+
+func _init(owner: Node, player):
+	self.owner = owner
+	self.player = player
 
 func enter():
 	owner.get_node("PhysicalCollider").disabled = false
 	velocity = owner.velocity
-	pass
 
-func update():
+func update(delta):
 	if  Input.is_action_pressed("ui_shoot"):
-		velocity = Vector2.ZERO
+		owner.change_state("HoldState")
 	else:
-		var direction = (player.position - owner.position).normalized()
+		direction = (player.position - owner.position).normalized()
 	
 	move_bullet(direction, velocity)
 

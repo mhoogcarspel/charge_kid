@@ -1,13 +1,19 @@
 extends BulletBaseState
 class_name FuelChargeState
 
-onready var player: KinematicBody2D = get_tree().get_nodes_in_group("player")[0]
+onready var player: KinematicBody2D
+onready var velocity: float
+onready var direction: Vector2
+
+func _init(owner: Node, player):
+	self.owner = owner
+	self.player = player
 
 func enter():
-	var velocity: float = owner.velocity
-	var direction: Vector2 = (player.position - owner.position).normalized()
+	velocity = owner.velocity_fuel
+	direction = (player.position - owner.position).normalized()
 	owner.get_node("PhysicalCollider").disabled = true
 
-func update():
+func update(delta):
 	var direction = (player.position - owner.position).normalized()
 	move_bullet(direction, velocity)

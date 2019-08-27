@@ -224,7 +224,7 @@ func recharge_fuel() -> void:
 func is_holding_bullet() -> bool:
 	if get_tree().get_nodes_in_group("bullet").size() > 0:
 		var bullet = get_tree().get_nodes_in_group("bullet")[0]
-		if bullet.hold_state:
+		if bullet.stack[0] == "HoldState":
 			return true
 		else:
 			return false
@@ -249,6 +249,7 @@ func shoot() -> void:
 		if allow:
 			bullet_instance.direction = Vector2(facing, 0)
 			bullet_instance.position = bullet_positon 
+			bullet_instance.initial_state = "StandardState"
 			get_parent().add_child(bullet_instance)
 			is_shooting = true
 			if !god_mode:
@@ -263,12 +264,14 @@ func check_for_blocks(Sensor: Area2D) -> bool:
 	return true
 
 func hit(projectile: PhysicsBody2D) -> void:
-	if projectile.rigid_state:
-		$SFX/BulletPickup.play()
+	match projectile.stack[0]:
+		"StandingState":
+			$SFX/BulletPickup.play()
+		"FuelChargeState":
+			recharge_fuel()
+		
 	projectile.velocity = 0
 	self.can_shoot = true
-	if projectile.fuel_charge_state:
-		recharge_fuel()
 	if is_bullet_boosting:
 		$BoostTimer.stop()
 		_on_BoostTimer_timeout()

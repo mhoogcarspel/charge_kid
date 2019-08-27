@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://actors/TheUniqueBullet/States/FuelChargeState.gd"
 }, {
+"base": "BulletBaseState",
+"class": "HoldState",
+"language": "GDScript",
+"path": "res://actors/TheUniqueBullet/States/HoldState.gd"
+}, {
 "base": "Label",
 "class": "LabelBaseModel",
 "language": "GDScript",
@@ -40,9 +45,9 @@ _global_script_classes=[ {
 "path": "res://actors/TheUniqueBullet/States/ReturnState.gd"
 }, {
 "base": "BulletBaseState",
-"class": "StandartState",
+"class": "StandardState",
 "language": "GDScript",
-"path": "res://actors/TheUniqueBullet/States/StandartState.gd"
+"path": "res://actors/TheUniqueBullet/States/StandardState.gd"
 }, {
 "base": "BulletBaseState",
 "class": "StandingState",
@@ -59,9 +64,10 @@ _global_script_class_icons={
 "BulletBaseState": "",
 "ButtonGetter": "",
 "FuelChargeState": "",
+"HoldState": "",
 "LabelBaseModel": "",
 "ReturnState": "",
-"StandartState": "",
+"StandardState": "",
 "StandingState": "",
 "State": ""
 }
