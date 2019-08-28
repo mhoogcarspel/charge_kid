@@ -1,0 +1,2 @@
+extends PlayerBaseState
+class_name BoostingState
