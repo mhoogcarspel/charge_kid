@@ -1,5 +1,5 @@
 extends PlayerBaseState
-class_name OnAirState
+class_name JumpingState
 
 func update(delta):
 	if !owner.is_on_floor:
@@ -13,9 +13,7 @@ func update(delta):
 			"BulletBoostingState":
 				#Go to BulletBoostingState
 				return
-			"NoInput":
-				#Go to IdleState
-				return
+			
 		owner.move(get_directional_inputs(), delta)
 		return
 	else:

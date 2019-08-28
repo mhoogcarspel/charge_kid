@@ -93,7 +93,7 @@ func _physics_process(delta):
 
 func move(direction: Vector2, delta: float) -> void:
 	if !is_bullet_boosting:
-		if (direction.x*velocity.x > 0 && velocity.x != 0) or (velocity.x == 0 && direction.x != 0):
+		if (direction.x*velocity.x > 0) or (velocity.x == 0 && direction.x != 0):
 			velocity.x += direction.x*horizontal_acceleration*delta
 			velocity.x = clamp(velocity.x, -horizontal_max_speed, horizontal_max_speed)
 			facing = direction.x/abs(direction.x)

@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://actors/TheUniqueBullet/States/BulletBaseState.gd"
 }, {
+"base": "PlayerBaseState",
+"class": "BulletBoostingState",
+"language": "GDScript",
+"path": "res://actors/Player/States/BulletBoostingState.gd"
+}, {
 "base": "Object",
 "class": "ButtonGetter",
 "language": "GDScript",
@@ -43,6 +48,11 @@ _global_script_classes=[ {
 "class": "IdleState",
 "language": "GDScript",
 "path": "res://actors/Player/States/IdleState.gd"
+}, {
+"base": "PlayerBaseState",
+"class": "JumpingState",
+"language": "GDScript",
+"path": "res://actors/Player/States/JumpingState.gd"
 }, {
 "base": "Label",
 "class": "LabelBaseModel",
@@ -93,10 +103,12 @@ _global_script_class_icons={
 "Block": "",
 "BoostingState": "",
 "BulletBaseState": "",
+"BulletBoostingState": "",
 "ButtonGetter": "",
 "FuelChargeState": "",
 "HoldState": "",
 "IdleState": "",
+"JumpingState": "",
 "LabelBaseModel": "",
 "MovingState": "",
 "OnAirState": "",
