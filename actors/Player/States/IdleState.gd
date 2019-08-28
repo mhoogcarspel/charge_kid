@@ -1,28 +1,19 @@
 extends PlayerBaseState
 class_name IdleState
 
+func _init(owner: KinematicBody2D):
+	self.owner = owner
+
 func update(delta):
 	if !owner.is_on_floor():
-		#Go to OnAirState
+		owner.change_state("OnAirState")
 		return
-	 
-	match get_input():
-		"MovingState":
-			#Go to Moving State
-			return
-		"JumpState":
-			#Go to Jump State
-			return
-		"ShootingState":
-			#Go to Shooting State
-			return
-		"BoostingState":
-			#Go to Boosting State
-			return
-		"BulletBoostingState":
-			#Go to Boosting
-			return
+	print("Check inputs")
+	var next_state = get_input()
+	match next_state:
 		"NoInput":
 			#Do some checks
 			return
+		_:
+			owner.change_state(next_state)
 	pass

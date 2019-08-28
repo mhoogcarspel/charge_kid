@@ -1,13 +1,11 @@
 extends State
 class_name PlayerBaseState
 
-func _init(owner: KinematicBody2D):
-	self.owner = owner
-
 func get_directional_inputs() -> Vector2:
 	var directionals = Vector2(
 					Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
 					0 )
+	print(directionals)
 	return directionals
 
 func get_shoot_input() -> bool:
@@ -42,3 +40,6 @@ func get_input() -> String:
 		return "BoostingState"
 	
 	return "NoInput"
+
+func gravity(delta):
+	owner.velocity.y += owner.gravity_acceleration*delta
