@@ -3,7 +3,7 @@ extends Sprite
 onready var player = get_parent()
 
 func _physics_process(delta):
-	$ProjectileParticles.emitting = player.can_shoot
+	$ProjectileParticles.emitting = player.has_bullet
 	flip_sprite(player.facing)
 
 func flip_sprite(facing: float) -> void:

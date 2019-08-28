@@ -14,6 +14,9 @@ export(float) var horizontal_acceleration
 export(float) var max_horizontal_velocity
 export(float) var deacceleration_horizontal_velocity
 
+export(float) var boost_speed
+export(float) var boost_time
+
 export(float) var coyote_time
 export(float) var jump_height
 export(float) var gravity_acceleration
@@ -60,6 +63,13 @@ func change_state(state: String):
 		"MovingState":
 			stack.push_front(state)
 		"ShootingState":
+			if (previous_state == "JumpingState" 
+				|| previous_state == "BoostingState" 
+					|| previous_state == "BulletBoostingState"):
+				
+				states[stack[0]].exit()
+				stack.pop_front()
+				stack.push_front("OnAirState")
 			stack.push_front(state)
 		"OnAirState":
 			stack.push_front(state)
@@ -155,7 +165,7 @@ func shoot() -> void:
 			bullet_instance.initial_state = "StandardState"
 			get_parent().add_child(bullet_instance)
 			if !god_mode:
-				can_shoot = false
+				has_bullet = false
 
 func check_for_blocks(Sensor: Area2D) -> bool:
 	for body in Sensor.get_overlapping_bodies():
