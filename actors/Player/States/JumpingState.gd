@@ -7,11 +7,10 @@ func _init(owner: KinematicBody2D):
 	self.owner = owner
 	self.animation_player = owner.get_node("AnimationPlayer")
 
+func enter():
+	owner.jump()
+
 func update(delta):
-	if !jumped:
-		owner.jump()
-		jumped = true
-	
 	if !owner.is_on_floor():
 		animation_player.play("Airborne")
 		
@@ -35,6 +34,3 @@ func update(delta):
 	
 	else:
 		owner.pop_state()
-
-func exit():
-	jumped = false

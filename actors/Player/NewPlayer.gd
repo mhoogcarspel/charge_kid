@@ -28,10 +28,13 @@ onready var can_boost:bool
 onready var facing:float = 1
 
 func _ready():
+	print("jump_velocity:")
+	print(jump_velocity)
 	can_shoot = has_bullet
 	stack.push_front("IdleState")
 
 func _physics_process(delta):
+	
 	actual_state = stack[0]
 	states[actual_state].update(delta)
 	
@@ -39,6 +42,8 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, Vector2(0, -1))
 
 func change_state(state: String):
+	print(state)
+	print(stack)
 	var previous_state = stack[0]
 	match state:
 		"IdleState":
@@ -56,8 +61,11 @@ func change_state(state: String):
 	states[state].enter()
 
 func pop_state():
+	print(stack)
 	states[stack[0]].exit()
 	self.stack.pop_front()
+	states[stack[0]].enter()
+	print(stack)
 
 func horizontal_move(direction: Vector2, delta: float, factor: float = 1.0) -> void:
 	if direction.x != 0:
@@ -72,7 +80,6 @@ func horizontal_move(direction: Vector2, delta: float, factor: float = 1.0) -> v
 
 func gravity(delta: float):
 	self.velocity.y += gravity_acceleration*delta
-	velocity.y = clamp(velocity.y, 0, max_falling_velocity)
 
 func jump():
 	self.velocity.y = -jump_velocity

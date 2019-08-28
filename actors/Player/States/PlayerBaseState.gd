@@ -3,6 +3,9 @@ class_name PlayerBaseState
 
 onready var animation_player
 
+func enter():
+	return
+
 func get_directional_inputs() -> Vector2:
 	var directionals = Vector2(
 					Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
