@@ -1,39 +1,32 @@
 extends PlayerBaseState
 class_name OnAirState
 
-var coyote_timer:float
-
 func _init(owner: KinematicBody2D):
 	self.owner = owner
-
-func enter():
-	coyote_timer = 0.0
-	return
+	self.animation_player = owner.get_node("AnimationPlayer")
 
 func update(delta):
-	owner.gravity(delta)
-	owner.horizontal_move(get_directional_inputs(), delta)
 	if !owner.is_on_floor():
-		coyote_timer += delta
-		match get_input():
-			"JumpingState":
-				if coyote_timer < owner.coyote_time:
-					#Go to JumpState
-					return
+		animation_player.play("Airborne")
+		
+		#################Checking for any inputs########################
+		
+		if Input.is_action_just_pressed("ui_shoot") && owner.has_bullet:
+			owner.change_state("ShootingState")
+			return
+		
+		elif Input.is_action_just_pressed("ui_boost") && owner.can_boost:
+			if is_holding_bullet():
+				owner.change_state("BulletBoostingState")
 				return
-			"ShootingState":
-				#Go to ShootingState
+			else:
+				owner.change_state("BoostingState")
 				return
-			"BoostingState":
-				#Go to BoostingState
-				return
-			"BulletBoostingState":
-				#Go to BulletBoostingState
-				return
-			"NoInput":
-				#Go to IdleState
-				return
-		return
+		##################################################################
+		
+		owner.horizontal_move(get_directional_inputs(), delta)
+		owner.gravity(delta)
+	
 	else:
 		owner.pop_state()
-		return
+	pass

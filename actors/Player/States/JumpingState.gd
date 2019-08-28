@@ -1,33 +1,40 @@
 extends PlayerBaseState
 class_name JumpingState
 
+onready var jumped:bool = false
+
 func _init(owner: KinematicBody2D):
 	self.owner = owner
-
-func enter():
-	owner.velocity.y = -owner.jump_velocity
-	return
-
+	self.animation_player = owner.get_node("AnimationPlayer")
 
 func update(delta):
-	owner.get_node("AnimationPlayer").play("Airborne")
-	owner.horizontal_move(get_directional_inputs(), delta)
-	owner.gravity(delta)
+	if !jumped:
+		owner.jump()
+		jumped = true
+	
 	if !owner.is_on_floor():
-		var state = get_input()
-		match get_input():
-			"ShootingState", "BoostingState", "BulletBoosting":
-				owner.change_state(state)
-				return
-			_:
-				return
-			
+		animation_player.play("Airborne")
 		
-		if Input.is_action_just_released("ui_jump") && owner.velocity.y <= 0:
-			print("N~ao ta indo")
-			owner.velocity.y = 0
-		return
+		#################Checking for any inputs########################
 		
+		if Input.is_action_just_pressed("ui_shoot") && owner.has_bullet:
+			owner.change_state("ShootingState")
+			return
+		
+		elif Input.is_action_just_pressed("ui_boost") && owner.can_boost:
+			if is_holding_bullet():
+				owner.change_state("BulletBoostingState")
+				return
+			else:
+				owner.change_state("BoostingState")
+				return
+		##################################################################
+		
+		owner.horizontal_move(get_directional_inputs(), delta)
+		owner.gravity(delta)
+	
 	else:
 		owner.pop_state()
-		return
+
+func exit():
+	jumped = false
