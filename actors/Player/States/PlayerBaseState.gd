@@ -1,11 +1,12 @@
 extends State
 class_name PlayerBaseState
 
+onready var animation_player = owner.get_node("AnimationPlayer")
+
 func get_directional_inputs() -> Vector2:
 	var directionals = Vector2(
 					Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
 					0 )
-	print(directionals)
 	return directionals
 
 func get_shoot_input() -> bool:

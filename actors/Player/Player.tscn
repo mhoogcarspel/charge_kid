@@ -184,7 +184,7 @@ horizontal_acceleration = 300.0
 max_horizontal_velocity = 100.0
 deacceleration_horizontal_velocity = 300.0
 coyote_time = 0.1
-jump_velocity = 40.0
+jump_height = 1000.0
 gravity_acceleration = 500.0
 max_falling_velocity = 100.0
 
@@ -208,6 +208,7 @@ scale_amount_random = 0.2
 [node name="PlayerCamera" type="Camera2D" parent="." groups=[
 "camera",
 ]]
+current = true
 zoom = Vector2( 0.5, 0.5 )
 limit_left = 0
 limit_top = 0
