@@ -98,3 +98,33 @@ func write(text: String, factor: float = 1.0) -> void:
 
 func _on_LabelTimer_timeout():
 	$Label.set_text(" ")
+
+func hit(projectile: PhysicsBody2D) -> void:
+	match projectile.stack[0]:
+		"StandingState":
+			$SFX/BulletPickup.play()
+		"FuelChargeState":
+			recharge_fuel()
+		
+	projectile.velocity = 0
+	self.can_shoot = true
+	if stack[0] == "BulletBoostingState":
+		$BoostTimer.stop()
+		_on_BoostTimer_timeout()
+	projectile.destroy()
+
+func recharge_fuel() -> void:
+	$SFX/FuelPickup.play()
+	can_boost = true
+	$FeetParticles.emitting = true
+	$FeetParticles2.emitting = true
+	$FeetParticles3.emitting = true
+
+func _on_BoostTimer_timeout():
+	#is_boosting = false
+	if actual_state == "BulletBoostingState":
+		#is_bullet_boosting = false
+		#just_bullet_boosted = true
+		$BoostParticles1.emitting = false
+#	else:
+#		just_boosted = true
