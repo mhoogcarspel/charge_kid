@@ -34,12 +34,11 @@ func change_state(state: String):
 			stack.push_front(state)
 
 func horizontal_move(direction: Vector2, delta: float, factor: float = 1.0) -> void:
-	print("velocity:")
-	print(velocity)
 	if direction.x != 0:
 		velocity += direction*delta*horizontal_acceleration*factor
 		velocity.x = clamp(velocity.x, -max_horizontal_velocity, max_horizontal_velocity)
 	elif velocity.x != 0:
+		print("xoxo")
 		var signal_velocity = velocity.x/abs(velocity.x)
 		velocity.x -= velocity.x/abs(velocity.x) * deacceleration_horizontal_velocity * delta
 		if signal_velocity != velocity.x/abs(velocity.x):

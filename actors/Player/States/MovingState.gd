@@ -12,11 +12,10 @@ func update(delta):
 	if owner.is_on_floor():
 		owner.horizontal_move(get_directional_inputs(), delta)
 		var next_state = get_input()
-		print(next_state)
 		match next_state:
 			"NoInput":
-				if owner.velocity == Vector2.ZERO:
-					owner.change_state("IdleState")
+				print("IldeState")
+				owner.change_state("IdleState")
 				return
 			_:
 				owner.change_state(get_input())
