@@ -30,7 +30,8 @@ onready var states: Dictionary = {
 	"MovingState" : MovingState.new(self),
 	"OnAirState" : OnAirState.new(self),
 	"JumpingState" : JumpingState.new(self),
-	"ShootingState" : ShootingState.new(self)
+	"ShootingState" : ShootingState.new(self),
+	"BoostingState" : BoostingState.new(self)
 	}
 onready var actual_state: String
 onready var stack: Array = []
