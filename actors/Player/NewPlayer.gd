@@ -1,5 +1,8 @@
 extends KinematicBody2D
 
+export(float) var label_time
+export(float) var factor
+
 export(bool) var has_bullet
 
 export(float) var horizontal_acceleration
@@ -34,7 +37,6 @@ func _ready():
 	stack.push_front("IdleState")
 
 func _physics_process(delta):
-	
 	actual_state = stack[0]
 	states[actual_state].update(delta)
 	
@@ -78,8 +80,21 @@ func horizontal_move(direction: Vector2, delta: float, factor: float = 1.0) -> v
 			velocity.x = 0
 	return
 
-func gravity(delta: float):
-	self.velocity.y += gravity_acceleration*delta
+func gravity(delta: float, factor: float = 1):
+	self.velocity.y += gravity_acceleration*delta*factor
 
 func jump():
 	self.velocity.y = -jump_velocity
+
+func is_on_platform() -> bool:
+	for body in $PlatformSentinel.get_overlapping_bodies():
+		if body.is_in_group("platform"):
+			return true
+	return false
+	
+func write(text: String, factor: float = 1.0) -> void:
+	$Label.set_text(text)
+	$LabelTimer.start(label_time*factor)
+
+func _on_LabelTimer_timeout():
+	$Label.set_text(" ")

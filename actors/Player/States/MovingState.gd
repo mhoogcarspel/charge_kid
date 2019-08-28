@@ -9,6 +9,8 @@ func _init(owner: KinematicBody2D):
 	coyote_timer = 0
 
 func update(delta):
+	owner.horizontal_move(get_directional_inputs(), delta)
+	owner.gravity(delta)
 	if owner.is_on_floor():
 		coyote_timer = 0.0
 		animation_player.play("Walking")
@@ -29,14 +31,10 @@ func update(delta):
 			else:
 				owner.change_state("BoostingState")
 				return
-		
-		elif get_directional_inputs().length() == 0 && owner.velocity.length() == 0:
-			owner.change_state("IdleState")
-			return
+		elif get_directional_inputs().length() == 0 && owner.velocity.x == 0:
+			print("NoMovement")
+			owner.pop_state()
 		##################################################################
-		
-		owner.horizontal_move(get_directional_inputs(), delta)
-		owner.gravity(delta)
 	
 	else:
 		coyote_timer += delta

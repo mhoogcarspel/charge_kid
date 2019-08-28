@@ -20,7 +20,7 @@
 extents = Vector2( 4.42775, 6.06252 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 4.5, 0.231199 )
+extents = Vector2( 4.1541, 0.483639 )
 
 [sub_resource type="Animation" id=3]
 length = 0.1
@@ -178,12 +178,11 @@ font_data = ExtResource( 7 )
 collision_layer = 0
 collision_mask = 3
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
+label_time = 1.0
+factor = 1.0
 horizontal_acceleration = 600.0
 max_horizontal_velocity = 100.0
-deacceleration_horizontal_velocity = 300.0
+deacceleration_horizontal_velocity = 600.0
 coyote_time = 0.1
 jump_height = 40.0
 gravity_acceleration = 500.0
@@ -224,14 +223,12 @@ position = Vector2( -0.5, 2 )
 shape = SubResource( 1 )
 
 [node name="PlatformSentinel" type="Area2D" parent="."]
-editor/display_folded = true
-visible = false
 position = Vector2( -0.5, 7.5 )
-collision_layer = 2
-collision_mask = 2
+collision_layer = 0
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformSentinel"]
-position = Vector2( 0, 0.513487 )
+position = Vector2( 0.434487, 0.552986 )
 shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

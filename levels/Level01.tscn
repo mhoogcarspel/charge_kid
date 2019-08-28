@@ -73,8 +73,6 @@ tile_data = PoolIntArray( -1, 0, 65538, -65536, 0, 1, -65535, 0, 1, -65534, 0, 1
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
 position = Vector2( 48, 216 )
-has_projectile = false
-level_length = 1024.0
 
 [node name="Bullet" parent="." instance=ExtResource( 7 )]
 position = Vector2( 224, 136 )

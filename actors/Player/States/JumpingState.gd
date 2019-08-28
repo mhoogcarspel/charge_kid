@@ -2,6 +2,7 @@ extends PlayerBaseState
 class_name JumpingState
 
 onready var jumped:bool = false
+onready var factor: float = 1
 
 func _init(owner: KinematicBody2D):
 	self.owner = owner
@@ -11,6 +12,8 @@ func enter():
 	owner.jump()
 
 func update(delta):
+	owner.horizontal_move(get_directional_inputs(), delta)
+	owner.gravity(delta)
 	if !owner.is_on_floor():
 		animation_player.play("Airborne")
 		
@@ -29,8 +32,10 @@ func update(delta):
 				return
 		##################################################################
 		
-		owner.horizontal_move(get_directional_inputs(), delta)
-		owner.gravity(delta)
+		if Input.is_action_just_released("ui_jump") && owner.velocity.y < 0:
+			owner.velocity.y = 0
+		return
 	
 	else:
 		owner.pop_state()
+		return

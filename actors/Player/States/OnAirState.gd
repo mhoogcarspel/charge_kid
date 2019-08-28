@@ -6,6 +6,8 @@ func _init(owner: KinematicBody2D):
 	self.animation_player = owner.get_node("AnimationPlayer")
 
 func update(delta):
+	owner.horizontal_move(get_directional_inputs(), delta)
+	owner.gravity(delta)
 	if !owner.is_on_floor():
 		animation_player.play("Airborne")
 		
@@ -23,9 +25,6 @@ func update(delta):
 				owner.change_state("BoostingState")
 				return
 		##################################################################
-		
-		owner.horizontal_move(get_directional_inputs(), delta)
-		owner.gravity(delta)
 	
 	else:
 		owner.pop_state()
