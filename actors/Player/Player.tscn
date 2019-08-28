@@ -180,13 +180,13 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
-horizontal_acceleration = 350.0
-max_horizontal_velocity = 350.0
-deacceleration_horizontal_velocity = 200.0
+horizontal_acceleration = 300.0
+max_horizontal_velocity = 100.0
+deacceleration_horizontal_velocity = 300.0
 coyote_time = 0.1
-jump_velocity = 3000.0
-gravity_acceleration = 350.0
-max_falling_velocity = 350.0
+jump_velocity = 40.0
+gravity_acceleration = 500.0
+max_falling_velocity = 100.0
 
 [node name="PlayerSprite" type="Sprite" parent="."]
 editor/display_folded = true
