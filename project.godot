@@ -50,6 +50,11 @@ _global_script_classes=[ {
 "path": "res://common/LabelBaseModel.gd"
 }, {
 "base": "PlayerBaseState",
+"class": "MovingState",
+"language": "GDScript",
+"path": "res://actors/Player/States/MovingState.gd"
+}, {
+"base": "PlayerBaseState",
 "class": "OnAirState",
 "language": "GDScript",
 "path": "res://actors/Player/States/OnAirState.gd"
@@ -93,6 +98,7 @@ _global_script_class_icons={
 "HoldState": "",
 "IdleState": "",
 "LabelBaseModel": "",
+"MovingState": "",
 "OnAirState": "",
 "PlayerBaseState": "",
 "ReturnState": "",
