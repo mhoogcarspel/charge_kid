@@ -14,8 +14,9 @@ export(float) var horizontal_acceleration
 export(float) var max_horizontal_velocity
 export(float) var deacceleration_horizontal_velocity
 
-export(float) var boost_speed
+export(float) var boost_distance
 export(float) var boost_time
+onready var boost_speed:float = boost_distance/boost_time
 
 export(float) var coyote_time
 export(float) var jump_height
