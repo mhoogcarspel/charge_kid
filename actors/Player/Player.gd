@@ -41,10 +41,7 @@ onready var is_dying: bool = false
 
 
 func _ready():
-	if has_projectile:
-		can_shoot = true
-	else:
-		can_shoot = false
+	can_shoot = has_projectile
 	
 	$PlayerCamera.limit_right = level_length
 	

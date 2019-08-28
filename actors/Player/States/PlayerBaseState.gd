@@ -1,7 +1,7 @@
 extends State
 class_name PlayerBaseState
 
-onready var animation_player
+onready var animation_player: AnimationPlayer
 
 func enter():
 	return

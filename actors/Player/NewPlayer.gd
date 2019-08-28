@@ -1,5 +1,10 @@
 extends KinematicBody2D
 
+export(bool) var god_mode
+
+export(PackedScene) var bullet
+export(float) var shoot_offset
+
 export(float) var label_time
 export(float) var factor
 
@@ -21,7 +26,8 @@ onready var states: Dictionary = {
 	"IdleState" : IdleState.new(self),
 	"MovingState" : MovingState.new(self),
 	"OnAirState" : OnAirState.new(self),
-	"JumpingState" : JumpingState.new(self)
+	"JumpingState" : JumpingState.new(self),
+	"ShootingState" : ShootingState.new(self)
 	}
 onready var actual_state: String
 onready var stack: Array = []
@@ -107,7 +113,7 @@ func hit(projectile: PhysicsBody2D) -> void:
 			recharge_fuel()
 		
 	projectile.velocity = 0
-	self.can_shoot = true
+	self.has_bullet = true
 	if stack[0] == "BulletBoostingState":
 		$BoostTimer.stop()
 		_on_BoostTimer_timeout()
@@ -128,3 +134,31 @@ func _on_BoostTimer_timeout():
 		$BoostParticles1.emitting = false
 #	else:
 #		just_boosted = true
+
+func shoot() -> void:
+	if Input.is_action_just_pressed("ui_shoot") && has_bullet:
+		$AnimationPlayer.play("Shooting")
+		$SFX/Shoot.play()
+		var bullet_instance = bullet.instance()
+		var bullet_positon = self.position + Vector2(facing*shoot_offset, 0)
+		var allow: bool
+		velocity = Vector2.ZERO
+		
+		if facing < 0:
+			allow = check_for_blocks($LeftAreaChecker)
+		else:
+			allow = check_for_blocks($RightAreaChecker)
+		
+		if allow:
+			bullet_instance.direction = Vector2(facing, 0)
+			bullet_instance.position = bullet_positon 
+			bullet_instance.initial_state = "StandardState"
+			get_parent().add_child(bullet_instance)
+			if !god_mode:
+				can_shoot = false
+
+func check_for_blocks(Sensor: Area2D) -> bool:
+	for body in Sensor.get_overlapping_bodies():
+		if body.is_in_group("blocks"):
+			return false
+	return true

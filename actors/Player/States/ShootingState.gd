@@ -3,8 +3,9 @@ class_name ShootingState
 
 func _init(owner: KinematicBody2D):
 	self.owner = owner
+	self.animation_player = owner.get_node("AnimationPlayer")
 
 func enter():
 	owner.shoot()
-	owner.yield(owner.get_node("PlayerSprite"), "animation_finished")
+	yield(animation_player, "animation_finished")
 	owner.pop_state()
