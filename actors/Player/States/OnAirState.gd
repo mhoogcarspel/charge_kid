@@ -11,7 +11,9 @@ func enter():
 	return
 
 func update(delta):
-	if !owner.is_on_floor:
+	owner.gravity(delta)
+	owner.horizontal_move(get_directional_inputs(), delta)
+	if !owner.is_on_floor():
 		coyote_timer += delta
 		match get_input():
 			"JumpingState":
@@ -31,7 +33,6 @@ func update(delta):
 			"NoInput":
 				#Go to IdleState
 				return
-		owner.move(get_directional_inputs(), delta)
 		return
 	else:
 		owner.pop_state()

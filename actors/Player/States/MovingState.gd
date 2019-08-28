@@ -21,7 +21,7 @@ func update(delta):
 				owner.change_state(get_input())
 	
 	else:
-		#Go to OnAirState
+		owner.change_state("OnAirState")
 		return
 	
 	return

@@ -31,7 +31,7 @@ func get_input() -> String:
 	if get_directional_inputs().length() > 0:
 		return "MovingState"
 	elif get_jump_input():
-		return "JumpState"
+		return "JumpingState"
 	elif get_shoot_input() && owner.can_shoot:
 		return "ShootingState"
 	elif get_boost_input() && owner.can_boost:

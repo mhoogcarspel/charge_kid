@@ -183,6 +183,8 @@ __meta__ = {
 horizontal_acceleration = 350.0
 max_horizontal_velocity = 350.0
 deacceleration_horizontal_velocity = 200.0
+coyote_time = 0.1
+jump_velocity = 3000.0
 gravity_acceleration = 350.0
 max_falling_velocity = 350.0
 
