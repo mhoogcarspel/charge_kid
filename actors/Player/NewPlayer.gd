@@ -118,6 +118,8 @@ func horizontal_move(direction: Vector2, delta: float, factor: float = 1.0, diss
 
 func gravity(delta: float, factor: float = 1):
 	self.velocity.y += gravity_acceleration*delta*factor
+	if self.velocity.y > max_falling_velocity:
+		self.velocity.y = max_falling_velocity
 
 func jump():
 	$SFX/Jump.play()
