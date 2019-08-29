@@ -22,9 +22,9 @@ onready var boost_speed:float = boost_distance/boost_time
 export(float) var coyote_time
 export(float) var jump_height
 export(float) var gravity_acceleration
-export(float) var max_falling_velocity
 
 onready var jump_velocity = sqrt(2*jump_height*gravity_acceleration)
+onready var max_falling_velocity: float = jump_velocity
 onready var velocity: Vector2
 
 onready var states: Dictionary = {

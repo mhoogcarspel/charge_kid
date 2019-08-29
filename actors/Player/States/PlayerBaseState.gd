@@ -58,3 +58,19 @@ func boosting_particles(switch: bool):
 	owner.get_node("BoostParticles2").emitting = switch
 	owner.get_node("BoostParticles3").emitting = switch
 	owner.get_node("BoostParticles4").emitting = switch
+
+func store_checkpoint() -> void:
+	var left: bool = false
+	var right: bool = false
+	for body in owner.get_node("LeftLedgeDetector").get_overlapping_bodies():
+		if body.is_in_group("blocks") or body.is_in_group("platform"):
+			left = true
+	for body in owner.get_node("RightLedgeDetector").get_overlapping_bodies():
+		if body.is_in_group("blocks") or body.is_in_group("platform"):
+			right = true
+	
+	if left and right:
+		owner.checkpoint = owner.position
+
+
+

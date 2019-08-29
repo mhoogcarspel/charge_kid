@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://actors/Player/NewPlayer.gd" type="Script" id=1]
 [ext_resource path="res://actors/TheUniqueBullet/Bullet.tscn" type="PackedScene" id=2]
@@ -17,7 +17,7 @@
 [ext_resource path="res://assets/SFX/270308__littlerobotsoundfactory__explosion-00.wav" type="AudioStream" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4.42775, 6.06252 )
+extents = Vector2( 4.5, 6 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 4.1541, 0.483639 )
@@ -168,6 +168,12 @@ extents = Vector2( 5.5, 7 )
 size = 8
 font_data = ExtResource( 8 )
 
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 1, 1 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 1, 1 )
+
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
 ]]
@@ -187,7 +193,6 @@ boost_time = 0.4
 coyote_time = 2.0
 jump_height = 40.0
 gravity_acceleration = 500.0
-max_falling_velocity = 100.0
 
 [node name="PlayerSprite" type="Sprite" parent="."]
 editor/display_folded = true
@@ -224,6 +229,8 @@ position = Vector2( -0.5, 2 )
 shape = SubResource( 1 )
 
 [node name="PlatformSentinel" type="Area2D" parent="."]
+editor/display_folded = true
+visible = false
 position = Vector2( -0.5, 7.5 )
 collision_layer = 0
 collision_mask = 3
@@ -395,6 +402,7 @@ align = 1
 one_shot = true
 
 [node name="SFX" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="Jump" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 9 )
@@ -430,6 +438,32 @@ bus = "SFX"
 [node name="Death" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 15 )
 bus = "SFX"
+
+[node name="RightLedgeDetector" type="Area2D" parent="."]
+editor/display_folded = true
+visible = false
+position = Vector2( 4, 8 )
+collision_layer = 0
+collision_mask = 3
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightLedgeDetector"]
+shape = SubResource( 10 )
+
+[node name="LeftLedgeDetector" type="Area2D" parent="."]
+editor/display_folded = true
+visible = false
+position = Vector2( -5, 8 )
+collision_layer = 0
+collision_mask = 3
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftLedgeDetector"]
+shape = SubResource( 11 )
 [connection signal="timeout" from="BoostTimer" to="." method="_on_BoostTimer_timeout"]
 [connection signal="timeout" from="DropTimer" to="." method="_on_DropTimer_timeout"]
 [connection signal="body_entered" from="SpikesSentinel" to="." method="_on_SpikesSentinel_body_entered"]

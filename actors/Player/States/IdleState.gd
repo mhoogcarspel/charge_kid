@@ -15,6 +15,7 @@ func update(delta):
 	if owner.is_on_floor():
 		coyote_timer = 0.0
 		animation_player.play("Idle")
+		store_checkpoint()
 		
 		#################Checking for any inputs########################
 		if jump_input_pressed():

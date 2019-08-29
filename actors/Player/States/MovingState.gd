@@ -14,6 +14,7 @@ func update(delta):
 	owner.drop()
 	if owner.is_on_floor():
 		animation_player.play("Walking")
+		store_checkpoint()
 		
 		#################Checking for any inputs########################
 		if jump_input_pressed():
