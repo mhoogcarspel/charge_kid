@@ -32,7 +32,7 @@ func update(delta):
 		owner.get_node("BoostParticles4").emitting = false
 		owner.horizontal_move(get_directional_inputs(), delta, 3)
 		owner.gravity(delta, 2)
-	
+			
 		if Input.is_action_just_pressed("ui_boost") && owner.can_boost:
 			if is_holding_bullet():
 				owner.change_state("BulletBoostingState")
