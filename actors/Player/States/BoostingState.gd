@@ -23,6 +23,7 @@ func enter():
 
 func update(delta):
 	boosting_time += delta
+	owner.horizontal_move(get_directional_inputs(), delta, 3)
 	
 	#######################Finishing the boost timer ###########################
 	if boosting_time > owner.boost_time:
@@ -30,7 +31,6 @@ func update(delta):
 		owner.get_node("BoostParticles2").emitting = false
 		owner.get_node("BoostParticles3").emitting = false
 		owner.get_node("BoostParticles4").emitting = false
-		owner.horizontal_move(get_directional_inputs(), delta, 3)
 		owner.gravity(delta, 2)
 			
 		if Input.is_action_just_pressed("ui_boost") && owner.can_boost:
