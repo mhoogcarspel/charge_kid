@@ -186,10 +186,10 @@ factor = 1.0
 has_bullet = true
 horizontal_acceleration = 600.0
 max_horizontal_velocity = 100.0
-deacceleration_horizontal_velocity = 600.0
+deacceleration_horizontal_velocity = 1200.0
 boost_distance = 64.0
 boost_time = 0.4
-coyote_time = 0.1
+coyote_time = 2.0
 jump_height = 40.0
 gravity_acceleration = 500.0
 max_falling_velocity = 100.0
@@ -400,7 +400,6 @@ align = 1
 one_shot = true
 
 [node name="SFX" type="Node" parent="."]
-editor/display_folded = true
 
 [node name="Jump" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 9 )

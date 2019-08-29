@@ -11,6 +11,7 @@ func _init(owner: KinematicBody2D):
 func update(delta):
 	owner.horizontal_move(get_directional_inputs(), delta)
 	owner.gravity(delta)
+	owner.drop()
 	if owner.is_on_floor():
 		coyote_timer = 0.0
 		animation_player.play("Idle")

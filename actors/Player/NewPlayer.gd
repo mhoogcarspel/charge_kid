@@ -107,6 +107,7 @@ func gravity(delta: float, factor: float = 1):
 	self.velocity.y += gravity_acceleration*delta*factor
 
 func jump():
+	$SFX/Jump.play()
 	self.velocity.y = -jump_velocity
 
 func is_on_platform() -> bool:
@@ -179,3 +180,11 @@ func check_for_blocks(Sensor: Area2D) -> bool:
 		if body.is_in_group("blocks"):
 			return false
 	return true
+
+func drop() -> void:
+	if Input.is_action_just_pressed("ui_down") && $DropTimer.is_stopped() && is_on_floor() && is_on_platform():
+		self.set_collision_mask_bit(1,false)
+		$DropTimer.start()
+
+func _on_DropTimer_timeout():
+	self.set_collision_mask_bit(1,true)

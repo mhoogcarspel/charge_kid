@@ -23,16 +23,9 @@ func enter():
 
 func update(delta):
 	boosting_time += delta
-	owner.horizontal_move(get_directional_inputs(), delta, 3)
-	
 	#######################Finishing the boost timer ###########################
-	if boosting_time > owner.boost_time:
-		owner.get_node("BoostParticles1").emitting = false
-		owner.get_node("BoostParticles2").emitting = false
-		owner.get_node("BoostParticles3").emitting = false
-		owner.get_node("BoostParticles4").emitting = false
-		owner.gravity(delta, 2)
-			
+	if boosting_time > owner.boost_time*3/4:
+		owner.horizontal_move(get_directional_inputs(), delta, 3)
 		if Input.is_action_just_pressed("ui_boost") && owner.can_boost:
 			if is_holding_bullet():
 				owner.change_state("BulletBoostingState")
@@ -41,6 +34,13 @@ func update(delta):
 				owner.change_state("BoostingState")
 				return
 	###############################################################################
+	
+	if boosting_time > owner.boost_time:
+		owner.gravity(delta, 2)
+		owner.get_node("BoostParticles1").emitting = false
+		owner.get_node("BoostParticles2").emitting = false
+		owner.get_node("BoostParticles3").emitting = false
+		owner.get_node("BoostParticles4").emitting = false
 	
 	if !owner.is_on_floor():
 		animation_player.play("Airborne")
@@ -54,3 +54,9 @@ func update(delta):
 	else:
 		owner.pop_state()
 		return
+
+func exit():
+		owner.get_node("BoostParticles1").emitting = false
+		owner.get_node("BoostParticles2").emitting = false
+		owner.get_node("BoostParticles3").emitting = false
+		owner.get_node("BoostParticles4").emitting = false
