@@ -71,13 +71,6 @@ func change_state(state: String):
 		"MovingState":
 			stack.push_front(state)
 		"ShootingState":
-			if (previous_state == "JumpingState" 
-				|| previous_state == "BoostingState" 
-					|| previous_state == "BulletBoostingState"):
-				
-				states[stack[0]].exit()
-				stack.pop_front()
-				stack.push_front("OnAirState")
 			stack.push_front(state)
 		"OnAirState":
 			stack.push_front(state)
@@ -102,7 +95,6 @@ func pop_state():
 	print(stack)
 	states[stack[0]].exit()
 	self.stack.pop_front()
-	states[stack[0]].enter()
 	print(stack)
 
 func horizontal_move(direction: Vector2, delta: float, factor: float = 1.0, dissipation: bool = true) -> void:
