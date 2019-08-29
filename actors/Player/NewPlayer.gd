@@ -48,6 +48,7 @@ var checkpoint: Vector2
 var pre_checkpoint: Vector2
 
 func _ready():
+	$PlayerCamera.limit_right = level_length
 	print("jump_velocity:")
 	print(jump_velocity)
 	can_shoot = has_bullet

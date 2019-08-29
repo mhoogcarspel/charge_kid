@@ -12,6 +12,7 @@ func _init(owner: KinematicBody2D):
 	self.animation_player = owner.get_node("AnimationPlayer")
 
 func enter():
+	owner.can_boost = false
 	boost_time = 0
 	bullet = owner.get_tree().get_nodes_in_group("bullet")[0]
 	relative_position_to_bullet = (bullet.position - owner.position)

@@ -17,7 +17,7 @@ func enter():
 
 func update(delta):
 	boosting_time += delta
-	owner.horizontal_move(get_directional_inputs(), delta, 3)
+	owner.horizontal_move(get_directional_inputs(), delta, 0.5)
 	#######################Finishing the boost timer ###########################
 	if boosting_time > owner.boost_time*3/4:
 		if boost_input_pressed():
