@@ -55,8 +55,6 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, Vector2(0, -1))
 
 func change_state(state: String):
-	print(state)
-	print(stack)
 	var previous_state = stack[0]
 	match state:
 		"IdleState":
@@ -77,8 +75,15 @@ func change_state(state: String):
 			stack.push_front(state)
 		"JumpingState":
 			stack.push_front(state)
+		"BoostingState":
+			if previous_state == "JumpingState"|| previous_state == "BoostingState" || previous_state == "BulletBoostingState":
+				states[stack[0]].exit()
+				stack.pop_front()
+			stack.push_front(state)
 	states[previous_state].exit()
 	states[state].enter()
+	print(state)
+	print(stack)
 
 func pop_state():
 	print(stack)
