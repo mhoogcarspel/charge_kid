@@ -102,7 +102,7 @@ message = "what are you doing?"
 message_time = 3.0
 
 [node name="CollisionShape2D" parent="Message" index="0"]
-position = Vector2( 0, 3.8147e-006 )
+position = Vector2( 0, 3.8147e-06 )
 
 [node name="TriggeredPlatform" parent="." instance=ExtResource( 10 )]
 position = Vector2( 928, 264 )
