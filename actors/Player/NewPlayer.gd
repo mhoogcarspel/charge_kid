@@ -108,12 +108,12 @@ func pop_state():
 func horizontal_move(direction: Vector2, delta: float, factor: float = 1.0, dissipation: bool = true) -> void:
 	if direction.x != 0:
 		velocity += direction*delta*horizontal_acceleration*factor
-		velocity.x = clamp(velocity.x, -max_horizontal_velocity, max_horizontal_velocity)
 	elif velocity.x != 0 && dissipation:
 		var signal_velocity = velocity.x/abs(velocity.x)
 		velocity.x -= velocity.x/abs(velocity.x) * deacceleration_horizontal_velocity * delta
 		if signal_velocity != velocity.x/abs(velocity.x):
 			velocity.x = 0
+	velocity.x = clamp(velocity.x, -max_horizontal_velocity, max_horizontal_velocity)
 	return
 
 func gravity(delta: float, factor: float = 1):
