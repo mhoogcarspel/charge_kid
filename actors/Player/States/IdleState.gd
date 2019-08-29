@@ -17,21 +17,14 @@ func update(delta):
 		animation_player.play("Idle")
 		
 		#################Checking for any inputs########################
-		if Input.is_action_just_pressed("ui_jump"):
-			owner.change_state("JumpingState")
+		if jump_input_pressed():
 			return
 		
-		elif Input.is_action_just_pressed("ui_shoot") && owner.has_bullet:
-			owner.change_state("ShootingState")
+		elif shoot_input_pressed():
 			return
 		
-		elif Input.is_action_just_pressed("ui_boost") && owner.can_boost:
-			if is_holding_bullet():
-				owner.change_state("BulletBoostingState")
-				return
-			else:
-				owner.change_state("BoostingState")
-				return
+		elif boost_input_pressed():
+			return
 		
 		elif get_directional_inputs().length() > 0:
 			owner.change_state("MovingState")
@@ -41,7 +34,5 @@ func update(delta):
 		##################################################################
 	
 	else:
-		coyote_timer += delta
-		if coyote_timer > owner.coyote_time:
-			owner.change_state("OnAirState")
+		owner.change_state("OnAirState")
 		return

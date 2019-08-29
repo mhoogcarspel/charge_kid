@@ -13,41 +13,26 @@ func enter():
 	owner.velocity = Vector2(0, -owner.boost_speed)
 	
 	owner.get_node("SFX/SuperJump").play()
-	owner.get_node("FeetParticles").emitting = false
-	owner.get_node("FeetParticles2").emitting = false
-	owner.get_node("FeetParticles3").emitting = false
-	owner.get_node("BoostParticles1").emitting = true
-	owner.get_node("BoostParticles2").emitting = true
-	owner.get_node("BoostParticles3").emitting = true
-	owner.get_node("BoostParticles4").emitting = true
+	boosting_particles(true)
 
 func update(delta):
 	boosting_time += delta
+	owner.horizontal_move(get_directional_inputs(), delta, 3)
 	#######################Finishing the boost timer ###########################
 	if boosting_time > owner.boost_time*3/4:
-		owner.horizontal_move(get_directional_inputs(), delta, 3)
-		if Input.is_action_just_pressed("ui_boost") && owner.can_boost:
-			if is_holding_bullet():
-				owner.change_state("BulletBoostingState")
-				return
-			else:
-				owner.change_state("BoostingState")
-				return
+		if boost_input_pressed():
+			return
 	###############################################################################
 	
 	if boosting_time > owner.boost_time:
 		owner.gravity(delta, 2)
-		owner.get_node("BoostParticles1").emitting = false
-		owner.get_node("BoostParticles2").emitting = false
-		owner.get_node("BoostParticles3").emitting = false
-		owner.get_node("BoostParticles4").emitting = false
+		boosting_particles(false)
 	
 	if !owner.is_on_floor():
 		animation_player.play("Airborne")
 	
 		#################Checking for any inputs########################
-		if Input.is_action_just_pressed("ui_shoot") && owner.has_bullet:
-			owner.change_state("ShootingState")
+		if shoot_input_pressed():
 			return
 		##################################################################
 	
@@ -56,7 +41,4 @@ func update(delta):
 		return
 
 func exit():
-		owner.get_node("BoostParticles1").emitting = false
-		owner.get_node("BoostParticles2").emitting = false
-		owner.get_node("BoostParticles3").emitting = false
-		owner.get_node("BoostParticles4").emitting = false
+	boosting_particles(false)

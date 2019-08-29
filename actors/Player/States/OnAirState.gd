@@ -23,17 +23,11 @@ func update(delta):
 			owner.change_state("JumpingState")
 			return
 		
-		if Input.is_action_just_pressed("ui_shoot") && owner.has_bullet:
-			owner.change_state("ShootingState")
+		if shoot_input_pressed():
 			return
 		
-		elif Input.is_action_just_pressed("ui_boost") && owner.can_boost:
-			if is_holding_bullet():
-				owner.change_state("BulletBoostingState")
-				return
-			else:
-				owner.change_state("BoostingState")
-				return
+		elif boost_input_pressed():
+			return
 		##################################################################
 	
 	else:

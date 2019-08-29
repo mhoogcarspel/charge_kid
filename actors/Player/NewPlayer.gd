@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 export(bool) var god_mode
+export(float) var level_length
 
 export(PackedScene) var bullet
 export(float) var shoot_offset
@@ -32,7 +33,9 @@ onready var states: Dictionary = {
 	"OnAirState" : OnAirState.new(self),
 	"JumpingState" : JumpingState.new(self),
 	"ShootingState" : ShootingState.new(self),
-	"BoostingState" : BoostingState.new(self)
+	"BoostingState" : BoostingState.new(self),
+	"BulletBoostingState": BulletBoostingState.new(self),
+	"DyingState" : DyingState.new(self)
 	}
 onready var actual_state: String
 onready var stack: Array = []
@@ -40,6 +43,9 @@ onready var stack: Array = []
 onready var can_shoot:bool
 onready var can_boost:bool
 onready var facing:float = 1
+
+var checkpoint: Vector2
+var pre_checkpoint: Vector2
 
 func _ready():
 	print("jump_velocity:")
@@ -51,8 +57,9 @@ func _physics_process(delta):
 	actual_state = stack[0]
 	states[actual_state].update(delta)
 	
-	$StateMachineDebugger.text = actual_state
 	velocity = move_and_slide(velocity, Vector2(0, -1))
+	if is_on_floor():
+		pre_checkpoint = position
 
 func change_state(state: String):
 	var previous_state = stack[0]
@@ -75,8 +82,13 @@ func change_state(state: String):
 			stack.push_front(state)
 		"JumpingState":
 			stack.push_front(state)
-		"BoostingState":
+		"BoostingState","BulletBoostingState":
 			if previous_state == "JumpingState"|| previous_state == "BoostingState" || previous_state == "BulletBoostingState":
+				states[stack[0]].exit()
+				stack.pop_front()
+			stack.push_front(state)
+		"DyingState":
+			while(!stack.empty()):
 				states[stack[0]].exit()
 				stack.pop_front()
 			stack.push_front(state)
@@ -92,11 +104,11 @@ func pop_state():
 	states[stack[0]].enter()
 	print(stack)
 
-func horizontal_move(direction: Vector2, delta: float, factor: float = 1.0) -> void:
+func horizontal_move(direction: Vector2, delta: float, factor: float = 1.0, dissipation: bool = true) -> void:
 	if direction.x != 0:
 		velocity += direction*delta*horizontal_acceleration*factor
 		velocity.x = clamp(velocity.x, -max_horizontal_velocity, max_horizontal_velocity)
-	elif velocity.x != 0:
+	elif velocity.x != 0 && dissipation:
 		var signal_velocity = velocity.x/abs(velocity.x)
 		velocity.x -= velocity.x/abs(velocity.x) * deacceleration_horizontal_velocity * delta
 		if signal_velocity != velocity.x/abs(velocity.x):
@@ -188,3 +200,35 @@ func drop() -> void:
 
 func _on_DropTimer_timeout():
 	self.set_collision_mask_bit(1,true)
+
+func _on_SpikesSentinel_body_entered(body):
+	if body.is_in_group("spikes"):
+		change_state("DyingState")
+
+func kill() -> void:
+	$SFX/Death.play()
+	$PlayerSprite.visible = false
+	$DeathParticles.emitting = true
+	$FeetParticles.emitting = false
+	$FeetParticles2.emitting = false
+	$FeetParticles3.emitting = false
+	var timer = Timer.new()
+	add_child(timer)
+	timer.start(0.5)
+	yield(timer, "timeout")
+	reset()
+
+func reset() -> void:
+	if get_tree().get_nodes_in_group("main").size() > 0:
+		var main = get_tree().get_nodes_in_group("main")[0]
+		var next_player = main.player_scene.instance()
+		next_player.position = checkpoint
+		next_player.level_length = self.level_length
+		
+		if get_tree().get_nodes_in_group("bullet").size() > 0:
+			get_tree().get_nodes_in_group("bullet")[0].queue_free()
+		
+		get_parent().add_child(next_player)
+		self.queue_free()
+	else:
+		get_tree().reload_current_scene()

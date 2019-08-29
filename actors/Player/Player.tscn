@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://actors/Player/NewPlayer.gd" type="Script" id=1]
 [ext_resource path="res://actors/TheUniqueBullet/Bullet.tscn" type="PackedScene" id=2]
@@ -15,7 +15,6 @@
 [ext_resource path="res://assets/SFX/270341__littlerobotsoundfactory__pickup-04.wav" type="AudioStream" id=13]
 [ext_resource path="res://assets/SFX/270338__littlerobotsoundfactory__open-01.wav" type="AudioStream" id=14]
 [ext_resource path="res://assets/SFX/270308__littlerobotsoundfactory__explosion-00.wav" type="AudioStream" id=15]
-[ext_resource path="res://common/LabelBaseModel.gd" type="Script" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4.42775, 6.06252 )
@@ -166,10 +165,6 @@ radius = 1.5291
 extents = Vector2( 5.5, 7 )
 
 [sub_resource type="DynamicFont" id=9]
-size = 8
-font_data = ExtResource( 8 )
-
-[sub_resource type="DynamicFont" id=10]
 size = 8
 font_data = ExtResource( 8 )
 
@@ -435,15 +430,6 @@ bus = "SFX"
 [node name="Death" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 15 )
 bus = "SFX"
-
-[node name="StateMachineDebugger" type="Label" parent="."]
-margin_left = -28.088
-margin_top = -20.9207
-margin_right = 35.912
-margin_bottom = -6.92074
-custom_fonts/font = SubResource( 10 )
-text = "Debugger"
-script = ExtResource( 16 )
 [connection signal="timeout" from="BoostTimer" to="." method="_on_BoostTimer_timeout"]
 [connection signal="timeout" from="DropTimer" to="." method="_on_DropTimer_timeout"]
 [connection signal="body_entered" from="SpikesSentinel" to="." method="_on_SpikesSentinel_body_entered"]

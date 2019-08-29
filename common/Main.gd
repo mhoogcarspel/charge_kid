@@ -2,6 +2,8 @@ extends Node
 
 export(PackedScene) var start_scene
 export(PackedScene) var pause_menu
+export(PackedScene) var debugger_layer
+export(bool) var debugging
 
 onready var actions: Dictionary = {
 	"ui_jump": "Jump",
@@ -20,6 +22,9 @@ onready var player_scene: PackedScene = preload("res://actors/Player/Player.tscn
 var actual_scene: PackedScene
 
 func _ready():
+	if debugging:
+		$HudContainer.add_child(debugger_layer.instance())
+		pass
 	var start = start_scene.instance()
 	add_child(start)
 	actual_scene = start_scene

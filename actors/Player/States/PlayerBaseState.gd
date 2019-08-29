@@ -14,14 +14,26 @@ func get_directional_inputs() -> Vector2:
 		owner.facing = directionals.x/abs(directionals.x)
 	return directionals
 
-func get_shoot_input() -> bool:
-	return Input.is_action_just_pressed("ui_shoot")
+func shoot_input_pressed() -> bool:
+	if Input.is_action_just_pressed("ui_shoot") && owner.has_bullet:
+		owner.change_state("ShootingState")
+		return true
+	return false
 
-func get_jump_input() -> bool:
-	return Input.is_action_just_pressed("ui_jump")
+func jump_input_pressed() -> bool:
+	if Input.is_action_just_pressed("ui_jump"):
+		owner.change_state("JumpingState")
+		return true
+	return false
 
-func get_boost_input() -> bool:
-	return Input.is_action_just_pressed("ui_boost")
+func boost_input_pressed() -> bool:
+	if Input.is_action_just_pressed("ui_boost") && owner.can_boost:
+		if is_holding_bullet():
+			owner.change_state("BulletBoostingState")
+			return true
+		owner.change_state("BoostingState")
+		return true
+	return false
 
 func is_holding_bullet() -> bool:
 	if owner.get_tree().get_nodes_in_group("bullet").size() > 0:
@@ -35,3 +47,14 @@ func is_holding_bullet() -> bool:
 
 func gravity(delta):
 	owner.velocity.y += owner.gravity_acceleration*delta
+
+func boosting_particles(switch: bool):
+	if switch:
+		owner.get_node("FeetParticles").emitting = false
+		owner.get_node("FeetParticles2").emitting = false
+		owner.get_node("FeetParticles3").emitting = false
+		
+	owner.get_node("BoostParticles1").emitting = switch
+	owner.get_node("BoostParticles2").emitting = switch
+	owner.get_node("BoostParticles3").emitting = switch
+	owner.get_node("BoostParticles4").emitting = switch
