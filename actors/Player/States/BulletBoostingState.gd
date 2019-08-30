@@ -12,6 +12,7 @@ func _init(owner: KinematicBody2D):
 	self.animation_player = owner.get_node("AnimationPlayer")
 
 func enter():
+	owner.get_node("SFX/SuperJump").play()
 	owner.can_boost = false
 	boost_time = 0
 	bullet = owner.get_tree().get_nodes_in_group("bullet")[0]
@@ -52,6 +53,7 @@ func update(delta):
 					owner.change_state("BoostingState")
 					return
 	else:
+		land_sound()
 		boosting_particles(false)
 		owner.pop_state()
 	

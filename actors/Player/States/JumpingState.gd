@@ -37,5 +37,6 @@ func update(delta):
 		return
 	
 	else:
+		land_sound()
 		owner.pop_state()
 		return

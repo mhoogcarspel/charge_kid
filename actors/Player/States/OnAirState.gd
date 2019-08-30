@@ -31,5 +31,6 @@ func update(delta):
 		##################################################################
 	
 	else:
+		land_sound()
 		owner.pop_state()
 	pass

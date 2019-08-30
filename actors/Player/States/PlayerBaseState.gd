@@ -72,5 +72,9 @@ func store_checkpoint() -> void:
 	if left and right:
 		owner.checkpoint = owner.position
 
+func land_sound() -> void:
+	owner.get_node("SFX/Land").play()
+	return
+
 
 
