@@ -10,7 +10,7 @@ func _init(owner: Node, player):
 	self.player = player
 
 func enter():
-	owner.get_node("PhysicalCollider").disabled = false
+	owner.get_node("PhysicalCollider").set_deferred("disabled", false)
 	velocity = owner.velocity
 
 func update(delta):

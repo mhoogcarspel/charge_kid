@@ -38,6 +38,7 @@ func enter():
 	owner.velocity = boost_velocity
 
 func update(delta):
+	animation_player.play("Airborne")
 	boost_timer += delta
 	if !owner.is_on_floor():
 		if !(boost_timer < boost_time):
