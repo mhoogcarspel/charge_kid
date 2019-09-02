@@ -17,8 +17,7 @@ func update(delta):
 	if !owner.is_on_floor():
 		animation_player.play("Airborne")
 		
-		#################Checking for any inputs########################
-		
+		################# Checking for any inputs ########################
 		if Input.is_action_just_pressed("ui_shoot") && owner.has_bullet:
 			owner.change_state("ShootingState")
 			return
@@ -33,10 +32,20 @@ func update(delta):
 		##################################################################
 		
 		if Input.is_action_just_released("ui_jump") && owner.velocity.y < 0:
-			owner.velocity.y = 0
+			owner.velocity.y /= 3
+		
+		if Input.is_action_just_pressed("ui_jump"):
+			owner.get_node("BunnyTimer").start(owner.bunny_time)
 		return
 	
 	else:
 		land_sound()
-		owner.pop_state()
+		if !owner.get_node("BunnyTimer").is_stopped():
+			owner.get_node("BunnyTimer").stop()
+			owner.jump()
+		else:
+			owner.pop_state()
 		return
+
+
+

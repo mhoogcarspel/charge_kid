@@ -20,6 +20,7 @@ export(float) var boost_time
 onready var boost_speed:float = boost_distance/boost_time
 
 export(float) var coyote_time
+export(float) var bunny_time
 export(float) var jump_height
 export(float) var gravity_acceleration
 

@@ -192,6 +192,7 @@ deacceleration_horizontal_velocity = 1200.0
 boost_distance = 64.0
 boost_time = 0.4
 coyote_time = 0.08
+bunny_time = 0.1
 jump_height = 40.0
 gravity_acceleration = 500.0
 
@@ -348,6 +349,9 @@ color = Color( 1, 0.309804, 0.470588, 1 )
 
 [node name="DeathParticles" parent="." instance=ExtResource( 7 )]
 
+[node name="BunnyTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="CoyoteTimer" type="Timer" parent="."]
 one_shot = true
 
@@ -403,6 +407,7 @@ script = ExtResource( 9 )
 one_shot = true
 
 [node name="SFX" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="Jump" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 10 )
