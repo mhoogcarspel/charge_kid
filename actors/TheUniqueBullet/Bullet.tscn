@@ -16,8 +16,8 @@ extents = Vector2( 2.70207, 3.05248 )
 collision_layer = 0
 script = ExtResource( 1 )
 initial_state = "StandingState"
-velocity = 200.0
-velocity_fuel = 300.0
+velocity = 250.0
+velocity_fuel = 400.0
 range_distance = 116.0
 gravity_accel = 400.0
 

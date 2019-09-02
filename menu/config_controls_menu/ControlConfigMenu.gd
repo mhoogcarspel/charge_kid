@@ -12,7 +12,6 @@ onready var pause_menu: bool
 func _ready():
 	var previous_button: Button = null
 	for key in control_handler.actions_dictionary.keys():
-		print(key)
 		var button = button_model.instance()
 		button.parse(self, key, control_handler.actions_dictionary[key], control_handler)
 		$CenterContainer/VBoxContainer/Map.add_child(button)
