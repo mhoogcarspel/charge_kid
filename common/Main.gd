@@ -26,7 +26,7 @@ func _ready():
 		$HudContainer.add_child(debugger_layer.instance())
 		pass
 	var start = start_scene.instance()
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	add_child(start)
 	actual_scene = start_scene
 
