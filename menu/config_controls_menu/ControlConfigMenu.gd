@@ -4,9 +4,9 @@ export(PackedScene) var button_model
 
 onready var control_handler = get_tree().get_nodes_in_group("main")[0].control_handler
 onready var next_scene = null
-onready var YELLOW:String = "#f7ff00"
-onready var RED:String ="#ff0000"
-onready var PINK:String = "#ff4f78"
+onready var YELLOW: String = "#f7ff00"
+onready var RED: String = "#ff0000"
+onready var PINK: String = "#ff4f78"
 onready var pause_menu: bool
 
 func _ready():

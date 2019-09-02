@@ -28,10 +28,10 @@ func jump_input_pressed() -> bool:
 
 func boost_input_pressed() -> bool:
 	if Input.is_action_just_pressed("ui_boost") && owner.can_boost:
-		if is_holding_bullet():
-			owner.change_state("BulletBoostingState")
-			return true
 		owner.change_state("BoostingState")
+		return true
+	if Input.is_action_just_pressed("ui_bullet_boost") && is_holding_bullet() && owner.can_boost:
+		owner.change_state("BulletBoostingState")
 		return true
 	return false
 

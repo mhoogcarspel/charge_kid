@@ -42,7 +42,6 @@ func update(delta):
 	boost_timer += delta
 	if !owner.is_on_floor():
 		if !(boost_timer < boost_time):
-			print("Acabou o Tempo")
 			owner.horizontal_move(get_directional_inputs(), delta, 3)
 			owner.gravity(delta, 2)
 			boosting_particles(false)

@@ -9,6 +9,7 @@ onready var actions: Dictionary = {
 	"ui_jump": "Jump",
 	"ui_shoot": "Shoot",
 	"ui_boost": "Boost",
+	"ui_bullet_boost": "Bullet Boost",
 	"ui_left": "Left",
 	"ui_right": "Right",
 	"ui_up": "Up",

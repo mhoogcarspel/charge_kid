@@ -41,7 +41,6 @@ onready var states: Dictionary = {
 onready var actual_state: String
 onready var stack: Array = []
 
-onready var can_shoot:bool
 onready var can_boost:bool
 onready var facing:float = 1
 
@@ -52,7 +51,6 @@ func _ready():
 	$PlayerCamera.limit_right = level_length
 	print("jump_velocity:")
 	print(jump_velocity)
-	can_shoot = has_bullet
 	stack.push_front("IdleState")
 
 func _physics_process(delta):
