@@ -15,6 +15,7 @@ func enter():
 	owner.get_node("SFX/SuperJump").play()
 	owner.can_boost = false
 	boost_time = 0
+	boost_timer = 0
 	bullet = owner.get_tree().get_nodes_in_group("bullet")[0]
 	relative_position_to_bullet = (bullet.position - owner.position)
 	
@@ -41,11 +42,17 @@ func update(delta):
 	animation_player.play("Airborne")
 	boost_timer += delta
 	if !owner.is_on_floor():
-		if !(boost_timer < boost_time):
+		print(boost_timer)
+		if boost_timer >= boost_time:
 			owner.horizontal_move(get_directional_inputs(), delta, 3)
+			print("Gravity")
 			owner.gravity(delta, 2)
+			print(owner.velocity.y)
 			boosting_particles(false)
-			if boost_input_pressed():
+			
+			if shoot_input_pressed():
+				return
+			elif boost_input_pressed():
 				return
 			elif bullet_boost_input_pressed():
 				return
@@ -53,11 +60,6 @@ func update(delta):
 		land_sound()
 		boosting_particles(false)
 		owner.pop_state()
-	
-	if Input.is_action_just_pressed("ui_shoot") && owner.has_bullet:
-		owner.change_state("ShootingState")
-		return
 
 func exit():
 	boosting_particles(false)
-	boost_timer = 0
