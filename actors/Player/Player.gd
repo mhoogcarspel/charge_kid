@@ -74,6 +74,8 @@ func change_state(state: String):
 		"OnAirState":
 			stack.push_front(state)
 		"JumpingState":
+			if previous_state == "JumpingState":
+				stack.pop_front()
 			stack.push_front(state)
 		"BoostingState","BulletBoostingState":
 			if previous_state == "JumpingState"|| previous_state == "BoostingState" || previous_state == "BulletBoostingState":
