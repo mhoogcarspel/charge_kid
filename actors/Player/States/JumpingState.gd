@@ -18,16 +18,13 @@ func update(delta):
 		animation_player.play("Airborne")
 		
 		################# Checking for any inputs ########################
-		if Input.is_action_just_pressed("ui_shoot") && owner.has_bullet:
-			owner.change_state("ShootingState")
+		if shoot_input_pressed():
 			return
 		
-		elif Input.is_action_just_pressed("ui_boost") && owner.can_boost:
-			owner.change_state("BoostingState")
+		elif boost_input_pressed():
 			return
 		
-		elif Input.is_action_just_pressed("ui_bullet_boost") && is_holding_bullet() && owner.can_boost:
-			owner.change_state("BulletBoostingState")
+		elif bullet_boost_input_pressed():
 			return
 		##################################################################
 		
