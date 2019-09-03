@@ -1,9 +1,9 @@
 [gd_scene load_steps=28 format=2]
 
-[ext_resource path="res://actors/Player/NewPlayer.gd" type="Script" id=1]
+[ext_resource path="res://actors/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://actors/TheUniqueBullet/Bullet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/Spritesheet/industrial.v2.png" type="Texture" id=3]
-[ext_resource path="res://actors/Player/NewPlayerSprite.gd" type="Script" id=4]
+[ext_resource path="res://actors/Player/PlayerSprite.gd" type="Script" id=4]
 [ext_resource path="res://assets/Particles/ProjectileParticles.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/Particles/particle2.png" type="Texture" id=6]
 [ext_resource path="res://assets/Particles/DeathParticles.tscn" type="PackedScene" id=7]
@@ -16,6 +16,8 @@
 [ext_resource path="res://assets/SFX/270341__littlerobotsoundfactory__pickup-04.wav" type="AudioStream" id=14]
 [ext_resource path="res://assets/SFX/270338__littlerobotsoundfactory__open-01.wav" type="AudioStream" id=15]
 [ext_resource path="res://assets/SFX/270308__littlerobotsoundfactory__explosion-00.wav" type="AudioStream" id=16]
+
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4.5, 6 )
