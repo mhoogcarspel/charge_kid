@@ -26,6 +26,9 @@ func update(delta):
 		elif boost_input_pressed():
 			return
 		
+		elif bullet_boost_input_pressed():
+			return
+		
 		elif get_directional_inputs().length() == 0 && owner.velocity.x == 0:
 			print("NoMovement")
 			owner.pop_state()

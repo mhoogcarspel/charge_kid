@@ -17,8 +17,6 @@
 [ext_resource path="res://assets/SFX/270338__littlerobotsoundfactory__open-01.wav" type="AudioStream" id=15]
 [ext_resource path="res://assets/SFX/270308__littlerobotsoundfactory__explosion-00.wav" type="AudioStream" id=16]
 
-
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4.5, 6 )
 
