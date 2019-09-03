@@ -43,7 +43,7 @@ func enter():
 func update(delta):
 	animation_player.play("Airborne")
 	boost_timer += delta
-	if boost_timer >= boost_time:
+	if boost_timer >= boost_time || owner.has_bullet:
 		print(boost_timer)
 		if !owner.is_on_floor() :
 			owner.horizontal_move(get_directional_inputs(), delta, 3)
@@ -63,7 +63,7 @@ func update(delta):
 			boosting_particles(false)
 			owner.pop_state()
 	
-	elif !owner.get_tree().get_nodes_in_group("bullet").empty():
+	else:
 		bullet = owner.get_tree().get_nodes_in_group("bullet")[0]
 		owner.velocity = (bullet.position - owner.position).normalized()*boost_speed
 		
