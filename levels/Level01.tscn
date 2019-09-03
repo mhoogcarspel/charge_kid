@@ -166,7 +166,6 @@ active = true
 
 [node name="FinishLine" parent="." instance=ExtResource( 11 )]
 editor/display_folded = true
-visible = false
 position = Vector2( 1008, 192 )
 next_stage = ExtResource( 12 )
 
