@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
+"class": "BaseLogicGate",
+"language": "GDScript",
+"path": "res://actors/Interactables/LogicGate/BaseLogicGate.gd"
+}, {
+"base": "Node",
 "class": "Block",
 "language": "GDScript",
 "path": "res://assets/Tilemaps/Blocks.gd"
@@ -105,6 +110,7 @@ _global_script_classes=[ {
 "path": "res://actors/State.gd"
 } ]
 _global_script_class_icons={
+"BaseLogicGate": "",
 "Block": "",
 "BoostingState": "",
 "BulletBaseState": "",
