@@ -37,7 +37,7 @@ func update(delta):
 	
 	else:
 		land_sound()
-		if !owner.get_node("BunnyTimer").is_stopped():
+		if !owner.get_node("BunnyTimer").is_stopped() && Input.is_action_pressed("ui_jump"):
 			owner.get_node("BunnyTimer").stop()
 			owner.change_state("JumpingState")
 		else:

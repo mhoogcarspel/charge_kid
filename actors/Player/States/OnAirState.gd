@@ -1,17 +1,19 @@
 extends PlayerBaseState
 class_name OnAirState
 
+var coyote
+var bunny
+
 func _init(owner: KinematicBody2D):
 	self.owner = owner
 	self.animation_player = owner.get_node("AnimationPlayer")
-
-onready var coyote_time:float = 0
+	self.bunny = owner.get_node("BunnyTimer")
+	self.coyote = owner.get_node("CoyoteTimer")
 
 func enter():
-	coyote_time = 0
+	coyote.start(owner.coyote_time)
 
 func update(delta):
-	coyote_time += delta
 	owner.horizontal_move(get_directional_inputs(), delta)
 	owner.gravity(delta)
 	if !owner.is_on_floor():
@@ -19,9 +21,13 @@ func update(delta):
 		
 		#################Checking for any inputs########################
 		
-		if Input.is_action_just_pressed("ui_jump") && coyote_time < owner.coyote_time:
+		if Input.is_action_just_pressed("ui_jump") && !coyote.is_stopped():
 			owner.change_state("JumpingState")
+			coyote.stop()
 			return
+		elif coyote.is_stopped():
+			bunny.start()
+		
 		
 		if shoot_input_pressed():
 			return
@@ -35,5 +41,8 @@ func update(delta):
 	
 	else:
 		land_sound()
+		if not bunny.is_stopped() and Input.is_action_pressed("ui_jump"):
+			bunny.stop()
+			owner.change_state("JumpingState")
 		owner.pop_state()
 	pass
