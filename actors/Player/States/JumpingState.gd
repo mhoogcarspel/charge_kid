@@ -39,7 +39,7 @@ func update(delta):
 		land_sound()
 		if !owner.get_node("BunnyTimer").is_stopped():
 			owner.get_node("BunnyTimer").stop()
-			owner.jump()
+			owner.change_state("JumpingState")
 		else:
 			owner.pop_state()
 		return
