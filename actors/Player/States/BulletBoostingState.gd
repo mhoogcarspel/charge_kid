@@ -4,6 +4,7 @@ class_name BulletBoostingState
 var bullet: KinematicBody2D
 var relative_position_to_bullet: Vector2
 var boost_velocity: Vector2
+var boost_speed: float
 var boost_time:float
 var boost_timer:float
 
@@ -37,13 +38,14 @@ func enter():
 	boosting_particles(true)
 	print(boost_time)
 	owner.velocity = boost_velocity
+	boost_speed = boost_velocity.length()
 
 func update(delta):
 	animation_player.play("Airborne")
 	boost_timer += delta
-	if !owner.is_on_floor():
+	if boost_timer >= boost_time:
 		print(boost_timer)
-		if boost_timer >= boost_time:
+		if !owner.is_on_floor() :
 			owner.horizontal_move(get_directional_inputs(), delta, 3)
 			print("Gravity")
 			owner.gravity(delta, 2)
@@ -56,10 +58,15 @@ func update(delta):
 				return
 			elif bullet_boost_input_pressed():
 				return
-	else:
-		land_sound()
-		boosting_particles(false)
-		owner.pop_state()
+		else:
+			land_sound()
+			boosting_particles(false)
+			owner.pop_state()
+	
+	elif !owner.get_tree().get_nodes_in_group("bullet").empty():
+		bullet = owner.get_tree().get_nodes_in_group("bullet")[0]
+		owner.velocity = (bullet.position - owner.position).normalized()*boost_speed
+		
 
 func exit():
 	boosting_particles(false)
