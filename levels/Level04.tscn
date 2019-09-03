@@ -16,6 +16,7 @@
 [node name="Level04" type="Node2D" groups=[
 "level",
 ]]
+pause_mode = 1
 
 [node name="BackgroundBack" parent="." instance=ExtResource( 1 )]
 editor/display_folded = true

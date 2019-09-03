@@ -45,13 +45,10 @@ func update(delta):
 			owner.horizontal_move(get_directional_inputs(), delta, 3)
 			owner.gravity(delta, 2)
 			boosting_particles(false)
-			if Input.is_action_just_pressed("ui_boost") && owner.can_boost:
-				if is_holding_bullet():
-					owner.change_state("BulletBoostingState")
-					return
-				else:
-					owner.change_state("BoostingState")
-					return
+			if boost_input_pressed():
+				return
+			elif bullet_boost_input_pressed():
+				return
 	else:
 		land_sound()
 		boosting_particles(false)

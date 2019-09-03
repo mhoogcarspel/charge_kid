@@ -28,6 +28,9 @@ func update(delta):
 		
 		elif boost_input_pressed():
 			return
+		
+		elif bullet_boost_input_pressed():
+			return
 		##################################################################
 	
 	else:
