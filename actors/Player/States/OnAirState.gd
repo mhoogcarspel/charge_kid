@@ -20,13 +20,13 @@ func update(delta):
 		animation_player.play("Airborne")
 		
 		#################Checking for any inputs########################
-		
-		if Input.is_action_just_pressed("ui_jump") && !coyote.is_stopped():
-			owner.change_state("JumpingState")
-			coyote.stop()
-			return
-		elif coyote.is_stopped():
-			bunny.start()
+		if Input.is_action_just_pressed("ui_jump"):
+			if !coyote.is_stopped():
+				owner.change_state("JumpingState")
+				coyote.stop()
+				return
+			elif coyote.is_stopped():
+				bunny.start()
 		
 		
 		if shoot_input_pressed():
@@ -43,6 +43,9 @@ func update(delta):
 		land_sound()
 		if not bunny.is_stopped() and Input.is_action_pressed("ui_jump"):
 			bunny.stop()
+			print("BunnyHooooop")
 			owner.change_state("JumpingState")
-		owner.pop_state()
+		
+		else:
+			owner.pop_state()
 	pass
