@@ -10,12 +10,12 @@
 [ext_resource path="res://actors/Interactables/TriggeredPlatform.tscn" type="PackedScene" id=8]
 [ext_resource path="res://actors/Interactables/SwitchBody.tscn" type="PackedScene" id=9]
 [ext_resource path="res://actors/Interactables/FuelTank.tscn" type="PackedScene" id=10]
-[ext_resource path="res://common/FinishLine.tscn" type="PackedScene" id=11]
-[ext_resource path="res://levels/Level02.tscn" type="PackedScene" id=12]
-[ext_resource path="res://levels/Messages/JumpMessage.tscn" type="PackedScene" id=13]
-[ext_resource path="res://levels/Messages/ShootMessage.tscn" type="PackedScene" id=14]
-[ext_resource path="res://levels/Messages/BoostMessage.tscn" type="PackedScene" id=15]
-[ext_resource path="res://levels/Messages/Message.tscn" type="PackedScene" id=16]
+[ext_resource path="res://levels/Messages/JumpMessage.tscn" type="PackedScene" id=11]
+[ext_resource path="res://levels/Messages/ShootMessage.tscn" type="PackedScene" id=12]
+[ext_resource path="res://levels/Messages/BoostMessage.tscn" type="PackedScene" id=13]
+[ext_resource path="res://levels/Messages/Message.tscn" type="PackedScene" id=14]
+[ext_resource path="res://levels/FinishLine.tscn" type="PackedScene" id=15]
+[ext_resource path="res://levels/Level02.tscn" type="PackedScene" id=16]
 
 [node name="Level01" type="Node2D" groups=[
 "level",
@@ -163,43 +163,40 @@ position = Vector2( 944, 152 )
 rotation = 1.5708
 active = true
 
-[node name="FinishLine" parent="." instance=ExtResource( 11 )]
-editor/display_folded = true
-position = Vector2( 1008, 192 )
-next_stage = ExtResource( 12 )
-
-[node name="JumpMessage" parent="." instance=ExtResource( 13 )]
+[node name="JumpMessage" parent="." instance=ExtResource( 11 )]
 visible = false
 position = Vector2( 200, 232 )
 
 [node name="CollisionPolygon2D" parent="JumpMessage" index="0"]
 polygon = PoolVector2Array( -32, 8, 168, 8, 168, 56, -32, 56 )
 
-[node name="ShootMessage" parent="." instance=ExtResource( 14 )]
+[node name="ShootMessage" parent="." instance=ExtResource( 12 )]
 visible = false
 position = Vector2( 120, 104 )
 
-[node name="BoostMessage" parent="." instance=ExtResource( 15 )]
+[node name="BoostMessage" parent="." instance=ExtResource( 13 )]
 visible = false
 position = Vector2( 552, 176 )
 
 [node name="CollisionPolygon2D" parent="BoostMessage" index="0"]
 polygon = PoolVector2Array( -408, 48, -32, 48, -32, 120, -408, 120 )
 
-[node name="EasterEgg01" parent="." instance=ExtResource( 16 )]
+[node name="Message2" parent="." instance=ExtResource( 14 )]
 editor/display_folded = true
 visible = false
 position = Vector2( 936, 48 )
 message = "totally intended"
 
-[node name="CollisionShape2D" parent="EasterEgg01" index="0"]
-position = Vector2( 0, -8 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Message2"]
+polygon = PoolVector2Array( 24, 32, 24, 16, -16, 16, -16, 32 )
 
-[node name="Message" parent="." instance=ExtResource( 16 )]
+[node name="Message" parent="." instance=ExtResource( 14 )]
 editor/display_folded = true
-visible = false
 position = Vector2( 40, 24 )
 message = "good job!"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Message"]
+polygon = PoolVector2Array( 32, 24, 32, -16, -40, -16, -40, 24 )
 
 [node name="TriggeredPlatform15" parent="." instance=ExtResource( 8 )]
 position = Vector2( 464, 168 )
@@ -211,20 +208,23 @@ position = Vector2( 480, 168 )
 rotation = 1.5708
 active = true
 
+[node name="FinishLine" parent="." instance=ExtResource( 15 )]
+position = Vector2( 1000, 184 )
+next_stage = ExtResource( 16 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FinishLine"]
+polygon = PoolVector2Array( 24, 24, 24, 0, -16, 0, -16, 24 )
+
 [editable path="BackgroundBack"]
 
 [editable path="BackgroundFront"]
 
 [editable path="Player"]
 
-[editable path="FinishLine"]
-
 [editable path="JumpMessage"]
 
 [editable path="ShootMessage"]
 
 [editable path="BoostMessage"]
-
-[editable path="EasterEgg01"]
 
 [editable path="Message"]

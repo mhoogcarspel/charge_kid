@@ -11,3 +11,5 @@ func _on_FinishLine_body_entered(body):
 		if get_tree().get_nodes_in_group("main").size() > 0:
 			main = get_tree().get_nodes_in_group("main")[0]
 			main.change_scene(next_stage)
+		else:
+			get_tree().change_scene_to(next_stage)

@@ -27,6 +27,7 @@ points = PoolVector2Array( 0, 13, 16, 13, 16, 16, 0, 16 )
 "blocks",
 "spikes",
 ]]
+z_index = -5
 tile_set = SubResource( 2 )
 cell_size = Vector2( 16, 16 )
 format = 1

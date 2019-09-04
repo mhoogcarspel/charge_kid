@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/Tilemaps/BackgroundBack.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Tilemaps/Parallax.gd" type="Script" id=2]
@@ -10,8 +10,6 @@
 [ext_resource path="res://actors/Interactables/FuelTank.tscn" type="PackedScene" id=8]
 [ext_resource path="res://levels/Messages/BulletBoostMessage.tscn" type="PackedScene" id=9]
 [ext_resource path="res://common/CameraLimiter.tscn" type="PackedScene" id=10]
-[ext_resource path="res://common/FinishLine.tscn" type="PackedScene" id=11]
-[ext_resource path="res://menu/final_screen/FinalScreen.tscn" type="PackedScene" id=12]
 
 [node name="Level04" type="Node2D" groups=[
 "level",
@@ -132,10 +130,6 @@ polygon = PoolVector2Array( 344, 176, -128, 176, -128, -208, 344, -208 )
 
 [node name="CollisionPolygon2D" parent="CameraLimiter2" index="1"]
 polygon = PoolVector2Array( -64, -208, 288, -208, 288, 176, -64, 176 )
-
-[node name="FinishLine" parent="." instance=ExtResource( 11 )]
-position = Vector2( 1664, 200 )
-next_stage = ExtResource( 12 )
 
 [editable path="BackgroundBack"]
 
