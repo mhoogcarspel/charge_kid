@@ -9,7 +9,7 @@
 [ext_resource path="res://actors/Player/Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://actors/Interactables/FuelTank.tscn" type="PackedScene" id=8]
 [ext_resource path="res://levels/FinishLine.tscn" type="PackedScene" id=9]
-[ext_resource path="res://levels/Level033.tscn" type="PackedScene" id=10]
+[ext_resource path="res://levels/Level03.tscn" type="PackedScene" id=10]
 [ext_resource path="res://levels/Messages/Lv2SpMessage.gd" type="Script" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -120,6 +120,8 @@ next_stage = ExtResource( 10 )
 polygon = PoolVector2Array( 16, 8, 16, -8, -16, -8, -16, 8 )
 
 [node name="Area2D" type="Area2D" parent="."]
+editor/display_folded = true
+visible = false
 position = Vector2( 432, 88 )
 script = ExtResource( 11 )
 __meta__ = {
