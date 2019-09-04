@@ -51,6 +51,9 @@ func fill() -> void:
 		for body in $PlayerHitbox.get_overlapping_bodies():
 			if body.is_in_group("player"):
 				_on_PlayerHitbox_body_entered(body)
+		for body in $PlayerHitbox.get_overlapping_bodies():
+			if body.is_in_group("bullet"):
+				hit(body)
 
 func empty() -> void:
 	if is_full():

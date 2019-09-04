@@ -13,7 +13,6 @@ script = ExtResource( 1 )
 start_scene = ExtResource( 2 )
 pause_menu = ExtResource( 3 )
 debugger_layer = ExtResource( 4 )
-debugging = true
 
 [node name="HudContainer" type="CanvasLayer" parent="." groups=[
 "hud_container",

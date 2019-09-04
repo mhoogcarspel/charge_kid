@@ -93,6 +93,7 @@ shape = SubResource( 4 )
 [node name="PlayerHitbox" type="Area2D" parent="."]
 editor/display_folded = true
 visible = false
+collision_layer = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
 shape = SubResource( 5 )
