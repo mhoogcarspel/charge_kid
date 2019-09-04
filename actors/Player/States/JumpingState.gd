@@ -36,7 +36,6 @@ func update(delta):
 		return
 	
 	else:
-		print("Saiu do jump")
 		land_sound()
 		if !owner.get_node("BunnyTimer").is_stopped() && Input.is_action_pressed("ui_jump"):
 			owner.get_node("BunnyTimer").stop()

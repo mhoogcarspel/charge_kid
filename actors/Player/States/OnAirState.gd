@@ -43,7 +43,6 @@ func update(delta):
 		land_sound()
 		if not bunny.is_stopped() and Input.is_action_pressed("ui_jump"):
 			bunny.stop()
-			print("BunnyHooooop")
 			owner.change_state("JumpingState")
 		
 		else:
