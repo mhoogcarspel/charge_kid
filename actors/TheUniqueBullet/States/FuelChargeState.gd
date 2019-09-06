@@ -2,7 +2,7 @@ extends BulletBaseState
 class_name FuelChargeState
 
 onready var player: KinematicBody2D
-onready var velocity: float
+onready var speed: float
 onready var direction: Vector2
 
 func _init(owner: Node, player):
@@ -10,7 +10,7 @@ func _init(owner: Node, player):
 	self.player = player
 
 func enter():
-	velocity = owner.velocity_fuel
+	speed = owner.fuel_speed
 	direction = (player.position - owner.position).normalized()
 	owner.get_node("PhysicalCollider").set_deferred("disabled", true)
 	owner.set_collision_mask_bit(0, false)
@@ -26,8 +26,8 @@ func exit():
 	owner.get_node("FuelChargeParticles").emitting = false
 	owner.get_node("FuelChargeParticles/CPUParticles2D").emitting = false
 	owner.get_node("ProjectileParticles").emitting = true
-	owner.velocity = 0
+	owner.speed = 0
 
 func update(delta):
 	var direction = (player.position - owner.position).normalized()
-	move_bullet(direction, velocity)
+	move_bullet(direction, speed)

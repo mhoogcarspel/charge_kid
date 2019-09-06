@@ -1,13 +1,14 @@
 extends KinematicBody2D
 
 export(String, "StandartState", "StandingState", "ReturnState", "FuelChargeState", "HoldState" ) var initial_state
-export(float) var velocity
-export(float) var velocity_fuel
+export(float) var speed
+export(float) var return_speed
+export(float) var fuel_speed
 export(float) var range_distance
 export(float) var gravity_accel
 
 onready var direction: Vector2
-onready var linear_velocity: Vector2
+onready var velocity: Vector2
 onready var player = get_tree().get_nodes_in_group("player")[0]
 
 onready var states: Dictionary = {
@@ -26,7 +27,7 @@ func _ready():
 
 func _process(delta):
 	states[stack[0]].update(delta)
-	linear_velocity = move_and_slide(linear_velocity)
+	velocity = move_and_slide(velocity)
 
 func change_state(state: String) -> void:
 	var previous_state = states[stack[0]]
@@ -45,12 +46,15 @@ func change_state(state: String) -> void:
 	previous_state.exit()
 	states[state].enter()
 
+func get_state() -> String:
+	return stack[0]
+
 func destroy() -> void:
 	states[stack[0]].exit()
 	$ProjectileParticles.emitting = false
 	$FuelChargeParticles.emitting = false
 	$FuelChargeParticles/CPUParticles2D.emitting = false
-	linear_velocity = Vector2()
+	velocity = Vector2()
 	var death_timer = Timer.new()
 	get_parent().add_child(death_timer)
 	death_timer.start(0.2)

@@ -53,7 +53,8 @@ func fill() -> void:
 				_on_PlayerHitbox_body_entered(body)
 		for body in $PlayerHitbox.get_overlapping_bodies():
 			if body.is_in_group("bullet"):
-				hit(body)
+				if body.get_state() == "ReturnState":
+					hit(body)
 
 func empty() -> void:
 	if is_full():
@@ -75,15 +76,11 @@ func hit(bullet: PhysicsBody2D):
 func _on_RefillTime_timeout():
 	fill()
 
-
-
 func activate() -> void:
 	fill()
 
 func deactivate() -> void:
 	empty()
-
-
 
 func _on_PlayerHitbox_body_entered(body):
 	if body.is_in_group("player") and is_full():

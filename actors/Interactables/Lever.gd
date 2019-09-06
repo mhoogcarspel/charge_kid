@@ -22,7 +22,7 @@ func hit(bullet:PhysicsBody2D):
 		is_active = true
 	for nodepath in nodes:
 		toggle(get_node(nodepath))
-	if bullet.stack[0] == "StandardState":
+	if bullet.get_state() == "StandardState":
 		bullet.change_state("ReturnState")
 
 

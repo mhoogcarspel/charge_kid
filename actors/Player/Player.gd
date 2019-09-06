@@ -98,6 +98,9 @@ func pop_state():
 	self.stack.pop_front()
 	print(stack)
 
+func get_state() -> String:
+	return stack[0]
+
 func horizontal_move(direction: Vector2, delta: float, factor: float = 1.0, dissipation: bool = true) -> void:
 	if direction.x != 0:
 		velocity += direction*delta*horizontal_acceleration*factor
@@ -138,7 +141,7 @@ func hit(projectile: PhysicsBody2D) -> void:
 		"FuelChargeState":
 			recharge_fuel()
 		
-	projectile.velocity = 0
+	projectile.speed = 0
 	self.has_bullet = true
 	if stack[0] == "BulletBoostingState":
 		$BoostTimer.stop()

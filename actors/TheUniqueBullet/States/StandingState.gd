@@ -8,4 +8,4 @@ func enter() -> void:
 	self.activate_rigid_body()
 
 func update(delta):
-	owner.linear_velocity.y +=  owner.gravity_accel*delta
+	owner.velocity.y +=  owner.gravity_accel*delta
