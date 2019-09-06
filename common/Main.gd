@@ -14,6 +14,7 @@ onready var actions: Dictionary = {
 	"ui_right": "Right",
 	"ui_up": "Up",
 	"ui_down": "Down",
+	"ui_reset": "Suicide",
 	"ui_pause": "Pause/Back"
 	}
 
