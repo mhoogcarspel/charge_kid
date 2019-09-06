@@ -60,6 +60,9 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, Vector2(0, -1))
 	if is_on_floor():
 		pre_checkpoint = position
+	
+	if Input.is_action_just_pressed("ui_reset"):
+		kill()
 
 func change_state(state: String):
 	var previous_state = stack[0]
@@ -156,13 +159,8 @@ func recharge_fuel() -> void:
 	$FeetParticles3.emitting = true
 
 func _on_BoostTimer_timeout():
-	#is_boosting = false
 	if actual_state == "BulletBoostingState":
-		#is_bullet_boosting = false
-		#just_bullet_boosted = true
 		$BoostParticles1.emitting = false
-#	else:
-#		just_boosted = true
 
 func shoot() -> void:
 	if Input.is_action_just_pressed("ui_shoot") && has_bullet:
