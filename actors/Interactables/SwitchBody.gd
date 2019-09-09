@@ -22,6 +22,8 @@ func _on_Timer_timeout():
 
 func activate() -> void:
 	if not is_active:
+		var camera = get_tree().get_nodes_in_group("camera")[0]
+		camera.screen_shake(8)
 		$Switch.activate()
 		is_active = true
 		$Timer.start()

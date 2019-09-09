@@ -11,7 +11,6 @@ func enter():
 	owner.can_boost = false
 	boosting_time = 0.0
 	owner.velocity = Vector2(0, -owner.boost_speed)
-	
 	owner.get_node("SFX/SuperJump").play()
 	boosting_particles(true)
 

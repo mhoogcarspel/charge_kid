@@ -57,12 +57,13 @@ func _physics_process(delta):
 	actual_state = stack[0]
 	states[actual_state].update(delta)
 	
-	velocity = move_and_slide(velocity, Vector2(0, -1))
-	if is_on_floor():
-		pre_checkpoint = position
-	
-	if Input.is_action_just_pressed("ui_reset"):
-		kill()
+	if get_state() != "DyingState":
+		velocity = move_and_slide(velocity, Vector2(0, -1))
+		if is_on_floor():
+			pre_checkpoint = position
+		
+		if Input.is_action_just_pressed("ui_reset"):
+			change_state("DyingState")
 
 func change_state(state: String):
 	var previous_state = stack[0]
@@ -209,6 +210,8 @@ func kill() -> void:
 	$FeetParticles.emitting = false
 	$FeetParticles2.emitting = false
 	$FeetParticles3.emitting = false
+	shake_screen(24)
+	
 	var timer = Timer.new()
 	add_child(timer)
 	timer.start(0.5)
@@ -220,6 +223,7 @@ func reset() -> void:
 		var main = get_tree().get_nodes_in_group("main")[0]
 		var next_player = main.player_scene.instance()
 		next_player.position = checkpoint
+		next_player.checkpoint = checkpoint
 		next_player.level_length = self.level_length
 		
 		# Deal with onscreen bullets.
@@ -234,3 +238,9 @@ func reset() -> void:
 		self.queue_free()
 	else:
 		get_tree().reload_current_scene()
+
+func shake_screen(magnitude: float) -> void:
+	var camera = get_tree().get_nodes_in_group("camera")[0]
+	camera.screen_shake(magnitude)
+
+
