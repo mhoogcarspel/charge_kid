@@ -87,5 +87,10 @@ func _on_PlayerHitbox_body_entered(body):
 		body.recharge_fuel()
 		empty()
 
+func _on_PlayerHitbox_body_exited(body):
+	if body.is_in_group("bullet"):
+		if body.get_state() == "ReturnState":
+			hit(body)
+
 
 

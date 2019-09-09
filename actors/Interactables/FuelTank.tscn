@@ -103,3 +103,4 @@ stream = ExtResource( 4 )
 bus = "SFX"
 [connection signal="timeout" from="RefillTime" to="." method="_on_RefillTime_timeout"]
 [connection signal="body_entered" from="PlayerHitbox" to="." method="_on_PlayerHitbox_body_entered"]
+[connection signal="body_exited" from="PlayerHitbox" to="." method="_on_PlayerHitbox_body_exited"]

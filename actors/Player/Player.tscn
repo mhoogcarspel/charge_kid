@@ -1,21 +1,22 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://actors/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://actors/TheUniqueBullet/Bullet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/Spritesheet/industrial.v2.png" type="Texture" id=3]
 [ext_resource path="res://actors/Player/PlayerSprite.gd" type="Script" id=4]
 [ext_resource path="res://assets/Particles/ProjectileParticles.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/Particles/particle2.png" type="Texture" id=6]
-[ext_resource path="res://assets/Particles/DeathParticles.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf" type="DynamicFontData" id=8]
-[ext_resource path="res://actors/Player/PlayerMessages.gd" type="Script" id=9]
-[ext_resource path="res://assets/SFX/270320__littlerobotsoundfactory__jump-00.wav" type="AudioStream" id=10]
-[ext_resource path="res://assets/SFX/270307__littlerobotsoundfactory__explosion-01.wav" type="AudioStream" id=11]
-[ext_resource path="res://assets/SFX/270335__littlerobotsoundfactory__shoot-03.wav" type="AudioStream" id=12]
-[ext_resource path="res://assets/SFX/270340__littlerobotsoundfactory__pickup-01.wav" type="AudioStream" id=13]
-[ext_resource path="res://assets/SFX/270341__littlerobotsoundfactory__pickup-04.wav" type="AudioStream" id=14]
-[ext_resource path="res://assets/SFX/270338__littlerobotsoundfactory__open-01.wav" type="AudioStream" id=15]
-[ext_resource path="res://assets/SFX/270308__littlerobotsoundfactory__explosion-00.wav" type="AudioStream" id=16]
+[ext_resource path="res://actors/Player/PlayerCamera.gd" type="Script" id=6]
+[ext_resource path="res://assets/Particles/particle2.png" type="Texture" id=7]
+[ext_resource path="res://assets/Particles/DeathParticles.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://actors/Player/PlayerMessages.gd" type="Script" id=10]
+[ext_resource path="res://assets/SFX/270320__littlerobotsoundfactory__jump-00.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/SFX/270307__littlerobotsoundfactory__explosion-01.wav" type="AudioStream" id=12]
+[ext_resource path="res://assets/SFX/270335__littlerobotsoundfactory__shoot-03.wav" type="AudioStream" id=13]
+[ext_resource path="res://assets/SFX/270340__littlerobotsoundfactory__pickup-01.wav" type="AudioStream" id=14]
+[ext_resource path="res://assets/SFX/270341__littlerobotsoundfactory__pickup-04.wav" type="AudioStream" id=15]
+[ext_resource path="res://assets/SFX/270338__littlerobotsoundfactory__open-01.wav" type="AudioStream" id=16]
+[ext_resource path="res://assets/SFX/270308__littlerobotsoundfactory__explosion-00.wav" type="AudioStream" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4.5, 6 )
@@ -167,7 +168,7 @@ extents = Vector2( 5.5, 7 )
 
 [sub_resource type="DynamicFont" id=9]
 size = 8
-font_data = ExtResource( 8 )
+font_data = ExtResource( 9 )
 
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 1, 1 )
@@ -224,6 +225,7 @@ limit_top = 0
 limit_bottom = 384
 smoothing_enabled = true
 smoothing_speed = 3.0
+script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -297,7 +299,7 @@ emitting = false
 amount = 9
 lifetime = 0.5
 local_coords = false
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 spread = 0.0
 gravity = Vector2( 0, 0 )
 initial_velocity = 0.0
@@ -347,7 +349,7 @@ damping = 40.0
 scale_amount = 2.0
 color = Color( 1, 0.309804, 0.470588, 1 )
 
-[node name="DeathParticles" parent="." instance=ExtResource( 7 )]
+[node name="DeathParticles" parent="." instance=ExtResource( 8 )]
 
 [node name="BunnyTimer" type="Timer" parent="."]
 wait_time = 0.1
@@ -402,7 +404,7 @@ margin_right = 100.0
 margin_bottom = -23.0
 custom_fonts/font = SubResource( 9 )
 align = 1
-script = ExtResource( 9 )
+script = ExtResource( 10 )
 
 [node name="LabelTimer" type="Timer" parent="."]
 one_shot = true
@@ -411,38 +413,38 @@ one_shot = true
 editor/display_folded = true
 
 [node name="Jump" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource( 10 )
+stream = ExtResource( 11 )
 volume_db = -8.0
 bus = "SFX"
 
 [node name="SuperJump" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource( 11 )
-bus = "SFX"
-
-[node name="Shoot" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 12 )
 bus = "SFX"
 
-[node name="BulletPickup" type="AudioStreamPlayer" parent="SFX"]
+[node name="Shoot" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 13 )
 bus = "SFX"
 
-[node name="FuelPickup" type="AudioStreamPlayer" parent="SFX"]
+[node name="BulletPickup" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 14 )
 bus = "SFX"
 
-[node name="Step" type="AudioStreamPlayer" parent="SFX"]
+[node name="FuelPickup" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 15 )
+bus = "SFX"
+
+[node name="Step" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 16 )
 volume_db = -10.0
 bus = "SFX"
 
 [node name="Land" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource( 15 )
+stream = ExtResource( 16 )
 pitch_scale = 1.8
 bus = "SFX"
 
 [node name="Death" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource( 16 )
+stream = ExtResource( 17 )
 bus = "SFX"
 
 [node name="RightLedgeDetector" type="Area2D" parent="."]

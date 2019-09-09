@@ -222,8 +222,13 @@ func reset() -> void:
 		next_player.position = checkpoint
 		next_player.level_length = self.level_length
 		
+		# Deal with onscreen bullets.
 		if get_tree().get_nodes_in_group("bullet").size() > 0:
-			get_tree().get_nodes_in_group("bullet")[0].queue_free()
+			var bullet = get_tree().get_nodes_in_group("bullet")[0]
+			if bullet.get_state() == "StandingState":
+				next_player.has_bullet = false
+			else:
+				bullet.queue_free()
 		
 		get_parent().add_child(next_player)
 		self.queue_free()
