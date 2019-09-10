@@ -23,7 +23,6 @@ custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 custom_colors/font_color_hover = Color( 1, 0.309804, 0.470588, 1 )
 button_mask = 0
 group = ExtResource( 2 )
-text = "Texto"
 flat = true
 script = ExtResource( 3 )
 dialog_popup = ExtResource( 4 )

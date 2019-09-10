@@ -3,6 +3,8 @@ extends Node
 export(PackedScene) var start_scene
 export(PackedScene) var pause_menu
 export(PackedScene) var debugger_layer
+export(PackedScene) var keyboard_controls
+export(PackedScene) var controller_controls
 export(bool) var debugging
 
 onready var actions: Dictionary = {
@@ -15,7 +17,7 @@ onready var actions: Dictionary = {
 	"ui_up": "Up",
 	"ui_down": "Down",
 #	"ui_reset": "Suicide",
-	"ui_pause": "Pause/Back"
+	"ui_pause": "Pause"
 	}
 
 onready var control_handler = ButtonGetter.new(actions)

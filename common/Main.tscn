@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://common/Main.gd" type="Script" id=1]
 [ext_resource path="res://menu/start_menu/StartMenu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://menu/pause_menu/PauseMenu.tscn" type="PackedScene" id=3]
 [ext_resource path="res://actors/Player/States/DebuggingStateMachine.tscn" type="PackedScene" id=4]
+[ext_resource path="res://menu/config_controls_menu/KeyboardControlsMenu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://menu/config_controls_menu/ControllerControlsMenu.tscn" type="PackedScene" id=6]
 
 [node name="Main" type="Node" groups=[
 "main",
@@ -13,6 +15,8 @@ script = ExtResource( 1 )
 start_scene = ExtResource( 2 )
 pause_menu = ExtResource( 3 )
 debugger_layer = ExtResource( 4 )
+keyboard_controls = ExtResource( 5 )
+controller_controls = ExtResource( 6 )
 
 [node name="HudContainer" type="CanvasLayer" parent="." groups=[
 "hud_container",

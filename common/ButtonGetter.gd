@@ -4,9 +4,8 @@ class_name ButtonGetter
 onready var gamepad_map: Dictionary
 onready var actions_dictionary: Dictionary
 onready var actions_list: Array
-func print_map():
-	for key in gamepad_map.keys():
-		print(key)
+
+
 
 func _init(actions_dictionary: Dictionary):
 	
@@ -14,12 +13,27 @@ func _init(actions_dictionary: Dictionary):
 	self.actions_list = actions_dictionary.keys().duplicate()
 	
 	self.gamepad_map = {
-	"Face Button Bottom":"Gamepad button A",
-	"Face Button Top":"Gamepad button Y",
-	"Face Button Left":"Gamepad button B",
-	"Face Button Right":"Gamepad button X"
+	"DPAD Up": ["DPad Up", "DPad Up", "DPad Up"],
+	"DPAD Down": ["DPad Down", "DPad Down", "DPad Down"],
+	"DPAD Left": ["DPad Left", "DPad Left", "DPad Left"],
+	"DPAD Right": ["DPad Right", "DPad Right", "DPad Right"],
+	
+	"Face Button Bottom": ["A", "Cross", "B"],
+	"Face Button Right": ["B", "Circle", "A"],
+	"Face Button Left": ["X", "Square", "Y"],
+	"Face Button Top": ["Y", "Triangle", "X"],
+	
+	"L": ["LB", "L1", "L"],
+	"R": ["RB", "R1", "R"],
+	"L2": ["LT", "L2", "LZ"],
+	"R2": ["RT", "R2", "RZ"],
+	
+	"L3": ["L-Stick", "L3", "L-Stick"],
+	"R3": ["R-Stick", "R3", "R-Stick"],
+	
+	"Start": ["Start", "Start", "+"],
+	"Select": ["Select", "Select", "-"],
 	}
-	print_map()
 
 func erase_all_actions() -> void:
 	for action in actions_list:
@@ -56,7 +70,11 @@ func key_in_list(key:InputEvent, list: Array) -> bool:
 			return true
 	return false
 
-func get_button_name(action: String) -> String:
+
+# Functions that get button names. Each action needs to have two actions, the first must always be keyboard
+# and the second must always be joypad.
+
+func get_keyboard_key_name(action: String) -> String:
 	var button_string: String
 	
 	if InputMap.get_action_list(action).size() == 0:
@@ -64,13 +82,32 @@ func get_button_name(action: String) -> String:
 	
 	if InputMap.get_action_list(action)[0] is InputEventJoypadButton:
 		button_string = Input.get_joy_button_string(InputMap.get_action_list(action)[0].button_index)
-		if button_string in self.gamepad_map.keys():
-			button_string = self.gamepad_map[button_string]
-		
 	else:
 		button_string = InputMap.get_action_list(action)[0].as_text()
 	
 	return button_string
+
+func get_controller_button_name(action: String, model: String = "Microsoft") -> String:
+	var button_string: String
+	
+	if InputMap.get_action_list(action).size() < 2:
+		return " "
+	
+	if InputMap.get_action_list(action)[1] is InputEventJoypadButton:
+		button_string = Input.get_joy_button_string(InputMap.get_action_list(action)[1].button_index)
+		match model:
+			"Microsoft":
+				button_string = self.gamepad_map[button_string][0]
+			"Sony":
+				button_string = self.gamepad_map[button_string][1]
+			"Nintendo":
+				button_string = self.gamepad_map[button_string][2]
+	else:
+		button_string = InputMap.get_action_list(action)[0].as_text()
+	
+	return button_string
+
+
 
 func is_keyboard_or_gamepad_key(event: InputEvent) -> bool:
 	return event is InputEventKey or event is InputEventJoypadButton
