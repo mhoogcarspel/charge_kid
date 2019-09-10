@@ -7,7 +7,7 @@ func _ready():
 	if get_tree().get_nodes_in_group("main").size() > 0:
 		var main
 		main = get_tree().get_nodes_in_group("main")[0]
-		button = main.control_handler.get_button_name("ui_jump")
+		button = main.control_handler.get_keyboard_key_name("ui_jump")
 	else:
 		button = "Z"
 
