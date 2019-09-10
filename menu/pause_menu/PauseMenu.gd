@@ -30,6 +30,7 @@ func _on_RestartLevel_pressed():
 
 func _on_Controls_pressed():
 	self.pause_mode = PAUSE_MODE_INHERIT
+	$CenterContainer/VBoxContainer/VBoxContainer/Resume.shortcut = null
 	var control_window = control_menu.instance()
 	control_window.pause_menu = true
 	self.add_child(control_window)

@@ -1,6 +1,7 @@
 extends MarginContainer
 
 export(PackedScene) var button_model
+export(ShortCut) var return_shortcut
 
 onready var control_handler = get_tree().get_nodes_in_group("main")[0].control_handler
 onready var next_scene = null
@@ -43,6 +44,7 @@ func _on_Button_pressed():
 	else:
 		get_parent().pause_mode = PAUSE_MODE_PROCESS
 		get_parent().refocus()
+		get_parent().get_node("CenterContainer/VBoxContainer/VBoxContainer/Resume").shortcut = return_shortcut
 		self.queue_free()
 
 

@@ -6,7 +6,7 @@ export(PackedScene) var credits
 export(ButtonGroup) var button_group
 
 func _ready():
-	button_group.get_buttons()[0].grab_focus()
+	$CenterContainer/CenterContainer/VBoxContainer3/VBoxContainer3/StartGame.grab_focus()
 
 func _on_StartGame_pressed():
 	self.get_parent().change_scene(next_scene)

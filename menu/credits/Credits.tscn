@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://menu/credits/Credits.gd" type="Script" id=1]
 [ext_resource path="res://assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://menu/ReturnShortcut.tres" type="ShortCut" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -25,13 +26,6 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=7]
 font_data = ExtResource( 2 )
-
-[sub_resource type="InputEventAction" id=8]
-action = "ui_pause"
-pressed = true
-
-[sub_resource type="ShortCut" id=9]
-shortcut = SubResource( 8 )
 
 [node name="Credits" type="MarginContainer"]
 anchor_left = 0.5
@@ -166,9 +160,9 @@ custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "https://0x72.itch.io/"
 
 [node name="Back" type="Button" parent="HBoxContainer/VBoxContainer"]
-margin_left = 231.0
+margin_left = 215.0
 margin_top = 459.0
-margin_right = 307.0
+margin_right = 323.0
 margin_bottom = 481.0
 size_flags_horizontal = 4
 custom_styles/hover = SubResource( 5 )
@@ -176,7 +170,8 @@ custom_styles/focus = SubResource( 6 )
 custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 custom_colors/font_color_hover = Color( 1, 0.309804, 0.470588, 1 )
-shortcut = SubResource( 9 )
-text = "Back"
+button_mask = 0
+shortcut = ExtResource( 3 )
+text = "Return"
 flat = true
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Back" to="." method="_on_Back_pressed"]

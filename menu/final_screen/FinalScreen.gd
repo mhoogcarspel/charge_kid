@@ -14,7 +14,7 @@ func _input(event):
 		if main == null:
 			get_tree().quit()
 		else:
-			main.change_scene(main.start_scene)
+			main.back_to_start()
 
 
 
