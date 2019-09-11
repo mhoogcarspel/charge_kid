@@ -78,6 +78,7 @@ margin_bottom = 84.0
 [node name="Controller" parent="CenterContainer/VBoxContainer/OtherButtons" instance=ExtResource( 5 )]
 margin_right = 172.0
 margin_bottom = 22.0
+disabled = true
 text = "Controller"
 
 [node name="Return" parent="CenterContainer/VBoxContainer/OtherButtons" instance=ExtResource( 5 )]

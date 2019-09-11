@@ -192,6 +192,7 @@ polygon = PoolVector2Array( 24, 32, 24, 16, -16, 16, -16, 32 )
 
 [node name="Message" parent="." instance=ExtResource( 14 )]
 editor/display_folded = true
+visible = false
 position = Vector2( 40, 24 )
 message = "good job!"
 
@@ -210,6 +211,7 @@ active = true
 
 [node name="FinishLine" parent="." instance=ExtResource( 15 )]
 pause_mode = 1
+editor/display_folded = true
 visible = false
 position = Vector2( 1000, 184 )
 next_stage = ExtResource( 16 )
