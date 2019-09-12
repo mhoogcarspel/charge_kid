@@ -54,6 +54,7 @@ func destroy() -> void:
 	$ProjectileParticles.emitting = false
 	$FuelChargeParticles.emitting = false
 	$FuelChargeParticles/CPUParticles2D.emitting = false
+	$HitBox/HitboxCollider.set_deferred("disabled", true)
 	velocity = Vector2()
 	var death_timer = Timer.new()
 	get_parent().add_child(death_timer)
