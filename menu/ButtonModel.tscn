@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://menu/ButtonModel.gd" type="Script" id=2]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -14,9 +15,10 @@ mouse_filter = 2
 size_flags_horizontal = 4
 custom_styles/focus = SubResource( 1 )
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color_disabled = Color( 0.141176, 0.164706, 0.231373, 1 )
+custom_colors/font_color_disabled = Color( 0.121569, 0.137255, 0.184314, 1 )
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 custom_colors/font_color_hover = Color( 1, 0.309804, 0.470588, 1 )
 custom_colors/font_color_pressed = Color( 1, 0.309804, 0.470588, 1 )
 button_mask = 0
 flat = true
+script = ExtResource( 2 )

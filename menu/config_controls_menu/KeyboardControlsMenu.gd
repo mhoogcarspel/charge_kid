@@ -17,30 +17,29 @@ func _ready():
 	var previous_button: Button = null
 	for key in control_handler.actions_dictionary.keys():
 		var button = button_model.instance()
-		button.parse(self, key, control_handler.actions_dictionary[key], control_handler)
-		button.type = type
-		$CenterContainer/VBoxContainer/Map.add_child(button)
-		
+		$VBoxContainer/Map.add_child(button)
+		button.get_node("Button").parse(self, key, control_handler.actions_dictionary[key], control_handler)
+		button.get_node("Button").type = type
 		
 		##################### Setting Buttons Neighbours ############################
-		if ($CenterContainer/VBoxContainer/Map.get_children().size() > 1):
-			$CenterContainer/VBoxContainer/Map.get_children()[-1].focus_neighbour_top = $CenterContainer/VBoxContainer/Map.get_children()[-2].get_path()
-			if ($CenterContainer/VBoxContainer/Map.get_children().size() < control_handler.actions_dictionary.keys().size()):
-				$CenterContainer/VBoxContainer/Map.get_children()[-2].focus_neighbour_bottom = $CenterContainer/VBoxContainer/Map.get_children()[-1].get_path()
+		if ($VBoxContainer/Map.get_children().size() > 1):
+			$VBoxContainer/Map.get_children()[-1].get_node("Button").focus_neighbour_top = $VBoxContainer/Map.get_children()[-2].get_node("Button").get_path()
+			if ($VBoxContainer/Map.get_children().size() < control_handler.actions_dictionary.keys().size()):
+				$VBoxContainer/Map.get_children()[-2].get_node("Button").focus_neighbour_bottom = $VBoxContainer/Map.get_children()[-1].get_node("Button").get_path()
 		############################################################################
 		
 	######################### The last button is neighbour of the top button and vice versa ###################
-	$CenterContainer/VBoxContainer/OtherButtons/Return.focus_neighbour_bottom = $CenterContainer/VBoxContainer/Map.get_children()[0].get_path()
-	$CenterContainer/VBoxContainer/Map.get_children()[0].focus_neighbour_top = $CenterContainer/VBoxContainer/OtherButtons/Return.get_path()
-	$CenterContainer/VBoxContainer/OtherButtons/Controller.focus_neighbour_top = $CenterContainer/VBoxContainer/Map.get_children()[-1].get_path()
-	$CenterContainer/VBoxContainer/Map.get_children()[-1].focus_neighbour_bottom = $CenterContainer/VBoxContainer/OtherButtons/Controller.get_path()
+	$VBoxContainer/OtherButtons/Return.focus_neighbour_bottom = $VBoxContainer/Map.get_children()[0].get_node("Button").get_path()
+	$VBoxContainer/Map.get_children()[0].get_node("Button").focus_neighbour_top = $VBoxContainer/OtherButtons/Return.get_path()
+	$VBoxContainer/OtherButtons/Controller.focus_neighbour_top = $VBoxContainer/Map.get_children()[-1].get_node("Button").get_path()
+	$VBoxContainer/Map.get_children()[-1].get_node("Button").focus_neighbour_bottom = $VBoxContainer/OtherButtons/Controller.get_path()
 	#############################################################################################################
 	
-	$CenterContainer/VBoxContainer/Map.get_children()[0].grab_focus()
+	$VBoxContainer/Map.get_children()[0].get_node("Button").grab_focus()
 
 func add_popup(dialog_box: PopupDialog, menu: MarginContainer = self) -> void:
 	dialog_box.menu = self
-	$CenterContainer.add_child(dialog_box)
+	add_child(dialog_box)
 
 func _on_Button_pressed():
 	if not pause_menu:
