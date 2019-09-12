@@ -31,8 +31,8 @@ func _ready():
 	######################### The last button is neighbour of the top button and vice versa ###################
 	$VBoxContainer/OtherButtons/Return.focus_neighbour_bottom = $VBoxContainer/Map.get_children()[0].get_node("Button").get_path()
 	$VBoxContainer/Map.get_children()[0].get_node("Button").focus_neighbour_top = $VBoxContainer/OtherButtons/Return.get_path()
-	$VBoxContainer/OtherButtons/Controller.focus_neighbour_top = $VBoxContainer/Map.get_children()[-1].get_node("Button").get_path()
-	$VBoxContainer/Map.get_children()[-1].get_node("Button").focus_neighbour_bottom = $VBoxContainer/OtherButtons/Controller.get_path()
+	$VBoxContainer/OtherButtons/Box/Defaults.focus_neighbour_top = $VBoxContainer/Map.get_children()[-1].get_node("Button").get_path()
+	$VBoxContainer/Map.get_children()[-1].get_node("Button").focus_neighbour_bottom = $VBoxContainer/OtherButtons/Box/Defaults.get_path()
 	#############################################################################################################
 	
 	$VBoxContainer/Map.get_children()[0].get_node("Button").grab_focus()
@@ -40,6 +40,9 @@ func _ready():
 func add_popup(dialog_box: PopupDialog, menu: MarginContainer = self) -> void:
 	dialog_box.menu = self
 	add_child(dialog_box)
+
+func _on_Defaults_pressed():
+	InputMap.load_from_globals()
 
 func _on_Button_pressed():
 	if not pause_menu:
@@ -55,6 +58,9 @@ func _on_Controller_pressed():
 	controller_window.pause_menu = pause_menu
 	get_parent().add_child(controller_window)
 	
+
+
+
 
 
 
