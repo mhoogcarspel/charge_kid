@@ -1,5 +1,7 @@
 extends Popup
 
+var type
+
 onready var action: String
 onready var control_handler: ButtonGetter
 onready var configured: bool = false
@@ -12,14 +14,19 @@ func _ready():
 	if !menu.pause_menu:
 		get_tree().paused = true
 
-func parse(action: String, control_handler: ButtonGetter):
+func parse(action: String, control_handler: ButtonGetter, type:String):
 	self.action = action
 	self.control_handler = control_handler
+	match type:
+		"Keyboard":
+			self.type = InputEventKey
+		"Controller":
+			self.type = InputEventJoypadButton
 
 func _input(event):
-	if control_handler.is_keyboard_or_gamepad_key(event) and control_handler.just_pressed(event) and !configured:
-		if !control_handler.find_another_action_with_same_key(action, event):
-			control_handler.change_key_binding(action, event)
+	if control_handler.just_pressed(event) and !configured and event is type:
+		if !control_handler.find_another_action_with_same_key(action, event, type):
+			control_handler.change_key_binding(action, event, type)
 			configured = true
 		else:
 			$LabelBaseModel.text = error_message()

@@ -49,8 +49,6 @@ var pre_checkpoint: Vector2
 
 func _ready():
 	$PlayerCamera.limit_right = level_length
-	print("jump_velocity:")
-	print(jump_velocity)
 	stack.push_front("IdleState")
 
 func _physics_process(delta):
@@ -93,14 +91,10 @@ func change_state(state: String):
 			stack.push_front(state)
 	states[previous_state].exit()
 	states[state].enter()
-	print(state)
-	print(stack)
 
 func pop_state():
-	print(stack)
 	states[stack[0]].exit()
 	self.stack.pop_front()
-	print(stack)
 
 func get_state() -> String:
 	return stack[0]

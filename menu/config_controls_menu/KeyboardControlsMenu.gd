@@ -57,6 +57,7 @@ func _on_Controller_pressed():
 	var controller_window = main.controller_controls.instance()
 	controller_window.pause_menu = pause_menu
 	get_parent().add_child(controller_window)
+	self.queue_free()
 	
 
 

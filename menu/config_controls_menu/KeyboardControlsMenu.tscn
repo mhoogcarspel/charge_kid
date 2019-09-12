@@ -1,23 +1,19 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://menu/config_controls_menu/KeyboardControlsMenu.gd" type="Script" id=1]
 [ext_resource path="res://menu/config_controls_menu/BaseControlConfigButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://menu/ReturnShortcut.tres" type="ShortCut" id=3]
 [ext_resource path="res://assets/Tilemaps/DialogBoxTileMap.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://menu/config_controls_menu/Box.tscn" type="PackedScene" id=5]
 [ext_resource path="res://menu/ButtonModel.tscn" type="PackedScene" id=6]
-[ext_resource path="res://menu/config_controls_menu/RestoreDefaultsButton.gd" type="Script" id=7]
 
-[sub_resource type="DynamicFont" id=4]
-font_data = ExtResource( 5 )
+[sub_resource type="StyleBoxEmpty" id=2]
 
-[sub_resource type="StyleBoxEmpty" id=1]
-
-[sub_resource type="InputEventAction" id=2]
+[sub_resource type="InputEventAction" id=3]
 action = "ui_cancel"
 
-[sub_resource type="ShortCut" id=3]
-shortcut = SubResource( 2 )
+[sub_resource type="ShortCut" id=4]
+shortcut = SubResource( 3 )
 
 [node name="KeyboardControlsMenu" type="MarginContainer"]
 pause_mode = 2
@@ -51,27 +47,7 @@ margin_right = 320.0
 margin_bottom = 110.0
 size_flags_horizontal = 3
 
-[node name="Box" type="HBoxContainer" parent="VBoxContainer/OtherButtons"]
-margin_right = 320.0
-margin_bottom = 22.0
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="VBoxContainer/OtherButtons/Box"]
-margin_top = 3.0
-margin_right = 256.0
-margin_bottom = 19.0
-custom_fonts/font = SubResource( 4 )
-custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
-text = "Restore Defaults"
-
-[node name="Defaults" parent="VBoxContainer/OtherButtons/Box" instance=ExtResource( 6 )]
-margin_left = 260.0
-margin_right = 272.0
-margin_bottom = 22.0
-focus_neighbour_bottom = NodePath("../../Controller")
-size_flags_horizontal = 1
-align = 0
-script = ExtResource( 7 )
+[node name="Box" parent="VBoxContainer/OtherButtons" instance=ExtResource( 5 )]
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer/OtherButtons"]
 margin_top = 26.0
@@ -79,7 +55,7 @@ margin_right = 320.0
 margin_bottom = 30.0
 grow_vertical = 2
 mouse_filter = 2
-custom_styles/separator = SubResource( 1 )
+custom_styles/separator = SubResource( 2 )
 
 [node name="HSeparator2" type="HSeparator" parent="VBoxContainer/OtherButtons"]
 margin_top = 34.0
@@ -87,7 +63,7 @@ margin_right = 320.0
 margin_bottom = 38.0
 grow_vertical = 2
 mouse_filter = 2
-custom_styles/separator = SubResource( 1 )
+custom_styles/separator = SubResource( 2 )
 
 [node name="HSeparator3" type="HSeparator" parent="VBoxContainer/OtherButtons"]
 margin_top = 42.0
@@ -95,7 +71,7 @@ margin_right = 320.0
 margin_bottom = 46.0
 grow_vertical = 2
 mouse_filter = 2
-custom_styles/separator = SubResource( 1 )
+custom_styles/separator = SubResource( 2 )
 
 [node name="HSeparator4" type="HSeparator" parent="VBoxContainer/OtherButtons"]
 margin_top = 50.0
@@ -103,7 +79,7 @@ margin_right = 320.0
 margin_bottom = 54.0
 grow_vertical = 2
 mouse_filter = 2
-custom_styles/separator = SubResource( 1 )
+custom_styles/separator = SubResource( 2 )
 
 [node name="Controller" parent="VBoxContainer/OtherButtons" instance=ExtResource( 6 )]
 margin_left = 74.0
@@ -111,7 +87,6 @@ margin_top = 58.0
 margin_right = 246.0
 margin_bottom = 80.0
 focus_neighbour_top = NodePath("../Box/Defaults")
-disabled = true
 text = "Controller"
 
 [node name="Return" parent="VBoxContainer/OtherButtons" instance=ExtResource( 6 )]
@@ -119,8 +94,7 @@ margin_left = 106.0
 margin_top = 84.0
 margin_right = 214.0
 margin_bottom = 106.0
-shortcut = SubResource( 3 )
+shortcut = SubResource( 4 )
 text = "Return"
-[connection signal="pressed" from="VBoxContainer/OtherButtons/Box/Defaults" to="." method="_on_Defaults_pressed"]
 [connection signal="pressed" from="VBoxContainer/OtherButtons/Controller" to="." method="_on_Controller_pressed"]
 [connection signal="pressed" from="VBoxContainer/OtherButtons/Return" to="." method="_on_Button_pressed"]
