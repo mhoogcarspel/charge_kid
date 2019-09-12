@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name PlayerBullet
 
 export(String, "StandartState", "StandingState", "ReturnState", "FuelChargeState", "HoldState" ) var initial_state
 export(float) var speed
@@ -65,3 +66,6 @@ func destroy() -> void:
 func _on_HitBox_body_entered(body):
 	if not body.is_in_group("bullet"):
 		body.hit(self)
+
+func disable_enable_hitbox(set: bool) -> void:
+	$HitBox/HitboxCollider.set_deferred("disabled", set)
