@@ -11,7 +11,7 @@ func _ready():
 	else:
 		$Lever.frame = 0
 
-func hit(bullet:PhysicsBody2D):
+func hit(bullet:PlayerBullet):
 	add_child(particles.instance())
 	$SFX.play()
 	if is_active:

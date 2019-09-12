@@ -2,7 +2,6 @@
 
 [ext_resource path="res://assets/Spritesheet/industrial.v2.png" type="Texture" id=1]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "Activate"
 length = 0.25
