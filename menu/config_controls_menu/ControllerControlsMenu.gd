@@ -63,10 +63,13 @@ func _on_Model_pressed():
 	match controller_model:
 		"Microsoft":
 			controller_model = "Sony"
+			main.controller_layout = "Sony"
 		"Sony":
 			controller_model = "Nintendo"
+			main.controller_layout = "Nintendo"
 		"Nintendo":
 			controller_model = "Microsoft"
+			main.controller_layout = "Microsoft"
 
 
 

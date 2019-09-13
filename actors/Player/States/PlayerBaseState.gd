@@ -52,15 +52,9 @@ func gravity(delta):
 	owner.velocity.y += owner.gravity_acceleration*delta
 
 func boosting_particles(switch: bool):
-	if switch:
-		owner.get_node("FeetParticles").emitting = false
-		owner.get_node("FeetParticles2").emitting = false
-		owner.get_node("FeetParticles3").emitting = false
-		
-	owner.get_node("BoostParticles1").emitting = switch
-	owner.get_node("BoostParticles2").emitting = switch
-	owner.get_node("BoostParticles3").emitting = switch
-	owner.get_node("BoostParticles4").emitting = switch
+	for particle in owner.get_node("BoostParticles").get_children():
+		particle.emitting = switch
+	
 
 func store_checkpoint() -> void:
 	var left: bool = false

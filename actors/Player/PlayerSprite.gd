@@ -6,6 +6,12 @@ onready var step: int = 0
 func _physics_process(delta):
 	$ProjectileParticles.emitting = player.has_bullet
 	flip_sprite(player.facing)
+	if player.can_boost:
+		for particle in player.get_node("FuelParticles").get_children():
+			particle.emitting = true
+	else:
+		for particle in player.get_node("FuelParticles").get_children():
+			particle.emitting = false
 
 func flip_sprite(facing: float) -> void:
 	if facing > 0 && !self.transform.x.x == 1:
@@ -22,3 +28,9 @@ func step_sound() -> void:
 		owner.get_node("SFX/Step").pitch_scale = 0.9
 		owner.get_node("SFX/Step").play()
 		step = 0
+
+func shoot_particles() -> void:
+	for particle in player.get_node("ShootParticles").get_children():
+		particle.emitting = true
+
+

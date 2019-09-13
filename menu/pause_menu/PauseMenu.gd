@@ -3,6 +3,7 @@ extends Control
 export(PackedScene) var keyboard_menu
 export(PackedScene) var controller_menu
 onready var control_handler : ButtonGetter = get_tree().get_nodes_in_group("main")[0].control_handler
+onready var main = get_tree().get_nodes_in_group("main")[0]
 
 func _ready():
 	$CenterContainer/VBoxContainer/VBoxContainer.get_children()[0].grab_focus()
@@ -32,16 +33,15 @@ func _on_RestartLevel_pressed():
 func _on_Controls_pressed():
 	self.pause_mode = PAUSE_MODE_INHERIT
 	$CenterContainer/VBoxContainer/VBoxContainer/Resume.shortcut = null
-	var control_window = keyboard_menu.instance()
+	var control_window
+	if main.is_using_keyboard():
+		control_window = keyboard_menu.instance()
+	elif main.is_using_controller():
+		control_window = controller_menu.instance()
 	control_window.pause_menu = true
 	self.add_child(control_window)
 
-func controller_controls_menu():
-	self.pause_mode = PAUSE_MODE_INHERIT
-	$CenterContainer/VBoxContainer/VBoxContainer/Resume.shortcut = null
-	var control_window = controller_menu.instance()
-	control_window.pause_menu = true
-	self.add_child(control_window)
+
 
 func _on_Quit_pressed():
 	get_tree().quit()

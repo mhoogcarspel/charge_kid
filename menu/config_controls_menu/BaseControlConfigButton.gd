@@ -20,11 +20,11 @@ func parse(menu: MarginContainer, key:String, action: String, control_handler:Bu
 
 func _process(delta):
 	if type == "Keyboard":
-		get_parent().get_node("Action").text = action + " : "
+		get_parent().get_node("Action").text = action + ":"
 		get_parent().get_node("Key").text = control_handler.get_keyboard_key_name(key)
 	elif type == "Controller":
 		model = get_parent().get_parent().get_parent().get_parent().controller_model
-		get_parent().get_node("Action").text = action + " : "
+		get_parent().get_node("Action").text = action + ":"
 		get_parent().get_node("Key").text = control_handler.get_controller_button_name(key, model)
 	
 	if self.has_focus():

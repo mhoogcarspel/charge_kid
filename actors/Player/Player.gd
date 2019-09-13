@@ -149,13 +149,13 @@ func hit(projectile: PhysicsBody2D) -> void:
 func recharge_fuel() -> void:
 	$SFX/FuelPickup.play()
 	can_boost = true
-	$FeetParticles.emitting = true
-	$FeetParticles2.emitting = true
-	$FeetParticles3.emitting = true
+	for particle in $FuelParticles.get_children():
+		particle.emitting = true
 
 func _on_BoostTimer_timeout():
 	if actual_state == "BulletBoostingState":
-		$BoostParticles1.emitting = false
+		for particle in $FuelParticles.get_children():
+			particle.emitting = false
 
 func shoot() -> void:
 	if Input.is_action_just_pressed("ui_shoot") && has_bullet:
@@ -200,15 +200,15 @@ func _on_SpikesSentinel_body_entered(body):
 func kill() -> void:
 	$SFX/Death.play()
 	$PlayerSprite.visible = false
-	$DeathParticles.emitting = true
-	$FeetParticles.emitting = false
-	$FeetParticles2.emitting = false
-	$FeetParticles3.emitting = false
+	for particle in $DeathParticles.get_children():
+		particle.emitting = true
+	for particle in $FuelParticles.get_children():
+		particle.emitting = false
 	shake_screen(24)
 	
 	var timer = Timer.new()
 	add_child(timer)
-	timer.start(0.5)
+	timer.start(1)
 	yield(timer, "timeout")
 	reset()
 

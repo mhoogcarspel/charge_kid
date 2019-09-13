@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/Spritesheet/industrial.v2.png" type="Texture" id=1]
+[ext_resource path="res://assets/Tilemaps/Blocks.gd" type="Script" id=2]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 13, 16, 13, 16, 16, 0, 16 )
@@ -31,3 +32,4 @@ z_index = -5
 tile_set = SubResource( 2 )
 cell_size = Vector2( 16, 16 )
 format = 1
+script = ExtResource( 2 )
