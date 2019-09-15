@@ -9,4 +9,13 @@ func _process(_delta):
 	elif not has_focus() and disabled:
 		set("custom_colors/font_color_disabled", Color("#1f232f"))
 
+func _on_ButtonModel_focus_exited():
+	$Navigate.play()
+
+
+func _on_ButtonModel_pressed():
+	$Pressed.play()
+
+
+
 

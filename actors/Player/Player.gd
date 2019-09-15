@@ -199,11 +199,11 @@ func _on_SpikesSentinel_body_entered(body):
 
 func kill() -> void:
 	$SFX/Death.play()
-	$PlayerSprite.visible = false
+	$PlayerSprite.kill()
+	$AnimationPlayer.play("Airborne")
 	for particle in $DeathParticles.get_children():
 		particle.emitting = true
-	for particle in $FuelParticles.get_children():
-		particle.emitting = false
+	can_boost = false
 	shake_screen(24)
 	
 	var timer = Timer.new()
