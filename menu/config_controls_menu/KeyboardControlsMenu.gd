@@ -46,7 +46,7 @@ func _on_Defaults_pressed():
 
 func _on_Button_pressed():
 	if not pause_menu:
-		get_parent().back_to_start()
+		main.back_to_start()
 	else:
 		get_parent().pause_mode = PAUSE_MODE_PROCESS
 		get_parent().refocus()

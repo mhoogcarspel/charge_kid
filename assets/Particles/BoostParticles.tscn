@@ -3,7 +3,6 @@
 [ext_resource path="res://assets/Particles/OneShotParticles.gd" type="Script" id=1]
 
 [node name="BoostParticles" type="CPUParticles2D"]
-position = Vector2( 0, 8 )
 emitting = false
 lifetime = 0.6
 one_shot = true
@@ -50,7 +49,7 @@ color = Color( 1, 0.309804, 0.470588, 1 )
 [node name="Particles3" type="CPUParticles2D" parent="."]
 emitting = false
 amount = 40
-lifetime = 0.9
+lifetime = 2.0
 one_shot = true
 explosiveness = 1.0
 local_coords = false

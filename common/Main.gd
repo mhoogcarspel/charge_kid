@@ -33,18 +33,17 @@ func _ready():
 		pass
 	var start = start_scene.instance()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	add_child(start)
+	$Scene.add_child(start)
 	actual_scene = start_scene
 
 func back_to_start():
 	change_scene(start_scene)
 
 func change_scene(next_scene: PackedScene) -> void:
-	for scene in self.get_children():
-		if !scene.is_in_group("hud_container"):
-			scene.queue_free()
+	for scene in $Scene.get_children():
+		scene.queue_free()
 	var scene_instance = next_scene.instance()
-	self.call_deferred("add_child", scene_instance)
+	$Scene.call_deferred("add_child", scene_instance)
 	actual_scene = next_scene
 
 func _process(delta):
