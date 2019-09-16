@@ -73,6 +73,10 @@ func key_in_list(key:InputEvent, list: Array) -> bool:
 				return true
 	return false
 
+
+# Functions that get button names. Each action needs to have two actions, the first must always be keyboard
+# and the second must always be joypad.
+
 func get_type_button_list(action: String, type) -> Array:
 	if !InputMap.get_action_list(action).empty():
 		var button_list: Array = []
@@ -123,7 +127,3 @@ func equalize_equivalent_keys(action1: String, action2: String):
 		InputMap.action_erase_event(action2, event)
 	for event in InputMap.get_action_list(action1):
 		InputMap.action_add_event(action2, event)
-
-
-
-
