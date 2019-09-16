@@ -1,12 +1,14 @@
 extends Sprite
 
 
+
 func _ready():
 	deactivate()
 
 func activate() -> void:
 	var timer: Timer = Timer.new()
 	self.add_child(timer)
+	get_parent().get_node("AnimationPlayer").play("Activate")
 	
 	self.visible = true
 	self.get_material().set_shader_param("color", Color(0.96, 0.96, 0.89, 1))

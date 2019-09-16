@@ -67,8 +67,7 @@ func _on_Model_pressed():
 		"Nintendo":
 			main.controller_layout = "Microsoft"
 
-
-
-
 func _on_Defaults_pressed():
 	InputMap.load_from_globals()
+
+
