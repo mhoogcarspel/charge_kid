@@ -6,7 +6,6 @@ export (ShortCut) var return_shortcut
 onready var control_handler = get_tree().get_nodes_in_group("main")[0].control_handler
 onready var next_scene = null
 onready var type = "Controller"
-onready var controller_model = "Microsoft"
 onready var YELLOW: String = "#f7ff00"
 onready var RED: String = "#ff0000"
 onready var PINK: String = "#ff4f78"
@@ -38,7 +37,7 @@ func _ready():
 	$VBoxContainer/Map.get_children()[0].get_node("Button").grab_focus()
 
 func _process(delta):
-	$VBoxContainer/OtherButtons/Model.text = "Layout: " + controller_model
+	$VBoxContainer/OtherButtons/Model.text = "Layout: " + main.controller_layout
 
 func add_popup(dialog_box: PopupDialog, menu: MarginContainer = self) -> void:
 	dialog_box.menu = self
@@ -60,15 +59,12 @@ func _on_Keyboard_pressed():
 	self.queue_free()
 
 func _on_Model_pressed():
-	match controller_model:
+	match main.controller_layout:
 		"Microsoft":
-			controller_model = "Sony"
 			main.controller_layout = "Sony"
 		"Sony":
-			controller_model = "Nintendo"
 			main.controller_layout = "Nintendo"
 		"Nintendo":
-			controller_model = "Microsoft"
 			main.controller_layout = "Microsoft"
 
 
