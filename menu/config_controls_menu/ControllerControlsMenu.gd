@@ -69,3 +69,5 @@ func _on_Model_pressed():
 
 func _on_Defaults_pressed():
 	InputMap.load_from_globals()
+
+
