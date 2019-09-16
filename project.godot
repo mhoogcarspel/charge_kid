@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "MarginContainer",
+"class": "BaseControlsConfigMenu",
+"language": "GDScript",
+"path": "res://menu/config_controls_menu/BaseControlConfigMenu.gd"
+}, {
 "base": "Node",
 "class": "BaseLogicGate",
 "language": "GDScript",
@@ -120,6 +125,7 @@ _global_script_classes=[ {
 "path": "res://actors/State.gd"
 } ]
 _global_script_class_icons={
+"BaseControlsConfigMenu": "",
 "BaseLogicGate": "",
 "Block": "",
 "BoostingState": "",

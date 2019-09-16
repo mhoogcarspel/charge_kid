@@ -58,11 +58,3 @@ func _on_Controller_pressed():
 	controller_window.pause_menu = pause_menu
 	get_parent().add_child(controller_window)
 	self.queue_free()
-	
-
-
-
-
-
-
-
