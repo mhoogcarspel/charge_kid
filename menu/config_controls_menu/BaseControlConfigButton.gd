@@ -1,4 +1,4 @@
-extends Button
+extends ButtonModel
 
 export(PackedScene) var dialog_popup
 
@@ -23,7 +23,7 @@ func _process(delta):
 		get_parent().get_node("Action").text = action + ":"
 		get_parent().get_node("Key").text = control_handler.get_keyboard_key_name(key)
 	elif type == "Controller":
-		model = get_parent().get_parent().get_parent().get_parent().controller_model
+		model = main.controller_layout
 		get_parent().get_node("Action").text = action + ":"
 		get_parent().get_node("Key").text = control_handler.get_controller_button_name(key, model)
 	
