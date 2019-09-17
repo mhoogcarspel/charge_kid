@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "MarginContainer",
 "class": "BaseControlsConfigMenu",
 "language": "GDScript",
-"path": "res://menu/config_controls_menu/BaseControlConfigMenu.gd"
+"path": "res://menu/config_controls_menu/ControlConfigMenu.gd"
 }, {
 "base": "Node",
 "class": "BaseLogicGate",

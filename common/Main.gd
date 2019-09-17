@@ -3,8 +3,7 @@ extends Node
 export(PackedScene) var start_scene
 export(PackedScene) var pause_menu
 export(PackedScene) var debugger_layer
-export(PackedScene) var keyboard_controls
-export(PackedScene) var controller_controls
+export(PackedScene) var controls_menu
 export(bool) var debugging
 
 onready var actions: Dictionary = {
