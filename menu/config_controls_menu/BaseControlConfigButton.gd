@@ -20,9 +20,12 @@ func parse(menu: MarginContainer, key:String, action: String, control_handler:Bu
 	self.type = type
 
 func _process(delta):
+	self.type = menu.type
 	if type == "Keyboard":
 		get_parent().get_node("Action").text = action + ":"
 		get_parent().get_node("Key").text = control_handler.get_keyboard_key_name(key)
+#		get_parent().get_node("Key").text = ""
+#		get_parent().get_node("KeyboardIcon/Key").text = control_handler.get_keyboard_key_name(key)
 	elif type == "Controller":
 		model = main.controller_layout
 		get_parent().get_node("Action").text = action + ":"
