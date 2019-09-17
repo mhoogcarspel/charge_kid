@@ -40,7 +40,7 @@ func _ready():
 			$VBoxContainer/OtherButtons/Change.text = "Keyboard"
 	
 	add_remove_model_buttton()
-	
+	$VBoxContainer/OtherButtons/Box/Defaults.connect("pressed", self, "_on_Defaults_pressed")
 	$VBoxContainer/Map.get_children()[0].get_node("Button").grab_focus()
 
 func add_popup(dialog_box: PopupDialog, menu: MarginContainer = self) -> void:

@@ -1,12 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://menu/config_controls_menu/Old/ControllerControlsMenu.gd" type="Script" id=1]
 [ext_resource path="res://menu/config_controls_menu/BaseControlConfigButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://menu/ReturnShortcut.tres" type="ShortCut" id=3]
 [ext_resource path="res://assets/Tilemaps/DialogBoxTileMap.tscn" type="PackedScene" id=4]
 [ext_resource path="res://menu/config_controls_menu/Box.tscn" type="PackedScene" id=5]
-[ext_resource path="res://menu/ButtonModel.tscn" type="PackedScene" id=6]
-
+[ext_resource path="res://menu/config_controls_menu/MenuSeparator.tscn" type="PackedScene" id=6]
+[ext_resource path="res://menu/ButtonModel.tscn" type="PackedScene" id=7]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -41,14 +41,16 @@ margin_bottom = 128.0
 [node name="Box" parent="VBoxContainer/OtherButtons" instance=ExtResource( 5 )]
 margin_right = 352.0
 
+[node name="Label" parent="VBoxContainer/OtherButtons/Box" index="0"]
+margin_left = 40.0
+margin_right = 296.0
+
 [node name="Defaults" parent="VBoxContainer/OtherButtons/Box" index="1"]
+margin_left = 300.0
+margin_right = 312.0
 focus_neighbour_bottom = NodePath("../../Model")
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer/OtherButtons"]
-margin_top = 26.0
-margin_right = 352.0
-margin_bottom = 30.0
-custom_styles/separator = SubResource( 1 )
+[node name="HSeparator" parent="VBoxContainer/OtherButtons" instance=ExtResource( 6 )]
 
 [node name="HSeparator2" type="HSeparator" parent="VBoxContainer/OtherButtons"]
 margin_top = 34.0
@@ -62,7 +64,7 @@ margin_right = 352.0
 margin_bottom = 46.0
 custom_styles/separator = SubResource( 1 )
 
-[node name="Model" parent="VBoxContainer/OtherButtons" instance=ExtResource( 6 )]
+[node name="Model" parent="VBoxContainer/OtherButtons" instance=ExtResource( 7 )]
 margin_left = 130.0
 margin_top = 50.0
 margin_right = 222.0
@@ -70,14 +72,14 @@ margin_bottom = 72.0
 focus_neighbour_top = NodePath("../Box/Defaults")
 text = "Model"
 
-[node name="Keyboard" parent="VBoxContainer/OtherButtons" instance=ExtResource( 6 )]
+[node name="Keyboard" parent="VBoxContainer/OtherButtons" instance=ExtResource( 7 )]
 margin_left = 106.0
 margin_top = 76.0
 margin_right = 246.0
 margin_bottom = 98.0
 text = "Keyboard"
 
-[node name="Return" parent="VBoxContainer/OtherButtons" instance=ExtResource( 6 )]
+[node name="Return" parent="VBoxContainer/OtherButtons" instance=ExtResource( 7 )]
 margin_left = 122.0
 margin_top = 102.0
 margin_right = 230.0
