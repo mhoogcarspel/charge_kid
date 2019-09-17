@@ -1,19 +1,20 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://menu/config_controls_menu/KeyboardControlsMenu.gd" type="Script" id=1]
+[ext_resource path="res://menu/config_controls_menu/Old/KeyboardControlsMenu.gd" type="Script" id=1]
 [ext_resource path="res://menu/config_controls_menu/BaseControlConfigButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://menu/ReturnShortcut.tres" type="ShortCut" id=3]
 [ext_resource path="res://assets/Tilemaps/DialogBoxTileMap.tscn" type="PackedScene" id=4]
 [ext_resource path="res://menu/config_controls_menu/Box.tscn" type="PackedScene" id=5]
 [ext_resource path="res://menu/ButtonModel.tscn" type="PackedScene" id=6]
 
-[sub_resource type="StyleBoxEmpty" id=2]
 
-[sub_resource type="InputEventAction" id=3]
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="InputEventAction" id=2]
 action = "ui_cancel"
 
-[sub_resource type="ShortCut" id=4]
-shortcut = SubResource( 3 )
+[sub_resource type="ShortCut" id=3]
+shortcut = SubResource( 2 )
 
 [node name="KeyboardControlsMenu" type="MarginContainer"]
 pause_mode = 2
@@ -55,7 +56,7 @@ margin_right = 320.0
 margin_bottom = 30.0
 grow_vertical = 2
 mouse_filter = 2
-custom_styles/separator = SubResource( 2 )
+custom_styles/separator = SubResource( 1 )
 
 [node name="HSeparator2" type="HSeparator" parent="VBoxContainer/OtherButtons"]
 margin_top = 34.0
@@ -63,7 +64,7 @@ margin_right = 320.0
 margin_bottom = 38.0
 grow_vertical = 2
 mouse_filter = 2
-custom_styles/separator = SubResource( 2 )
+custom_styles/separator = SubResource( 1 )
 
 [node name="HSeparator3" type="HSeparator" parent="VBoxContainer/OtherButtons"]
 margin_top = 42.0
@@ -71,7 +72,7 @@ margin_right = 320.0
 margin_bottom = 46.0
 grow_vertical = 2
 mouse_filter = 2
-custom_styles/separator = SubResource( 2 )
+custom_styles/separator = SubResource( 1 )
 
 [node name="HSeparator4" type="HSeparator" parent="VBoxContainer/OtherButtons"]
 margin_top = 50.0
@@ -79,7 +80,7 @@ margin_right = 320.0
 margin_bottom = 54.0
 grow_vertical = 2
 mouse_filter = 2
-custom_styles/separator = SubResource( 2 )
+custom_styles/separator = SubResource( 1 )
 
 [node name="Controller" parent="VBoxContainer/OtherButtons" instance=ExtResource( 6 )]
 margin_left = 74.0
@@ -94,7 +95,7 @@ margin_left = 106.0
 margin_top = 84.0
 margin_right = 214.0
 margin_bottom = 106.0
-shortcut = SubResource( 4 )
+shortcut = SubResource( 3 )
 text = "Return"
 [connection signal="pressed" from="VBoxContainer/OtherButtons/Controller" to="." method="_on_Controller_pressed"]
 [connection signal="pressed" from="VBoxContainer/OtherButtons/Return" to="." method="_on_Button_pressed"]

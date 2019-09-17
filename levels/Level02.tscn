@@ -7,10 +7,11 @@
 [ext_resource path="res://assets/Tilemaps/SolidBlocks.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/Tilemaps/Spikes.tscn" type="PackedScene" id=6]
 [ext_resource path="res://actors/Player/Player.tscn" type="PackedScene" id=7]
-[ext_resource path="res://actors/Interactables/FuelTank.tscn" type="PackedScene" id=8]
+[ext_resource path="res://actors/Interactables/FuelTank/FuelTank.tscn" type="PackedScene" id=8]
 [ext_resource path="res://levels/FinishLine.tscn" type="PackedScene" id=9]
 [ext_resource path="res://levels/Level03.tscn" type="PackedScene" id=10]
 [ext_resource path="res://levels/Messages/Lv2SpMessage.gd" type="Script" id=11]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 8 )

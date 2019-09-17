@@ -13,10 +13,7 @@ func _on_StartGame_pressed():
 
 
 func _on_Controls_pressed():
-	if main.is_using_keyboard():
-		main.change_scene(main.keyboard_controls)
-	elif main.is_using_controller():
-		main.change_scene(main.controller_controls)
+	main.change_scene(main.controls_menu)
 
 
 func _on_Credits_pressed():

@@ -1,13 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://common/Main.gd" type="Script" id=1]
 [ext_resource path="res://menu/start_menu/StartMenu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://menu/pause_menu/PauseMenu.tscn" type="PackedScene" id=3]
 [ext_resource path="res://actors/Player/States/DebuggingStateMachine.tscn" type="PackedScene" id=4]
-[ext_resource path="res://menu/config_controls_menu/KeyboardControlsMenu.tscn" type="PackedScene" id=5]
-[ext_resource path="res://menu/config_controls_menu/ControllerControlsMenu.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/SFX/270322__littlerobotsoundfactory__menu-navigate-02.wav" type="AudioStream" id=7]
-[ext_resource path="res://assets/SFX/270324__littlerobotsoundfactory__menu-navigate-00.wav" type="AudioStream" id=8]
+[ext_resource path="res://menu/config_controls_menu/ControlConfigMenu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/SFX/270322__littlerobotsoundfactory__menu-navigate-02.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/SFX/270324__littlerobotsoundfactory__menu-navigate-00.wav" type="AudioStream" id=7]
 
 [node name="Main" type="Node" groups=[
 "main",
@@ -17,18 +16,17 @@ script = ExtResource( 1 )
 start_scene = ExtResource( 2 )
 pause_menu = ExtResource( 3 )
 debugger_layer = ExtResource( 4 )
-keyboard_controls = ExtResource( 5 )
-controller_controls = ExtResource( 6 )
+controls_menu = ExtResource( 5 )
 
 [node name="HudContainer" type="CanvasLayer" parent="."]
 
 [node name="MenuNavigate" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
+stream = ExtResource( 6 )
 volume_db = -5.0
 bus = "SFX"
 
 [node name="MenuAccept" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 8 )
+stream = ExtResource( 7 )
 bus = "SFX"
 
 [node name="Scene" type="Node" parent="."]
