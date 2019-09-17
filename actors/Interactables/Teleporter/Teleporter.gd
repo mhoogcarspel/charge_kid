@@ -11,17 +11,7 @@ func _process(delta):
 func hit(bullet: PlayerBullet):
 	if !get_tree().get_nodes_in_group("player").empty():
 	###############Swap player and bullet positions########################
-		var player = get_tree().get_nodes_in_group("player")[0]
-		var player_position: Vector2 = player.position
-		bullet.disable_enable_hitbox(true)
-		player.position = bullet.position
-		bullet.position = player_position
-		yield(get_tree(),"idle_frame")
-		
-		bullet.change_state("ReturnState")
-		bullet.disable_enable_hitbox(false)
-		self.set_collision_layer_bit(5, false)
-		actual_state = ""
+		swap_player_and_bullet(bullet)
 		
 		$AnimationPlayer.play("Closing")
 		yield($AnimationPlayer, "animation_finished")
@@ -29,8 +19,21 @@ func hit(bullet: PlayerBullet):
 		actual_state = "Deactivated"
 
 func _on_ReactivationTimer_timeout():
-	actual_state == ""
+	actual_state == "Reactivating"
 	$AnimationPlayer.play("Activating")
 	yield($AnimationPlayer, "animation_finished")
 	self.set_collision_layer_bit(5, true)
 	actual_state = "Active"
+
+func swap_player_and_bullet(bullet: PlayerBullet):
+	var player = get_tree().get_nodes_in_group("player")[0]
+	var player_position: Vector2 = player.position
+	bullet.disable_enable_hitbox(true)
+	player.position = bullet.position
+	bullet.position = player_position
+	yield(get_tree(),"idle_frame")
+	
+	bullet.change_state("ReturnState")
+	bullet.disable_enable_hitbox(false)
+	self.set_collision_layer_bit(5, false)
+	actual_state = ""
