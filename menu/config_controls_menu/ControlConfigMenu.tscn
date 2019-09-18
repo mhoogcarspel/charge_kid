@@ -38,6 +38,7 @@ margin_bottom = 128.0
 
 [node name="Box" parent="VBoxContainer/OtherButtons" instance=ExtResource( 5 )]
 margin_right = 384.0
+alignment = 0
 
 [node name="HSeparator" parent="VBoxContainer/OtherButtons" instance=ExtResource( 6 )]
 margin_right = 384.0

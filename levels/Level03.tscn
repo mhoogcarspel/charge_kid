@@ -16,9 +16,6 @@
 [ext_resource path="res://levels/Level04.tscn" type="PackedScene" id=14]
 [ext_resource path="res://levels/Messages/Message.tscn" type="PackedScene" id=15]
 
-
-
-
 [node name="Level03" type="Node2D"]
 pause_mode = 1
 
@@ -259,11 +256,10 @@ message = "genius!"
 polygon = PoolVector2Array( -24, -12, 32, -12, 32, 44, -24, 44 )
 
 [node name="Area2D" type="Area2D" parent="Lv3SpMessage"]
-editor/display_folded = true
 position = Vector2( 16, 172 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lv3SpMessage/Area2D"]
-polygon = PoolVector2Array( 16, -16, 16, 16, -16, 16, -16, -16 )
+polygon = PoolVector2Array( 16, -16, 16, 16, -104, 16, -104, -16 )
 
 [node name="FinishLine" parent="." instance=ExtResource( 13 )]
 editor/display_folded = true

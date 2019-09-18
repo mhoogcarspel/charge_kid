@@ -35,9 +35,9 @@ func _ready():
 	#############################################################################################################
 	match type:
 		"Keyboard":
-			$VBoxContainer/OtherButtons/Change.text = "Controller"
+			$VBoxContainer/OtherButtons/Change.text = "Controller Bindings"
 		"Controller":
-			$VBoxContainer/OtherButtons/Change.text = "Keyboard"
+			$VBoxContainer/OtherButtons/Change.text = "Keyboard Bindings"
 	
 	add_remove_model_buttton()
 	$VBoxContainer/OtherButtons/Box/Defaults.connect("pressed", self, "_on_Defaults_pressed")
@@ -63,8 +63,10 @@ func _on_Change_pressed():
 	match type:
 		"Keyboard":
 			type = "Controller"
+			$VBoxContainer/OtherButtons/Change.text = "Keyboard Bindings"
 		"Controller":
 			type = "Keyboard"
+			$VBoxContainer/OtherButtons/Change.text = "Controller Bindings"
 	reload_buttons()
 
 func _on_Model_pressed():
