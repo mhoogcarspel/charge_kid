@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/backgrounds4.png" type="Texture" id=1]
 [ext_resource path="res://assets/backgrounds2.png" type="Texture" id=2]
+[ext_resource path="res://assets/Tilemaps/ActivatedWires.tscn" type="PackedScene" id=3]
 
 [sub_resource type="TileSet" id=1]
 0/name = "backgrounds4.png 0"
@@ -1018,3 +1019,5 @@ format = 1
 tile_set = SubResource( 9 )
 cell_size = Vector2( 16, 16 )
 format = 1
+
+[node name="ActivatedWires" parent="." instance=ExtResource( 3 )]
