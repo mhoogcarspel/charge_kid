@@ -19,7 +19,7 @@
 [ext_resource path="res://levels/Messages/DropMessage.tscn" type="PackedScene" id=17]
 [ext_resource path="res://actors/Interactables/Gate/DoubleGate/DoubleGate.tscn" type="PackedScene" id=18]
 
-[sub_resource type="Shader" id=4]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 render_mode unshaded;
 
@@ -36,20 +36,20 @@ void fragment ()
 	}
 }"
 
-[sub_resource type="ShaderMaterial" id=5]
-shader = SubResource( 4 )
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 shader_param/active_color = Color( 1, 0.309804, 0.470588, 1 )
 shader_param/inactive_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 shader_param/active = true
 
-[sub_resource type="ShaderMaterial" id=6]
-shader = SubResource( 4 )
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 1 )
 shader_param/active_color = Color( 1, 0.309804, 0.470588, 1 )
 shader_param/inactive_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 shader_param/active = false
 
-[sub_resource type="ShaderMaterial" id=7]
-shader = SubResource( 4 )
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 1 )
 shader_param/active_color = Color( 1, 0.309804, 0.470588, 1 )
 shader_param/inactive_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 shader_param/active = false
@@ -87,7 +87,7 @@ tile_data = PoolIntArray( 7, 0, 524288, 8, 0, 262146, 9, 0, 262146, 10, 0, 26214
 tile_data = PoolIntArray( 13, 12, 0, 14, 11, 0, 23, 6, 0, 51, 6, 0, 62, 6, 0, 65549, 12, 0, 65550, 11, 0, 131085, 12, 0, 131086, 11, 0, 131095, 5, 0, 196614, 5, 0, 196621, 6, 0, 196622, 6, 0, 196628, 3, 0, 196630, 4, 0, 196641, 4, 0, 262149, 4, 0, 262151, 3, 0, 262152, 4, 0, 262157, 16, 0, 262158, 16, 0, 327699, 6, 0, 327731, 5, 0, 327742, 6, 0, 393225, 5, 0, 393235, 5, 0, 393251, 3, 0, 393255, 4, 0, 393261, 4, 0, 393266, 4, 0, 458754, 4, 0, 458760, 4, 0, 458762, 3, 0, 458770, 4, 0, 458781, 9, 0, 458803, 6, 0, 458809, 12, 0, 524346, 10, 0, 589853, 10, 0, 589875, 16, 0, 655422, 6, 0, 720958, 16, 0, 786437, 3, 0, 786440, 4, 0, 786448, 4, 0, 786457, 4, 0, 786485, 5, 0, 786494, 5, 0, 851994, 6, 0, 917557, 6, 0, 983050, 4, 0, 983052, 3, 0, 983057, 4, 0, 1048587, 6, 0, 1048595, 3, 0, 1048629, 16, 0, 1114123, 16, 0, 1114144, 4, 0, 1179681, 14, 0 )
 
 [node name="ActivatedWires" parent="BackgroundFront" index="4"]
-material = SubResource( 5 )
+material = SubResource( 2 )
 tile_data = PoolIntArray( 53, 0, 196609, 61, 0, 196609, 65565, 0, 393216, 65566, 0, 327680, 65567, 0, 327680, 65568, 0, 327680, 65569, 0, 327680, 65570, 0, 327680, 65571, 0, 327680, 65572, 0, 327680, 65573, 0, 327680, 65574, 0, 327680, 65575, 0, 327680, 65576, 0, 327680, 65577, 0, 327680, 65578, 0, 327680, 65579, 0, 327680, 65580, 0, 262146, 65582, 0, 262144, 65583, 0, 327680, 65584, 0, 327680, 65585, 0, 327680, 65586, 0, 327680, 65587, 0, 327680, 65588, 0, 327680, 65589, 0, 393217, 65590, 0, 524289, 65591, 0, 327680, 65592, 0, 327680, 65593, 0, 393218, 65597, 0, 196608, 131086, 3, 0, 131087, 0, 262144, 131088, 0, 327680, 131089, 0, 327680, 131090, 0, 327680, 131091, 0, 327680, 131092, 0, 327680, 131093, 0, 327680, 131094, 0, 327680, 131095, 0, 327680, 131096, 0, 327680, 131097, 0, 327680, 131098, 0, 327680, 131099, 0, 327680, 131100, 0, 327680, 131101, 0, 458752, 131126, 0, 196608, 131129, 0, 524288, 131130, 0, 327680, 131131, 0, 327680, 131132, 0, 327680, 131133, 0, 393217, 131134, 0, 327680, 131135, 0, 262146, 196637, 0, 196608, 196662, 0, 196608, 262173, 0, 196608, 262198, 0, 196608, 327709, 0, 196608, 327734, 0, 196608, 393245, 0, 327681, 393270, 0, 196608, 458781, 2, 0, 458806, 0, 524288, 458807, 0, 327680, 458808, 0, 262146, 458809, 4, 0 )
 active = true
 
@@ -108,11 +108,11 @@ tile_data = PoolIntArray( 786480, 7, 0, 786481, 10, 0, 786493, 1, 0, 917522, 3, 
 
 [node name="SwitchBody" parent="." instance=ExtResource( 4 )]
 position = Vector2( 472, 136 )
-wires = [ NodePath("../ActivatedWires") ]
 nodes = [ NodePath("../Gate") ]
+wires = [ NodePath("../ActivatedWires") ]
 
 [node name="ActivatedWires" parent="." instance=ExtResource( 5 )]
-material = SubResource( 6 )
+material = SubResource( 3 )
 position = Vector2( 480, 144 )
 z_index = -10
 tile_data = PoolIntArray( 65535, 1, 0, 131070, 6, 0, 131071, 8, 0, 65536, 4, 0, 196606, 6, 0, 196607, 8, 0, 131072, 4, 0, 262142, 6, 0, 262143, 8, 0, 196608, 4, 0, 327678, 6, 0, 327679, 7, 0, 262144, 4, 0 )
@@ -140,11 +140,11 @@ position = Vector2( 824, 201 )
 
 [node name="SwitchBody2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 936, 120 )
-wires = [ NodePath("../ActivatedWires2") ]
 nodes = [ NodePath("../Gate2") ]
+wires = [ NodePath("../ActivatedWires2") ]
 
 [node name="ActivatedWires2" parent="." instance=ExtResource( 5 )]
-material = SubResource( 7 )
+material = SubResource( 4 )
 position = Vector2( 944, 128 )
 z_index = -10
 tile_data = PoolIntArray( 65535, 1, 0, 131070, 6, 0, 131071, 8, 0, 65536, 4, 0, 196606, 6, 0, 196607, 8, 0, 131072, 4, 0, 262142, 6, 0, 262143, 8, 0, 196608, 4, 0, 327678, 6, 0, 327679, 7, 0, 262144, 4, 0 )
@@ -209,9 +209,14 @@ gate_height = 4
 active = true
 delay_between_cells = 0.1
 
+[node name="GateCell" parent="Gate" index="0"]
+active = true
+
 [node name="Gate2" parent="." instance=ExtResource( 18 )]
 position = Vector2( 927, 151 )
 gate_height = 4
+active = true
+delay_between_cells = 0.1
 
 [editable path="BackgroundBack"]
 
@@ -228,3 +233,5 @@ gate_height = 4
 [editable path="Message"]
 
 [editable path="DropMessage"]
+
+[editable path="Gate"]

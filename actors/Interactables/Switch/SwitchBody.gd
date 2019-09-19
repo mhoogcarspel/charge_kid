@@ -7,11 +7,6 @@ export(Array,NodePath) var wires
 
 
 
-func _ready():
-	for nodepath in wires:
-		print(nodepath)
-
-
 func hit(projectile:PhysicsBody2D) -> void:
 	$SFX.play()
 	self.activate()

@@ -11,11 +11,11 @@
 [ext_resource path="res://levels/Messages/HoldMessage.tscn" type="PackedScene" id=9]
 [ext_resource path="res://actors/Interactables/Switch/SwitchBody.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/Tilemaps/ActivatedWires.tscn" type="PackedScene" id=11]
-[ext_resource path="res://actors/Interactables/TriggeredPlatform/TriggeredPlatform.tscn" type="PackedScene" id=12]
-[ext_resource path="res://levels/Messages/Lv3SpMessage.gd" type="Script" id=13]
-[ext_resource path="res://levels/FinishLine.tscn" type="PackedScene" id=14]
-[ext_resource path="res://levels/Level04.tscn" type="PackedScene" id=15]
-[ext_resource path="res://levels/Messages/Message.tscn" type="PackedScene" id=16]
+[ext_resource path="res://levels/Messages/Lv3SpMessage.gd" type="Script" id=12]
+[ext_resource path="res://levels/FinishLine.tscn" type="PackedScene" id=13]
+[ext_resource path="res://levels/Level04.tscn" type="PackedScene" id=14]
+[ext_resource path="res://levels/Messages/Message.tscn" type="PackedScene" id=15]
+[ext_resource path="res://actors/Interactables/Gate/DoubleGate/DoubleGate.tscn" type="PackedScene" id=16]
 
 [node name="Level03" type="Node2D"]
 pause_mode = 1
@@ -118,133 +118,13 @@ polygon = PoolVector2Array( -56, -48, 24, -48, 24, 8, -56, 8 )
 
 [node name="SwitchBody" parent="." instance=ExtResource( 10 )]
 position = Vector2( 46, 24 )
-nodes = [ NodePath("../TriggeredPlatform2"), NodePath("../TriggeredPlatform19"), NodePath("../TriggeredPlatform"), NodePath("../TriggeredPlatform21"), NodePath("../TriggeredPlatform3"), NodePath("../TriggeredPlatform13"), NodePath("../TriggeredPlatform4"), NodePath("../TriggeredPlatform15"), NodePath("../TriggeredPlatform5"), NodePath("../TriggeredPlatform16"), NodePath("../TriggeredPlatform6"), NodePath("../TriggeredPlatform23"), NodePath("../TriggeredPlatform7"), NodePath("../TriggeredPlatform17"), NodePath("../TriggeredPlatform8"), NodePath("../TriggeredPlatform24"), NodePath("../TriggeredPlatform9"), NodePath("../TriggeredPlatform18"), NodePath("../TriggeredPlatform10"), NodePath("../TriggeredPlatform22"), NodePath("../TriggeredPlatform11"), NodePath("../TriggeredPlatform14"), NodePath("../TriggeredPlatform12"), NodePath("../TriggeredPlatform20"), NodePath("ActivatedWires") ]
+nodes = [ NodePath("../Gate") ]
 
 [node name="ActivatedWires" parent="SwitchBody" instance=ExtResource( 11 )]
 visible = false
 position = Vector2( 1, 8 )
 z_index = -10
 tile_data = PoolIntArray( -131046, 6, 0, -131045, 9, 0, -131044, 4, 0, -65535, 0, 262144, -65534, 0, 327680, -65533, 0, 327680, -65532, 0, 327680, -65531, 0, 327680, -65530, 0, 327680, -65529, 0, 327680, -65528, 0, 327680, -65527, 0, 393218, -65510, 6, 0, -65509, 8, 0, -65508, 4, 0, 9, 0, 196608, 15, 0, 393216, 16, 0, 327680, 17, 0, 327680, 18, 0, 327680, 19, 0, 327680, 20, 0, 327680, 21, 0, 327680, 22, 0, 327680, 23, 0, 327680, 24, 0, 327680, 25, 0, 327680, 26, 0, 262146, 27, 8, 0, 28, 4, 0, 65545, 0, 196608, 65551, 0, 196608, 65562, 6, 0, 65563, 8, 0, 65564, 4, 0, 131081, 0, 524288, 131082, 0, 327680, 131083, 0, 327680, 131084, 0, 327680, 131085, 0, 327680, 131086, 0, 327680, 131087, 0, 524290, 131098, 6, 0, 131099, 8, 0, 131100, 4, 0, 196634, 6, 0, 196635, 8, 0, 196636, 4, 0, 262170, 6, 0, 262171, 8, 0, 262172, 4, 0, 327706, 6, 0, 327707, 8, 0, 327708, 4, 0, 393242, 6, 0, 393243, 8, 0, 393244, 4, 0, 458778, 6, 0, 458779, 8, 0, 458780, 4, 0, 524314, 6, 0, 524315, 8, 0, 524316, 4, 0, 589850, 6, 0, 589851, 7, 0, 589852, 4, 0 )
-
-[node name="TriggeredPlatform2" parent="." instance=ExtResource( 12 )]
-position = Vector2( 480, 168 )
-rotation = -1.5708
-active = true
-
-[node name="TriggeredPlatform19" parent="." instance=ExtResource( 12 )]
-position = Vector2( 496, 168 )
-rotation = 1.5708
-active = true
-
-[node name="TriggeredPlatform" parent="." instance=ExtResource( 12 )]
-position = Vector2( 480, 184 )
-rotation = -1.5708
-active = true
-
-[node name="TriggeredPlatform21" parent="." instance=ExtResource( 12 )]
-position = Vector2( 496, 184 )
-rotation = 1.5708
-active = true
-
-[node name="TriggeredPlatform3" parent="." instance=ExtResource( 12 )]
-position = Vector2( 480, 152 )
-rotation = -1.5708
-active = true
-
-[node name="TriggeredPlatform13" parent="." instance=ExtResource( 12 )]
-position = Vector2( 496, 152 )
-rotation = 1.5708
-active = true
-
-[node name="TriggeredPlatform4" parent="." instance=ExtResource( 12 )]
-position = Vector2( 480, 136 )
-rotation = -1.5708
-active = true
-
-[node name="TriggeredPlatform15" parent="." instance=ExtResource( 12 )]
-position = Vector2( 496, 136 )
-rotation = 1.5708
-active = true
-
-[node name="TriggeredPlatform5" parent="." instance=ExtResource( 12 )]
-position = Vector2( 480, 120 )
-rotation = -1.5708
-active = true
-
-[node name="TriggeredPlatform16" parent="." instance=ExtResource( 12 )]
-position = Vector2( 496, 120 )
-rotation = 1.5708
-active = true
-
-[node name="TriggeredPlatform6" parent="." instance=ExtResource( 12 )]
-position = Vector2( 480, 104 )
-rotation = -1.5708
-active = true
-
-[node name="TriggeredPlatform23" parent="." instance=ExtResource( 12 )]
-position = Vector2( 496, 104 )
-rotation = 1.5708
-active = true
-
-[node name="TriggeredPlatform7" parent="." instance=ExtResource( 12 )]
-position = Vector2( 480, 88 )
-rotation = -1.5708
-active = true
-
-[node name="TriggeredPlatform17" parent="." instance=ExtResource( 12 )]
-position = Vector2( 496, 88 )
-rotation = 1.5708
-active = true
-
-[node name="TriggeredPlatform8" parent="." instance=ExtResource( 12 )]
-position = Vector2( 480, 72 )
-rotation = -1.5708
-active = true
-
-[node name="TriggeredPlatform24" parent="." instance=ExtResource( 12 )]
-position = Vector2( 496, 72 )
-rotation = 1.5708
-active = true
-
-[node name="TriggeredPlatform9" parent="." instance=ExtResource( 12 )]
-position = Vector2( 480, 56 )
-rotation = -1.5708
-active = true
-
-[node name="TriggeredPlatform18" parent="." instance=ExtResource( 12 )]
-position = Vector2( 496, 56 )
-rotation = 1.5708
-active = true
-
-[node name="TriggeredPlatform10" parent="." instance=ExtResource( 12 )]
-position = Vector2( 480, 40 )
-rotation = -1.5708
-active = true
-
-[node name="TriggeredPlatform22" parent="." instance=ExtResource( 12 )]
-position = Vector2( 496, 40 )
-rotation = 1.5708
-active = true
-
-[node name="TriggeredPlatform11" parent="." instance=ExtResource( 12 )]
-position = Vector2( 480, 24 )
-rotation = -1.5708
-active = true
-
-[node name="TriggeredPlatform14" parent="." instance=ExtResource( 12 )]
-position = Vector2( 496, 24 )
-rotation = 1.5708
-active = true
-
-[node name="TriggeredPlatform12" parent="." instance=ExtResource( 12 )]
-position = Vector2( 480, 8 )
-rotation = -1.5708
-active = true
-
-[node name="TriggeredPlatform20" parent="." instance=ExtResource( 12 )]
-position = Vector2( 496, 8 )
-rotation = 1.5708
-active = true
 
 [node name="FuelTank3" parent="." instance=ExtResource( 8 )]
 position = Vector2( 776, 200 )
@@ -253,7 +133,7 @@ position = Vector2( 776, 200 )
 editor/display_folded = true
 visible = false
 position = Vector2( 752, 164 )
-script = ExtResource( 13 )
+script = ExtResource( 12 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -268,22 +148,28 @@ position = Vector2( 16, 172 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lv3SpMessage/Area2D"]
 polygon = PoolVector2Array( 16, -16, 16, 16, -104, 16, -104, -16 )
 
-[node name="FinishLine" parent="." instance=ExtResource( 14 )]
+[node name="FinishLine" parent="." instance=ExtResource( 13 )]
 editor/display_folded = true
 visible = false
 position = Vector2( 952, 96 )
-next_stage = ExtResource( 15 )
+next_stage = ExtResource( 14 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FinishLine"]
 polygon = PoolVector2Array( 24, 16, -16, 16, -16, 0, 24, 0 )
 
-[node name="Message" parent="." instance=ExtResource( 16 )]
+[node name="Message" parent="." instance=ExtResource( 15 )]
 visible = false
 position = Vector2( 78, 24 )
 message = "show off..."
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Message"]
 polygon = PoolVector2Array( 18, 8, 18, -24, -14, -24, -14, 8 )
+
+[node name="Gate" parent="." instance=ExtResource( 16 )]
+position = Vector2( 480, 8 )
+gate_height = 12
+active = true
+delay_between_cells = 0.1
 [connection signal="body_entered" from="Lv3SpMessage" to="Lv3SpMessage" method="_on_Lv3SpMessage_body_entered"]
 [connection signal="body_entered" from="Lv3SpMessage/Area2D" to="Lv3SpMessage" method="_on_Area2D_body_entered"]
 

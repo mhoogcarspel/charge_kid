@@ -9,4 +9,14 @@ gate_height = 8
 
 [node name="GateCell" parent="." instance=ExtResource( 2 )]
 
+[node name="TriggeredPlatform" parent="GateCell" index="0"]
+active = false
+delay_time = 0.0
+chain_reaction = [  ]
+
+[node name="TriggeredPlatform2" parent="GateCell" index="1"]
+active = false
+delay_time = 0.0
+chain_reaction = [  ]
+
 [editable path="GateCell"]
