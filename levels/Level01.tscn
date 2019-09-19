@@ -9,15 +9,15 @@
 [ext_resource path="res://assets/Tilemaps/SolidBlocks.tscn" type="PackedScene" id=7]
 [ext_resource path="res://actors/Player/Player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://actors/TheUniqueBullet/Bullet.tscn" type="PackedScene" id=9]
-[ext_resource path="res://actors/Interactables/TriggeredPlatform/TriggeredPlatform.tscn" type="PackedScene" id=10]
-[ext_resource path="res://actors/Interactables/FuelTank/FuelTank.tscn" type="PackedScene" id=11]
-[ext_resource path="res://levels/Messages/JumpMessage.tscn" type="PackedScene" id=12]
-[ext_resource path="res://levels/Messages/ShootMessage.tscn" type="PackedScene" id=13]
-[ext_resource path="res://levels/Messages/BoostMessage.tscn" type="PackedScene" id=14]
-[ext_resource path="res://levels/Messages/Message.tscn" type="PackedScene" id=15]
-[ext_resource path="res://levels/FinishLine.tscn" type="PackedScene" id=16]
-[ext_resource path="res://levels/Level02.tscn" type="PackedScene" id=17]
-[ext_resource path="res://levels/Messages/DropMessage.tscn" type="PackedScene" id=18]
+[ext_resource path="res://actors/Interactables/FuelTank/FuelTank.tscn" type="PackedScene" id=10]
+[ext_resource path="res://levels/Messages/JumpMessage.tscn" type="PackedScene" id=11]
+[ext_resource path="res://levels/Messages/ShootMessage.tscn" type="PackedScene" id=12]
+[ext_resource path="res://levels/Messages/BoostMessage.tscn" type="PackedScene" id=13]
+[ext_resource path="res://levels/Messages/Message.tscn" type="PackedScene" id=14]
+[ext_resource path="res://levels/FinishLine.tscn" type="PackedScene" id=15]
+[ext_resource path="res://levels/Level02.tscn" type="PackedScene" id=16]
+[ext_resource path="res://levels/Messages/DropMessage.tscn" type="PackedScene" id=17]
+[ext_resource path="res://actors/Interactables/Gate/DoubleGate/DoubleGate.tscn" type="PackedScene" id=18]
 
 [sub_resource type="Shader" id=4]
 code = "shader_type canvas_item;
@@ -108,8 +108,8 @@ tile_data = PoolIntArray( 786480, 7, 0, 786481, 10, 0, 786493, 1, 0, 917522, 3, 
 
 [node name="SwitchBody" parent="." instance=ExtResource( 4 )]
 position = Vector2( 472, 136 )
-nodes = [ NodePath("../TriggeredPlatform7"), NodePath("../TriggeredPlatform6"), NodePath("../TriggeredPlatform"), NodePath("../TriggeredPlatform2"), NodePath("../TriggeredPlatform3"), NodePath("../TriggeredPlatform4"), NodePath("../TriggeredPlatform15"), NodePath("../TriggeredPlatform16") ]
 wires = [ NodePath("../ActivatedWires") ]
+nodes = [ NodePath("../Gate") ]
 
 [node name="ActivatedWires" parent="." instance=ExtResource( 5 )]
 material = SubResource( 6 )
@@ -132,41 +132,16 @@ has_bullet = false
 [node name="Bullet" parent="." instance=ExtResource( 9 )]
 position = Vector2( 224, 136 )
 
-[node name="TriggeredPlatform" parent="." instance=ExtResource( 10 )]
-position = Vector2( 480, 200 )
-rotation = 1.5708
-active = true
-
-[node name="TriggeredPlatform6" parent="." instance=ExtResource( 10 )]
-position = Vector2( 480, 184 )
-rotation = 1.5708
-active = true
-
-[node name="TriggeredPlatform2" parent="." instance=ExtResource( 10 )]
-position = Vector2( 464, 200 )
-rotation = -1.5708
-active = true
-
-[node name="TriggeredPlatform3" parent="." instance=ExtResource( 10 )]
-position = Vector2( 480, 216 )
-rotation = 1.5708
-active = true
-
-[node name="TriggeredPlatform4" parent="." instance=ExtResource( 10 )]
-position = Vector2( 464, 216 )
-rotation = -1.5708
-active = true
-
-[node name="FuelTank" parent="." instance=ExtResource( 11 )]
+[node name="FuelTank" parent="." instance=ExtResource( 10 )]
 position = Vector2( 856, 280 )
 
-[node name="FuelTank2" parent="." instance=ExtResource( 11 )]
+[node name="FuelTank2" parent="." instance=ExtResource( 10 )]
 position = Vector2( 824, 201 )
 
 [node name="SwitchBody2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 936, 120 )
-nodes = [ NodePath("../TriggeredPlatform8"), NodePath("../TriggeredPlatform5"), NodePath("../TriggeredPlatform9"), NodePath("../TriggeredPlatform10"), NodePath("../TriggeredPlatform11"), NodePath("../TriggeredPlatform12"), NodePath("../TriggeredPlatform13"), NodePath("../TriggeredPlatform14") ]
 wires = [ NodePath("../ActivatedWires2") ]
+nodes = [ NodePath("../Gate2") ]
 
 [node name="ActivatedWires2" parent="." instance=ExtResource( 5 )]
 material = SubResource( 7 )
@@ -174,65 +149,25 @@ position = Vector2( 944, 128 )
 z_index = -10
 tile_data = PoolIntArray( 65535, 1, 0, 131070, 6, 0, 131071, 8, 0, 65536, 4, 0, 196606, 6, 0, 196607, 8, 0, 131072, 4, 0, 262142, 6, 0, 262143, 8, 0, 196608, 4, 0, 327678, 6, 0, 327679, 7, 0, 262144, 4, 0 )
 
-[node name="TriggeredPlatform8" parent="." instance=ExtResource( 10 )]
-position = Vector2( 944, 200 )
-rotation = 1.5708
-active = true
-
-[node name="TriggeredPlatform5" parent="." instance=ExtResource( 10 )]
-position = Vector2( 928, 200 )
-rotation = -1.5708
-active = true
-
-[node name="TriggeredPlatform9" parent="." instance=ExtResource( 10 )]
-position = Vector2( 928, 184 )
-rotation = -1.5708
-active = true
-
-[node name="TriggeredPlatform10" parent="." instance=ExtResource( 10 )]
-position = Vector2( 944, 184 )
-rotation = 1.5708
-active = true
-
-[node name="TriggeredPlatform11" parent="." instance=ExtResource( 10 )]
-position = Vector2( 928, 168 )
-rotation = -1.5708
-active = true
-
-[node name="TriggeredPlatform12" parent="." instance=ExtResource( 10 )]
-position = Vector2( 944, 168 )
-rotation = 1.5708
-active = true
-
-[node name="TriggeredPlatform13" parent="." instance=ExtResource( 10 )]
-position = Vector2( 928, 152 )
-rotation = -1.5708
-active = true
-
-[node name="TriggeredPlatform14" parent="." instance=ExtResource( 10 )]
-position = Vector2( 944, 152 )
-rotation = 1.5708
-active = true
-
-[node name="JumpMessage" parent="." instance=ExtResource( 12 )]
+[node name="JumpMessage" parent="." instance=ExtResource( 11 )]
 visible = false
 position = Vector2( 200, 232 )
 
 [node name="CollisionPolygon2D" parent="JumpMessage" index="0"]
 polygon = PoolVector2Array( -32, 8, 168, 8, 168, 56, -32, 56 )
 
-[node name="ShootMessage" parent="." instance=ExtResource( 13 )]
+[node name="ShootMessage" parent="." instance=ExtResource( 12 )]
 visible = false
 position = Vector2( 120, 104 )
 
-[node name="BoostMessage" parent="." instance=ExtResource( 14 )]
+[node name="BoostMessage" parent="." instance=ExtResource( 13 )]
 visible = false
 position = Vector2( 552, 176 )
 
 [node name="CollisionPolygon2D" parent="BoostMessage" index="0"]
 polygon = PoolVector2Array( -408, 48, -32, 48, -32, 120, -408, 120 )
 
-[node name="Message2" parent="." instance=ExtResource( 15 )]
+[node name="Message2" parent="." instance=ExtResource( 14 )]
 editor/display_folded = true
 visible = false
 position = Vector2( 936, 48 )
@@ -241,7 +176,7 @@ message = "totally intended"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Message2"]
 polygon = PoolVector2Array( 24, 32, 24, 16, -16, 16, -16, 32 )
 
-[node name="Message" parent="." instance=ExtResource( 15 )]
+[node name="Message" parent="." instance=ExtResource( 14 )]
 editor/display_folded = true
 visible = false
 position = Vector2( 40, 24 )
@@ -250,27 +185,17 @@ message = "good job!"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Message"]
 polygon = PoolVector2Array( 32, 24, 32, -16, -40, -16, -40, 24 )
 
-[node name="TriggeredPlatform15" parent="." instance=ExtResource( 10 )]
-position = Vector2( 464, 168 )
-rotation = -1.5708
-active = true
-
-[node name="TriggeredPlatform16" parent="." instance=ExtResource( 10 )]
-position = Vector2( 480, 168 )
-rotation = 1.5708
-active = true
-
-[node name="FinishLine" parent="." instance=ExtResource( 16 )]
+[node name="FinishLine" parent="." instance=ExtResource( 15 )]
 pause_mode = 1
 editor/display_folded = true
 visible = false
 position = Vector2( 1000, 184 )
-next_stage = ExtResource( 17 )
+next_stage = ExtResource( 16 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FinishLine"]
 polygon = PoolVector2Array( 24, 24, 24, 0, -16, 0, -16, 24 )
 
-[node name="DropMessage" parent="." instance=ExtResource( 18 )]
+[node name="DropMessage" parent="." instance=ExtResource( 17 )]
 editor/display_folded = true
 visible = false
 position = Vector2( 560, 200 )
@@ -278,11 +203,15 @@ position = Vector2( 560, 200 )
 [node name="CollisionPolygon2D" parent="DropMessage" index="0"]
 polygon = PoolVector2Array( -32, 0, 16, 0, 16, 24, -32, 24 )
 
-[node name="TriggeredPlatform7" parent="." instance=ExtResource( 10 )]
-light_mask = 2
-position = Vector2( 464, 184 )
-rotation = -1.5708
+[node name="Gate" parent="." instance=ExtResource( 18 )]
+position = Vector2( 464, 167 )
+gate_height = 4
 active = true
+delay_between_cells = 0.1
+
+[node name="Gate2" parent="." instance=ExtResource( 18 )]
+position = Vector2( 927, 151 )
+gate_height = 4
 
 [editable path="BackgroundBack"]
 
