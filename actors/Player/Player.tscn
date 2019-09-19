@@ -23,7 +23,7 @@
 [ext_resource path="res://assets/SFX/270338__littlerobotsoundfactory__open-01.wav" type="AudioStream" id=21]
 [ext_resource path="res://assets/SFX/270308__littlerobotsoundfactory__explosion-00.wav" type="AudioStream" id=22]
 
-[sub_resource type="Shader" id=13]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 render_mode unshaded;
 
@@ -42,19 +42,19 @@ void fragment ()
 		COLOR.a = 0.0;
 }"
 
-[sub_resource type="ShaderMaterial" id=14]
-shader = SubResource( 13 )
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 shader_param/activate = false
 shader_param/erase = false
 shader_param/color = Color( 0.956863, 0.956863, 0.894118, 1 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 4.5, 6 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 4.1541, 0.483639 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=5]
 length = 0.1
 loop = true
 tracks/0/type = "value"
@@ -82,7 +82,7 @@ tracks/1/keys = {
 "values": [ Vector2( 5, 2 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=6]
 length = 1.5
 loop = true
 step = 0.25
@@ -111,7 +111,7 @@ tracks/1/keys = {
 "values": [ Vector2( 5, 3 ), Vector2( 5, 3 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=7]
 length = 0.12
 step = 0.06
 tracks/0/type = "value"
@@ -153,7 +153,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=8]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -204,23 +204,23 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Curve" id=7]
+[sub_resource type="Curve" id=9]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.631584, 0.7662 ), -0.622599, -0.622599, 0, 0, Vector2( 1, 0 ), -4.50924, 0.0, 0, 0 ]
 
-[sub_resource type="CircleShape2D" id=8]
+[sub_resource type="CircleShape2D" id=10]
 radius = 1.5291
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 5.5, 7 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=12]
 size = 8
 font_data = ExtResource( 14 )
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 1, 1 )
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 1, 1 )
 
 [node name="Player" type="KinematicBody2D" groups=[
@@ -245,7 +245,7 @@ jump_height = 40.0
 gravity_acceleration = 500.0
 
 [node name="PlayerSprite" type="Sprite" parent="."]
-material = SubResource( 14 )
+material = SubResource( 2 )
 texture = ExtResource( 3 )
 vframes = 4
 hframes = 8
@@ -286,7 +286,7 @@ script = ExtResource( 6 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( -0.5, 2 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="PlatformSentinel" type="Area2D" parent="."]
 editor/display_folded = true
@@ -297,13 +297,13 @@ collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformSentinel"]
 position = Vector2( 0.434487, 0.552986 )
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Airborne = SubResource( 3 )
-anims/Idle = SubResource( 4 )
-anims/Shooting = SubResource( 5 )
-anims/Walking = SubResource( 6 )
+anims/Airborne = SubResource( 5 )
+anims/Idle = SubResource( 6 )
+anims/Shooting = SubResource( 7 )
+anims/Walking = SubResource( 8 )
 
 [node name="FuelParticles" type="Node2D" parent="."]
 editor/display_folded = true
@@ -415,7 +415,7 @@ gravity = Vector2( 0, 400 )
 initial_velocity = 600.0
 initial_velocity_random = 0.8
 scale_amount = 0.5
-scale_amount_curve = SubResource( 7 )
+scale_amount_curve = SubResource( 9 )
 
 [node name="BunnyTimer" type="Timer" parent="."]
 wait_time = 0.1
@@ -441,7 +441,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftAreaChecker"]
 position = Vector2( -4.28448, 0.0921392 )
-shape = SubResource( 8 )
+shape = SubResource( 10 )
 
 [node name="RightAreaChecker" type="Area2D" parent="."]
 editor/display_folded = true
@@ -453,7 +453,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightAreaChecker"]
 position = Vector2( -4.28448, 0.0921392 )
-shape = SubResource( 8 )
+shape = SubResource( 10 )
 
 [node name="SpikesSentinel" type="Area2D" parent="."]
 editor/display_folded = true
@@ -461,14 +461,14 @@ visible = false
 position = Vector2( -0.5, 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikesSentinel"]
-shape = SubResource( 9 )
+shape = SubResource( 11 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = -100.0
 margin_top = -36.0
 margin_right = 100.0
 margin_bottom = -23.0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 12 )
 align = 1
 script = ExtResource( 15 )
 
@@ -524,7 +524,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightLedgeDetector"]
-shape = SubResource( 11 )
+shape = SubResource( 13 )
 
 [node name="LeftLedgeDetector" type="Area2D" parent="."]
 editor/display_folded = true
@@ -537,7 +537,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftLedgeDetector"]
-shape = SubResource( 12 )
+shape = SubResource( 14 )
 [connection signal="timeout" from="PlayerSprite/Timer2" to="PlayerSprite" method="_on_Timer2_timeout"]
 [connection signal="timeout" from="BoostTimer" to="." method="_on_BoostTimer_timeout"]
 [connection signal="timeout" from="DropTimer" to="." method="_on_DropTimer_timeout"]

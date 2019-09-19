@@ -1,17 +1,20 @@
 extends Block
 
 onready var is_active:bool = false
-onready var particles = preload("res://assets/Particles/ProjectileHit.tscn")
 
 export(Array,NodePath) var nodes
+export(Array,NodePath) var wires
+
+
+
+func _ready():
+	for nodepath in wires:
+		print(nodepath)
+
 
 func hit(projectile:PhysicsBody2D) -> void:
 	$SFX.play()
-	$Switch.activate()
-	if !is_active:
-		add_child(particles.instance())
-		is_active = true
-		$Timer.start()
+	self.activate()
 	.hit(projectile)
 
 func _on_Timer_timeout():
@@ -22,11 +25,14 @@ func _on_Timer_timeout():
 
 func activate() -> void:
 	if not is_active:
-		var camera = get_tree().get_nodes_in_group("camera")[0]
-		camera.screen_shake(8)
 		$Switch.activate()
 		is_active = true
+		for nodepath in wires:
+			get_node(nodepath).activate()
 		$Timer.start()
 	else:
 		$Switch.deactivate()
 		is_active = false
+
+
+

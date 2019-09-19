@@ -1,12 +1,45 @@
+tool
 extends TileMap
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
-# Called when the node enters the scene tree for the first time.
+
+export (bool) var active setget change_state
+
+func change_state(new_value) -> void:
+	active = new_value
+	if active:
+		get_material().set_shader_param("active", true)
+	else:
+		get_material().set_shader_param("active", false)
+
+
+
 func activate() -> void:
-	self.visible = true
+	active = true
+	get_material().set_shader_param("active", true)
+	var timer = Timer.new()
+	self.add_child(timer)
+	
+	self.position.x += 2
+	timer.start(0.1)
+	yield(timer, "timeout")
+	
+	self.position.x -= 3
+	timer.start(0.1)
+	yield(timer, "timeout")
+	
+	self.position.x += 1
+	timer.queue_free()
 
 func deactivate() -> void:
-	self.visible = false
+	active = false
+	get_material().set_shader_param("active", false)
+
+
+
+func is_active() -> bool:
+	return active
+
+
+
+

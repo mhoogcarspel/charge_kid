@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "Selected"
 length = 0.5
 loop = true
@@ -18,4 +18,4 @@ tracks/0/keys = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer"]
-anims/Selected = SubResource( 2 )
+anims/Selected = SubResource( 1 )

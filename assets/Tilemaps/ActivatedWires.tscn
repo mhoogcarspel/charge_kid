@@ -1,9 +1,32 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/Spritesheet/activated_wire.png" type="Texture" id=1]
 [ext_resource path="res://assets/Tilemaps/ActivatedWires.gd" type="Script" id=2]
 
-[sub_resource type="TileSet" id=1]
+[sub_resource type="Shader" id=4]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform vec4 active_color: hint_color;
+uniform vec4 inactive_color: hint_color;
+uniform bool active;
+
+void fragment ()
+{
+	COLOR = texture(TEXTURE , UV);
+	if (active == false && length(COLOR.rgb - active_color.rgb) <= 0.1)
+	{
+		COLOR.rgb = inactive_color.rgb;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 4 )
+shader_param/active_color = Color( 1, 0.309804, 0.470588, 1 )
+shader_param/inactive_color = Color( 0.956863, 0.956863, 0.894118, 1 )
+shader_param/active = false
+
+[sub_resource type="TileSet" id=3]
 0/name = "activated_wire.png 0"
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
@@ -115,7 +138,8 @@
 9/z_index = 0
 
 [node name="ActivatedWires" type="TileMap"]
-tile_set = SubResource( 1 )
+material = SubResource( 5 )
+tile_set = SubResource( 3 )
 cell_size = Vector2( 16, 16 )
 format = 1
 script = ExtResource( 2 )
