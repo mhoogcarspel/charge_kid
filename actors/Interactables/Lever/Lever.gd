@@ -11,6 +11,8 @@ func _ready():
 	else:
 		$Lever.frame = 0
 
+
+
 func hit(bullet:PlayerBullet):
 	add_child(particles.instance())
 	$SFX.play()

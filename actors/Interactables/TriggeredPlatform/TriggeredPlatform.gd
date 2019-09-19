@@ -2,9 +2,9 @@ tool
 extends StaticBody2D
 
 export (bool) var active setget trigger
+export (float) var delay_time
+export (Array, NodePath) var chain_reaction
 export (String, "Up", "Left", "Down", "Right") var direction setget spin, get_direction
-
-
 
 func trigger(new_value: bool) -> void:
 	if Engine.editor_hint:
@@ -54,16 +54,33 @@ func _ready():
 func activate() -> void:
 	$SFX.play()
 	if not is_active():
+		
+		if delay_time > 0:
+			$DelayTimer.start(delay_time)
+			yield($DelayTimer, "timeout")
+		
 		$AnimationPlayer.play("Activate")
 		active = true
+		if chain_reaction.size() > 0:
+			for object in chain_reaction:
+				get_node(object).activate()
 	else:
-		$AnimationPlayer.play("Deactivate")
-		active = false
+		deactivate()
+
+
 
 func deactivate() -> void:
 	if is_active():
+		
+		if delay_time > 0:
+			$DelayTimer.start(delay_time)
+			yield($DelayTimer, "timeout")
+		
 		$AnimationPlayer.play("Deactivate")
 		active = false
+		if chain_reaction.size() > 0:
+			for object in chain_reaction:
+				get_node(object).deactivate()
 
 func is_active() -> bool:
 	return active
@@ -71,6 +88,3 @@ func is_active() -> bool:
 func hit(bullet: PhysicsBody2D) -> void:
 	if bullet.stack[0] == "StandardState":
 		bullet.change_state("ReturnState")
-
-
-

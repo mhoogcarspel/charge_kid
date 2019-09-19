@@ -4,8 +4,6 @@
 [ext_resource path="res://assets/Spritesheet/industrial.v2.png" type="Texture" id=2]
 [ext_resource path="res://assets/SFX/270310__littlerobotsoundfactory__explosion-04.wav" type="AudioStream" id=3]
 
-
-
 [sub_resource type="Animation" id=1]
 resource_name = "Activate"
 length = 0.2
@@ -116,3 +114,6 @@ shape = SubResource( 3 )
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
 bus = "SFX"
+
+[node name="DelayTimer" type="Timer" parent="."]
+wait_time = 0.01

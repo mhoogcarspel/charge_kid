@@ -71,6 +71,7 @@ tile_data = PoolIntArray( 196612, 2, 0, 262148, 0, 0, 327684, 0, 0, 393220, 0, 0
 tile_data = PoolIntArray( 786480, 7, 0, 786481, 10, 0, 786493, 1, 0, 917522, 3, 0, 917523, 4, 0, 1114133, 7, 0, 1114134, 8, 0, 1114159, 3, 0, 1114160, 4, 0, 1114162, 13, 0 )
 
 [node name="SwitchBody" parent="." instance=ExtResource( 4 )]
+editor/display_folded = true
 position = Vector2( 472, 136 )
 nodes = [ NodePath("../TriggeredPlatform7"), NodePath("../TriggeredPlatform6"), NodePath("../TriggeredPlatform"), NodePath("../TriggeredPlatform2"), NodePath("../TriggeredPlatform3"), NodePath("../TriggeredPlatform4"), NodePath("../TriggeredPlatform15"), NodePath("../TriggeredPlatform16"), NodePath("ActivatedWires") ]
 
