@@ -28,12 +28,12 @@ func _on_ReactivationTimer_timeout():
 func swap_player_and_bullet(bullet: PlayerBullet):
 	var player = get_tree().get_nodes_in_group("player")[0]
 	var player_position: Vector2 = player.position
-	bullet.disable_enable_hitbox(true)
+	bullet.disable_enable_hitbox(false)
 	player.position = bullet.position
 	bullet.position = player_position
 	yield(get_tree(),"idle_frame")
 	
 	bullet.change_state("ReturnState")
-	bullet.disable_enable_hitbox(false)
+	bullet.disable_enable_hitbox(true)
 	self.set_collision_layer_bit(5, false)
 	actual_state = ""

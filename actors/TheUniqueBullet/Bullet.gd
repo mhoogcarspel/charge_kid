@@ -68,4 +68,4 @@ func _on_HitBox_body_entered(body):
 		body.hit(self)
 
 func disable_enable_hitbox(set: bool) -> void:
-	$HitBox/HitboxCollider.set_deferred("disabled", set)
+	$HitBox/HitboxCollider.set_deferred("disabled", !set)
