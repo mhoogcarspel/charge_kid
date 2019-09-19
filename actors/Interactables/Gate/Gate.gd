@@ -4,6 +4,7 @@ extends Node
 export (int) var gate_height setget initialize_gate
 export (bool) var active setget initial_value
 export (float) var delay_between_cells
+export (bool) var close_in_inverse_order
 
 func initial_value(new_value : bool) -> void:
 	active = new_value
@@ -43,6 +44,11 @@ func deactivate() -> void:
 func _ready():
 	add_cells()
 	var i: int = 0
+	var j: int
+	if close_in_inverse_order:
+		j = self.get_children().size()
+	else:
+		j = 0
 	for cell in self.get_children():
-		cell.delay = delay_between_cells * i
+		cell.delay = delay_between_cells * abs(j - i)
 		i += 1

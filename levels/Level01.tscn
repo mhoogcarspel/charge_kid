@@ -17,7 +17,7 @@
 [ext_resource path="res://levels/FinishLine.tscn" type="PackedScene" id=15]
 [ext_resource path="res://levels/Level02.tscn" type="PackedScene" id=16]
 [ext_resource path="res://levels/Messages/DropMessage.tscn" type="PackedScene" id=17]
-[ext_resource path="res://actors/Interactables/Gate/Gate.tscn" type="PackedScene" id=18]
+[ext_resource path="res://actors/Interactables/Gate/DoubleGate/DoubleGate.tscn" type="PackedScene" id=18]
 
 [node name="Level01" type="Node2D" groups=[
 "level",
@@ -169,6 +169,7 @@ polygon = PoolVector2Array( -32, 0, 16, 0, 16, 24, -32, 24 )
 [node name="Gate" parent="." instance=ExtResource( 18 )]
 position = Vector2( 464, 167 )
 gate_height = 4
+active = true
 delay_between_cells = 0.1
 
 [node name="Gate2" parent="." instance=ExtResource( 18 )]
