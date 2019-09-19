@@ -1,5 +1,6 @@
 tool
 extends StaticBody2D
+class_name TriggeredPlatform
 
 export (bool) var active setget trigger
 export (float) var delay_time

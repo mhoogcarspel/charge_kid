@@ -123,6 +123,11 @@ _global_script_classes=[ {
 "class": "State",
 "language": "GDScript",
 "path": "res://actors/State.gd"
+}, {
+"base": "StaticBody2D",
+"class": "TriggeredPlatform",
+"language": "GDScript",
+"path": "res://actors/Interactables/TriggeredPlatform/TriggeredPlatform.gd"
 } ]
 _global_script_class_icons={
 "BaseControlsConfigMenu": "",
@@ -147,7 +152,8 @@ _global_script_class_icons={
 "ShootingState": "",
 "StandardState": "",
 "StandingState": "",
-"State": ""
+"State": "",
+"TriggeredPlatform": ""
 }
 
 [application]
