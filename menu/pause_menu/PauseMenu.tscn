@@ -11,7 +11,10 @@
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 4 )
 
-[node name="PauseMenu" type="Control"]
+[node name="PauseMenu" type="Control" groups=[
+"pause_menu",
+]]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2

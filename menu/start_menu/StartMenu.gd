@@ -7,6 +7,7 @@ onready var main = get_tree().get_nodes_in_group("main")[0]
 
 func _ready():
 	$CenterContainer/CenterContainer/VBoxContainer3/VBoxContainer3/StartGame.grab_focus()
+	get_tree().paused = true
 
 func _on_StartGame_pressed():
 	main.change_scene(next_scene)

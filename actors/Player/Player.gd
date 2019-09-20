@@ -52,10 +52,10 @@ onready var actions: Dictionary = {
 	"ui_shoot": "Shoot",
 	"ui_boost": "Boost",
 	"ui_bullet_boost": "Bullet Boost",
-	"ui_left": "Left",
-	"ui_right": "Right",
-	"ui_up": "Up",
-	"ui_down": "Down",
+	"left": "Left",
+	"right": "Right",
+	"up": "Up",
+	"down": "Down",
 	"ui_pause": "Pause"}
 onready var control_handler = ButtonGetter.new(actions)
 

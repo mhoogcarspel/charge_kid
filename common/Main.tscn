@@ -29,4 +29,17 @@ bus = "SFX"
 stream = ExtResource( 7 )
 bus = "SFX"
 
+[node name="MenuNavTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="Timer" type="Timer" parent="MenuNavTimer"]
+wait_time = 0.01
+one_shot = true
+
+[node name="PauseTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [node name="Scene" type="Node" parent="."]
+[connection signal="timeout" from="MenuNavTimer/Timer" to="." method="_on_Timer_timeout"]

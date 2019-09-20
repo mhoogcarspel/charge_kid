@@ -11,14 +11,16 @@ onready var actions: Dictionary = {
 	"ui_shoot": "Shoot",
 	"ui_boost": "Boost",
 	"ui_bullet_boost": "Bullet Boost",
-	"ui_left": "Left",
-	"ui_right": "Right",
-	"ui_up": "Up",
-	"ui_down": "Down",
+	"left": "Left",
+	"right": "Right",
+	"up": "Up",
+	"down": "Down",
 	"ui_pause": "Pause"
 	}
 
 onready var control_handler = ButtonGetter.new(actions)
+onready var old_dir_input: Vector2 = Vector2.ZERO
+onready var actual_dir_input: Vector2 = Vector2.ZERO
 onready var player_scene: PackedScene = preload("res://actors/Player/Player.tscn")
 onready var last_input_device: String = "Keyboard"
 onready var controller_layout: String = "Microsoft"
@@ -38,6 +40,7 @@ func back_to_start():
 	change_scene(start_scene)
 
 func change_scene(next_scene: PackedScene) -> void:
+	get_tree().paused = false
 	for scene in $Scene.get_children():
 		scene.queue_free()
 	var scene_instance = next_scene.instance()
@@ -45,9 +48,32 @@ func change_scene(next_scene: PackedScene) -> void:
 	actual_scene = next_scene
 
 func _process(delta):
-	if Input.is_action_just_pressed("ui_pause") and !get_tree().get_nodes_in_group("player").empty() and !get_tree().paused:
+	# Pausing
+	if Input.is_action_just_pressed("ui_pause") and !get_tree().get_nodes_in_group("player").empty() and !get_tree().paused and $PauseTimer.is_stopped():
+		get_tree().paused = true
 		$HudContainer.add_child(pause_menu.instance())
+		$PauseTimer.start()
+	
+	#Unpausing
+	if Input.is_action_just_pressed("ui_pause") and !get_tree().get_nodes_in_group("player").empty() and get_tree().paused and $PauseTimer.is_stopped():
+		get_tree().paused = false
+		get_tree().get_nodes_in_group("pause_menu")[0].queue_free()
+		$PauseTimer.start()
+	
+	# Timer for menu navigating
+	actual_dir_input = control_handler.get_directional_input()
+	if get_tree().paused and actual_dir_input.y != 0 and old_dir_input.y == 0:
+		$MenuNavTimer/Timer.start()
+	if get_tree().paused and actual_dir_input.y == 0 and old_dir_input.y != 0:
+		$MenuNavTimer.stop()
+	old_dir_input = control_handler.get_directional_input()
 
+func _on_Timer_timeout():
+	$MenuNavTimer.start()
+
+
+
+### DETECT WHICH DEVICE THE PLAYER IS USING #######################################
 func _input(event):
 	if event is InputEventKey:
 		last_input_device = "Keyboard"
@@ -65,6 +91,10 @@ func is_using_controller() -> bool:
 		return true
 	else:
 		return false
+###################################################################################
+
+
+
 
 
 
