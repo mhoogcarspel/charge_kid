@@ -30,7 +30,7 @@ func update(delta):
 		elif bullet_boost_input_pressed():
 			return
 		
-		elif get_directional_inputs().length() > 0:
+		elif get_directional_inputs().x != 0:
 			owner.change_state("MovingState")
 			return
 		

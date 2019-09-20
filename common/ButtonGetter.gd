@@ -127,3 +127,88 @@ func equalize_equivalent_keys(action1: String, action2: String):
 		InputMap.action_erase_event(action2, event)
 	for event in InputMap.get_action_list(action1):
 		InputMap.action_add_event(action2, event)
+
+
+
+### THUMBSTICK INPUTS #############################################################
+const DEADZONE: float = 0.4
+
+func get_l_stick(device = 0) -> Vector2:
+	var input: Vector2 = Vector2.ZERO
+	input.x = Input.get_joy_axis(device, JOY_ANALOG_LX)
+	input.y = Input.get_joy_axis(device, JOY_ANALOG_LY)
+	return input
+
+func get_r_stick(device = 0) -> Vector2:
+	var input: Vector2 = Vector2.ZERO
+	input.x = Input.get_joy_axis(device, JOY_ANALOG_RX)
+	input.y = Input.get_joy_axis(device, JOY_ANALOG_RY)
+	return input
+
+func get_l_stick_directional(device = 0) -> Vector2:
+	var stick: Vector2 = get_l_stick(device)
+	var direction: Vector2 = Vector2.ZERO
+	
+	if stick.length_squared() >= DEADZONE*DEADZONE:
+		var angle: float = stick.angle()
+		
+		# Getting Y axis direction:
+		if angle > PI/8 and angle < 7*PI/8:
+			direction.y = 1
+		elif angle < -PI/8 and angle > -7*PI/8:
+			direction.y = -1
+		
+		# Getting X axis direction:
+		if angle < 3*PI/8 and angle > -3*PI/8:
+			direction.x = 1
+		elif angle > 5*PI/8 or angle < -5*PI/8:
+			direction.x = -1
+			
+	return direction
+
+func get_r_stick_directional(device = 0) -> Vector2:
+	var stick: Vector2 = get_r_stick(device)
+	var direction: Vector2 = Vector2.ZERO
+	
+	if stick.length_squared() >= DEADZONE*DEADZONE:
+		var angle: float = stick.angle()
+		
+		# Getting Y axis direction:
+		if angle > PI/8 and angle < 7*PI/8:
+			direction.y = 1
+		elif angle < -PI/8 and angle > -7*PI/8:
+			direction.y = -1
+		
+		# Getting X axis direction:
+		if angle < 3*PI/8 and angle > -3*PI/8:
+			direction.x = 1
+		elif angle > 5*PI/8 or angle < -5*PI/8:
+			direction.x = -1
+	
+	return direction
+###################################################################################
+
+
+
+### DIRECTIONAL INPUTS ############################################################
+enum {L_STICK, R_STICK, BOTH_STICKS, NONE}
+
+func get_directional_input(device = 0, get_from_sticks = L_STICK) -> Vector2:
+	var direction: Vector2 = Vector2.ZERO
+	
+	# Getting from sticks:
+	if get_from_sticks == R_STICK or get_from_sticks == BOTH_STICKS:
+		direction = get_r_stick_directional(device)
+	elif get_from_sticks == L_STICK or get_from_sticks == BOTH_STICKS:
+		direction = get_l_stick_directional(device)
+	
+	# Getting from D-Pad or keyboard:
+	direction.x = Input.get_action_strength("right") - Input.get_action_strength("left")
+	direction.y = Input.get_action_strength("down") - Input.get_action_strength("up")
+	
+	return direction
+###################################################################################
+
+
+
+

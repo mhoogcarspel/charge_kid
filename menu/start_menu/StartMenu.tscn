@@ -80,6 +80,7 @@ margin_left = 166.0
 margin_right = 338.0
 margin_bottom = 22.0
 focus_neighbour_top = NodePath("../Quit")
+focus_neighbour_bottom = NodePath("../Controls")
 group = ExtResource( 4 )
 text = "Start Game"
 
@@ -88,6 +89,8 @@ margin_left = 182.0
 margin_top = 26.0
 margin_right = 322.0
 margin_bottom = 48.0
+focus_neighbour_top = NodePath("../StartGame")
+focus_neighbour_bottom = NodePath("../Credits")
 group = ExtResource( 4 )
 text = "Controls"
 
@@ -96,6 +99,8 @@ margin_left = 190.0
 margin_top = 52.0
 margin_right = 314.0
 margin_bottom = 74.0
+focus_neighbour_top = NodePath("../Controls")
+focus_neighbour_bottom = NodePath("../Quit")
 group = ExtResource( 4 )
 text = "Credits"
 
@@ -104,6 +109,7 @@ margin_left = 214.0
 margin_top = 78.0
 margin_right = 290.0
 margin_bottom = 100.0
+focus_neighbour_top = NodePath("../Credits")
 focus_neighbour_bottom = NodePath("../StartGame")
 shortcut = ExtResource( 8 )
 group = ExtResource( 4 )

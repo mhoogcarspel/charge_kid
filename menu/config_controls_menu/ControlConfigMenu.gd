@@ -23,7 +23,7 @@ func _ready():
 		##################### Setting Buttons Neighbours ############################
 		if ($VBoxContainer/Map.get_children().size() > 1):
 			$VBoxContainer/Map.get_children()[-1].get_node("Button").focus_neighbour_top = $VBoxContainer/Map.get_children()[-2].get_node("Button").get_path()
-			if ($VBoxContainer/Map.get_children().size() < control_handler.actions_dictionary.keys().size()):
+			if ($VBoxContainer/Map.get_children().size() <= control_handler.actions_dictionary.keys().size()):
 				$VBoxContainer/Map.get_children()[-2].get_node("Button").focus_neighbour_bottom = $VBoxContainer/Map.get_children()[-1].get_node("Button").get_path()
 		############################################################################
 		

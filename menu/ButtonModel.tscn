@@ -22,5 +22,10 @@ custom_colors/font_color_pressed = Color( 1, 0.309804, 0.470588, 1 )
 button_mask = 0
 flat = true
 script = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+[connection signal="focus_entered" from="." to="." method="_on_ButtonModel_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_ButtonModel_focus_exited"]
 [connection signal="pressed" from="." to="." method="_on_ButtonModel_pressed"]

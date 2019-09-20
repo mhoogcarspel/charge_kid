@@ -58,12 +58,14 @@ margin_left = 186.0
 margin_top = 50.0
 margin_right = 198.0
 margin_bottom = 72.0
+focus_neighbour_bottom = NodePath("../Change")
 
 [node name="Change" parent="VBoxContainer/OtherButtons" instance=ExtResource( 7 )]
 margin_left = 130.0
 margin_top = 76.0
 margin_right = 254.0
 margin_bottom = 98.0
+focus_neighbour_bottom = NodePath("../Return")
 text = "Change "
 
 [node name="Return" parent="VBoxContainer/OtherButtons" instance=ExtResource( 7 )]
@@ -71,6 +73,8 @@ margin_left = 138.0
 margin_top = 102.0
 margin_right = 246.0
 margin_bottom = 124.0
+focus_neighbour_top = NodePath("../Change")
+shortcut = ExtResource( 3 )
 text = "Return"
 [connection signal="pressed" from="VBoxContainer/OtherButtons/Model" to="." method="_on_Model_pressed"]
 [connection signal="pressed" from="VBoxContainer/OtherButtons/Change" to="." method="_on_Change_pressed"]

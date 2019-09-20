@@ -7,9 +7,7 @@ func enter():
 	return
 
 func get_directional_inputs() -> Vector2:
-	var directionals = Vector2(
-					Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
-					0 )
+	var directionals = Vector2(owner.control_handler.get_directional_input().x , 0)
 	if directionals.x != 0:
 		owner.facing = directionals.x/abs(directionals.x)
 	return directionals

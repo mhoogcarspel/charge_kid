@@ -47,6 +47,18 @@ onready var facing:float = 1
 var checkpoint: Vector2
 var pre_checkpoint: Vector2
 
+onready var actions: Dictionary = {
+	"ui_jump": "Jump",
+	"ui_shoot": "Shoot",
+	"ui_boost": "Boost",
+	"ui_bullet_boost": "Bullet Boost",
+	"ui_left": "Left",
+	"ui_right": "Right",
+	"ui_up": "Up",
+	"ui_down": "Down",
+	"ui_pause": "Pause"}
+onready var control_handler = ButtonGetter.new(actions)
+
 func _ready():
 	$PlayerCamera.limit_right = level_length
 	stack.push_front("IdleState")
@@ -186,7 +198,7 @@ func check_for_blocks(Sensor: Area2D) -> bool:
 	return true
 
 func drop() -> void:
-	if Input.is_action_just_pressed("ui_down") && $DropTimer.is_stopped() && is_on_floor() && is_on_platform():
+	if control_handler.get_directional_input().y == 1 && $DropTimer.is_stopped() && is_on_floor() && is_on_platform():
 		self.set_collision_mask_bit(1,false)
 		$DropTimer.start()
 
