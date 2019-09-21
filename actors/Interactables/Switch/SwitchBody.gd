@@ -9,7 +9,9 @@ export(Array,NodePath) var wires
 
 func hit(projectile:PhysicsBody2D) -> void:
 	$SFX.play()
-	self.activate()
+	$Switch.activate()
+	if not is_active:
+		self.activate()
 	.hit(projectile)
 
 func _on_Timer_timeout():
@@ -20,7 +22,9 @@ func _on_Timer_timeout():
 
 func activate() -> void:
 	if not is_active:
-		$Switch.activate()
+		var particles = $Switch/Sprite.particles.instance()
+		particles.position -= Vector2(16,16)
+		add_child(particles)
 		is_active = true
 		for nodepath in wires:
 			get_node(nodepath).activate()

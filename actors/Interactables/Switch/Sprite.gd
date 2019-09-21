@@ -1,5 +1,7 @@
 extends Sprite
 
+export (PackedScene) var particles
+
 
 
 func _ready():
