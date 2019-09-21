@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/Tilemaps/BackgroundBack.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Tilemaps/Parallax.gd" type="Script" id=2]
@@ -8,13 +8,52 @@
 [ext_resource path="res://assets/Tilemaps/Spikes.tscn" type="PackedScene" id=6]
 [ext_resource path="res://actors/Player/Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://actors/Interactables/Lever/LeverBody.tscn" type="PackedScene" id=8]
-[ext_resource path="res://actors/Interactables/TriggeredPlatform/TriggeredPlatform.tscn" type="PackedScene" id=9]
-[ext_resource path="res://actors/Interactables/FuelTank/FuelTank.tscn" type="PackedScene" id=10]
-[ext_resource path="res://levels/FinishLine.tscn" type="PackedScene" id=11]
-[ext_resource path="res://levels/Level05.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/Tilemaps/ActivatedWires.tscn" type="PackedScene" id=9]
+[ext_resource path="res://actors/Interactables/TriggeredPlatform/TriggeredPlatform.tscn" type="PackedScene" id=10]
+[ext_resource path="res://actors/Interactables/FuelTank/FuelTank.tscn" type="PackedScene" id=11]
+[ext_resource path="res://levels/FinishLine.tscn" type="PackedScene" id=12]
+[ext_resource path="res://levels/Level05.tscn" type="PackedScene" id=13]
 
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode unshaded;
 
+uniform vec4 active_color: hint_color;
+uniform vec4 inactive_color: hint_color;
+uniform bool active;
 
+void fragment ()
+{
+	COLOR = texture(TEXTURE , UV);
+	if (active == false && length(COLOR.rgb - active_color.rgb) <= 0.1)
+	{
+		COLOR.rgb = inactive_color.rgb;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/active_color = Color( 1, 0.309804, 0.470588, 1 )
+shader_param/inactive_color = Color( 0.956863, 0.956863, 0.894118, 1 )
+shader_param/active = false
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 1 )
+shader_param/active_color = Color( 1, 0.309804, 0.470588, 1 )
+shader_param/inactive_color = Color( 0.956863, 0.956863, 0.894118, 1 )
+shader_param/active = true
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 1 )
+shader_param/active_color = Color( 1, 0.309804, 0.470588, 1 )
+shader_param/inactive_color = Color( 0.956863, 0.956863, 0.894118, 1 )
+shader_param/active = false
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 1 )
+shader_param/active_color = Color( 1, 0.309804, 0.470588, 1 )
+shader_param/inactive_color = Color( 0.956863, 0.956863, 0.894118, 1 )
+shader_param/active = true
 
 [node name="Level04" type="Node2D"]
 pause_mode = 1
@@ -80,90 +119,138 @@ level_length = 1024.0
 
 [node name="LeverBody" parent="." instance=ExtResource( 8 )]
 position = Vector2( 120, 328 )
-nodes = [ NodePath("../TriggeredPlatform"), NodePath("../TriggeredPlatform2"), NodePath("../TriggeredPlatform3"), NodePath("../TriggeredPlatform4"), NodePath("../TriggeredPlatform5"), NodePath("../TriggeredPlatform6"), NodePath("../TriggeredPlatform7"), NodePath("../TriggeredPlatform8") ]
+nodes = [ NodePath("../TriggeredPlatform"), NodePath("../TriggeredPlatform2"), NodePath("../TriggeredPlatform3"), NodePath("../TriggeredPlatform4"), NodePath("../TriggeredPlatform5"), NodePath("../TriggeredPlatform6"), NodePath("../TriggeredPlatform7"), NodePath("../TriggeredPlatform8"), NodePath("../ActivatedWires"), NodePath("../ActivatedWires2") ]
 
-[node name="TriggeredPlatform" parent="." instance=ExtResource( 9 )]
+[node name="ActivatedWires" parent="." instance=ExtResource( 9 )]
+material = SubResource( 2 )
+position = Vector2( 2, 0 )
+tile_data = PoolIntArray( 1114125, 0, 2, 1179661, 0, 458752, 1245197, 0, 458752, 1310733, 0, 458752, 1376263, 0, 196609, 1376269, 0, 196609, 1441799, 0, 524288, 1441800, 0, 327680, 1441801, 0, 327680, 1441802, 0, 327680, 1441803, 0, 327680, 1441804, 0, 327680, 1441805, 0, 524290 )
+
+[node name="ActivatedWires2" parent="." instance=ExtResource( 9 )]
+material = SubResource( 3 )
+position = Vector2( -2, 0 )
+tile_data = PoolIntArray( 1114129, 0, 2, 1179665, 0, 65538, 1245201, 0, 65538, 1310737, 0, 65538, 1376263, 0, 131072, 1376264, 0, 262146, 1376265, 0, 262144, 1376266, 0, 262144, 1376267, 0, 262144, 1376268, 0, 262144, 1376269, 0, 262144, 1376270, 0, 262144, 1376271, 0, 262144, 1376272, 0, 262146, 1376273, 0, 524290 )
+active = true
+
+[node name="TriggeredPlatform" parent="." instance=ExtResource( 10 )]
 position = Vector2( 208, 328 )
 rotation = -1.5708
 active = true
+delay_time = 0.0
+chain_reaction = [  ]
 
-[node name="TriggeredPlatform2" parent="." instance=ExtResource( 9 )]
+[node name="TriggeredPlatform2" parent="." instance=ExtResource( 10 )]
 position = Vector2( 208, 312 )
 rotation = -1.5708
 active = true
+delay_time = 0.0
+chain_reaction = [  ]
 
-[node name="TriggeredPlatform3" parent="." instance=ExtResource( 9 )]
+[node name="TriggeredPlatform3" parent="." instance=ExtResource( 10 )]
 position = Vector2( 208, 296 )
 rotation = -1.5708
 active = true
+delay_time = 0.0
+chain_reaction = [  ]
 
-[node name="TriggeredPlatform4" parent="." instance=ExtResource( 9 )]
+[node name="TriggeredPlatform4" parent="." instance=ExtResource( 10 )]
 position = Vector2( 208, 280 )
 rotation = -1.5708
 active = true
+delay_time = 0.0
+chain_reaction = [  ]
 
-[node name="TriggeredPlatform5" parent="." instance=ExtResource( 9 )]
+[node name="TriggeredPlatform5" parent="." instance=ExtResource( 10 )]
 position = Vector2( 272, 328 )
 rotation = -1.5708
 active = false
+delay_time = 0.0
+chain_reaction = [  ]
 
-[node name="TriggeredPlatform6" parent="." instance=ExtResource( 9 )]
+[node name="TriggeredPlatform6" parent="." instance=ExtResource( 10 )]
 position = Vector2( 272, 312 )
 rotation = -1.5708
 active = false
+delay_time = 0.0
+chain_reaction = [  ]
 
-[node name="TriggeredPlatform7" parent="." instance=ExtResource( 9 )]
+[node name="TriggeredPlatform7" parent="." instance=ExtResource( 10 )]
 position = Vector2( 272, 296 )
 rotation = -1.5708
 active = false
+delay_time = 0.0
+chain_reaction = [  ]
 
-[node name="TriggeredPlatform8" parent="." instance=ExtResource( 9 )]
+[node name="TriggeredPlatform8" parent="." instance=ExtResource( 10 )]
 position = Vector2( 272, 280 )
 rotation = -1.5708
 active = false
+delay_time = 0.0
+chain_reaction = [  ]
 
 [node name="LeverBody2" parent="." instance=ExtResource( 8 )]
 position = Vector2( 152, 248 )
-nodes = [ NodePath("../TriggeredPlatform9"), NodePath("../TriggeredPlatform10"), NodePath("../TriggeredPlatform11"), NodePath("../TriggeredPlatform12"), NodePath("../TriggeredPlatform13"), NodePath("../TriggeredPlatform14") ]
+nodes = [ NodePath("../TriggeredPlatform9"), NodePath("../TriggeredPlatform10"), NodePath("../TriggeredPlatform11"), NodePath("../TriggeredPlatform12"), NodePath("../TriggeredPlatform13"), NodePath("../TriggeredPlatform14"), NodePath("../ActivatedWires3"), NodePath("../ActivatedWires4") ]
 
-[node name="TriggeredPlatform9" parent="." instance=ExtResource( 9 )]
+[node name="ActivatedWires3" parent="." instance=ExtResource( 9 )]
+material = SubResource( 4 )
+tile_data = PoolIntArray( 655371, 0, 393216, 655372, 4, 0, 720907, 0, 458754, 720908, 4, 0, 786443, 0, 458754, 786444, 4, 0, 851979, 0, 196609, 917513, 0, 0, 917514, 0, 262144, 917515, 0, 524290, 983049, 0, 196608 )
+
+[node name="ActivatedWires4" parent="." instance=ExtResource( 9 )]
+material = SubResource( 5 )
+tile_data = PoolIntArray( 655367, 0, 0, 655368, 4, 0, 720903, 0, 65536, 720904, 4, 0, 786439, 0, 65536, 786440, 4, 0, 851975, 0, 196608, 917511, 0, 196608, 983047, 0, 196608, 1048583, 0, 196608, 1048585, 0, 196608, 1114119, 0, 131072, 1114120, 0, 262146, 1114121, 0, 524290 )
+active = true
+
+[node name="TriggeredPlatform9" parent="." instance=ExtResource( 10 )]
 position = Vector2( 136, 200 )
 rotation = 1.5708
 active = false
+delay_time = 0.0
+chain_reaction = [  ]
 
-[node name="TriggeredPlatform10" parent="." instance=ExtResource( 9 )]
+[node name="TriggeredPlatform10" parent="." instance=ExtResource( 10 )]
 position = Vector2( 136, 184 )
 rotation = 1.5708
 active = false
+delay_time = 0.0
+chain_reaction = [  ]
 
-[node name="TriggeredPlatform11" parent="." instance=ExtResource( 9 )]
+[node name="TriggeredPlatform11" parent="." instance=ExtResource( 10 )]
 position = Vector2( 136, 168 )
 rotation = 1.5708
 active = false
+delay_time = 0.0
+chain_reaction = [  ]
 
-[node name="TriggeredPlatform12" parent="." instance=ExtResource( 9 )]
+[node name="TriggeredPlatform12" parent="." instance=ExtResource( 10 )]
 position = Vector2( 200, 200 )
 rotation = 1.5708
 active = true
+delay_time = 0.0
+chain_reaction = [  ]
 
-[node name="TriggeredPlatform13" parent="." instance=ExtResource( 9 )]
+[node name="TriggeredPlatform13" parent="." instance=ExtResource( 10 )]
 position = Vector2( 200, 184 )
 rotation = 1.5708
 active = true
+delay_time = 0.0
+chain_reaction = [  ]
 
-[node name="TriggeredPlatform14" parent="." instance=ExtResource( 9 )]
+[node name="TriggeredPlatform14" parent="." instance=ExtResource( 10 )]
 position = Vector2( 200, 168 )
 rotation = 1.5708
 active = true
+delay_time = 0.0
+chain_reaction = [  ]
 
-[node name="FuelTank" parent="." instance=ExtResource( 10 )]
+[node name="FuelTank" parent="." instance=ExtResource( 11 )]
 position = Vector2( 584, 72 )
 
-[node name="FinishLine" parent="." instance=ExtResource( 11 )]
+[node name="FinishLine" parent="." instance=ExtResource( 12 )]
 editor/display_folded = true
 visible = false
 position = Vector2( 1000, 40 )
-next_stage = ExtResource( 12 )
+next_stage = ExtResource( 13 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FinishLine"]
 polygon = PoolVector2Array( 24, 24, 24, 0, -16, 0, -16, 24 )
