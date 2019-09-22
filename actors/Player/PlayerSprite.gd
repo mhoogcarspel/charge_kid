@@ -10,6 +10,7 @@ func _ready():
 	self.get_material().set_shader_param("erase", false)
 
 func _physics_process(delta):
+	get_material().set_shader_param("fuel", player.can_boost)
 	$ProjectileParticles.emitting = player.has_bullet
 	flip_sprite(player.facing)
 	if player.can_boost:

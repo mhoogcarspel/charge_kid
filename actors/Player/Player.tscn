@@ -29,24 +29,28 @@ render_mode unshaded;
 
 uniform bool activate;
 uniform bool erase;
-uniform vec4 color: hint_color;
+uniform bool fuel;
+uniform vec4 color_1: hint_color;
+uniform vec4 color_2: hint_color;
 
 void fragment ()
 {
 	COLOR = texture(TEXTURE , UV);
 	if (activate == true)
-	{
-		COLOR.rgb = color.rgb;
-	}
+		COLOR.rgb = color_1.rgb;
 	if (erase == true)
 		COLOR.a = 0.0;
+	if (fuel == true && length(COLOR.rgb - color_1.rgb) <= 0.1)
+		COLOR.rgb = color_2.rgb;
 }"
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
 shader_param/activate = false
 shader_param/erase = false
-shader_param/color = Color( 0.956863, 0.956863, 0.894118, 1 )
+shader_param/fuel = false
+shader_param/color_1 = Color( 0.956863, 0.956863, 0.894118, 1 )
+shader_param/color_2 = Color( 1, 0.309804, 0.470588, 1 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 4.5, 6 )

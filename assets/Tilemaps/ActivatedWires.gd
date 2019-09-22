@@ -7,16 +7,17 @@ export (bool) var active setget change_state
 
 func change_state(new_value) -> void:
 	active = new_value
-	if active:
-		get_material().set_shader_param("active", true)
-	else:
-		get_material().set_shader_param("active", false)
+	get_material().set_shader_param("active", active)
+
+
+
+func _ready():
+	get_material().set_shader_param("active", active)
 
 
 
 func activate() -> void:
-	active = true
-	get_material().set_shader_param("active", true)
+	self.active = true
 	var timer = Timer.new()
 	self.add_child(timer)
 	
