@@ -32,6 +32,8 @@ uniform bool erase;
 uniform bool fuel;
 uniform vec4 color_1: hint_color;
 uniform vec4 color_2: hint_color;
+uniform vec4 color_3: hint_color;
+uniform vec4 color_4: hint_color;
 
 void fragment ()
 {
@@ -42,6 +44,8 @@ void fragment ()
 		COLOR.a = 0.0;
 	if (fuel == true && length(COLOR.rgb - color_1.rgb) <= 0.1)
 		COLOR.rgb = color_2.rgb;
+	if (fuel == true && length(COLOR.rgb - color_3.rgb) <= 0.1)
+		COLOR.rgb = color_4.rgb;
 }"
 
 [sub_resource type="ShaderMaterial" id=2]
@@ -51,6 +55,8 @@ shader_param/erase = false
 shader_param/fuel = false
 shader_param/color_1 = Color( 0.956863, 0.956863, 0.894118, 1 )
 shader_param/color_2 = Color( 1, 0.309804, 0.470588, 1 )
+shader_param/color_3 = Color( 0.32549, 0.368627, 0.411765, 1 )
+shader_param/color_4 = Color( 0.121569, 0.137255, 0.184314, 1 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 4.5, 6 )
