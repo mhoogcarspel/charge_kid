@@ -5,6 +5,7 @@
 [node name="SwitchParticles" type="CPUParticles2D"]
 emitting = false
 amount = 128
+lifetime = 3.0
 one_shot = true
 explosiveness = 1.0
 local_coords = false
@@ -13,7 +14,7 @@ emission_points = PoolVector2Array( 3, 15, 3, 16, 4, 14, 4, 15, 4, 16, 4, 17, 5,
 emission_colors = PoolColorArray(  )
 spread = 180.0
 gravity = Vector2( 0, 75 )
-initial_velocity = 20.0
+initial_velocity = 40.0
 initial_velocity_random = 0.5
 damping = 40.0
 color = Color( 1, 0.309804, 0.470588, 1 )
