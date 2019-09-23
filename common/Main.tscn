@@ -30,7 +30,7 @@ stream = ExtResource( 7 )
 bus = "SFX"
 
 [node name="MenuNavTimer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.4
 one_shot = true
 
 [node name="Timer" type="Timer" parent="MenuNavTimer"]

@@ -14,6 +14,7 @@ onready var PINK: String = "#ff4f78"
 onready var pause_menu: bool
 
 func _ready():
+	get_tree().paused = true
 	var previous_button: Button = null
 	for key in control_handler.actions_dictionary.keys():
 		var button = button_model.instance()
@@ -42,6 +43,8 @@ func _ready():
 	add_remove_model_buttton()
 	$VBoxContainer/OtherButtons/Box/Defaults.connect("pressed", self, "_on_Defaults_pressed")
 	$VBoxContainer/Map.get_children()[0].get_node("Button").grab_focus()
+
+
 
 func add_popup(dialog_box: PopupDialog, menu: MarginContainer = self) -> void:
 	dialog_box.menu = self
