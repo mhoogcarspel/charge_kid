@@ -74,6 +74,9 @@ tile_data = PoolIntArray( 131117, 6, 0, 458797, 5, 0, 524334, 3, 0, 589858, 5, 0
 [node name="Chains" parent="BackgroundBack" index="6"]
 tile_data = PoolIntArray( 7, 0, 0, 8, 2, 0, 11, 0, 0, 14, 0, 0, 16, 2, 0, 20, 0, 0, 21, 2, 0, 23, 0, 0, 26, 0, 0, 65543, 0, 0, 65544, 2, 0, 65547, 0, 0, 65550, 0, 0, 65552, 2, 0, 65556, 0, 0, 65557, 2, 0, 65559, 0, 0, 65562, 0, 0, 131079, 0, 0, 131080, 2, 0, 131083, 0, 0, 131086, 0, 0, 131088, 2, 0, 131092, 0, 0, 131093, 2, 0, 131095, 0, 0, 131098, 0, 0, 196615, 0, 0, 196616, 2, 0, 196619, 0, 0, 196622, 0, 0, 196624, 2, 0, 196628, 0, 0, 196629, 2, 0, 196631, 0, 0, 196634, 0, 0, 262151, 0, 0, 262152, 2, 0, 262155, 0, 0, 262158, 0, 0, 262160, 2, 0, 262164, 0, 0, 262165, 2, 0, 262167, 0, 0, 262170, 0, 0, 327687, 0, 0, 327688, 2, 0, 327691, 0, 0, 327694, 0, 0, 327696, 2, 0, 327700, 0, 0, 327701, 2, 0, 327703, 0, 0, 327706, 0, 0, 393223, 0, 0, 393224, 2, 0, 393227, 0, 0, 393230, 1, 0, 393232, 2, 0, 393236, 0, 0, 393237, 4, 0, 393239, 0, 0, 393242, 0, 0, 458759, 0, 0, 458760, 3, 0, 458763, 0, 0, 458768, 2, 0, 458772, 0, 0, 458775, 0, 0, 458778, 0, 0, 524295, 0, 0, 524299, 0, 0, 524304, 2, 0, 524308, 0, 0, 524311, 0, 0, 524314, 0, 0, 589831, 0, 0, 589835, 0, 0, 589840, 2, 0, 589844, 1, 0, 589847, 0, 0, 589850, 0, 0, 655367, 0, 0, 655371, 0, 0, 655376, 2, 0, 655383, 0, 0, 655386, 0, 0, 720903, 0, 0, 720907, 0, 0, 720912, 4, 0, 720919, 0, 0, 720922, 0, 0, 786439, 1, 0, 786443, 0, 0, 786455, 1, 0, 786458, 0, 0, 851979, 0, 0, 851994, 0, 0, 917515, 0, 0, 917530, 0, 0, 983051, 1, 0, 983066, 0, 0, 1048602, 0, 0, 1114138, 1, 0 )
 
+[node name="ActivatedWires" parent="BackgroundBack" index="9"]
+active = false
+
 [node name="BackgroundBack2" parent="." instance=ExtResource( 1 )]
 editor/display_folded = true
 script = ExtResource( 2 )
@@ -83,6 +86,9 @@ tile_data = PoolIntArray( -65542, 2, 0, 35, 0, 196609, 65571, 0, 327680, 131107,
 
 [node name="TubeProps" parent="BackgroundBack2" index="5"]
 tile_data = PoolIntArray( 131107, 6, 0, 589865, 3, 0, 589867, 2, 0, 655395, 6, 0, 655400, 6, 0, 655404, 6, 0, 1179683, 6, 0, 1179688, 6, 0, 1179692, 6, 0 )
+
+[node name="ActivatedWires" parent="BackgroundBack2" index="9"]
+active = false
 
 [node name="BackgroundFront" parent="." instance=ExtResource( 3 )]
 editor/display_folded = true
@@ -118,6 +124,7 @@ position = Vector2( 72, 328 )
 level_length = 1024.0
 
 [node name="LeverBody" parent="." instance=ExtResource( 8 )]
+editor/display_folded = true
 position = Vector2( 120, 328 )
 nodes = [ NodePath("../TriggeredPlatform"), NodePath("../TriggeredPlatform2"), NodePath("../TriggeredPlatform3"), NodePath("../TriggeredPlatform4"), NodePath("../TriggeredPlatform5"), NodePath("../TriggeredPlatform6"), NodePath("../TriggeredPlatform7"), NodePath("../TriggeredPlatform8"), NodePath("../ActivatedWires"), NodePath("../ActivatedWires2") ]
 
@@ -125,6 +132,7 @@ nodes = [ NodePath("../TriggeredPlatform"), NodePath("../TriggeredPlatform2"), N
 material = SubResource( 2 )
 position = Vector2( 2, 0 )
 tile_data = PoolIntArray( 1114125, 0, 2, 1179661, 0, 458752, 1245197, 0, 458752, 1310733, 0, 458752, 1376263, 0, 196609, 1376269, 0, 196609, 1441799, 0, 524288, 1441800, 0, 327680, 1441801, 0, 327680, 1441802, 0, 327680, 1441803, 0, 327680, 1441804, 0, 327680, 1441805, 0, 524290 )
+active = false
 
 [node name="ActivatedWires2" parent="." instance=ExtResource( 9 )]
 material = SubResource( 3 )
@@ -195,6 +203,7 @@ nodes = [ NodePath("../TriggeredPlatform9"), NodePath("../TriggeredPlatform10"),
 [node name="ActivatedWires3" parent="." instance=ExtResource( 9 )]
 material = SubResource( 4 )
 tile_data = PoolIntArray( 655371, 0, 393216, 655372, 4, 0, 720907, 0, 458754, 720908, 4, 0, 786443, 0, 458754, 786444, 4, 0, 851979, 0, 196609, 917513, 0, 0, 917514, 0, 262144, 917515, 0, 524290, 983049, 0, 196608 )
+active = false
 
 [node name="ActivatedWires4" parent="." instance=ExtResource( 9 )]
 material = SubResource( 5 )

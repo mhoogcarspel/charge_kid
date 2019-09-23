@@ -3,7 +3,7 @@ extends StaticBody2D
 export(Array,NodePath) var nodes
 
 onready var is_active:bool = false
-onready var particles = preload("res://assets/Particles/ProjectileHit.tscn")
+export (PackedScene) var particles
 
 func _ready():
 	if is_active:
@@ -39,6 +39,7 @@ func toggle(object:Node) -> void:
 
 func _on_PlayerHitbox_body_entered(body):
 	if body.is_in_group("player"):
+		$SFX.play()
 		if is_active:
 			$Lever/AnimationPlayer.play("Deactivate")
 			is_active = false
