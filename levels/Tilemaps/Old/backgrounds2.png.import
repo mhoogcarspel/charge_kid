@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/backgrounds3.png-ba2787d4ec7e0437db4f72b885586383.stex"
+path="res://.import/backgrounds2.png-7d298b6a28e595b223e748060be71d6f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Tilemaps/Old/backgrounds3.png"
-dest_files=[ "res://.import/backgrounds3.png-ba2787d4ec7e0437db4f72b885586383.stex" ]
+source_file="res://levels/Tilemaps/Old/backgrounds2.png"
+dest_files=[ "res://.import/backgrounds2.png-7d298b6a28e595b223e748060be71d6f.stex" ]
 
 [params]
 

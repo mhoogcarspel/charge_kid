@@ -2,11 +2,12 @@
 
 [ext_resource path="res://menu/pause_menu/PauseMenu.gd" type="Script" id=1]
 [ext_resource path="res://menu/config_controls_menu/ControlConfigMenu.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/Tilemaps/Old/DialogBoxTileMap.tscn" type="PackedScene" id=3]
+[ext_resource path="res://levels/Tilemaps/Old/DialogBoxTileMap.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://common/LabelBaseModel.gd" type="Script" id=5]
 [ext_resource path="res://menu/ButtonModel.tscn" type="PackedScene" id=6]
 [ext_resource path="res://menu/ReturnShortcut.tres" type="ShortCut" id=7]
+
 
 
 [sub_resource type="DynamicFont" id=1]

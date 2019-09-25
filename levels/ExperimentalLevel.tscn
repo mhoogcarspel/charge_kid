@@ -1,9 +1,10 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/Tilemaps/Old/SolidBlocks.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levels/Tilemaps/Old/SolidBlocks.tscn" type="PackedScene" id=1]
 [ext_resource path="res://actors/Interactables/TriggeredPlatform/TriggeredPlatform.tscn" type="PackedScene" id=2]
 [ext_resource path="res://actors/Interactables/Lever/LeverBody.tscn" type="PackedScene" id=3]
 [ext_resource path="res://actors/Player/Player.tscn" type="PackedScene" id=4]
+
 
 
 [node name="ExperimentalLevel" type="Node2D"]

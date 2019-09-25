@@ -120,7 +120,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 4, 0, 4 )
 points = PoolVector2Array( 0, 0, 16, 0, 16, 4, 0, 4 )
 
 [sub_resource type="TileSet" id=20]
-0/name = "Blocks.png 0"
+0/name = "Blocks.png 00"
 0/texture = ExtResource( 2 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
@@ -136,7 +136,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 4, 0, 4 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0
-1/name = "Blocks.png 1"
+1/name = "Blocks.png 01"
 1/texture = ExtResource( 2 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
@@ -152,7 +152,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 4, 0, 4 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 1/z_index = 0
-2/name = "Blocks.png 2"
+2/name = "Blocks.png 02"
 2/texture = ExtResource( 2 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
@@ -168,7 +168,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 4, 0, 4 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 2/z_index = 0
-3/name = "Blocks.png 3"
+3/name = "Blocks.png 03"
 3/texture = ExtResource( 2 )
 3/tex_offset = Vector2( 0, 0 )
 3/modulate = Color( 1, 1, 1, 1 )
@@ -184,7 +184,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 4, 0, 4 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 3/z_index = 0
-4/name = "Blocks.png 4"
+4/name = "Blocks.png 04"
 4/texture = ExtResource( 2 )
 4/tex_offset = Vector2( 0, 0 )
 4/modulate = Color( 1, 1, 1, 1 )
@@ -200,7 +200,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 4, 0, 4 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 4/z_index = 0
-5/name = "Blocks.png 5"
+5/name = "Blocks.png 05"
 5/texture = ExtResource( 2 )
 5/tex_offset = Vector2( 0, 0 )
 5/modulate = Color( 1, 1, 1, 1 )
@@ -216,7 +216,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 4, 0, 4 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 5/z_index = 0
-6/name = "Blocks.png 6"
+6/name = "Blocks.png 06"
 6/texture = ExtResource( 2 )
 6/tex_offset = Vector2( 0, 0 )
 6/modulate = Color( 1, 1, 1, 1 )
@@ -232,7 +232,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 4, 0, 4 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 6/z_index = 0
-7/name = "Blocks.png 7"
+7/name = "Blocks.png 07"
 7/texture = ExtResource( 2 )
 7/tex_offset = Vector2( 0, 0 )
 7/modulate = Color( 1, 1, 1, 1 )
@@ -248,7 +248,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 4, 0, 4 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 7/z_index = 0
-8/name = "Blocks.png 8"
+8/name = "Blocks.png 08"
 8/texture = ExtResource( 2 )
 8/tex_offset = Vector2( 0, 0 )
 8/modulate = Color( 1, 1, 1, 1 )
@@ -264,7 +264,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 4, 0, 4 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 8/z_index = 0
-9/name = "Blocks.png 9"
+9/name = "Blocks.png 09"
 9/texture = ExtResource( 2 )
 9/tex_offset = Vector2( 0, 0 )
 9/modulate = Color( 1, 1, 1, 1 )
