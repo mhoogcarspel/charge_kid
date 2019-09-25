@@ -64,7 +64,7 @@ func destroy() -> void:
 	self.queue_free()
 
 func _on_HitBox_body_entered(body):
-	if not body.is_in_group("bullet"):
+	if not body.is_in_group("bullet") and not body.is_in_group("blocks"):
 		body.hit(self)
 
 func disable_enable_hitbox(set: bool) -> void:

@@ -1,4 +1,4 @@
-extends Block
+extends StaticBody2D
 
 onready var is_active:bool = false
 
@@ -12,7 +12,7 @@ func hit(projectile:PhysicsBody2D) -> void:
 	$Switch.activate()
 	if not is_active:
 		self.activate()
-	.hit(projectile)
+	projectile.change_state("ReturnState")
 
 func _on_Timer_timeout():
 	for nodepath in nodes:

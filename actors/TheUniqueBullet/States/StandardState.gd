@@ -31,3 +31,5 @@ func check_for_collisions_with_blocks() -> bool:
 			print("Collision with block: true")
 			return true
 	return false
+
+

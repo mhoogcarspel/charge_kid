@@ -19,11 +19,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://actors/Interactables/LogicGate/BaseLogicGate.gd"
 }, {
-"base": "Node",
-"class": "Block",
-"language": "GDScript",
-"path": "res://assets/Tilemaps/Blocks.gd"
-}, {
 "base": "PlayerBaseState",
 "class": "BoostingState",
 "language": "GDScript",
@@ -132,7 +127,6 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "BaseControlsConfigMenu": "",
 "BaseLogicGate": "",
-"Block": "",
 "BoostingState": "",
 "BulletBaseState": "",
 "BulletBoostingState": "",
