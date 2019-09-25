@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/backgrounds3.png-3218e62947c6fba13267d2cf66b185e1.stex"
+path="res://.import/DialogBox.png-7bd256361b4c78739b85d4ab50596ef0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds3.png"
-dest_files=[ "res://.import/backgrounds3.png-3218e62947c6fba13267d2cf66b185e1.stex" ]
+source_file="res://assets/Tilemaps/Old/DialogBox.png"
+dest_files=[ "res://.import/DialogBox.png-7bd256361b4c78739b85d4ab50596ef0.stex" ]
 
 [params]
 

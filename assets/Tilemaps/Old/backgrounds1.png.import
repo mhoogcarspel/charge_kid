@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/backgrounds1.png-e672b132ba537958ad4c08eeb9099d1d.stex"
+path="res://.import/backgrounds1.png-c5097196613856dd5c45afc88b2576d8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds1.png"
-dest_files=[ "res://.import/backgrounds1.png-e672b132ba537958ad4c08eeb9099d1d.stex" ]
+source_file="res://assets/Tilemaps/Old/backgrounds1.png"
+dest_files=[ "res://.import/backgrounds1.png-c5097196613856dd5c45afc88b2576d8.stex" ]
 
 [params]
 

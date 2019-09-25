@@ -1,14 +1,17 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://assets/Tilemaps/BackgroundBack.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/Tilemaps/Old/BackgroundBack.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Tilemaps/Parallax.gd" type="Script" id=2]
-[ext_resource path="res://assets/Tilemaps/BackgroundFront.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/Tilemaps/Platforms.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/Tilemaps/SolidBlocks.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/Tilemaps/Old/BackgroundFront.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/Tilemaps/Old/Platforms.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/Tilemaps/Old/SolidBlocks.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/Tilemaps/Spikes.tscn" type="PackedScene" id=6]
 [ext_resource path="res://actors/Player/Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://actors/Interactables/FuelTank/FuelTank.tscn" type="PackedScene" id=8]
 [ext_resource path="res://levels/Messages/Message.tscn" type="PackedScene" id=9]
+
+
+
 
 
 [node name="Level02" type="Node2D" groups=[
