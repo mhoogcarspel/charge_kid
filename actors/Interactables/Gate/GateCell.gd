@@ -19,6 +19,9 @@ func activate() -> void:
 			cell.activate()
 
 func deactivate() -> void:
+	if delay > 0:
+		$DelayTimer.start(delay)
+		yield($DelayTimer, "timeout")
 	for cell in self.get_children():
 		if cell is TriggeredPlatform:
 			cell.deactivate()

@@ -34,12 +34,19 @@ func add_cells() -> void:
 			self.add_child(new_cell)
 
 func activate() -> void:
+	if !active:
+		active = true
 	for cell in self.get_children():
 		cell.activate()
 
 func deactivate() -> void:
+	if active:
+		active = false
 	for cell in self.get_children():
 		cell.deactivate()
+
+func is_active() -> bool:
+	return active
 
 func _ready():
 	add_cells()

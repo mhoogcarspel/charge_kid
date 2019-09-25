@@ -24,8 +24,8 @@ export(float) var bunny_time
 export(float) var jump_height
 export(float) var gravity_acceleration
 
-onready var main = get_tree().get_nodes_in_group("main")[0]
-onready var control_handler = main.control_handler
+onready var main
+onready var control_handler
 
 onready var jump_velocity = sqrt(2*jump_height*gravity_acceleration)
 onready var max_falling_velocity: float = jump_velocity
@@ -51,6 +51,23 @@ var checkpoint: Vector2
 var pre_checkpoint: Vector2
 
 func _ready():
+	if !get_tree().get_nodes_in_group("main").empty():
+		main = get_tree().get_nodes_in_group("main")[0]
+		control_handler = main.control_handler
+	else:
+		var actions: Dictionary = {
+		"ui_jump": "Jump",
+		"ui_shoot": "Shoot",
+		"ui_boost": "Boost",
+		"ui_bullet_boost": "Bullet Boost",
+		"left": "Left",
+		"right": "Right",
+		"up": "Up",
+		"down": "Down",
+		"ui_pause": "Pause"
+		}
+		control_handler = ButtonGetter.new(actions)
+	
 	$PlayerCamera.limit_right = level_length
 	stack.push_front("IdleState")
 
