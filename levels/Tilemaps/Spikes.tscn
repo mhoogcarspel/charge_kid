@@ -24,10 +24,11 @@ points = PoolVector2Array( 2, 13, 14, 13, 14, 16, 2, 16 )
 0/z_index = 0
 
 [node name="Spikes" type="TileMap" groups=[
-"blocks",
 "spikes",
 ]]
 z_index = -5
 tile_set = SubResource( 2 )
 cell_size = Vector2( 16, 16 )
+collision_layer = 4
+collision_mask = 4
 format = 1
