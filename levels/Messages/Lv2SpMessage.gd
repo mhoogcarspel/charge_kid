@@ -15,8 +15,7 @@ func tank_sentinel(new_value) -> void:
 func _physics_process(_delta):
 	self.tank_state = tank.has_fuel
 
-func _on_Area2D_body_entered(body):
+func _on_body_entered(body):
 	if body.is_in_group("player") and not $Timer.is_stopped():
 		body.write(message, message_time/2)
-
 
