@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/robot.v1.png-79e689d28a71b1b3fa5f0cc6d6af1ea3.stex"
+path="res://.import/robot.v1.png-eee3f0184ef6eb658c63eadd5a731793.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Spritesheet/robot.v1.png"
-dest_files=[ "res://.import/robot.v1.png-79e689d28a71b1b3fa5f0cc6d6af1ea3.stex" ]
+source_file="res://assets/OldSpritesheets/robot.v1.png"
+dest_files=[ "res://.import/robot.v1.png-eee3f0184ef6eb658c63eadd5a731793.stex" ]
 
 [params]
 

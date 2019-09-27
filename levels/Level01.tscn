@@ -41,15 +41,15 @@ void fragment ()
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
 shader_param/base_color = Color( 0.141176, 0.164706, 0.231373, 1 )
-shader_param/active_color = Color( 1, 0.309804, 0.470588, 1 )
-shader_param/inactive_color = Color( 0.956863, 0.956863, 0.894118, 1 )
+shader_param/active_color = Color( 0.956863, 0.956863, 0.894118, 1 )
+shader_param/inactive_color = Color( 0.47451, 0.431373, 0.431373, 1 )
 shader_param/active = false
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = SubResource( 1 )
 shader_param/base_color = Color( 0.141176, 0.164706, 0.231373, 1 )
-shader_param/active_color = Color( 1, 0.309804, 0.470588, 1 )
-shader_param/inactive_color = Color( 0.956863, 0.956863, 0.894118, 1 )
+shader_param/active_color = Color( 0.956863, 0.956863, 0.894118, 1 )
+shader_param/inactive_color = Color( 0.47451, 0.431373, 0.431373, 1 )
 shader_param/active = false
 
 [node name="Level01" type="Node2D" groups=[
@@ -179,6 +179,7 @@ tile_data = PoolIntArray( 1245259, 4, 0, 1310795, 4, 0, 1376325, 4, 0 )
 tile_data = PoolIntArray( 1245251, 7, 0, 1245260, 5, 0, 1310787, 7, 0, 1310796, 5, 0, 1376325, 7, 0, 1376327, 5, 0, 1441864, 8, 0, 1507400, 6, 0 )
 
 [node name="Platforms" parent="." instance=ExtResource( 7 )]
+editor/display_folded = true
 
 [node name="Pillars" parent="Platforms" index="0"]
 tile_data = PoolIntArray( 983060, 1, 0, 1048596, 5, 0, 1114132, 5, 0, 1179668, 5, 0, 1245204, 5, 0 )

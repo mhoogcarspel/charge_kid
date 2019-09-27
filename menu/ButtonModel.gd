@@ -22,9 +22,9 @@ func _process(_delta):
 	
 	# Changing colors for a disabled button with focus:
 	if has_focus() and disabled:
-		set("custom_colors/font_color_disabled", Color("#4d5762"))
+		set("custom_colors/font_color_disabled", Color("#535e69"))
 	elif not has_focus() and disabled:
-		set("custom_colors/font_color_disabled", Color("#1f232f"))
+		set("custom_colors/font_color_disabled", Color("#242a3b"))
 
 func _on_ButtonModel_focus_entered():
 	$Timer.start()

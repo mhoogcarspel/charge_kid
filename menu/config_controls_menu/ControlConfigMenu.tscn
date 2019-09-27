@@ -8,8 +8,6 @@
 [ext_resource path="res://menu/config_controls_menu/MenuSeparator.tscn" type="PackedScene" id=6]
 [ext_resource path="res://menu/ButtonModel.tscn" type="PackedScene" id=7]
 
-
-
 [node name="ControlConfigMenu" type="MarginContainer"]
 pause_mode = 2
 anchor_left = 0.5

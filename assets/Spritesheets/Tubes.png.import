@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Wires.png-bf924f561ce5991af437bd70ebefce23.stex"
+path="res://.import/Tubes.png-1fb2b26336e14f9d6e2a1b98774d51a3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/NewSheets/Wires.png"
-dest_files=[ "res://.import/Wires.png-bf924f561ce5991af437bd70ebefce23.stex" ]
+source_file="res://assets/Spritesheets/Tubes.png"
+dest_files=[ "res://.import/Tubes.png-1fb2b26336e14f9d6e2a1b98774d51a3.stex" ]
 
 [params]
 

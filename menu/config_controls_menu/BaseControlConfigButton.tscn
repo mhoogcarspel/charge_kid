@@ -5,8 +5,9 @@
 [ext_resource path="res://menu/config_controls_menu/BaseControlConfigButton.gd" type="Script" id=3]
 [ext_resource path="res://menu/config_controls_menu/ChangeKeyDialog.tscn" type="PackedScene" id=4]
 [ext_resource path="res://menu/config_controls_menu/KeyboardIcon.gd" type="Script" id=5]
-[ext_resource path="res://assets/Spritesheet/Keyboard_key.png" type="Texture" id=6]
+[ext_resource path="res://assets/OldSpritesheets/Keyboard_key.png" type="Texture" id=6]
 [ext_resource path="res://menu/config_controls_menu/AnimatedKeyboard.tscn" type="PackedScene" id=7]
+
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )

@@ -1,8 +1,9 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://assets/NewSheets/Backgrounds.png" type="Texture" id=1]
-[ext_resource path="res://assets/NewSheets/Wires.png" type="Texture" id=2]
-[ext_resource path="res://assets/NewSheets/Tubes.png" type="Texture" id=3]
+[ext_resource path="res://assets/Spritesheets/Backgrounds.png" type="Texture" id=1]
+[ext_resource path="res://assets/Spritesheets/Wires.png" type="Texture" id=2]
+[ext_resource path="res://assets/Spritesheets/Tubes.png" type="Texture" id=3]
+
 
 [sub_resource type="TileSet" id=1]
 0/name = "Backgrounds.png 0"

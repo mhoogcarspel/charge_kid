@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/charge_kid_teleporter.png-58f0086a33b8d1dce8966b041605bd28.stex"
+path="res://.import/activated_wire.png-7a6a5c2589e8416f9e1d689c88bcd818.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Spritesheet/charge_kid_teleporter.png"
-dest_files=[ "res://.import/charge_kid_teleporter.png-58f0086a33b8d1dce8966b041605bd28.stex" ]
+source_file="res://assets/OldSpritesheets/activated_wire.png"
+dest_files=[ "res://.import/activated_wire.png-7a6a5c2589e8416f9e1d689c88bcd818.stex" ]
 
 [params]
 
