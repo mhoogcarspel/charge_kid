@@ -15,7 +15,7 @@
 [ext_resource path="res://actors/Interactables/Switch/SwitchBody.tscn" type="PackedScene" id=13]
 [ext_resource path="res://actors/Interactables/Gate/StandardGate/StandardGate.tscn" type="PackedScene" id=14]
 [ext_resource path="res://levels/FinishLine.tscn" type="PackedScene" id=15]
-[ext_resource path="res://levels/OldLevels/Level03.tscn" type="PackedScene" id=16]
+[ext_resource path="res://levels/Level04.tscn" type="PackedScene" id=16]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -159,7 +159,9 @@ tile_data = PoolIntArray( -393220, 0, 524289, -327684, 0, 917504, -262148, 0, 91
 [node name="Gate" parent="." instance=ExtResource( 11 )]
 position = Vector2( 136, 8 )
 gate_height = 10
+active = false
 delay_between_cells = 0.0
+close_in_inverse_order = false
 
 [node name="LeverBody" parent="." instance=ExtResource( 12 )]
 position = Vector2( 224, 152 )
@@ -177,6 +179,7 @@ wires = [ NodePath("../EnergyWire2") ]
 position = Vector2( 392, 104 )
 gate_height = 6
 active = true
+close_in_inverse_order = false
 
 [node name="SwitchBody2" parent="." instance=ExtResource( 13 )]
 position = Vector2( 712, 104 )
@@ -190,12 +193,14 @@ position = Vector2( 600, 264 )
 position = Vector2( 760, 216 )
 gate_height = 7
 active = true
+close_in_inverse_order = false
 
 [node name="Gate4" parent="." instance=ExtResource( 14 )]
 position = Vector2( 792, 216 )
 scale = Vector2( -1, 1 )
 gate_height = 7
 active = true
+close_in_inverse_order = false
 
 [node name="EnergyWire3" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
@@ -209,6 +214,7 @@ tile_data = PoolIntArray( -196608, 0, 327680, -196607, 0, 327680, -196605, 0, 2,
 tile_data = PoolIntArray( -196608, 16, 0, 262146, 16, 0, 262148, 18, 0, 327682, 16, 0, 327684, 18, 0, 393218, 16, 0, 393220, 18, 0, 458754, 16, 0, 458756, 18, 0, 524290, 16, 0, 524292, 18, 0, 589826, 16, 0, 589828, 18, 0, 655362, 16, 0, 655364, 18, 0 )
 
 [node name="FinishLine" parent="." instance=ExtResource( 15 )]
+editor/display_folded = true
 visible = false
 position = Vector2( 912, 288 )
 next_stage = ExtResource( 16 )
