@@ -12,6 +12,7 @@ func change_state(new_value) -> void:
 
 
 func _ready():
+	#get_material().set_shader_param("inactive_color", Color("#7d7d7d"))
 	get_material().set_shader_param("active", active)
 
 

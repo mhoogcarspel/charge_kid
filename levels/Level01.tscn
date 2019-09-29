@@ -42,14 +42,14 @@ void fragment ()
 shader = SubResource( 1 )
 shader_param/base_color = Color( 0.141176, 0.164706, 0.231373, 1 )
 shader_param/active_color = Color( 0.956863, 0.956863, 0.894118, 1 )
-shader_param/inactive_color = Color( 0.47451, 0.431373, 0.431373, 1 )
+shader_param/inactive_color = Color( 0.490196, 0.490196, 0.490196, 1 )
 shader_param/active = false
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = SubResource( 1 )
 shader_param/base_color = Color( 0.141176, 0.164706, 0.231373, 1 )
 shader_param/active_color = Color( 0.956863, 0.956863, 0.894118, 1 )
-shader_param/inactive_color = Color( 0.47451, 0.431373, 0.431373, 1 )
+shader_param/inactive_color = Color( 0.490196, 0.490196, 0.490196, 1 )
 shader_param/active = false
 
 [node name="Level01" type="Node2D" groups=[
