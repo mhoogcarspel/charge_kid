@@ -52,7 +52,7 @@ void fragment ()
 shader = SubResource( 1 )
 shader_param/activate = false
 shader_param/erase = false
-shader_param/fuel = true
+shader_param/fuel = false
 shader_param/color_1 = Color( 0.956863, 0.956863, 0.894118, 1 )
 shader_param/color_2 = Color( 1, 0.309804, 0.470588, 1 )
 shader_param/color_3 = Color( 0.490196, 0.490196, 0.490196, 1 )

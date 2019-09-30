@@ -15,7 +15,6 @@
 [ext_resource path="res://levels/OldLevels/Level05.tscn" type="PackedScene" id=13]
 [ext_resource path="res://actors/Interactables/Gate/StandardGate/StandardGate.tscn" type="PackedScene" id=14]
 
-
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 render_mode unshaded;
@@ -189,13 +188,11 @@ polygon = PoolVector2Array( 24, 24, 24, 0, -16, 0, -16, 24 )
 position = Vector2( 130, 168 )
 gate_height = 3
 active = false
-delay_between_cells = 0.1
 close_in_inverse_order = false
 
 [node name="Gate3" parent="." instance=ExtResource( 14 )]
 position = Vector2( 210, 280 )
 active = true
-delay_between_cells = 0.1
 close_in_inverse_order = false
 
 [node name="Gate2" parent="." instance=ExtResource( 14 )]
@@ -203,14 +200,12 @@ position = Vector2( 200, 200 )
 rotation = 3.14159
 gate_height = 3
 active = true
-delay_between_cells = 0.1
 close_in_inverse_order = true
 
 [node name="Gate4" parent="." instance=ExtResource( 14 )]
 position = Vector2( 270, 328 )
 rotation = 3.14159
 active = false
-delay_between_cells = 0.1
 close_in_inverse_order = true
 
 [editable path="ScreenTransition"]
