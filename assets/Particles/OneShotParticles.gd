@@ -2,8 +2,10 @@ extends CPUParticles2D
 
 func _ready():
 	emitting = true
+	one_shot = true
 	for child in get_children():
 		child.emitting = true
+		child.one_shot = true
 
 func _process(_delta):
 	var is_over = true

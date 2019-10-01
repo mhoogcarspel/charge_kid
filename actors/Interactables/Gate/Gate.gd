@@ -54,16 +54,15 @@ func is_active() -> bool:
 
 
 func _ready():
-	if not Engine.editor_hint:
-		add_cells()
-		var i: int = 0
-		var j: int
-		if close_in_inverse_order:
-			j = self.get_children().size()
-		else:
-			j = 0
-		for cell in self.get_children():
-			cell.delay = delay_between_cells * abs(j - i)
-			i += 1
+	add_cells()
+	var i: int = 0
+	var j: int
+	if close_in_inverse_order:
+		j = self.get_children().size()
+	else:
+		j = 0
+	for cell in self.get_children():
+		cell.delay = delay_between_cells * abs(j - i)
+		i += 1
 
 

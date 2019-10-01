@@ -98,9 +98,9 @@ pause_mode = 1
 [node name="ScreenTransition" parent="." instance=ExtResource( 1 )]
 
 [node name="Label" parent="ScreenTransition/CenterContainer" index="0"]
-margin_left = 400.0
+margin_left = 256.0
 margin_top = 333.0
-margin_right = 624.0
+margin_right = 768.0
 margin_bottom = 435.0
 text = "Level 5
 
@@ -172,13 +172,10 @@ position = Vector2( 104, 152 )
 position = Vector2( 768, 248 )
 gate_height = 3
 active = true
-close_in_inverse_order = false
 
 [node name="Gate2" parent="." instance=ExtResource( 10 )]
 position = Vector2( 840, 248 )
 gate_height = 3
-active = false
-close_in_inverse_order = false
 
 [node name="LeverBody" parent="." instance=ExtResource( 11 )]
 position = Vector2( 664, 280 )
@@ -208,6 +205,7 @@ tile_data = PoolIntArray( 983088, 0, 393218, 1048624, 0, 65538, 1114160, 0, 6553
 editor/display_folded = true
 material = SubResource( 4 )
 position = Vector2( 856, 256 )
+active = false
 
 [node name="Wire" parent="EnergyWire4" index="0"]
 tile_data = PoolIntArray( -1, 0, 2, 65535, 0, 458752, 131071, 0, 458752 )
@@ -216,6 +214,7 @@ tile_data = PoolIntArray( -1, 0, 2, 65535, 0, 458752, 131071, 0, 458752 )
 editor/display_folded = true
 material = SubResource( 5 )
 position = Vector2( 824, 264 )
+active = false
 
 [node name="Wire" parent="EnergyWire2" index="0"]
 tile_data = PoolIntArray( 131061, 0, 0, 65537, 0, 196609, 196597, 0, 196608, 131072, 0, 393216, 131073, 0, 524290, 262133, 0, 524288, 262134, 0, 327680, 262135, 0, 327680, 262136, 0, 327680, 262137, 0, 327680, 262138, 0, 327680, 262139, 0, 327680, 262140, 0, 327680, 262141, 0, 327680, 262142, 0, 327680, 262143, 0, 327680, 196608, 0, 524290 )
@@ -228,6 +227,7 @@ nodes = [ NodePath("../EnergyWire5"), NodePath("../EnergyWire7"), NodePath("../G
 editor/display_folded = true
 material = SubResource( 6 )
 position = Vector2( 712, 152 )
+active = false
 
 [node name="Wire" parent="EnergyWire5" index="0"]
 tile_data = PoolIntArray( 131070, 0, 196608, 196606, 0, 196608, 262142, 0, 196608, 327678, 0, 131072, 327679, 0, 327680 )
@@ -236,6 +236,7 @@ tile_data = PoolIntArray( 131070, 0, 196608, 196606, 0, 196608, 262142, 0, 19660
 editor/display_folded = true
 material = SubResource( 7 )
 position = Vector2( 712, 144 )
+active = false
 
 [node name="Wire" parent="EnergyWire7" index="0"]
 tile_data = PoolIntArray( -65538, 0, 0, -2, 0, 655360, 65534, 0, 655360, 131070, 0, 655360 )
@@ -243,8 +244,7 @@ tile_data = PoolIntArray( -65538, 0, 0, -2, 0, 655360, 65534, 0, 655360, 131070,
 [node name="Gate3" parent="." instance=ExtResource( 10 )]
 position = Vector2( 696, 120 )
 scale = Vector2( -1, 1 )
-active = false
-close_in_inverse_order = false
+gate_height = 4
 
 [node name="EnergyWire8" parent="." instance=ExtResource( 12 )]
 editor/display_folded = true
@@ -267,8 +267,8 @@ tile_data = PoolIntArray( 65536, 0, 196609, 131072, 0, 196608, 196608, 0, 196608
 [node name="Gate4" parent="." instance=ExtResource( 10 )]
 position = Vector2( 776, 120 )
 scale = Vector2( -1, 1 )
+gate_height = 4
 active = true
-close_in_inverse_order = false
 
 [node name="Message" parent="." instance=ExtResource( 13 )]
 editor/display_folded = true

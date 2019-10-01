@@ -2,13 +2,15 @@ extends CPUParticles2D
 
 
 
-var gate = get_parent().get_parent()
+onready var gate = get_parent().get_parent()
 
 func _process(delta):
-	if gate.is_active() and  $Timer.is_stopped() and not Engine.editor_hint:
+	if gate.is_active() and  $Timer.is_stopped():
 		if gate.direction == "Vertical":
 			gravity = Vector2(0,60)
 		elif gate.direction == "Horizontal":
 			gravity = Vector2(-60,0)
-		$Timer.start((randi()%20)/10 + 2)
+		var time: float = randi()%20
+		time = time/10 + 2
+		$Timer.start(time)
 		emitting = true

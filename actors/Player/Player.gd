@@ -78,6 +78,7 @@ func _physics_process(delta):
 	if get_state() != "DyingState":
 		velocity = move_and_slide(velocity, Vector2(0, -1))
 		if is_on_floor():
+			$CoyoteTimer.start(coyote_time)
 			pre_checkpoint = position
 		
 		if Input.is_action_just_pressed("ui_reset"):
@@ -100,7 +101,7 @@ func change_state(state: String):
 				stack.pop_front()
 			stack.push_front(state)
 		"BoostingState","BulletBoostingState":
-			if previous_state == "JumpingState"|| previous_state == "BoostingState" || previous_state == "BulletBoostingState":
+			if previous_state == "JumpingState" || previous_state == "BoostingState" || previous_state == "BulletBoostingState":
 				states[stack[0]].exit()
 				stack.pop_front()
 			stack.push_front(state)
@@ -124,7 +125,7 @@ func horizontal_move(direction: Vector2, delta: float, factor: float = 1.0, diss
 		velocity += direction*delta*horizontal_acceleration*factor
 	elif velocity.x != 0 && dissipation:
 		var signal_velocity = velocity.x/abs(velocity.x)
-		velocity.x -= velocity.x/abs(velocity.x) * deacceleration_horizontal_velocity * delta
+		velocity.x -= velocity.x/abs(velocity.x)*deacceleration_horizontal_velocity*delta*factor
 		if signal_velocity != velocity.x/abs(velocity.x):
 			velocity.x = 0
 	velocity.x = clamp(velocity.x, -max_horizontal_velocity, max_horizontal_velocity)

@@ -1,34 +1,135 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://actors/Interactables/EnergyGate/EnergyGate.gd" type="Script" id=1]
-[ext_resource path="res://actors/Interactables/EnergyGate/EnergyGateCell.tscn" type="PackedScene" id=2]
+[ext_resource path="res://actors/Interactables/EnergyGate/TopEnd.gd" type="Script" id=2]
+[ext_resource path="res://assets/OldSpritesheets/robot.v1.png" type="Texture" id=3]
+[ext_resource path="res://actors/Interactables/EnergyGate/BottomEnd.gd" type="Script" id=4]
+[ext_resource path="res://actors/Interactables/EnergyGate/EnergyGateCell.tscn" type="PackedScene" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 8 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Off"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "On"
+length = 1.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Off"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "On"
+length = 1.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
 
 [node name="EnergyGate" type="Node2D"]
+z_index = -5
 script = ExtResource( 1 )
-gate_height = 3
+gate_height = 1
 active = true
 direction = "Vertical"
 
-[node name="EnergyGateCell" parent="." instance=ExtResource( 2 )]
+[node name="Sparks" type="Node2D" parent="."]
 
-[node name="Sparks1" type="CPUParticles2D" parent="."]
+[node name="TopEnd" type="StaticBody2D" parent="Sparks" groups=[
+"blocks",
+]]
+editor/display_folded = true
+position = Vector2( 0, -16 )
+scale = Vector2( 1, -1 )
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Sparks/TopEnd"]
 position = Vector2( 0, -8 )
-emitting = false
-amount = 16
-lifetime = 0.2
-local_coords = false
-spread = 180.0
-gravity = Vector2( 0, 200 )
-initial_velocity = 50.0
-color = Color( 0.956863, 0.956863, 0.894118, 1 )
+texture = ExtResource( 3 )
+hframes = 3
+region_enabled = true
+region_rect = Rect2( 0, 224, 48, 32 )
 
-[node name="Sparks2" type="CPUParticles2D" parent="."]
-position = Vector2( 0, 40 )
-emitting = false
-amount = 16
-lifetime = 0.2
-local_coords = false
-spread = 180.0
-gravity = Vector2( 0, 200 )
-initial_velocity = 50.0
-color = Color( 0.956863, 0.956863, 0.894118, 1 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sparks/TopEnd"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sparks/TopEnd"]
+anims/Off = SubResource( 2 )
+anims/On = SubResource( 3 )
+
+[node name="BottomEnd" type="StaticBody2D" parent="Sparks" groups=[
+"blocks",
+]]
+editor/display_folded = true
+position = Vector2( 0, 16 )
+script = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="Sparks/BottomEnd"]
+position = Vector2( 0, -8 )
+texture = ExtResource( 3 )
+hframes = 3
+region_enabled = true
+region_rect = Rect2( 0, 224, 48, 32 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sparks/BottomEnd"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sparks/BottomEnd"]
+anims/Off = SubResource( 4 )
+anims/On = SubResource( 5 )
+
+[node name="EnergyGateCell" parent="." instance=ExtResource( 5 )]
+active = false

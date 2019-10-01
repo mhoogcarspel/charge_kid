@@ -11,7 +11,7 @@ func _init(owner: KinematicBody2D):
 	self.coyote = owner.get_node("CoyoteTimer")
 
 func enter():
-	coyote.start(owner.coyote_time)
+	pass
 
 func update(delta):
 	owner.horizontal_move(get_directional_inputs(), delta)

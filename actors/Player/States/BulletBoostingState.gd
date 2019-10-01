@@ -44,13 +44,14 @@ func update(delta):
 	animation_player.play("Airborne")
 	boost_timer += delta
 	if boost_timer >= boost_time || owner.has_bullet:
-		print(boost_timer)
 		if !owner.is_on_floor() :
 			owner.horizontal_move(get_directional_inputs(), delta, 3)
-			print("Gravity")
 			owner.gravity(delta, 2)
-			print(owner.velocity.y)
 			boosting_particles(false)
+			
+			if owner.velocity.y >= 0:
+				owner.pop_state()
+				return
 			
 			if shoot_input_pressed():
 				return
