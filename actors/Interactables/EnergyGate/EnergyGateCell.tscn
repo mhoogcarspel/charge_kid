@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://actors/Interactables/EnergyGate/EnergyGateCell.gd" type="Script" id=1]
+[ext_resource path="res://assets/OldSpritesheets/robot.v1.png" type="Texture" id=2]
+[ext_resource path="res://actors/Interactables/EnergyGate/Sprite.gd" type="Script" id=3]
+[ext_resource path="res://actors/Interactables/EnergyGate/Sparks.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1, 8 )
+
+[node name="EnergyGateCell" type="Node2D"]
+script = ExtResource( 1 )
+active = true
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -1, 0 )
+texture = ExtResource( 2 )
+hframes = 3
+frame = 2
+region_enabled = true
+region_rect = Rect2( 0, 128, 48, 16 )
+script = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="Sprite"]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="Hitbox" type="Area2D" parent="."]
+editor/display_folded = true
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource( 1 )
+
+[node name="Sparks" type="CPUParticles2D" parent="."]
+editor/display_folded = true
+emitting = false
+amount = 1
+lifetime = 2.0
+one_shot = true
+local_coords = false
+emission_shape = 2
+emission_rect_extents = Vector2( 1, 8 )
+spread = 180.0
+gravity = Vector2( 0, 60 )
+initial_velocity = 50.0
+initial_velocity_random = 0.7
+color = Color( 1, 0.309804, 0.470588, 1 )
+script = ExtResource( 4 )
+
+[node name="Timer" type="Timer" parent="Sparks"]
+one_shot = true
+[connection signal="timeout" from="Sprite/Timer" to="Sprite" method="_on_Timer_timeout"]
+[connection signal="area_entered" from="Hitbox" to="." method="on_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="on_body_entered"]

@@ -5,32 +5,44 @@ extends Node
 
 export (int) var gate_height setget initialize_gate
 export (bool) var active setget initial_value
-export (float) var delay_between_cells
-export (bool) var close_in_inverse_order
+export (String, "Vertical", "Horizontal") var direction setget initial_position
 
 func initial_value(new_value : bool) -> void:
 	active = new_value
 	for cell in self.get_children():
-		cell.initial_value(new_value)
+		cell.set_active(new_value)
+	if not Engine.editor_hint:
+		$Sparks1.emitting = active
+		$Sparks2.emitting = active
 
 func initialize_gate(new_value: int) -> void:
 	gate_height = new_value
 	if Engine.editor_hint:
 		var source_node
-		source_node = self.get_node("GateCell")
+		source_node = self.get_node("EnergyGateCell")
 	
-		for gate_cell in self.get_children():
-			if gate_cell.name != "GateCell":
-				self.remove_child(gate_cell)
+		for child in self.get_children():
+			if child.name != "EnergyGateCell" and child.name != "Sparks1" and child.name != "Sparks2":
+				self.remove_child(child)
 		for i in range(1, gate_height):
 			var new_cell = source_node.duplicate()
 			new_cell.position.y = i*16
 			self.add_child(new_cell)
+		
+		$Sparks2.position.y = gate_height*16 - 8
+
+func initial_position(new_value: String) -> void:
+	match new_value:
+		"Vertical":
+			self.rotation_degrees = 0
+		"Horizontal":
+			self.rotation_degrees = -90
+	direction = new_value
 
 
 
 func add_cells() -> void:
-	var source_node = self.get_node("GateCell")
+	var source_node = self.get_node("EnergyGateCell")
 	for i in range(1, gate_height):
 			var new_cell = source_node.duplicate()
 			new_cell.position.y = i*16
@@ -56,14 +68,9 @@ func is_active() -> bool:
 func _ready():
 	if not Engine.editor_hint:
 		add_cells()
-		var i: int = 0
-		var j: int
-		if close_in_inverse_order:
-			j = self.get_children().size()
-		else:
-			j = 0
-		for cell in self.get_children():
-			cell.delay = delay_between_cells * abs(j - i)
-			i += 1
+		$Sparks1.emitting = active
+		$Sparks2.emitting = active
+
+
 
 
