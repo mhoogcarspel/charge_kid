@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://actors/Interactables/EnergyGate/EnergyGate.gd" type="Script" id=1]
 [ext_resource path="res://actors/Interactables/EnergyGate/TopEnd.gd" type="Script" id=2]
 [ext_resource path="res://assets/OldSpritesheets/robot.v1.png" type="Texture" id=3]
 [ext_resource path="res://actors/Interactables/EnergyGate/BottomEnd.gd" type="Script" id=4]
-[ext_resource path="res://actors/Interactables/EnergyGate/EnergyGateCell.tscn" type="PackedScene" id=5]
+[ext_resource path="res://actors/Interactables/EnergyGate/GateSparks.gd" type="Script" id=5]
+[ext_resource path="res://actors/Interactables/EnergyGate/EnergyGateCell.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -77,10 +78,14 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0.05, 0.05 )
+colors = PoolColorArray( 1, 0.309804, 0.470588, 1, 1, 0.309804, 0.470588, 0 )
+
 [node name="EnergyGate" type="Node2D"]
 z_index = -5
 script = ExtResource( 1 )
-gate_height = 1
+gate_height = 4
 active = true
 direction = "Vertical"
 
@@ -113,7 +118,7 @@ anims/On = SubResource( 3 )
 "blocks",
 ]]
 editor/display_folded = true
-position = Vector2( 0, 16 )
+position = Vector2( 0, 64 )
 script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="Sparks/BottomEnd"]
@@ -131,5 +136,20 @@ shape = SubResource( 1 )
 anims/Off = SubResource( 4 )
 anims/On = SubResource( 5 )
 
-[node name="EnergyGateCell" parent="." instance=ExtResource( 5 )]
-active = false
+[node name="GateSparks" type="CPUParticles2D" parent="Sparks"]
+position = Vector2( 0, 24 )
+emitting = false
+amount = 4
+lifetime = 4.0
+randomness = 1.0
+local_coords = false
+emission_shape = 2
+emission_rect_extents = Vector2( 1, 32 )
+spread = 180.0
+gravity = Vector2( 0, 250 )
+initial_velocity = 150.0
+initial_velocity_random = 0.7
+color_ramp = SubResource( 6 )
+script = ExtResource( 5 )
+
+[node name="EnergyGateCell" parent="." instance=ExtResource( 6 )]

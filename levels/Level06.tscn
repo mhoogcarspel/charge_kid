@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://levels/ScreenTransition.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/Tilemaps/LevelLimits.tscn" type="PackedScene" id=2]
@@ -9,7 +9,8 @@
 [ext_resource path="res://levels/Tilemaps/Spikes.tscn" type="PackedScene" id=7]
 [ext_resource path="res://actors/Player/Player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://actors/Interactables/FuelTank/FuelTank.tscn" type="PackedScene" id=9]
-[ext_resource path="res://actors/Interactables/EnergyGate/EnergyGate.tscn" type="PackedScene" id=10]
+[ext_resource path="res://actors/Interactables/Lever/LeverBody.tscn" type="PackedScene" id=10]
+[ext_resource path="res://actors/Interactables/EnergyGate/EnergyGate.tscn" type="PackedScene" id=11]
 
 [node name="Level06" type="Node2D" groups=[
 "level",
@@ -40,10 +41,9 @@ editor/display_folded = true
 script = ExtResource( 4 )
 
 [node name="Blocks" parent="." instance=ExtResource( 5 )]
-editor/display_folded = true
 
 [node name="Blocks1" parent="Blocks" index="0"]
-tile_data = PoolIntArray( 786432, 4, 0, 786433, 4, 2, 786440, 4, 0, 786441, 4, 2, 851968, 4, 131072, 851969, 4, 131074, 851976, 4, 131072, 851977, 4, 131074, 1179648, 4, 0, 1179649, 4, 1, 1179650, 4, 1, 1179651, 4, 1, 1179652, 4, 1, 1179653, 4, 1, 1179654, 4, 1, 1179655, 4, 1, 1179656, 4, 1, 1179657, 4, 1, 1179658, 4, 1, 1179659, 4, 1, 1179660, 4, 1, 1179661, 4, 1, 1179662, 4, 1, 1179663, 4, 2, 1245184, 4, 65536, 1245185, 4, 65537, 1245186, 4, 65537, 1245187, 4, 65537, 1245188, 4, 65537, 1245189, 4, 65537, 1245190, 4, 65537, 1245191, 4, 65537, 1245192, 4, 65537, 1245193, 4, 65537, 1245194, 4, 65537, 1245195, 4, 65537, 1245196, 4, 65537, 1245197, 4, 65537, 1245198, 4, 65537, 1245199, 4, 65538, 1310720, 4, 131072, 1310721, 4, 131073, 1310722, 4, 131073, 1310723, 4, 131073, 1310724, 4, 131073, 1310725, 4, 131073, 1310726, 4, 131073, 1310727, 4, 131073, 1310728, 4, 131073, 1310729, 4, 131073, 1310730, 4, 131073, 1310731, 4, 131073, 1310732, 4, 131073, 1310733, 4, 131073, 1310734, 4, 131073, 1310735, 4, 131074 )
+tile_data = PoolIntArray( 917499, 1, 0, 917500, 1, 0, 917501, 1, 0, 917502, 1, 0, 917503, 1, 0, 851977, 1, 0, 851978, 1, 0, 851979, 1, 0, 851980, 1, 0, 851981, 1, 0, 851982, 1, 0, 851983, 1, 0, 1245180, 4, 0, 1245181, 4, 1, 1245182, 4, 1, 1245183, 4, 1, 1179648, 4, 1, 1179649, 4, 1, 1179650, 4, 1, 1179651, 4, 1, 1179652, 4, 1, 1179653, 4, 1, 1179654, 4, 1, 1179655, 4, 1, 1179656, 4, 1, 1179657, 4, 1, 1179658, 4, 1, 1179659, 4, 1, 1179660, 4, 1, 1179661, 4, 1, 1179662, 4, 1, 1179663, 4, 2, 1310716, 4, 65536, 1310717, 4, 65537, 1310718, 4, 65537, 1310719, 4, 65537, 1245184, 4, 65537, 1245185, 4, 65537, 1245186, 4, 65537, 1245187, 4, 65537, 1245188, 4, 65537, 1245189, 4, 65537, 1245190, 4, 65537, 1245191, 4, 65537, 1245192, 4, 65537, 1245193, 4, 65537, 1245194, 4, 65537, 1245195, 4, 65537, 1245196, 4, 65537, 1245197, 4, 65537, 1245198, 4, 65537, 1245199, 4, 65538, 1376252, 4, 131072, 1376253, 4, 131073, 1376254, 4, 131073, 1376255, 4, 131073, 1310720, 4, 131073, 1310721, 4, 131073, 1310722, 4, 131073, 1310723, 4, 131073, 1310724, 4, 131073, 1310725, 4, 131073, 1310726, 4, 131073, 1310727, 4, 131073, 1310728, 4, 131073, 1310729, 4, 131073, 1310730, 4, 131073, 1310731, 4, 131073, 1310732, 4, 131073, 1310733, 4, 131073, 1310734, 4, 131073, 1310735, 4, 131074 )
 
 [node name="Platforms" parent="." instance=ExtResource( 6 )]
 editor/display_folded = true
@@ -57,14 +57,17 @@ level_length = 1600.0
 [node name="FuelTank" parent="." instance=ExtResource( 9 )]
 position = Vector2( 40, 280 )
 
-[node name="EnergyGate" parent="." instance=ExtResource( 10 )]
-position = Vector2( 144, 232 )
-gate_height = 4
+[node name="LeverBody" parent="." instance=ExtResource( 10 )]
+position = Vector2( 216, 280 )
+nodes = [ NodePath("../EnergyGate"), NodePath("../EnergyGate2") ]
 
-[node name="EnergyGate2" parent="." instance=ExtResource( 10 )]
-position = Vector2( 40, 208 )
+[node name="EnergyGate" parent="." instance=ExtResource( 11 )]
+position = Vector2( 136, 232 )
+
+[node name="EnergyGate2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 24, 216 )
 rotation = -1.5708
-gate_height = 6
+gate_height = 7
 direction = "Horizontal"
 
 [editable path="ScreenTransition"]

@@ -16,7 +16,7 @@ func initial_value(new_value : bool) -> void:
 func initialize_gate(new_value: int) -> void:
 	gate_height = new_value
 	if Engine.editor_hint:
-		get_node("Sparks/BottomEnd").height = gate_height
+		get_node("Sparks/BottomEnd").position.y = gate_height*16
 		var source_node
 		source_node = get_node("EnergyGateCell")
 		for child in self.get_children():
