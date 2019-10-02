@@ -14,7 +14,7 @@
 [ext_resource path="res://actors/Interactables/EnergyWire/EnergyWire.tscn" type="PackedScene" id=12]
 [ext_resource path="res://levels/Messages/Message.tscn" type="PackedScene" id=13]
 [ext_resource path="res://levels/FinishLine.tscn" type="PackedScene" id=14]
-[ext_resource path="res://menu/final_screen/FinalScreen.tscn" type="PackedScene" id=15]
+[ext_resource path="res://levels/Level06.tscn" type="PackedScene" id=15]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -172,10 +172,13 @@ position = Vector2( 104, 152 )
 position = Vector2( 768, 248 )
 gate_height = 3
 active = true
+close_in_inverse_order = false
 
 [node name="Gate2" parent="." instance=ExtResource( 10 )]
 position = Vector2( 840, 248 )
 gate_height = 3
+active = false
+close_in_inverse_order = false
 
 [node name="LeverBody" parent="." instance=ExtResource( 11 )]
 position = Vector2( 664, 280 )
@@ -245,6 +248,8 @@ tile_data = PoolIntArray( -65538, 0, 0, -2, 0, 655360, 65534, 0, 655360, 131070,
 position = Vector2( 696, 120 )
 scale = Vector2( -1, 1 )
 gate_height = 4
+active = false
+close_in_inverse_order = false
 
 [node name="EnergyWire8" parent="." instance=ExtResource( 12 )]
 editor/display_folded = true
@@ -269,6 +274,7 @@ position = Vector2( 776, 120 )
 scale = Vector2( -1, 1 )
 gate_height = 4
 active = true
+close_in_inverse_order = false
 
 [node name="Message" parent="." instance=ExtResource( 13 )]
 editor/display_folded = true

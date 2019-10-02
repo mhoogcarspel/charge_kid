@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://actors/Interactables/EnergyGate/EnergyGateCell.gd" type="Script" id=1]
 [ext_resource path="res://assets/Particles/EnergyGateParticles.tscn" type="PackedScene" id=2]
@@ -8,10 +8,12 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1, 8 )
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8, 8 )
+
 [node name="EnergyGateCell" type="Node2D"]
 z_index = -1
 script = ExtResource( 1 )
-active = true
 hit_particles = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -34,6 +36,15 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource( 1 )
+
+[node name="CheckpointBlocker" type="Area2D" parent="."]
+editor/display_folded = true
+visible = false
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckpointBlocker"]
+shape = SubResource( 2 )
 [connection signal="timeout" from="Sprite/Timer" to="Sprite" method="_on_Timer_timeout"]
 [connection signal="area_entered" from="Hitbox" to="." method="on_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="on_body_entered"]

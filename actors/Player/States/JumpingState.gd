@@ -30,18 +30,13 @@ func update(delta):
 		
 		if Input.is_action_just_released("ui_jump") && owner.velocity.y < 0:
 			owner.velocity.y /= 3
+			owner.pop_state()
 		
-		if Input.is_action_just_pressed("ui_jump"):
-			owner.get_node("BunnyTimer").start(owner.bunny_time)
-		return
-	
+		if owner.velocity.y >= 0:
+			owner.pop_state()
 	else:
 		land_sound()
-		if !owner.get_node("BunnyTimer").is_stopped() && Input.is_action_pressed("ui_jump"):
-			owner.get_node("BunnyTimer").stop()
-			owner.change_state("JumpingState")
-		else:
-			owner.pop_state()
+		owner.pop_state()
 		return
 
 

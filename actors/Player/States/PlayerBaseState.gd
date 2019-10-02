@@ -64,7 +64,7 @@ func store_checkpoint() -> void:
 		if body.is_in_group("blocks") or body.is_in_group("platform"):
 			right = true
 	
-	if left and right:
+	if left and right and owner.get_node("SpikesSentinel").get_overlapping_areas().empty():
 		owner.checkpoint = owner.position
 
 func land_sound() -> void:

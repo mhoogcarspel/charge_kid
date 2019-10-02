@@ -250,7 +250,6 @@ func reset() -> void:
 				bullet.queue_free()
 		
 		get_parent().add_child(next_player)
-		self.queue_free()
 	else:
 		get_tree().reload_current_scene()
 

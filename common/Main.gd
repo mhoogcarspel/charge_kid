@@ -48,6 +48,10 @@ func change_scene(next_scene: PackedScene) -> void:
 	actual_scene = next_scene
 
 func _process(delta):
+	# Checking for multiple players due to respawning
+	if get_tree().get_nodes_in_group("player").size() > 1:
+		get_tree().get_nodes_in_group("player").front().queue_free()
+	
 	# Pausing
 	if Input.is_action_just_pressed("ui_pause") and !get_tree().get_nodes_in_group("player").empty() and !get_tree().paused and $PauseTimer.is_stopped():
 		get_tree().paused = true

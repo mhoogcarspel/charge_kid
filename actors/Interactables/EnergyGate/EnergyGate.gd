@@ -46,7 +46,7 @@ func add_cells() -> void:
 			self.add_child(new_cell)
 
 func activate() -> void:
-	self.active = true
+	self.active = not active
 
 func deactivate() -> void:
 	self.active = false
