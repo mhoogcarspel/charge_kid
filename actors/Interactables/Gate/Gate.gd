@@ -4,9 +4,15 @@ extends Node
 
 
 export (int) var gate_height setget initialize_gate
+export (int) var gap_size setget set_gap
 export (bool) var active setget initial_value
 export (float) var delay_between_cells
 export (bool) var close_in_inverse_order
+
+func set_gap(new_value: int) -> void:
+	gap_size = new_value
+	for gate_cell in get_children():
+		gate_cell.set_gap(gap_size)
 
 func initial_value(new_value : bool) -> void:
 	active = new_value
@@ -14,6 +20,8 @@ func initial_value(new_value : bool) -> void:
 		cell.initial_value(new_value)
 
 func initialize_gate(new_value: int) -> void:
+	if new_value <= 0:
+		return
 	gate_height = new_value
 	if Engine.editor_hint:
 		var source_node

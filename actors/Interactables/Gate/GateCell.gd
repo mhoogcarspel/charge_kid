@@ -2,7 +2,13 @@ tool
 extends Node2D
 
 export(bool) var active setget initial_value
+export(float) var gap_size setget set_gap
 onready var delay
+
+func set_gap(new_value: int) -> void:
+	gap_size = new_value
+	if get_children().size() > 2:
+		$TriggeredPlatform2.position.x = 16 + gap_size
 
 func initial_value(new_value: bool) -> void:
 	active = new_value
