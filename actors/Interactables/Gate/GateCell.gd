@@ -2,7 +2,7 @@ tool
 extends Node2D
 
 export(bool) var active setget initial_value
-export(float) var gap_size setget set_gap
+export(int) var gap_size setget set_gap
 onready var delay
 
 func set_gap(new_value: int) -> void:
