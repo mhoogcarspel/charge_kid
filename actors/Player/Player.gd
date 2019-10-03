@@ -231,6 +231,7 @@ func kill() -> void:
 	add_child(timer)
 	timer.start(1)
 	yield(timer, "timeout")
+	self.queue_free()
 	reset()
 
 func reset() -> void:
