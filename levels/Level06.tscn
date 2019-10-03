@@ -171,6 +171,7 @@ wires = [ NodePath("../EnergyWire") ]
 editor/display_folded = true
 position = Vector2( 200, 16 )
 z_index = -6
+active = false
 
 [node name="Wire" parent="EnergyWire" index="0"]
 tile_data = PoolIntArray( -65530, 0, 393216, -65529, 0, 327680, -65528, 0, 327680, -65527, 0, 327680, -65526, 0, 327680, -65525, 0, 327680, -65524, 0, 327680, -65523, 0, 262146, 65531, 0, 327680, 65532, 0, 327680, 65533, 0, 327680, 65534, 0, 327680, 65535, 0, 327680, 0, 0, 327680, 1, 0, 327680, 2, 0, 327680, 3, 0, 327680, 4, 0, 327680, 5, 0, 327680, 6, 0, 524290, 196625, 0, 917504, 262161, 0, 917504, 327697, 0, 917504, 393233, 0, 917504, 458769, 0, 917504, 524305, 0, 917504, 589841, 0, 917504, 655377, 0, 917504, 720913, 0, 917504, 786449, 0, 917504, 851985, 0, 917504, 917521, 0, 786432 )
@@ -181,6 +182,7 @@ tile_data = PoolIntArray( -65523, 18, 0, 65531, 16, 0, 196625, 6, 0 )
 [node name="EnergyWire2" parent="." instance=ExtResource( 13 )]
 editor/display_folded = true
 position = Vector2( 64, 14 )
+active = false
 
 [node name="Wire" parent="EnergyWire2" index="0"]
 tile_data = PoolIntArray( 65539, 0, 262144, 65540, 0, 393218, 131072, 0, 262144, 131073, 0, 327680, 131074, 0, 393218, 131076, 0, 196608, 196610, 0, 524288, 196611, 0, 327680, 196612, 0, 524290 )
@@ -191,6 +193,7 @@ tile_data = PoolIntArray( 65540, 18, 0, 131072, 9, 0 )
 [node name="Gate2" parent="." instance=ExtResource( 14 )]
 position = Vector2( 472, 72 )
 gate_height = 12
+gap_size = 0
 active = true
 close_in_inverse_order = false
 

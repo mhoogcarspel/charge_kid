@@ -6,6 +6,7 @@ extends Node
 export (int) var gate_height setget initialize_gate
 export (bool) var active setget initial_value
 export (String, "Vertical", "Horizontal") var direction setget initial_position
+export (PackedScene) var hit_particles
 
 func initial_value(new_value : bool) -> void:
 	active = new_value
@@ -58,6 +59,25 @@ func is_active() -> bool:
 
 func _ready():
 	add_cells()
+	$Sparks/Hitbox/CollisionShape2D.shape.extents = Vector2(2,gate_height*8 + 8)
+	$Sparks/Hitbox/CollisionShape2D.position.y = gate_height*8 - 8
+
+func on_hitbox_body_entered(body):
+	if not Engine.editor_hint and body.is_in_group("player") and self.is_active():
+		if body.get_state() == "BulletBoostingState" or body.get_state() == "BoostingState":
+			spawn_particles(body.position)
+		else:
+			body.change_state("DyingState")
+
+func on_hitbox_area_entered(area):
+	if not Engine.editor_hint and area.get_parent().is_in_group("bullet") and self.is_active():
+		spawn_particles(area.get_parent().position)
+
+func spawn_particles(spawn_point: Vector2) -> void:
+	var level = get_tree().get_nodes_in_group("level")[0]
+	var particles = hit_particles.instance()
+	particles.position = spawn_point
+	level.add_child(particles)
 
 
 

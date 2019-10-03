@@ -144,6 +144,7 @@ position = Vector2( 264, 312 )
 editor/display_folded = true
 material = SubResource( 2 )
 position = Vector2( 88, 16 )
+active = false
 
 [node name="Wire" parent="EnergyWire2" index="0"]
 tile_data = PoolIntArray( 131068, 0, 196609, 196604, 0, 196608, 262140, 0, 196608, 327676, 0, 196608, 393212, 0, 524288, 393213, 0, 327680, 393214, 0, 393218, 327699, 0, 393218, 458750, 0, 196608, 393235, 0, 65538, 524286, 0, 524288, 524287, 0, 327680, 458752, 0, 327680, 458753, 0, 327680, 458754, 0, 327680, 458755, 0, 327680, 458756, 0, 327680, 458757, 0, 327680, 458758, 0, 327680, 458759, 0, 327680, 458760, 0, 327680, 458761, 0, 327680, 458762, 0, 327680, 458763, 0, 327680, 458764, 0, 327680, 458765, 0, 393218, 458771, 0, 65538, 524301, 0, 196608, 524307, 0, 65538, 589837, 0, 196608, 589843, 0, 65538, 655373, 0, 524288, 655374, 0, 327680, 655375, 0, 327680, 655376, 0, 327680, 655377, 0, 327680, 655378, 0, 262146, 655379, 0, 131074 )
@@ -152,6 +153,7 @@ tile_data = PoolIntArray( 131068, 0, 196609, 196604, 0, 196608, 262140, 0, 19660
 editor/display_folded = true
 material = SubResource( 3 )
 position = Vector2( 200, 112 )
+active = false
 
 [node name="Wire" parent="EnergyWire" index="0"]
 tile_data = PoolIntArray( -393220, 0, 524289, -327684, 0, 917504, -262148, 0, 917504, -196612, 0, 917504, -131076, 0, 917504, -65540, 0, 917504, -4, 0, 917504, 65532, 0, 917504, 131068, 0, 917504, 196604, 0, 917504, 262140, 0, 196609, 196609, 0, 196609, 327676, 0, 524288, 327677, 0, 327680, 327678, 0, 327680, 327679, 0, 327680, 262144, 0, 327680, 262145, 0, 524290 )
@@ -159,6 +161,7 @@ tile_data = PoolIntArray( -393220, 0, 524289, -327684, 0, 917504, -262148, 0, 91
 [node name="Gate" parent="." instance=ExtResource( 11 )]
 position = Vector2( 136, 8 )
 gate_height = 10
+gap_size = 0
 active = false
 delay_between_cells = 0.0
 close_in_inverse_order = false
@@ -178,34 +181,23 @@ wires = [ NodePath("../EnergyWire2") ]
 [node name="Gate2" parent="." instance=ExtResource( 14 )]
 position = Vector2( 392, 104 )
 gate_height = 6
+gap_size = 0
 active = true
 close_in_inverse_order = false
 
 [node name="SwitchBody2" parent="." instance=ExtResource( 13 )]
 position = Vector2( 712, 104 )
-nodes = [ NodePath("../Gate3"), NodePath("../Gate4") ]
+nodes = [ NodePath("../Gate3") ]
 wires = [ NodePath("../EnergyWire3") ]
 
 [node name="FuelTank3" parent="." instance=ExtResource( 9 )]
 position = Vector2( 600, 264 )
 
-[node name="Gate3" parent="." instance=ExtResource( 14 )]
-position = Vector2( 760, 216 )
-gate_height = 7
-active = true
-close_in_inverse_order = false
-
-[node name="Gate4" parent="." instance=ExtResource( 14 )]
-position = Vector2( 792, 216 )
-scale = Vector2( -1, 1 )
-gate_height = 7
-active = true
-close_in_inverse_order = false
-
 [node name="EnergyWire3" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
 material = SubResource( 4 )
 position = Vector2( 720, 144 )
+active = false
 
 [node name="Wire" parent="EnergyWire3" index="0"]
 tile_data = PoolIntArray( -196608, 0, 327680, -196607, 0, 327680, -196605, 0, 2, -131069, 0, 196608, -65533, 0, 327681, 3, 0, 327681, 65539, 0, 327681, 131075, 0, 327681, 262147, 0, 262145, 327683, 0, 262145, 393219, 0, 262145, 458755, 0, 262145, 524291, 0, 262145, 589827, 0, 262145, 655363, 0, 655361 )
@@ -221,6 +213,13 @@ next_stage = ExtResource( 16 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FinishLine"]
 polygon = PoolVector2Array( 0, 32, 0, 16, -48, 16, -48, 32 )
+
+[node name="Gate3" parent="." instance=ExtResource( 11 )]
+position = Vector2( 762, 216 )
+gate_height = 7
+gap_size = 12
+active = true
+close_in_inverse_order = false
 
 [editable path="ScreenTransition"]
 

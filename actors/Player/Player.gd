@@ -232,9 +232,7 @@ func kill() -> void:
 	timer.start(1)
 	yield(timer, "timeout")
 	self.queue_free()
-	reset()
-
-func reset() -> void:
+	
 	if get_tree().get_nodes_in_group("main").size() > 0:
 		var main = get_tree().get_nodes_in_group("main")[0]
 		var next_player = main.player_scene.instance()
