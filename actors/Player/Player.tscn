@@ -279,7 +279,6 @@ anims/Shooting = SubResource( 8 )
 anims/Walking = SubResource( 9 )
 
 [node name="FuelParticles" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Particles1" type="CPUParticles2D" parent="FuelParticles"]
 position = Vector2( 0, 8 )
@@ -337,7 +336,6 @@ scale_amount = 2.0
 color = Color( 1, 0.309804, 0.470588, 1 )
 
 [node name="ShootParticles" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="OneShotShootParticles" type="Node2D" parent="ShootParticles"]
 script = ExtResource( 7 )
