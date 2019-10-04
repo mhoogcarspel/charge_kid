@@ -45,8 +45,8 @@ func update(delta):
 	boost_timer += delta
 	if boost_timer >= boost_time || owner.has_bullet:
 		if !owner.is_on_floor() :
-			owner.horizontal_move(get_directional_inputs(), delta, 3)
-			owner.gravity(delta, 2)
+			owner.horizontal_move(get_directional_inputs(), delta, 1)
+			owner.gravity(delta, 3)
 			boosting_particles(false)
 			
 			if owner.velocity.y >= 0:

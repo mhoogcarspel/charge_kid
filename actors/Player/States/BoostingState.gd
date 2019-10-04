@@ -18,32 +18,25 @@ func update(delta):
 	boosting_time += delta
 	
 	if boosting_time < owner.boost_time:
-		owner.horizontal_move(get_directional_inputs(), delta, 0.5)
-	
-		####################### Finishing the boost timer #############################
-		if boosting_time > owner.boost_time*3/4:
-			if boost_input_pressed():
-				return
-		###############################################################################
-	
+		owner.horizontal_move(get_directional_inputs(), delta, 0.5)	
 	else:
 		owner.gravity(delta, 3)
 		owner.horizontal_move(get_directional_inputs(), delta)
 		boosting_particles(false)
 		
-		################### Ending the state #############################
 		if owner.velocity.y >= 0:
 			owner.pop_state()
 			return
-		##################################################################
 	
-	if !owner.is_on_floor():
+	if not owner.is_on_floor():
 		animation_player.play("Airborne")
 	
-		################# Checking for any inputs ########################
 		if shoot_input_pressed():
 			return
-		##################################################################
+		if boost_input_pressed():
+			return
+		if bullet_boost_input_pressed():
+			return
 	
 	else:
 		land_sound()
