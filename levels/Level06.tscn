@@ -28,7 +28,6 @@ extents = Vector2( 24, 88 )
 pause_mode = 1
 
 [node name="ScreenTransition" parent="." instance=ExtResource( 1 )]
-editor/display_folded = true
 
 [node name="Label" parent="ScreenTransition/CenterContainer" index="0"]
 margin_left = 288.0
@@ -230,6 +229,7 @@ message = "trick shot!"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lv6SpMessage"]
 position = Vector2( 24, 88 )
 shape = SubResource( 1 )
+[connection signal="body_entered" from="Lv6SpMessage" to="Lv6SpMessage" method="_on_Lv6SpMessage_body_entered"]
 
 [editable path="ScreenTransition"]
 

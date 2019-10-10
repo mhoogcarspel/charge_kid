@@ -9,6 +9,7 @@ onready var player_has_entered: bool = false
 var switch_state: bool setget switch_sentinel
 
 
+
 func switch_sentinel(new_value) -> void:
 	if new_value == true and switch_state == false and player_has_entered == false:
 		var player = get_tree().get_nodes_in_group("player")[0]
@@ -18,7 +19,7 @@ func switch_sentinel(new_value) -> void:
 
 func _physics_process(_delta):
 	self.switch_state = switch.is_active()
-
-func _on_body_entered(body):
+	
+func _on_Lv6SpMessage_body_entered(body):
 	if body.is_in_group("player"):
 		player_has_entered = true
