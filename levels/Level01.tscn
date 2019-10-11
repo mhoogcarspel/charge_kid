@@ -267,6 +267,7 @@ position = Vector2( 896, 312 )
 polygon = PoolVector2Array( -440, -16, -280, -16, -280, 16, -440, 16 )
 
 [node name="Message" parent="." instance=ExtResource( 17 )]
+editor/display_folded = true
 visible = false
 position = Vector2( 1008, 80 )
 message = "totally intended"

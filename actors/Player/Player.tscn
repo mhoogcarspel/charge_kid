@@ -436,9 +436,7 @@ collision_mask = 12
 shape = SubResource( 12 )
 
 [node name="Label" type="Label" parent="."]
-margin_top = -36.0
-margin_right = 184.0
-margin_bottom = -28.0
+margin_bottom = 8.0
 custom_fonts/font = SubResource( 13 )
 align = 1
 script = ExtResource( 15 )
