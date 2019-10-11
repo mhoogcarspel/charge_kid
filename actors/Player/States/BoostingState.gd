@@ -16,6 +16,12 @@ func enter():
 
 func update(delta):
 	boosting_time += delta
+	if shoot_input_pressed():
+		return
+	if boost_input_pressed():
+		return
+	if bullet_boost_input_pressed():
+		return
 	
 	if boosting_time < owner.boost_time:
 		owner.horizontal_move(get_directional_inputs(), delta, 0.5)	
@@ -30,14 +36,6 @@ func update(delta):
 	
 	if not owner.is_on_floor():
 		animation_player.play("Airborne")
-	
-		if shoot_input_pressed():
-			return
-		if boost_input_pressed():
-			return
-		if bullet_boost_input_pressed():
-			return
-	
 	else:
 		land_sound()
 		owner.pop_state()
