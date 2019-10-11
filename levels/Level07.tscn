@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://levels/ScreenTransition.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/Tilemaps/LevelLimits.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://actors/Interactables/EnergyGate/EnergyGate.tscn" type="PackedScene" id=10]
 [ext_resource path="res://levels/FinishLine.tscn" type="PackedScene" id=11]
 [ext_resource path="res://menu/final_screen/FinalScreen.tscn" type="PackedScene" id=12]
+[ext_resource path="res://levels/CameraLimiter.tscn" type="PackedScene" id=13]
 
 [node name="Level07" type="Node2D" groups=[
 "level",
@@ -49,7 +50,6 @@ tile_data = PoolIntArray( 786429, 1, 0, 786430, 1, 0, 786431, 1, 0, 720896, 1, 0
 tile_data = PoolIntArray( 589826, 16, 0, 589840, 16, 0, 589861, 17, 0, 655361, 17, 0, 655362, 17, 0, 655364, 16, 0, 655375, 17, 0, 655376, 17, 0, 655378, 16, 0, 655384, 16, 0, 655390, 16, 0, 655391, 17, 0, 655392, 17, 0, 655397, 16, 0, 655398, 16, 0, 1048597, 17, 0, 1048614, 17, 0, 1114114, 16, 0, 1114115, 16, 0, 1114126, 16, 0, 1114127, 17, 0, 1114128, 17, 0, 1114133, 16, 0, 1114134, 16, 0, 1114142, 17, 0, 1114144, 16, 0, 1114148, 17, 0, 1114150, 16, 0, 1114151, 16, 0, 1114152, 16, 0 )
 
 [node name="Background2" parent="." instance=ExtResource( 3 )]
-editor/display_folded = true
 
 [node name="Props1" parent="Background2/HangingProps" index="0"]
 tile_data = PoolIntArray( 39, 4, 0, 65575, 4, 0, 131111, 4, 0, 196647, 4, 0, 262183, 4, 0, 327719, 4, 0, 393255, 4, 0, 458791, 4, 0, 524327, 4, 0, 589838, 4, 0, 589863, 4, 0, 655374, 4, 0, 655395, 0, 0, 655399, 4, 0, 720910, 4, 0, 720931, 0, 0, 720935, 4, 0, 786446, 4, 0, 786467, 0, 0, 786471, 4, 0, 851982, 4, 0, 852007, 4, 0, 917518, 4, 0, 917543, 4, 0, 983054, 4, 0 )
@@ -60,8 +60,11 @@ tile_data = PoolIntArray( 917539, 6, 0, 983075, 6, 0, 1048611, 6, 0, 1114147, 6,
 [node name="Pillars2" parent="Background2/Pillars" index="1"]
 tile_data = PoolIntArray( 917539, 7, 0, 983075, 7, 0, 1048611, 7, 0, 1114147, 7, 0, 1179683, 7, 0, 1245219, 7, 0, 1310755, 7, 0, 1376291, 7, 0, 1441827, 7, 0, 1507363, 7, 0 )
 
+[node name="GroundProps" parent="Background2" index="6"]
+editor/display_folded = false
+
 [node name="Props1" parent="Background2/GroundProps" index="0"]
-tile_data = PoolIntArray( 131100, 10, 0, 327734, 536870913, 0, 327735, 5, 0, 327737, 11, 0, 327742, 22, 0, 393221, 4, 0, 393222, 7, 0, 393225, 10, 0, 393227, 12, 0, 393228, 13, 0, 393229, 14, 0, 393230, 15, 0, 458795, 0, 0, 458796, 7, 0, 458799, 12, 0, 458800, 14, 0, 458801, 13, 0, 458802, 15, 0, 1310720, 12, 0, 1310721, 13, 0, 1310722, 14, 0, 1310723, 15, 0, 1310725, 11, 0 )
+tile_data = PoolIntArray( 131100, 10, 0, 327734, 536870913, 0, 327735, 5, 0, 327737, 11, 0, 327742, 22, 0, 393221, 4, 0, 393222, 7, 0, 393225, 10, 0, 393227, 12, 0, 393228, 13, 0, 393229, 14, 0, 393230, 15, 0, 458795, 0, 0, 458796, 7, 0, 458799, 12, 0, 458800, 14, 0, 458801, 13, 0, 458802, 15, 0, 1310720, 12, 0, 1310721, 13, 0, 1310722, 14, 0, 1310723, 15, 0 )
 
 [node name="Blocks" parent="." instance=ExtResource( 5 )]
 editor/display_folded = true
@@ -132,6 +135,18 @@ next_stage = ExtResource( 12 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FinishLine"]
 polygon = PoolVector2Array( 40, 16, 40, 0, 16, 0, 16, 16 )
 
+[node name="CameraLimiter" parent="." instance=ExtResource( 13 )]
+editor/display_folded = true
+visible = false
+position = Vector2( 528, 181.684 )
+limit = 352
+
+[node name="CollisionPolygon2D" parent="CameraLimiter/Exit" index="0"]
+polygon = PoolVector2Array( 240, 202.316, -144, 202.316, -144, -181.684, 240, -181.684 )
+
+[node name="CollisionPolygon2D" parent="CameraLimiter" index="1"]
+polygon = PoolVector2Array( -112, -181.684, 160, -181.684, 160, 202.316, -112, 202.316 )
+
 [editable path="ScreenTransition"]
 
 [editable path="Background"]
@@ -141,3 +156,5 @@ polygon = PoolVector2Array( 40, 16, 40, 0, 16, 0, 16, 16 )
 [editable path="Blocks"]
 
 [editable path="Platforms"]
+
+[editable path="CameraLimiter"]
