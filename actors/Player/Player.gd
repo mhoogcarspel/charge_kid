@@ -39,7 +39,8 @@ onready var states: Dictionary = {
 	"ShootingState" : ShootingState.new(self),
 	"BoostingState" : BoostingState.new(self),
 	"BulletBoostingState": BulletBoostingState.new(self),
-	"DyingState" : DyingState.new(self)
+	"DyingState" : DyingState.new(self),
+	"StatelessState" : StatelessState.new(self)
 	}
 onready var actual_state: String
 onready var stack: Array = []
@@ -75,7 +76,7 @@ func _physics_process(delta):
 	actual_state = stack[0]
 	states[actual_state].update(delta)
 	
-	if get_state() != "DyingState":
+	if get_state() != "DyingState" and get_state() != "StatelessState":
 		velocity = move_and_slide(velocity, Vector2(0, -1))
 		if is_on_floor():
 			$CoyoteTimer.start(coyote_time)
@@ -86,31 +87,35 @@ func _physics_process(delta):
 
 func change_state(state: String):
 	var previous_state = stack[0]
+	
 	match state:
 		"IdleState":
 			while(stack[0] != "IdleState"):
-				stack.pop_front()
+				pop_state()
 		"MovingState":
-			stack.push_front(state)
+			states[previous_state].exit()
 		"ShootingState":
-			stack.push_front(state)
+			states[previous_state].exit()
 		"OnAirState":
-			stack.push_front(state)
+			states[previous_state].exit()
 		"JumpingState":
-			if previous_state == "JumpingState" || previous_state == "OnAirState":
-				stack.pop_front()
-			stack.push_front(state)
+			if previous_state == "JumpingState" or previous_state == "OnAirState":
+				pop_state()
+			else:
+				states[previous_state].exit()
 		"BoostingState","BulletBoostingState":
-			if previous_state == "JumpingState" || previous_state == "BoostingState" || previous_state == "BulletBoostingState":
-				states[stack[0]].exit()
-				stack.pop_front()
-			stack.push_front(state)
+			if previous_state == "JumpingState" or previous_state == "BoostingState" or previous_state == "BulletBoostingState":
+				pop_state()
+			else:
+				states[previous_state].exit()
 		"DyingState":
-			while(!stack.empty()):
-				states[stack[0]].exit()
-				stack.pop_front()
-			stack.push_front(state)
-	states[previous_state].exit()
+			while(not stack.empty()):
+				pop_state()
+		"StatelessState":
+			while(not stack.empty()):
+				pop_state()
+	
+	stack.push_front(state)
 	states[state].enter()
 
 func pop_state():
@@ -154,7 +159,7 @@ func _on_LabelTimer_timeout():
 	$Label.set_text(" ")
 
 func hit(projectile: PhysicsBody2D) -> void:
-	match projectile.stack[0]:
+	match projectile.get_state():
 		"StandingState":
 			$SFX/BulletPickup.play()
 		"FuelChargeState":
@@ -162,7 +167,7 @@ func hit(projectile: PhysicsBody2D) -> void:
 		
 	projectile.speed = 0
 	self.has_bullet = true
-	if stack[0] == "BulletBoostingState":
+	if self.get_state() == "BulletBoostingState":
 		$BoostTimer.stop()
 		_on_BoostTimer_timeout()
 	projectile.destroy()

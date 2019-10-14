@@ -9,7 +9,7 @@ func _process(delta):
 		$AnimationPlayer.play("Deactivated")
 
 func hit(bullet: PlayerBullet):
-	if !get_tree().get_nodes_in_group("player").empty():
+	if not get_tree().get_nodes_in_group("player").empty():
 	###############Swap player and bullet positions########################
 		swap_player_and_bullet(bullet)
 		
@@ -19,7 +19,7 @@ func hit(bullet: PlayerBullet):
 		actual_state = "Deactivated"
 
 func _on_ReactivationTimer_timeout():
-	actual_state == "Reactivating"
+	actual_state = "Reactivating"
 	$AnimationPlayer.play("Activating")
 	yield($AnimationPlayer, "animation_finished")
 	self.set_collision_layer_bit(5, true)
@@ -37,3 +37,12 @@ func swap_player_and_bullet(bullet: PlayerBullet):
 	bullet.disable_enable_hitbox(true)
 	self.set_collision_layer_bit(5, false)
 	actual_state = ""
+
+
+
+func is_active() -> bool:
+	return actual_state == "Active"
+
+
+
+

@@ -32,18 +32,20 @@ func _process(delta):
 
 func change_state(state: String) -> void:
 	var previous_state = states[stack[0]]
+	
 	match stack[0]:
 		"StandardState":
 			stack.pop_front()
 			stack.push_front(state)
 		"ReturnState":
-			if !state == "HoldState":
+			if state != "HoldState":
 				stack.pop_front()
 			stack.push_front(state)
 		"HoldState":
 			stack.pop_front()
-			if !state == "ReturnState":
+			if state != "ReturnState":
 				stack.push_front(state)
+	
 	previous_state.exit()
 	states[state].enter()
 

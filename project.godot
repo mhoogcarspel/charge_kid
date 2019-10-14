@@ -119,6 +119,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://actors/State.gd"
 }, {
+"base": "PlayerBaseState",
+"class": "StatelessState",
+"language": "GDScript",
+"path": "res://actors/Player/States/StatelessState.gd"
+}, {
 "base": "StaticBody2D",
 "class": "TriggeredPlatform",
 "language": "GDScript",
@@ -147,6 +152,7 @@ _global_script_class_icons={
 "StandardState": "",
 "StandingState": "",
 "State": "",
+"StatelessState": "",
 "TriggeredPlatform": ""
 }
 
