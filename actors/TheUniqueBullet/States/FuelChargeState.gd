@@ -15,7 +15,7 @@ func enter():
 	owner.set_collision_mask_bit(0, false)
 	owner.set_collision_layer_bit(0, false)
 	
-	########################Particles####################################
+	##### Particles ######################################################
 	owner.get_node("FuelChargeParticles").emitting = true
 	owner.get_node("ProjectileParticles").emitting = false
 	######################################################################

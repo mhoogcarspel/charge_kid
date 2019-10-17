@@ -1,7 +1,7 @@
 extends Node2D
 
 export (Array, PackedScene) var particles
-onready var emitting = false
+export (bool) var emitting = false
 
 
 

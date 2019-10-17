@@ -67,4 +67,6 @@ initial_velocity = 0.0
 scale_amount = 0.4
 scale_amount_curve = SubResource( 4 )
 color = Color( 0.956863, 0.956863, 0.894118, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 [connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]

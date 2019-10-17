@@ -11,13 +11,15 @@ export(float) var gravity_accel
 onready var direction: Vector2
 onready var velocity: Vector2
 onready var player = get_tree().get_nodes_in_group("player")[0]
+onready var animation_player = $AnimationPlayer
 
 onready var states: Dictionary = {
 	"StandardState": StandardState.new(self),
 	"StandingState": StandingState.new(self),
 	"ReturnState" : ReturnState.new(self, player),
 	"FuelChargeState" : FuelChargeState.new(self, player),
-	"HoldState" : HoldState.new(self)
+	"HoldState" : HoldState.new(self),
+	"StoppedState" : StoppedState.new(self)
 	}
 
 onready var stack: Array = []
@@ -70,3 +72,5 @@ func _on_HitBox_body_entered(body):
 
 func disable_enable_hitbox(set: bool) -> void:
 	$HitBox/HitboxCollider.set_deferred("disabled", !set)
+
+

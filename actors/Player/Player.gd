@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name Player
 
 export(bool) var god_mode
 export(float) var level_length
@@ -44,6 +45,7 @@ onready var states: Dictionary = {
 	}
 onready var actual_state: String
 onready var stack: Array = []
+onready var animation_player = $AnimationPlayer
 
 onready var can_boost:bool
 onready var facing:float = 1
