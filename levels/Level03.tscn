@@ -163,8 +163,7 @@ position = Vector2( 136, 8 )
 gate_height = 10
 gap_size = 0
 active = false
-delay_between_cells = 0.0
-close_in_inverse_order = false
+close_in_inverse_order = true
 
 [node name="LeverBody" parent="." instance=ExtResource( 12 )]
 position = Vector2( 224, 152 )
