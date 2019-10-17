@@ -68,6 +68,7 @@ func store_checkpoint() -> void:
 		owner.checkpoint = owner.position
 
 func land_sound() -> void:
+	owner.get_node("AnimationPlayer").play("Landing")
 	owner.get_node("SFX/Land").play()
 	return
 

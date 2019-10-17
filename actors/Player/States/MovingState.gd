@@ -13,7 +13,8 @@ func update(delta):
 	owner.gravity(delta)
 	owner.drop()
 	if owner.is_on_floor():
-		animation_player.play("Walking")
+		if animation_player.current_animation != "Landing":
+			animation_player.play("Walking")
 		store_checkpoint()
 		
 		#################Checking for any inputs########################
@@ -30,7 +31,6 @@ func update(delta):
 			return
 		
 		elif get_directional_inputs().length() == 0 && owner.velocity.x == 0:
-			print("NoMovement")
 			owner.pop_state()
 		##################################################################
 	
