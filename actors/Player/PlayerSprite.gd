@@ -32,6 +32,8 @@ func flip_sprite(facing: float) -> void:
 	elif facing < 0 && !self.transform.x.x == -1:
 		self.transform.x.x = -1
 
+
+
 func step_sound() -> void:
 	if step == 0:
 		owner.get_node("SFX/Step").pitch_scale = 0.8
@@ -42,9 +44,13 @@ func step_sound() -> void:
 		owner.get_node("SFX/Step").play()
 		step = 0
 
+
+
 func shoot_particles() -> void:
 	for particle in player.get_node("ShootParticles").get_children():
 		particle.emitting = true
+
+
 
 func kill() -> void:
 	$ProjectileParticles.visible = false

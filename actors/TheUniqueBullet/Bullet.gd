@@ -18,8 +18,7 @@ onready var states: Dictionary = {
 	"StandingState": StandingState.new(self),
 	"ReturnState" : ReturnState.new(self, player),
 	"FuelChargeState" : FuelChargeState.new(self, player),
-	"HoldState" : HoldState.new(self),
-	"StoppedState" : StoppedState.new(self)
+	"HoldState" : HoldState.new(self)
 	}
 
 onready var stack: Array = []

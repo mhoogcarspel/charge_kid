@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://actors/TheUniqueBullet/Bullet.gd" type="Script" id=1]
 [ext_resource path="res://assets/Particles/particle1.png" type="Texture" id=2]
@@ -15,6 +15,63 @@ extents = Vector2( 3, 3 )
 
 [sub_resource type="Curve" id=4]
 _data = [ Vector2( 0, 1 ), 0.0, -1.0, 0, 1, Vector2( 1, 0 ), -1.0, 0.0, 1, 0 ]
+
+[sub_resource type="Animation" id=5]
+resource_name = "TeleportIn"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("ProjectileParticles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "TeleportOut"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("TeleportParticles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ProjectileParticles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ProjectileParticles:scale_amount")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.5 ]
+}
 
 [node name="Bullet" type="KinematicBody2D" groups=[
 "bullet",
@@ -39,7 +96,6 @@ spread = 180.0
 gravity = Vector2( 0, 0 )
 initial_velocity = 10.0
 scale_amount = 0.5
-scale_amount_random = 0.5
 scale_amount_curve = SubResource( 1 )
 
 [node name="DespawnTimer" type="Timer" parent="."]
@@ -69,4 +125,21 @@ scale_amount_curve = SubResource( 4 )
 color = Color( 0.956863, 0.956863, 0.894118, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/TeleportIn = SubResource( 5 )
+anims/TeleportOut = SubResource( 6 )
+
+[node name="TeleportParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 16
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+local_coords = false
+texture = ExtResource( 2 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 100.0
+initial_velocity_random = 1.0
+scale_amount = 0.25
+scale_amount_random = 1.0
 [connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]

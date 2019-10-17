@@ -129,11 +129,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://actors/Player/States/StatelessState.gd"
 }, {
-"base": "BulletBaseState",
-"class": "StoppedState",
-"language": "GDScript",
-"path": "res://actors/TheUniqueBullet/States/StoppedState.gd"
-}, {
 "base": "StaticBody2D",
 "class": "TriggeredPlatform",
 "language": "GDScript",
@@ -164,7 +159,6 @@ _global_script_class_icons={
 "StandingState": "",
 "State": "",
 "StatelessState": "",
-"StoppedState": "",
 "TriggeredPlatform": ""
 }
 

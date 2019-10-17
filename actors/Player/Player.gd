@@ -114,8 +114,7 @@ func change_state(state: String):
 			while(not stack.empty()):
 				pop_state()
 		"StatelessState":
-			while(not stack.empty()):
-				pop_state()
+			states[previous_state].exit()
 	
 	stack.push_front(state)
 	states[state].enter()
