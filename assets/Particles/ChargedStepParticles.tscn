@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/Particles/StepParticles.gd" type="Script" id=1]
-[ext_resource path="res://assets/Particles/StepSparksParticles.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/Particles/ChargedStepSparksParticles.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/OldSpritesheets/industrial.v2.png" type="Texture" id=3]
 
 [node name="StepParticles" type="Node2D"]
@@ -20,6 +20,6 @@ one_shot = true
 texture = ExtResource( 3 )
 hframes = 4
 region_enabled = true
-region_rect = Rect2( 0, 448, 16, 4 )
+region_rect = Rect2( 16, 448, 16, 4 )
 [connection signal="timeout" from="Tick" to="." method="_on_Tick_timeout"]
 [connection signal="timeout" from="Lifetime" to="." method="_on_Lifetime_timeout"]
