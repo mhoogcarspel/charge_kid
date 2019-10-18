@@ -38,7 +38,7 @@ func hit(bullet: PlayerBullet) -> void:
 		if not get_tree().get_nodes_in_group("player").empty():
 			var player = get_tree().get_nodes_in_group("player")[0] as Player
 			player.change_state("StatelessState")
-			if player.get_node("PlayerSprite").transform.x.x > 0:
+			if player.facing > 0:
 				player.animation_player.play("TeleportInRight")
 			else:
 				player.animation_player.play("TeleportInLeft")
@@ -47,7 +47,7 @@ func hit(bullet: PlayerBullet) -> void:
 			yield(player.animation_player, "animation_finished")
 			swap_positions(bullet, player)
 			player.shake_screen(16)
-			if player.get_node("PlayerSprite").transform.x.x > 0:
+			if player.facing > 0:
 				player.animation_player.play("TeleportOutRight")
 			else:
 				player.animation_player.play("TeleportOutLeft")
@@ -58,6 +58,7 @@ func hit(bullet: PlayerBullet) -> void:
 			bullet.disable_enable_hitbox(true)
 	else:
 		bullet.change_state("ReturnState")
+
 
 
 func swap_positions(bullet: PlayerBullet, player: Player) -> void:

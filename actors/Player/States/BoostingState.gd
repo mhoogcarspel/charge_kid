@@ -16,6 +16,8 @@ func enter():
 
 func update(delta):
 	boosting_time += delta
+	animation_player.play("Airborne")
+	
 	if shoot_input_pressed():
 		return
 	if boost_input_pressed():
@@ -33,13 +35,6 @@ func update(delta):
 		if owner.velocity.y >= 0:
 			owner.pop_state()
 			return
-	
-	if not owner.is_on_floor():
-		animation_player.play("Airborne")
-	else:
-		land_sound()
-		owner.pop_state()
-		return
 
 func exit():
 	boosting_particles(false)

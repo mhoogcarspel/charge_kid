@@ -1,27 +1,29 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://actors/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://actors/TheUniqueBullet/Bullet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/OldSpritesheets/industrial.v2.png" type="Texture" id=3]
 [ext_resource path="res://actors/Player/PlayerSprite.gd" type="Script" id=4]
-[ext_resource path="res://assets/Particles/particle1.png" type="Texture" id=5]
-[ext_resource path="res://actors/Player/PlayerCamera.gd" type="Script" id=6]
-[ext_resource path="res://actors/Player/OneShotShootParticles.gd" type="Script" id=7]
-[ext_resource path="res://assets/Particles/ShootParticles.tscn" type="PackedScene" id=8]
-[ext_resource path="res://assets/Particles/particle2.png" type="Texture" id=9]
-[ext_resource path="res://actors/Player/OneShotBoostParticles.gd" type="Script" id=10]
-[ext_resource path="res://assets/Particles/BoostParticles.tscn" type="PackedScene" id=11]
-[ext_resource path="res://assets/Particles/DeathParticles1.tscn" type="PackedScene" id=12]
-[ext_resource path="res://assets/Particles/DeathParticles2.tscn" type="PackedScene" id=13]
-[ext_resource path="res://assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf" type="DynamicFontData" id=14]
-[ext_resource path="res://actors/Player/PlayerMessages.gd" type="Script" id=15]
-[ext_resource path="res://assets/SFX/270320__littlerobotsoundfactory__jump-00.wav" type="AudioStream" id=16]
-[ext_resource path="res://assets/SFX/270307__littlerobotsoundfactory__explosion-01.wav" type="AudioStream" id=17]
-[ext_resource path="res://assets/SFX/270335__littlerobotsoundfactory__shoot-03.wav" type="AudioStream" id=18]
-[ext_resource path="res://assets/SFX/270340__littlerobotsoundfactory__pickup-01.wav" type="AudioStream" id=19]
-[ext_resource path="res://assets/SFX/270341__littlerobotsoundfactory__pickup-04.wav" type="AudioStream" id=20]
-[ext_resource path="res://assets/SFX/270338__littlerobotsoundfactory__open-01.wav" type="AudioStream" id=21]
-[ext_resource path="res://assets/SFX/270308__littlerobotsoundfactory__explosion-00.wav" type="AudioStream" id=22]
+[ext_resource path="res://assets/Particles/StepParticles.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/Particles/LandParticles.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/Particles/particle1.png" type="Texture" id=7]
+[ext_resource path="res://actors/Player/PlayerCamera.gd" type="Script" id=8]
+[ext_resource path="res://actors/Player/OneShotShootParticles.gd" type="Script" id=9]
+[ext_resource path="res://assets/Particles/ShootParticles.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/Particles/particle2.png" type="Texture" id=11]
+[ext_resource path="res://actors/Player/OneShotBoostParticles.gd" type="Script" id=12]
+[ext_resource path="res://assets/Particles/BoostParticles.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/Particles/DeathParticles1.tscn" type="PackedScene" id=14]
+[ext_resource path="res://assets/Particles/DeathParticles2.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf" type="DynamicFontData" id=16]
+[ext_resource path="res://actors/Player/PlayerMessages.gd" type="Script" id=17]
+[ext_resource path="res://assets/SFX/270320__littlerobotsoundfactory__jump-00.wav" type="AudioStream" id=18]
+[ext_resource path="res://assets/SFX/270307__littlerobotsoundfactory__explosion-01.wav" type="AudioStream" id=19]
+[ext_resource path="res://assets/SFX/270335__littlerobotsoundfactory__shoot-03.wav" type="AudioStream" id=20]
+[ext_resource path="res://assets/SFX/270340__littlerobotsoundfactory__pickup-01.wav" type="AudioStream" id=21]
+[ext_resource path="res://assets/SFX/270341__littlerobotsoundfactory__pickup-04.wav" type="AudioStream" id=22]
+[ext_resource path="res://assets/SFX/270338__littlerobotsoundfactory__open-01.wav" type="AudioStream" id=23]
+[ext_resource path="res://assets/SFX/270308__littlerobotsoundfactory__explosion-00.wav" type="AudioStream" id=24]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -115,6 +117,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("PlayerSprite")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "land"
+} ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -239,10 +255,10 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
-"method": "step_sound"
+"method": "steps"
 }, {
 "args": [  ],
-"method": "step_sound"
+"method": "steps"
 } ]
 }
 
@@ -254,7 +270,7 @@ extents = Vector2( 5.5, 7 )
 
 [sub_resource type="DynamicFont" id=17]
 size = 8
-font_data = ExtResource( 14 )
+font_data = ExtResource( 16 )
 
 [sub_resource type="RectangleShape2D" id=18]
 extents = Vector2( 1, 1 )
@@ -284,6 +300,7 @@ jump_height = 40.0
 gravity_acceleration = 500.0
 
 [node name="PlayerSprite" type="Sprite" parent="."]
+editor/display_folded = true
 material = SubResource( 2 )
 texture = ExtResource( 3 )
 vframes = 4
@@ -292,6 +309,8 @@ frame = 1
 region_enabled = true
 region_rect = Rect2( 0, 256, 128, 64 )
 script = ExtResource( 4 )
+step_particles = ExtResource( 5 )
+land_particles = ExtResource( 6 )
 
 [node name="ProjectileParticles" type="CPUParticles2D" parent="PlayerSprite"]
 position = Vector2( 5, 2 )
@@ -300,7 +319,7 @@ emitting = false
 amount = 12
 lifetime = 0.2
 local_coords = false
-texture = ExtResource( 5 )
+texture = ExtResource( 7 )
 emission_shape = 1
 emission_sphere_radius = 1.0
 spread = 180.0
@@ -329,7 +348,7 @@ limit_top = 0
 limit_bottom = 384
 smoothing_enabled = true
 smoothing_speed = 3.0
-script = ExtResource( 6 )
+script = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -420,8 +439,8 @@ color = Color( 1, 0.309804, 0.470588, 1 )
 editor/display_folded = true
 
 [node name="OneShotShootParticles" type="Node2D" parent="ShootParticles"]
-script = ExtResource( 7 )
-particles = [ ExtResource( 8 ) ]
+script = ExtResource( 9 )
+particles = [ ExtResource( 10 ) ]
 
 [node name="BoostParticles" type="Node2D" parent="."]
 editor/display_folded = true
@@ -432,21 +451,21 @@ emitting = false
 amount = 9
 lifetime = 0.5
 local_coords = false
-texture = ExtResource( 9 )
+texture = ExtResource( 11 )
 spread = 0.0
 gravity = Vector2( 0, 0 )
 initial_velocity = 0.0
 
 [node name="OneShotBoostParticles" type="Node2D" parent="BoostParticles"]
-script = ExtResource( 10 )
-particles = [ ExtResource( 11 ) ]
+script = ExtResource( 12 )
+particles = [ ExtResource( 13 ) ]
 
 [node name="DeathParticles" type="Node2D" parent="."]
 editor/display_folded = true
 
 [node name="OneShotDeathParticles" type="Node2D" parent="DeathParticles"]
-script = ExtResource( 10 )
-particles = [ ExtResource( 12 ), ExtResource( 13 ) ]
+script = ExtResource( 12 )
+particles = [ ExtResource( 14 ), ExtResource( 15 ) ]
 
 [node name="BunnyTimer" type="Timer" parent="."]
 wait_time = 0.1
@@ -500,7 +519,7 @@ shape = SubResource( 16 )
 margin_bottom = 8.0
 custom_fonts/font = SubResource( 17 )
 align = 1
-script = ExtResource( 15 )
+script = ExtResource( 17 )
 
 [node name="LabelTimer" type="Timer" parent="."]
 one_shot = true
@@ -509,38 +528,38 @@ one_shot = true
 editor/display_folded = true
 
 [node name="Jump" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource( 16 )
+stream = ExtResource( 18 )
 volume_db = -8.0
 bus = "SFX"
 
 [node name="SuperJump" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource( 17 )
-bus = "SFX"
-
-[node name="Shoot" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource( 18 )
-bus = "SFX"
-
-[node name="BulletPickup" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 19 )
 bus = "SFX"
 
-[node name="FuelPickup" type="AudioStreamPlayer" parent="SFX"]
+[node name="Shoot" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 20 )
 bus = "SFX"
 
-[node name="Step" type="AudioStreamPlayer" parent="SFX"]
+[node name="BulletPickup" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 21 )
+bus = "SFX"
+
+[node name="FuelPickup" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 22 )
+bus = "SFX"
+
+[node name="Step" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 23 )
 volume_db = -10.0
 bus = "SFX"
 
 [node name="Land" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource( 21 )
+stream = ExtResource( 23 )
 pitch_scale = 1.8
 bus = "SFX"
 
 [node name="Death" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource( 22 )
+stream = ExtResource( 24 )
 bus = "SFX"
 
 [node name="RightLedgeDetector" type="Area2D" parent="."]

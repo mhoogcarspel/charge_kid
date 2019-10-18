@@ -47,8 +47,8 @@ onready var actual_state: String
 onready var stack: Array = []
 onready var animation_player = $AnimationPlayer
 
-onready var can_boost:bool
-onready var facing:float = 1
+onready var can_boost: bool
+onready var facing: float = 1.0
 
 var checkpoint: Vector2
 var pre_checkpoint: Vector2

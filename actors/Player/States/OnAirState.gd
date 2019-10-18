@@ -40,7 +40,7 @@ func update(delta):
 		##################################################################
 	
 	else:
-		land_sound()
+		owner.get_node("AnimationPlayer").play("Landing")
 		if not bunny.is_stopped() and Input.is_action_pressed("ui_jump"):
 			bunny.stop()
 			owner.change_state("JumpingState")
