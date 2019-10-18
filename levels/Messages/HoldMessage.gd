@@ -14,5 +14,5 @@ func _on_HoldMessage_body_entered(body):
 		button = "X"
 	
 	if body.is_in_group("player") and $Timer.is_stopped():
-		body.write("Hold " + button + ": hold bullet in place", 2)
+		body.write("Hold " + button + ": hold bullet in place", 4)
 		$Timer.start()
