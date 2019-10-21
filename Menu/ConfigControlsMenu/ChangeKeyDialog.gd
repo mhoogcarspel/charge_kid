@@ -6,14 +6,12 @@ onready var action: String
 onready var control_handler: ButtonGetter
 onready var configured: bool = false
 onready var error: bool = false
-onready var menu: MarginContainer
+onready var menu: Control
 
 func _ready():
 	popup_centered()
 	menu.pause_mode = PAUSE_MODE_STOP
 	self.pause_mode = PAUSE_MODE_PROCESS
-	if !menu.pause_menu:
-		get_tree().paused = true
 
 func parse(action: String, control_handler: ButtonGetter, type:String):
 	self.action = action
@@ -57,6 +55,4 @@ func _process(delta):
 func exit():
 	menu.pause_mode = PAUSE_MODE_PROCESS
 	self.pause_mode = PAUSE_MODE_INHERIT
-	if !menu.pause_menu:
-		get_tree().paused = false
 	self.queue_free()
