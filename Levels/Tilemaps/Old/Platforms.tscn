@@ -1,7 +1,8 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Assets/OldSpritesheets/industrial.v2.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Spritesheets/industrial.v2.png" type="Texture" id=1]
 [ext_resource path="res://Levels/Tilemaps/Old/Platforms.gd" type="Script" id=2]
+
 
 
 

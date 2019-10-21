@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Keyboard_key.png-b7bd8cbe1d62f0a075d32552a584170a.stex"
+path="res://.import/robot.v1.png-861fb2b305f35ef4a2e220a8853fae38.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/OldSpritesheets/Keyboard_key.png"
-dest_files=[ "res://.import/Keyboard_key.png-b7bd8cbe1d62f0a075d32552a584170a.stex" ]
+source_file="res://Assets/Spritesheets/robot.v1.png"
+dest_files=[ "res://.import/robot.v1.png-861fb2b305f35ef4a2e220a8853fae38.stex" ]
 
 [params]
 

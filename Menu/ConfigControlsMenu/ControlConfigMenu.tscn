@@ -3,83 +3,97 @@
 [ext_resource path="res://Menu/ConfigControlsMenu/ControlConfigMenu.gd" type="Script" id=1]
 [ext_resource path="res://Menu/ConfigControlsMenu/BaseControlConfigButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Menu/ReturnShortcut.tres" type="ShortCut" id=3]
-[ext_resource path="res://Levels/Tilemaps/Old/DialogBoxTileMap.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Menu/MenuPanel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Menu/ConfigControlsMenu/Box.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Menu/ConfigControlsMenu/MenuSeparator.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Menu/ButtonModel.tscn" type="PackedScene" id=7]
 
-
-
-
-[node name="ControlConfigMenu" type="MarginContainer"]
+[node name="ControlConfigMenu" type="Control"]
 pause_mode = 2
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -192.0
-margin_top = -207.5
-margin_right = 192.0
-margin_bottom = 207.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource( 1 )
 button_model = ExtResource( 2 )
 return_shortcut = ExtResource( 3 )
 
-[node name="ControllerTile" parent="." instance=ExtResource( 4 )]
-tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 1, -65535, 0, 1, -65534, 0, 1, -65533, 0, 1, -65532, 0, 1, -65531, 0, 1, -65530, 0, 1, -65529, 0, 1, -65528, 0, 1, -65527, 0, 1, -65526, 0, 1, -65525, 0, 1, -65524, 0, 2, 65535, 0, 65536, 0, 0, 65537, 1, 0, 65537, 2, 0, 65537, 3, 0, 65537, 4, 0, 65537, 5, 0, 65537, 6, 0, 65537, 7, 0, 65537, 8, 0, 65537, 9, 0, 65537, 10, 0, 65537, 11, 0, 65537, 12, 0, 65538, 131071, 0, 65536, 65536, 0, 65537, 65537, 0, 65537, 65538, 0, 65537, 65539, 0, 65537, 65540, 0, 65537, 65541, 0, 65537, 65542, 0, 65537, 65543, 0, 65537, 65544, 0, 65537, 65545, 0, 65537, 65546, 0, 65537, 65547, 0, 65537, 65548, 0, 65538, 196607, 0, 65536, 131072, 0, 65537, 131073, 0, 65537, 131074, 0, 65537, 131075, 0, 65537, 131076, 0, 65537, 131077, 0, 65537, 131078, 0, 65537, 131079, 0, 65537, 131080, 0, 65537, 131081, 0, 65537, 131082, 0, 65537, 131083, 0, 65537, 131084, 0, 65538, 262143, 0, 65536, 196608, 0, 65537, 196609, 0, 65537, 196610, 0, 65537, 196611, 0, 65537, 196612, 0, 65537, 196613, 0, 65537, 196614, 0, 65537, 196615, 0, 65537, 196616, 0, 65537, 196617, 0, 65537, 196618, 0, 65537, 196619, 0, 65537, 196620, 0, 65538, 327679, 0, 65536, 262144, 0, 65537, 262145, 0, 65537, 262146, 0, 65537, 262147, 0, 65537, 262148, 0, 65537, 262149, 0, 65537, 262150, 0, 65537, 262151, 0, 65537, 262152, 0, 65537, 262153, 0, 65537, 262154, 0, 65537, 262155, 0, 65537, 262156, 0, 65538, 393215, 0, 65536, 327680, 0, 65537, 327681, 0, 65537, 327682, 0, 65537, 327683, 0, 65537, 327684, 0, 65537, 327685, 0, 65537, 327686, 0, 65537, 327687, 0, 65537, 327688, 0, 65537, 327689, 0, 65537, 327690, 0, 65537, 327691, 0, 65537, 327692, 0, 65538, 458751, 0, 65536, 393216, 0, 65537, 393217, 0, 65537, 393218, 0, 65537, 393219, 0, 65537, 393220, 0, 65537, 393221, 0, 65537, 393222, 0, 65537, 393223, 0, 65537, 393224, 0, 65537, 393225, 0, 65537, 393226, 0, 65537, 393227, 0, 65537, 393228, 0, 65538, 524287, 0, 65536, 458752, 0, 65537, 458753, 0, 65537, 458754, 0, 65537, 458755, 0, 65537, 458756, 0, 65537, 458757, 0, 65537, 458758, 0, 65537, 458759, 0, 65537, 458760, 0, 65537, 458761, 0, 65537, 458762, 0, 65537, 458763, 0, 65537, 458764, 0, 65538, 589823, 0, 65536, 524288, 0, 65537, 524289, 0, 65537, 524290, 0, 65537, 524291, 0, 65537, 524292, 0, 65537, 524293, 0, 65537, 524294, 0, 65537, 524295, 0, 65537, 524296, 0, 65537, 524297, 0, 65537, 524298, 0, 65537, 524299, 0, 65537, 524300, 0, 65538, 655359, 0, 65536, 589824, 0, 65537, 589825, 0, 65537, 589826, 0, 65537, 589827, 0, 65537, 589828, 0, 65537, 589829, 0, 65537, 589830, 0, 65537, 589831, 0, 65537, 589832, 0, 65537, 589833, 0, 65537, 589834, 0, 65537, 589835, 0, 65537, 589836, 0, 65538, 720895, 0, 65536, 655360, 0, 65537, 655361, 0, 65537, 655362, 0, 65537, 655363, 0, 65537, 655364, 0, 65537, 655365, 0, 65537, 655366, 0, 65537, 655367, 0, 65537, 655368, 0, 65537, 655369, 0, 65537, 655370, 0, 65537, 655371, 0, 65537, 655372, 0, 65538, 786431, 0, 131072, 720896, 0, 131073, 720897, 0, 131073, 720898, 0, 131073, 720899, 0, 131073, 720900, 0, 131073, 720901, 0, 131073, 720902, 0, 131073, 720903, 0, 131073, 720904, 0, 131073, 720905, 0, 131073, 720906, 0, 131073, 720907, 0, 131073, 720908, 0, 131074 )
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_right = 384.0
-margin_bottom = 415.0
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+margin_left = 364.0
+margin_top = 308.0
+margin_right = 660.0
+margin_bottom = 460.0
 
-[node name="Map" type="VBoxContainer" parent="VBoxContainer"]
-margin_right = 384.0
+[node name="MenuPanel" parent="CenterContainer/MarginContainer" instance=ExtResource( 4 )]
+margin_right = 296.0
+margin_bottom = 152.0
 
-[node name="OtherButtons" type="VBoxContainer" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MarginContainer"]
+margin_right = 296.0
+margin_bottom = 152.0
+custom_constants/margin_right = 12
+custom_constants/margin_top = 12
+custom_constants/margin_left = 12
+custom_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/MarginContainer"]
+margin_left = 12.0
+margin_top = 12.0
+margin_right = 284.0
+margin_bottom = 140.0
+
+[node name="Map" type="VBoxContainer" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer"]
+margin_right = 272.0
+
+[node name="OtherButtons" type="VBoxContainer" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer"]
 margin_top = 4.0
-margin_right = 384.0
+margin_right = 272.0
 margin_bottom = 128.0
 
-[node name="Box" parent="VBoxContainer/OtherButtons" instance=ExtResource( 5 )]
-margin_right = 384.0
+[node name="Box" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/OtherButtons" instance=ExtResource( 5 )]
+margin_right = 272.0
 alignment = 0
 
-[node name="HSeparator" parent="VBoxContainer/OtherButtons" instance=ExtResource( 6 )]
-margin_right = 384.0
+[node name="HSeparator" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/OtherButtons" instance=ExtResource( 6 )]
+margin_right = 272.0
 
-[node name="HSeparator2" parent="VBoxContainer/OtherButtons" instance=ExtResource( 6 )]
+[node name="HSeparator2" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/OtherButtons" instance=ExtResource( 6 )]
 margin_top = 34.0
-margin_right = 384.0
+margin_right = 272.0
 margin_bottom = 38.0
 
-[node name="HSeparator3" parent="VBoxContainer/OtherButtons" instance=ExtResource( 6 )]
+[node name="HSeparator3" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/OtherButtons" instance=ExtResource( 6 )]
 margin_top = 42.0
-margin_right = 384.0
+margin_right = 272.0
 margin_bottom = 46.0
 
-[node name="Model" parent="VBoxContainer/OtherButtons" instance=ExtResource( 7 )]
-margin_left = 186.0
+[node name="Model" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/OtherButtons" instance=ExtResource( 7 )]
+margin_left = 130.0
 margin_top = 50.0
-margin_right = 198.0
+margin_right = 142.0
 margin_bottom = 72.0
 focus_neighbour_bottom = NodePath("../Change")
 
-[node name="Change" parent="VBoxContainer/OtherButtons" instance=ExtResource( 7 )]
-margin_left = 130.0
+[node name="Change" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/OtherButtons" instance=ExtResource( 7 )]
+margin_left = 74.0
 margin_top = 76.0
-margin_right = 254.0
+margin_right = 198.0
 margin_bottom = 98.0
 focus_neighbour_bottom = NodePath("../Return")
 text = "Change "
 
-[node name="Return" parent="VBoxContainer/OtherButtons" instance=ExtResource( 7 )]
-margin_left = 138.0
+[node name="Return" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/OtherButtons" instance=ExtResource( 7 )]
+margin_left = 82.0
 margin_top = 102.0
-margin_right = 246.0
+margin_right = 190.0
 margin_bottom = 124.0
 focus_neighbour_top = NodePath("../Change")
 shortcut = ExtResource( 3 )
 text = "Return"
-[connection signal="pressed" from="VBoxContainer/OtherButtons/Model" to="." method="_on_Model_pressed"]
-[connection signal="pressed" from="VBoxContainer/OtherButtons/Change" to="." method="_on_Change_pressed"]
-[connection signal="pressed" from="VBoxContainer/OtherButtons/Return" to="." method="_on_Return_pressed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/OtherButtons/Model" to="." method="_on_Model_pressed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/OtherButtons/Change" to="." method="_on_Change_pressed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/OtherButtons/Return" to="." method="_on_Return_pressed"]

@@ -1,6 +1,7 @@
 [gd_scene load_steps=30 format=2]
 
-[ext_resource path="res://Assets/OldSpritesheets/industrial.v2.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Spritesheets/industrial.v2.png" type="Texture" id=1]
+
 
 
 

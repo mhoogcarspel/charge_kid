@@ -1,8 +1,9 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Actors/Interactables/Gate/TriggeredPlatform.gd" type="Script" id=1]
-[ext_resource path="res://Assets/OldSpritesheets/industrial.v2.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Spritesheets/industrial.v2.png" type="Texture" id=2]
 [ext_resource path="res://Assets/SFX/270310__littlerobotsoundfactory__explosion-04.wav" type="AudioStream" id=3]
+
 
 
 

@@ -2,19 +2,11 @@
 
 [ext_resource path="res://Menu/PauseMenu/PauseMenu.gd" type="Script" id=1]
 [ext_resource path="res://Menu/ConfigControlsMenu/ControlConfigMenu.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Levels/Tilemaps/Old/DialogBoxTileMap.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Menu/MenuPanel.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Menu/LabelBaseModel.gd" type="Script" id=5]
 [ext_resource path="res://Menu/ButtonModel.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Menu/ReturnShortcut.tres" type="ShortCut" id=7]
-
-
-
-
-
-
-
-
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 4 )
@@ -40,18 +32,31 @@ margin_top = -384.0
 margin_right = 512.0
 margin_bottom = 384.0
 
-[node name="TileMap" parent="CenterContainer" instance=ExtResource( 3 )]
-tile_data = PoolIntArray( 589836, 0, 0, 589837, 0, 1, 589838, 0, 1, 589839, 0, 1, 589840, 0, 1, 589841, 0, 1, 589842, 0, 1, 589843, 0, 2, 655372, 0, 65536, 655373, 0, 65537, 655374, 0, 65537, 655375, 0, 65537, 655376, 0, 65537, 655377, 0, 65537, 655378, 0, 65537, 655379, 0, 65538, 720908, 0, 65536, 720909, 0, 65537, 720910, 0, 65537, 720911, 0, 65537, 720912, 0, 65537, 720913, 0, 65537, 720914, 0, 65537, 720915, 0, 65538, 786444, 0, 65536, 786445, 0, 65537, 786446, 0, 65537, 786447, 0, 65537, 786448, 0, 65537, 786449, 0, 65537, 786450, 0, 65537, 786451, 0, 65538, 851980, 0, 65536, 851981, 0, 65537, 851982, 0, 65537, 851983, 0, 65537, 851984, 0, 65537, 851985, 0, 65537, 851986, 0, 65537, 851987, 0, 65538, 917516, 0, 131072, 917517, 0, 131073, 917518, 0, 131073, 917519, 0, 131073, 917520, 0, 131073, 917521, 0, 131073, 917522, 0, 131073, 917523, 0, 131074 )
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+margin_left = 390.0
+margin_top = 295.0
+margin_right = 634.0
+margin_bottom = 473.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 402.0
-margin_top = 307.0
-margin_right = 622.0
-margin_bottom = 461.0
+[node name="MenuPanel" parent="CenterContainer/MarginContainer" instance=ExtResource( 3 )]
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MarginContainer"]
+margin_right = 244.0
+margin_bottom = 178.0
+custom_constants/margin_right = 12
+custom_constants/margin_top = 12
+custom_constants/margin_left = 12
+custom_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/MarginContainer"]
+margin_left = 12.0
+margin_top = 12.0
+margin_right = 232.0
+margin_bottom = 166.0
 custom_constants/separation = 38
 alignment = 1
 
-[node name="Title" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer"]
 margin_right = 220.0
 margin_bottom = 16.0
 custom_fonts/font = SubResource( 1 )
@@ -60,13 +65,13 @@ text = "Pause Menu"
 align = 1
 script = ExtResource( 5 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer"]
 margin_top = 54.0
 margin_right = 220.0
 margin_bottom = 154.0
 alignment = 1
 
-[node name="Resume" parent="CenterContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
+[node name="Resume" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
 margin_left = 16.0
 margin_right = 204.0
 margin_bottom = 22.0
@@ -75,7 +80,7 @@ focus_neighbour_bottom = NodePath("../RestartLevel")
 shortcut = ExtResource( 7 )
 text = "Resume Game"
 
-[node name="RestartLevel" parent="CenterContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
+[node name="RestartLevel" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
 margin_top = 26.0
 margin_right = 220.0
 margin_bottom = 48.0
@@ -83,7 +88,7 @@ focus_neighbour_top = NodePath("../Resume")
 focus_neighbour_bottom = NodePath("../Controls")
 text = "Restart Level"
 
-[node name="Controls" parent="CenterContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
+[node name="Controls" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
 margin_left = 40.0
 margin_top = 52.0
 margin_right = 180.0
@@ -92,7 +97,7 @@ focus_neighbour_top = NodePath("../RestartLevel")
 focus_neighbour_bottom = NodePath("../Quit")
 text = "Controls"
 
-[node name="Quit" parent="CenterContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
+[node name="Quit" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
 margin_left = 32.0
 margin_top = 78.0
 margin_right = 188.0
@@ -100,7 +105,7 @@ margin_bottom = 100.0
 focus_neighbour_top = NodePath("../Controls")
 focus_neighbour_bottom = NodePath("../Resume")
 text = "Quit Game"
-[connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/Resume" to="." method="_on_Resume_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/RestartLevel" to="." method="_on_RestartLevel_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/Controls" to="." method="_on_Controls_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer/RestartLevel" to="." method="_on_RestartLevel_pressed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer/Controls" to="." method="_on_Controls_pressed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]

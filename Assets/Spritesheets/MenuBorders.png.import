@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/industrial.v2.png-6cb00b19d2ac5c51ef999be5500fa922.stex"
+path="res://.import/MenuBorders.png-fbf021e909f026765e01ca4e94ffb224.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/OldSpritesheets/industrial.v2.png"
-dest_files=[ "res://.import/industrial.v2.png-6cb00b19d2ac5c51ef999be5500fa922.stex" ]
+source_file="res://Assets/Spritesheets/MenuBorders.png"
+dest_files=[ "res://.import/MenuBorders.png-fbf021e909f026765e01ca4e94ffb224.stex" ]
 
 [params]
 
