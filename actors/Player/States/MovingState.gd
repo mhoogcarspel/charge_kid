@@ -1,15 +1,14 @@
 extends PlayerBaseState
 class_name MovingState
 
-onready var coyote_timer: float
+
 
 func _init(owner: KinematicBody2D):
 	self.owner = owner
 	self.animation_player = owner.get_node("AnimationPlayer")
-	coyote_timer = 0
 
 func update(delta):
-	owner.horizontal_move(get_directional_inputs(), delta, 2)
+	owner.horizontal_move(get_directional_inputs(), delta, 1)
 	owner.gravity(delta)
 	owner.drop()
 	if owner.is_on_floor():
@@ -36,4 +35,5 @@ func update(delta):
 	
 	else:
 		owner.change_state("OnAirState")
+
 

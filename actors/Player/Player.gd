@@ -18,7 +18,7 @@ export(float) var deacceleration_horizontal_velocity
 
 export(float) var boost_distance
 export(float) var boost_time
-onready var boost_speed:float = boost_distance/boost_time
+onready var boost_speed: float = boost_distance/boost_time
 
 export(float) var coyote_time
 export(float) var bunny_time
@@ -183,34 +183,6 @@ func _on_BoostTimer_timeout():
 	if actual_state == "BulletBoostingState":
 		for particle in $FuelParticles.get_children():
 			particle.emitting = false
-
-func shoot() -> void:
-	if Input.is_action_just_pressed("ui_shoot") && has_bullet:
-		$AnimationPlayer.play("Shooting")
-		$SFX/Shoot.play()
-		var bullet_instance = bullet.instance()
-		var bullet_positon = self.position + Vector2(facing*shoot_offset, 0)
-		var allow: bool
-		velocity = Vector2.ZERO
-		
-		if facing < 0:
-			allow = check_for_blocks($LeftAreaChecker)
-		else:
-			allow = check_for_blocks($RightAreaChecker)
-		
-		if allow:
-			bullet_instance.direction = Vector2(facing, 0)
-			bullet_instance.position = bullet_positon 
-			bullet_instance.initial_state = "StandardState"
-			get_parent().add_child(bullet_instance)
-			if !god_mode:
-				has_bullet = false
-
-func check_for_blocks(Sensor: Area2D) -> bool:
-	for body in Sensor.get_overlapping_bodies():
-		if body.is_in_group("blocks"):
-			return false
-	return true
 
 func drop() -> void:
 	if control_handler.get_directional_input().y == 1 && $DropTimer.is_stopped() && is_on_floor() && is_on_platform():

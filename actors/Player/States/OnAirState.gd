@@ -16,35 +16,32 @@ func enter():
 func update(delta):
 	owner.horizontal_move(get_directional_inputs(), delta)
 	owner.gravity(delta)
-	if !owner.is_on_floor():
+	if not owner.is_on_floor():
 		animation_player.play("Airborne")
 		
-		#################Checking for any inputs########################
+		################# Checking for any inputs ########################
 		if Input.is_action_just_pressed("ui_jump"):
-			if !coyote.is_stopped():
+			if not coyote.is_stopped():
 				owner.change_state("JumpingState")
 				coyote.stop()
 				return
 			elif coyote.is_stopped():
 				bunny.start()
 		
-		
 		if shoot_input_pressed():
 			return
-		
 		elif boost_input_pressed():
 			return
-		
 		elif bullet_boost_input_pressed():
 			return
 		##################################################################
-	
+		
 	else:
 		owner.get_node("AnimationPlayer").play("Landing")
 		if not bunny.is_stopped() and Input.is_action_pressed("ui_jump"):
 			bunny.stop()
 			owner.change_state("JumpingState")
-		
 		else:
 			owner.pop_state()
-	pass
+
+

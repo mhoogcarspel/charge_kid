@@ -10,6 +10,12 @@ func _physics_process(_delta):
 	else:
 		rect_position.y = -36
 	
+	if rect_size.x >= 240:
+		autowrap = true
+		rect_size.x = 240
+	else:
+		autowrap = false 
+	
 	if player.position.x < rect_size.x/2:
 		rect_position.x = -player.position.x
 	elif player.position.x > player.level_length - rect_size.x/2:
