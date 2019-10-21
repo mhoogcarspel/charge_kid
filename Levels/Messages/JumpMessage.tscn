@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Levels/Messages/JumpMessage.gd" type="Script" id=1]
+
+
+[node name="JumpMessage" type="Area2D"]
+editor/display_folded = true
+position = Vector2( 120, 112 )
+script = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 40, 128, 120, 128, 120, 184, 40, 184 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true

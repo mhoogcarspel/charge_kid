@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/270308__littlerobotsoundfactory__explosion-00.wav-87bb35013a9d8dfa612577e924b6023a.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/270308__littlerobotsoundfactory__explosion-00.wav"
+dest_files=[ "res://.import/270308__littlerobotsoundfactory__explosion-00.wav-87bb35013a9d8dfa612577e924b6023a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
