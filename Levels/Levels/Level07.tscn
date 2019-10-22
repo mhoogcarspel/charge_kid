@@ -11,14 +11,9 @@
 [ext_resource path="res://Actors/Interactables/FuelTank/FuelTank.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Actors/Interactables/EnergyGate/EnergyGate.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Levels/AuxiliaryTools/FinishLine.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Menu/FinalScreen/FinalScreen.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Levels/Levels/Level08.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Levels/AuxiliaryTools/CameraLimiter.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Levels/Messages/Lv7SpMessage.gd" type="Script" id=14]
-
-
-
-
-
 
 [node name="Level07" type="Node2D" groups=[
 "level",
