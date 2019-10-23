@@ -56,7 +56,7 @@ func standing() -> void:
 		particles.position = player.position + Vector2(4*i - 6, 8)
 		player.get_parent().add_child(particles)
 
-func steps() -> void:
+func step_sound() -> void:
 	if step == 0:
 		player.get_node("SFX/Step").pitch_scale = 0.8
 		player.get_node("SFX/Step").play()
@@ -66,6 +66,7 @@ func steps() -> void:
 		player.get_node("SFX/Step").play()
 		step = 0
 	
+func steps() -> void:
 	var particles = step_particles.instance()
 	particles.position = player.position + Vector2(0, 8)
 	player.get_parent().add_child(particles)

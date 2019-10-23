@@ -27,7 +27,6 @@
 [ext_resource path="res://Assets/SFX/270338__littlerobotsoundfactory__open-01.wav" type="AudioStream" id=25]
 [ext_resource path="res://Assets/SFX/270308__littlerobotsoundfactory__explosion-00.wav" type="AudioStream" id=26]
 
-
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 render_mode unshaded;
@@ -327,6 +326,23 @@ tracks/1/keys = {
 }, {
 "args": [  ],
 "method": "steps"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("PlayerSprite")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.16, 0.48 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "step_sound"
+}, {
+"args": [  ],
+"method": "step_sound"
 } ]
 }
 
