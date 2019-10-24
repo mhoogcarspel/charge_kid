@@ -4,7 +4,8 @@ export(PackedScene) var start_scene
 export(PackedScene) var pause_menu
 export(PackedScene) var debugger_layer
 export(PackedScene) var controls_menu
-export(PackedScene) var player_scene
+export(PackedScene) var world_map
+export(String) var save_name
 export(bool) var debugging
 
 onready var actions: Dictionary = {
@@ -22,8 +23,11 @@ onready var actions: Dictionary = {
 onready var control_handler = ButtonGetter.new(actions)
 onready var old_dir_input: Vector2 = Vector2.ZERO
 onready var actual_dir_input: Vector2 = Vector2.ZERO
+onready var player_scene: PackedScene = preload("res://Actors/Player/Player.tscn")
 onready var last_input_device: String = "Keyboard"
 onready var controller_layout: String = "Microsoft"
+
+onready var world_map_instance: WorldMap
 
 var actual_scene: PackedScene
 
@@ -35,17 +39,35 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	$Scene.add_child(start)
 	actual_scene = start_scene
+	
+	
+	world_map_instance = world_map.instance()
+	world_map_instance.main = self
 
 func back_to_start():
 	change_scene(start_scene)
 
-func change_scene(next_scene: PackedScene) -> void:
+func change_scene(next_scene: PackedScene):
 	get_tree().paused = false
 	for scene in $Scene.get_children():
-		scene.queue_free()
+		if not scene.is_in_group("constant"):
+			scene.queue_free()
+		else:
+			$Scene.remove_child(scene)
 	var scene_instance = next_scene.instance()
 	$Scene.call_deferred("add_child", scene_instance)
 	actual_scene = next_scene
+	return scene_instance
+
+func go_to_world_map():
+	if world_map_instance == null:
+		world_map_instance = change_scene(world_map)
+	else:
+		for scene in $Scene.get_children():
+			$Scene.call_deferred("remove_child", scene)
+		$Scene.call_deferred("add_child", world_map_instance)
+	return world_map_instance
+	pass
 
 func _process(delta):
 	# Pausing
@@ -91,5 +113,3 @@ func is_using_controller() -> bool:
 		return true
 	else:
 		return false
-###################################################################################
-
