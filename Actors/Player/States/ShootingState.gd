@@ -47,13 +47,14 @@ func check_for_blocks(sensor: Area2D) -> bool:
 
 func update(delta):
 	if animation_player.current_animation == "Shooting":
-		if jump_input_pressed() and owner.is_on_floor():
+		if owner.is_on_floor():
+			if jump_input_pressed():
+				return
+		
+		if boost_input_pressed():
 			return
 		
-		elif boost_input_pressed():
-			return
-		
-		elif bullet_boost_input_pressed():
+		if bullet_boost_input_pressed():
 			return
 		
 	else:
