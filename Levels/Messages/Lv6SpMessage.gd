@@ -4,7 +4,7 @@ extends Area2D
 
 export (String) var message
 export (float) var message_time = 2.0
-onready var switch = get_parent().get_node("SwitchBody")
+onready var switch = get_parent().get_node("Switch")
 onready var player_has_entered: bool = false
 var switch_state: bool setget switch_sentinel
 
