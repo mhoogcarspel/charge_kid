@@ -107,7 +107,7 @@ _global_script_classes=[ {
 "base": "Camera2D",
 "class": "PlayerCamera",
 "language": "GDScript",
-"path": "res://Actors/Player/PlayerCamera.gd"
+"path": "res://Levels/AuxiliaryTools/PlayerCamera.gd"
 }, {
 "base": "BulletBaseState",
 "class": "ReturnState",
