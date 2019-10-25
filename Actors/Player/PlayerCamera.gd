@@ -1,17 +1,30 @@
 extends Camera2D
+class_name PlayerCamera
 
-
+var followed_node: Node2D
 
 onready var dissipation: float = 0.0
 onready var shake_amplitude: float = 0.0
 onready var shake_direction: int = 1
+onready var player_is_alive: bool = true
+
+
+
+func _ready():
+	var player = get_tree().get_nodes_in_group("player")[0]
+	followed_node = player
+	yield(get_tree(), "physics_frame")
+	limit_right = get_tree().get_nodes_in_group("level")[0].level_length
 
 func _physics_process(delta):
+	if is_instance_valid(followed_node):
+		self.position = followed_node.position
+	
+	# Dealing with screen shakes
 	if shake_amplitude > 0:
 # warning-ignore:narrowing_conversion
 		limit_left = -shake_amplitude
-		if get_tree().get_nodes_in_group("player").size() > 0:
-			limit_right = get_tree().get_nodes_in_group("player")[0].level_length + shake_amplitude
+		limit_right = get_tree().get_nodes_in_group("level")[0].level_length + shake_amplitude
 		
 		shake_amplitude = clamp(shake_amplitude - delta*dissipation, 0, 1000)
 		
@@ -27,15 +40,22 @@ func _physics_process(delta):
 		else:
 			shake_amplitude = 0
 			limit_left = 0
-			if get_tree().get_nodes_in_group("player").size() > 0:
-				limit_right = get_tree().get_nodes_in_group("player")[0].level_length
+			limit_right = get_tree().get_nodes_in_group("level")[0].level_length
 		
 	elif offset.x != 0:
 		offset.x = 0.0
 
-func screen_shake(magnitude: float) -> void:
+func shake_screen(magnitude: float) -> void:
 	shake_direction = 1
 	shake_amplitude = magnitude
 	dissipation = magnitude*4
+
+
+
+func player_just_spawned() -> void:
+	player_is_alive = true
+
+func player_just_died() -> void:
+	player_is_alive = false
 
 

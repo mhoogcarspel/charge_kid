@@ -2,7 +2,6 @@ extends KinematicBody2D
 class_name Player
 
 export(bool) var god_mode
-export(float) var level_length
 
 export(PackedScene) var bullet
 export(float) var shoot_offset
@@ -70,9 +69,15 @@ func _ready():
 		"ui_pause": "Pause"
 		}
 		control_handler = ButtonGetter.new(actions)
-	
-	$PlayerCamera.limit_right = level_length
 	stack.push_front("IdleState")
+	
+	var timer = Timer.new()
+	add_child(timer)
+	timer.start(0.1)
+	yield(timer, "timeout")
+	timer.queue_free()
+	var camera = get_tree().get_nodes_in_group("camera")[0]
+	camera.player_just_spawned()
 
 func _physics_process(delta):
 	actual_state = stack[0]
@@ -196,42 +201,5 @@ func _on_SpikesSentinel_body_entered(body):
 	if body.is_in_group("spikes"):
 		change_state("DyingState")
 
-func kill() -> void:
-	$SFX/Death.play()
-	$PlayerSprite.kill()
-	$AnimationPlayer.play("Airborne")
-	for particle in $DeathParticles.get_children():
-		particle.emitting = true
-	can_boost = false
-	shake_screen(24)
-	
-	var timer = Timer.new()
-	add_child(timer)
-	timer.start(1)
-	yield(timer, "timeout")
-	self.queue_free()
-	
-	if get_tree().get_nodes_in_group("main").size() > 0:
-		var main = get_tree().get_nodes_in_group("main")[0]
-		var next_player = main.player_scene.instance()
-		next_player.position = checkpoint
-		next_player.checkpoint = checkpoint
-		next_player.level_length = self.level_length
-		
-		# Deal with onscreen bullets.
-		if get_tree().get_nodes_in_group("bullet").size() > 0:
-			var bullet = get_tree().get_nodes_in_group("bullet")[0]
-			if bullet.get_state() == "StandingState":
-				next_player.has_bullet = false
-			else:
-				bullet.queue_free()
-		
-		get_parent().add_child(next_player)
-	else:
-		get_tree().reload_current_scene()
-
-func shake_screen(magnitude: float) -> void:
-	var camera = get_tree().get_nodes_in_group("camera")[0]
-	camera.screen_shake(magnitude)
 
 

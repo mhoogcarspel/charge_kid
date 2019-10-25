@@ -14,11 +14,13 @@ func _physics_process(_delta):
 		autowrap = true
 		rect_size.x = 240
 	else:
-		autowrap = false 
+		autowrap = false
 	
-	if player.position.x < rect_size.x/2:
-		rect_position.x = -player.position.x
-	elif player.position.x > player.level_length - rect_size.x/2:
-		rect_position.x = (player.level_length - player.position.x) - rect_size.x
-	else:
-		rect_position.x = -rect_size.x/2
+	var level = get_tree().get_nodes_in_group("level")[0]
+	if is_instance_valid(level):
+		if player.position.x < rect_size.x/2:
+			rect_position.x = -player.position.x
+		elif player.position.x > level.level_length - rect_size.x/2:
+			rect_position.x = (level.level_length - player.position.x) - rect_size.x
+		else:
+			rect_position.x = -rect_size.x/2
