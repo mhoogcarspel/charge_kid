@@ -3,9 +3,6 @@
 [ext_resource path="res://Levels/AuxiliaryTools/ScreenTransition.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf" type="DynamicFontData" id=2]
 
-
-
-
 [sub_resource type="DynamicFont" id=1]
 size = 32
 outline_color = Color( 0.956863, 0.956863, 0.894118, 1 )
@@ -14,6 +11,7 @@ font_data = ExtResource( 2 )
 [node name="ScreenTransition" type="CanvasLayer"]
 pause_mode = 2
 script = ExtResource( 1 )
+active = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false

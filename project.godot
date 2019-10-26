@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Menu/ConfigControlsMenu/ControlConfigMenu.gd"
 }, {
+"base": "Node2D",
+"class": "BaseLevel",
+"language": "GDScript",
+"path": "res://Levels/AuxiliaryTools/BaseLevel.gd"
+}, {
 "base": "Node",
 "class": "BaseLogicGate",
 "language": "GDScript",
@@ -114,6 +119,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Actors/TheUniqueBullet/Bullet.gd"
 }, {
+"base": "Camera2D",
+"class": "PlayerCamera",
+"language": "GDScript",
+"path": "res://Levels/AuxiliaryTools/PlayerCamera.gd"
+}, {
 "base": "BulletBaseState",
 "class": "ReturnState",
 "language": "GDScript",
@@ -156,6 +166,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "BaseControlsConfigMenu": "",
+"BaseLevel": "",
 "BaseLogicGate": "",
 "BoostingState": "",
 "BulletBaseState": "",
@@ -176,6 +187,7 @@ _global_script_class_icons={
 "Player": "",
 "PlayerBaseState": "",
 "PlayerBullet": "",
+"PlayerCamera": "",
 "ReturnState": "",
 "ShootingState": "",
 "StandardState": "",
