@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Menu/StartMenu/StartMenu.gd" type="Script" id=1]
-[ext_resource path="res://Levels/Levels/Level01.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Menu/WorldMap/WorldMap.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Menu/Credits/Credits.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Menu/StartMenu/StartMenu.tres" type="ButtonGroup" id=4]
 [ext_resource path="res://Assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf" type="DynamicFontData" id=5]
@@ -28,7 +28,7 @@ pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
-next_scene = ExtResource( 2 )
+world_map = ExtResource( 2 )
 credits = ExtResource( 3 )
 button_group = ExtResource( 4 )
 
@@ -82,21 +82,21 @@ margin_right = 504.0
 margin_bottom = 196.0
 alignment = 1
 
-[node name="StartGame" parent="CenterContainer/CenterContainer/VBoxContainer3/VBoxContainer3" instance=ExtResource( 7 )]
-margin_left = 166.0
-margin_right = 338.0
+[node name="NewGame" parent="CenterContainer/CenterContainer/VBoxContainer3/VBoxContainer3" instance=ExtResource( 7 )]
+margin_left = 182.0
+margin_right = 322.0
 margin_bottom = 22.0
 focus_neighbour_top = NodePath("../Quit")
 focus_neighbour_bottom = NodePath("../Controls")
 group = ExtResource( 4 )
-text = "Start Game"
+text = "New Game"
 
 [node name="Controls" parent="CenterContainer/CenterContainer/VBoxContainer3/VBoxContainer3" instance=ExtResource( 7 )]
 margin_left = 182.0
 margin_top = 26.0
 margin_right = 322.0
 margin_bottom = 48.0
-focus_neighbour_top = NodePath("../StartGame")
+focus_neighbour_top = NodePath("../NewGame")
 focus_neighbour_bottom = NodePath("../Credits")
 group = ExtResource( 4 )
 text = "Controls"
@@ -117,11 +117,11 @@ margin_top = 78.0
 margin_right = 290.0
 margin_bottom = 100.0
 focus_neighbour_top = NodePath("../Credits")
-focus_neighbour_bottom = NodePath("../StartGame")
+focus_neighbour_bottom = NodePath("../NewGame")
 shortcut = ExtResource( 8 )
 group = ExtResource( 4 )
 text = "Quit"
-[connection signal="pressed" from="CenterContainer/CenterContainer/VBoxContainer3/VBoxContainer3/StartGame" to="." method="_on_StartGame_pressed"]
+[connection signal="pressed" from="CenterContainer/CenterContainer/VBoxContainer3/VBoxContainer3/NewGame" to="." method="_on_StartGame_pressed"]
 [connection signal="pressed" from="CenterContainer/CenterContainer/VBoxContainer3/VBoxContainer3/Controls" to="." method="_on_Controls_pressed"]
 [connection signal="pressed" from="CenterContainer/CenterContainer/VBoxContainer3/VBoxContainer3/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="CenterContainer/CenterContainer/VBoxContainer3/VBoxContainer3/Quit" to="." method="_on_Quit_pressed"]
