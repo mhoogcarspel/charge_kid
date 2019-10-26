@@ -19,6 +19,7 @@ pause_menu = ExtResource( 3 )
 debugger_layer = ExtResource( 4 )
 controls_menu = ExtResource( 5 )
 world_map = ExtResource( 6 )
+open_all_levels = true
 save_name = "charge_kid_progress"
 
 [node name="HudContainer" type="CanvasLayer" parent="."]

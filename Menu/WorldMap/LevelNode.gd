@@ -56,6 +56,8 @@ func clear_level(direction: String = "All") -> void:
 
 
 func open_level(parent: LevelNode, direction_from_parent : String) -> void:
+	if !self.is_inside_tree():
+		yield(self, "tree_entered")
 	self.is_open = true
 	match direction_from_parent:
 		"Up":

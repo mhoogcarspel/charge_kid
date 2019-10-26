@@ -5,9 +5,9 @@ onready var level_nodes_list:Array = $CenterContainer/VBoxContainer.get_children
 onready var main : Node
 
 var continue_game:bool
+var open_all: bool
 
 func _ready():
-	print("oi")
 	for level_node in level_nodes_list:
 		level_node.world_map = self
 	if continue_game:

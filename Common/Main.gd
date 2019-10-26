@@ -5,6 +5,7 @@ export(PackedScene) var pause_menu
 export(PackedScene) var debugger_layer
 export(PackedScene) var controls_menu
 export(PackedScene) var world_map
+export(bool) var open_all_levels
 export(String) var save_name
 export(bool) var debugging
 
