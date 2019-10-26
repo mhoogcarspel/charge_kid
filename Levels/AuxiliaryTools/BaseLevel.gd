@@ -2,7 +2,7 @@ extends Node2D
 class_name BaseLevel
 
 
-
+var level_node
 var level_length: float
 
 func _ready():

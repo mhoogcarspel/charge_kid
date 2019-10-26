@@ -84,11 +84,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Menu/LabelBaseModel.gd"
 }, {
-"base": "Node2D",
-"class": "Level",
-"language": "GDScript",
-"path": "res://Levels/Levels/Level.gd"
-}, {
 "base": "ButtonModel",
 "class": "LevelNode",
 "language": "GDScript",
@@ -180,7 +175,6 @@ _global_script_class_icons={
 "IdleState": "",
 "JumpingState": "",
 "LabelBaseModel": "",
-"Level": "",
 "LevelNode": "",
 "MovingState": "",
 "OnAirState": "",

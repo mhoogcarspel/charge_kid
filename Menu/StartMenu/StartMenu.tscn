@@ -9,12 +9,6 @@
 [ext_resource path="res://Menu/ButtonModel.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Menu/ReturnShortcut.tres" type="ShortCut" id=8]
 
-
-
-
-
-
-
 [sub_resource type="DynamicFont" id=1]
 size = 48
 font_data = ExtResource( 5 )

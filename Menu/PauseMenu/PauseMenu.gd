@@ -31,13 +31,12 @@ func _on_Controls_pressed():
 func _on_Quit_pressed():
 	get_tree().quit()
 
+func _on_ButtonModel_pressed():
+	get_tree().paused = false
+	self.queue_free()
+	main.go_to_world_map()
+
 func refocus() -> void:
 	menu.get_children()[0].grab_focus()
-
-
-
-
-
-
 
 
