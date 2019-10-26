@@ -34,7 +34,13 @@ func _on_Quit_pressed():
 func _on_ButtonModel_pressed():
 	get_tree().paused = false
 	self.queue_free()
-	main.go_to_world_map()
+	var world_map = main.go_to_world_map()
+	world_map.continue_game = true
+	var actual_level: BaseLevel = get_tree().get_nodes_in_group("level")[0]
+	
+	if !actual_level.level_node.is_inside_tree():
+		yield(actual_level.level_node, "tree_entered")
+	actual_level.level_node.grab_focus()
 
 func refocus() -> void:
 	menu.get_children()[0].grab_focus()
