@@ -39,3 +39,7 @@ func load_game() -> void:
 		var level = get_node(level_path)
 		for variable in levels_save[level_path].keys():
 			level.set(variable, levels_save[level_path][variable])
+
+
+
+

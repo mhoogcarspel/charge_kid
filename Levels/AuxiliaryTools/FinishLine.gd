@@ -6,7 +6,7 @@ var main
 export(PackedScene) var next_stage
 export(String, "All", "Up", "Down", "Left", "Right") var direction
 
-onready var level:BaseLevel = get_parent()
+onready var level: BaseLevel = get_parent()
 
 
 

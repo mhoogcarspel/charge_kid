@@ -60,6 +60,7 @@ func change_scene(next_scene: PackedScene):
 	return scene_instance
 
 func go_to_world_map():
+	get_tree().paused = true
 	if world_map_instance == null:
 		world_map_instance = change_scene(world_map)
 	else:
@@ -67,7 +68,7 @@ func go_to_world_map():
 			$Scene.call_deferred("remove_child", scene)
 		$Scene.call_deferred("add_child", world_map_instance)
 	return world_map_instance
-	pass
+
 
 func _process(delta):
 	# Pausing

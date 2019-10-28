@@ -19,7 +19,6 @@ func _ready():
 func _physics_process(delta):
 	if is_instance_valid(followed_node) and followed_node != null:
 		self.position = followed_node.position
-#		print(followed_node.name)
 	else:
 		if not get_tree().get_nodes_in_group("player").empty():
 			followed_node = get_tree().get_nodes_in_group("player")[0]
