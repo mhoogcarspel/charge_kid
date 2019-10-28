@@ -33,7 +33,8 @@ func _process(delta):
 	self.disabled = !self.is_open
 
 func clear_level(direction: String = "All") -> void:
-	print("Clear")
+	if !self.is_inside_tree():
+		yield(self, "tree_entered")
 	match direction:
 		"All":
 			for children_direction in children.keys():
@@ -46,10 +47,7 @@ func clear_level(direction: String = "All") -> void:
 				node_level.open_level(self, direction)
 			else:
 				print("ERROR: Invalid direction on function clear_level")
-		
-	if !self.is_inside_tree():
-		yield(self, "tree_entered")
-	world_map.save_game()
+	
 	self.grab_focus()
 
 
@@ -72,11 +70,12 @@ func open_level(parent: LevelNode, direction_from_parent : String) -> void:
 		"Right":
 			self.focus_neighbour_left = parent.path
 			parent.focus_neighbour_right = self.path
+	
+	world_map.save_game()
 
 func save() -> Dictionary:
 	var save_dict: Dictionary = {
 		"is_open": is_open,
-		"cleared": cleared,
 		"focus_neighbour_right": focus_neighbour_right,
 		"focus_neighbour_left": focus_neighbour_left,
 		"focus_neighbour_top": focus_neighbour_top,

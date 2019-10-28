@@ -4,10 +4,8 @@
 [ext_resource path="res://Actors/Player/Particles/StepSparksParticles.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Spritesheets/industrial.v2.png" type="Texture" id=3]
 
-
-
-
 [node name="StepParticles" type="Node2D"]
+z_index = -1
 script = ExtResource( 1 )
 time_between_frames = 0.08
 lifetime = 0.4
