@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://Actors/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Actors/TheUniqueBullet/Bullet.tscn" type="PackedScene" id=2]
@@ -345,8 +345,11 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="CircleShape2D" id=15]
-radius = 1.5291
+[sub_resource type="RectangleShape2D" id=20]
+extents = Vector2( 3, 3 )
+
+[sub_resource type="RectangleShape2D" id=21]
+extents = Vector2( 3, 3 )
 
 [sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 5.5, 7 )
@@ -368,7 +371,7 @@ collision_layer = 0
 collision_mask = 3
 script = ExtResource( 1 )
 bullet = ExtResource( 2 )
-shoot_offset = 12.0
+shoot_offset = 10.0
 label_time = 2.0
 factor = 1.0
 has_bullet = true
@@ -556,28 +559,14 @@ wait_time = 0.2
 one_shot = true
 
 [node name="LeftAreaChecker" type="Area2D" parent="."]
-editor/display_folded = true
-visible = false
-position = Vector2( -1.46172, 1.71437 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftAreaChecker"]
-position = Vector2( -4.28448, 0.0921392 )
-shape = SubResource( 15 )
+shape = SubResource( 20 )
 
 [node name="RightAreaChecker" type="Area2D" parent="."]
-editor/display_folded = true
-visible = false
-position = Vector2( 9.00215, 1.71437 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightAreaChecker"]
-position = Vector2( -4.28448, 0.0921392 )
-shape = SubResource( 15 )
+shape = SubResource( 21 )
 
 [node name="SpikesSentinel" type="Area2D" parent="."]
 editor/display_folded = true

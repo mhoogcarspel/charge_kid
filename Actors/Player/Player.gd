@@ -78,6 +78,9 @@ func _ready():
 	timer.queue_free()
 	var camera = get_tree().get_nodes_in_group("camera")[0]
 	camera.player_just_spawned()
+	
+	$LeftAreaChecker.position += Vector2(-shoot_offset,0)
+	$RightAreaChecker.position += Vector2(shoot_offset,0)
 
 func _physics_process(delta):
 	actual_state = stack[0]
