@@ -90,13 +90,13 @@ focus_neighbour_bottom = NodePath("../ButtonModel")
 text = "Restart Level"
 
 [node name="ButtonModel" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
-margin_left = 32.0
+margin_left = 24.0
 margin_top = 52.0
-margin_right = 188.0
+margin_right = 196.0
 margin_bottom = 74.0
 focus_neighbour_top = NodePath("../RestartLevel")
 focus_neighbour_bottom = NodePath("../Controls")
-text = "World Map"
+text = "Level List"
 
 [node name="Controls" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
 margin_left = 40.0
