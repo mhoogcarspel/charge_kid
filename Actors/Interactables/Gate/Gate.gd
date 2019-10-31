@@ -10,7 +10,10 @@ export (float) var delay_between_cells
 export (bool) var close_in_inverse_order
 
 func set_gap(new_value: int) -> void:
-	gap_size = new_value
+	if new_value < 0:
+		gap_size = 0
+	else:
+		gap_size = new_value
 	for gate_cell in get_children():
 		gate_cell.set_gap(gap_size)
 
