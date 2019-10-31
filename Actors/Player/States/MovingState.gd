@@ -13,7 +13,7 @@ func update(delta):
 	owner.drop()
 	if owner.is_on_floor():
 		if animation_player.current_animation != "Landing":
-			animation_player.play("Walking")
+			animation_player.play("Walking", -1, abs(owner.velocity.x)/owner.max_horizontal_velocity)
 		store_checkpoint()
 		
 		#################Checking for any inputs########################
