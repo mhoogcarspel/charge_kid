@@ -225,9 +225,16 @@ editor/display_folded = true
 visible = false
 position = Vector2( 568, 224 )
 
+[node name="CollisionPolygon2D" parent="DropMessage" index="0"]
+polygon = PoolVector2Array( -24, 32, -24, 16, 56, 16, 56, 32 )
+
 [node name="JumpMessage" parent="." index="17" instance=ExtResource( 13 )]
 visible = false
 position = Vector2( 216, 280 )
+
+[node name="CollisionPolygon2D" parent="JumpMessage" index="0"]
+position = Vector2( -88, -144 )
+polygon = PoolVector2Array( -48, 152, 144, 152, 144, 184, -48, 184 )
 
 [node name="ShootMessage" parent="." index="18" instance=ExtResource( 14 )]
 visible = false
@@ -236,6 +243,10 @@ position = Vector2( 176, 144 )
 [node name="BoostMessage" parent="." index="19" instance=ExtResource( 15 )]
 visible = false
 position = Vector2( 896, 312 )
+
+[node name="CollisionPolygon2D" parent="BoostMessage" index="0"]
+position = Vector2( -192, -143 )
+polygon = PoolVector2Array( -64, 135, 288, 135, 288, 184, -64, 183 )
 
 [node name="Message" parent="." index="20" instance=ExtResource( 16 )]
 editor/display_folded = true
@@ -271,3 +282,11 @@ wires = [ NodePath("../EnergyWire2") ]
 [editable path="Platforms"]
 
 [editable path="EnergyWire2"]
+
+[editable path="DropMessage"]
+
+[editable path="JumpMessage"]
+
+[editable path="ShootMessage"]
+
+[editable path="BoostMessage"]
