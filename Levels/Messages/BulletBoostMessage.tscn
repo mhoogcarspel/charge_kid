@@ -2,7 +2,6 @@
 
 [ext_resource path="res://Levels/Messages/BulletBoostMessage.gd" type="Script" id=1]
 
-
 [node name="BulletBoostMessage" type="Area2D"]
 script = ExtResource( 1 )
 
@@ -12,4 +11,3 @@ polygon = PoolVector2Array( -8, -8, 8, -8, 8, 8, -8, 8 )
 [node name="Timer" type="Timer" parent="."]
 wait_time = 60.0
 one_shot = true
-[connection signal="body_entered" from="." to="." method="_on_BulletBoostMessage_body_entered"]

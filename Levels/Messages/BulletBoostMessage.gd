@@ -2,7 +2,7 @@ extends Area2D
 
 
 
-func _on_BulletBoostMessage_body_entered(body):
+func _process(delta):
 	var button
 	if get_tree().get_nodes_in_group("main").size() > 0:
 		var main = get_tree().get_nodes_in_group("main")[0]
@@ -13,6 +13,8 @@ func _on_BulletBoostMessage_body_entered(body):
 	else:
 		button = "F"
 	
-	if body.is_in_group("player") and $Timer.is_stopped():
-		body.write(button + " while holding bullet: boost to bullet", 4)
-		$Timer.start()
+	for body in get_overlapping_bodies():
+		if body.is_in_group("player"):
+			if body.can_boost and $Timer.is_stopped():
+				body.write(button + " while holding bullet: boost to bullet", 4)
+				$Timer.start()
