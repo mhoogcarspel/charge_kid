@@ -103,37 +103,23 @@ func _physics_process(delta):
 
 func change_state(state: String):
 	var previous_state = stack[0]
-	
-	var was_airborne: bool = false
-	if previous_state == "JumpingState" or previous_state == "OnAirState":
-		was_airborne = true
-	elif previous_state == "BoostingState" or previous_state == "BulletBoostingState":
-		was_airborne = true
-	
-	match state:
-		"IdleState":
-			while(stack[0] != "IdleState"):
-				stack.pop_front()
-			if was_airborne:
-				$AnimationPlayer.play("Landing")
-		"MovingState":
-			while(stack[0] != "IdleState" and stack[0] != "MovingState"):
-				stack.pop_front()
-			if stack[0] == "IdleState":
-				stack.push_front(state)
-			if was_airborne:
-				$AnimationPlayer.play("Landing")
-		_:
-			stack.push_front(state)
-	
 	states[previous_state].exit()
 	states[state].enter()
+	if state == "IdleState" or state == "MovingState":
+		stack.clear()
+	stack.push_front(state)
 
-func pop_state():
+func reset_states_machine():
 	change_state("IdleState")
 
 func get_state() -> String:
 	return stack[0]
+
+func get_previous_state() -> String:
+	if stack.size() > 1:
+		return stack[1]
+	else:
+		return stack[0]
 
 
 

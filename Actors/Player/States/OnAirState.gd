@@ -17,7 +17,7 @@ func enter():
 func update(delta):
 	owner.vertical_move(delta)
 	
-	if owner.stack[1] == "BulletBoostingState" and post_bullet_boost > 0:
+	if owner.get_previous_state() == "BulletBoostingState" and post_bullet_boost > 0:
 		owner.horizontal_move(get_directional_inputs(), delta, 1.0, true)
 		post_bullet_boost -= delta
 	else:
@@ -43,12 +43,13 @@ func update(delta):
 			return
 		##################################################################
 		
-	else:
+	elif owner.is_on_floor() and owner.velocity.y >= 0:
 		if not bunny.is_stopped() and Input.is_action_pressed("ui_jump"):
 			bunny.stop()
 			owner.change_state("JumpingState")
 		else:
-			owner.pop_state()
+			animation_player.play("Landing")
+			owner.reset_states_machine()
 
 
 

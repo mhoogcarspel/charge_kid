@@ -58,6 +58,6 @@ func update(delta):
 			return
 		
 	else:
-		owner.pop_state()
+		owner.reset_states_machine()
 
 

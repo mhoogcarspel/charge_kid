@@ -30,7 +30,7 @@ func update(delta):
 			return
 		
 		elif get_directional_inputs().length() == 0 && owner.velocity.x == 0:
-			owner.pop_state()
+			owner.reset_states_machine()
 		##################################################################
 	
 	else:
