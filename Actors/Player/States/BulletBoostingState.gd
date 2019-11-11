@@ -45,12 +45,12 @@ func update(delta):
 	boost_timer += delta
 	
 	if boost_timer >= boost_time or owner.has_bullet:
-		owner.horizontal_move(get_directional_inputs(), delta, 1)
-		owner.gravity(delta, 3)
+		owner.horizontal_move(get_directional_inputs(), delta, 1.0, true)
+		owner.vertical_move(delta, 3)
 		boosting_particles(false)
 		
 		if owner.velocity.y >= 0:
-			owner.pop_state()
+			owner.change_state("OnAirState")
 			return
 		
 		if shoot_input_pressed():
@@ -66,3 +66,7 @@ func update(delta):
 
 func exit():
 	boosting_particles(false)
+
+
+
+	

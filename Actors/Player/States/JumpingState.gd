@@ -13,7 +13,7 @@ func enter():
 
 func update(delta):
 	owner.horizontal_move(get_directional_inputs(), delta)
-	owner.gravity(delta)
+	owner.vertical_move(delta)
 	animation_player.play("Airborne")
 	
 	################# Checking for any inputs ########################
@@ -29,10 +29,10 @@ func update(delta):
 	
 	if Input.is_action_just_released("ui_jump") && owner.velocity.y < 0:
 		owner.velocity.y /= 3
-		owner.pop_state()
+		owner.change_state("OnAirState")
 	
 	if owner.velocity.y >= 0:
-		owner.pop_state()
+		owner.change_state("OnAirState")
 
 
 

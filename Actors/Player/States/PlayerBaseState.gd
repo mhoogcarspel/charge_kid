@@ -9,7 +9,7 @@ func enter():
 func get_directional_inputs() -> Vector2:
 	var directionals = Vector2(owner.control_handler.get_directional_input().x , 0)
 	if directionals.x != 0:
-		owner.facing = directionals.x/abs(directionals.x)
+		owner.facing = sign(directionals.x)
 	return directionals
 
 func shoot_input_pressed() -> bool:
@@ -46,13 +46,13 @@ func is_holding_bullet() -> bool:
 	else:
 		return false
 
-func gravity(delta):
-	owner.velocity.y += owner.gravity_acceleration*delta
+
 
 func boosting_particles(switch: bool):
 	for particle in owner.get_node("BoostParticles").get_children():
 		particle.emitting = switch
-	
+
+
 
 func store_checkpoint() -> void:
 	var left: bool = false

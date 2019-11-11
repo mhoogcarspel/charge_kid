@@ -8,12 +8,12 @@ func _init(owner: KinematicBody2D):
 	self.animation_player = owner.get_node("AnimationPlayer")
 
 func update(delta):
-	owner.horizontal_move(get_directional_inputs(), delta, 1)
-	owner.gravity(delta)
+	owner.horizontal_move(get_directional_inputs(), delta)
+	owner.vertical_move(delta)
 	owner.drop()
 	if owner.is_on_floor():
 		if animation_player.current_animation != "Landing":
-			animation_player.play("Walking", -1, abs(owner.velocity.x)/owner.max_horizontal_velocity)
+			animation_player.play("Walking", -1, abs(owner.velocity.x)/owner.speed)
 		store_checkpoint()
 		
 		#################Checking for any inputs########################

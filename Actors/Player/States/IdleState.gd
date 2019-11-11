@@ -1,19 +1,24 @@
 extends PlayerBaseState
 class_name IdleState
 
-onready var coyote_timer: float = 0
+
 
 func _init(owner: KinematicBody2D):
 	self.owner = owner
 	self.animation_player = owner.get_node("AnimationPlayer")
-	coyote_timer = 0
+
+func enter():
+	if not owner.is_on_floor():
+		owner.change_state("OnAirState")
+	else:
+		if owner.velocity.x != 0:
+			owner.change_state("MovingState")
 
 func update(delta):
 	owner.horizontal_move(get_directional_inputs(), delta)
-	owner.gravity(delta)
+	owner.vertical_move(delta)
 	owner.drop()
 	if owner.is_on_floor():
-		coyote_timer = 0.0
 		if animation_player.current_animation != "Landing":
 			animation_player.play("Idle")
 		store_checkpoint()

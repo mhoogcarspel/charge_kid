@@ -3,6 +3,7 @@ class_name OnAirState
 
 var coyote
 var bunny
+var post_bullet_boost
 
 func _init(owner: KinematicBody2D):
 	self.owner = owner
@@ -11,11 +12,17 @@ func _init(owner: KinematicBody2D):
 	self.coyote = owner.get_node("CoyoteTimer")
 
 func enter():
-	pass
+	post_bullet_boost = abs(owner.velocity.x)/owner.air_friction
 
 func update(delta):
-	owner.horizontal_move(get_directional_inputs(), delta)
-	owner.gravity(delta)
+	owner.vertical_move(delta)
+	
+	if owner.stack[1] == "BulletBoostingState" and post_bullet_boost > 0:
+		owner.horizontal_move(get_directional_inputs(), delta, 1.0, true)
+		post_bullet_boost -= delta
+	else:
+		owner.horizontal_move(get_directional_inputs(), delta)
+	
 	if not owner.is_on_floor():
 		animation_player.play("Airborne")
 		
@@ -37,11 +44,12 @@ func update(delta):
 		##################################################################
 		
 	else:
-		owner.get_node("AnimationPlayer").play("Landing")
 		if not bunny.is_stopped() and Input.is_action_pressed("ui_jump"):
 			bunny.stop()
 			owner.change_state("JumpingState")
 		else:
 			owner.pop_state()
+
+
 
 

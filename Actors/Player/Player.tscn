@@ -375,15 +375,16 @@ shoot_offset = 10.0
 label_time = 2.0
 factor = 1.0
 has_bullet = true
-horizontal_acceleration = 600.0
-max_horizontal_velocity = 100.0
-deacceleration_horizontal_velocity = 1200.0
+acceleration = 600.0
+speed = 100.0
+friction = 900.0
+air_friction = 150.0
 boost_distance = 72.0
 boost_time = 0.4
 coyote_time = 0.1
 bunny_time = 0.1
 jump_height = 40.0
-gravity_acceleration = 500.0
+gravity = 500.0
 
 [node name="PlayerSprite" type="Sprite" parent="."]
 material = SubResource( 2 )
