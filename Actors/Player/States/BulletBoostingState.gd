@@ -44,29 +44,21 @@ func update(delta):
 	animation_player.play("Airborne")
 	boost_timer += delta
 	
-	if boost_timer >= boost_time or owner.has_bullet:
-		owner.horizontal_move(get_directional_inputs(), delta, 1.0, true)
-		owner.vertical_move(delta, 3)
-		boosting_particles(false)
-		
-		if owner.velocity.y >= 0:
-			owner.change_state("OnAirState")
-			return
-		
-		if shoot_input_pressed():
-			return
-		elif boost_input_pressed():
-			return
-		elif bullet_boost_input_pressed():
-			return
+	if boost_input_pressed():
+		return
+	if bullet_boost_input_pressed():
+		return
 	
+	if boost_timer >= boost_time or owner.has_bullet:
+		owner.change_state("OnAirState")
 	else:
 		bullet = owner.get_tree().get_nodes_in_group("bullet")[0]
 		owner.velocity = (bullet.position - owner.position).normalized()*boost_speed
+
+
 
 func exit():
 	boosting_particles(false)
 
 
 
-	

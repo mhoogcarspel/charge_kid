@@ -15,7 +15,12 @@ func enter():
 	post_bullet_boost = abs(owner.velocity.x)/owner.air_friction
 
 func update(delta):
-	owner.vertical_move(delta)
+	if owner.get_previous_state() == "BoostingState" and owner.velocity.y < 0:
+		owner.vertical_move(delta, 3)
+	elif owner.get_previous_state() == "BulletBoostingState" and owner.velocity.y < 0:
+		owner.vertical_move(delta, 3)
+	else:
+		owner.vertical_move(delta)
 	
 	if owner.get_previous_state() == "BulletBoostingState" and post_bullet_boost > 0:
 		owner.horizontal_move(get_directional_inputs(), delta, 1.0, true)

@@ -28,13 +28,7 @@ func update(delta):
 	if boosting_time < owner.boost_time:
 		owner.horizontal_move(get_directional_inputs(), delta, 0.5)
 	else:
-		owner.vertical_move(delta, 3)
-		owner.horizontal_move(get_directional_inputs(), delta)
-		boosting_particles(false)
-		
-		if owner.velocity.y >= 0:
-			owner.change_state("OnAirState")
-			return
+		owner.change_state("OnAirState")
 
 func exit():
 	boosting_particles(false)
