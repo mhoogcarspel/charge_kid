@@ -4,6 +4,7 @@ class_name PlayerBullet
 export(String, "StandartState", "StandingState", "ReturnState", "FuelChargeState", "HoldState" ) var initial_state
 export(float) var speed
 export(float) var return_speed
+export(float) var return_acceleration
 export(float) var fuel_speed
 export(float) var range_distance
 export(float) var gravity_accel

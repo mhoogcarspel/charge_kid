@@ -81,6 +81,7 @@ script = ExtResource( 1 )
 initial_state = "StandingState"
 speed = 250.0
 return_speed = 325.0
+return_acceleration = 1200.0
 fuel_speed = 450.0
 range_distance = 116.0
 gravity_accel = 400.0
