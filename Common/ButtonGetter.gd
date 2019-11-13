@@ -193,19 +193,22 @@ func get_r_stick_directional(device = 0) -> Vector2:
 enum {L_STICK, R_STICK, BOTH_STICKS, NONE}
 
 func get_directional_input(device = 0, get_from_sticks = L_STICK) -> Vector2:
-	var direction: Vector2 = Vector2.ZERO
-	
 	# Getting from sticks:
+	var analog: Vector2 = Vector2.ZERO
 	if get_from_sticks == R_STICK or get_from_sticks == BOTH_STICKS:
-		direction = get_r_stick_directional(device)
+		analog = get_r_stick_directional(device)
 	elif get_from_sticks == L_STICK or get_from_sticks == BOTH_STICKS:
-		direction = get_l_stick_directional(device)
+		analog = get_l_stick_directional(device)
 	
 	# Getting from D-Pad or keyboard:
-	direction.x = Input.get_action_strength("right") - Input.get_action_strength("left")
-	direction.y = Input.get_action_strength("down") - Input.get_action_strength("up")
+	var digital: Vector2 = Vector2.ZERO
+	digital.x = Input.get_action_strength("right") - Input.get_action_strength("left")
+	digital.y = Input.get_action_strength("down") - Input.get_action_strength("up")
 	
-	return direction
+	if digital == Vector2.ZERO:
+		return analog
+	else:
+		return digital
 ###################################################################################
 
 
