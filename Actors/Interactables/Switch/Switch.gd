@@ -7,7 +7,7 @@ export(Array,NodePath) var wires
 
 
 
-func hit(projectile:KinematicBody = null) -> void:
+func hit(projectile: KinematicBody2D) -> void:
 	$SFX.play()
 	$AnimationPlayer.play("Activate")
 	if not active:

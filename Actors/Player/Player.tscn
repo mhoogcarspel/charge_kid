@@ -429,10 +429,13 @@ one_shot = true
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( -0.5, 2 )
 shape = SubResource( 4 )
 
 [node name="PlatformSentinel" type="Area2D" parent="."]
+editor/display_folded = true
+visible = false
 position = Vector2( -0.5, 7.5 )
 collision_layer = 0
 collision_mask = 3
@@ -558,12 +561,14 @@ one_shot = true
 
 [node name="LeftAreaChecker" type="Area2D" parent="."]
 editor/display_folded = true
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftAreaChecker"]
 shape = SubResource( 15 )
 
 [node name="RightAreaChecker" type="Area2D" parent="."]
 editor/display_folded = true
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightAreaChecker"]
 shape = SubResource( 16 )
