@@ -13,7 +13,7 @@ func _ready():
 
 
 
-func hit(bullet:PlayerBullet):
+func hit(bullet:KinematicBody2D = null):
 	add_child(particles.instance())
 	$SFX.play()
 	if is_active:
@@ -24,9 +24,9 @@ func hit(bullet:PlayerBullet):
 		is_active = true
 	for nodepath in nodes:
 		toggle(get_node(nodepath))
-	
-	if bullet.get_state() == "StandardState":
-		bullet.change_state("ReturnState")
+	if bullet != null:
+		if bullet.get_state() == "StandardState":
+			bullet.change_state("ReturnState")
 
 
 
