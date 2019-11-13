@@ -19,7 +19,14 @@ func _init(owner: KinematicBody2D):
 func enter():
 	animation_player.play("Shooting")
 	sfx.play()
-	owner.velocity = Vector2.ZERO
+	
+	## If gravity is not aplied when the owner is on floor 
+	## the is_on_floor() function will return false 
+	## and after that the OnAirState will be tiggered
+	if !owner.is_on_floor():
+		owner.velocity.y = 0.0
+	owner.velocity.x = 0.0
+	################----------------####################
 	
 	var allow: bool
 	if owner.facing < 0:
@@ -57,6 +64,7 @@ func handle_edge_case(sensor: Area2D) -> bool:
 func update(delta):
 	if animation_player.current_animation == "Shooting":
 		if owner.is_on_floor():
+			owner.vertical_move(delta)
 			if jump_input_pressed():
 				return
 		
