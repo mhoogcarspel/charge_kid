@@ -371,7 +371,7 @@ collision_layer = 0
 collision_mask = 3
 script = ExtResource( 1 )
 bullet = ExtResource( 2 )
-shoot_offset = 10.0
+shoot_offset = 7.0
 label_time = 2.0
 factor = 1.0
 has_bullet = true
@@ -429,7 +429,6 @@ one_shot = true
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( -0.5, 2 )
 shape = SubResource( 4 )
 
@@ -561,14 +560,12 @@ one_shot = true
 
 [node name="LeftAreaChecker" type="Area2D" parent="."]
 editor/display_folded = true
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftAreaChecker"]
 shape = SubResource( 15 )
 
 [node name="RightAreaChecker" type="Area2D" parent="."]
 editor/display_folded = true
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightAreaChecker"]
 shape = SubResource( 16 )

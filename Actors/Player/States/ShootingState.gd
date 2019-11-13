@@ -23,9 +23,9 @@ func enter():
 	
 	var allow: bool
 	if owner.facing < 0:
-		allow = check_for_blocks(left)
+		allow = handle_edge_case(left)
 	else:
-		allow = check_for_blocks(right)
+		allow = handle_edge_case(right)
 	
 	if allow:
 		var bullet_instance = owner.bullet.instance()
@@ -38,12 +38,20 @@ func enter():
 			owner.has_bullet = false
 
 func check_for_blocks(sensor: Area2D) -> bool:
-	var return_value : bool = true
+	var return_value : bool = false
 	for body in sensor.get_overlapping_bodies():
 		if body.is_in_group("blocks"):
-			return_value = false
+			return_value = true
 	return return_value
 
+func handle_edge_case(sensor: Area2D) -> bool:
+	var has_blocks: bool = check_for_blocks(sensor)
+	if has_blocks:
+		for body in sensor.get_overlapping_bodies():
+			if body.has_method("hit"):
+				body.hit()
+		return false
+	return true
 
 
 func update(delta):

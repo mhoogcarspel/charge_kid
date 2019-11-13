@@ -7,12 +7,14 @@ export(Array,NodePath) var wires
 
 
 
-func hit(projectile:PhysicsBody2D) -> void:
+func hit(projectile:KinematicBody = null) -> void:
 	$SFX.play()
 	$AnimationPlayer.play("Activate")
 	if not active:
 		self.activate()
-	projectile.change_state("ReturnState")
+	
+	if projectile != null:
+		projectile.change_state("ReturnState")
 
 func _on_Timer_timeout():
 	for nodepath in nodes:

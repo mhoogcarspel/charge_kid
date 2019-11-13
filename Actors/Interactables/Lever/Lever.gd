@@ -24,6 +24,7 @@ func hit(bullet:PlayerBullet):
 		is_active = true
 	for nodepath in nodes:
 		toggle(get_node(nodepath))
+	
 	if bullet.get_state() == "StandardState":
 		bullet.change_state("ReturnState")
 
