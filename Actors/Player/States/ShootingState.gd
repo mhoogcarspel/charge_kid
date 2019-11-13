@@ -3,9 +3,9 @@ class_name ShootingState
 
 
 
-var sfx
-var left
-var right
+var sfx : AudioStreamPlayer
+var left : Area2D
+var right : Area2D
 
 func _init(owner: KinematicBody2D):
 	self.owner = owner
@@ -38,10 +38,11 @@ func enter():
 			owner.has_bullet = false
 
 func check_for_blocks(sensor: Area2D) -> bool:
+	var return_value : bool = true
 	for body in sensor.get_overlapping_bodies():
 		if body.is_in_group("blocks"):
-			return false
-	return true
+			return_value = false
+	return return_value
 
 
 
