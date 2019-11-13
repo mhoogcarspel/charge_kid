@@ -48,7 +48,7 @@ func handle_edge_case(sensor: Area2D) -> bool:
 	var has_blocks: bool = check_for_blocks(sensor)
 	if has_blocks:
 		for body in sensor.get_overlapping_bodies():
-			if body.has_method("hit"):
+			if body.is_in_group("interactable"):
 				body.hit()
 		return false
 	return true

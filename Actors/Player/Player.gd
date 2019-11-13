@@ -109,6 +109,9 @@ func change_state(state: String):
 		stack.clear()
 	stack.push_front(state)
 
+func pop_state():
+	stack.pop_front()
+
 func reset_states_machine():
 	change_state("IdleState")
 
