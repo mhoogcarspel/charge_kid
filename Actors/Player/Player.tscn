@@ -345,23 +345,23 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="RectangleShape2D" id=20]
-extents = Vector2( 3, 3 )
-
-[sub_resource type="RectangleShape2D" id=21]
+[sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 3, 3 )
 
 [sub_resource type="RectangleShape2D" id=16]
+extents = Vector2( 3, 3 )
+
+[sub_resource type="RectangleShape2D" id=17]
 extents = Vector2( 5.5, 7 )
 
-[sub_resource type="DynamicFont" id=17]
+[sub_resource type="DynamicFont" id=18]
 size = 8
 font_data = ExtResource( 17 )
 
-[sub_resource type="RectangleShape2D" id=18]
+[sub_resource type="RectangleShape2D" id=19]
 extents = Vector2( 1, 1 )
 
-[sub_resource type="RectangleShape2D" id=19]
+[sub_resource type="RectangleShape2D" id=20]
 extents = Vector2( 1, 1 )
 
 [node name="Player" type="KinematicBody2D" groups=[
@@ -561,12 +561,12 @@ one_shot = true
 [node name="LeftAreaChecker" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftAreaChecker"]
-shape = SubResource( 20 )
+shape = SubResource( 15 )
 
 [node name="RightAreaChecker" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightAreaChecker"]
-shape = SubResource( 21 )
+shape = SubResource( 16 )
 
 [node name="SpikesSentinel" type="Area2D" parent="."]
 editor/display_folded = true
@@ -576,11 +576,11 @@ collision_layer = 12
 collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikesSentinel"]
-shape = SubResource( 16 )
+shape = SubResource( 17 )
 
 [node name="Label" type="Label" parent="."]
 margin_bottom = 8.0
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 18 )
 align = 1
 script = ExtResource( 18 )
 
@@ -636,7 +636,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightLedgeDetector"]
-shape = SubResource( 18 )
+shape = SubResource( 19 )
 
 [node name="LeftLedgeDetector" type="Area2D" parent="."]
 editor/display_folded = true
@@ -649,7 +649,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftLedgeDetector"]
-shape = SubResource( 19 )
+shape = SubResource( 20 )
 [connection signal="timeout" from="PlayerSprite/Timer2" to="PlayerSprite" method="_on_Timer2_timeout"]
 [connection signal="timeout" from="PlayerSprite/PlayerSparksTimer" to="PlayerSprite" method="_on_PlayerSparksTimer_timeout"]
 [connection signal="timeout" from="BoostTimer" to="." method="_on_BoostTimer_timeout"]
