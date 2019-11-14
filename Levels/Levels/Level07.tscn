@@ -12,9 +12,9 @@
 [ext_resource path="res://Levels/AuxiliaryTools/FinishLine.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Levels/Levels/Level08.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Levels/AuxiliaryTools/CameraLimiter.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Levels/Messages/Lv7SpMessage.gd" type="Script" id=13]
+[ext_resource path="res://Levels/Messages/MomentumMessage.tscn" type="PackedScene" id=13]
 
-[node name="Level07" instance=ExtResource( 1 )]
+[node name="Level07" index="0" instance=ExtResource( 1 )]
 
 [node name="ScreenTransition" parent="." index="0"]
 opening_text = "Level 7
@@ -154,19 +154,21 @@ polygon = PoolVector2Array( 240, 202.316, -144, 202.316, -144, -181.684, 240, -1
 [node name="CollisionPolygon2D" parent="CameraLimiter" index="1"]
 polygon = PoolVector2Array( -112, -181.684, 160, -181.684, 160, 202.316, -112, 202.316 )
 
-[node name="Lv7SpMessage" type="Area2D" parent="." index="15"]
-editor/display_folded = true
+[node name="MomentumMessage" parent="." index="15" instance=ExtResource( 13 )]
 visible = false
-position = Vector2( 72, 320 )
-script = ExtResource( 13 )
+position = Vector2( 56, 280 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lv7SpMessage" index="0"]
-polygon = PoolVector2Array( 56, 16, 56, -8, -72, -8, -72, 16 )
+[node name="CollisionPolygon2D" parent="MomentumMessage" index="0"]
+polygon = PoolVector2Array( 72, 56, 72, 8, -56, 8, -56, 56 )
 
-[node name="Timer" type="Timer" parent="Lv7SpMessage" index="1"]
-wait_time = 60.0
-one_shot = true
-autostart = true
+[node name="Text" parent="MomentumMessage" index="1"]
+margin_left = -48.0
+margin_top = 70.4
+margin_right = -8.0
+margin_bottom = 84.4
+
+[node name="Timer" parent="MomentumMessage" index="3"]
+wait_time = 5.0
 
 [editable path="Background"]
 
@@ -177,3 +179,5 @@ autostart = true
 [editable path="Platforms"]
 
 [editable path="CameraLimiter"]
+
+[editable path="MomentumMessage"]

@@ -169,7 +169,13 @@ visible = false
 position = Vector2( 88, 272 )
 
 [node name="CollisionPolygon2D" parent="BulletBoostMessage" index="0"]
-polygon = PoolVector2Array( -88, 0, 40, 0, 40, 16, -88, 16 )
+polygon = PoolVector2Array( -88, -24, 40, -24, 40, 16, -88, 16 )
+
+[node name="Text" parent="BulletBoostMessage" index="1"]
+margin_left = 208.0
+margin_top = 32.0
+margin_right = 248.0
+margin_bottom = 46.0
 
 [node name="FuelTank" parent="." index="11" instance=ExtResource( 9 )]
 position = Vector2( 40, 279.5 )

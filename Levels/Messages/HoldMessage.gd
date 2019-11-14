@@ -2,7 +2,7 @@ extends Area2D
 
 
 
-func _on_HoldMessage_body_entered(body):
+func _process(delta):
 	var button
 	if get_tree().get_nodes_in_group("main").size() > 0:
 		var main = get_tree().get_nodes_in_group("main")[0]
@@ -13,6 +13,15 @@ func _on_HoldMessage_body_entered(body):
 	else:
 		button = "X"
 	
-	if body.is_in_group("player") and $Timer.is_stopped():
-		body.write("Hold " + button + ": hold bullet in place", 4)
-		$Timer.start()
+	if $Text.percent_visible == 0:
+		for body in get_overlapping_bodies():
+			if body.is_in_group("player"):
+				$Text.text = "Hold " + button + ": hold bullet in place"
+				$Tween.interpolate_property($Text, "percent_visible", 0, 1, 0.5,
+											Tween.TRANS_LINEAR, Tween.EASE_IN)
+				$Tween.start()
+
+func _ready():
+	visible = true
+
+
