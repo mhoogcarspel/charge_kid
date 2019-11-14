@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Common/Main.gd" type="Script" id=1]
 [ext_resource path="res://Menu/StartMenu/StartMenu.tscn" type="PackedScene" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://Menu/WorldMap/WorldMap.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/SFX/270322__littlerobotsoundfactory__menu-navigate-02.wav" type="AudioStream" id=7]
 [ext_resource path="res://Assets/SFX/270324__littlerobotsoundfactory__menu-navigate-00.wav" type="AudioStream" id=8]
+[ext_resource path="res://Common/BackgroundAndMusicHandler.gd" type="Script" id=9]
+[ext_resource path="res://Assets/Background/background.ogg" type="AudioStream" id=10]
 
 [node name="Main" type="Node" groups=[
 "main",
@@ -45,4 +47,26 @@ wait_time = 0.1
 one_shot = true
 
 [node name="Scene" type="Node" parent="."]
+
+[node name="BackgroundAndMusicHandler" type="AudioStreamPlayer" parent="."]
+bus = "MUS"
+script = ExtResource( 9 )
+
+[node name="Music" type="AudioStreamPlayer" parent="BackgroundAndMusicHandler"]
+bus = "MUS"
+
+[node name="Background" type="AudioStreamPlayer" parent="BackgroundAndMusicHandler"]
+stream = ExtResource( 10 )
+volume_db = 9.0
+bus = "MUS"
+
+[node name="Timer" type="Timer" parent="BackgroundAndMusicHandler"]
+wait_time = 5.0
+autostart = true
+
+[node name="FadeInOut" type="Tween" parent="BackgroundAndMusicHandler"]
+
+[node name="Timer" type="Timer" parent="."]
 [connection signal="timeout" from="MenuNavTimer/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="finished" from="BackgroundAndMusicHandler/Music" to="BackgroundAndMusicHandler" method="_on_Music_finished"]
+[connection signal="timeout" from="BackgroundAndMusicHandler/Timer" to="BackgroundAndMusicHandler" method="_on_Timer_timeout"]
