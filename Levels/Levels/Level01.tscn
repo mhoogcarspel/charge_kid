@@ -51,7 +51,8 @@ shader_param/active_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 shader_param/inactive_color = Color( 0.490196, 0.490196, 0.490196, 1 )
 shader_param/active = false
 
-[node name="Level01" instance=ExtResource( 1 )]
+[node name="Level01" index="0" instance=ExtResource( 1 )]
+bgm_1 = true
 
 [node name="ScreenTransition" parent="." index="0"]
 opening_text = "Level 1
@@ -191,9 +192,7 @@ wires = [ NodePath("../EnergyWire") ]
 [node name="Gate" parent="." index="11" instance=ExtResource( 10 )]
 position = Vector2( 488, 152 )
 gate_height = 7
-gap_size = 0
 active = true
-close_in_inverse_order = false
 
 [node name="FuelTank" parent="." index="12" instance=ExtResource( 11 )]
 position = Vector2( 936, 328 )
@@ -213,9 +212,7 @@ tile_data = PoolIntArray( 327680, 15, 0 )
 [node name="Gate2" parent="." index="14" instance=ExtResource( 10 )]
 position = Vector2( 1016, 184 )
 gate_height = 4
-gap_size = 0
 active = true
-close_in_inverse_order = false
 
 [node name="FuelTank2" parent="." index="15" instance=ExtResource( 11 )]
 position = Vector2( 984, 232 )
