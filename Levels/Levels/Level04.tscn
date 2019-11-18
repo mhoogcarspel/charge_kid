@@ -174,9 +174,11 @@ message = "great jump!"
 shape = SubResource( 1 )
 
 [node name="HoldAgainMessage" parent="." index="16" instance=ExtResource( 14 )]
-editor/display_folded = true
 visible = false
 position = Vector2( 472, 128 )
+
+[node name="CollisionPolygon2D" parent="HoldAgainMessage" index="0"]
+polygon = PoolVector2Array( 80, 48, 80, 32, 40, 32, 40, 48 )
 
 [editable path="Background"]
 
@@ -189,3 +191,5 @@ position = Vector2( 472, 128 )
 [editable path="HoldMessage"]
 
 [editable path="CameraLimiter"]
+
+[editable path="HoldAgainMessage"]

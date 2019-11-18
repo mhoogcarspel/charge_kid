@@ -19,10 +19,7 @@ func _process(_delta):
 		for body in get_overlapping_bodies():
 			if body.is_in_group("player"):
 				if body.can_boost:
-					$Text.text = button + ": boost"
-					$Tween.interpolate_property($Text, "percent_visible", 0, 1, 0.5,
-												Tween.TRANS_LINEAR, Tween.EASE_IN)
-					$Tween.start()
+					$Text.write(button + ": boost")
 
 func _ready():
 	visible = true

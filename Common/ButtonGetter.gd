@@ -13,10 +13,10 @@ func _init(actions_dictionary: Dictionary):
 	self.actions_list = actions_dictionary.keys().duplicate()
 	
 	self.gamepad_map = {
-	"DPAD Up": ["DPad Up", "DPad Up", "DPad Up"],
-	"DPAD Down": ["DPad Down", "DPad Down", "DPad Down"],
-	"DPAD Left": ["DPad Left", "DPad Left", "DPad Left"],
-	"DPAD Right": ["DPad Right", "DPad Right", "DPad Right"],
+	"DPAD Up": ["Up", "Up", "Up"],
+	"DPAD Down": ["Down", "Down", "Down"],
+	"DPAD Left": ["Left", "Left", "Left"],
+	"DPAD Right": ["Right", "Right", "Right"],
 	
 	"Face Button Bottom": ["A", "Cross", "B"],
 	"Face Button Right": ["B", "Circle", "A"],

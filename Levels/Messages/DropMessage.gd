@@ -17,10 +17,7 @@ func _process(_delta):
 	if $Text.percent_visible == 0:
 		for body in get_overlapping_bodies():
 			if body.is_in_group("player"):
-				$Text.text = button + ": drop from \n platform"
-				$Tween.interpolate_property($Text, "percent_visible", 0, 1, 0.5,
-											Tween.TRANS_LINEAR, Tween.EASE_IN)
-				$Tween.start()
+				$Text.write(button + ": drop from \n platform")
 
 func _ready():
 	visible = true

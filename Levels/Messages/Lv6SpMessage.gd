@@ -12,8 +12,7 @@ var switch_state: bool setget switch_sentinel
 
 func switch_sentinel(new_value) -> void:
 	if new_value == true and switch_state == false and player_has_entered == false:
-		var player = get_tree().get_nodes_in_group("player")[0]
-		player.write(message, message_time/2)
+		get_parent().write(message, message_time)
 		self.queue_free()
 	switch_state = new_value
 

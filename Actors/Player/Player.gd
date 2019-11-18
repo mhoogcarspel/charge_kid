@@ -162,15 +162,6 @@ func is_on_platform() -> bool:
 
 
 
-func write(text: String, factor: float = 1.0) -> void:
-	$Label.set_text(text)
-	$LabelTimer.start(label_time*factor)
-
-func _on_LabelTimer_timeout():
-	$Label.set_text(" ")
-
-
-
 func hit(projectile: PhysicsBody2D) -> void:
 	match projectile.get_state():
 		"StandingState":

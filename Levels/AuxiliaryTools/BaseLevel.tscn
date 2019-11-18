@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Levels/AuxiliaryTools/BaseLevel.gd" type="Script" id=1]
 [ext_resource path="res://Levels/AuxiliaryTools/ScreenTransition.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Levels/Tilemaps/LevelLimits.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Levels/AuxiliaryTools/PlayerCamera.gd" type="Script" id=4]
+[ext_resource path="res://Levels/Messages/TextNode.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/AuxiliaryTools/PlayerCamera.gd" type="Script" id=5]
 
 [node name="BaseLevel" type="Node2D" groups=[
 "level",
@@ -18,6 +19,11 @@ editor/display_folded = true
 visible = false
 format = 1
 
+[node name="MessageLabel" parent="." instance=ExtResource( 4 )]
+
+[node name="Timer" type="Timer" parent="MessageLabel"]
+one_shot = true
+
 [node name="PlayerCamera" type="Camera2D" parent="." groups=[
 "camera",
 ]]
@@ -30,4 +36,5 @@ limit_bottom = 384
 smoothing_enabled = true
 smoothing_speed = 3.0
 editor_draw_limits = true
-script = ExtResource( 4 )
+script = ExtResource( 5 )
+[connection signal="timeout" from="MessageLabel/Timer" to="." method="_on_Timer_timeout"]

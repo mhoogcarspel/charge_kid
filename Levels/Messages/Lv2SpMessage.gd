@@ -17,5 +17,5 @@ func _physics_process(_delta):
 
 func _on_body_entered(body):
 	if body.is_in_group("player") and not $Timer.is_stopped():
-		body.write(message, message_time/2)
+		get_parent().write(message, message_time)
 

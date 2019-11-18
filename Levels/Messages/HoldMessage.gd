@@ -16,10 +16,7 @@ func _process(delta):
 	if $Text.percent_visible == 0:
 		for body in get_overlapping_bodies():
 			if body.is_in_group("player"):
-				$Text.text = "Hold " + button + ": hold bullet in place"
-				$Tween.interpolate_property($Text, "percent_visible", 0, 1, 0.5,
-											Tween.TRANS_LINEAR, Tween.EASE_IN)
-				$Tween.start()
+				$Text.write("Hold " + button + ": hold bullet in place")
 
 func _ready():
 	visible = true

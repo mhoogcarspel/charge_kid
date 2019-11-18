@@ -10,5 +10,3 @@ script = ExtResource( 1 )
 position = Vector2( 376, 8 )
 
 [node name="Text" parent="." instance=ExtResource( 2 )]
-
-[node name="Tween" type="Tween" parent="."]
