@@ -1,5 +1,5 @@
 tool
-extends Node
+extends Node2D
 
 
 
@@ -8,6 +8,20 @@ export (int) var gap_size setget set_gap
 export (bool) var active setget initial_value
 export (float) var delay_between_cells
 export (bool) var close_in_inverse_order
+export (String, "Left", "Up", "Down", "Right") var direction setget set_direction
+
+func set_direction(new_value: String) -> void:
+	direction = new_value
+	match new_value:
+		"Up":
+			self.rotation_degrees = 90
+		"Left":
+			self.rotation_degrees = 0
+		"Right":
+			self.rotation_degrees = 180
+		"Down" :
+			self.rotation_degrees = -90
+	pass
 
 func set_gap(new_value: int) -> void:
 	if new_value < 0:
