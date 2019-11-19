@@ -5,7 +5,6 @@ class_name TriggeredPlatform
 export (bool) var active setget trigger
 export (float) var delay_time
 export (Array, NodePath) var chain_reaction
-export (String, "Up", "Left", "Down", "Right") var direction setget spin, get_direction
 
 func trigger(new_value: bool) -> void:
 	if Engine.editor_hint:
@@ -14,32 +13,6 @@ func trigger(new_value: bool) -> void:
 		else:
 			$Sprite.frame = 3
 	active = new_value
-
-func spin(new_value: String) -> void:
-	match new_value:
-		"Up":
-			self.rotation_degrees = 0
-			direction = new_value
-		"Left":
-			self.rotation_degrees = -90
-			direction = new_value
-		"Down":
-			self.rotation_degrees = 180
-			direction = new_value
-		"Right":
-			self.rotation_degrees = 90
-			direction = new_value
-
-func get_direction() -> Vector2:
-	match direction:
-		"Up":
-			return Vector2.UP
-		"Left":
-			return Vector2.LEFT
-		"Down":
-			return Vector2.DOWN
-		"Right":
-			return Vector2.RIGHT
 
 func _ready():
 	if !Engine.editor_hint:
