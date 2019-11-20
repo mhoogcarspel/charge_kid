@@ -11,6 +11,10 @@
 [ext_resource path="res://Menu/FinalScreen/FinalScreen.tscn" type="PackedScene" id=9]
 
 [node name="Level08" index="0" instance=ExtResource( 1 )]
+bgm_1 = true
+bgm_2 = true
+bgm_3 = true
+bgm_4 = true
 
 [node name="ScreenTransition" parent="." index="0"]
 opening_text = "Level 8

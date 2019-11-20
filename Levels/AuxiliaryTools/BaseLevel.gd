@@ -9,7 +9,7 @@ export(bool) var bgm_4
 onready var sound_control:SoundControl = get_tree().get_nodes_in_group("sound_control")[0]
 onready var message = $MessageLabel
 onready var message_timer = get_node("MessageLabel/Timer")
-onready var player = get_node("Player")
+
 
 var level_node
 var level_length: float
@@ -26,18 +26,18 @@ func _ready():
 	sound_control.set_volume_bgm([bgm_1, bgm_2, bgm_3, bgm_4])
 
 func _process(delta):
-	var pos: Vector2 = player.position + Vector2(0,-36) - message.rect_size/2
-	var screen_center: Vector2 = $PlayerCamera.get_camera_screen_center()
-	var screen_size: Vector2 = get_viewport().size/2
-	screen_size.x *= $PlayerCamera.zoom.x
-	screen_size.y *= $PlayerCamera.zoom.y
-	message.rect_position.x = clamp(pos.x,  screen_center.x - screen_size.x,
-											screen_center.x + screen_size.x -
-											message.rect_size.x)
-	message.rect_position.y = clamp(pos.y,  screen_center.y - screen_size.y,
-											screen_center.y + screen_size.y)
-	
-	print($PlayerCamera.get_camera_screen_center())
+	var player = get_tree().get_nodes_in_group("player")[0]
+	if player != null:
+		var pos: Vector2 = player.position + Vector2(0,-36) - message.rect_size/2
+		var screen_center: Vector2 = $PlayerCamera.get_camera_screen_center()
+		var screen_size: Vector2 = get_viewport().size/2
+		screen_size.x *= $PlayerCamera.zoom.x
+		screen_size.y *= $PlayerCamera.zoom.y
+		message.rect_position.x = clamp(pos.x,  screen_center.x - screen_size.x,
+												screen_center.x + screen_size.x -
+												message.rect_size.x)
+		message.rect_position.y = clamp(pos.y,  screen_center.y - screen_size.y,
+												screen_center.y + screen_size.y)
 
 
 

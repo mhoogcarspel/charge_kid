@@ -14,6 +14,7 @@
 [ext_resource path="res://Levels/Levels/Level03.tscn" type="PackedScene" id=12]
 
 [node name="Level02" instance=ExtResource( 1 )]
+bgm_1 = true
 
 [node name="ScreenTransition" parent="." index="0"]
 opening_text = "Level 2
@@ -134,7 +135,8 @@ editor/display_folded = true
 visible = false
 position = Vector2( 416, 24 )
 script = ExtResource( 10 )
-message = "skip it all!"
+message = "Skip it all!"
+message_time = 4.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Message" index="0"]
 polygon = PoolVector2Array( -40, 24, -40, -8, 32, -8, 32, 24 )

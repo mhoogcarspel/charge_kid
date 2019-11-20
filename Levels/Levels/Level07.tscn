@@ -14,7 +14,11 @@
 [ext_resource path="res://Levels/AuxiliaryTools/CameraLimiter.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Levels/Messages/MomentumMessage.tscn" type="PackedScene" id=13]
 
-[node name="Level07" index="0" instance=ExtResource( 1 )]
+[node name="Level07" instance=ExtResource( 1 )]
+bgm_1 = true
+bgm_2 = true
+bgm_3 = true
+bgm_4 = true
 
 [node name="ScreenTransition" parent="." index="0"]
 opening_text = "Level 7
@@ -166,9 +170,6 @@ margin_left = -48.0
 margin_top = 70.4
 margin_right = -8.0
 margin_bottom = 84.4
-
-[node name="Timer" parent="MomentumMessage" index="3"]
-wait_time = 5.0
 
 [editable path="Background"]
 

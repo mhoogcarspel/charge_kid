@@ -90,6 +90,9 @@ shader_param/inactive_color = Color( 0.490196, 0.490196, 0.490196, 1 )
 shader_param/active = true
 
 [node name="Level05" instance=ExtResource( 1 )]
+bgm_1 = true
+bgm_2 = true
+bgm_3 = true
 
 [node name="ScreenTransition" parent="." index="0"]
 opening_text = "Level 5
@@ -163,6 +166,7 @@ gate_height = 3
 gap_size = 0
 active = true
 close_in_inverse_order = false
+direction = ""
 
 [node name="Gate2" parent="." index="12" instance=ExtResource( 9 )]
 position = Vector2( 840, 248 )
@@ -170,6 +174,7 @@ gate_height = 3
 gap_size = 0
 active = false
 close_in_inverse_order = false
+direction = ""
 
 [node name="LeverBody" parent="." index="13" instance=ExtResource( 10 )]
 position = Vector2( 664, 280 )
@@ -243,6 +248,7 @@ gate_height = 4
 gap_size = 0
 active = false
 close_in_inverse_order = false
+direction = ""
 
 [node name="EnergyWire8" parent="." index="22" instance=ExtResource( 11 )]
 editor/display_folded = true
@@ -270,12 +276,15 @@ gate_height = 4
 gap_size = 0
 active = true
 close_in_inverse_order = false
+direction = ""
 
 [node name="Message" parent="." index="25" instance=ExtResource( 12 )]
 editor/display_folded = true
 visible = false
 position = Vector2( 40, 72 )
-message = "good job, nothing here"
+message = "Good job, nothing here.
+Go back."
+message_time = 4.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Message" index="1"]
 polygon = PoolVector2Array( 40, 24, 40, 0, -40, 0, -40, 24 )
@@ -284,7 +293,8 @@ polygon = PoolVector2Array( 40, 24, 40, 0, -40, 0, -40, 24 )
 editor/display_folded = true
 visible = false
 position = Vector2( 163.321, 15.6227 )
-message = "what?!?!"
+message = "What?!?!"
+message_time = 4.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Message2" index="1"]
 polygon = PoolVector2Array( 28.6794, 16.3773, 28.6794, 0.37735, -11.3206, 0.37735, -11.3206, 16.3773 )
