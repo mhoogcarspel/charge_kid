@@ -18,10 +18,10 @@ func _init(actions_dictionary: Dictionary):
 	"DPAD Left": ["Left", "Left", "Left"],
 	"DPAD Right": ["Right", "Right", "Right"],
 	
-	"Face Button Bottom": ["A", "Cross", "B"],
-	"Face Button Right": ["B", "Circle", "A"],
-	"Face Button Left": ["X", "Square", "Y"],
-	"Face Button Top": ["Y", "Triangle", "X"],
+	"Face Button Bottom": ["A", "α", "B"],
+	"Face Button Right": ["B", "γ", "A"],
+	"Face Button Left": ["X", "β", "Y"],
+	"Face Button Top": ["Y", "δ", "X"],
 	
 	"L": ["LB", "L1", "L"],
 	"R": ["RB", "R1", "R"],
@@ -32,7 +32,7 @@ func _init(actions_dictionary: Dictionary):
 	"R3": ["R-Stick", "R3", "R-Stick"],
 	
 	"Start": ["Start", "Start", "+"],
-	"Select": ["Select", "Select", "-"],
+	"Select": ["Back", "Select", "-"],
 	}
 
 func erase_all_actions() -> void:
