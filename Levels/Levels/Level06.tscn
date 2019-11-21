@@ -226,10 +226,7 @@ tile_data = PoolIntArray( 65540, 18, 0, 131072, 9, 0 )
 [node name="Gate2" parent="." index="18" instance=ExtResource( 13 )]
 position = Vector2( 472, 72 )
 gate_height = 12
-gap_size = 0
 active = true
-close_in_inverse_order = false
-direction = ""
 
 [node name="FuelTank3" parent="." index="19" instance=ExtResource( 9 )]
 position = Vector2( 536, 264 )

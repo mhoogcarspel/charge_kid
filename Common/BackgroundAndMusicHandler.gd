@@ -2,7 +2,7 @@ extends Node
 class_name SoundControl
 
 onready var mus = AudioServer.get_bus_index("MUS")
-onready var  LowPassFilter:AudioEffectFilter
+onready var LowPassFilter:AudioEffectFilter
 export var max_freq = 22000
 export var min_freq = 450
 

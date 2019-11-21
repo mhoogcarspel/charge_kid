@@ -48,19 +48,21 @@ func add_cells() -> void:
 
 func activate() -> void:
 	self.active = not active
+	
 
 func deactivate() -> void:
 	self.active = false
+	
 
 func is_active() -> bool:
 	return active
-
 
 
 func _ready():
 	add_cells()
 	$Sparks/Hitbox/CollisionShape2D.shape.extents = Vector2(2,gate_height*8 + 8)
 	$Sparks/Hitbox/CollisionShape2D.position.y = gate_height*8 - 8
+
 
 func on_hitbox_body_entered(body):
 	if not Engine.editor_hint and body.is_in_group("player") and self.is_active():

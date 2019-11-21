@@ -352,10 +352,10 @@ extents = Vector2( 3, 3 )
 [sub_resource type="RectangleShape2D" id=17]
 extents = Vector2( 5.5, 7 )
 
-[sub_resource type="RectangleShape2D" id=19]
+[sub_resource type="RectangleShape2D" id=18]
 extents = Vector2( 1, 1 )
 
-[sub_resource type="RectangleShape2D" id=20]
+[sub_resource type="RectangleShape2D" id=19]
 extents = Vector2( 1, 1 )
 
 [node name="Player" type="KinematicBody2D" groups=[
@@ -578,7 +578,6 @@ collision_mask = 12
 shape = SubResource( 17 )
 
 [node name="SFX" type="Node" parent="."]
-editor/display_folded = true
 
 [node name="Jump" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 17 )
@@ -602,9 +601,8 @@ stream = ExtResource( 21 )
 bus = "SFX"
 
 [node name="Step" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource( 22 )
-volume_db = -10.0
-bus = "SFX"
+volume_db = -6.0
+bus = "STEPS"
 
 [node name="Land" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 22 )
@@ -626,7 +624,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightLedgeDetector"]
-shape = SubResource( 19 )
+shape = SubResource( 18 )
 
 [node name="LeftLedgeDetector" type="Area2D" parent="."]
 editor/display_folded = true
@@ -639,7 +637,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftLedgeDetector"]
-shape = SubResource( 20 )
+shape = SubResource( 19 )
 [connection signal="timeout" from="PlayerSprite/Timer2" to="PlayerSprite" method="_on_Timer2_timeout"]
 [connection signal="timeout" from="PlayerSprite/PlayerSparksTimer" to="PlayerSprite" method="_on_PlayerSparksTimer_timeout"]
 [connection signal="timeout" from="BoostTimer" to="." method="_on_BoostTimer_timeout"]

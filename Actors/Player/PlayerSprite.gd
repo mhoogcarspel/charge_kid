@@ -13,7 +13,6 @@ onready var step_particles: PackedScene = uncharged_step_particles
 onready var player_sparks: PackedScene = uncharged_player_sparks
 
 
-
 func _ready():
 	self.get_material().set_shader_param("activate", false)
 	self.get_material().set_shader_param("erase", false)
@@ -58,11 +57,17 @@ func standing() -> void:
 
 func step_sound() -> void:
 	if step == 0:
-		player.get_node("SFX/Step").pitch_scale = 0.8
+		player.get_node("SFX/Step").pitch_scale = rand_range(0.7,1)
+		player.get_node("SFX/Step").set_stream(load('res://Assets/SFX/Steps/' + 'step' + str(randi() % 8) + '.ogg'))
+		player.get_node("SFX/Step").get_stream().set_loop(false) 
+		print(player.get_node("SFX/Step").get_stream())
 		player.get_node("SFX/Step").play()
 		step = 1
 	elif step == 1:
-		player.get_node("SFX/Step").pitch_scale = 0.9
+		player.get_node("SFX/Step").pitch_scale = rand_range(0.7,1)
+		player.get_node("SFX/Step").set_stream(load('res://Assets/SFX/Steps/' + 'step' + str(randi() % 8) + '.ogg'))
+		player.get_node("SFX/Step").get_stream().set_loop(false)
+		print(player.get_node("SFX/Step").get_stream()) 
 		player.get_node("SFX/Step").play()
 		step = 0
 	
