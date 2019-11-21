@@ -44,5 +44,5 @@ pitch_scale = 1.2
 autoplay = true
 max_distance = 1500.0
 attenuation = 7.72748
-bus = "SFX"
+bus = "REVERB"
 [connection signal="timeout" from="Sprite/Timer" to="Sprite" method="_on_Timer_timeout"]

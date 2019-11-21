@@ -26,7 +26,7 @@ func _ready():
 
 
 func activate() -> void:
-	$SFX.play()
+	$OpenGate.play()
 	if not is_active():
 		
 		if delay_time > 0:
@@ -44,6 +44,7 @@ func activate() -> void:
 
 
 func deactivate() -> void:
+	$CloseGate.play()
 	if is_active():
 		
 		if delay_time > 0:

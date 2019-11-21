@@ -1,11 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Actors/Interactables/Gate/TriggeredPlatform.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Spritesheets/industrial.v2.png" type="Texture" id=2]
-[ext_resource path="res://Assets/SFX/270310__littlerobotsoundfactory__explosion-04.wav" type="AudioStream" id=3]
-
-
-
+[ext_resource path="res://Assets/SFX/openGate.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Assets/SFX/closeGate.ogg" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Activate"
@@ -96,7 +94,6 @@ extents = Vector2( 8, 1.5 )
 "blocks",
 ]]
 script = ExtResource( 1 )
-direction = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Activate = SubResource( 1 )
@@ -114,9 +111,17 @@ visible = false
 position = Vector2( 0, -6.5 )
 shape = SubResource( 3 )
 
-[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+[node name="OpenGate" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
-bus = "SFX"
+max_distance = 1500.0
+attenuation = 5.46416
+bus = "REVERB"
+
+[node name="CloseGate" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+max_distance = 1500.0
+attenuation = 5.46416
+bus = "REVERB"
 
 [node name="DelayTimer" type="Timer" parent="."]
 wait_time = 0.01

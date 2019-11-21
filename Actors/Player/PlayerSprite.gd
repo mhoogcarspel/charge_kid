@@ -57,17 +57,14 @@ func standing() -> void:
 
 func step_sound() -> void:
 	if step == 0:
-		player.get_node("SFX/Step").pitch_scale = rand_range(0.7,1)
+		player.get_node("SFX/Step").pitch_scale = rand_range(2,2.3)
 		player.get_node("SFX/Step").set_stream(load('res://Assets/SFX/Steps/' + 'step' + str(randi() % 8) + '.ogg'))
-		player.get_node("SFX/Step").get_stream().set_loop(false) 
-		print(player.get_node("SFX/Step").get_stream())
 		player.get_node("SFX/Step").play()
 		step = 1
 	elif step == 1:
-		player.get_node("SFX/Step").pitch_scale = rand_range(0.7,1)
+		player.get_node("SFX/Step").pitch_scale = rand_range(2,2.3)
 		player.get_node("SFX/Step").set_stream(load('res://Assets/SFX/Steps/' + 'step' + str(randi() % 8) + '.ogg'))
-		player.get_node("SFX/Step").get_stream().set_loop(false)
-		print(player.get_node("SFX/Step").get_stream()) 
+#		player.get_node("SFX/Step").get_stream().set_loop(false)
 		player.get_node("SFX/Step").play()
 		step = 0
 	
@@ -77,6 +74,8 @@ func steps() -> void:
 	player.get_parent().add_child(particles)
 
 func land() -> void:
+	player.get_node("SFX/Land").pitch_scale = rand_range(1.8, 2)
+	player.get_node("SFX/Land").set_stream(load('res://Assets/SFX/Landing/' + 'landing' + str(randi() % 2) + '.ogg'))
 	player.get_node("SFX/Land").play()
 	var spawn_position = player.position
 	for i in range(4):

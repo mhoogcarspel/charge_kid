@@ -3,8 +3,6 @@
 [ext_resource path="res://Actors/Interactables/Gate/GateCell.gd" type="Script" id=1]
 [ext_resource path="res://Actors/Interactables/Gate/TriggeredPlatform.tscn" type="PackedScene" id=2]
 
-
-
 [node name="GateCell" type="Node2D"]
 script = ExtResource( 1 )
 

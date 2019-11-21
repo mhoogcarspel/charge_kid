@@ -601,13 +601,15 @@ stream = ExtResource( 21 )
 bus = "SFX"
 
 [node name="Step" type="AudioStreamPlayer" parent="SFX"]
-volume_db = -6.0
-bus = "STEPS"
+volume_db = -9.0
+pitch_scale = 2.0
+bus = "REVERB"
 
 [node name="Land" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 22 )
+volume_db = -6.0
 pitch_scale = 1.8
-bus = "SFX"
+bus = "REVERB"
 
 [node name="Death" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 23 )
