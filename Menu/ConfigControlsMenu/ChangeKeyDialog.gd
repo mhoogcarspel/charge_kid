@@ -25,11 +25,19 @@ func parse(action: String, control_handler: ButtonGetter, type:String):
 func _input(event):
 	if control_handler.just_pressed(event) and not configured and not error:
 		if event is type:
-			if !control_handler.find_another_action_with_same_key(action, event, type):
-				control_handler.change_key_binding(action, event, type)
-				configured = true
-			else:
-				error_message_1()
+			
+#			if !control_handler.find_another_action_with_same_key(action, event, type):
+#				control_handler.change_key_binding(action, event, type)
+#				configured = true
+#			else:
+#				error_message_1()
+			
+			
+			var action2:String = control_handler.find_and_return_another_action_with_same_key(action , event, type)
+			var key2: InputEvent = control_handler.get_type_button_list(action, type)[0]
+			control_handler.swap_keys(action, key2, action2, event, type)
+			configured = true
+			
 		else:
 			error_message_2()
 	elif error and $Timer.is_stopped():

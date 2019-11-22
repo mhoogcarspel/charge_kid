@@ -49,6 +49,12 @@ func change_key_binding(action: String, key: InputEvent, type) -> bool:
 	InputMap.action_add_event(action, key)
 	return true
 
+func swap_keys(action1:String, key1: InputEvent, action2:String, key2:InputEvent, type) -> void:
+	change_key_binding(action1, key2, type)
+	if action2 != "":
+		change_key_binding(action2, key1, type)
+	pass
+
 func find_and_erase_another_action_with_same_key(exception: String, key: InputEvent):
 	for action in actions_list:
 		if action != exception && key_in_list(key, InputMap.get_action_list(action)):
@@ -60,6 +66,12 @@ func find_another_action_with_same_key(exception: String, key: InputEvent, type)
 		if action != exception && key_in_list(key, get_type_button_list(action, type)):
 			return true
 	return false
+
+func find_and_return_another_action_with_same_key(exception: String, key: InputEvent, type) -> String:
+	for action in actions_list:
+		if action != exception && key_in_list(key, get_type_button_list(action, type)):
+			return action
+	return ""
 
 func key_in_list(key:InputEvent, list: Array) -> bool:
 	if key is InputEventKey:
@@ -77,6 +89,8 @@ func key_in_list(key:InputEvent, list: Array) -> bool:
 # and the second must always be joypad.
 
 func get_type_button_list(action: String, type) -> Array:
+	if not action in InputMap.get_actions():
+		return []
 	if !InputMap.get_action_list(action).empty():
 		var button_list: Array = []
 		for button in InputMap.get_action_list(action):
