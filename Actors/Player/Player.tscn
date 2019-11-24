@@ -393,6 +393,7 @@ jump_height = 40.0
 gravity = 500.0
 
 [node name="PlayerSprite" type="Sprite" parent="."]
+editor/display_folded = true
 material = SubResource( 2 )
 texture = ExtResource( 3 )
 vframes = 4
@@ -592,6 +593,7 @@ collision_mask = 12
 shape = SubResource( 17 )
 
 [node name="SFX" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="Jump" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 30 )
@@ -631,7 +633,7 @@ bus = "SFX"
 [node name="RightLedgeDetector" type="Area2D" parent="."]
 editor/display_folded = true
 visible = false
-position = Vector2( 4, 8 )
+position = Vector2( 16, 8 )
 collision_layer = 0
 collision_mask = 19
 __meta__ = {
@@ -644,7 +646,7 @@ shape = SubResource( 18 )
 [node name="LeftLedgeDetector" type="Area2D" parent="."]
 editor/display_folded = true
 visible = false
-position = Vector2( -5, 8 )
+position = Vector2( -16, 8 )
 collision_layer = 0
 collision_mask = 19
 __meta__ = {
