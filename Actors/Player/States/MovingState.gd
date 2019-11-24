@@ -7,6 +7,10 @@ func _init(owner: KinematicBody2D):
 	self.owner = owner
 	self.animation_player = owner.get_node("AnimationPlayer")
 
+func enter():
+	if animation_player.current_animation != "Landing":
+		owner.get_node("PlayerSprite").step_sound()
+
 func update(delta):
 	owner.horizontal_move(get_directional_inputs(), delta)
 	owner.vertical_move(delta)
