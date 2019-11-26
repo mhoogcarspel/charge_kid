@@ -40,11 +40,17 @@ func _ready():
 	$Scene.add_child(start)
 	actual_scene = start_scene
 	
+	load_world_map()
 	
+
+func load_world_map() -> void:
+	if world_map_instance != null:
+		world_map_instance.queue_free()
 	world_map_instance = world_map.instance()
 	world_map_instance.main = self
 
 func back_to_start():
+	load_world_map()
 	change_scene(start_scene)
 
 func change_scene(next_scene: PackedScene):

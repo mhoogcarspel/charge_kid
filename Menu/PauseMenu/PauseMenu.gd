@@ -8,6 +8,10 @@ onready var menu = get_node("CenterContainer/MarginContainer/MarginContainer/VBo
 func _ready():
 	menu.get_children()[0].grab_focus()
 
+func close_pause_menu() -> void:
+	get_tree().paused = false
+	self.queue_free()
+
 func _on_Resume_pressed():
 	get_tree().paused = false
 	self.queue_free()
@@ -31,7 +35,7 @@ func _on_Controls_pressed():
 func _on_Quit_pressed():
 	get_tree().quit()
 
-func _on_ButtonModel_pressed():
+func _on_LevelList_pressed():
 	get_tree().paused = false
 	self.queue_free()
 	var world_map = main.go_to_world_map()
@@ -46,3 +50,6 @@ func refocus() -> void:
 	menu.get_children()[0].grab_focus()
 
 
+func _on_MainMenu_pressed():
+	close_pause_menu()
+	main.back_to_start()
