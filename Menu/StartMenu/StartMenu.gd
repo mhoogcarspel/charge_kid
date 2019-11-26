@@ -3,6 +3,7 @@ extends MarginContainer
 export(PackedScene) var game_scene
 export(PackedScene) var world_map
 export(PackedScene) var credits
+export(PackedScene) var button_model
 export(ButtonGroup) var button_group
 onready var main = get_tree().get_nodes_in_group("main")[0]
 
@@ -10,7 +11,7 @@ func _ready():
 	var button_list = $CenterContainer/CenterContainer/VBoxContainer3/VBoxContainer3
 	var save_file: = File.new()
 	if save_file.file_exists(main.save_name + ".save"):
-		var continue_button: ButtonModel = preload("res://Menu/ButtonModel.tscn").instance()
+		var continue_button: ButtonModel = button_model.instance()
 		continue_button.text = "Continue"
 		var new_game_button: ButtonModel = button_list.get_node("NewGame")
 		var quit_button: ButtonModel = button_list.get_node("Quit")
