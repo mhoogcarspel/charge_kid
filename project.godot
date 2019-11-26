@@ -47,7 +47,7 @@ _global_script_classes=[ {
 "base": "Button",
 "class": "ButtonModel",
 "language": "GDScript",
-"path": "res://Menu/ButtonModel.gd"
+"path": "res://Menu/ButtonsAndOptions/ButtonModel.gd"
 }, {
 "base": "PlayerBaseState",
 "class": "DyingState",
@@ -88,6 +88,11 @@ _global_script_classes=[ {
 "class": "LevelNode",
 "language": "GDScript",
 "path": "res://Menu/WorldMap/LevelNode.gd"
+}, {
+"base": "Control",
+"class": "MenuOption",
+"language": "GDScript",
+"path": "res://Menu/ButtonsAndOptions/BaseMenuOption.gd"
 }, {
 "base": "PlayerBaseState",
 "class": "MovingState",
@@ -181,6 +186,7 @@ _global_script_class_icons={
 "JumpingState": "",
 "LabelBaseModel": "",
 "LevelNode": "",
+"MenuOption": "",
 "MovingState": "",
 "OnAirState": "",
 "Player": "",

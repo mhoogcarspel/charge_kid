@@ -6,7 +6,8 @@
 [ext_resource path="res://Menu/MenuPanel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Menu/ConfigControlsMenu/Box.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Menu/ConfigControlsMenu/MenuSeparator.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Menu/ButtonModel.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Menu/ButtonsAndOptions/ButtonModel.tscn" type="PackedScene" id=7]
+
 
 [node name="ControlConfigMenu" type="Control"]
 pause_mode = 2

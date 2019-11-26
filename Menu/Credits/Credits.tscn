@@ -2,7 +2,8 @@
 
 [ext_resource path="res://Menu/Credits/Credits.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Menu/ButtonModel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Menu/ButtonsAndOptions/ButtonModel.tscn" type="PackedScene" id=3]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 20

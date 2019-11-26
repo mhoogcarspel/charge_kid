@@ -6,8 +6,9 @@
 [ext_resource path="res://Menu/StartMenu/StartMenu.tres" type="ButtonGroup" id=4]
 [ext_resource path="res://Assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://icon.png" type="Texture" id=6]
-[ext_resource path="res://Menu/ButtonModel.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Menu/ButtonsAndOptions/ButtonModel.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Menu/ReturnShortcut.tres" type="ShortCut" id=8]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
