@@ -51,6 +51,19 @@ func is_holding_bullet() -> bool:
 func boosting_particles(switch: bool):
 	for particle in owner.get_node("BoostParticles").get_children():
 		particle.emitting = switch
+	
+	if switch == true:
+		var shader = owner.get_node("PlayerSprite").ripples_shader.instance()
+		shader.position = owner.position
+		shader.speed = 600
+		shader.wave_length = 80
+		shader.length_increase = 0
+		shader.initial_amplitude = 30
+		shader.amp_linear_decrease = true
+		shader.amp_hyp_decrease = false
+		shader.amplitude_decrease = 60
+		shader.pulses = 2
+		owner.get_parent().add_child(shader)
 
 
 

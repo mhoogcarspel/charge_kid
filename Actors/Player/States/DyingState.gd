@@ -14,6 +14,18 @@ func enter():
 		particle.emitting = true
 	owner.can_boost = false
 	
+	var shader = owner.get_node("PlayerSprite").ripples_shader.instance()
+	shader.position = owner.position
+	shader.speed = 600
+	shader.wave_length = 160
+	shader.length_increase = 0
+	shader.initial_amplitude = 30
+	shader.amp_linear_decrease = false
+	shader.amp_hyp_decrease = false
+	shader.amplitude_decrease = 0
+	shader.pulses = 4
+	owner.get_parent().add_child(shader)
+	
 	var camera = owner.get_tree().get_nodes_in_group("camera")[0]
 	camera.player_just_died()
 	camera.shake_screen(24)
