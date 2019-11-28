@@ -2,8 +2,6 @@
 
 [ext_resource path="res://Levels/AuxiliaryTools/CameraLimiter.gd" type="Script" id=1]
 
-
-
 [node name="CameraLimiter" type="Area2D"]
 script = ExtResource( 1 )
 
