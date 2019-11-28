@@ -53,7 +53,7 @@ func boosting_particles(switch: bool):
 		particle.emitting = switch
 	
 	if switch == true:
-		var shader = owner.get_node("PlayerSprite").ripples_shader.instance()
+		var shader = owner.shader_effects("Ripple")
 		shader.position = owner.position
 		shader.speed = 600
 		shader.wave_length = 80

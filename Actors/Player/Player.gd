@@ -209,3 +209,9 @@ func _on_SpikesSentinel_body_entered(body):
 
 
 
+func shader_effects(shader: String):
+	match shader:
+		"Ripple":
+			return $ShaderEffects.ripple_effect.instance()
+
+

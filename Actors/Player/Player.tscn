@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://Actors/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Actors/TheUniqueBullet/Bullet.tscn" type="PackedScene" id=2]
@@ -21,21 +21,23 @@
 [ext_resource path="res://Assets/SFX/Landing/landing0.ogg" type="AudioStream" id=19]
 [ext_resource path="res://Assets/SFX/Landing/landing1.ogg" type="AudioStream" id=20]
 [ext_resource path="res://Assets/SFX/Landing/landing2.ogg" type="AudioStream" id=21]
-[ext_resource path="res://Assets/ShaderEffects/Ripples/Ripples.tscn" type="PackedScene" id=22]
-[ext_resource path="res://Assets/Particles/particle1.png" type="Texture" id=23]
-[ext_resource path="res://Actors/Player/OneShotShootParticles.gd" type="Script" id=24]
-[ext_resource path="res://Actors/Player/Particles/ShootParticles.tscn" type="PackedScene" id=25]
-[ext_resource path="res://Assets/Particles/particle2.png" type="Texture" id=26]
-[ext_resource path="res://Actors/Player/OneShotBoostParticles.gd" type="Script" id=27]
-[ext_resource path="res://Actors/Player/Particles/BoostParticles.tscn" type="PackedScene" id=28]
-[ext_resource path="res://Actors/Player/Particles/DeathParticles1.tscn" type="PackedScene" id=29]
-[ext_resource path="res://Actors/Player/Particles/DeathParticles2.tscn" type="PackedScene" id=30]
-[ext_resource path="res://Assets/SFX/270320__littlerobotsoundfactory__jump-00.wav" type="AudioStream" id=31]
-[ext_resource path="res://Assets/SFX/270307__littlerobotsoundfactory__explosion-01.wav" type="AudioStream" id=32]
-[ext_resource path="res://Assets/SFX/270335__littlerobotsoundfactory__shoot-03.wav" type="AudioStream" id=33]
-[ext_resource path="res://Assets/SFX/270340__littlerobotsoundfactory__pickup-01.wav" type="AudioStream" id=34]
-[ext_resource path="res://Assets/SFX/270341__littlerobotsoundfactory__pickup-04.wav" type="AudioStream" id=35]
-[ext_resource path="res://Assets/SFX/270308__littlerobotsoundfactory__explosion-00.wav" type="AudioStream" id=36]
+[ext_resource path="res://Assets/Particles/particle1.png" type="Texture" id=22]
+[ext_resource path="res://Actors/Player/OneShotShootParticles.gd" type="Script" id=23]
+[ext_resource path="res://Actors/Player/Particles/ShootParticles.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Assets/Particles/particle2.png" type="Texture" id=25]
+[ext_resource path="res://Actors/Player/OneShotBoostParticles.gd" type="Script" id=26]
+[ext_resource path="res://Actors/Player/Particles/BoostParticles.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Actors/Player/Particles/DeathParticles1.tscn" type="PackedScene" id=28]
+[ext_resource path="res://Actors/Player/Particles/DeathParticles2.tscn" type="PackedScene" id=29]
+[ext_resource path="res://Actors/Player/Particles/RespawnParticles.tscn" type="PackedScene" id=30]
+[ext_resource path="res://Actors/Player/ShaderEffects.gd" type="Script" id=31]
+[ext_resource path="res://Assets/ShaderEffects/Ripples/Ripples.tscn" type="PackedScene" id=32]
+[ext_resource path="res://Assets/SFX/270320__littlerobotsoundfactory__jump-00.wav" type="AudioStream" id=33]
+[ext_resource path="res://Assets/SFX/270307__littlerobotsoundfactory__explosion-01.wav" type="AudioStream" id=34]
+[ext_resource path="res://Assets/SFX/270335__littlerobotsoundfactory__shoot-03.wav" type="AudioStream" id=35]
+[ext_resource path="res://Assets/SFX/270340__littlerobotsoundfactory__pickup-01.wav" type="AudioStream" id=36]
+[ext_resource path="res://Assets/SFX/270341__littlerobotsoundfactory__pickup-04.wav" type="AudioStream" id=37]
+[ext_resource path="res://Assets/SFX/270308__littlerobotsoundfactory__explosion-00.wav" type="AudioStream" id=38]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -409,7 +411,6 @@ uncharged_player_sparks = ExtResource( 7 )
 charged_player_sparks = ExtResource( 8 )
 step_sounds = [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ]
 land_sounds = [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ) ]
-ripples_shader = ExtResource( 22 )
 
 [node name="ProjectileParticles" type="CPUParticles2D" parent="PlayerSprite"]
 position = Vector2( 5, 2 )
@@ -418,7 +419,7 @@ emitting = false
 amount = 12
 lifetime = 0.2
 local_coords = false
-texture = ExtResource( 23 )
+texture = ExtResource( 22 )
 emission_shape = 1
 emission_sphere_radius = 1.0
 spread = 180.0
@@ -528,10 +529,11 @@ color = Color( 1, 0.309804, 0.470588, 1 )
 editor/display_folded = true
 
 [node name="OneShotShootParticles" type="Node2D" parent="ShootParticles"]
-script = ExtResource( 24 )
-particles = [ ExtResource( 25 ) ]
+script = ExtResource( 23 )
+particles = [ ExtResource( 24 ) ]
 
 [node name="BoostParticles" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Particles1" type="CPUParticles2D" parent="BoostParticles"]
 z_index = -2
@@ -539,21 +541,32 @@ emitting = false
 amount = 9
 lifetime = 0.5
 local_coords = false
-texture = ExtResource( 26 )
+texture = ExtResource( 25 )
 spread = 0.0
 gravity = Vector2( 0, 0 )
 initial_velocity = 0.0
 
 [node name="OneShotBoostParticles" type="Node2D" parent="BoostParticles"]
-script = ExtResource( 27 )
-particles = [ ExtResource( 28 ) ]
+script = ExtResource( 26 )
+particles = [ ExtResource( 27 ) ]
 
 [node name="DeathParticles" type="Node2D" parent="."]
 editor/display_folded = true
 
 [node name="OneShotDeathParticles" type="Node2D" parent="DeathParticles"]
-script = ExtResource( 27 )
-particles = [ ExtResource( 29 ), ExtResource( 30 ) ]
+script = ExtResource( 26 )
+particles = [ ExtResource( 28 ), ExtResource( 29 ) ]
+
+[node name="RespawnParticles" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="OneShotParticles" type="Node2D" parent="RespawnParticles"]
+script = ExtResource( 26 )
+particles = [ ExtResource( 30 ) ]
+
+[node name="ShaderEffects" type="Node2D" parent="."]
+script = ExtResource( 31 )
+ripple_effect = ExtResource( 32 )
 
 [node name="BunnyTimer" type="Timer" parent="."]
 wait_time = 0.1
@@ -597,24 +610,24 @@ shape = SubResource( 17 )
 editor/display_folded = true
 
 [node name="Jump" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource( 31 )
+stream = ExtResource( 33 )
 volume_db = -8.0
 bus = "SFX"
 
 [node name="SuperJump" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource( 32 )
-bus = "SFX"
-
-[node name="Shoot" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource( 33 )
-bus = "SFX"
-
-[node name="BulletPickup" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 34 )
 bus = "SFX"
 
-[node name="FuelPickup" type="AudioStreamPlayer" parent="SFX"]
+[node name="Shoot" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 35 )
+bus = "SFX"
+
+[node name="BulletPickup" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 36 )
+bus = "SFX"
+
+[node name="FuelPickup" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 37 )
 bus = "SFX"
 
 [node name="Step" type="AudioStreamPlayer" parent="SFX"]
@@ -628,7 +641,7 @@ pitch_scale = 1.8
 bus = "REVERB"
 
 [node name="Death" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource( 36 )
+stream = ExtResource( 38 )
 bus = "SFX"
 
 [node name="RightLedgeDetector" type="Area2D" parent="."]

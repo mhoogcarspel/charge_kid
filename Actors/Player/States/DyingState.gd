@@ -14,7 +14,7 @@ func enter():
 		particle.emitting = true
 	owner.can_boost = false
 	
-	var shader = owner.get_node("PlayerSprite").ripples_shader.instance()
+	var shader = owner.shader_effects("Ripple")
 	shader.position = owner.position
 	shader.speed = 600
 	shader.wave_length = 160
@@ -51,5 +51,18 @@ func enter():
 				bullet.queue_free()
 		
 		owner.get_parent().add_child(next_player)
+		var ripple = next_player.shader_effects("Ripple")
+		ripple.position = next_player.position
+		ripple.speed = 600
+		ripple.wave_length = 120
+		ripple.length_increase = 0
+		ripple.initial_amplitude = 20
+		ripple.amp_linear_decrease = true
+		ripple.amp_hyp_decrease = false
+		ripple.amplitude_decrease = 80
+		ripple.pulses = 4
+		next_player.get_parent().add_child(ripple)
+		for particle in next_player.get_node("RespawnParticles").get_children():
+			particle.emitting = true
 	else:
 		owner.get_tree().reload_current_scene()

@@ -10,8 +10,6 @@ export (PackedScene) var charged_player_sparks
 export (Array, AudioStream) var step_sounds
 export (Array, AudioStream) var land_sounds
 
-export (PackedScene) var ripples_shader
-
 onready var player = get_parent()
 onready var step_particles: PackedScene = uncharged_step_particles
 onready var player_sparks: PackedScene = uncharged_player_sparks
