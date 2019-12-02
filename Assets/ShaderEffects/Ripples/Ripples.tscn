@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Assets/Spritesheets/blank.png" type="Texture" id=1]
-[ext_resource path="res://Assets/ShaderEffects/Ripples/Ripples.gd" type="Script" id=2]
+[ext_resource path="res://Assets/ShaderEffects/Ripples/Ripples.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Spritesheets/blank.png" type="Texture" id=2]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -45,17 +45,22 @@ shader_param/amplitude_decrease = 6.0
 shader_param/pulses = 2
 shader_param/scale = Vector2( 256, 256 )
 
-[node name="Ripples" type="Sprite"]
-material = SubResource( 2 )
-scale = Vector2( 128, 128 )
+[node name="Ripples" type="Node2D"]
 z_index = 10
-texture = ExtResource( 1 )
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 speed = 160.0
 wave_length = 16.0
 amplitude = 20.0
 amplitude_decrease = 60.0
 pulses = 2
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+copy_mode = 2
+
+[node name="Shader" type="Sprite" parent="."]
+material = SubResource( 2 )
+scale = Vector2( 128, 128 )
+texture = ExtResource( 2 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
