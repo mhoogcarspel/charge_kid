@@ -19,9 +19,7 @@ func enter():
 	shader.speed = 600
 	shader.wave_length = 160
 	shader.length_increase = 0
-	shader.initial_amplitude = 30
-	shader.amp_linear_decrease = false
-	shader.amp_hyp_decrease = false
+	shader.amplitude = 30
 	shader.amplitude_decrease = 0
 	shader.pulses = 4
 	owner.get_parent().add_child(shader)
@@ -53,12 +51,10 @@ func enter():
 		owner.get_parent().add_child(next_player)
 		var ripple = next_player.shader_effects("Ripple")
 		ripple.position = next_player.position
-		ripple.speed = 600
+		ripple.speed = 400
 		ripple.wave_length = 120
 		ripple.length_increase = 0
-		ripple.initial_amplitude = 20
-		ripple.amp_linear_decrease = true
-		ripple.amp_hyp_decrease = false
+		ripple.amplitude = 20
 		ripple.amplitude_decrease = 80
 		ripple.pulses = 4
 		next_player.get_parent().add_child(ripple)

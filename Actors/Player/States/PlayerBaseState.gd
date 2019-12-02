@@ -58,9 +58,7 @@ func boosting_particles(switch: bool):
 		shader.speed = 600
 		shader.wave_length = 80
 		shader.length_increase = 0
-		shader.initial_amplitude = 30
-		shader.amp_linear_decrease = true
-		shader.amp_hyp_decrease = false
+		shader.amplitude = 30
 		shader.amplitude_decrease = 60
 		shader.pulses = 2
 		owner.get_parent().add_child(shader)

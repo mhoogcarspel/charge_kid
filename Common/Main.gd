@@ -5,6 +5,7 @@ export(PackedScene) var pause_menu
 export(PackedScene) var debugger_layer
 export(PackedScene) var controls_menu
 export(PackedScene) var world_map
+export(PackedScene) var player_scene
 export(String) var save_name
 export(bool) var debugging
 
@@ -23,7 +24,6 @@ onready var actions: Dictionary = {
 onready var control_handler = ButtonGetter.new(actions)
 onready var old_dir_input: Vector2 = Vector2.ZERO
 onready var actual_dir_input: Vector2 = Vector2.ZERO
-onready var player_scene: PackedScene = preload("res://Actors/Player/Player.tscn")
 onready var last_input_device: String = "Keyboard"
 onready var controller_layout: String = "Microsoft"
 

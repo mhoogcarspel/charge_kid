@@ -11,53 +11,26 @@ uniform float time;
 uniform float speed;
 uniform float wave_length;
 uniform float length_increase;
-uniform float initial_amplitude;
-uniform bool amp_linear_decrease;
-uniform bool amp_hyp_decrease;
+uniform float amplitude;
 uniform float amplitude_decrease;
 uniform int pulses;
 uniform vec2 scale;
 
-void fragment()
-{
+void fragment()  {
 	float PI = 3.14159265359;
 	float current_length = wave_length + time*length_increase;
-	float current_amplitude = initial_amplitude;
+	float current_amplitude = clamp(amplitude - time*amplitude_decrease, 0.0, 999999999.0);
 	
-	if (amp_hyp_decrease == true)
-	{
-		current_amplitude /= (1.0 + time*amplitude_decrease);
-	}
-	if (amp_linear_decrease == true)
-	{
-		current_amplitude -= time*amplitude_decrease;
-		if (current_amplitude < 0.0)
-		{
-			current_amplitude = 0.0;
-		}
-	}
+	vec2 pos = (UV - vec2(0.5,0.5))*scale;
+	float wave_pos = mod(clamp(length(pos) - time*speed, 0.0, wave_length), wave_length);
+	vec2 dir = normalize(pos);
+	float x = wave_pos*PI*2.0/current_length;
+	vec2 mod_uv = dir*current_amplitude*sin(x*float(pulses))/scale;
 	
-	vec2 pos = UV - vec2(0.5,0.5);
-	pos.x *= scale.x;
-	pos.y *= scale.y;
-	float wave_pos = length(pos) - time*speed;
-	
-	if (wave_pos >= 0.0 && wave_pos <= current_length)
-	{
-		vec2 dir = normalize(pos);
-		float x = wave_pos*PI*2.0/current_length;
-		
-		vec2 mod_uv = dir*current_amplitude*sin(x*float(pulses));
-		mod_uv.x /= scale.x;
-		mod_uv.y /= scale.y;
-		
-		COLOR = texture(SCREEN_TEXTURE, SCREEN_UV + mod_uv);
-	}
-	else
-	{
-		COLOR = texture(SCREEN_TEXTURE, SCREEN_UV)
-	}
+	COLOR = texture(SCREEN_TEXTURE, SCREEN_UV + mod_uv);
 }
+
+
 "
 
 [sub_resource type="ShaderMaterial" id=2]
@@ -67,9 +40,7 @@ shader_param/time = null
 shader_param/speed = 160.0
 shader_param/wave_length = 16.0
 shader_param/length_increase = 0.0
-shader_param/initial_amplitude = 4.0
-shader_param/amp_linear_decrease = true
-shader_param/amp_hyp_decrease = null
+shader_param/amplitude = null
 shader_param/amplitude_decrease = 6.0
 shader_param/pulses = 2
 shader_param/scale = Vector2( 256, 256 )
@@ -82,9 +53,8 @@ texture = ExtResource( 1 )
 script = ExtResource( 2 )
 speed = 160.0
 wave_length = 16.0
-initial_amplitude = 4.0
-amp_linear_decrease = true
-amplitude_decrease = 6.0
+amplitude = 20.0
+amplitude_decrease = 60.0
 pulses = 2
 
 [node name="Timer" type="Timer" parent="."]
