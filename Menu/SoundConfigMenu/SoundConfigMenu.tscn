@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Menu/SoundConfigMenu/SoundConfigMenu.gd" type="Script" id=1]
-[ext_resource path="res://Menu/ButtonsAndOptions/MenuHSlider.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Menu/SoundConfigMenu/BGMSlider.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Menu/SoundConfigMenu/SFXSlider.tscn" type="PackedScene" id=3]
 
 [node name="SoundConfigMenu" type="Control"]
 anchor_right = 1.0
@@ -21,13 +22,22 @@ margin_bottom = 384.0
 
 [node name="Options" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 524.0
-margin_top = 373.0
+margin_top = 360.0
 margin_right = 600.0
-margin_bottom = 395.0
+margin_bottom = 408.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="MenuHSlider" parent="CenterContainer/Options" instance=ExtResource( 2 )]
+[node name="BGMSlider" parent="CenterContainer/Options" instance=ExtResource( 2 )]
 margin_left = 0.0
 margin_right = 76.0
+focus_neighbour_bottom = NodePath("../SFXSlider")
+
+[node name="SFXSlider" parent="CenterContainer/Options" instance=ExtResource( 3 )]
+margin_left = 0.0
+margin_top = 26.0
+margin_right = 76.0
+margin_bottom = 48.0
+focus_neighbour_top = NodePath("../BGMSlider")
+slide_time = 0.001

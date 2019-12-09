@@ -3,6 +3,7 @@ class_name MenuHSlider
 
 export(float) var slide_time
 
+onready var sound_control: SoundControl = get_tree().get_nodes_in_group("sound_control")[0]
 onready var slider_timer: Timer = Timer.new()
 
 func _ready():

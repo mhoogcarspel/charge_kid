@@ -1,6 +1,11 @@
 extends Node
 class_name SoundControl
 
+export(float) var bgm_starting_volume
+export(float) var sfx_starting_volume
+onready var bgm_volume_value: float
+onready var sfx_volume_value: float
+
 onready var mus = AudioServer.get_bus_index("MUS")
 onready var LowPassFilter:AudioEffectFilter
 export var max_freq = 22000
@@ -10,6 +15,8 @@ onready var player:KinematicBody2D
 
 
 func _ready():
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("MUS"), linear2db(bgm_starting_volume))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear2db(sfx_starting_volume))
 	pass
 #	play_music()
 
@@ -24,7 +31,7 @@ func zero_all_bgm() -> void:
 func set_volume_bgm(list:Array):
 	for i in range(list.size()):
 		if list[i]:
-			$BGM.get_children()[i].volume_db = 0
+			$BGM.get_children()[i].volume_db = linear2db(bgm_volume_value)
 
 func death_effect():
 	LowPassFilter = AudioServer.get_bus_effect(mus, 0)
@@ -58,3 +65,10 @@ func respawn_effect():
 #func _on_Music_finished():
 #	play_music()
 
+#### Functions Related to Volume control ######
+
+func change_bgm_volume_value(linear_value: float) -> void:
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("MUS"), linear2db(linear_value))
+
+func change_sfx_volume_value(linear_value: float) -> void:
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear2db(linear_value))
