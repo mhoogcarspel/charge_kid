@@ -32,7 +32,7 @@ func _process(_delta):
 			switch_option_timer.stop()
 
 func _on_focus_entered():
-	$Timer.start()
+	switch_option_timer.start(switch_option_time)
 
 func _on_focus_exited():
 	if not main.get_node("MenuAccept").is_playing():

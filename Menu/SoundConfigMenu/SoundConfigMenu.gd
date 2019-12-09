@@ -13,4 +13,4 @@ func set_slider_size(new_value: int) -> void:
 	pass
 
 func _ready():
-	pass
+		$CenterContainer/Options.get_children()[0].grab_focus()

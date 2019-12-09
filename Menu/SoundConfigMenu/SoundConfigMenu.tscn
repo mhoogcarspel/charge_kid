@@ -20,41 +20,14 @@ margin_right = 562.0
 margin_bottom = 384.0
 
 [node name="Options" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 541.0
-margin_top = 350.0
-margin_right = 583.0
-margin_bottom = 418.0
+margin_left = 524.0
+margin_top = 373.0
+margin_right = 600.0
+margin_bottom = 395.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="HSlider" parent="CenterContainer/Options" instance=ExtResource( 2 )]
-anchor_left = 0.0
-anchor_right = 0.0
+[node name="MenuHSlider" parent="CenterContainer/Options" instance=ExtResource( 2 )]
 margin_left = 0.0
-margin_right = 42.0
-margin_bottom = 14.0
-
-[node name="HSlider2" parent="CenterContainer/Options" instance=ExtResource( 2 )]
-anchor_left = 0.0
-anchor_right = 0.0
-margin_left = 0.0
-margin_top = 18.0
-margin_right = 42.0
-margin_bottom = 32.0
-
-[node name="HSlider3" parent="CenterContainer/Options" instance=ExtResource( 2 )]
-anchor_left = 0.0
-anchor_right = 0.0
-margin_left = 0.0
-margin_top = 36.0
-margin_right = 42.0
-margin_bottom = 50.0
-
-[node name="HSlider4" parent="CenterContainer/Options" instance=ExtResource( 2 )]
-anchor_left = 0.0
-anchor_right = 0.0
-margin_left = 0.0
-margin_top = 54.0
-margin_right = 42.0
-margin_bottom = 68.0
+margin_right = 76.0
