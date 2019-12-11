@@ -4,6 +4,7 @@
 [ext_resource path="res://Menu/SoundConfigMenu/SFXSlider.gd" type="Script" id=2]
 
 [node name="SFXSlider" instance=ExtResource( 1 )]
+margin_right = 97.0
 script = ExtResource( 2 )
 slide_time = 0.01
 
