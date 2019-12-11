@@ -89,6 +89,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Menu/WorldMap/LevelNode.gd"
 }, {
+"base": "Node",
+"class": "Main",
+"language": "GDScript",
+"path": "res://Common/Main.gd"
+}, {
 "base": "ButtonModel",
 "class": "MenuHSlider",
 "language": "GDScript",
@@ -191,6 +196,7 @@ _global_script_class_icons={
 "JumpingState": "",
 "LabelBaseModel": "",
 "LevelNode": "",
+"Main": "",
 "MenuHSlider": "",
 "MenuOption": "",
 "MovingState": "",

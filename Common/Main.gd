@@ -1,4 +1,5 @@
 extends Node
+class_name Main
 
 export(PackedScene) var start_scene
 export(PackedScene) var pause_menu
@@ -9,6 +10,7 @@ export(PackedScene) var world_map
 export(PackedScene) var player_scene
 export(PackedScene) var configuration_menu
 export(String) var save_name
+export(String) var sound_config
 export(bool) var debugging
 
 onready var actions: Dictionary = {
@@ -43,7 +45,6 @@ func _ready():
 	actual_scene = start_scene
 	
 	load_world_map()
-	
 
 func load_world_map() -> void:
 	if world_map_instance != null:

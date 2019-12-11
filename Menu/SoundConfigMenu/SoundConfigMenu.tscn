@@ -26,11 +26,11 @@ margin_bottom = 49.0
 
 [node name="MenuPanel" parent="MarginContainer" instance=ExtResource( 2 )]
 margin_right = 307.0
-margin_bottom = 150.0
+margin_bottom = 176.0
 
 [node name="Options" type="VBoxContainer" parent="MarginContainer"]
 margin_right = 307.0
-margin_bottom = 150.0
+margin_bottom = 176.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -72,7 +72,7 @@ margin_top = 70.0
 margin_right = 255.0
 margin_bottom = 92.0
 focus_neighbour_top = NodePath("../BGMSlider")
-focus_neighbour_bottom = NodePath("../Return")
+focus_neighbour_bottom = NodePath("../Default")
 switch_option_time = 0.1
 
 [node name="HSeparator" parent="MarginContainer/Options" instance=ExtResource( 3 )]
@@ -80,27 +80,37 @@ margin_top = 96.0
 margin_right = 307.0
 margin_bottom = 100.0
 
-[node name="HSeparator2" parent="MarginContainer/Options" instance=ExtResource( 3 )]
+[node name="Default" parent="MarginContainer/Options" instance=ExtResource( 7 )]
+margin_left = 91.0
 margin_top = 104.0
+margin_right = 215.0
+margin_bottom = 126.0
+focus_neighbour_top = NodePath("../SFXSlider")
+focus_neighbour_bottom = NodePath("../Return")
+text = "Default"
+
+[node name="HSeparator2" parent="MarginContainer/Options" instance=ExtResource( 3 )]
+margin_top = 130.0
 margin_right = 307.0
-margin_bottom = 108.0
+margin_bottom = 134.0
 
 [node name="HSeparator3" parent="MarginContainer/Options" instance=ExtResource( 3 )]
-margin_top = 112.0
+margin_top = 138.0
 margin_right = 307.0
-margin_bottom = 116.0
+margin_bottom = 142.0
 
 [node name="Return" parent="MarginContainer/Options" instance=ExtResource( 7 )]
 margin_left = 99.0
-margin_top = 120.0
+margin_top = 146.0
 margin_right = 207.0
-margin_bottom = 142.0
-focus_neighbour_top = NodePath("../SFXSlider")
+margin_bottom = 168.0
+focus_neighbour_top = NodePath("../Default")
 focus_neighbour_bottom = NodePath("../BGMSlider")
 text = "Return"
 
 [node name="HSeparator5" parent="MarginContainer/Options" instance=ExtResource( 3 )]
-margin_top = 146.0
+margin_top = 172.0
 margin_right = 307.0
-margin_bottom = 150.0
+margin_bottom = 176.0
+[connection signal="pressed" from="MarginContainer/Options/Default" to="." method="_on_Default_pressed"]
 [connection signal="pressed" from="MarginContainer/Options/Return" to="." method="_on_Return_pressed"]

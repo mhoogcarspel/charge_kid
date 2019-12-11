@@ -27,6 +27,7 @@ world_map = ExtResource( 7 )
 player_scene = ExtResource( 8 )
 configuration_menu = ExtResource( 9 )
 save_name = "charge_kid_progress"
+sound_config = "sound_config"
 
 [node name="BackgroundAndMusicHandler" parent="." instance=ExtResource( 10 )]
 
