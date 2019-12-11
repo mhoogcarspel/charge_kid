@@ -1,15 +1,17 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Common/Main.gd" type="Script" id=1]
 [ext_resource path="res://Menu/StartMenu/StartMenu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Menu/PauseMenu/PauseMenu.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Actors/Player/States/DebuggingStateMachine.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Menu/ConfigControlsMenu/ControlConfigMenu.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Menu/WorldMap/WorldMap.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Actors/Player/Player.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Common/BackgroundAndMusicHandler.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Assets/SFX/270322__littlerobotsoundfactory__menu-navigate-02.wav" type="AudioStream" id=9]
-[ext_resource path="res://Assets/SFX/270324__littlerobotsoundfactory__menu-navigate-00.wav" type="AudioStream" id=10]
+[ext_resource path="res://Menu/SoundConfigMenu/SoundConfigMenu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Menu/WorldMap/WorldMap.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Actors/Player/Player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Menu/ConfigMenus/ConfigOptionsMenu.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Common/BackgroundAndMusicHandler.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/SFX/270322__littlerobotsoundfactory__menu-navigate-02.wav" type="AudioStream" id=11]
+[ext_resource path="res://Assets/SFX/270324__littlerobotsoundfactory__menu-navigate-00.wav" type="AudioStream" id=12]
 
 [node name="Main" type="Node" groups=[
 "main",
@@ -20,21 +22,23 @@ start_scene = ExtResource( 2 )
 pause_menu = ExtResource( 3 )
 debugger_layer = ExtResource( 4 )
 controls_menu = ExtResource( 5 )
-world_map = ExtResource( 6 )
-player_scene = ExtResource( 7 )
+sound_menu = ExtResource( 6 )
+world_map = ExtResource( 7 )
+player_scene = ExtResource( 8 )
+configuration_menu = ExtResource( 9 )
 save_name = "charge_kid_progress"
 
-[node name="BackgroundAndMusicHandler" parent="." instance=ExtResource( 8 )]
+[node name="BackgroundAndMusicHandler" parent="." instance=ExtResource( 10 )]
 
 [node name="HudContainer" type="CanvasLayer" parent="."]
 
 [node name="MenuNavigate" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 9 )
+stream = ExtResource( 11 )
 volume_db = -5.0
 bus = "SFX"
 
 [node name="MenuAccept" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 10 )
+stream = ExtResource( 12 )
 bus = "SFX"
 
 [node name="MenuNavTimer" type="Timer" parent="."]

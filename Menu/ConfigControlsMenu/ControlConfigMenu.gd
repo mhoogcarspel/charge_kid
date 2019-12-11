@@ -61,7 +61,7 @@ func _on_Defaults_pressed():
 
 func _on_Return_pressed():
 	if not pause_menu:
-		main.back_to_start()
+		main.change_scene(main.configuration_menu)
 	else:
 		get_parent().pause_mode = PAUSE_MODE_PROCESS
 		get_parent().refocus()

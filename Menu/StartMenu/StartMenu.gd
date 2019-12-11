@@ -38,7 +38,7 @@ func _on_StartGame_pressed():
 	main.go_to_world_map()
 
 
-func _on_Controls_pressed():
+func _on_Settings_pressed():
 	main.change_scene(main.configuration_menu)
 
 

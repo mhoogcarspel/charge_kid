@@ -82,11 +82,11 @@ margin_left = 182.0
 margin_right = 322.0
 margin_bottom = 22.0
 focus_neighbour_top = NodePath("../Quit")
-focus_neighbour_bottom = NodePath("../Controls")
+focus_neighbour_bottom = NodePath("../Settings")
 group = ExtResource( 5 )
 text = "New Game"
 
-[node name="Controls" parent="CenterContainer/CenterContainer/VBoxContainer3/VBoxContainer3" instance=ExtResource( 4 )]
+[node name="Settings" parent="CenterContainer/CenterContainer/VBoxContainer3/VBoxContainer3" instance=ExtResource( 4 )]
 margin_left = 182.0
 margin_top = 26.0
 margin_right = 322.0
@@ -101,7 +101,7 @@ margin_left = 190.0
 margin_top = 52.0
 margin_right = 314.0
 margin_bottom = 74.0
-focus_neighbour_top = NodePath("../Controls")
+focus_neighbour_top = NodePath("../Settings")
 focus_neighbour_bottom = NodePath("../Quit")
 group = ExtResource( 5 )
 text = "Credits"
@@ -117,6 +117,6 @@ shortcut = ExtResource( 8 )
 group = ExtResource( 5 )
 text = "Quit"
 [connection signal="pressed" from="CenterContainer/CenterContainer/VBoxContainer3/VBoxContainer3/NewGame" to="." method="_on_StartGame_pressed"]
-[connection signal="pressed" from="CenterContainer/CenterContainer/VBoxContainer3/VBoxContainer3/Controls" to="." method="_on_Controls_pressed"]
+[connection signal="pressed" from="CenterContainer/CenterContainer/VBoxContainer3/VBoxContainer3/Settings" to="." method="_on_Settings_pressed"]
 [connection signal="pressed" from="CenterContainer/CenterContainer/VBoxContainer3/VBoxContainer3/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="CenterContainer/CenterContainer/VBoxContainer3/VBoxContainer3/Quit" to="." method="_on_Quit_pressed"]

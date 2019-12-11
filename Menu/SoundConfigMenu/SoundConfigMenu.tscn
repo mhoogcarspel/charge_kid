@@ -63,6 +63,7 @@ margin_right = 255.0
 margin_bottom = 66.0
 focus_neighbour_top = NodePath("../Return")
 focus_neighbour_bottom = NodePath("../SFXSlider")
+switch_option_time = 0.1
 
 [node name="SFXSlider" parent="MarginContainer/Options" instance=ExtResource( 6 )]
 margin_left = 51.0
@@ -71,6 +72,7 @@ margin_right = 255.0
 margin_bottom = 92.0
 focus_neighbour_top = NodePath("../BGMSlider")
 focus_neighbour_bottom = NodePath("../Return")
+switch_option_time = 0.1
 
 [node name="HSeparator" parent="MarginContainer/Options" instance=ExtResource( 3 )]
 margin_top = 96.0

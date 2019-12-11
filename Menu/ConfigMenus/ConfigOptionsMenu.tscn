@@ -57,6 +57,8 @@ margin_left = 10.0
 margin_top = 63.0
 margin_right = 230.0
 margin_bottom = 85.0
+focus_neighbour_top = NodePath("../Return")
+focus_neighbour_bottom = NodePath("../Controls")
 text = "Sound Options"
 
 [node name="Controls" parent="MarginContainer/Options" instance=ExtResource( 5 )]
@@ -64,6 +66,8 @@ margin_left = 26.0
 margin_top = 89.0
 margin_right = 214.0
 margin_bottom = 111.0
+focus_neighbour_top = NodePath("../SoundOptions")
+focus_neighbour_bottom = NodePath("../Return")
 text = "Control Map"
 
 [node name="HSeparator" parent="MarginContainer/Options" instance=ExtResource( 3 )]
@@ -76,14 +80,19 @@ margin_top = 123.0
 margin_right = 240.0
 margin_bottom = 127.0
 
-[node name="Controls2" parent="MarginContainer/Options" instance=ExtResource( 5 )]
+[node name="Return" parent="MarginContainer/Options" instance=ExtResource( 5 )]
 margin_left = 66.0
 margin_top = 131.0
 margin_right = 174.0
 margin_bottom = 153.0
+focus_neighbour_top = NodePath("../Controls")
+focus_neighbour_bottom = NodePath("../SoundOptions")
 text = "Return"
 
 [node name="HSeparator6" parent="MarginContainer/Options" instance=ExtResource( 3 )]
 margin_top = 157.0
 margin_right = 240.0
 margin_bottom = 161.0
+[connection signal="pressed" from="MarginContainer/Options/SoundOptions" to="." method="_on_SoundOptions_pressed"]
+[connection signal="pressed" from="MarginContainer/Options/Controls" to="." method="_on_Controls_pressed"]
+[connection signal="pressed" from="MarginContainer/Options/Return" to="." method="_on_Return_pressed"]

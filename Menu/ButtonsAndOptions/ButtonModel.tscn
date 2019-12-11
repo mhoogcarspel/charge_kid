@@ -22,7 +22,7 @@ custom_colors/font_color_pressed = Color( 1, 0.309804, 0.470588, 1 )
 button_mask = 0
 flat = true
 script = ExtResource( 2 )
-switch_option_time = 0.1
+switch_option_time = 0.15
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
