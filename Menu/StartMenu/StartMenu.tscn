@@ -94,7 +94,7 @@ margin_bottom = 48.0
 focus_neighbour_top = NodePath("../NewGame")
 focus_neighbour_bottom = NodePath("../Credits")
 group = ExtResource( 5 )
-text = "Controls"
+text = "Settings"
 
 [node name="Credits" parent="CenterContainer/CenterContainer/VBoxContainer3/VBoxContainer3" instance=ExtResource( 4 )]
 margin_left = 190.0

@@ -39,7 +39,7 @@ func _on_StartGame_pressed():
 
 
 func _on_Controls_pressed():
-	main.change_scene(main.controls_menu)
+	main.change_scene(main.configuration_menu)
 
 
 func _on_Credits_pressed():
