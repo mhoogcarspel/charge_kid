@@ -1,6 +1,6 @@
 extends Control
 
-export(PackedScene) var control_menu
+export(PackedScene) var settings_menu
 onready var control_handler : ButtonGetter = get_tree().get_nodes_in_group("main")[0].control_handler
 onready var main = get_tree().get_nodes_in_group("main")[0]
 onready var menu = get_node("CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer")
@@ -25,12 +25,19 @@ func _on_RestartLevel_pressed():
 	else:
 		get_tree().reload_current_scene()
 
-func _on_Controls_pressed():
+func _on_Settings_pressed():
 	self.pause_mode = PAUSE_MODE_STOP
 	menu.get_node("Resume").shortcut = null
-	var control_window = control_menu.instance()
-	control_window.pause_menu = true
-	self.add_child(control_window)
+	var settings_window = settings_menu.instance()
+	settings_window.pause_menu = true
+	self_hide()
+	self.add_child(settings_window)
+
+func self_hide() -> void:
+	$CenterContainer.hide()
+
+func self_show() -> void:
+	$CenterContainer.show()
 
 func _on_Quit_pressed():
 	get_tree().quit()

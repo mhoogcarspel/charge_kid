@@ -16,14 +16,31 @@ func _on_Return_pressed():
 		main.back_to_start()
 	else:
 		get_parent().pause_mode = PAUSE_MODE_PROCESS
+		get_parent().self_show()
 		get_parent().refocus()
-		get_parent().menu.get_node("Resume").shortcut = return_shortcut
 		self.queue_free()
 
 
 func _on_SoundOptions_pressed():
-	main.change_scene(main.sound_menu)
+	self_hide()
+	self.add_child(prepare_scene(main.sound_menu))
 
 
 func _on_Controls_pressed():
-	main.change_scene(main.controls_menu)
+	self.add_child(prepare_scene(main.controls_menu))
+
+func prepare_scene(settings_menu: PackedScene) -> Control:
+	self.pause_mode = PAUSE_MODE_STOP
+	var settings_window = settings_menu.instance()
+	if pause_menu:
+		settings_window.pause_menu = true
+	return settings_window
+
+func refocus() -> void:
+	$MarginContainer/Options/SoundOptions.grab_focus()
+
+func self_hide() -> void:
+	$MarginContainer.hide()
+
+func self_show() -> void:
+	$MarginContainer.show()

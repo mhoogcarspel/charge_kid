@@ -65,7 +65,7 @@ func _on_Return_pressed():
 	else:
 		get_parent().pause_mode = PAUSE_MODE_PROCESS
 		get_parent().refocus()
-		get_parent().menu.get_node("Resume").shortcut = return_shortcut
+		get_parent().self_show()
 		self.queue_free()
 
 func _on_Change_pressed():

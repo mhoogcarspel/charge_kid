@@ -1,13 +1,12 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Menu/PauseMenu/PauseMenu.gd" type="Script" id=1]
-[ext_resource path="res://Menu/ConfigControlsMenu/ControlConfigMenu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Menu/ConfigMenus/ConfigOptionsMenu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Menu/MenuPanel.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Menu/LabelBaseModel.gd" type="Script" id=5]
 [ext_resource path="res://Menu/ButtonsAndOptions/ButtonModel.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Menu/ReturnShortcut.tres" type="ShortCut" id=7]
-
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 4 )
@@ -21,7 +20,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource( 1 )
-control_menu = ExtResource( 2 )
+settings_menu = ExtResource( 2 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_left = 0.5
@@ -87,47 +86,47 @@ margin_top = 26.0
 margin_right = 220.0
 margin_bottom = 48.0
 focus_neighbour_top = NodePath("../Resume")
-focus_neighbour_bottom = NodePath("../LevelList")
+focus_neighbour_bottom = NodePath("../Settings")
 text = "Restart Level"
+
+[node name="Settings" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
+margin_left = 40.0
+margin_top = 52.0
+margin_right = 180.0
+margin_bottom = 74.0
+focus_neighbour_top = NodePath("../RestartLevel")
+focus_neighbour_bottom = NodePath("../LevelList")
+text = "Settings"
 
 [node name="LevelList" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
 margin_left = 24.0
-margin_top = 52.0
+margin_top = 78.0
 margin_right = 196.0
-margin_bottom = 74.0
-focus_neighbour_top = NodePath("../RestartLevel")
+margin_bottom = 100.0
+focus_neighbour_top = NodePath("../Settings")
 focus_neighbour_bottom = NodePath("../MainMenu")
 text = "Level List"
 
 [node name="MainMenu" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
 margin_left = 32.0
-margin_top = 78.0
-margin_right = 188.0
-margin_bottom = 100.0
-focus_neighbour_top = NodePath("../LevelList")
-focus_neighbour_bottom = NodePath("../Controls")
-text = "Main Menu"
-
-[node name="Controls" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
-margin_left = 40.0
 margin_top = 104.0
-margin_right = 180.0
+margin_right = 188.0
 margin_bottom = 126.0
-focus_neighbour_top = NodePath("../MainMenu")
+focus_neighbour_top = NodePath("../LevelList")
 focus_neighbour_bottom = NodePath("../Quit")
-text = "Controls"
+text = "Main Menu"
 
 [node name="Quit" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
 margin_left = 32.0
 margin_top = 130.0
 margin_right = 188.0
 margin_bottom = 152.0
-focus_neighbour_top = NodePath("../Controls")
+focus_neighbour_top = NodePath("../MainMenu")
 focus_neighbour_bottom = NodePath("../Resume")
 text = "Quit Game"
 [connection signal="pressed" from="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer/Resume" to="." method="_on_Resume_pressed"]
 [connection signal="pressed" from="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer/RestartLevel" to="." method="_on_RestartLevel_pressed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer/Settings" to="." method="_on_Settings_pressed"]
 [connection signal="pressed" from="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer/LevelList" to="." method="_on_LevelList_pressed"]
 [connection signal="pressed" from="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer/MainMenu" to="." method="_on_MainMenu_pressed"]
-[connection signal="pressed" from="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer/Controls" to="." method="_on_Controls_pressed"]
 [connection signal="pressed" from="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]

@@ -15,6 +15,6 @@ func _on_Return_pressed():
 		main.change_scene(main.configuration_menu)
 	else:
 		get_parent().pause_mode = PAUSE_MODE_PROCESS
+		get_parent().self_show()
 		get_parent().refocus()
-		get_parent().menu.get_node("Resume").shortcut = return_shortcut
 		self.queue_free()
