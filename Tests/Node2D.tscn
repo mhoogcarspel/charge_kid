@@ -7,58 +7,39 @@
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
+uniform float time;
+
+uniform float speed;
 uniform float radius;
-uniform float torsion;
+uniform float amplitude;
+uniform float pulses;
+uniform vec2 scale;
 
-
-
-vec2 rotate (vec2 vector, float angle)  {
-	return vec2(vector.x*cos(angle) - vector.y*sin(angle),
-				vector.y*cos(angle) + vector.x*sin(angle));
-}
-
-
-
-void fragment ()  {
+void fragment()  {
 	float PI = 3.14159265359;
-	vec2 center = vec2(0.5); // Position of the shader node
-	vec2 pos = (UV - center); // Position of the current fragment in pixels
+	vec2 origin = vec2(0.5);
 	
-	// is_inside is 1 when pos is within radius distance of center and 0 otherwise
-	float is_inside = sign(mod(clamp(length(pos), 0.0, radius), radius));
+	vec2 pos = (UV - origin)*scale;
+	float x = clamp(length(pos), 0.0, radius)/radius;
+	float cur_amp = amplitude*cos(x*PI/2.0)*sin(x*2.0*PI*pulses + time*2.0*PI*speed);
 	
-	COLOR = texture(SCREEN_TEXTURE, SCREEN_UV + (-pos + rotate(pos, torsion))*is_inside);
+	vec2 dir = normalize(pos);
+	vec2 mod_uv = dir*cur_amp/scale;
+	
+	COLOR = texture(SCREEN_TEXTURE, SCREEN_UV + mod_uv);
 }
 
-//uniform float speed;
-//uniform float wave_length;
-//uniform float length_increase;
-//uniform float amplitude;
-//uniform float amplitude_decrease;
-//uniform int pulses;
-//uniform vec2 scale;
-//
-//void fragment()  {
-//	float time = mod(TIME, 1.0);
-//	float PI = 3.14159265359;
-//	float current_length = wave_length + time*length_increase;
-//	float current_amplitude = clamp(amplitude - time*amplitude_decrease, 0.0, 999999999.0);
-//
-//	vec2 pos = (UV - vec2(0.5,0.5))*scale;
-//	float wave_pos = mod(clamp(length(pos) - time*speed, 0.0, wave_length), wave_length);
-//	vec2 dir = normalize(pos);
-//	float x = wave_pos*PI*2.0/current_length;
-//	vec2 mod_uv = dir*current_amplitude*sin(x*float(pulses))/scale;
-//
-//	COLOR = texture(SCREEN_TEXTURE, SCREEN_UV + mod_uv);
-//}
 "
 
 [sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true
 shader = SubResource( 1 )
-shader_param/radius = 0.25
-shader_param/torsion = 0.25
+shader_param/time = 0.0
+shader_param/speed = 2.0
+shader_param/radius = 64.0
+shader_param/amplitude = 5.0
+shader_param/pulses = 2.0
+shader_param/scale = Vector2( 256, 256 )
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( 256, 256 )
@@ -90,7 +71,13 @@ tile_data = PoolIntArray( -786441, 0, 196609, -720905, 0, 327680, -655369, 0, 32
 texture = ExtResource( 2 )
 
 [node name="Shader" parent="." instance=ExtResource( 3 )]
+visible = false
 material = SubResource( 2 )
+position = Vector2( -128, 0 )
+
+[node name="Shader2" parent="." instance=ExtResource( 3 )]
+material = SubResource( 2 )
+position = Vector2( -128, 0 )
 
 [editable path="Background"]
 
