@@ -12,12 +12,12 @@ onready var menu: Control
 onready var white: Color = Color("#f6f6e6")
 onready var pink: Color = Color("#ff4c7b")
 
-func parse(menu: Control, key:String, action: String, control_handler:ButtonGetter, type: String = ""):
-	self.menu = menu
-	self.key = key
-	self.action  = action
-	self.control_handler = control_handler
-	self.type = type
+func parse(menu_0: Control, key_0: String, action_0: String, control_handler_0: ButtonGetter, type_0: String = ""):
+	self.menu = menu_0
+	self.key = key_0
+	self.action  = action_0
+	self.control_handler = control_handler_0
+	self.type = type_0
 
 func _process(delta):
 	self.type = menu.type

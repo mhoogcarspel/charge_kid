@@ -7,9 +7,9 @@ onready var actions_list: Array
 
 
 
-func _init(actions_dictionary: Dictionary):
+func _init(actions_dictionary_0: Dictionary):
 	
-	self.actions_dictionary = actions_dictionary.duplicate()
+	self.actions_dictionary = actions_dictionary_0.duplicate()
 	self.actions_list = actions_dictionary.keys().duplicate()
 	
 	self.gamepad_map = {

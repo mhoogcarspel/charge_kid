@@ -5,9 +5,9 @@ var speed: float
 var direction: Vector2
 var player: KinematicBody2D
 
-func _init(owner: Node, player):
+func _init(owner: Node, player_node):
 	self.owner = owner
-	self.player = player
+	self.player = player_node
 
 func enter():
 	owner.get_node("PhysicalCollider").set_deferred("disabled", false)

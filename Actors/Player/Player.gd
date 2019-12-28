@@ -127,22 +127,22 @@ func get_previous_state() -> String:
 
 
 func horizontal_move(direction: Vector2, delta: float,
-					factor: float = 1.0, air_brake: bool = false):
+					fac: float = 1.0, air_brake: bool = false):
 	if direction.x != 0:
-		velocity += direction*delta*acceleration*factor
+		velocity += direction*delta*acceleration*fac
 	elif velocity.x != 0:
 		var deacceleration = friction
 		if air_brake:
 			deacceleration = air_friction
 		var signal_velocity = velocity.x/abs(velocity.x)
-		velocity.x -= sign(velocity.x)*deacceleration*delta*factor
+		velocity.x -= sign(velocity.x)*deacceleration*delta*fac
 		if signal_velocity != velocity.x/abs(velocity.x):
 			velocity.x = 0
 	velocity.x = clamp(velocity.x, -speed, speed)
 	return
 
-func vertical_move(delta: float, factor: float = 1):
-	self.velocity.y += gravity*delta*factor
+func vertical_move(delta: float, fac: float = 1):
+	self.velocity.y += gravity*delta*fac
 	if self.velocity.y > falling_speed:
 		self.velocity.y = falling_speed
 

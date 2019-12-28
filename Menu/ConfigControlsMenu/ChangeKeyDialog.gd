@@ -14,10 +14,10 @@ func _ready():
 	menu.pause_mode = PAUSE_MODE_STOP
 	self.pause_mode = PAUSE_MODE_PROCESS
 
-func parse(action: String, control_handler: ButtonGetter, type:String):
-	self.action = action
-	self.control_handler = control_handler
-	match type:
+func parse(action_0: String, control_handler_0: ButtonGetter, type_0: String):
+	self.action = action_0
+	self.control_handler = control_handler_0
+	match type_0:
 		"Keyboard":
 			self.type = InputEventKey
 			self.type_b = InputEventKey

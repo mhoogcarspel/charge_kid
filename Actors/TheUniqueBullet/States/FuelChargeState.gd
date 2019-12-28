@@ -5,9 +5,9 @@ onready var player: KinematicBody2D
 onready var speed: float
 onready var direction: Vector2
 
-func _init(owner: Node, player):
+func _init(owner: Node, player_0):
 	self.owner = owner
-	self.player = player
+	self.player = player_0
 
 func enter():
 	speed = owner.fuel_speed
@@ -26,5 +26,5 @@ func exit():
 	owner.speed = 0
 
 func update(delta):
-	var direction = (player.position - owner.position).normalized()
+	direction = (player.position - owner.position).normalized()
 	move_bullet(direction, speed)
