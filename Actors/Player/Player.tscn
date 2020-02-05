@@ -379,7 +379,6 @@ collision_layer = 0
 collision_mask = 3
 script = ExtResource( 1 )
 bullet = ExtResource( 2 )
-shoot_offset = 7.0
 label_time = 2.0
 factor = 1.0
 has_bullet = true

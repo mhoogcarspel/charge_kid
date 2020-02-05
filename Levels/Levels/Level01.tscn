@@ -194,7 +194,10 @@ wires = [ NodePath("../EnergyWire") ]
 [node name="Gate" parent="." index="11" instance=ExtResource( 10 )]
 position = Vector2( 488, 152 )
 gate_height = 7
+gap_size = 0
 active = true
+close_in_inverse_order = false
+direction = ""
 
 [node name="FuelTank" parent="." index="12" instance=ExtResource( 11 )]
 position = Vector2( 936, 328 )
@@ -214,7 +217,10 @@ tile_data = PoolIntArray( 327680, 15, 0 )
 [node name="Gate2" parent="." index="14" instance=ExtResource( 10 )]
 position = Vector2( 1016, 184 )
 gate_height = 4
+gap_size = 0
 active = true
+close_in_inverse_order = false
+direction = ""
 
 [node name="FuelTank2" parent="." index="15" instance=ExtResource( 11 )]
 position = Vector2( 984, 232 )
@@ -223,6 +229,7 @@ position = Vector2( 984, 232 )
 editor/display_folded = true
 visible = false
 position = Vector2( 568, 224 )
+z_index = -1
 
 [node name="CollisionPolygon2D" parent="DropMessage" index="0"]
 polygon = PoolVector2Array( -24, 32, -24, 16, 56, 16, 56, 32 )
@@ -237,6 +244,7 @@ margin_bottom = -13.0
 editor/display_folded = true
 visible = false
 position = Vector2( 216, 280 )
+z_index = -1
 
 [node name="CollisionPolygon2D" parent="JumpMessage" index="0"]
 position = Vector2( -88, -144 )
@@ -252,6 +260,7 @@ margin_bottom = 70.3363
 editor/display_folded = true
 visible = false
 position = Vector2( 176, 144 )
+z_index = -1
 
 [node name="CollisionPolygon2D" parent="ShootMessage" index="0"]
 polygon = PoolVector2Array( 8, 32, 56, 32, 56, 64, 8, 64 )
@@ -264,6 +273,7 @@ margin_right = 96.0
 editor/display_folded = true
 visible = false
 position = Vector2( 896, 312 )
+z_index = -1
 
 [node name="CollisionPolygon2D" parent="BoostMessage" index="0"]
 position = Vector2( -192, -143 )

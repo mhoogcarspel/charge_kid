@@ -144,3 +144,4 @@ initial_velocity_random = 1.0
 scale_amount = 0.25
 scale_amount_random = 1.0
 [connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]
+[connection signal="body_exited" from="HitBox" to="." method="_on_HitBox_body_exited"]

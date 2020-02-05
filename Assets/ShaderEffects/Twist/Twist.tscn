@@ -1,67 +1,53 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Assets/Spritesheets/blank.png" type="Texture" id=1]
-[ext_resource path="res://Assets/ShaderEffects/Twist/Twist.gd" type="Script" id=2]
+[ext_resource path="res://Assets/ShaderEffects/Twist/Twist.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Spritesheets/blank.png" type="Texture" id=2]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
+uniform vec2 scale;
 uniform float radius;
 uniform float torsion;
-
-
 
 vec2 rotate (vec2 vector, float angle)  {
 	return vec2(vector.x*cos(angle) - vector.y*sin(angle),
 				vector.y*cos(angle) + vector.x*sin(angle));
 }
 
-
-
-void fragment ()  {
+void fragment() {
 	float PI = 3.14159265359;
-	vec2 center = vec2(0.5,0.5); // Position of the shader node
-	vec2 pos = (UV - center); // Position of the current fragment in pixels
+	vec2 origin = vec2(0.5);
 	
-	// is_inside is 1 when pos is within radius distance of center and 0 otherwise
-	float is_inside = sign(mod(clamp(length(pos), 0.0, radius), radius));
+	vec2 pos = (UV - origin)*scale;
+	float x = clamp(length(pos), 0.0, radius)/radius;
 	
-	COLOR = texture(SCREEN_TEXTURE, SCREEN_UV + (-pos + rotate(pos, torsion))*is_inside);
+	if (x < 1.0) {
+		vec2 new_pos = rotate(pos, TIME);
+		vec2 uv_mod = (new_pos - pos)/scale;
+		COLOR = texture(SCREEN_TEXTURE, SCREEN_UV + uv_mod);
+	}
+	else {
+		COLOR = texture(SCREEN_TEXTURE, SCREEN_UV);
+	}
 }
 
-//uniform float speed;
-//uniform float wave_length;
-//uniform float length_increase;
-//uniform float amplitude;
-//uniform float amplitude_decrease;
-//uniform int pulses;
-//uniform vec2 scale;
-//
-//void fragment()  {
-//	float time = mod(TIME, 1.0);
-//	float PI = 3.14159265359;
-//	float current_length = wave_length + time*length_increase;
-//	float current_amplitude = clamp(amplitude - time*amplitude_decrease, 0.0, 999999999.0);
-//
-//	vec2 pos = (UV - vec2(0.5,0.5))*scale;
-//	float wave_pos = mod(clamp(length(pos) - time*speed, 0.0, wave_length), wave_length);
-//	vec2 dir = normalize(pos);
-//	float x = wave_pos*PI*2.0/current_length;
-//	vec2 mod_uv = dir*current_amplitude*sin(x*float(pulses))/scale;
-//
-//	COLOR = texture(SCREEN_TEXTURE, SCREEN_UV + mod_uv);
-//}
 "
 
 [sub_resource type="ShaderMaterial" id=2]
-resource_local_to_scene = true
 shader = SubResource( 1 )
-shader_param/radius = 0.1
-shader_param/torsion = 0.25
+shader_param/scale = null
+shader_param/radius = null
+shader_param/torsion = null
 
-[node name="Twist" type="Sprite"]
+[node name="Twist" type="Node2D"]
+script = ExtResource( 1 )
+radius = 64.0
+torsion = 0.2
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+copy_mode = 2
+
+[node name="Shader" type="Sprite" parent="."]
 material = SubResource( 2 )
-scale = Vector2( 128, 128 )
-z_index = 10
-texture = ExtResource( 1 )
-script = ExtResource( 2 )
+texture = ExtResource( 2 )

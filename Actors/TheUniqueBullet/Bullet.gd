@@ -13,6 +13,7 @@ onready var direction: Vector2
 onready var velocity: Vector2
 onready var player = get_tree().get_nodes_in_group("player")[0]
 onready var animation_player = $AnimationPlayer
+onready var left_player: bool = false
 
 onready var states: Dictionary = {
 	"StandardState": StandardState.new(self),
@@ -68,9 +69,16 @@ func destroy() -> void:
 
 func _on_HitBox_body_entered(body):
 	if not body.is_in_group("bullet") and not body.is_in_group("blocks") and not body.is_in_group("platform") and not body.is_in_group("spikes"):
-		body.hit(self)
+		if body.is_in_group("player") and (left_player or get_state() == "StandingState"):
+			body.hit(self)
+		elif not body.is_in_group("player"):
+			body.hit(self)
 
 func disable_enable_hitbox(set: bool) -> void:
 	$HitBox/HitboxCollider.set_deferred("disabled", !set)
+
+func _on_HitBox_body_exited(body):
+	if body.is_in_group("player"):
+		left_player = true
 
 

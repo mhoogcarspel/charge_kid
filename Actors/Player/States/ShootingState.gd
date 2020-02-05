@@ -22,17 +22,17 @@ func enter():
 	
 	## If gravity is not aplied when the owner is on floor 
 	## the is_on_floor() function will return false 
-	## and after that the OnAirState will be tiggered
+	## and after that the OnAirState will be triggered
 	if !owner.is_on_floor():
 		owner.velocity.y = 0.0
 	owner.velocity.x = 0.0
 	################----------------####################
 	
-	var allow: bool
-	if owner.facing < 0:
-		allow = handle_edge_case(left)
-	else:
-		allow = handle_edge_case(right)
+	var allow: bool = true
+#	if owner.facing < 0:
+#		allow = handle_edge_case(left)
+#	else:
+#		allow = handle_edge_case(right)
 	
 	if allow:
 		var bullet_instance = owner.bullet.instance()
