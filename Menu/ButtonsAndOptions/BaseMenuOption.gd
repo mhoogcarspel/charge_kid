@@ -10,6 +10,7 @@ func _ready():
 	switch_option_timer = get_node_or_null("Timer")
 	if switch_option_timer == null:
 		switch_option_timer = Timer.new()
+		self.add_child(switch_option_timer)
 	
 	switch_option_timer.wait_time = switch_option_time
 	self.connect("focus_entered", self, "_on_focus_entered")
