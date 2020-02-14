@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://Actors/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Actors/TheUniqueBullet/Bullet.tscn" type="PackedScene" id=2]
@@ -357,12 +357,6 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="RectangleShape2D" id=15]
-extents = Vector2( 3, 3 )
-
-[sub_resource type="RectangleShape2D" id=16]
-extents = Vector2( 3, 3 )
-
 [sub_resource type="RectangleShape2D" id=17]
 extents = Vector2( 5.5, 7 )
 
@@ -579,20 +573,6 @@ one_shot = true
 [node name="DropTimer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
-
-[node name="LeftAreaChecker" type="Area2D" parent="."]
-editor/display_folded = true
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftAreaChecker"]
-shape = SubResource( 15 )
-
-[node name="RightAreaChecker" type="Area2D" parent="."]
-editor/display_folded = true
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightAreaChecker"]
-shape = SubResource( 16 )
 
 [node name="SpikesSentinel" type="Area2D" parent="."]
 editor/display_folded = true

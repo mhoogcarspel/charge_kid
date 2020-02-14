@@ -4,7 +4,6 @@ class_name Player
 export(bool) var god_mode
 
 export(PackedScene) var bullet
-export(float) var shoot_offset
 
 export(float) var label_time
 export(float) var factor
@@ -81,9 +80,6 @@ func _ready():
 	timer.queue_free()
 	var camera = get_tree().get_nodes_in_group("camera")[0]
 	camera.player_just_spawned()
-	
-	$LeftAreaChecker.position += Vector2(-shoot_offset,0)
-	$RightAreaChecker.position += Vector2(shoot_offset,0)
 
 
 
