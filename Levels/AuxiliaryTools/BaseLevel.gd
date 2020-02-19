@@ -6,7 +6,6 @@ export(bool) var bgm_2
 export(bool) var bgm_3
 export(bool) var bgm_4
 
-onready var sound_control:SoundControl = get_tree().get_nodes_in_group("sound_control")[0]
 onready var message = $MessageLabel
 onready var message_timer = get_node("MessageLabel/Timer")
 
@@ -22,8 +21,11 @@ func _ready():
 		if tile.x > last_tile:
 			last_tile = tile.x
 	level_length = last_tile*16
-	sound_control.zero_all_bgm()
-	sound_control.set_volume_bgm([bgm_1, bgm_2, bgm_3, bgm_4])
+	
+	if get_tree().get_nodes_in_group("sound_control").size() > 0:
+		var sound_control = get_tree().get_nodes_in_group("sound_control")[0]
+		sound_control.zero_all_bgm()
+		sound_control.set_volume_bgm([bgm_1, bgm_2, bgm_3, bgm_4])
 
 func _process(delta):
 	var player = get_tree().get_nodes_in_group("player")[0]

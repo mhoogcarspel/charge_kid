@@ -31,7 +31,8 @@ func _ready():
 
 func _process(delta):
 	states[stack[0]].update(delta)
-	velocity = move_and_slide(velocity)
+	if not animation_player.is_playing():   # Prevents bullet from moving during teleport animations.
+		velocity = move_and_slide(velocity)
 
 func change_state(state: String) -> void:
 	var previous_state = states[stack[0]]

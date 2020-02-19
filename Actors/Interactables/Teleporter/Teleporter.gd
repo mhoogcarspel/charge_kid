@@ -8,6 +8,7 @@ export (bool) var active
 onready var animation_player = $AnimationPlayer
 
 
+
 func _ready():
 	if active:
 		animation_player.play("Ready")
@@ -46,7 +47,7 @@ func hit(bullet: PlayerBullet) -> void:
 			
 			yield(player.animation_player, "animation_finished")
 			swap_positions(bullet, player)
-			player.shake_screen(16)
+			get_parent().get_node("PlayerCamera").shake_screen(16)
 			if player.facing > 0:
 				player.animation_player.play("TeleportOutRight")
 			else:
