@@ -86,7 +86,7 @@ func _process(delta):
 		$HudContainer.add_child(pause_menu.instance())
 		$PauseTimer.start()
 	
-	#Unpausing
+	# Unpausing
 	if Input.is_action_just_pressed("ui_pause") and !get_tree().get_nodes_in_group("player").empty() and get_tree().paused and $PauseTimer.is_stopped():
 		get_tree().paused = false
 		get_tree().get_nodes_in_group("pause_menu")[0].queue_free()

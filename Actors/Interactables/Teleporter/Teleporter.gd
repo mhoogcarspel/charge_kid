@@ -65,7 +65,7 @@ func hit(bullet: PlayerBullet) -> void:
 func swap_positions(bullet: PlayerBullet, player: Player) -> void:
 	var dummy = player.position
 	bullet.disable_enable_hitbox(false)
-	player.position = bullet.position
+	player.position = self.position + Vector2(0,16)
 	bullet.position = dummy
 
 

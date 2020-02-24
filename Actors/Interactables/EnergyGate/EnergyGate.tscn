@@ -1,12 +1,13 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Actors/Interactables/EnergyGate/EnergyGate.gd" type="Script" id=1]
 [ext_resource path="res://Actors/Interactables/EnergyGate/HitParticles.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Actors/Interactables/EnergyGate/TopEnd.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Spritesheets/robot.v1.png" type="Texture" id=4]
-[ext_resource path="res://Actors/Interactables/EnergyGate/BottomEnd.gd" type="Script" id=5]
-[ext_resource path="res://Actors/Interactables/EnergyGate/GateSparks.gd" type="Script" id=6]
-[ext_resource path="res://Actors/Interactables/EnergyGate/EnergyGateCell.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/ShaderEffects/RippleSource/RippleSource.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Actors/Interactables/EnergyGate/BottomEnd.gd" type="Script" id=6]
+[ext_resource path="res://Actors/Interactables/EnergyGate/GateSparks.gd" type="Script" id=7]
+[ext_resource path="res://Actors/Interactables/EnergyGate/EnergyGateCell.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -45,6 +46,59 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
+[sub_resource type="GDScript" id=8]
+script/source = "extends Node2D
+
+
+export (float) var speed;
+export (float) var radius;
+export (float) var amplitude;
+export (float) var pulses;
+
+onready var shader = $Shader.get_material()
+
+func _process(delta):
+	shader.set_shader_param(\"speed\", speed)
+	shader.set_shader_param(\"radius\", radius)
+	shader.set_shader_param(\"amplitude\", amplitude)
+	shader.set_shader_param(\"pulses\", pulses)
+	shader.set_shader_param(\"scale\", get_viewport().size*2)
+	$Shader.scale = get_viewport().size"
+
+[sub_resource type="Shader" id=10]
+code = "shader_type canvas_item;
+
+uniform float speed;
+uniform float radius;
+uniform float amplitude;
+uniform float pulses;
+uniform vec2 scale;
+
+void fragment()  {
+	float PI = 3.14159265359;
+	vec2 origin = vec2(0.5);
+	
+	vec2 pos = (UV - origin)*scale;
+	float x = clamp(length(pos), 0.0, radius)/radius;
+	float cur_amp = amplitude*cos(x*PI/2.0)*sin(x*2.0*PI*pulses - TIME*2.0*PI*speed);
+	
+	vec2 dir = normalize(pos);
+	vec2 mod_uv = dir*cur_amp/scale;
+	
+	COLOR = texture(SCREEN_TEXTURE, SCREEN_UV + mod_uv);
+}
+
+"
+
+[sub_resource type="ShaderMaterial" id=11]
+resource_local_to_scene = true
+shader = SubResource( 10 )
+shader_param/speed = null
+shader_param/radius = null
+shader_param/amplitude = null
+shader_param/pulses = null
+shader_param/scale = null
+
 [sub_resource type="Animation" id=4]
 resource_name = "Off"
 length = 0.1
@@ -78,6 +132,34 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1 ]
 }
+
+[sub_resource type="GDScript" id=9]
+script/source = "extends Node2D
+
+
+export (float) var speed;
+export (float) var radius;
+export (float) var amplitude;
+export (float) var pulses;
+
+onready var shader = $Shader.get_material()
+
+func _process(delta):
+	shader.set_shader_param(\"speed\", speed)
+	shader.set_shader_param(\"radius\", radius)
+	shader.set_shader_param(\"amplitude\", amplitude)
+	shader.set_shader_param(\"pulses\", pulses)
+	shader.set_shader_param(\"scale\", get_viewport().size*2)
+	$Shader.scale = get_viewport().size"
+
+[sub_resource type="ShaderMaterial" id=12]
+resource_local_to_scene = true
+shader = SubResource( 10 )
+shader_param/speed = null
+shader_param/radius = null
+shader_param/amplitude = null
+shader_param/pulses = null
+shader_param/scale = null
 
 [sub_resource type="Gradient" id=6]
 offsets = PoolRealArray( 0.05, 0.05 )
@@ -130,11 +212,23 @@ gravity = Vector2( 0, 0 )
 initial_velocity = 50.0
 color = Color( 1, 0.309804, 0.470588, 1 )
 
+[node name="RippleSource" parent="Sparks/TopEnd" instance=ExtResource( 5 )]
+editor/display_folded = true
+z_index = 10
+script = SubResource( 8 )
+speed = 8.0
+radius = 48.0
+amplitude = 12.0
+pulses = 3.0
+
+[node name="Shader" parent="Sparks/TopEnd/RippleSource" index="1"]
+material = SubResource( 11 )
+
 [node name="BottomEnd" type="StaticBody2D" parent="Sparks" groups=[
 "blocks",
 ]]
 position = Vector2( 0, 64 )
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="Sparks/BottomEnd"]
 position = Vector2( 0, -8 )
@@ -164,6 +258,18 @@ gravity = Vector2( 0, 0 )
 initial_velocity = 50.0
 color = Color( 1, 0.309804, 0.470588, 1 )
 
+[node name="RippleSource" parent="Sparks/BottomEnd" instance=ExtResource( 5 )]
+editor/display_folded = true
+z_index = 10
+script = SubResource( 9 )
+speed = 8.0
+radius = 48.0
+amplitude = 12.0
+pulses = 3.0
+
+[node name="Shader" parent="Sparks/BottomEnd/RippleSource" index="1"]
+material = SubResource( 12 )
+
 [node name="GateSparks" type="CPUParticles2D" parent="Sparks"]
 position = Vector2( 0, 24 )
 emitting = false
@@ -178,7 +284,7 @@ gravity = Vector2( 0, 250 )
 initial_velocity = 150.0
 initial_velocity_random = 0.7
 color_ramp = SubResource( 6 )
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 
 [node name="Hitbox" type="Area2D" parent="Sparks"]
 visible = false
@@ -187,7 +293,11 @@ visible = false
 position = Vector2( 0, 24 )
 shape = SubResource( 7 )
 
-[node name="EnergyGateCell" parent="." instance=ExtResource( 7 )]
+[node name="EnergyGateCell" parent="." instance=ExtResource( 8 )]
 active = true
 [connection signal="area_entered" from="Sparks/Hitbox" to="." method="on_hitbox_area_entered"]
 [connection signal="body_entered" from="Sparks/Hitbox" to="." method="on_hitbox_body_entered"]
+
+[editable path="Sparks/TopEnd/RippleSource"]
+
+[editable path="Sparks/BottomEnd/RippleSource"]
