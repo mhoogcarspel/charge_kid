@@ -9,7 +9,7 @@ func _process(delta):
 		if gate.is_active():
 			$AnimationPlayer.play("On")
 			$CPUParticles2D.emitting = true
-			$RippleSource.amplitude = 12
+			$RippleSource.amplitude = 3
 		else:
 			$AnimationPlayer.play("Off")
 			$CPUParticles2D.emitting = false
