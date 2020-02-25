@@ -30,7 +30,7 @@ func _on_CameraSetter_body_exited(body):
 				camera.drag_margin_right = 0.2
 			else:
 				var timer = Timer.new()
-				owner.add_child(timer)
+				call_deferred("add_child",timer)
 				timer.start(0.1)
 				yield(timer, "timeout")
 				for player in $Exit.get_overlapping_bodies():
