@@ -3,8 +3,6 @@
 [ext_resource path="res://Assets/Spritesheets/Blocks.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Spritesheets/Tubes.png" type="Texture" id=2]
 
-
-
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
@@ -1345,7 +1343,7 @@ shader_param/color_2 = Color( 0.184314, 0.211765, 0.286275, 1 )
 10/z_index = 0
 
 [node name="Blocks" type="Node2D"]
-z_index = -5
+z_index = -6
 
 [node name="Blocks1" type="TileMap" parent="." groups=[
 "blocks",
