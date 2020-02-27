@@ -141,15 +141,24 @@ func equalize_equivalent_keys(action1: String, action2: String):
 	for event in InputMap.get_action_list(action1):
 		InputMap.action_add_event(action2, event)
 
-func initialize_inputmap(filename: String) -> void:
+func initialize_inputmap(filename: String = "inputmap") -> void:
 	var input_save := File.new()
-	if input_save.file_exists(filename + ".sav"):
-		
-		pass
-	pass
+	if input_save.file_exists(filename + ".conf"):
+		input_save.open(filename + ".conf", File.READ)
+		var inputmap_dictionary: Dictionary = parse_json(input_save.get_line())
+		for action in actions_list:
+			InputMap.action_erase_events(action)
+			var input_key = InputEventKey.new()
+			input_key.scancode = inputmap_dictionary[action]["Keyboard"]["scancode"]
+			input_key.device = inputmap_dictionary[action]["Keyboard"]["device"]
+			InputMap.action_add_event(action, input_key)
+			var input_button = InputEventJoypadButton.new()
+			input_button.button_index = inputmap_dictionary[action]["JoypadButtons"]["button_index"]
+			input_button.device = inputmap_dictionary[action]["JoypadButtons"]["device"]
+			InputMap.action_add_event(action, input_button)
 
-func save_inputmap(filename: String) -> void:
-	var inputmap_dictionary: Dictionary
+func save_inputmap(filename: String = "inputmap") -> void:
+	var inputmap_dictionary: Dictionary = {}
 	for action in actions_list:
 		var action_keys: Dictionary = {}
 		for event in InputMap.get_action_list(action):
@@ -168,7 +177,7 @@ func save_inputmap(filename: String) -> void:
 	
 	var save_file := File.new()
 	save_file.open(filename + ".conf", File.WRITE)
-	save_file.store(to_json(inputmap_dictionary))
+	save_file.store_line(to_json(inputmap_dictionary))
 	save_file.close()
 	
 
