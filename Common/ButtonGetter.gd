@@ -141,6 +141,37 @@ func equalize_equivalent_keys(action1: String, action2: String):
 	for event in InputMap.get_action_list(action1):
 		InputMap.action_add_event(action2, event)
 
+func initialize_inputmap(filename: String) -> void:
+	var input_save := File.new()
+	if input_save.file_exists(filename + ".sav"):
+		
+		pass
+	pass
+
+func save_inputmap(filename: String) -> void:
+	var inputmap_dictionary: Dictionary
+	for action in actions_list:
+		var action_keys: Dictionary = {}
+		for event in InputMap.get_action_list(action):
+			if event is InputEventKey:
+				action_keys["Keyboard"] = {
+					"device" : event.device,
+					"scancode" : event.scancode
+				}
+			elif event is InputEventJoypadButton:
+				action_keys["JoypadButtons"] = {
+					"device" : event.device,
+					"button_index" : event.button_index
+				}
+		
+		inputmap_dictionary[action] = action_keys.duplicate()
+	
+	var save_file := File.new()
+	save_file.open(filename + ".conf", File.WRITE)
+	save_file.store(to_json(inputmap_dictionary))
+	save_file.close()
+	
+
 
 
 ### THUMBSTICK INPUTS #############################################################
