@@ -179,6 +179,7 @@ hit_particles = ExtResource( 2 )
 [node name="TopEnd" type="StaticBody2D" parent="Sparks" groups=[
 "blocks",
 ]]
+editor/display_folded = true
 position = Vector2( 0, -16 )
 scale = Vector2( 1, -1 )
 script = ExtResource( 3 )
@@ -225,6 +226,7 @@ material = SubResource( 6 )
 [node name="BottomEnd" type="StaticBody2D" parent="Sparks" groups=[
 "blocks",
 ]]
+editor/display_folded = true
 position = Vector2( 0, 64 )
 script = ExtResource( 6 )
 
