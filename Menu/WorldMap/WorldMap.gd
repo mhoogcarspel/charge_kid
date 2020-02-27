@@ -33,7 +33,7 @@ func load_game() -> void:
 	if not save_game.file_exists(main.save_name + ".save"):
 		save_game()
 	save_game.open(main.save_name + ".save", File.READ)
-	var levels_save = parse_json(save_game.get_line())
+	var levels_save: Dictionary = parse_json(save_game.get_line())
 	for level_path in levels_save.keys():
 		print(level_path)
 		var level = get_node(level_path)
