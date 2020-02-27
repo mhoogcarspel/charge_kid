@@ -66,4 +66,5 @@ func _process(delta):
 func exit():
 	menu.pause_mode = PAUSE_MODE_PROCESS
 	self.pause_mode = PAUSE_MODE_INHERIT
+	control_handler.save_inputmap()
 	self.queue_free()
