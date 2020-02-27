@@ -45,6 +45,7 @@ func _ready():
 	actual_scene = start_scene
 	
 	load_world_map()
+	control_handler.initialize_inputmap()
 
 func load_world_map() -> void:
 	if world_map_instance != null:
