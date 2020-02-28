@@ -8,9 +8,11 @@
 [ext_resource path="res://Levels/Levels/Level03.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Levels/Levels/Level04.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Levels/Levels/Level05.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Levels/Levels/Level06.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Levels/Levels/Level08.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Levels/Levels/Level07.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Levels/Levels/Level08.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Levels/Levels/Level06.tscn" type="PackedScene" id=11]
+
+
 
 [node name="WorldMap" type="Control" groups=[
 "constant",
@@ -19,6 +21,9 @@ pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
@@ -131,7 +136,7 @@ margin_top = 130.0
 margin_right = 124.0
 margin_bottom = 152.0
 text = "Level 6"
-level_scene = ExtResource( 9 )
+level_scene = ExtResource( 11 )
 neighbour_path = {
 "Down": NodePath("../LevelNode7"),
 "Left": null,
@@ -169,7 +174,7 @@ margin_top = 182.0
 margin_right = 124.0
 margin_bottom = 204.0
 text = "Level 8"
-level_scene = ExtResource( 11 )
+level_scene = ExtResource( 9 )
 neighbour_path = {
 "Down": NodePath("../LevelNode"),
 "Left": null,

@@ -66,7 +66,8 @@ func destroy() -> void:
 	get_parent().add_child(death_timer)
 	death_timer.start(0.2)
 	yield(death_timer, "timeout")
-	self.queue_free()
+	if self.is_inside_tree():
+		self.queue_free()
 
 func _on_HitBox_body_entered(body):
 	if not body.is_in_group("bullet") and not body.is_in_group("blocks") and not body.is_in_group("platform") and not body.is_in_group("spikes"):
