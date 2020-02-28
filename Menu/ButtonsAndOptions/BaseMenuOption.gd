@@ -39,7 +39,8 @@ func check_and_grab_focus(path :NodePath):
 		option.grab_focus()
 
 func _on_focus_entered():
-	switch_option_timer.start(switch_option_time)
+	if switch_option_timer.is_inside_tree():
+		switch_option_timer.start(switch_option_time)
 
 func _on_focus_exited():
 	if not main.get_node("MenuAccept").is_playing():
