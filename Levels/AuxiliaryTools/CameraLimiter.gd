@@ -31,6 +31,7 @@ func _on_CameraSetter_body_exited(body):
 			else:
 				var timer = Timer.new()
 				self.call_deferred("add_child",timer)
+				yield(timer, "tree_entered")
 				timer.start(0.1)
 				yield(timer, "timeout")
 				for player in $Exit.get_overlapping_bodies():
