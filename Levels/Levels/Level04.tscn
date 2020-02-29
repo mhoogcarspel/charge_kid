@@ -160,12 +160,18 @@ message_time = 4.0
 shape = SubResource( 1 )
 
 [node name="HoldAgainMessage" parent="." index="16" instance=ExtResource( 14 )]
-visible = false
-position = Vector2( 472, 128 )
+position = Vector2( 488, 184 )
 z_index = -1
 
 [node name="CollisionPolygon2D" parent="HoldAgainMessage" index="0"]
+position = Vector2( -24, -56 )
 polygon = PoolVector2Array( 80, 48, 80, 32, 40, 32, 40, 48 )
+
+[node name="Text" parent="HoldAgainMessage" index="1"]
+margin_left = 96.0
+margin_top = 168.0
+margin_right = 136.0
+margin_bottom = 182.0
 
 [editable path="Background"]
 
