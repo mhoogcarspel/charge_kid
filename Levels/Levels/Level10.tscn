@@ -10,7 +10,7 @@
 [ext_resource path="res://Levels/Tilemaps/Spikes.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Menu/FinalScreen/FinalScreen.tscn" type="PackedScene" id=9]
 
-[node name="Level08" instance=ExtResource( 1 )]
+[node name="Level10" instance=ExtResource( 1 )]
 bgm_1 = true
 bgm_2 = true
 bgm_3 = true

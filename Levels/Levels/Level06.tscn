@@ -10,9 +10,9 @@
 [ext_resource path="res://Actors/Interactables/FuelTank/FuelTank.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Levels/AuxiliaryTools/CameraLimiter.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Levels/AuxiliaryTools/FinishLine.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Levels/Levels/Level07.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Levels/Levels/Level09.tscn" type="PackedScene" id=16]
 
-[node name="BaseLevel" instance=ExtResource( 1 )]
+[node name="Level06" instance=ExtResource( 1 )]
 bgm_1 = true
 bgm_2 = true
 bgm_3 = true
