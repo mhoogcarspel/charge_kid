@@ -8,6 +8,7 @@ var continue_game:bool
 var open_all: bool
 
 func _ready():
+	get_tree().paused = true
 	for level_node in level_nodes_list:
 		level_node.world_map = self
 	if continue_game:
