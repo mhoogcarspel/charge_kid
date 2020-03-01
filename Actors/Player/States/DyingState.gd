@@ -14,6 +14,16 @@ func enter():
 		particle.emitting = true
 	owner.can_boost = false
 	
+	# Deal with onscreen bullets.
+	if owner.get_tree().get_nodes_in_group("bullet").size() > 0:
+		var bullet = owner.get_tree().get_nodes_in_group("bullet")[0]
+		if bullet.get_state() == "StandingState" and owner.get_tree().get_nodes_in_group("main").size() > 0:
+			var main = owner.get_tree().get_nodes_in_group("main")[0]
+			var next_player = main.player_scene.instance()
+			next_player.has_bullet = false
+		else:
+			bullet.destroy()
+	
 	var shader = owner.shader_effects("Ripple")
 	shader.position = owner.position
 	shader.speed = 600
@@ -39,14 +49,6 @@ func enter():
 		var next_player = main.player_scene.instance()
 		next_player.position = owner.checkpoint
 		next_player.checkpoint = owner.checkpoint
-		
-		# Deal with onscreen bullets.
-		if owner.get_tree().get_nodes_in_group("bullet").size() > 0:
-			var bullet = owner.get_tree().get_nodes_in_group("bullet")[0]
-			if bullet.get_state() == "StandingState":
-				next_player.has_bullet = false
-			else:
-				bullet.queue_free()
 		
 		owner.get_parent().add_child(next_player)
 		var ripple = next_player.shader_effects("Ripple")
