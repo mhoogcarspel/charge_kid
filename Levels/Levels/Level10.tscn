@@ -17,7 +17,7 @@ bgm_3 = true
 bgm_4 = true
 
 [node name="ScreenTransition" parent="." index="0"]
-opening_text = "Level 8
+opening_text = "Level 10
 
 The climb."
 

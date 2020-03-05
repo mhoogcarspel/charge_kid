@@ -61,7 +61,7 @@ bgm_2 = true
 bgm_3 = true
 
 [node name="ScreenTransition" parent="." index="0"]
-opening_text = "Level 6
+opening_text = "Level 7
 
 One last trick"
 
