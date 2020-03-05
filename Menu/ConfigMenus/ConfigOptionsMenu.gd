@@ -6,6 +6,7 @@ onready var main: Node
 onready var pause_menu: bool
 
 func _ready():
+	get_tree().paused = true
 	if !get_tree().get_nodes_in_group("main").empty():
 		main = get_tree().get_nodes_in_group("main")[0]
 	$MarginContainer/Options/SoundOptions.grab_focus()

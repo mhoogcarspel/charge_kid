@@ -7,6 +7,7 @@ onready var pause_menu: bool
 onready var sound_control: SoundControl = get_tree().get_nodes_in_group("sound_control")[0]
 
 func _ready():
+	get_tree().paused = true
 	if !get_tree().get_nodes_in_group("main").empty():
 		main = get_tree().get_nodes_in_group("main")[0]
 	$MarginContainer/Options/BGMSlider.grab_focus()
