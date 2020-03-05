@@ -357,13 +357,13 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="RectangleShape2D" id=17]
+[sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 5.5, 7 )
 
-[sub_resource type="RectangleShape2D" id=18]
+[sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 1, 1 )
 
-[sub_resource type="RectangleShape2D" id=19]
+[sub_resource type="RectangleShape2D" id=17]
 extents = Vector2( 1, 1 )
 
 [node name="Player" type="KinematicBody2D" groups=[
@@ -388,7 +388,6 @@ jump_height = 40.0
 gravity = 500.0
 
 [node name="PlayerSprite" type="Sprite" parent="."]
-editor/display_folded = true
 material = SubResource( 2 )
 texture = ExtResource( 3 )
 vframes = 4
@@ -416,7 +415,6 @@ emission_shape = 1
 emission_sphere_radius = 1.0
 spread = 180.0
 gravity = Vector2( 0, -500 )
-initial_velocity = 0.0
 scale_amount = 0.2
 scale_amount_random = 0.2
 scale_amount_curve = SubResource( 3 )
@@ -438,7 +436,6 @@ position = Vector2( -0.5, 2 )
 shape = SubResource( 4 )
 
 [node name="PlatformSentinel" type="Area2D" parent="."]
-editor/display_folded = true
 visible = false
 position = Vector2( -0.5, 7.5 )
 collision_layer = 0
@@ -460,7 +457,6 @@ anims/TeleportOutRight = SubResource( 13 )
 anims/Walking = SubResource( 14 )
 
 [node name="FuelParticles" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Particles1" type="CPUParticles2D" parent="FuelParticles"]
 position = Vector2( 0, 8 )
@@ -518,14 +514,12 @@ scale_amount = 2.0
 color = Color( 1, 0.309804, 0.470588, 1 )
 
 [node name="ShootParticles" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="OneShotShootParticles" type="Node2D" parent="ShootParticles"]
 script = ExtResource( 23 )
 particles = [ ExtResource( 24 ) ]
 
 [node name="BoostParticles" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Particles1" type="CPUParticles2D" parent="BoostParticles"]
 z_index = -2
@@ -536,21 +530,18 @@ local_coords = false
 texture = ExtResource( 25 )
 spread = 0.0
 gravity = Vector2( 0, 0 )
-initial_velocity = 0.0
 
 [node name="OneShotBoostParticles" type="Node2D" parent="BoostParticles"]
 script = ExtResource( 26 )
 particles = [ ExtResource( 27 ) ]
 
 [node name="DeathParticles" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="OneShotDeathParticles" type="Node2D" parent="DeathParticles"]
 script = ExtResource( 26 )
 particles = [ ExtResource( 28 ), ExtResource( 29 ) ]
 
 [node name="RespawnParticles" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="OneShotParticles" type="Node2D" parent="RespawnParticles"]
 script = ExtResource( 26 )
@@ -575,17 +566,15 @@ wait_time = 0.2
 one_shot = true
 
 [node name="SpikesSentinel" type="Area2D" parent="."]
-editor/display_folded = true
 visible = false
 position = Vector2( -0.5, 2 )
 collision_layer = 12
 collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikesSentinel"]
-shape = SubResource( 17 )
+shape = SubResource( 15 )
 
 [node name="SFX" type="Node" parent="."]
-editor/display_folded = true
 
 [node name="Jump" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 33 )
@@ -623,7 +612,6 @@ stream = ExtResource( 38 )
 bus = "SFX"
 
 [node name="RightLedgeDetector" type="Area2D" parent="."]
-editor/display_folded = true
 visible = false
 position = Vector2( 16, 8 )
 collision_layer = 0
@@ -633,10 +621,9 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightLedgeDetector"]
-shape = SubResource( 18 )
+shape = SubResource( 16 )
 
 [node name="LeftLedgeDetector" type="Area2D" parent="."]
-editor/display_folded = true
 visible = false
 position = Vector2( -16, 8 )
 collision_layer = 0
@@ -646,7 +633,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftLedgeDetector"]
-shape = SubResource( 19 )
+shape = SubResource( 17 )
 [connection signal="timeout" from="PlayerSprite/Timer2" to="PlayerSprite" method="_on_Timer2_timeout"]
 [connection signal="timeout" from="PlayerSprite/PlayerSparksTimer" to="PlayerSprite" method="_on_PlayerSparksTimer_timeout"]
 [connection signal="timeout" from="BoostTimer" to="." method="_on_BoostTimer_timeout"]
