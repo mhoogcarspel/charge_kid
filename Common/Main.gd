@@ -35,10 +35,11 @@ onready var world_map_instance: WorldMap
 
 var actual_scene: PackedScene
 
+
+
 func _ready():
 	if debugging:
 		$HudContainer.add_child(debugger_layer.instance())
-		pass
 	var start = start_scene.instance()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	$Scene.add_child(start)
@@ -78,6 +79,7 @@ func go_to_world_map():
 			$Scene.call_deferred("remove_child", scene)
 		$Scene.call_deferred("add_child", world_map_instance)
 	return world_map_instance
+
 
 
 func _process(delta):
