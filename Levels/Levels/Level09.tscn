@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Levels/AuxiliaryTools/BaseLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Tilemaps/Background.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Levels/Levels/Level10.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Levels/AuxiliaryTools/CameraLimiter.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Levels/Messages/MomentumMessage.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Levels/Messages/Lv9SpMessage.gd" type="Script" id=14]
 
 [node name="Level09" instance=ExtResource( 1 )]
 bgm_1 = true
@@ -157,6 +158,24 @@ margin_left = -48.0
 margin_top = 70.4
 margin_right = -8.0
 margin_bottom = 84.4
+
+[node name="Lv9SpMessage" type="Area2D" parent="." index="17"]
+visible = false
+position = Vector2( 384, 40 )
+script = ExtResource( 14 )
+message = "Who needs a second charger?"
+message_time = 5.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lv9SpMessage" index="0"]
+polygon = PoolVector2Array( 0, 8, 0, -8, 32, -8, 32, 8 )
+
+[node name="SubArea" type="Area2D" parent="Lv9SpMessage" index="1"]
+position = Vector2( -168, 64 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lv9SpMessage/SubArea" index="0"]
+polygon = PoolVector2Array( 24, 8, 24, -24, -88, -24, -88, 8 )
+[connection signal="body_entered" from="Lv9SpMessage" to="Lv9SpMessage" method="on_body_entered"]
+[connection signal="body_exited" from="Lv9SpMessage/SubArea" to="Lv9SpMessage" method="_on_SubArea_body_exited"]
 
 [editable path="Background"]
 
