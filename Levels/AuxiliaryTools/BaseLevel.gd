@@ -6,6 +6,8 @@ export(bool) var bgm_2
 export(bool) var bgm_3
 export(bool) var bgm_4
 
+export (PackedScene) var player_scene
+
 onready var message = $MessageLabel
 onready var message_timer = get_node("MessageLabel/Timer")
 

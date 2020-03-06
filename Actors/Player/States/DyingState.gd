@@ -44,23 +44,22 @@ func enter():
 	yield(timer, "timeout")
 	owner.queue_free()
 	
-	if owner.get_tree().get_nodes_in_group("main").size() > 0:
-		var main = owner.get_tree().get_nodes_in_group("main")[0]
-		var next_player = main.player_scene.instance()
-		next_player.position = owner.checkpoint
-		next_player.checkpoint = owner.checkpoint
-		
-		owner.get_parent().add_child(next_player)
-		var ripple = next_player.shader_effects("Ripple")
-		ripple.position = next_player.position
-		ripple.speed = 400
-		ripple.wave_length = 120
-		ripple.length_increase = 0
-		ripple.amplitude = 20
-		ripple.amplitude_decrease = 80
-		ripple.pulses = 4
-		next_player.get_parent().add_child(ripple)
-		for particle in next_player.get_node("RespawnParticles").get_children():
-			particle.emitting = true
-	else:
-		owner.get_tree().reload_current_scene()
+	var level = owner.get_tree().get_nodes_in_group("level")[0]
+	var next_player = level.player_scene.instance()
+	next_player.position = owner.checkpoint
+	next_player.checkpoint = owner.checkpoint
+	
+	owner.get_parent().add_child(next_player)
+	var ripple = next_player.shader_effects("Ripple")
+	ripple.position = next_player.position
+	ripple.speed = 400
+	ripple.wave_length = 120
+	ripple.length_increase = 0
+	ripple.amplitude = 20
+	ripple.amplitude_decrease = 80
+	ripple.pulses = 4
+	next_player.get_parent().add_child(ripple)
+	for particle in next_player.get_node("RespawnParticles").get_children():
+		particle.emitting = true
+
+

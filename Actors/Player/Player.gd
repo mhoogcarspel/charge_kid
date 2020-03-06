@@ -50,7 +50,6 @@ onready var can_boost: bool
 onready var facing: float = 1.0
 
 var checkpoint: Vector2
-var pre_checkpoint: Vector2
 
 
 
@@ -90,7 +89,6 @@ func _physics_process(delta):
 		velocity = move_and_slide(velocity, Vector2(0, -1))
 		if is_on_floor():
 			$CoyoteTimer.start(coyote_time)
-			pre_checkpoint = position
 		
 		if Input.is_action_just_pressed("ui_reset"):
 			change_state("DyingState")

@@ -7,7 +7,6 @@ export(PackedScene) var debugger_layer
 export(PackedScene) var controls_menu
 export(PackedScene) var sound_menu
 export(PackedScene) var world_map
-export(PackedScene) var player_scene
 export(PackedScene) var configuration_menu
 export(String) var save_name
 export(String) var sound_config

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Common/Main.gd" type="Script" id=1]
 [ext_resource path="res://Menu/StartMenu/StartMenu.tscn" type="PackedScene" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://Menu/ConfigControlsMenu/ControlConfigMenu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Menu/SoundConfigMenu/SoundConfigMenu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Menu/WorldMap/WorldMap.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Actors/Player/Player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Menu/ConfigMenus/ConfigOptionsMenu.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Common/BackgroundAndMusicHandler.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Assets/SFX/270322__littlerobotsoundfactory__menu-navigate-02.wav" type="AudioStream" id=11]
@@ -24,7 +23,6 @@ debugger_layer = ExtResource( 4 )
 controls_menu = ExtResource( 5 )
 sound_menu = ExtResource( 6 )
 world_map = ExtResource( 7 )
-player_scene = ExtResource( 8 )
 configuration_menu = ExtResource( 9 )
 save_name = "charge_kid_progress"
 sound_config = "sound_config"
