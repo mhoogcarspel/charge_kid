@@ -120,13 +120,14 @@ polygon = PoolVector2Array( 224, 272, -192, 272, -192, -96, 224, -96 )
 polygon = PoolVector2Array( -168, -96, 192, -96, 192, 272, -168, 272 )
 
 [node name="Message" type="Area2D" parent="." index="15"]
+visible = false
 position = Vector2( 416, 24 )
 script = ExtResource( 10 )
 message = "Skip it all!"
 message_time = 4.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Message" index="0"]
-polygon = PoolVector2Array( -40, 24, -40, -8, 32, -8, 32, 24 )
+polygon = PoolVector2Array( -40, 24, -40, -24, 32, -24, 32, 24 )
 
 [node name="Timer" type="Timer" parent="Message" index="1"]
 wait_time = 2.0

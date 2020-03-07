@@ -163,8 +163,8 @@ margin_bottom = 84.4
 visible = false
 position = Vector2( 384, 40 )
 script = ExtResource( 14 )
-message = "Who needs a second charger?"
-message_time = 5.0
+message = "Second charge skip!"
+message_time = 4.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lv9SpMessage" index="0"]
 polygon = PoolVector2Array( 0, 8, 0, -8, 32, -8, 32, 8 )
