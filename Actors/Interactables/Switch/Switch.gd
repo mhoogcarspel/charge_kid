@@ -1,6 +1,7 @@
 extends StaticBody2D
 
-onready var active:bool = false
+onready var active: bool = false
+onready var just_activated: bool = false
 
 export(Array,NodePath) var nodes
 export(Array,NodePath) var wires
@@ -31,9 +32,28 @@ func activate() -> void:
 		for nodepath in wires:
 			get_node(nodepath).activate()
 		$Timer.start()
+		just_activated = true
+
+func deactivate() -> void:
+	active = false
+	$Sprite.light_down()
+	for nodepath in nodes:
+		get_node(nodepath).deactivate()
+	for nodepath in wires:
+		get_node(nodepath).deactivate()
 
 func is_active() -> bool:
 	return active
+
+
+
+func _physics_process(_delta):
+	if just_activated and not get_tree().get_nodes_in_group("player").empty():
+		var player = get_tree().get_nodes_in_group("player")[0]
+		if player.get_state() == "DyingState":
+			self.deactivate()
+		elif player.is_on_floor():
+			just_activated = false
 
 
 
