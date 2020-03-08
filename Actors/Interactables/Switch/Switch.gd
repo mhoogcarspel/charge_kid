@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 onready var active: bool = false
-onready var just_activated: bool = false
+onready var last_checkpoint: Vector2 = Vector2.ZERO
 
 export(Array,NodePath) var nodes
 export(Array,NodePath) var wires
@@ -32,7 +32,11 @@ func activate() -> void:
 		for nodepath in wires:
 			get_node(nodepath).activate()
 		$Timer.start()
-		just_activated = true
+		if get_tree().get_nodes_in_group("player").empty():
+			deactivate()
+		else:
+			var player = get_tree().get_nodes_in_group("player")[0] as Player
+			last_checkpoint = player.checkpoint
 
 func deactivate() -> void:
 	active = false
@@ -48,12 +52,12 @@ func is_active() -> bool:
 
 
 func _physics_process(_delta):
-	if just_activated and not get_tree().get_nodes_in_group("player").empty():
-		var player = get_tree().get_nodes_in_group("player")[0]
+	if last_checkpoint != Vector2.ZERO and not get_tree().get_nodes_in_group("player").empty():
+		var player = get_tree().get_nodes_in_group("player")[0] as Player
 		if player.get_state() == "DyingState":
 			self.deactivate()
-		elif player.is_on_floor():
-			just_activated = false
+		elif player.checkpoint != last_checkpoint:
+			last_checkpoint = Vector2.ZERO
 
 
 
