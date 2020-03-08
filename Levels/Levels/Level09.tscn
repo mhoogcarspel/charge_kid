@@ -21,6 +21,7 @@ bgm_4 = true
 
 [node name="ScreenTransition" parent="." index="0"]
 opening_text = "Level 9
+
 How high can you fly?"
 
 [node name="LevelLimits" parent="." index="1"]

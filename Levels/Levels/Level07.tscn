@@ -19,6 +19,7 @@ bgm_3 = true
 
 [node name="ScreenTransition" parent="." index="0"]
 opening_text = "Level 7
+
 Jump! Jump! Jump!"
 
 [node name="LevelLimits" parent="." index="1"]

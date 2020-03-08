@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Levels/Tilemaps/Parallax.gd" type="Script" id=1]
 [ext_resource path="res://Levels/AuxiliaryTools/BaseLevel.tscn" type="PackedScene" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://Actors/Interactables/Gate/StandardGate/StandardGate.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Actors/Interactables/EnergyWire/EnergyWire.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Levels/AuxiliaryTools/CameraLimiter.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Levels/AuxiliaryTools/FinishLine.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Levels/Levels/Level04.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -40,9 +42,11 @@ shader_param/inactive_color = Color( 0.490196, 0.490196, 0.490196, 1 )
 shader_param/active = false
 
 [node name="BaseLevel" instance=ExtResource( 2 )]
+bgm_1 = true
 
 [node name="ScreenTransition" parent="." index="0"]
 opening_text = "Level 3
+
 No floor!"
 
 [node name="LevelLimits" parent="." index="1"]
@@ -170,6 +174,14 @@ polygon = PoolVector2Array( 384, 280, -120, 280, -120, -104, 384, -104 )
 [node name="CollisionPolygon2D" parent="CameraLimiter" index="1"]
 polygon = PoolVector2Array( -80, -104, 352, -104, 352, 280, -80, 280 )
 
+[node name="FinishLine" parent="." index="26" instance=ExtResource( 13 )]
+visible = false
+position = Vector2( 905.775, 166.496 )
+next_stage = ExtResource( 14 )
+
+[node name="CollisionShape2D" parent="FinishLine" index="0"]
+position = Vector2( 6.22485, 1.50372 )
+
 [editable path="Background"]
 
 [editable path="Background2"]
@@ -181,3 +193,5 @@ polygon = PoolVector2Array( -80, -104, 352, -104, 352, 280, -80, 280 )
 [editable path="EnergyWire"]
 
 [editable path="CameraLimiter"]
+
+[editable path="FinishLine"]
