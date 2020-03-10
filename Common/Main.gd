@@ -79,6 +79,9 @@ func go_to_world_map():
 		$Scene.call_deferred("add_child", world_map_instance)
 	return world_map_instance
 
+func get_level() -> BaseLevel:
+	return $Scene.get_children()[0]
+
 
 
 func _process(delta):
@@ -104,8 +107,6 @@ func _process(delta):
 
 func _on_Timer_timeout():
 	$MenuNavTimer.start()
-
-
 
 ### DETECT WHICH DEVICE THE PLAYER IS USING #######################################
 func _input(event):

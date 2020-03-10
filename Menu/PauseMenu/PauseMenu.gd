@@ -21,7 +21,8 @@ func _on_RestartLevel_pressed():
 	self.queue_free()
 	if get_tree().get_nodes_in_group("main").size() > 0:
 		var main = get_tree().get_nodes_in_group("main")[0]
-		main.change_scene(main.actual_scene)
+		var level_node = main.get_level().level_node
+		main.change_scene(main.actual_scene).level_node = level_node
 	else:
 		get_tree().reload_current_scene()
 
