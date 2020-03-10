@@ -11,6 +11,7 @@ func _init(owner: Node, player_0):
 
 func enter():
 	speed = owner.fuel_speed
+	owner.left_player = true
 	owner.get_node("PhysicalCollider").set_deferred("disabled", true)
 	owner.set_collision_mask_bit(0, false)
 	owner.set_collision_layer_bit(0, false)

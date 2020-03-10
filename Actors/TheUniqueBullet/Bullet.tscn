@@ -120,7 +120,6 @@ lifetime = 0.3
 local_coords = false
 texture = ExtResource( 3 )
 gravity = Vector2( 0, 0 )
-initial_velocity = 0.0
 scale_amount = 0.4
 scale_amount_curve = SubResource( 4 )
 color = Color( 0.956863, 0.956863, 0.894118, 1 )
