@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Menu/Credits/Credits.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Menu/ButtonsAndOptions/ButtonModel.tscn" type="PackedScene" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -30,6 +29,9 @@ margin_top = -300.0
 margin_right = 512.0
 margin_bottom = 300.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_right = 1024.0
@@ -44,9 +46,9 @@ custom_constants/separation = 40
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
-margin_top = 104.0
+margin_top = 135.0
 margin_right = 550.0
-margin_bottom = 182.0
+margin_bottom = 213.0
 custom_constants/separation = 19
 alignment = 1
 
@@ -89,9 +91,9 @@ custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "Vicente Reis de Souza Farias"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
-margin_top = 222.0
+margin_top = 253.0
 margin_right = 550.0
-margin_bottom = 314.0
+margin_bottom = 345.0
 custom_constants/separation = 19
 alignment = 1
 
@@ -127,9 +129,9 @@ custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "https://freesound.org/people/LittleRobotSoundFactory/"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
-margin_top = 354.0
+margin_top = 385.0
 margin_right = 550.0
-margin_bottom = 434.0
+margin_bottom = 465.0
 custom_constants/separation = 19
 alignment = 1
 
@@ -169,10 +171,6 @@ custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "https://0x72.itch.io/"
 
-[node name="Back" parent="HBoxContainer/VBoxContainer" instance=ExtResource( 3 )]
-margin_left = 221.0
-margin_top = 474.0
-margin_right = 329.0
-margin_bottom = 496.0
-text = "Return"
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Back" to="." method="_on_Back_pressed"]
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
