@@ -96,17 +96,8 @@ func _process(delta):
 		get_tree().paused = false
 		get_tree().get_nodes_in_group("pause_menu")[0].queue_free()
 		$PauseTimer.start()
-	
-	# Timer for menu navigating
-	actual_dir_input = control_handler.get_directional_input()
-	if get_tree().paused and actual_dir_input.y != 0 and old_dir_input.y == 0:
-		$MenuNavTimer/Timer.start()
-	if get_tree().paused and actual_dir_input.y == 0 and old_dir_input.y != 0:
-		$MenuNavTimer.stop()
-	old_dir_input = control_handler.get_directional_input()
 
-func _on_Timer_timeout():
-	$MenuNavTimer.start()
+
 
 ### DETECT WHICH DEVICE THE PLAYER IS USING #######################################
 func _input(event):

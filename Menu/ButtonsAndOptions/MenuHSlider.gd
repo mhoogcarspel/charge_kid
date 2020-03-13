@@ -13,7 +13,7 @@ func _ready():
 func _process(delta):
 	# Handling focus:
 	if has_focus():
-		if slider_timer.is_stopped() and main.get_node("MenuNavTimer").is_stopped():
+		if slider_timer.is_stopped() and main.get_node("MenuNavigation/MenuNavTimer").is_stopped():
 			if main.control_handler.get_directional_input().x == 1:
 				$HSlider.value += $HSlider.step
 			elif main.control_handler.get_directional_input().x == -1:

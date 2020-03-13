@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Common/Main.gd" type="Script" id=1]
 [ext_resource path="res://Menu/StartMenu/StartMenu.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Menu/ConfigControlsMenu/ControlConfigMenu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Menu/SoundConfigMenu/SoundConfigMenu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Menu/WorldMap/WorldMap.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Common/MenuNavigation.gd" type="Script" id=8]
 [ext_resource path="res://Menu/ConfigMenus/ConfigOptionsMenu.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Common/BackgroundAndMusicHandler.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Assets/SFX/270322__littlerobotsoundfactory__menu-navigate-02.wav" type="AudioStream" id=11]
@@ -31,23 +32,6 @@ sound_config = "sound_config"
 
 [node name="HudContainer" type="CanvasLayer" parent="."]
 
-[node name="MenuNavigate" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 11 )
-volume_db = -5.0
-bus = "SFX"
-
-[node name="MenuAccept" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 12 )
-bus = "SFX"
-
-[node name="MenuNavTimer" type="Timer" parent="."]
-wait_time = 0.4
-one_shot = true
-
-[node name="Timer" type="Timer" parent="MenuNavTimer"]
-wait_time = 0.1
-one_shot = true
-
 [node name="PauseTimer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
@@ -55,4 +39,24 @@ one_shot = true
 [node name="Scene" type="Node" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
-[connection signal="timeout" from="MenuNavTimer/Timer" to="." method="_on_Timer_timeout"]
+
+[node name="MenuNavigation" type="Node" parent="."]
+script = ExtResource( 8 )
+
+[node name="MenuNavigate" type="AudioStreamPlayer" parent="MenuNavigation"]
+stream = ExtResource( 11 )
+volume_db = -5.0
+bus = "SFX"
+
+[node name="MenuAccept" type="AudioStreamPlayer" parent="MenuNavigation"]
+stream = ExtResource( 12 )
+bus = "SFX"
+
+[node name="MenuNavTimer" type="Timer" parent="MenuNavigation"]
+wait_time = 0.4
+one_shot = true
+
+[node name="Timer" type="Timer" parent="MenuNavigation/MenuNavTimer"]
+wait_time = 0.01
+one_shot = true
+[connection signal="timeout" from="MenuNavigation/MenuNavTimer/Timer" to="MenuNavigation" method="_on_Timer_timeout"]

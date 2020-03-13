@@ -19,9 +19,9 @@ func _ready():
 
 func _process(_delta):
 	main  = get_tree().get_nodes_in_group("main")[0]
-	# Handling focus:
+	
 	if has_focus():
-		if switch_option_timer.is_stopped() and main.get_node("MenuNavTimer").is_stopped():
+		if switch_option_timer.is_stopped() and main.get_node("MenuNavigation/MenuNavTimer").is_stopped():
 			if main.control_handler.get_directional_input().y == 1:
 				check_and_grab_focus(focus_neighbour_bottom)
 			elif main.control_handler.get_directional_input().y == -1:
@@ -43,5 +43,5 @@ func _on_focus_entered():
 		switch_option_timer.start(switch_option_time)
 
 func _on_focus_exited():
-	if not main.get_node("MenuAccept").is_playing():
-		main.get_node("MenuNavigate").play()
+	if not main.get_node("MenuNavigation/MenuAccept").is_playing():
+		main.get_node("MenuNavigation/MenuNavigate").play()
