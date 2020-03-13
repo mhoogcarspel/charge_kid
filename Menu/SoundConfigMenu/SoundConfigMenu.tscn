@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Menu/SoundConfigMenu/SoundConfigMenu.gd" type="Script" id=1]
 [ext_resource path="res://Menu/MenuPanel.tscn" type="PackedScene" id=2]
@@ -7,12 +7,16 @@
 [ext_resource path="res://Menu/SoundConfigMenu/BGMSlider.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Menu/SoundConfigMenu/SFXSlider.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Menu/ButtonsAndOptions/ButtonModel.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Menu/ReturnShortcut.tres" type="ShortCut" id=8]
 
 [node name="SoundConfigMenu" type="Control"]
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_left = 0.5
@@ -26,91 +30,92 @@ margin_bottom = 49.0
 
 [node name="MenuPanel" parent="MarginContainer" instance=ExtResource( 2 )]
 margin_right = 307.0
-margin_bottom = 176.0
+margin_bottom = 195.0
 
 [node name="Options" type="VBoxContainer" parent="MarginContainer"]
 margin_right = 307.0
-margin_bottom = 176.0
+margin_bottom = 195.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
 [node name="HSeparator7" parent="MarginContainer/Options" instance=ExtResource( 3 )]
-margin_top = 0.0
+margin_top = 9.0
 margin_right = 307.0
-margin_bottom = 4.0
+margin_bottom = 13.0
 
 [node name="LabelBaseModel" parent="MarginContainer/Options" instance=ExtResource( 4 )]
-margin_top = 8.0
+margin_top = 17.0
 margin_right = 307.0
-margin_bottom = 24.0
-text = "Sound Options"
+margin_bottom = 33.0
+text = "Audio"
 align = 1
 
 [node name="HSeparator4" parent="MarginContainer/Options" instance=ExtResource( 3 )]
-margin_top = 28.0
+margin_top = 37.0
 margin_right = 307.0
-margin_bottom = 32.0
+margin_bottom = 41.0
 
 [node name="HSeparator6" parent="MarginContainer/Options" instance=ExtResource( 3 )]
-margin_top = 36.0
+margin_top = 45.0
 margin_right = 307.0
-margin_bottom = 40.0
+margin_bottom = 49.0
 
 [node name="BGMSlider" parent="MarginContainer/Options" instance=ExtResource( 5 )]
 margin_left = 51.0
-margin_top = 44.0
+margin_top = 53.0
 margin_right = 255.0
-margin_bottom = 66.0
+margin_bottom = 75.0
 focus_neighbour_top = NodePath("../Return")
 focus_neighbour_bottom = NodePath("../SFXSlider")
 switch_option_time = 0.1
 
 [node name="SFXSlider" parent="MarginContainer/Options" instance=ExtResource( 6 )]
 margin_left = 51.0
-margin_top = 70.0
+margin_top = 79.0
 margin_right = 255.0
-margin_bottom = 92.0
+margin_bottom = 101.0
 focus_neighbour_top = NodePath("../BGMSlider")
 focus_neighbour_bottom = NodePath("../Default")
 switch_option_time = 0.1
 
 [node name="HSeparator" parent="MarginContainer/Options" instance=ExtResource( 3 )]
-margin_top = 96.0
+margin_top = 105.0
 margin_right = 307.0
-margin_bottom = 100.0
+margin_bottom = 109.0
 
 [node name="Default" parent="MarginContainer/Options" instance=ExtResource( 7 )]
 margin_left = 91.0
-margin_top = 104.0
+margin_top = 113.0
 margin_right = 215.0
-margin_bottom = 126.0
+margin_bottom = 135.0
 focus_neighbour_top = NodePath("../SFXSlider")
 focus_neighbour_bottom = NodePath("../Return")
 text = "Default"
 
 [node name="HSeparator2" parent="MarginContainer/Options" instance=ExtResource( 3 )]
-margin_top = 130.0
+margin_top = 139.0
 margin_right = 307.0
-margin_bottom = 134.0
+margin_bottom = 143.0
 
 [node name="HSeparator3" parent="MarginContainer/Options" instance=ExtResource( 3 )]
-margin_top = 138.0
+margin_top = 147.0
 margin_right = 307.0
-margin_bottom = 142.0
+margin_bottom = 151.0
 
 [node name="Return" parent="MarginContainer/Options" instance=ExtResource( 7 )]
 margin_left = 99.0
-margin_top = 146.0
+margin_top = 155.0
 margin_right = 207.0
-margin_bottom = 168.0
+margin_bottom = 177.0
 focus_neighbour_top = NodePath("../Default")
 focus_neighbour_bottom = NodePath("../BGMSlider")
+shortcut = ExtResource( 8 )
 text = "Return"
 
 [node name="HSeparator5" parent="MarginContainer/Options" instance=ExtResource( 3 )]
-margin_top = 172.0
+margin_top = 181.0
 margin_right = 307.0
-margin_bottom = 176.0
+margin_bottom = 185.0
 [connection signal="pressed" from="MarginContainer/Options/Default" to="." method="_on_Default_pressed"]
 [connection signal="pressed" from="MarginContainer/Options/Return" to="." method="_on_Return_pressed"]

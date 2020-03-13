@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Menu/ConfigMenus/ConfigOptionsMenu.gd" type="Script" id=1]
 [ext_resource path="res://Menu/MenuPanel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Menu/ConfigControlsMenu/MenuSeparator.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Menu/LabelBaseModel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Menu/ButtonsAndOptions/ButtonModel.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Menu/ReturnShortcut.tres" type="ShortCut" id=6]
 
 [node name="ConfigOptionsMenu" type="Control"]
 pause_mode = 2
@@ -41,62 +42,62 @@ margin_bottom = 4.0
 [node name="LabelBaseModel" parent="MarginContainer/Options" instance=ExtResource( 4 )]
 margin_top = 8.0
 margin_right = 240.0
-margin_bottom = 43.0
-text = "Configurations 
-Menu"
+margin_bottom = 24.0
+text = "Settings"
 align = 1
 
 [node name="HSeparator2" parent="MarginContainer/Options" instance=ExtResource( 3 )]
-margin_top = 47.0
+margin_top = 28.0
 margin_right = 240.0
-margin_bottom = 51.0
+margin_bottom = 32.0
 
 [node name="HSeparator3" parent="MarginContainer/Options" instance=ExtResource( 3 )]
-margin_top = 55.0
+margin_top = 36.0
 margin_right = 240.0
-margin_bottom = 59.0
+margin_bottom = 40.0
 
 [node name="SoundOptions" parent="MarginContainer/Options" instance=ExtResource( 5 )]
-margin_left = 10.0
-margin_top = 63.0
-margin_right = 230.0
-margin_bottom = 85.0
+margin_left = 74.0
+margin_top = 44.0
+margin_right = 166.0
+margin_bottom = 66.0
 focus_neighbour_top = NodePath("../Return")
 focus_neighbour_bottom = NodePath("../Controls")
-text = "Sound Options"
+text = "Audio"
 
 [node name="Controls" parent="MarginContainer/Options" instance=ExtResource( 5 )]
-margin_left = 26.0
-margin_top = 89.0
-margin_right = 214.0
-margin_bottom = 111.0
+margin_left = 50.0
+margin_top = 70.0
+margin_right = 190.0
+margin_bottom = 92.0
 focus_neighbour_top = NodePath("../SoundOptions")
 focus_neighbour_bottom = NodePath("../Return")
-text = "Control Map"
+text = "Controls"
 
 [node name="HSeparator" parent="MarginContainer/Options" instance=ExtResource( 3 )]
-margin_top = 115.0
+margin_top = 96.0
 margin_right = 240.0
-margin_bottom = 119.0
+margin_bottom = 100.0
 
 [node name="HSeparator5" parent="MarginContainer/Options" instance=ExtResource( 3 )]
-margin_top = 123.0
+margin_top = 104.0
 margin_right = 240.0
-margin_bottom = 127.0
+margin_bottom = 108.0
 
 [node name="Return" parent="MarginContainer/Options" instance=ExtResource( 5 )]
 margin_left = 66.0
-margin_top = 131.0
+margin_top = 112.0
 margin_right = 174.0
-margin_bottom = 153.0
+margin_bottom = 134.0
 focus_neighbour_top = NodePath("../Controls")
 focus_neighbour_bottom = NodePath("../SoundOptions")
+shortcut = ExtResource( 6 )
 text = "Return"
 
 [node name="HSeparator6" parent="MarginContainer/Options" instance=ExtResource( 3 )]
-margin_top = 157.0
+margin_top = 138.0
 margin_right = 240.0
-margin_bottom = 161.0
+margin_bottom = 142.0
 [connection signal="pressed" from="MarginContainer/Options/SoundOptions" to="." method="_on_SoundOptions_pressed"]
 [connection signal="pressed" from="MarginContainer/Options/Controls" to="." method="_on_Controls_pressed"]
 [connection signal="pressed" from="MarginContainer/Options/Return" to="." method="_on_Return_pressed"]

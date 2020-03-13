@@ -20,6 +20,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 settings_menu = ExtResource( 2 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
@@ -99,13 +102,13 @@ focus_neighbour_bottom = NodePath("../LevelList")
 text = "Settings"
 
 [node name="LevelList" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
-margin_left = 24.0
+margin_left = 8.0
 margin_top = 78.0
-margin_right = 196.0
+margin_right = 212.0
 margin_bottom = 100.0
 focus_neighbour_top = NodePath("../Settings")
 focus_neighbour_bottom = NodePath("../MainMenu")
-text = "Level List"
+text = "Select Level"
 
 [node name="MainMenu" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
 margin_left = 32.0
