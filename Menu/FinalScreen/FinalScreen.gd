@@ -1,6 +1,7 @@
 extends MarginContainer
 
 var main
+export (PackedScene) var credits
 
 func _ready():
 	if get_tree().get_nodes_in_group("main").size() > 0:
@@ -14,7 +15,7 @@ func _input(event):
 		if main == null:
 			get_tree().quit()
 		else:
-			main.back_to_start()
+			main.change_scene(credits)
 
 
 

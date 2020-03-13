@@ -8,7 +8,7 @@
 [ext_resource path="res://Levels/AuxiliaryTools/BaseLevel.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Actors/Interactables/FuelTank/FuelTank.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Menu/FinalScreen/FinalScreen.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Levels/AuxiliaryTools/FinishLine.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Levels/AuxiliaryTools/LastFinishLine.gd" type="Script" id=9]
 
 [node name="BaseLevel" instance=ExtResource( 6 )]
 bgm_1 = true
@@ -80,10 +80,15 @@ position = Vector2( 24, 328 )
 [node name="FuelTank" parent="." index="10" instance=ExtResource( 7 )]
 position = Vector2( 56, 328 )
 
-[node name="FinishLine" parent="." index="11" instance=ExtResource( 9 )]
+[node name="FinishLine" type="Area2D" parent="." index="11"]
 visible = false
 position = Vector2( 504, 24 )
-next_stage = ExtResource( 8 )
+script = ExtResource( 9 )
+end_scene = ExtResource( 8 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FinishLine" index="0"]
+polygon = PoolVector2Array( 8, 8, 8, -8, -8, -8, -8, 8 )
+[connection signal="body_entered" from="FinishLine" to="FinishLine" method="_on_FinishLine_body_entered"]
 
 [editable path="Background2"]
 
@@ -92,5 +97,3 @@ next_stage = ExtResource( 8 )
 [editable path="Blocks"]
 
 [editable path="Platforms"]
-
-[editable path="FinishLine"]
