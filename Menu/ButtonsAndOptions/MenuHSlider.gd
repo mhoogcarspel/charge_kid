@@ -1,9 +1,11 @@
 extends ButtonModel
 class_name MenuHSlider
 
+export(float) var hold_slide_time
 export(float) var slide_time
 
 onready var sound_control: SoundControl = get_tree().get_nodes_in_group("sound_control")[0]
+onready var on_hold: bool = false
 
 
 func _process(delta):
@@ -16,6 +18,12 @@ func _process(delta):
 					$HSlider.value += $HSlider.step
 				elif directional_input.x == -1:
 					$HSlider.value -= $HSlider.step
-				$SliderTimer.start(slide_time)
-		if directional_input == Vector2.ZERO and not $SliderTimer.is_stopped():
-			$SliderTimer.stop()
+				if !on_hold:
+					$SliderTimer.start(hold_slide_time)
+					on_hold = true
+				else:
+					$SliderTimer.start(slide_time)
+		if directional_input == Vector2.ZERO:
+			on_hold = false
+			if not $SliderTimer.is_stopped():
+				$SliderTimer.stop()

@@ -10,6 +10,7 @@ margin_bottom = 22.0
 text = "SFX:"
 align = 0
 script = ExtResource( 2 )
+hold_slide_time = 0.5
 slide_time = 0.1
 
 [node name="HSlider" type="HSlider" parent="." index="1"]
