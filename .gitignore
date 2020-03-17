@@ -1,4 +1,4 @@
 .import
-charge_kid_progress.save
-sound_config.conf
+save_progress.save
+audio_settings.conf
 inputmap.conf
