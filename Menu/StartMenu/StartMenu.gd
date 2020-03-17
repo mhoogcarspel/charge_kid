@@ -56,7 +56,7 @@ func _on_StartGame_pressed():
 
 
 func _on_Settings_pressed():
-	main.change_scene(main.configuration_menu)
+	main.change_scene(main.settings_menu)
 
 
 func _on_Credits_pressed():

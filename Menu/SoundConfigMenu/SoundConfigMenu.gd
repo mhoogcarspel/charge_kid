@@ -15,7 +15,7 @@ func _ready():
 func _on_Return_pressed():
 	save_sound_settings()
 	if not pause_menu:
-		main.change_scene(main.configuration_menu)
+		main.change_scene(main.settings_menu)
 	else:
 		get_parent().pause_mode = PAUSE_MODE_PROCESS
 		get_parent().self_show()
