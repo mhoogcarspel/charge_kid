@@ -11,6 +11,7 @@
 [ext_resource path="res://Levels/Levels/Level12.tscn" type="PackedScene" id=9]
 
 [node name="Level10" instance=ExtResource( 1 )]
+level = 11
 bgm_1 = true
 bgm_2 = true
 bgm_3 = true

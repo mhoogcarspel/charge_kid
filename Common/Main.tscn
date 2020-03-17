@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Common/Main.gd" type="Script" id=1]
 [ext_resource path="res://Menu/StartMenu/StartMenu.tscn" type="PackedScene" id=2]
@@ -6,12 +6,25 @@
 [ext_resource path="res://Actors/Player/States/DebuggingStateMachine.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Menu/ConfigControlsMenu/ControlConfigMenu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Menu/SoundConfigMenu/SoundConfigMenu.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Menu/WorldMap/WorldMap.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Menu/LevelSelectMenu/LevelSelectMenu.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Common/MenuNavigation.gd" type="Script" id=8]
 [ext_resource path="res://Menu/ConfigMenus/ConfigOptionsMenu.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Common/BackgroundAndMusicHandler.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Assets/SFX/270322__littlerobotsoundfactory__menu-navigate-02.wav" type="AudioStream" id=11]
 [ext_resource path="res://Assets/SFX/270324__littlerobotsoundfactory__menu-navigate-00.wav" type="AudioStream" id=12]
+[ext_resource path="res://Common/SaveFileHandler.gd" type="Script" id=13]
+[ext_resource path="res://Levels/Levels/Level10.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Levels/Levels/Level12.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Levels/Levels/Level02.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Levels/Levels/Level04.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Levels/Levels/Level11.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Levels/Levels/Level05.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Levels/Levels/Level08.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Levels/Levels/Level06.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Levels/Levels/Level09.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Levels/Levels/Level07.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Levels/Levels/Level01.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Levels/Levels/Level03.tscn" type="PackedScene" id=25]
 
 [node name="Main" type="Node" groups=[
 "main",
@@ -23,10 +36,10 @@ pause_menu = ExtResource( 3 )
 debugger_layer = ExtResource( 4 )
 controls_menu = ExtResource( 5 )
 sound_menu = ExtResource( 6 )
-world_map = ExtResource( 7 )
-configuration_menu = ExtResource( 9 )
+level_select = ExtResource( 7 )
+settings_menu = ExtResource( 9 )
 save_name = "charge_kid_progress"
-sound_config = "sound_config"
+sound_config = "audio_settings"
 
 [node name="BackgroundAndMusicHandler" parent="." instance=ExtResource( 10 )]
 
@@ -59,4 +72,8 @@ one_shot = true
 [node name="Timer" type="Timer" parent="MenuNavigation/MenuNavTimer"]
 wait_time = 0.01
 one_shot = true
+
+[node name="SaveFileHandler" type="Node" parent="."]
+script = ExtResource( 13 )
+levels = [ ExtResource( 24 ), ExtResource( 16 ), ExtResource( 25 ), ExtResource( 17 ), ExtResource( 19 ), ExtResource( 21 ), ExtResource( 23 ), ExtResource( 20 ), ExtResource( 22 ), ExtResource( 14 ), ExtResource( 18 ), ExtResource( 15 ) ]
 [connection signal="timeout" from="MenuNavigation/MenuNavTimer/Timer" to="MenuNavigation" method="_on_Timer_timeout"]

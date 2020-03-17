@@ -52,6 +52,7 @@ shader_param/inactive_color = Color( 0.490196, 0.490196, 0.490196, 1 )
 shader_param/active = false
 
 [node name="Level01" instance=ExtResource( 1 )]
+level = 1
 
 [node name="ScreenTransition" parent="." index="0"]
 opening_text = "Level 1

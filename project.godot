@@ -84,11 +84,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Menu/LabelBaseModel.gd"
 }, {
-"base": "ButtonModel",
-"class": "LevelNode",
-"language": "GDScript",
-"path": "res://Menu/WorldMap/LevelNode.gd"
-}, {
 "base": "Node",
 "class": "Main",
 "language": "GDScript",
@@ -173,11 +168,6 @@ _global_script_classes=[ {
 "class": "TriggeredPlatform",
 "language": "GDScript",
 "path": "res://Actors/Interactables/Gate/TriggeredPlatform.gd"
-}, {
-"base": "Control",
-"class": "WorldMap",
-"language": "GDScript",
-"path": "res://Menu/WorldMap/WorldMap.gd"
 } ]
 _global_script_class_icons={
 "BaseControlsConfigMenu": "",
@@ -195,7 +185,6 @@ _global_script_class_icons={
 "IdleState": "",
 "JumpingState": "",
 "LabelBaseModel": "",
-"LevelNode": "",
 "Main": "",
 "MenuHSlider": "",
 "MenuOption": "",
@@ -212,8 +201,7 @@ _global_script_class_icons={
 "StandingState": "",
 "State": "",
 "StatelessState": "",
-"TriggeredPlatform": "",
-"WorldMap": ""
+"TriggeredPlatform": ""
 }
 
 [application]

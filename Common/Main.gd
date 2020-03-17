@@ -6,8 +6,8 @@ export(PackedScene) var pause_menu
 export(PackedScene) var debugger_layer
 export(PackedScene) var controls_menu
 export(PackedScene) var sound_menu
-export(PackedScene) var world_map
-export(PackedScene) var configuration_menu
+export(PackedScene) var level_select
+export(PackedScene) var settings_menu
 export(String) var save_name
 export(String) var sound_config
 export(bool) var debugging
@@ -30,8 +30,6 @@ onready var actual_dir_input: Vector2 = Vector2.ZERO
 onready var last_input_device: String = "Keyboard"
 onready var controller_layout: String = "Microsoft"
 
-onready var world_map_instance: WorldMap
-
 var actual_scene: PackedScene
 
 
@@ -43,18 +41,11 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	$Scene.add_child(start)
 	actual_scene = start_scene
-	
-	load_world_map()
 	control_handler.initialize_inputmap()
 
-func load_world_map() -> void:
-	if world_map_instance != null:
-		world_map_instance.queue_free()
-	world_map_instance = world_map.instance()
-	world_map_instance.main = self
+
 
 func back_to_start():
-	load_world_map()
 	change_scene(start_scene)
 
 func change_scene(next_scene: PackedScene):
@@ -64,20 +55,12 @@ func change_scene(next_scene: PackedScene):
 			scene.queue_free()
 		else:
 			$Scene.remove_child(scene)
+	for scene in $HudContainer.get_children():
+		scene.queue_free()
 	var scene_instance = next_scene.instance()
 	$Scene.call_deferred("add_child", scene_instance)
 	actual_scene = next_scene
 	return scene_instance
-
-func go_to_world_map():
-	get_tree().paused = true
-	if world_map_instance == null:
-		world_map_instance = change_scene(world_map)
-	else:
-		for scene in $Scene.get_children():
-			$Scene.call_deferred("remove_child", scene)
-		$Scene.call_deferred("add_child", world_map_instance)
-	return world_map_instance
 
 func get_level() -> BaseLevel:
 	return $Scene.get_children()[0]
@@ -117,3 +100,5 @@ func is_using_controller() -> bool:
 		return true
 	else:
 		return false
+###################################################################################
+

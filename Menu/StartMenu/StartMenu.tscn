@@ -1,13 +1,13 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Menu/StartMenu/StartMenu.gd" type="Script" id=1]
-[ext_resource path="res://Menu/WorldMap/WorldMap.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Menu/Credits/Credits.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Menu/ButtonsAndOptions/ButtonModel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Menu/StartMenu/StartMenu.tres" type="ButtonGroup" id=5]
 [ext_resource path="res://Assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://icon.png" type="Texture" id=7]
 [ext_resource path="res://Menu/ReturnShortcut.tres" type="ShortCut" id=8]
+[ext_resource path="res://Menu/LevelSelectMenu/LevelSelectMenu.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -22,7 +22,10 @@ pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
-world_map = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+level_select = ExtResource( 9 )
 credits = ExtResource( 3 )
 button_model = ExtResource( 4 )
 button_group = ExtResource( 5 )

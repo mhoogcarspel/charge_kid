@@ -42,6 +42,7 @@ shader_param/inactive_color = Color( 0.490196, 0.490196, 0.490196, 1 )
 shader_param/active = false
 
 [node name="BaseLevel" instance=ExtResource( 1 )]
+level = 3
 bgm_1 = true
 
 [node name="ScreenTransition" parent="." index="0"]

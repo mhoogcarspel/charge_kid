@@ -13,8 +13,8 @@
 [ext_resource path="res://Levels/AuxiliaryTools/FinishLine.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Levels/Levels/Level04.tscn" type="PackedScene" id=12]
 
-
 [node name="Level02" instance=ExtResource( 1 )]
+level = 2
 bgm_1 = true
 
 [node name="ScreenTransition" parent="." index="0"]

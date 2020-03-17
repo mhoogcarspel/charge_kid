@@ -90,6 +90,7 @@ shader_param/inactive_color = Color( 0.490196, 0.490196, 0.490196, 1 )
 shader_param/active = true
 
 [node name="Level05" instance=ExtResource( 1 )]
+level = 6
 bgm_1 = true
 bgm_2 = true
 
@@ -193,6 +194,7 @@ tile_data = PoolIntArray( 983088, 0, 393218, 1048624, 0, 65538, 1114160, 0, 6553
 [node name="EnergyWire4" parent="." index="16" instance=ExtResource( 13 )]
 material = SubResource( 4 )
 position = Vector2( 856, 256 )
+active = false
 
 [node name="Wire" parent="EnergyWire4" index="0"]
 tile_data = PoolIntArray( -1, 0, 2, 65535, 0, 458752, 131071, 0, 458752 )
@@ -200,6 +202,7 @@ tile_data = PoolIntArray( -1, 0, 2, 65535, 0, 458752, 131071, 0, 458752 )
 [node name="EnergyWire2" parent="." index="17" instance=ExtResource( 13 )]
 material = SubResource( 5 )
 position = Vector2( 824, 264 )
+active = false
 
 [node name="Wire" parent="EnergyWire2" index="0"]
 tile_data = PoolIntArray( 131061, 0, 0, 65537, 0, 196609, 196597, 0, 196608, 131072, 0, 393216, 131073, 0, 524290, 262133, 0, 524288, 262134, 0, 327680, 262135, 0, 327680, 262136, 0, 327680, 262137, 0, 327680, 262138, 0, 327680, 262139, 0, 327680, 262140, 0, 327680, 262141, 0, 327680, 262142, 0, 327680, 262143, 0, 327680, 196608, 0, 524290 )
@@ -211,6 +214,7 @@ nodes = [ NodePath("../EnergyWire5"), NodePath("../EnergyWire7"), NodePath("../G
 [node name="EnergyWire5" parent="." index="19" instance=ExtResource( 13 )]
 material = SubResource( 6 )
 position = Vector2( 712, 152 )
+active = false
 
 [node name="Wire" parent="EnergyWire5" index="0"]
 tile_data = PoolIntArray( 131070, 0, 196608, 196606, 0, 196608, 262142, 0, 196608, 327678, 0, 131072, 327679, 0, 327680 )
@@ -218,6 +222,7 @@ tile_data = PoolIntArray( 131070, 0, 196608, 196606, 0, 196608, 262142, 0, 19660
 [node name="EnergyWire7" parent="." index="20" instance=ExtResource( 13 )]
 material = SubResource( 7 )
 position = Vector2( 712, 144 )
+active = false
 
 [node name="Wire" parent="EnergyWire7" index="0"]
 tile_data = PoolIntArray( -65538, 0, 0, -2, 0, 655360, 65534, 0, 655360, 131070, 0, 655360 )

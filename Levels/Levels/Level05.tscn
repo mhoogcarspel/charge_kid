@@ -19,6 +19,7 @@
 extents = Vector2( 40, 16 )
 
 [node name="Level04" instance=ExtResource( 1 )]
+level = 5
 bgm_1 = true
 bgm_2 = true
 
