@@ -11,6 +11,7 @@ export (Array, AudioStream) var step_sounds
 export (Array, AudioStream) var land_sounds
 export (Array, AudioStream) var jump_sounds 
 export (Array, AudioStream) var boost_sounds
+export (Array, AudioStream) var shoot_sounds
 
 onready var player = get_parent()
 onready var step_particles: PackedScene = uncharged_step_particles

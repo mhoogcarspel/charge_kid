@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://Actors/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Actors/TheUniqueBullet/Bullet.tscn" type="PackedScene" id=2]
@@ -34,7 +34,7 @@
 [ext_resource path="res://Assets/ShaderEffects/Ripples/Ripples.tscn" type="PackedScene" id=32]
 [ext_resource path="res://Assets/SFX/Jump/jump0.ogg" type="AudioStream" id=33]
 [ext_resource path="res://Assets/SFX/Jump/superjump0-teste1.ogg" type="AudioStream" id=34]
-[ext_resource path="res://Assets/SFX/270335__littlerobotsoundfactory__shoot-03.wav" type="AudioStream" id=35]
+[ext_resource path="res://Assets/SFX/Shoot/shoot0.ogg" type="AudioStream" id=35]
 [ext_resource path="res://Assets/SFX/270340__littlerobotsoundfactory__pickup-01.wav" type="AudioStream" id=36]
 [ext_resource path="res://Assets/SFX/270341__littlerobotsoundfactory__pickup-04.wav" type="AudioStream" id=37]
 [ext_resource path="res://Assets/SFX/270308__littlerobotsoundfactory__explosion-00.wav" type="AudioStream" id=38]
@@ -43,6 +43,8 @@
 [ext_resource path="res://Assets/SFX/Jump/superJump1.ogg" type="AudioStream" id=41]
 [ext_resource path="res://Assets/SFX/Jump/superJump0.ogg" type="AudioStream" id=42]
 [ext_resource path="res://Assets/SFX/Jump/superJump2.ogg" type="AudioStream" id=43]
+[ext_resource path="res://Assets/SFX/Shoot/shoot2.ogg" type="AudioStream" id=44]
+[ext_resource path="res://Assets/SFX/Shoot/shoot1.ogg" type="AudioStream" id=45]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -409,6 +411,7 @@ step_sounds = [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResou
 land_sounds = [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ) ]
 jump_sounds = [ ExtResource( 33 ), ExtResource( 40 ), ExtResource( 39 ) ]
 boost_sounds = [ ExtResource( 42 ), ExtResource( 41 ), ExtResource( 43 ) ]
+shoot_sounds = [ ExtResource( 35 ), ExtResource( 45 ), ExtResource( 44 ) ]
 
 [node name="ProjectileParticles" type="CPUParticles2D" parent="PlayerSprite"]
 position = Vector2( 5, 2 )
@@ -591,8 +594,8 @@ stream = ExtResource( 34 )
 bus = "SFX"
 
 [node name="Shoot" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource( 35 )
-volume_db = -12.0
+volume_db = -3.0
+pitch_scale = 0.9
 bus = "SFX"
 
 [node name="BulletPickup" type="AudioStreamPlayer" parent="SFX"]
@@ -602,7 +605,7 @@ bus = "SFX"
 
 [node name="FuelPickup" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 37 )
-volume_db = -9.0
+volume_db = -15.0
 bus = "SFX"
 
 [node name="Step" type="AudioStreamPlayer" parent="SFX"]

@@ -93,7 +93,6 @@ position = Vector2( 0, 1 )
 shape = SubResource( 4 )
 
 [node name="PlayerHitbox" type="Area2D" parent="."]
-editor/display_folded = true
 visible = false
 collision_layer = 5
 
@@ -102,6 +101,7 @@ shape = SubResource( 5 )
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+volume_db = -12.0
 bus = "SFX"
 [connection signal="timeout" from="RefillTime" to="." method="_on_RefillTime_timeout"]
 [connection signal="body_entered" from="PlayerHitbox" to="." method="_on_PlayerHitbox_body_entered"]
