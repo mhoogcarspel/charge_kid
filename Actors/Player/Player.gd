@@ -31,7 +31,7 @@ var control_handler
 
 onready var jump_speed = sqrt(2*jump_height*gravity)
 onready var falling_speed: float = jump_speed
-onready var velocity: Vector2
+onready var velocity: Vector2 = Vector2.ZERO
 
 onready var states: Dictionary = {
 	"IdleState" : IdleState.new(self),
