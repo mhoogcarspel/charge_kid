@@ -11,7 +11,11 @@ func enter():
 	owner.can_boost = false
 	boosting_time = 0.0
 	owner.velocity = Vector2(0, -owner.boost_speed)
-	owner.get_node("SFX/SuperJump").play()
+#	owner.get_node("SFX/SuperJump").play()
+	owner.get_node("SFX/Boost").pitch_scale = rand_range(1.0, 1.3)
+	owner.get_node("SFX/Boost").set_stream(owner.get_node("PlayerSprite").boost_sounds[randi()%3])
+	owner.get_node("SFX/Boost").get_stream().set_loop(false)
+	owner.get_node("SFX/Boost").play()
 	boosting_particles(true)
 
 func update(delta):

@@ -13,7 +13,11 @@ func _init(owner: KinematicBody2D):
 	self.animation_player = owner.get_node("AnimationPlayer")
 
 func enter():
-	owner.get_node("SFX/SuperJump").play()
+#	owner.get_node("SFX/SuperJump").play()
+	owner.get_node("SFX/Boost").pitch_scale = rand_range(1.0, 1.3)
+	owner.get_node("SFX/Boost").set_stream(owner.get_node("PlayerSprite").boost_sounds[randi()%3])
+	owner.get_node("SFX/Boost").get_stream().set_loop(false)
+	owner.get_node("SFX/Boost").play()
 	owner.can_boost = false
 	boost_time = 0
 	boost_timer = 0

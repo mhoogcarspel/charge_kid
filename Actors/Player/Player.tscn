@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://Actors/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Actors/TheUniqueBullet/Bullet.tscn" type="PackedScene" id=2]
@@ -33,13 +33,16 @@
 [ext_resource path="res://Actors/Player/ShaderEffects.gd" type="Script" id=31]
 [ext_resource path="res://Assets/ShaderEffects/Ripples/Ripples.tscn" type="PackedScene" id=32]
 [ext_resource path="res://Assets/SFX/Jump/jump0.ogg" type="AudioStream" id=33]
-[ext_resource path="res://Assets/SFX/270307__littlerobotsoundfactory__explosion-01.wav" type="AudioStream" id=34]
+[ext_resource path="res://Assets/SFX/Jump/superjump0-teste1.ogg" type="AudioStream" id=34]
 [ext_resource path="res://Assets/SFX/270335__littlerobotsoundfactory__shoot-03.wav" type="AudioStream" id=35]
 [ext_resource path="res://Assets/SFX/270340__littlerobotsoundfactory__pickup-01.wav" type="AudioStream" id=36]
 [ext_resource path="res://Assets/SFX/270341__littlerobotsoundfactory__pickup-04.wav" type="AudioStream" id=37]
 [ext_resource path="res://Assets/SFX/270308__littlerobotsoundfactory__explosion-00.wav" type="AudioStream" id=38]
 [ext_resource path="res://Assets/SFX/Jump/jump2.ogg" type="AudioStream" id=39]
 [ext_resource path="res://Assets/SFX/Jump/jump1.ogg" type="AudioStream" id=40]
+[ext_resource path="res://Assets/SFX/Jump/superJump1.ogg" type="AudioStream" id=41]
+[ext_resource path="res://Assets/SFX/Jump/superJump0.ogg" type="AudioStream" id=42]
+[ext_resource path="res://Assets/SFX/Jump/superJump2.ogg" type="AudioStream" id=43]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -388,7 +391,6 @@ coyote_time = 0.1
 bunny_time = 0.1
 jump_height = 40.0
 gravity = 500.0
-jump_sounds = [ ExtResource( 33 ), ExtResource( 40 ), ExtResource( 39 ) ]
 
 [node name="PlayerSprite" type="Sprite" parent="."]
 material = SubResource( 2 )
@@ -405,6 +407,8 @@ uncharged_player_sparks = ExtResource( 7 )
 charged_player_sparks = ExtResource( 8 )
 step_sounds = [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ]
 land_sounds = [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ) ]
+jump_sounds = [ ExtResource( 33 ), ExtResource( 40 ), ExtResource( 39 ) ]
+boost_sounds = [ ExtResource( 42 ), ExtResource( 41 ), ExtResource( 43 ) ]
 
 [node name="ProjectileParticles" type="CPUParticles2D" parent="PlayerSprite"]
 position = Vector2( 5, 2 )
@@ -582,9 +586,8 @@ shape = SubResource( 15 )
 [node name="Jump" type="AudioStreamPlayer" parent="SFX"]
 bus = "SFX"
 
-[node name="SuperJump" type="AudioStreamPlayer" parent="SFX"]
+[node name="Boost" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 34 )
-volume_db = -9.0
 bus = "SFX"
 
 [node name="Shoot" type="AudioStreamPlayer" parent="SFX"]
