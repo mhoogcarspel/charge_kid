@@ -58,11 +58,12 @@ script = ExtResource( 8 )
 
 [node name="MenuNavigate" type="AudioStreamPlayer" parent="MenuNavigation"]
 stream = ExtResource( 11 )
-volume_db = -5.0
+volume_db = -18.0
 bus = "SFX"
 
 [node name="MenuAccept" type="AudioStreamPlayer" parent="MenuNavigation"]
 stream = ExtResource( 12 )
+volume_db = -18.0
 bus = "SFX"
 
 [node name="MenuNavTimer" type="Timer" parent="MenuNavigation"]
