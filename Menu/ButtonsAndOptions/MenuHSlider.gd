@@ -3,6 +3,8 @@ class_name MenuHSlider
 
 export(float) var hold_slide_time
 export(float) var slide_time
+export(Resource) var grabber
+export(Resource) var highlighted_grabber
 
 onready var sound_control: SoundControl = get_tree().get_nodes_in_group("sound_control")[0]
 onready var on_hold: bool = false
@@ -11,6 +13,7 @@ onready var on_hold: bool = false
 func _process(delta):
 	# Handling focus:
 	if has_focus():
+		$HSlider.set('custom_icons/grabber', highlighted_grabber)
 		var directional_input: Vector2 = main.control_handler.get_directional_input()
 		if $SliderTimer.is_stopped():
 			if directional_input.length() > 0:
@@ -23,7 +26,9 @@ func _process(delta):
 					on_hold = true
 				else:
 					$SliderTimer.start(slide_time)
-		if directional_input == Vector2.ZERO:
+		if directional_input.x == 0:
 			on_hold = false
 			if not $SliderTimer.is_stopped():
 				$SliderTimer.stop()
+	else:
+		$HSlider.set('custom_icons/grabber', grabber)

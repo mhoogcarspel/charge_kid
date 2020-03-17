@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Menu/ButtonsAndOptions/ButtonModel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Menu/ButtonsAndOptions/MenuHSlider.gd" type="Script" id=2]
+[ext_resource path="res://Tests/SliderIcons/Grabber.png" type="Texture" id=3]
+[ext_resource path="res://Tests/SliderIcons/SelectedGrabber.png" type="Texture" id=4]
 
 [node name="ButtonModel" instance=ExtResource( 1 )]
 margin_left = -97.0
@@ -12,12 +14,16 @@ align = 0
 script = ExtResource( 2 )
 hold_slide_time = 0.5
 slide_time = 0.1
+grabber = ExtResource( 3 )
+highlighted_grabber = ExtResource( 4 )
 
 [node name="HSlider" type="HSlider" parent="." index="1"]
 margin_left = 74.0
 margin_top = 2.0
 margin_right = 190.0
 margin_bottom = 18.0
+custom_icons/grabber_highlight = ExtResource( 4 )
+custom_icons/grabber = ExtResource( 3 )
 max_value = 1.0
 step = 0.05
 __meta__ = {
