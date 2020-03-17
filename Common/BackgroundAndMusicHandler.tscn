@@ -11,8 +11,8 @@
 "sound_control",
 ]]
 script = ExtResource( 1 )
-bgm_starting_volume = 0.5
-sfx_starting_volume = 0.5
+bgm_starting_volume = 0.7
+sfx_starting_volume = 0.7
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 volume_db = 18.2

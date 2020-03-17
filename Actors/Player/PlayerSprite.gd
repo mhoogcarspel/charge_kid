@@ -10,6 +10,7 @@ export (PackedScene) var charged_player_sparks
 export (Array, AudioStream) var step_sounds
 export (Array, AudioStream) var land_sounds
 
+
 onready var player = get_parent()
 onready var step_particles: PackedScene = uncharged_step_particles
 onready var player_sparks: PackedScene = uncharged_player_sparks
@@ -58,10 +59,11 @@ func standing() -> void:
 		player.get_parent().add_child(particles)
 
 func step_sound() -> void:
-	player.get_node("SFX/Step").pitch_scale = rand_range(2,2.3)
+	player.get_node("SFX/Step").pitch_scale = rand_range(2.3,2.6)
 	player.get_node("SFX/Step").set_stream(step_sounds[randi()%10])
 	player.get_node("SFX/Step").get_stream().set_loop(false)
 	player.get_node("SFX/Step").play()
+	
 
 func steps() -> void:
 	var particles = step_particles.instance()
@@ -69,7 +71,7 @@ func steps() -> void:
 	player.get_parent().add_child(particles)
 
 func land() -> void:
-	player.get_node("SFX/Land").pitch_scale = rand_range(1.8, 2)
+	player.get_node("SFX/Land").pitch_scale = rand_range(2.4, 2.6)
 	player.get_node("SFX/Land").set_stream(land_sounds[randi()%3])
 	player.get_node("SFX/Land").get_stream().set_loop(false)
 	player.get_node("SFX/Land").play()

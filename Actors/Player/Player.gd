@@ -23,6 +23,7 @@ export(float) var coyote_time
 export(float) var bunny_time
 export(float) var jump_height
 export(float) var gravity
+export (Array, AudioStream) var jump_sounds = []
 
 var main
 var control_handler
@@ -143,7 +144,11 @@ func vertical_move(delta: float, fac: float = 1):
 
 
 func jump():
-	$SFX/Jump.play()
+#	$SFX/Jump.play()
+	get_node("SFX/Jump").pitch_scale = rand_range(1,1.3)
+	get_node("SFX/Jump").set_stream(jump_sounds[randi()%3])
+	get_node("SFX/Jump").get_stream().set_loop(false)
+	get_node("SFX/Jump").play()
 	self.velocity.y = -jump_speed
 
 
