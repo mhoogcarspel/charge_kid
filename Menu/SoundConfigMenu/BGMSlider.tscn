@@ -7,7 +7,6 @@
 margin_right = -21.0
 text = "BGM:        "
 script = ExtResource( 2 )
-slide_time = 0.01
 
 [node name="HSlider" parent="." index="1"]
 ticks_on_borders = true

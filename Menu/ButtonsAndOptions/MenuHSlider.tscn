@@ -10,7 +10,7 @@ margin_bottom = 22.0
 text = "SFX:"
 align = 0
 script = ExtResource( 2 )
-slide_time = 1.0
+slide_time = 0.1
 
 [node name="HSlider" type="HSlider" parent="." index="1"]
 margin_left = 74.0
@@ -18,12 +18,10 @@ margin_top = 2.0
 margin_right = 190.0
 margin_bottom = 18.0
 max_value = 1.0
-step = 0.005
+step = 0.05
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="SliderTimer" type="Timer" parent="." index="2"]
-wait_time = 4096.0
 one_shot = true
-autostart = true
