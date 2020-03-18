@@ -34,6 +34,9 @@ margin_left = -512.0
 margin_top = -384.0
 margin_right = 512.0
 margin_bottom = 384.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
 margin_left = 390.0

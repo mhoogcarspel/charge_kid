@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/SelectedGrabber.png-ebe60f1a4ab8fb3f9883bcad6f21a2ad.stex"
+path="res://.import/SelectedGrabber.png-a4ab2617bef64a2b8512230bc09a9d62.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tests/SliderIcons/SelectedGrabber.png"
-dest_files=[ "res://.import/SelectedGrabber.png-ebe60f1a4ab8fb3f9883bcad6f21a2ad.stex" ]
+source_file="res://Assets/Spritesheets/SelectedGrabber.png"
+dest_files=[ "res://.import/SelectedGrabber.png-a4ab2617bef64a2b8512230bc09a9d62.stex" ]
 
 [params]
 

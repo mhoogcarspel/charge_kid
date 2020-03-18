@@ -9,7 +9,7 @@ func _ready():
 	get_tree().paused = true
 	if !get_tree().get_nodes_in_group("main").empty():
 		main = get_tree().get_nodes_in_group("main")[0]
-	$MarginContainer/Options/SoundOptions.grab_focus()
+	refocus()
 
 
 func _on_Return_pressed():
@@ -38,10 +38,10 @@ func prepare_scene(settings_menu: PackedScene) -> Control:
 	return settings_window
 
 func refocus() -> void:
-	$MarginContainer/Options/SoundOptions.grab_focus()
+	$CenterContainer/MarginContainer/MarginContainer/Options/VBoxContainer/SoundOptions.grab_focus()
 
 func self_hide() -> void:
-	$MarginContainer.hide()
+	$CenterContainer.hide()
 
 func self_show() -> void:
-	$MarginContainer.show()
+	$CenterContainer.show()

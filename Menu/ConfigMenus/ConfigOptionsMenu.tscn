@@ -16,88 +16,85 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -120.0
-margin_top = -80.5
-margin_right = 120.0
-margin_bottom = 80.5
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="MenuPanel" parent="MarginContainer" instance=ExtResource( 2 )]
-margin_right = 240.0
-margin_bottom = 161.0
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+margin_left = 430.0
+margin_top = 302.0
+margin_right = 594.0
+margin_bottom = 466.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Options" type="VBoxContainer" parent="MarginContainer"]
-margin_right = 240.0
-margin_bottom = 161.0
+[node name="MenuPanel" parent="CenterContainer/MarginContainer" instance=ExtResource( 2 )]
+margin_right = 164.0
+margin_bottom = 164.0
 
-[node name="HSeparator4" parent="MarginContainer/Options" instance=ExtResource( 3 )]
-margin_top = 0.0
-margin_right = 240.0
-margin_bottom = 4.0
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MarginContainer"]
+margin_right = 164.0
+margin_bottom = 164.0
+custom_constants/margin_right = 12
+custom_constants/margin_top = 12
+custom_constants/margin_left = 12
+custom_constants/margin_bottom = 12
 
-[node name="LabelBaseModel" parent="MarginContainer/Options" instance=ExtResource( 4 )]
-margin_top = 8.0
-margin_right = 240.0
-margin_bottom = 24.0
+[node name="Options" type="VBoxContainer" parent="CenterContainer/MarginContainer/MarginContainer"]
+margin_left = 12.0
+margin_top = 12.0
+margin_right = 152.0
+margin_bottom = 152.0
+custom_constants/separation = 38
+alignment = 1
+
+[node name="LabelBaseModel" parent="CenterContainer/MarginContainer/MarginContainer/Options" instance=ExtResource( 4 )]
+margin_right = 140.0
+margin_bottom = 16.0
 text = "Settings"
 align = 1
 
-[node name="HSeparator2" parent="MarginContainer/Options" instance=ExtResource( 3 )]
-margin_top = 28.0
-margin_right = 240.0
-margin_bottom = 32.0
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/MarginContainer/Options"]
+margin_top = 54.0
+margin_right = 140.0
+margin_bottom = 140.0
+alignment = 1
 
-[node name="HSeparator3" parent="MarginContainer/Options" instance=ExtResource( 3 )]
-margin_top = 36.0
-margin_right = 240.0
-margin_bottom = 40.0
-
-[node name="SoundOptions" parent="MarginContainer/Options" instance=ExtResource( 5 )]
-margin_left = 74.0
-margin_top = 44.0
-margin_right = 166.0
-margin_bottom = 66.0
+[node name="SoundOptions" parent="CenterContainer/MarginContainer/MarginContainer/Options/VBoxContainer" instance=ExtResource( 5 )]
+margin_left = 24.0
+margin_right = 116.0
+margin_bottom = 22.0
 focus_neighbour_top = NodePath("../Return")
 focus_neighbour_bottom = NodePath("../Controls")
 text = "Audio"
 
-[node name="Controls" parent="MarginContainer/Options" instance=ExtResource( 5 )]
-margin_left = 50.0
-margin_top = 70.0
-margin_right = 190.0
-margin_bottom = 92.0
+[node name="Controls" parent="CenterContainer/MarginContainer/MarginContainer/Options/VBoxContainer" instance=ExtResource( 5 )]
+margin_top = 26.0
+margin_right = 140.0
+margin_bottom = 48.0
 focus_neighbour_top = NodePath("../SoundOptions")
 focus_neighbour_bottom = NodePath("../Return")
 text = "Controls"
 
-[node name="HSeparator" parent="MarginContainer/Options" instance=ExtResource( 3 )]
-margin_top = 96.0
-margin_right = 240.0
-margin_bottom = 100.0
+[node name="HSeparator" parent="CenterContainer/MarginContainer/MarginContainer/Options/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 52.0
+margin_right = 140.0
+margin_bottom = 60.0
+custom_constants/separation = 8
 
-[node name="HSeparator5" parent="MarginContainer/Options" instance=ExtResource( 3 )]
-margin_top = 104.0
-margin_right = 240.0
-margin_bottom = 108.0
-
-[node name="Return" parent="MarginContainer/Options" instance=ExtResource( 5 )]
-margin_left = 66.0
-margin_top = 112.0
-margin_right = 174.0
-margin_bottom = 134.0
+[node name="Return" parent="CenterContainer/MarginContainer/MarginContainer/Options/VBoxContainer" instance=ExtResource( 5 )]
+margin_left = 16.0
+margin_top = 64.0
+margin_right = 124.0
+margin_bottom = 86.0
 focus_neighbour_top = NodePath("../Controls")
 focus_neighbour_bottom = NodePath("../SoundOptions")
 shortcut = ExtResource( 6 )
 text = "Return"
-
-[node name="HSeparator6" parent="MarginContainer/Options" instance=ExtResource( 3 )]
-margin_top = 138.0
-margin_right = 240.0
-margin_bottom = 142.0
-[connection signal="pressed" from="MarginContainer/Options/SoundOptions" to="." method="_on_SoundOptions_pressed"]
-[connection signal="pressed" from="MarginContainer/Options/Controls" to="." method="_on_Controls_pressed"]
-[connection signal="pressed" from="MarginContainer/Options/Return" to="." method="_on_Return_pressed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/MarginContainer/Options/VBoxContainer/SoundOptions" to="." method="_on_SoundOptions_pressed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/MarginContainer/Options/VBoxContainer/Controls" to="." method="_on_Controls_pressed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/MarginContainer/Options/VBoxContainer/Return" to="." method="_on_Return_pressed"]
