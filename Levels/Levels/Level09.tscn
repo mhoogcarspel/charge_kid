@@ -159,7 +159,7 @@ polygon = PoolVector2Array( -208, -184, 240, -184, 240, 200, -208, 200 )
 
 [node name="FinishLine" parent="." index="18" instance=ExtResource( 10 )]
 visible = false
-position = Vector2( 1271.8, 54.3204 )
+position = Vector2( 1280, 56 )
 next_stage = ExtResource( 11 )
 
 [editable path="Background"]
@@ -173,3 +173,5 @@ next_stage = ExtResource( 11 )
 [editable path="CameraLimiter"]
 
 [editable path="CameraLimiter2"]
+
+[editable path="FinishLine"]

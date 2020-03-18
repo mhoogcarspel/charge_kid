@@ -234,11 +234,8 @@ polygon = PoolVector2Array( -152, -192, 200, -192, 200, 192, -152, 192 )
 
 [node name="FinishLine" parent="." index="21" instance=ExtResource( 8 )]
 visible = false
-position = Vector2( 912, 168 )
+position = Vector2( 944, 184 )
 next_stage = ExtResource( 9 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FinishLine" index="0"]
-polygon = PoolVector2Array( 48, 24, 48, 8, 24, 8, 24, 24 )
 
 [node name="Lv6SpMessage" type="Area2D" parent="." index="22"]
 visible = false
@@ -268,3 +265,5 @@ shape = SubResource( 4 )
 [editable path="EnergyWire2"]
 
 [editable path="CameraLimiter"]
+
+[editable path="FinishLine"]
