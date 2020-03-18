@@ -10,7 +10,7 @@ func _ready():
 	get_tree().paused = true
 	if !get_tree().get_nodes_in_group("main").empty():
 		main = get_tree().get_nodes_in_group("main")[0]
-	$MarginContainer/Options/BGMSlider.grab_focus()
+	$CenterContainer/MarginContainer/MarginContainer/Options/Buttons/BGMSlider.grab_focus()
 
 func _on_Return_pressed():
 	save_sound_settings()
@@ -34,5 +34,5 @@ func save_sound_settings() -> void:
 	pass
 
 func _on_Default_pressed():
-	$MarginContainer/Options/BGMSlider/HSlider.value = sound_control.bgm_starting_volume
-	$MarginContainer/Options/SFXSlider/HSlider.value = sound_control.sfx_starting_volume
+	$CenterContainer/MarginContainer/MarginContainer/Options/Buttons/BGMSlider/HSlider.value = sound_control.bgm_starting_volume
+	$CenterContainer/MarginContainer/MarginContainer/Options/Buttons/SFXSlider/HSlider.value = sound_control.sfx_starting_volume
