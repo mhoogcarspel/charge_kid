@@ -1,4 +1,5 @@
 .import
 save_progress.save
+save_progress_backup.save
 audio_settings.conf
 inputmap.conf
