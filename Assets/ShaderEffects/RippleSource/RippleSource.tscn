@@ -6,6 +6,7 @@
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
+uniform float time;
 uniform float speed;
 uniform float radius;
 uniform float amplitude;
@@ -18,7 +19,7 @@ void fragment()  {
 	
 	vec2 pos = (UV - origin)*scale;
 	float x = clamp(length(pos), 0.0, radius)/radius;
-	float cur_amp = amplitude*cos(x*PI/2.0)*sin(x*2.0*PI*pulses - TIME*2.0*PI*speed);
+	float cur_amp = amplitude*cos(x*PI/2.0)*sin(x*2.0*PI*pulses - time*2.0*PI*speed);
 	
 	vec2 dir = normalize(pos);
 	vec2 mod_uv = dir*cur_amp/scale;
@@ -29,7 +30,9 @@ void fragment()  {
 "
 
 [sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
 shader = SubResource( 1 )
+shader_param/time = null
 shader_param/speed = null
 shader_param/radius = null
 shader_param/amplitude = null
@@ -45,3 +48,6 @@ copy_mode = 2
 [node name="Shader" type="Sprite" parent="."]
 material = SubResource( 2 )
 texture = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true

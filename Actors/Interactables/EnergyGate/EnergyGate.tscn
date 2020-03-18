@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Actors/Interactables/EnergyGate/EnergyGate.gd" type="Script" id=1]
 [ext_resource path="res://Actors/Interactables/EnergyGate/HitParticles.tscn" type="PackedScene" id=2]
@@ -9,11 +9,10 @@
 [ext_resource path="res://Actors/Interactables/EnergyGate/GateSparks.gd" type="Script" id=7]
 [ext_resource path="res://Actors/Interactables/EnergyGate/EnergyGateCell.tscn" type="PackedScene" id=8]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8, 8 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "Off"
+[sub_resource type="Animation" id=3]
 length = 0.1
 loop = true
 tracks/0/type = "value"
@@ -29,8 +28,7 @@ tracks/0/keys = {
 "values": [ 2 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "On"
+[sub_resource type="Animation" id=4]
 length = 1.6
 loop = true
 tracks/0/type = "value"
@@ -46,28 +44,10 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="GDScript" id=4]
-script/source = "extends Node2D
-
-
-export (float) var speed;
-export (float) var radius;
-export (float) var amplitude;
-export (float) var pulses;
-
-onready var shader = $Shader.get_material()
-
-func _process(delta):
-	shader.set_shader_param(\"speed\", speed)
-	shader.set_shader_param(\"radius\", radius)
-	shader.set_shader_param(\"amplitude\", amplitude)
-	shader.set_shader_param(\"pulses\", pulses)
-	shader.set_shader_param(\"scale\", get_viewport().size*2)
-	$Shader.scale = get_viewport().size"
-
-[sub_resource type="Shader" id=5]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
+uniform float time;
 uniform float speed;
 uniform float radius;
 uniform float amplitude;
@@ -80,7 +60,7 @@ void fragment()  {
 	
 	vec2 pos = (UV - origin)*scale;
 	float x = clamp(length(pos), 0.0, radius)/radius;
-	float cur_amp = amplitude*cos(x*PI/2.0)*sin(x*2.0*PI*pulses - TIME*2.0*PI*speed);
+	float cur_amp = amplitude*cos(x*PI/2.0)*sin(x*2.0*PI*pulses - time*2.0*PI*speed);
 	
 	vec2 dir = normalize(pos);
 	vec2 mod_uv = dir*cur_amp/scale;
@@ -90,16 +70,17 @@ void fragment()  {
 
 "
 
-[sub_resource type="ShaderMaterial" id=6]
+[sub_resource type="ShaderMaterial" id=5]
 resource_local_to_scene = true
-shader = SubResource( 5 )
+shader = SubResource( 1 )
+shader_param/time = null
 shader_param/speed = null
 shader_param/radius = null
 shader_param/amplitude = null
 shader_param/pulses = null
 shader_param/scale = null
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 length = 0.1
 loop = true
 tracks/0/type = "value"
@@ -115,7 +96,7 @@ tracks/0/keys = {
 "values": [ 2 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 length = 1.6
 loop = true
 tracks/0/type = "value"
@@ -131,28 +112,10 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="GDScript" id=9]
-script/source = "extends Node2D
-
-
-export (float) var speed;
-export (float) var radius;
-export (float) var amplitude;
-export (float) var pulses;
-
-onready var shader = $Shader.get_material()
-
-func _process(delta):
-	shader.set_shader_param(\"speed\", speed)
-	shader.set_shader_param(\"radius\", radius)
-	shader.set_shader_param(\"amplitude\", amplitude)
-	shader.set_shader_param(\"pulses\", pulses)
-	shader.set_shader_param(\"scale\", get_viewport().size*2)
-	$Shader.scale = get_viewport().size"
-
-[sub_resource type="ShaderMaterial" id=10]
+[sub_resource type="ShaderMaterial" id=13]
 resource_local_to_scene = true
-shader = SubResource( 5 )
+shader = SubResource( 1 )
+shader_param/time = null
 shader_param/speed = null
 shader_param/radius = null
 shader_param/amplitude = null
@@ -179,7 +142,6 @@ hit_particles = ExtResource( 2 )
 [node name="TopEnd" type="StaticBody2D" parent="Sparks" groups=[
 "blocks",
 ]]
-editor/display_folded = true
 position = Vector2( 0, -16 )
 scale = Vector2( 1, -1 )
 script = ExtResource( 3 )
@@ -193,11 +155,11 @@ region_rect = Rect2( 0, 224, 48, 32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sparks/TopEnd"]
 visible = false
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sparks/TopEnd"]
-anims/Off = SubResource( 2 )
-anims/On = SubResource( 3 )
+anims/Off = SubResource( 3 )
+anims/On = SubResource( 4 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Sparks/TopEnd"]
 position = Vector2( 0, -12 )
@@ -212,21 +174,17 @@ initial_velocity = 50.0
 color = Color( 1, 0.309804, 0.470588, 1 )
 
 [node name="RippleSource" parent="Sparks/TopEnd" instance=ExtResource( 5 )]
-editor/display_folded = true
-z_index = 10
-script = SubResource( 4 )
 speed = 8.0
 radius = 48.0
 amplitude = 3.0
 pulses = 3.0
 
 [node name="Shader" parent="Sparks/TopEnd/RippleSource" index="1"]
-material = SubResource( 6 )
+material = SubResource( 5 )
 
 [node name="BottomEnd" type="StaticBody2D" parent="Sparks" groups=[
 "blocks",
 ]]
-editor/display_folded = true
 position = Vector2( 0, 64 )
 script = ExtResource( 6 )
 
@@ -239,11 +197,11 @@ region_rect = Rect2( 0, 224, 48, 32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sparks/BottomEnd"]
 visible = false
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sparks/BottomEnd"]
-anims/Off = SubResource( 7 )
-anims/On = SubResource( 8 )
+anims/Off = SubResource( 6 )
+anims/On = SubResource( 7 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Sparks/BottomEnd"]
 position = Vector2( 0, -12 )
@@ -259,16 +217,13 @@ initial_velocity = 50.0
 color = Color( 1, 0.309804, 0.470588, 1 )
 
 [node name="RippleSource" parent="Sparks/BottomEnd" instance=ExtResource( 5 )]
-editor/display_folded = true
-z_index = 10
-script = SubResource( 9 )
 speed = 8.0
 radius = 48.0
 amplitude = 3.0
 pulses = 3.0
 
 [node name="Shader" parent="Sparks/BottomEnd/RippleSource" index="1"]
-material = SubResource( 10 )
+material = SubResource( 13 )
 
 [node name="GateSparks" type="CPUParticles2D" parent="Sparks"]
 position = Vector2( 0, 24 )
