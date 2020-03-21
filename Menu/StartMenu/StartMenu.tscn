@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Menu/StartMenu/StartMenu.gd" type="Script" id=1]
+[ext_resource path="res://Levels/Tilemaps/Background.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Menu/Credits/Credits.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Menu/ButtonsAndOptions/ButtonModel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Menu/StartMenu/StartMenu.tres" type="ButtonGroup" id=5]
@@ -16,6 +17,8 @@ font_data = ExtResource( 6 )
 [sub_resource type="DynamicFont" id=2]
 size = 48
 font_data = ExtResource( 6 )
+
+[sub_resource type="StyleBoxEmpty" id=3]
 
 [node name="StartMenu" type="MarginContainer"]
 pause_mode = 2
@@ -34,24 +37,19 @@ button_group = ExtResource( 5 )
 margin_right = 1024.0
 margin_bottom = 768.0
 
-[node name="CenterContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 260.0
-margin_top = 286.0
+margin_top = 206.0
 margin_right = 764.0
-margin_bottom = 482.0
-alignment = 1
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="CenterContainer/CenterContainer"]
-margin_right = 504.0
-margin_bottom = 196.0
+margin_bottom = 562.0
 custom_constants/separation = 32
 alignment = 1
 
-[node name="VBoxContainer2" type="HBoxContainer" parent="CenterContainer/CenterContainer/VBoxContainer3"]
+[node name="VBoxContainer2" type="HBoxContainer" parent="CenterContainer/VBoxContainer3"]
 margin_right = 504.0
 margin_bottom = 64.0
 
-[node name="Label" type="Label" parent="CenterContainer/CenterContainer/VBoxContainer3/VBoxContainer2"]
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer3/VBoxContainer2"]
 margin_top = 8.0
 margin_right = 288.0
 margin_bottom = 56.0
@@ -59,13 +57,13 @@ custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "Charge"
 
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/CenterContainer/VBoxContainer3/VBoxContainer2"]
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer3/VBoxContainer2"]
 margin_left = 292.0
 margin_right = 356.0
 margin_bottom = 64.0
 texture = ExtResource( 7 )
 
-[node name="Label2" type="Label" parent="CenterContainer/CenterContainer/VBoxContainer3/VBoxContainer2"]
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer3/VBoxContainer2"]
 margin_left = 360.0
 margin_top = 8.0
 margin_right = 504.0
@@ -74,13 +72,23 @@ custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "Kid"
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="CenterContainer/CenterContainer/VBoxContainer3"]
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/VBoxContainer3"]
 margin_top = 96.0
 margin_right = 504.0
-margin_bottom = 196.0
-alignment = 1
+margin_bottom = 128.0
+custom_styles/separator = SubResource( 3 )
+custom_constants/separation = 32
 
-[node name="NewGame" parent="CenterContainer/CenterContainer/VBoxContainer3/VBoxContainer3" instance=ExtResource( 4 )]
+[node name="VBoxContainer3" type="VBoxContainer" parent="CenterContainer/VBoxContainer3"]
+margin_top = 160.0
+margin_right = 504.0
+margin_bottom = 260.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewGame" parent="CenterContainer/VBoxContainer3/VBoxContainer3" instance=ExtResource( 4 )]
 margin_left = 182.0
 margin_right = 322.0
 margin_bottom = 22.0
@@ -89,7 +97,7 @@ focus_neighbour_bottom = NodePath("../Settings")
 group = ExtResource( 5 )
 text = "New Game"
 
-[node name="Settings" parent="CenterContainer/CenterContainer/VBoxContainer3/VBoxContainer3" instance=ExtResource( 4 )]
+[node name="Settings" parent="CenterContainer/VBoxContainer3/VBoxContainer3" instance=ExtResource( 4 )]
 margin_left = 182.0
 margin_top = 26.0
 margin_right = 322.0
@@ -99,7 +107,7 @@ focus_neighbour_bottom = NodePath("../Credits")
 group = ExtResource( 5 )
 text = "Settings"
 
-[node name="Credits" parent="CenterContainer/CenterContainer/VBoxContainer3/VBoxContainer3" instance=ExtResource( 4 )]
+[node name="Credits" parent="CenterContainer/VBoxContainer3/VBoxContainer3" instance=ExtResource( 4 )]
 margin_left = 190.0
 margin_top = 52.0
 margin_right = 314.0
@@ -109,7 +117,7 @@ focus_neighbour_bottom = NodePath("../Quit")
 group = ExtResource( 5 )
 text = "Credits"
 
-[node name="Quit" parent="CenterContainer/CenterContainer/VBoxContainer3/VBoxContainer3" instance=ExtResource( 4 )]
+[node name="Quit" parent="CenterContainer/VBoxContainer3/VBoxContainer3" instance=ExtResource( 4 )]
 margin_left = 214.0
 margin_top = 78.0
 margin_right = 290.0
@@ -119,7 +127,45 @@ focus_neighbour_bottom = NodePath("../NewGame")
 shortcut = ExtResource( 8 )
 group = ExtResource( 5 )
 text = "Quit"
-[connection signal="pressed" from="CenterContainer/CenterContainer/VBoxContainer3/VBoxContainer3/NewGame" to="." method="_on_StartGame_pressed"]
-[connection signal="pressed" from="CenterContainer/CenterContainer/VBoxContainer3/VBoxContainer3/Settings" to="." method="_on_Settings_pressed"]
-[connection signal="pressed" from="CenterContainer/CenterContainer/VBoxContainer3/VBoxContainer3/Credits" to="." method="_on_Credits_pressed"]
-[connection signal="pressed" from="CenterContainer/CenterContainer/VBoxContainer3/VBoxContainer3/Quit" to="." method="_on_Quit_pressed"]
+
+[node name="HSeparator2" type="HSeparator" parent="CenterContainer/VBoxContainer3"]
+margin_top = 292.0
+margin_right = 504.0
+margin_bottom = 356.0
+custom_styles/separator = SubResource( 3 )
+custom_constants/separation = 64
+
+[node name="Background" parent="." instance=ExtResource( 2 )]
+scale = Vector2( 2, 2 )
+
+[node name="Props1" parent="Background/WallProps" index="0"]
+tile_data = PoolIntArray( 24, 10, 0, 27, 9, 0, 29, 11, 0, 196636, 1, 0 )
+
+[node name="Boilers1" parent="Background/Boilers" index="0"]
+tile_data = PoolIntArray( 1, 2, 0, 65537, 1, 0, 131073, 2, 0, 196609, 2, 0, 262145, 2, 0, 327681, 2, 0, 393217, 2, 0, 458753, 0, 0, 524289, 1, 0, 589825, 2, 0, 655361, 2, 0, 720897, 2, 0, 786433, 2, 0, 851969, 2, 0, 917505, 2, 0, 983041, 2, 0, 1048577, 2, 0, 1114113, 2, 0, 1179649, 0, 0, 1245185, 2, 0, 1310721, 2, 0, 1310748, 2, 0, 1376257, 2, 0, 1376284, 2, 0, 1441793, 2, 0, 1441820, 2, 0, 1507329, 2, 0, 1507356, 2, 0 )
+
+[node name="Background2" parent="." instance=ExtResource( 2 )]
+scale = Vector2( 2, 2 )
+
+[node name="Tube1" parent="Background2/Tubes" index="0"]
+tile_data = PoolIntArray( 851968, 0, 262144, 851969, 0, 196608, 851970, 0, 196608, 851971, 0, 196608, 851972, 0, 196608, 851973, 0, 196608, 851974, 0, 196608, 851975, 0, 196608, 851976, 0, 393218, 917512, 0, 327680, 983048, 0, 327680, 1048584, 0, 327680, 1114120, 0, 327680, 1179656, 0, 327680, 1245192, 0, 327681, 1310739, 0, 262144, 1310740, 0, 196608, 1310741, 0, 196608, 1310742, 0, 196608, 1310743, 0, 196608, 1310744, 0, 393218, 1376256, 0, 262144, 1376257, 0, 196608, 1376258, 0, 196608, 1376259, 0, 196608, 1376260, 0, 196608, 1376261, 0, 196608, 1376262, 0, 196608, 1376263, 0, 196608, 1376264, 0, 196608, 1376265, 0, 196608, 1376266, 0, 196608, 1376267, 0, 196608, 1376268, 0, 196608, 1376269, 0, 196608, 1376270, 0, 196608, 1376271, 0, 196608, 1376272, 0, 262146, 1376280, 0, 327680, 1441814, 0, 196609, 1441816, 0, 327680, 1507350, 0, 327681, 1507352, 0, 327681 )
+
+[node name="Tube2" parent="Background2/Tubes" index="2"]
+tile_data = PoolIntArray( 1114112, 0, 262144, 1114113, 0, 196608, 1114114, 0, 196608, 1114115, 0, 196608, 1114116, 0, 196608, 1114117, 0, 196608, 1114118, 0, 196608, 1114119, 0, 196608, 1114120, 0, 196608, 1114121, 0, 196608, 1114122, 0, 196608, 1114123, 0, 196608, 1114124, 0, 196608, 1114125, 0, 393218, 1179655, 0, 0, 1179656, 0, 196608, 1179657, 0, 196608, 1179658, 0, 196608, 1179659, 0, 2, 1179661, 0, 327680, 1245191, 0, 196609, 1245195, 0, 196609, 1245197, 0, 327680, 1245204, 0, 393216, 1245205, 0, 196608, 1245206, 0, 196608, 1245207, 0, 196608, 1245208, 0, 196608, 1245209, 0, 196608, 1245210, 0, 196608, 1245211, 0, 393218, 1310727, 0, 327680, 1310731, 0, 327680, 1310733, 0, 327680, 1310740, 0, 327681, 1310747, 0, 524288, 1310748, 0, 196608, 1310749, 0, 196608, 1310750, 0, 196608, 1310751, 0, 262146, 1376263, 0, 327680, 1376267, 0, 327680, 1376269, 0, 327680, 1441799, 0, 327680, 1441803, 0, 327680, 1441805, 0, 524288, 1441806, 0, 196608, 1441807, 0, 196608, 1441808, 0, 196608, 1441809, 0, 196608, 1441810, 0, 196608, 1441811, 0, 196608, 1441812, 0, 196608, 1441813, 0, 196608, 1441814, 0, 196608, 1441815, 0, 196608, 1441816, 0, 196608, 1441817, 0, 196608, 1441818, 0, 196608, 1441819, 0, 196608, 1441820, 0, 196608, 1441821, 0, 196608, 1441822, 0, 393218, 1507335, 0, 327681, 1507339, 0, 327681, 1507358, 0, 327681 )
+
+[node name="Tube3" parent="Background2/Tubes" index="4"]
+tile_data = PoolIntArray( 1179670, 0, 393216, 1179671, 0, 196608, 1179672, 0, 196608, 1179673, 0, 196608, 1179674, 0, 196608, 1179675, 0, 196608, 1179676, 0, 196608, 1179677, 0, 196608, 1179678, 0, 196608, 1179679, 0, 262146, 1245192, 0, 196609, 1245206, 0, 327680, 1310728, 0, 524288, 1310729, 0, 196608, 1310730, 0, 196608, 1310731, 0, 196608, 1310732, 0, 196608, 1310733, 0, 196608, 1310734, 0, 196608, 1310735, 0, 196608, 1310736, 0, 196608, 1310737, 0, 196608, 1310738, 0, 262146, 1310740, 0, 196609, 1310742, 0, 327680, 1376273, 0, 196608, 1376274, 0, 196608, 1376275, 0, 196608, 1376276, 0, 131074, 1376278, 0, 327681 )
+
+[node name="Props3" parent="Background2/Tubes" index="5"]
+tile_data = PoolIntArray( 851975, 5, 0, 917512, 9, 0, 1114115, 5, 0, 1114124, 5, 0, 1179656, 6, 0, 1179658, 5, 0, 1179661, 9, 0, 1179671, 6, 0, 1245191, 9, 0, 1245195, 9, 0, 1245205, 6, 0, 1245206, 9, 0, 1245210, 5, 0, 1310729, 6, 0, 1310740, 10, 0, 1310743, 5, 0, 1310748, 6, 0, 1376266, 5, 0, 1376269, 8, 0, 1376275, 5, 0, 1376280, 9, 0, 1441806, 6, 0, 1441821, 5, 0, 1507358, 9, 0 )
+
+[node name="Boilers1" parent="Background2/Boilers" index="0"]
+tile_data = PoolIntArray( 4, 2, 0, 65540, 2, 0, 131076, 1, 0, 196612, 0, 0, 262148, 2, 0, 327684, 2, 0, 393220, 2, 0, 458756, 2, 0, 524292, 2, 0, 589828, 2, 0, 655364, 2, 0, 720900, 0, 0, 786436, 2, 0, 851972, 1, 0, 851996, 4, 0, 917508, 2, 0, 917532, 3, 0, 983044, 2, 0, 983068, 1, 0, 1048580, 2, 0, 1048604, 2, 0, 1114116, 2, 0, 1114140, 2, 0, 1179652, 2, 0, 1179676, 2, 0, 1245188, 2, 0, 1245212, 0, 0, 1310724, 2, 0, 1376260, 1, 0, 1441796, 2, 0, 1507332, 2, 0 )
+[connection signal="pressed" from="CenterContainer/VBoxContainer3/VBoxContainer3/NewGame" to="." method="_on_StartGame_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer3/VBoxContainer3/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer3/VBoxContainer3/Credits" to="." method="_on_Credits_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer3/VBoxContainer3/Quit" to="." method="_on_Quit_pressed"]
+
+[editable path="Background"]
+
+[editable path="Background2"]

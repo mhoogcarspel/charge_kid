@@ -9,7 +9,7 @@ onready var main = get_tree().get_nodes_in_group("main")[0]
 onready var save_file = main.get_node("SaveFileHandler")
 
 func _ready():
-	var button_list = $CenterContainer/CenterContainer/VBoxContainer3/VBoxContainer3
+	var button_list = $CenterContainer/VBoxContainer3/VBoxContainer3
 	save_file.load_progress()
 	var progress = save_file.progress
 	
