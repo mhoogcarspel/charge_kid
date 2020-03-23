@@ -24,3 +24,9 @@ func _ready():
 
 
 
+func _on_Timer_timeout():
+	if $Text.percent_visible == 0:
+		$Text.write(button + ": jump")
+
+
+

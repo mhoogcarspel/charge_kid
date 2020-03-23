@@ -130,11 +130,8 @@ direction = "Horizontal"
 
 [node name="FinishLine" parent="." index="13" instance=ExtResource( 10 )]
 visible = false
-position = Vector2( 984, 80 )
+position = Vector2( 1016, 88 )
 next_stage = ExtResource( 11 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FinishLine" index="0"]
-polygon = PoolVector2Array( 40, 16, 40, 0, 16, 0, 16, 16 )
 
 [node name="CameraLimiter" parent="." index="14" instance=ExtResource( 12 )]
 visible = false

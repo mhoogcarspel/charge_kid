@@ -181,11 +181,8 @@ tile_data = PoolIntArray( -458751, 18, 0, 262146, 16, 0, 262148, 18, 0, 327682, 
 
 [node name="FinishLine" parent="." index="18" instance=ExtResource( 14 )]
 visible = false
-position = Vector2( 912, 288 )
+position = Vector2( 888, 312 )
 next_stage = ExtResource( 15 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FinishLine" index="0"]
-polygon = PoolVector2Array( 0, 32, 0, 16, -48, 16, -48, 32 )
 
 [node name="Gate3" parent="." index="19" instance=ExtResource( 11 )]
 position = Vector2( 762, 216 )

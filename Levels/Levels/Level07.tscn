@@ -134,7 +134,8 @@ polygon = PoolVector2Array( -160, -152, 256, -152, 256, 232, -160, 232 )
 position = Vector2( 1008, 248 )
 
 [node name="FinishLine" parent="." index="16" instance=ExtResource( 11 )]
-position = Vector2( 1048.44, 37.9668 )
+visible = false
+position = Vector2( 1064, 40 )
 next_stage = ExtResource( 2 )
 
 [editable path="Background"]

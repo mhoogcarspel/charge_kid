@@ -144,12 +144,8 @@ polygon = PoolVector2Array( 232, 240, -192, 240, -192, -144, 232, -144 )
 polygon = PoolVector2Array( -168, -144, 184, -144, 184, 240, -168, 240 )
 
 [node name="FinishLine" parent="." index="15" instance=ExtResource( 11 )]
-visible = false
-position = Vector2( 912, 96 )
+position = Vector2( 904, 120 )
 next_stage = ExtResource( 12 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FinishLine" index="0"]
-polygon = PoolVector2Array( -16, 32, 24, 32, 24, 16, -16, 16 )
 
 [node name="Message" parent="." index="16" instance=ExtResource( 13 )]
 visible = false
@@ -161,6 +157,7 @@ message_time = 4.0
 shape = SubResource( 1 )
 
 [node name="HoldAgainMessage" parent="." index="17" instance=ExtResource( 14 )]
+visible = false
 position = Vector2( 488, 184 )
 z_index = -1
 

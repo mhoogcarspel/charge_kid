@@ -136,11 +136,8 @@ one_shot = true
 
 [node name="FinishLine" parent="." index="16" instance=ExtResource( 11 )]
 visible = false
-position = Vector2( 984, 88 )
+position = Vector2( 1016, 104 )
 next_stage = ExtResource( 12 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FinishLine" index="0"]
-polygon = PoolVector2Array( 40, 24, 40, 0, 16, 0, 16, 24 )
 [connection signal="body_entered" from="Message" to="Message" method="_on_body_entered"]
 
 [editable path="Background"]

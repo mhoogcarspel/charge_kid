@@ -281,11 +281,8 @@ polygon = PoolVector2Array( 48, 16, 48, -24, -16, -24, -16, 16 )
 
 [node name="FinishLine" parent="." index="21" instance=ExtResource( 17 )]
 visible = false
-position = Vector2( 1144, 200 )
+position = Vector2( 1176, 232 )
 next_stage = ExtResource( 18 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FinishLine" index="0"]
-polygon = PoolVector2Array( 40, 40, 40, 16, 0, 16, 0, 40 )
 
 [node name="Switch2" parent="." index="22" instance=ExtResource( 9 )]
 position = Vector2( 1024, 152 )
