@@ -9,10 +9,10 @@
 [ext_resource path="res://Actors/Interactables/EnergyGate/GateSparks.gd" type="Script" id=7]
 [ext_resource path="res://Actors/Interactables/EnergyGate/EnergyGateCell.tscn" type="PackedScene" id=8]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 length = 0.1
 loop = true
 tracks/0/type = "value"
@@ -28,7 +28,7 @@ tracks/0/keys = {
 "values": [ 2 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 length = 1.6
 loop = true
 tracks/0/type = "value"
@@ -44,7 +44,7 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id=4]
 code = "shader_type canvas_item;
 
 uniform float time;
@@ -72,7 +72,7 @@ void fragment()  {
 
 [sub_resource type="ShaderMaterial" id=5]
 resource_local_to_scene = true
-shader = SubResource( 1 )
+shader = SubResource( 4 )
 shader_param/time = null
 shader_param/speed = null
 shader_param/radius = null
@@ -112,9 +112,9 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="ShaderMaterial" id=13]
+[sub_resource type="ShaderMaterial" id=8]
 resource_local_to_scene = true
-shader = SubResource( 1 )
+shader = SubResource( 4 )
 shader_param/time = null
 shader_param/speed = null
 shader_param/radius = null
@@ -122,11 +122,12 @@ shader_param/amplitude = null
 shader_param/pulses = null
 shader_param/scale = null
 
-[sub_resource type="Gradient" id=11]
+[sub_resource type="Gradient" id=9]
 offsets = PoolRealArray( 0.05, 0.05 )
 colors = PoolColorArray( 1, 0.309804, 0.470588, 1, 1, 0.309804, 0.470588, 0 )
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=10]
+resource_local_to_scene = true
 extents = Vector2( 2, 40 )
 
 [node name="EnergyGate" type="Node2D"]
@@ -155,11 +156,11 @@ region_rect = Rect2( 0, 224, 48, 32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sparks/TopEnd"]
 visible = false
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sparks/TopEnd"]
-anims/Off = SubResource( 3 )
-anims/On = SubResource( 4 )
+anims/Off = SubResource( 2 )
+anims/On = SubResource( 3 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Sparks/TopEnd"]
 position = Vector2( 0, -12 )
@@ -197,7 +198,7 @@ region_rect = Rect2( 0, 224, 48, 32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sparks/BottomEnd"]
 visible = false
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sparks/BottomEnd"]
 anims/Off = SubResource( 6 )
@@ -223,7 +224,7 @@ amplitude = 3.0
 pulses = 3.0
 
 [node name="Shader" parent="Sparks/BottomEnd/RippleSource" index="1"]
-material = SubResource( 13 )
+material = SubResource( 8 )
 
 [node name="GateSparks" type="CPUParticles2D" parent="Sparks"]
 position = Vector2( 0, 24 )
@@ -238,7 +239,7 @@ spread = 180.0
 gravity = Vector2( 0, 250 )
 initial_velocity = 150.0
 initial_velocity_random = 0.7
-color_ramp = SubResource( 11 )
+color_ramp = SubResource( 9 )
 script = ExtResource( 7 )
 
 [node name="Hitbox" type="Area2D" parent="Sparks"]
@@ -246,7 +247,7 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sparks/Hitbox"]
 position = Vector2( 0, 24 )
-shape = SubResource( 12 )
+shape = SubResource( 10 )
 
 [node name="EnergyGateCell" parent="." instance=ExtResource( 8 )]
 active = true

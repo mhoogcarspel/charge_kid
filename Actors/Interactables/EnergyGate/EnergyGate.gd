@@ -20,6 +20,8 @@ func initialize_gate(new_value: int) -> void:
 		get_node("Sparks/BottomEnd").position.y = gate_height*16
 		var source_node
 		source_node = get_node("EnergyGateCell")
+		$Sparks/Hitbox/CollisionShape2D.shape.extents = Vector2(2,gate_height*8 + 8)
+		$Sparks/Hitbox/CollisionShape2D.position.y = gate_height*8 - 8
 		for child in self.get_children():
 			if child.name != "EnergyGateCell" and child.name != "Sparks":
 				self.remove_child(child)
