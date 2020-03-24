@@ -105,6 +105,11 @@ func kill() -> void:
 	var angle = randi()%360 - 180
 	self.position = Vector2(4,0).rotated(deg2rad(angle))
 	$Timer2.start()
+	
+func death_sound() -> void:
+	player.get_node("SFX/Death").pitch_scale = rand_range(1.1,1.3)
+	player.get_node("SFX/Death").get_stream().set_loop(false)
+#	player.get_node("SFX/Death").play()
 
 func _on_Timer2_timeout():
 	self.get_material().set_shader_param("erase", true)
