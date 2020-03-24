@@ -12,6 +12,7 @@ export (Array, AudioStream) var land_sounds
 export (Array, AudioStream) var jump_sounds 
 export (Array, AudioStream) var boost_sounds
 export (Array, AudioStream) var shoot_sounds
+export (Array, AudioStream) var fuel_pickup_sounds
 
 onready var player = get_parent()
 onready var step_particles: PackedScene = uncharged_step_particles
@@ -90,8 +91,6 @@ func land() -> void:
 		timer.start(0.1)
 		yield(timer, "timeout")
 		timer.queue_free()
-
-
 
 func shoot_particles() -> void:
 	for particle in player.get_node("ShootParticles").get_children():

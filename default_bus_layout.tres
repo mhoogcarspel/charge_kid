@@ -21,15 +21,15 @@ resource_name = "Chorus"
 dry = 0.11
 wet = 0.73
 
-[sub_resource type="AudioEffectNotchFilter" id=6]
+[sub_resource type="AudioEffectNotchFilter" id=5]
 resource_name = "NotchFilter"
 
-[sub_resource type="AudioEffectStereoEnhance" id=5]
+[sub_resource type="AudioEffectStereoEnhance" id=6]
 resource_name = "StereoEnhance"
 
 [sub_resource type="AudioEffectAmplify" id=7]
 resource_name = "Amplify"
-volume_db = -6.0
+volume_db = 3.0
 
 [resource]
 bus/1/name = "SFX"
@@ -56,7 +56,7 @@ bus/3/volume_db = -6.57885
 bus/3/send = "SFX"
 bus/3/effect/0/effect = SubResource( 3 )
 bus/3/effect/0/enabled = true
-bus/4/name = "NOTCH"
+bus/4/name = "DEATH FILTER"
 bus/4/solo = false
 bus/4/mute = false
 bus/4/bypass_fx = false
@@ -64,9 +64,9 @@ bus/4/volume_db = 0.0
 bus/4/send = "REVERB"
 bus/4/effect/0/effect = SubResource( 4 )
 bus/4/effect/0/enabled = true
-bus/4/effect/1/effect = SubResource( 6 )
+bus/4/effect/1/effect = SubResource( 5 )
 bus/4/effect/1/enabled = true
-bus/4/effect/2/effect = SubResource( 5 )
+bus/4/effect/2/effect = SubResource( 6 )
 bus/4/effect/2/enabled = true
 bus/4/effect/3/effect = SubResource( 7 )
 bus/4/effect/3/enabled = true

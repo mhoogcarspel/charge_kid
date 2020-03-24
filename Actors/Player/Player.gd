@@ -165,7 +165,8 @@ func is_on_platform() -> bool:
 func hit(projectile: PhysicsBody2D) -> void:
 	match projectile.get_state():
 		"StandingState":
-			$SFX/BulletPickup.play()
+#			$SFX/BulletPickup.play()
+			fuel_pickup_sound()
 		"FuelChargeState":
 			recharge_fuel()
 		
@@ -176,10 +177,14 @@ func hit(projectile: PhysicsBody2D) -> void:
 		_on_BoostTimer_timeout()
 	projectile.destroy()
 
-
+func fuel_pickup_sound():
+	get_node("SFX/FuelPickup").set_stream(get_node("PlayerSprite").fuel_pickup_sounds[randi()%3])
+	get_node("SFX/FuelPickup").get_stream().set_loop(false)
+	get_node("SFX/FuelPickup").play()
 
 func recharge_fuel() -> void:
-	$SFX/FuelPickup.play()
+#	$SFX/FuelPickup.play()
+	fuel_pickup_sound()
 	can_boost = true
 	for particle in $FuelParticles.get_children():
 		particle.emitting = true
