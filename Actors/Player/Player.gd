@@ -23,8 +23,6 @@ export(float) var coyote_time
 export(float) var bunny_time
 export(float) var jump_height
 export(float) var gravity
-#export (Array, AudioStream) var jump_sounds 
-#export (Array, AudioStream) var boost_sounds
 
 var main
 var control_handler
@@ -145,7 +143,6 @@ func vertical_move(delta: float, fac: float = 1):
 
 
 func jump():
-#	$SFX/Jump.play()
 	get_node("SFX/Jump").pitch_scale = rand_range(1,1.3)
 	get_node("SFX/Jump").set_stream($PlayerSprite.jump_sounds[randi()%3])
 	get_node("SFX/Jump").get_stream().set_loop(false)
@@ -165,7 +162,6 @@ func is_on_platform() -> bool:
 func hit(projectile: PhysicsBody2D) -> void:
 	match projectile.get_state():
 		"StandingState":
-#			$SFX/BulletPickup.play()
 			fuel_pickup_sound()
 		"FuelChargeState":
 			recharge_fuel()
@@ -183,7 +179,6 @@ func fuel_pickup_sound():
 	get_node("SFX/FuelPickup").play()
 
 func recharge_fuel() -> void:
-#	$SFX/FuelPickup.play()
 	fuel_pickup_sound()
 	can_boost = true
 	for particle in $FuelParticles.get_children():

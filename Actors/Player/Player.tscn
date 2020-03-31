@@ -401,7 +401,6 @@ material = SubResource( 2 )
 texture = ExtResource( 3 )
 vframes = 4
 hframes = 8
-frame = 1
 region_enabled = true
 region_rect = Rect2( 0, 256, 128, 64 )
 script = ExtResource( 4 )

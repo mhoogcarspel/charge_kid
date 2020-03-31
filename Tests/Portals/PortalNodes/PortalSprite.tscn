@@ -66,3 +66,7 @@ material = SubResource( 2 )
 texture = ExtResource( 3 )
 hframes = 4
 script = ExtResource( 4 )
+
+[node name="FrameTimer" type="Timer" parent="."]
+one_shot = true
+[connection signal="timeout" from="FrameTimer" to="." method="_on_FrameTimer_timeout"]
