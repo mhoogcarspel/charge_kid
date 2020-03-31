@@ -1,33 +1,60 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Levels/Tilemaps/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Spritesheets/industrial.v2.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Spritesheets/blank.png" type="Texture" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
+uniform float time;
+uniform float radius;
+uniform sampler2D bg;
+uniform float dist;
+uniform float ratio;
+uniform vec2 velocity;
+
+uniform vec4 black: hint_color;
+uniform vec4 white: hint_color;
+
+void fragment () {
+	vec2 center = vec2(0.5);
+	float x = length(UV - center);
+	vec4 color;
+	vec2 uv;
+	
+	if (length(COLOR - black) < 0.1) {
+		uv = UV + velocity*time;
+		uv.x += dist*ratio;
+		uv = mod(uv,vec2(1.0));
+		color = texture(bg, uv);
+	}
+	else if (length(COLOR - white) < 0.1) {
+		color = white;
+	}
+	
+	COLOR = color;
+}
 
 
-vec2 rotate(vec2 vector, vec2 pivot, float angle) {
-	mat2 rotation_matrix = mat2( vec2(cos(angle) , -sin(angle)),
-								 vec2(cos(angle) , sin(angle)));
-	
-	vector -= pivot;
-	vector = vector*rotation_matrix;
-	vector += pivot;
-	
-	return vector;
-}"
+"
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
+shader_param/time = 0.4
+shader_param/radius = 0.2
+shader_param/dist = 0.7
+shader_param/ratio = 1.0
+shader_param/velocity = Vector2( 0.3, 0.1 )
+shader_param/black = Color( 0, 0, 0, 1 )
+shader_param/white = Color( 0.956863, 0.956863, 0.894118, 1 )
+shader_param/bg = ExtResource( 4 )
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( 256, 256 )
 
 [node name="Background" parent="." instance=ExtResource( 1 )]
-editor/display_folded = true
 visible = false
 position = Vector2( 8, 0 )
 
@@ -38,7 +65,6 @@ tile_data = PoolIntArray( -983049, 0, 196609, -917513, 0, 327680, -851977, 0, 32
 tile_data = PoolIntArray( -262166, 0, 262144, -262165, 0, 196608, -262164, 0, 196608, -262163, 0, 196608, -262162, 0, 196608, -262161, 0, 196608, -262160, 0, 196608, -262159, 0, 196608, -262158, 0, 196608, -262157, 0, 196608, -262156, 0, 196608, -262155, 0, 196608, -262154, 0, 196608, -262153, 0, 196608, -262152, 0, 196608, -262151, 0, 196608, -262150, 0, 196608, -262149, 0, 196608, -262148, 0, 196608, -262147, 0, 196608, -262146, 0, 196608, -262145, 0, 196608, -327680, 0, 196608, -327679, 0, 196608, -327678, 0, 196608, -327677, 0, 196608, -327676, 0, 196608, -327675, 0, 262146 )
 
 [node name="Background2" parent="." instance=ExtResource( 1 )]
-editor/display_folded = true
 visible = false
 position = Vector2( -4, -4 )
 rotation = 0.785398

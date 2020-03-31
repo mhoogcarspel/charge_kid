@@ -209,6 +209,7 @@ _global_script_class_icons={
 config/name="Charge Kid"
 run/main_scene="res://Common/Main.tscn"
 config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
 
 [debug]
 
