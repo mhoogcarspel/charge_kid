@@ -6,7 +6,8 @@ export(float) var sfx_starting_volume
 onready var bgm_volume_value: float
 onready var sfx_volume_value: float
 
-onready var main = get_parent()
+onready var main: Node = get_parent()
+onready var save_file_handler: SaveHandler = get_parent().get_node("SaveFileHandler")
 onready var mus = AudioServer.get_bus_index("MUS")
 onready var LowPassFilter:AudioEffectFilter
 export var max_freq = 22000
@@ -68,12 +69,23 @@ func respawn_effect():
 #### Functions Related to Volume control ######
 
 func load_sound_config():
+	var config_model = {
+		"MUS": bgm_starting_volume,
+		"SFX": sfx_starting_volume
+	}
 	var file = File.new()
 	if file.file_exists(main.sound_config + ".conf"):
 		file.open(main.sound_config + ".conf", File.READ)
-		var sound_cfg:Dictionary = parse_json(file.get_line())
+		var file_string: String = file.get_line()
+		
+		if !save_file_handler.check_file_integrity(file_string, config_model, file.get_path()):
+			save_file_handler.make_backup_file(file.get_path(), file_string, config_model)
+			file.open(main.sound_config + ".conf", File.READ)
+			file_string = file.get_line()
+		
+		var sound_cfg:Dictionary = parse_json(file_string)
 		for bus in sound_cfg.keys():
-			AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus), linear2db(float(sound_cfg[bus])))
+			AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus), linear2db(sound_cfg[bus]))
 		file.close()
 	else:
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("MUS"), linear2db(bgm_starting_volume))

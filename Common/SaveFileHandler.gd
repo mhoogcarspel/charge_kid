@@ -1,5 +1,5 @@
 extends Node
-
+class_name SaveHandler
 
 
 export (Array, PackedScene) var levels
@@ -22,13 +22,10 @@ func load_progress() -> void:
 		file.open("save_progress.save", File.READ)
 		var file_string: String = file.get_line()
 		if !check_file_integrity(file_string, progress, file.get_path()):
-			file.open("save_progress_backup.save", File.WRITE)
-			file.store_line(file_string)
-			erase_progress()
-			print("ERROR: save file unreadable.")
-			print("A backup has been saved as save_progress_backup.save and the game progress reseted")
+			make_backup_file(file.get_path(),file_string, progress)
+			file.close()
+			return
 		progress = parse_json(file_string)
-		file.close()
 
 func erase_progress() -> void:
 	var file = File.new()
@@ -54,12 +51,22 @@ func check_file_integrity(file_string: String, model: Dictionary, file_path: Str
 	for i in range(0, file_json.keys().size()):
 		if not file_json.keys()[i] in model.keys():
 			print("ERROR:" + file_json.keys()[i] + " on " + file_path + " is not a valid key")
+			return false
 		if not model.keys()[i] in file_json.keys():
 			print("ERROR:" + model.keys()[i] + " not in " + file_path)
+			return false
 	
 	for key in file_json:
 		if typeof(file_json[key]) != typeof(model[key]):
 			print("ERROR: Variable " + key + " in " + file_path + " of wrong type")
 			return false
 	return true
-	
+
+func make_backup_file(file_path:String, file_string: String, model:Dictionary) -> void:
+	var file : = File.new()
+	file.open(file_path+".backup", File.WRITE)
+	file.store_line(file_string)
+	file.open(file_path, File.WRITE)
+	file.store_line(to_json(model))
+	file.close()
+	print(file_path + " backup saved as " + file_path + ".backup and file rewritten to standard")
