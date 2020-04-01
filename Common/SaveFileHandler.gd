@@ -5,10 +5,9 @@ extends Node
 export (Array, PackedScene) var levels
 
 var progress: Dictionary = {
-	"levels": 0,
+	"levels": 0.0,
 	"end": false
 }
-
 
 
 func save_progress() -> void:
@@ -22,12 +21,13 @@ func load_progress() -> void:
 	if file.file_exists("save_progress.save"):
 		file.open("save_progress.save", File.READ)
 		var file_string: String = file.get_line()
-		if !check_file_integrity(file_string):
+		if !check_file_integrity(file_string, progress, file.get_path()):
 			file.open("save_progress_backup.save", File.WRITE)
 			file.store_line(file_string)
 			erase_progress()
 			print("ERROR: save file unreadable.")
 			print("A backup has been saved as save_progress_backup.save and the game progress reseted")
+		progress = parse_json(file_string)
 		file.close()
 
 func erase_progress() -> void:
@@ -38,26 +38,28 @@ func erase_progress() -> void:
 	file.store_line(to_json(progress))
 	file.close()
 
-func check_file_integrity(file_string: String) -> bool:
+func check_file_integrity(file_string: String, model: Dictionary, file_path: String) -> bool:
 	var error_message = validate_json(file_string)
 	
 	if error_message:
 		print(error_message)
-		print("ERROR: Save file is not on Json format")
+		print("ERROR:" + file_path + " file is not on Json format")
 		return false
-	progress = parse_json(file_string)
+	var file_json = parse_json(file_string)
 	
-	if progress.keys().size() > 2:
-		print("ERROR: More itens than needed in save_progress.save")
+	if file_json.keys().size() != model.keys().size():
+		print("ERROR: key numbers different in" + file_path)
 		return false
-	elif !("levels" in progress.keys()) or !("end" in progress.keys()):
-		print("ERROR: key missing in progress.save")
-		return false
-	elif !(progress["levels"] is float):
-		print("ERROR: levels value is not a number")
-		return false
-	elif !(progress["end"] is bool):
-		print("ERROR: levels value is not a int")
-		return false
+	
+	for i in range(0, file_json.keys().size()):
+		if not file_json.keys()[i] in model.keys():
+			print("ERROR:" + file_json.keys()[i] + " on " + file_path + " is not a valid key")
+		if not model.keys()[i] in file_json.keys():
+			print("ERROR:" + model.keys()[i] + " not in " + file_path)
+	
+	for key in file_json:
+		if typeof(file_json[key]) != typeof(model[key]):
+			print("ERROR: Variable " + key + " in " + file_path + " of wrong type")
+			return false
 	return true
 	
