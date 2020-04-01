@@ -1,11 +1,13 @@
-extends Object
+extends Node
 class_name ButtonGetter
 
+onready var map_model: Dictionary
 onready var gamepad_map: Dictionary
 onready var actions_dictionary: Dictionary
 onready var actions_list: Array
+onready var file_handler: FileHandler = get_parent().get_node("FileHandler")
 
-
+signal done
 
 func _init(actions_dictionary_0: Dictionary):
 	
@@ -34,6 +36,10 @@ func _init(actions_dictionary_0: Dictionary):
 	"Start": ["Start", "Start", "+"],
 	"Select": ["Back", "Select", "-"],
 	}
+
+func _ready():
+	self.map_model = make_inputmap_dictionary()
+	emit_signal("done")
 
 func erase_all_actions() -> void:
 	for action in actions_list:
@@ -145,7 +151,12 @@ func initialize_inputmap(filename: String = "inputmap") -> void:
 	var input_save := File.new()
 	if input_save.file_exists(filename + ".conf"):
 		input_save.open(filename + ".conf", File.READ)
-		var inputmap_dictionary: Dictionary = parse_json(input_save.get_line())
+		var file_string: String = input_save.get_line()
+		if !file_handler.check_file_integrity(file_string, map_model, input_save.get_path()):
+			file_handler.make_backup_file(input_save.get_path(), file_string, map_model)
+			input_save.open(filename + ".conf", File.READ)
+			file_string = input_save.get_line()
+		var inputmap_dictionary: Dictionary = parse_json(file_string)
 		for action in actions_list:
 			InputMap.action_erase_events(action)
 			var input_key = InputEventKey.new()
@@ -158,6 +169,14 @@ func initialize_inputmap(filename: String = "inputmap") -> void:
 			InputMap.action_add_event(action, input_button)
 
 func save_inputmap(filename: String = "inputmap") -> void:
+	var inputmap_dictionary: Dictionary = make_inputmap_dictionary()
+	
+	var save_file := File.new()
+	save_file.open(filename + ".conf", File.WRITE)
+	save_file.store_line(to_json(inputmap_dictionary))
+	save_file.close()
+
+func make_inputmap_dictionary() -> Dictionary:
 	var inputmap_dictionary: Dictionary = {}
 	for action in actions_list:
 		var action_keys: Dictionary = {}
@@ -174,12 +193,7 @@ func save_inputmap(filename: String = "inputmap") -> void:
 				}
 		
 		inputmap_dictionary[action] = action_keys.duplicate()
-	
-	var save_file := File.new()
-	save_file.open(filename + ".conf", File.WRITE)
-	save_file.store_line(to_json(inputmap_dictionary))
-	save_file.close()
-	
+	return inputmap_dictionary
 
 
 

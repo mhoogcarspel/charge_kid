@@ -10,6 +10,9 @@ func check_file_integrity(file_string: String, model: Dictionary, file_path: Str
 		return false
 	var file_json = parse_json(file_string)
 	
+	return compare_dictionaries_from_files(file_json, model, file_path)
+
+func compare_dictionaries_from_files(file_json: Dictionary, model: Dictionary, file_path: String) -> bool:
 	if file_json.keys().size() != model.keys().size():
 		print("ERROR: key numbers different in" + file_path)
 		return false
@@ -24,8 +27,15 @@ func check_file_integrity(file_string: String, model: Dictionary, file_path: Str
 	
 	for key in file_json:
 		if typeof(file_json[key]) != typeof(model[key]):
-			print("ERROR: Variable " + key + " in " + file_path + " of wrong type")
-			return false
+			if !(typeof(file_json[key]) in [TYPE_INT,TYPE_REAL] and typeof(model[key]) in [TYPE_INT,TYPE_REAL]):
+				#For some reason the parse_json() function translates 0 to 0.0 (int to float)
+				print("ERROR: Variable " + key + " in " + file_path + " of wrong type")
+				return false
+		
+		if typeof(file_json[key]) == TYPE_DICTIONARY:
+			if !compare_dictionaries_from_files(file_json[key], model[key], file_path):
+				return false
+		
 	return true
 
 func make_backup_file(file_path:String, file_string: String, model:Dictionary) -> void:
