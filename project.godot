@@ -39,7 +39,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Actors/Player/States/BulletBoostingState.gd"
 }, {
-"base": "Object",
+"base": "Node",
 "class": "ButtonGetter",
 "language": "GDScript",
 "path": "res://Common/ButtonGetter.gd"
@@ -53,6 +53,11 @@ _global_script_classes=[ {
 "class": "DyingState",
 "language": "GDScript",
 "path": "res://Actors/Player/States/DyingState.gd"
+}, {
+"base": "Node",
+"class": "FileHandler",
+"language": "GDScript",
+"path": "res://Common/FileHandler.gd"
 }, {
 "base": "Area2D",
 "class": "FinishLine",
@@ -184,6 +189,7 @@ _global_script_class_icons={
 "ButtonGetter": "",
 "ButtonModel": "",
 "DyingState": "",
+"FileHandler": "",
 "FinishLine": "",
 "FuelChargeState": "",
 "HoldState": "",

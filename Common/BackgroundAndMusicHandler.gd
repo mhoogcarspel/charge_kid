@@ -7,7 +7,7 @@ onready var bgm_volume_value: float
 onready var sfx_volume_value: float
 
 onready var main: Node = get_parent()
-onready var save_file_handler: SaveHandler = get_parent().get_node("SaveFileHandler")
+onready var file_handler: FileHandler = get_parent().get_node("FileHandler")
 onready var mus = AudioServer.get_bus_index("MUS")
 onready var LowPassFilter:AudioEffectFilter
 export var max_freq = 22000
@@ -78,8 +78,8 @@ func load_sound_config():
 		file.open(main.sound_config + ".conf", File.READ)
 		var file_string: String = file.get_line()
 		
-		if !save_file_handler.check_file_integrity(file_string, config_model, file.get_path()):
-			save_file_handler.make_backup_file(file.get_path(), file_string, config_model)
+		if !file_handler.check_file_integrity(file_string, config_model, file.get_path()):
+			file_handler.make_backup_file(file.get_path(), file_string, config_model)
 			file.open(main.sound_config + ".conf", File.READ)
 			file_string = file.get_line()
 		

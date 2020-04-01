@@ -37,6 +37,7 @@ var actual_scene: PackedScene
 func _ready():
 	if debugging:
 		$HudContainer.add_child(debugger_layer.instance())
+	self.add_child(control_handler)
 	var start = start_scene.instance()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	$Scene.add_child(start)
