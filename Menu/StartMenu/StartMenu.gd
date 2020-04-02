@@ -67,4 +67,5 @@ func _on_Quit_pressed():
 	get_tree().quit()
 
 
-
+func _on_Timer_timeout():
+	$CenterContainer/VBoxContainer3/VBoxContainer2/TextureRect/CPUParticles2D.emitting = true

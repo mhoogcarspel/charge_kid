@@ -1,9 +1,11 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Tests/Portals/PortalNodes/PortalSprite.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Actors/Interactables/Portal/PortalSprite.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/ShaderEffects/RippleSource/RippleSource.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Tests/Portals/PortalNodes/Portal.gd" type="Script" id=3]
+[ext_resource path="res://Actors/Interactables/Portal/Portal.gd" type="Script" id=3]
 [ext_resource path="res://Assets/ShaderEffects/Ripples/Ripples.tscn" type="PackedScene" id=4]
+
+
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 4.0

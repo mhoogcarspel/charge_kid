@@ -1,9 +1,14 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Tests/Portals/bg2.png" type="Texture" id=1]
-[ext_resource path="res://Tests/Portals/bg1.png" type="Texture" id=2]
-[ext_resource path="res://Tests/Portals/portal.png" type="Texture" id=3]
-[ext_resource path="res://Tests/Portals/PortalNodes/PortalSprite.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Spritesheets/portal_bg2.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Spritesheets/portal_bg1.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Spritesheets/portal.png" type="Texture" id=3]
+[ext_resource path="res://Actors/Interactables/Portal/PortalSprite.gd" type="Script" id=4]
+
+
+
+
+
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;

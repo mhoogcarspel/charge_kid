@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bg2.png-86950bc7a9ef11e0a8f1e9efd431d35a.stex"
+path="res://.import/portal_bg2.png-a246de508f7b877efbebcf5ca6d359d5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tests/Portals/bg2.png"
-dest_files=[ "res://.import/bg2.png-86950bc7a9ef11e0a8f1e9efd431d35a.stex" ]
+source_file="res://Assets/Spritesheets/portal_bg2.png"
+dest_files=[ "res://.import/portal_bg2.png-a246de508f7b877efbebcf5ca6d359d5.stex" ]
 
 [params]
 
