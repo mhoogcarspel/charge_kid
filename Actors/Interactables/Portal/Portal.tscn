@@ -5,8 +5,6 @@
 [ext_resource path="res://Actors/Interactables/Portal/Portal.gd" type="Script" id=3]
 [ext_resource path="res://Assets/ShaderEffects/Ripples/Ripples.tscn" type="PackedScene" id=4]
 
-
-
 [sub_resource type="CircleShape2D" id=1]
 radius = 4.0
 
