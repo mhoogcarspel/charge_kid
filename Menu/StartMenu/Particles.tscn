@@ -6,6 +6,7 @@
 position = Vector2( 36, 24 )
 emitting = false
 amount = 1
+lifetime = 1.5
 one_shot = true
 local_coords = false
 emission_shape = 2
