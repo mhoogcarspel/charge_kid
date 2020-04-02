@@ -157,6 +157,12 @@ func is_on_platform() -> bool:
 			return true
 	return false
 
+func is_on_blocks() -> bool:
+	for body in $PlatformSentinel.get_overlapping_bodies():
+		if body.is_in_group("blocks"):
+			return true
+	return false
+
 
 
 func hit(projectile: PhysicsBody2D) -> void:

@@ -6,7 +6,7 @@ export (float) var min_distance
 export (float) var max_distance
 export (PackedScene) var ripples
 
-onready var player = get_tree().get_nodes_in_group("player")[0]
+onready var player = null
 onready var dist_to_one: Vector2 = Vector2.ZERO
 onready var dist_to_other: Vector2 = Vector2.ZERO
 onready var one_position: Vector2 = Vector2.ZERO
@@ -24,8 +24,11 @@ func _ready():
 	other_position = self.position + $OtherEnd.position
 
 func _physics_process(delta):
-	dist_to_one = one_position - player.position
-	dist_to_other = other_position - player.position
+	if get_tree().get_nodes_in_group("player").size() > 0:
+		player = get_tree().get_nodes_in_group("player")[0]
+		if player.get_state() != "DyingState":
+			dist_to_one = one_position - player.position
+			dist_to_other = other_position - player.position
 	
 	var x_one = 1 - clamp((dist_to_one.length() - min_distance)/(max_distance - min_distance), 0, 1)
 	var x_other = 1 - clamp((dist_to_other.length() - min_distance)/(max_distance - min_distance), 0, 1)

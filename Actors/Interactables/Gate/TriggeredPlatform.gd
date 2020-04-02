@@ -26,8 +26,8 @@ func _ready():
 
 
 func activate() -> void:
-	$OpenGate.play()
 	if not is_active():
+		$OpenGate.play()
 		
 		if delay_time > 0:
 			$DelayTimer.start(delay_time)
@@ -44,8 +44,8 @@ func activate() -> void:
 
 
 func deactivate() -> void:
-	$CloseGate.play()
 	if is_active():
+		$CloseGate.play()
 		
 		if delay_time > 0:
 			$DelayTimer.start(delay_time)
@@ -56,9 +56,15 @@ func deactivate() -> void:
 		if chain_reaction.size() > 0:
 			for object in chain_reaction:
 				get_node(object).deactivate()
+	else:
+		activate()
+
+
 
 func is_active() -> bool:
 	return active
+
+
 
 func hit(bullet: PhysicsBody2D) -> void:
 	if bullet.stack[0] == "StandardState":

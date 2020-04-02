@@ -56,7 +56,8 @@ func _physics_process(_delta):
 		var player = get_tree().get_nodes_in_group("player")[0] as Player
 		if player.get_state() == "DyingState":
 			self.deactivate()
-		elif player.checkpoint != last_checkpoint:
+			last_checkpoint = Vector2.ZERO
+		elif player.checkpoint != last_checkpoint or player.is_on_blocks():
 			last_checkpoint = Vector2.ZERO
 
 
