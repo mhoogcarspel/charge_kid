@@ -9,7 +9,9 @@ func check_file_integrity(file_string: String, model: Dictionary, file_path: Str
 		print("ERROR:" + file_path + " file is not on Json format")
 		return false
 	var file_json = parse_json(file_string)
-	
+	if not file_json is Dictionary:
+		print("ERROR: "+ file_path + " not storing a Dictionary")
+		return false
 	return compare_dictionaries_from_files(file_json, model, file_path)
 
 func compare_dictionaries_from_files(file_json: Dictionary, model: Dictionary, file_path: String) -> bool:
