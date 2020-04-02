@@ -11,10 +11,14 @@ func _init(owner: Node, player_0):
 
 func enter():
 	speed = owner.fuel_speed
-	owner.left_player = true
 	owner.get_node("PhysicalCollider").set_deferred("disabled", true)
 	owner.set_collision_mask_bit(0, false)
 	owner.set_collision_layer_bit(0, false)
+	
+	owner.left_player = true
+	for body in owner.get_node("HitBox").get_overlapping_bodies():
+		if body.is_in_group("player"):
+			body.hit(owner)
 	
 	##### Particles ######################################################
 	owner.get_node("FuelChargeParticles").emitting = true

@@ -30,7 +30,7 @@ func _ready():
 	stack.push_front(initial_state)
 	states[initial_state].enter()
 
-func _process(delta):
+func _physics_process(delta):
 	states[stack[0]].update(delta)
 	
 	# Prevents bullet from moving during teleport and kill animations.
