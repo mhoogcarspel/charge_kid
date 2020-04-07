@@ -220,8 +220,8 @@ _global_script_class_icons={
 
 config/name="Charge Kid"
 run/main_scene="res://Common/Main.tscn"
-boot_splash/image="res://splash_screen.png"
 boot_splash/use_filter=false
+boot_splash/bg_color=Color( 0.113725, 0.129412, 0.176471, 1 )
 config/icon="res://icon.png"
 config/windows_native_icon="res://icon.ico"
 

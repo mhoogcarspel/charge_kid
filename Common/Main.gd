@@ -12,6 +12,9 @@ export(String) var save_name
 export(String) var sound_config
 export(bool) var debugging
 
+export(Texture) var ugd_splash
+export(Texture) var godot_splash
+
 onready var actions: Dictionary = {
 	"ui_jump": "Jump",
 	"ui_shoot": "Shoot",
@@ -38,11 +41,35 @@ func _ready():
 	if debugging:
 		$HudContainer.add_child(debugger_layer.instance())
 	self.add_child(control_handler)
-	var start = start_scene.instance()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	$Scene.add_child(start)
-	actual_scene = start_scene
-	control_handler.initialize_inputmap()
+
+
+
+onready var splash_timer: int = 0
+
+func _on_SplashTimer_timeout():
+	match splash_timer:
+		0:
+			$SplashScreen.texture = godot_splash
+			$SplashScreen/SplashTimer.start(5)
+			splash_timer = 1
+		1:
+			$SplashScreen.texture = null
+			$SplashScreen/SplashTimer.start(0.5)
+			splash_timer = 2
+		2:
+			$SplashScreen.texture = ugd_splash
+			$SplashScreen/SplashTimer.start(5)
+			splash_timer = 3
+		3:
+			$SplashScreen.texture = null
+			$SplashScreen/SplashTimer.start(0.5)
+			splash_timer = 4
+		4:
+			var start = start_scene.instance()
+			$Scene.add_child(start)
+			actual_scene = start_scene
+			control_handler.initialize_inputmap()
 
 
 
@@ -102,4 +129,6 @@ func is_using_controller() -> bool:
 	else:
 		return false
 ###################################################################################
+
+
 

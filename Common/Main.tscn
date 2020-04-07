@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Common/Main.gd" type="Script" id=1]
 [ext_resource path="res://Menu/StartMenu/StartMenu.tscn" type="PackedScene" id=2]
@@ -26,6 +26,8 @@
 [ext_resource path="res://Levels/Levels/Level01.tscn" type="PackedScene" id=24]
 [ext_resource path="res://Levels/Levels/Level03.tscn" type="PackedScene" id=25]
 [ext_resource path="res://Common/FileHandler.gd" type="Script" id=26]
+[ext_resource path="res://godot-splash-screen.png" type="Texture" id=27]
+[ext_resource path="res://ugd-splash-screen.png" type="Texture" id=28]
 
 [node name="Main" type="Node" groups=[
 "main",
@@ -41,6 +43,8 @@ level_select = ExtResource( 7 )
 settings_menu = ExtResource( 9 )
 save_name = "charge_kid_progress"
 sound_config = "audio_settings"
+ugd_splash = ExtResource( 28 )
+godot_splash = ExtResource( 27 )
 
 [node name="BackgroundAndMusicHandler" parent="." instance=ExtResource( 10 )]
 
@@ -81,4 +85,18 @@ levels = [ ExtResource( 24 ), ExtResource( 16 ), ExtResource( 25 ), ExtResource(
 
 [node name="FileHandler" type="Node" parent="."]
 script = ExtResource( 26 )
+
+[node name="SplashScreen" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SplashTimer" type="Timer" parent="SplashScreen"]
+wait_time = 0.5
+one_shot = true
+autostart = true
 [connection signal="timeout" from="MenuNavigation/MenuNavTimer/Timer" to="MenuNavigation" method="_on_Timer_timeout"]
+[connection signal="timeout" from="SplashScreen/SplashTimer" to="." method="_on_SplashTimer_timeout"]
