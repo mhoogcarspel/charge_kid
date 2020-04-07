@@ -48,7 +48,7 @@ func update(delta):
 			return
 		##################################################################
 		
-	elif owner.is_on_floor() and owner.velocity.y >= 0:
+	elif owner.is_on_floor() and owner.velocity.y > 0:
 		if not bunny.is_stopped() and Input.is_action_pressed("ui_jump"):
 			bunny.stop()
 			owner.change_state("JumpingState")
