@@ -56,7 +56,7 @@ shader_param/map = ExtResource( 29 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "Transition"
-length = 8.0
+length = 8.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:transition_phase")
 tracks/0/interp = 1
@@ -88,7 +88,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 8 ),
+"times": PoolRealArray( 8.5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],

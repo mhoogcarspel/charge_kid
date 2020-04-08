@@ -58,6 +58,7 @@ func add_popup(dialog_box: PopupDialog, menu: Control = self) -> void:
 
 func _on_Defaults_pressed():
 	InputMap.load_from_globals()
+	control_handler.save_inputmap()
 
 func _on_Return_pressed():
 	if not pause_menu:
