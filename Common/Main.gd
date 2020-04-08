@@ -42,39 +42,22 @@ func _ready():
 		$HudContainer.add_child(debugger_layer.instance())
 	self.add_child(control_handler)
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	$SplashScreen/AnimationPlayer.play("Transition")
 
 
 
-onready var splash_timer: int = 0
-
-func _on_SplashTimer_timeout():
-	match splash_timer:
-		0:
-			$SplashScreen.texture = godot_splash
-			$SplashScreen/SplashTimer.start(5)
-			splash_timer = 1
-		1:
-			$SplashScreen.texture = null
-			$SplashScreen/SplashTimer.start(0.5)
-			splash_timer = 2
-		2:
-			$SplashScreen.texture = ugd_splash
-			$SplashScreen/SplashTimer.start(5)
-			splash_timer = 3
-		3:
-			$SplashScreen.texture = null
-			$SplashScreen/SplashTimer.start(0.5)
-			splash_timer = 4
-		4:
-			var start = start_scene.instance()
-			$Scene.add_child(start)
-			actual_scene = start_scene
-			control_handler.initialize_inputmap()
+func start():
+	var start = start_scene.instance()
+	$Scene.add_child(start)
+	actual_scene = start_scene
+	control_handler.initialize_inputmap()
 
 
 
 func back_to_start():
 	change_scene(start_scene)
+
+
 
 func change_scene(next_scene: PackedScene):
 	get_tree().paused = false
@@ -89,6 +72,8 @@ func change_scene(next_scene: PackedScene):
 	$Scene.call_deferred("add_child", scene_instance)
 	actual_scene = next_scene
 	return scene_instance
+
+
 
 func get_level() -> BaseLevel:
 	return $Scene.get_children()[0]
