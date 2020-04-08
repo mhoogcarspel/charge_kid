@@ -24,7 +24,7 @@ func _on_Return_pressed():
 
 func save_sound_settings() -> void:
 	var save:= File.new()
-	save.open(main.sound_config + ".conf", File.WRITE)
+	save.open("user://" + main.sound_config + ".conf", File.WRITE)
 	var sound_cfg:Dictionary = {
 		"MUS":db2linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index('MUS'))),
 		"SFX": db2linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index('SFX')))

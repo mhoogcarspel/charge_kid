@@ -40,9 +40,9 @@ func compare_dictionaries_from_files(file_json: Dictionary, model: Dictionary, f
 		
 	return true
 
-func make_backup_file(file_path:String, file_string: String, model:Dictionary) -> void:
+func make_backup_file(file_path: String, file_string: String, model: Dictionary) -> void:
 	var file : = File.new()
-	file.open(file_path+".backup", File.WRITE)
+	file.open("user://" + file_path + ".backup", File.WRITE)
 	file.store_line(file_string)
 	file.open(file_path, File.WRITE)
 	file.store_line(to_json(model))

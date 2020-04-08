@@ -149,12 +149,12 @@ func equalize_equivalent_keys(action1: String, action2: String):
 
 func initialize_inputmap(filename: String = "inputmap") -> void:
 	var input_save := File.new()
-	if input_save.file_exists(filename + ".conf"):
-		input_save.open(filename + ".conf", File.READ)
+	if input_save.file_exists("user://" + filename + ".conf"):
+		input_save.open("user://" + filename + ".conf", File.READ)
 		var file_string: String = input_save.get_line()
 		if !file_handler.check_file_integrity(file_string, map_model, input_save.get_path()):
 			file_handler.make_backup_file(input_save.get_path(), file_string, map_model)
-			input_save.open(filename + ".conf", File.READ)
+			input_save.open("user://" + filename + ".conf", File.READ)
 			file_string = input_save.get_line()
 		var inputmap_dictionary: Dictionary = parse_json(file_string)
 		for action in actions_list:
@@ -170,9 +170,8 @@ func initialize_inputmap(filename: String = "inputmap") -> void:
 
 func save_inputmap(filename: String = "inputmap") -> void:
 	var inputmap_dictionary: Dictionary = make_inputmap_dictionary()
-	
 	var save_file := File.new()
-	save_file.open(filename + ".conf", File.WRITE)
+	save_file.open("user://" + filename + ".conf", File.WRITE)
 	save_file.store_line(to_json(inputmap_dictionary))
 	save_file.close()
 

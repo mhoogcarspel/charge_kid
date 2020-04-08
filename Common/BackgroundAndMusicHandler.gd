@@ -74,13 +74,13 @@ func load_sound_config():
 		"SFX": sfx_starting_volume
 	}
 	var file = File.new()
-	if file.file_exists(main.sound_config + ".conf"):
-		file.open(main.sound_config + ".conf", File.READ)
+	if file.file_exists("user://" + main.sound_config + ".conf"):
+		file.open("user://" + main.sound_config + ".conf", File.READ)
 		var file_string: String = file.get_line()
 		
 		if !file_handler.check_file_integrity(file_string, config_model, file.get_path()):
 			file_handler.make_backup_file(file.get_path(), file_string, config_model)
-			file.open(main.sound_config + ".conf", File.READ)
+			file.open("user://" + main.sound_config + ".conf", File.READ)
 			file_string = file.get_line()
 		
 		var sound_cfg:Dictionary = parse_json(file_string)

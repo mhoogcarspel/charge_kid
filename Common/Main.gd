@@ -97,16 +97,20 @@ func get_level() -> BaseLevel:
 
 func _process(delta):
 	# Pausing
-	if Input.is_action_just_pressed("ui_pause") and !get_tree().get_nodes_in_group("player").empty() and !get_tree().paused and $PauseTimer.is_stopped():
-		get_tree().paused = true
-		$HudContainer.add_child(pause_menu.instance())
-		$PauseTimer.start()
+	if Input.is_action_just_pressed("ui_pause") or Input.is_action_just_pressed("ui_cancel"):
+		if not get_tree().get_nodes_in_group("player").empty() and not get_tree().paused:
+			if $PauseTimer.is_stopped():
+				get_tree().paused = true
+				$HudContainer.add_child(pause_menu.instance())
+				$PauseTimer.start()
 	
 	# Unpausing
-	if Input.is_action_just_pressed("ui_pause") and !get_tree().get_nodes_in_group("player").empty() and get_tree().paused and $PauseTimer.is_stopped():
-		get_tree().paused = false
-		get_tree().get_nodes_in_group("pause_menu")[0].queue_free()
-		$PauseTimer.start()
+	if Input.is_action_just_pressed("ui_pause"):
+		if not get_tree().get_nodes_in_group("player").empty() and get_tree().paused:
+			if $PauseTimer.is_stopped():
+				get_tree().paused = false
+				get_tree().get_nodes_in_group("pause_menu")[0].queue_free()
+				$PauseTimer.start()
 
 
 
