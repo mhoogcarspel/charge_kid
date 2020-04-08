@@ -20,6 +20,8 @@ func _process(_delta):
 			if body.is_in_group("player"):
 				if body.can_boost:
 					$Text.write(button + ": boost")
+	else:
+		$Text.text = button + ": boost"
 
 func _ready():
 	visible = true

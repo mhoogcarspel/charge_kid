@@ -8,12 +8,8 @@ export(PackedScene) var controls_menu
 export(PackedScene) var sound_menu
 export(PackedScene) var level_select
 export(PackedScene) var settings_menu
-export(String) var save_name
 export(String) var sound_config
 export(bool) var debugging
-
-export(Texture) var ugd_splash
-export(Texture) var godot_splash
 
 onready var actions: Dictionary = {
 	"ui_jump": "Jump",

@@ -76,7 +76,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 4.1 ),
+"times": PoolRealArray( 0.1, 4.1 ),
 "transitions": PoolRealArray( 1, 0.757858 ),
 "update": 1,
 "values": [ ExtResource( 28 ), ExtResource( 27 ) ]
@@ -108,10 +108,7 @@ controls_menu = ExtResource( 5 )
 sound_menu = ExtResource( 6 )
 level_select = ExtResource( 7 )
 settings_menu = ExtResource( 9 )
-save_name = "charge_kid_progress"
 sound_config = "audio_settings"
-ugd_splash = ExtResource( 28 )
-godot_splash = ExtResource( 27 )
 
 [node name="BackgroundAndMusicHandler" parent="." instance=ExtResource( 10 )]
 
@@ -157,7 +154,6 @@ script = ExtResource( 26 )
 material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 28 )
 expand = true
 script = ExtResource( 30 )
 __meta__ = {

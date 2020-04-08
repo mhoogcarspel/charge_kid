@@ -20,6 +20,8 @@ func _process(delta):
 			if body.is_in_group("player"):
 				if body.has_bullet:
 					$Text.write(button + ": shoot")
+	else:
+		$Text.text = button + ": shoot"
 
 func _ready():
 	visible = true

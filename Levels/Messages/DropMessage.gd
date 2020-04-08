@@ -18,6 +18,8 @@ func _process(_delta):
 		for body in get_overlapping_bodies():
 			if body.is_in_group("player"):
 				$Text.write(button + ": drop from \n platform")
+	else:
+		$Text.text = button + ": drop from \n platform"
 
 func _ready():
 	visible = true

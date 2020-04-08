@@ -18,6 +18,8 @@ func _process(delta):
 			if body.is_in_group("player"):
 				if body.can_boost:
 					$Text.write(button + " while holding bullet:\n boost to bullet")
+	else:
+		$Text.text = button + " while holding bullet:\n boost to bullet"
 
 func _ready():
 	visible = true
