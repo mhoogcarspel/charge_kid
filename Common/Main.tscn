@@ -26,8 +26,8 @@
 [ext_resource path="res://Levels/Levels/Level01.tscn" type="PackedScene" id=24]
 [ext_resource path="res://Levels/Levels/Level03.tscn" type="PackedScene" id=25]
 [ext_resource path="res://Common/FileHandler.gd" type="Script" id=26]
-[ext_resource path="res://godot-splash-screen.png" type="Texture" id=27]
-[ext_resource path="res://ugd-splash-screen.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Spritesheets/godot-splash-screen.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Spritesheets/ugd-splash-screen.png" type="Texture" id=28]
 
 [node name="Main" type="Node" groups=[
 "main",

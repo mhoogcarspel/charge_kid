@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/godot-splash-screen.png-4bdfb5c46a79480c7db01f3ddf3a084f.stex"
+path="res://.import/ugd-splash-screen.png-d84d04e91017b3b6b5629142a5f3f268.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://godot-splash-screen.png"
-dest_files=[ "res://.import/godot-splash-screen.png-4bdfb5c46a79480c7db01f3ddf3a084f.stex" ]
+source_file="res://Assets/Spritesheets/ugd-splash-screen.png"
+dest_files=[ "res://.import/ugd-splash-screen.png-d84d04e91017b3b6b5629142a5f3f268.stex" ]
 
 [params]
 
