@@ -97,7 +97,7 @@ func get_level() -> BaseLevel:
 
 func _process(delta):
 	# Pausing
-	if Input.is_action_just_pressed("ui_pause") or Input.is_action_just_pressed("ui_cancel"):
+	if Input.is_action_just_pressed("ui_pause") or Input.is_action_just_pressed("esc"):
 		if not get_tree().get_nodes_in_group("player").empty() and not get_tree().paused:
 			if $PauseTimer.is_stopped():
 				get_tree().paused = true

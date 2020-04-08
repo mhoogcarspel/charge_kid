@@ -89,9 +89,6 @@ func _physics_process(delta):
 		velocity = move_and_slide(velocity, Vector2(0, -1))
 		if is_on_floor():
 			$CoyoteTimer.start(coyote_time)
-		
-		if Input.is_action_just_pressed("ui_reset"):
-			change_state("DyingState")
 
 
 
