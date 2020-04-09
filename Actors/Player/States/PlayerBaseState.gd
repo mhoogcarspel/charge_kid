@@ -31,9 +31,14 @@ func boost_input_pressed() -> bool:
 	return false
 
 func bullet_boost_input_pressed() -> bool:
-	if Input.is_action_just_pressed("ui_bullet_boost") && is_holding_bullet() && owner.can_boost:
-		owner.change_state("BulletBoostingState")
-		return true
+	var timer = owner.get_node("BunnyBoostTimer")
+	if Input.is_action_just_pressed("ui_bullet_boost"):
+		timer.start()
+	if Input.is_action_pressed("ui_bullet_boost") && !timer.is_stopped():
+		if is_holding_bullet() && owner.can_boost:
+			owner.change_state("BulletBoostingState")
+			timer.stop()
+			return true
 	return false
 
 func is_holding_bullet() -> bool:
