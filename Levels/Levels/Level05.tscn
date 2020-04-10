@@ -118,7 +118,7 @@ position = Vector2( 56, 176 )
 position = Vector2( 176, 208 )
 
 [node name="FuelTank2" parent="." index="12" instance=ExtResource( 8 )]
-position = Vector2( 312, 208 )
+position = Vector2( 296, 208 )
 
 [node name="HoldMessage" parent="." index="13" instance=ExtResource( 9 )]
 visible = false
