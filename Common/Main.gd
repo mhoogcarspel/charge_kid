@@ -133,7 +133,7 @@ func load_display_options() -> void:
 	var validate: bool = file_handler.check_file_integrity(file_string, dictionary_model, "user://display_config.conf")
 	var dictionary:Dictionary = parse_json(file_string)
 	for key in dictionary.keys():
-			OS.set(key, dictionary[key])
+		OS.set(key, dictionary[key])
 	OS.window_size.x = dictionary["window_size.x"]
 	OS.window_size.y = dictionary["window_size.y"]
 	OS.center_window()
