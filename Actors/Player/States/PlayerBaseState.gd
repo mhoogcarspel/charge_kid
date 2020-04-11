@@ -25,8 +25,12 @@ func jump_input_pressed() -> bool:
 	return false
 
 func boost_input_pressed() -> bool:
-	if Input.is_action_just_pressed("ui_boost") && owner.can_boost:
+	var timer = owner.get_node("BunnyBoostTimer")
+	if Input.is_action_just_pressed("ui_boost"):
+		timer.start()
+	if Input.is_action_pressed("ui_boost") && !timer.is_stopped() && owner.can_boost:
 		owner.change_state("BoostingState")
+		timer.stop()
 		return true
 	return false
 
