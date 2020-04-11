@@ -36,7 +36,8 @@ func _ready():
 	refocus()
 
 func _process(_delta):
-	borderless_window_button.pressed = OS.window_borderless
+	if fullscreen_button.pressed or !OS.window_borderless:
+		borderless_window_button.pressed = false
 	windowed_button.disabled = $CenterContainer/Margin/Margin/Menu/Options/Fullscreen/CheckBox.pressed
 	borderless_window_button.disabled = $CenterContainer/Margin/Margin/Menu/Options/Fullscreen/CheckBox.pressed
 	if windowed_button.disabled:
