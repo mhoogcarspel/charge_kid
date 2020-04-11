@@ -32,7 +32,7 @@ onready var window_size: Vector2 = Vector2(1024,576)
 
 func _ready():
 	fullscreen_button.pressed = OS.window_borderless
-#	get_tree().paused = true
+	get_tree().paused = true
 	if !get_tree().get_nodes_in_group("main").empty():
 		main = get_tree().get_nodes_in_group("main")[0]
 	refocus()
@@ -120,6 +120,7 @@ func save_display_options() -> void:
 	var file = File.new()
 	file.open("user://display_config.conf", File.WRITE)
 	file.store_line(to_json(options_dictionary))
+	file.close()
 
 func _on_Fullscreen_toggle(button_pressed):
 	OS.window_fullscreen = button_pressed

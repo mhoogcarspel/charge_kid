@@ -130,7 +130,8 @@ func load_display_options() -> void:
 		return
 	file.open("user://display_config.conf", File.READ)
 	var file_string = file.get_line()
-	var validate: bool = file_handler.check_file_integrity(file_string, dictionary_model, "user://display_config.conf")
+	var validate: bool = file_handler.check_file_integrity(file_string, dictionary_model,
+															"user://display_config.conf")
 	if !validate:
 		file_handler.make_backup_file("user://display_config.conf",file_string, dictionary_model)
 	var dictionary:Dictionary = parse_json(file_string)
@@ -138,4 +139,6 @@ func load_display_options() -> void:
 		OS.set(key, dictionary[key])
 	OS.window_size.x = dictionary["window_size.x"]
 	OS.window_size.y = dictionary["window_size.y"]
-	OS.center_window()
+	file.close()
+	if not OS.window_fullscreen:
+		OS.center_window()
