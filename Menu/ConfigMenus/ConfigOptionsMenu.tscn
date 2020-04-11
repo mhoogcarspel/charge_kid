@@ -2,10 +2,11 @@
 
 [ext_resource path="res://Menu/ConfigMenus/ConfigOptionsMenu.gd" type="Script" id=1]
 [ext_resource path="res://Menu/MenuPanel.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Menu/ConfigControlsMenu/MenuSeparator.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Menu/ControlsConfigMenu/MenuSeparator.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Menu/LabelBaseModel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Menu/ButtonsAndOptions/ButtonModel.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Menu/ReturnShortcut.tres" type="ShortCut" id=6]
+
 
 [node name="ConfigOptionsMenu" type="Control"]
 pause_mode = 2

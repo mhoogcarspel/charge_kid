@@ -18,10 +18,6 @@ func _process(delta):
 
 
 
-#func _on_CheckBox_toggled(button_pressed):
-#	emit_signal("toggle",button_pressed)
-
-
 
 func _on_CheckBox_pressed():
 	emit_signal("toggle",$CheckBox.pressed)
