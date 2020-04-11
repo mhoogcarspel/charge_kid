@@ -56,7 +56,7 @@ func _process(_delta):
 	if screen_sizes.has(window_size):
 		windowed_size_label.text = window_size.x as String + "x" + window_size.y as String
 	else:
-		windowed_size_label.text = "Custom"
+		windowed_size_label.text = "Custom(" + str(window_size.x) + "x" + str(window_size.y) + ")"
 	
 	### Recolor windowed and fullscreen buttons due to focus ##########################
 	if windowed_button.has_focus():

@@ -94,6 +94,7 @@ margin_left = 252.0
 margin_right = 276.0
 focus_neighbour_top = NodePath("../../../Return")
 focus_neighbour_bottom = NodePath("../../BorderlessWindow/CheckBox")
+action_mode = 0
 script = ExtResource( 7 )
 
 [node name="BorderlessWindow" parent="CenterContainer/Margin/Margin/Menu/Options" instance=ExtResource( 6 )]
@@ -115,6 +116,7 @@ margin_left = 308.0
 margin_right = 332.0
 focus_neighbour_top = NodePath("../../Fullscreen/CheckBox")
 focus_neighbour_bottom = NodePath("../../Windowed/ButtonModel")
+action_mode = 0
 script = ExtResource( 7 )
 
 [node name="Windowed" type="HBoxContainer" parent="CenterContainer/Margin/Margin/Menu/Options"]
