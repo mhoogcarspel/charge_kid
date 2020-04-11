@@ -31,7 +31,7 @@ onready var window_size: Vector2 = Vector2(1024,576)
 
 
 func _ready():
-	fullscreen_button.pressed = OS.window_borderless
+	fullscreen_button.pressed = OS.window_fullscreen
 	if fullscreen_button.pressed or !OS.window_borderless:
 		borderless_window_button.pressed = false
 	else:
@@ -130,7 +130,11 @@ func _on_Fullscreen_toggle(button_pressed):
 		save_display_options()
 
 
+
 func _on_BorderlessWindow_toggle(button_pressed):
 	if button_pressed != OS.window_borderless:
 		OS.window_borderless = button_pressed
 		save_display_options()
+
+
+

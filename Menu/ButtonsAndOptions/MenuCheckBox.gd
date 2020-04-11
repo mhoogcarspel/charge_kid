@@ -3,6 +3,8 @@ class_name MenuCheckBox
 
 signal toggle(button_pressed)
 
+
+
 func _process(delta):
 	if $CheckBox.disabled:
 		$LabelBaseModel.set("custom_colors/font_color", Color("#7f7f76"))
@@ -13,5 +15,13 @@ func _process(delta):
 	else:
 		$LabelBaseModel.set("custom_colors/font_color", Color("#ff4f78"))
 		$CheckBox.set("custom_colors/font_color", Color("#ff4f78"))
-func _on_CheckBox_toggled(button_pressed):
-	emit_signal("toggle",button_pressed)
+
+
+
+#func _on_CheckBox_toggled(button_pressed):
+#	emit_signal("toggle",button_pressed)
+
+
+
+func _on_CheckBox_pressed():
+	emit_signal("toggle",$CheckBox.pressed)
