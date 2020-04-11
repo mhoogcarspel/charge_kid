@@ -29,6 +29,7 @@ onready var old_dir_input: Vector2 = Vector2.ZERO
 onready var actual_dir_input: Vector2 = Vector2.ZERO
 onready var last_input_device: String = "Keyboard"
 onready var controller_layout: String = "Microsoft"
+onready var file_handler: FileHandler = $FileHandler
 
 var actual_scene: PackedScene
 
@@ -38,6 +39,7 @@ func _ready():
 	if debugging:
 		$HudContainer.add_child(debugger_layer.instance())
 	self.add_child(control_handler)
+	load_display_options()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	$SplashScreen/AnimationPlayer.play("Transition")
 
@@ -116,5 +118,22 @@ func is_using_controller() -> bool:
 		return false
 ###################################################################################
 
-
-
+func load_display_options() -> void:
+	var file = File.new()
+	var dictionary_model: Dictionary = {
+		"window_fullscreen" : true,
+		"window_borderless" : true,
+		"window_size.x" : OS.window_size.x,
+		"window_size.y" : OS.window_size.y
+		}
+	if !file.file_exists("user://display_config.conf"):
+		return
+	file.open("user://display_config.conf", File.READ)
+	var file_string = file.get_line()
+	var validate: bool = file_handler.check_file_integrity(file_string, dictionary_model, "user://display_config.conf")
+	var dictionary:Dictionary = parse_json(file_string)
+	for key in dictionary.keys():
+		OS.set(key, dictionary[key])
+	OS.window_size.x = dictionary["window_size.x"]
+	OS.window_size.y = dictionary["window_size.y"]
+	OS.center_window()

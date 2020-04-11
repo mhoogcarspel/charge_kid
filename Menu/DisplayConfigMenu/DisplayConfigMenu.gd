@@ -3,12 +3,15 @@ extends Control
 
 onready var main: Node
 onready var pause_menu: bool
+onready var loaded: bool = false
 
 onready var windowed_button = $CenterContainer/Margin/Margin/Menu/Options/Windowed/ButtonModel
 onready var windowed_label = $CenterContainer/Margin/Margin/Menu/Options/Windowed/LabelBaseModel2
 onready var windowed_size_label = $CenterContainer/Margin/Margin/Menu/Options/Windowed/LabelBaseModel
-onready var fullscreen_button = $CenterContainer/Margin/Margin/Menu/Options/FullScreen/ButtonModel
-onready var fullscreen_label = $CenterContainer/Margin/Margin/Menu/Options/FullScreen/LabelBaseModel
+onready var fullscreen_button = $CenterContainer/Margin/Margin/Menu/Options/Fullscreen/CheckBox
+onready var fullscreen_label = $CenterContainer/Margin/Margin/Menu/Options/Fullscreen/LabelBaseModel
+onready var borderless_window_button = $CenterContainer/Margin/Margin/Menu/Options/BorderlessWindow/CheckBox
+onready var borderless_window_label = $CenterContainer/Margin/Margin/Menu/Options/BorderlessWindow/LabelBaseModel
 onready var return_button = $CenterContainer/Margin/Margin/Menu/Return
 
 # These screen sizes are 16:9 aspect ratio, the game's aspect ratio.
@@ -20,19 +23,33 @@ onready var screen_sizes = [Vector2(1024,576),
 							Vector2(1920,1080), # Full HD
 							Vector2(2560,1440), # 2k
 							Vector2(3840,2160), # QHD
-							Vector2(7680,4320)] # 8k
+							Vector2(7680,4320),
+							] # 8k
 
 onready var window_size: Vector2 = Vector2(1024,576)
 
 
 
 func _ready():
+	fullscreen_button.pressed = OS.window_borderless
 	get_tree().paused = true
 	if !get_tree().get_nodes_in_group("main").empty():
 		main = get_tree().get_nodes_in_group("main")[0]
 	refocus()
 
 func _process(_delta):
+	if fullscreen_button.pressed or !OS.window_borderless:
+		borderless_window_button.pressed = false
+	windowed_button.disabled = $CenterContainer/Margin/Margin/Menu/Options/Fullscreen/CheckBox.pressed
+	borderless_window_button.disabled = $CenterContainer/Margin/Margin/Menu/Options/Fullscreen/CheckBox.pressed
+	if windowed_button.disabled:
+		fullscreen_button.focus_neighbour_bottom = return_button.get_path()
+		return_button.focus_neighbour_top = fullscreen_button.get_path()
+		windowed_label.set("custom_colors/font_color", Color("#7f7f76"))
+		windowed_size_label.set("custom_colors/font_color", Color("#7f7f76"))
+	else:
+		fullscreen_button.focus_neighbour_bottom = borderless_window_button.get_path()
+		return_button.focus_neighbour_top = windowed_button.get_path()
 	window_size = OS.window_size
 	if screen_sizes.has(window_size):
 		windowed_size_label.text = window_size.x as String + "x" + window_size.y as String
@@ -43,7 +60,7 @@ func _process(_delta):
 	if windowed_button.has_focus():
 		windowed_label.set("custom_colors/font_color", Color("#ff4f78"))
 		windowed_size_label.set("custom_colors/font_color", Color("#ff4f78"))
-	else:
+	elif !windowed_button.disabled:
 		windowed_label.set("custom_colors/font_color", Color("#f4f4e4"))
 		windowed_size_label.set("custom_colors/font_color", Color("#f4f4e4"))
 	if fullscreen_button.has_focus():
@@ -51,6 +68,8 @@ func _process(_delta):
 	else:
 		fullscreen_label.set("custom_colors/font_color", Color("#f4f4e4"))
 	###################################################################################
+	
+	loaded = true
 
 
 
@@ -66,11 +85,7 @@ func _on_Windowed_pressed():
 	else:
 		OS.window_size = screen_sizes[0]
 	OS.center_window()
-
-
-
-func _on_FullScreen_pressed():
-	OS.window_fullscreen = true
+	save_display_options()
 
 
 
@@ -86,7 +101,7 @@ func _on_Return_pressed():
 
 
 func refocus() -> void:
-	windowed_button.grab_focus()
+	fullscreen_button.grab_focus()
 
 func self_hide() -> void:
 	$CenterContainer.hide()
@@ -94,4 +109,23 @@ func self_hide() -> void:
 func self_show() -> void:
 	$CenterContainer.show()
 
+func save_display_options() -> void:
+	if !loaded:
+		return
+	var options_dictionary: Dictionary = {}
+	options_dictionary["window_fullscreen"] = fullscreen_button.pressed
+	options_dictionary["window_borderless"] = borderless_window_button.pressed
+	options_dictionary["window_size.x"] = OS.window_size.x
+	options_dictionary["window_size.y"] = OS.window_size.y
+	var file = File.new()
+	file.open("user://display_config.conf", File.WRITE)
+	file.store_line(to_json(options_dictionary))
 
+func _on_Fullscreen_toggle(button_pressed):
+	OS.window_fullscreen = button_pressed
+	save_display_options()
+
+
+func _on_BorderlessWindow_toggle(button_pressed):
+	OS.window_borderless = button_pressed
+	save_display_options()

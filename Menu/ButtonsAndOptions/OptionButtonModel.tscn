@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Menu/ButtonsAndOptions/OptionButtonModel.gd" type="Script" id=1]
+[ext_resource path="res://Menu/LabelBaseModel.tscn" type="PackedScene" id=2]
+
+[node name="OptionButtonModel" type="HBoxContainer"]
+margin_right = 29.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelBaseModel" parent="." instance=ExtResource( 2 )]
+margin_top = 2.0
+margin_right = 160.0
+margin_bottom = 18.0
+text = "Resolution"
+
+[node name="OptionButton" type="OptionButton" parent="."]
+margin_left = 164.0
+margin_right = 193.0
+margin_bottom = 20.0
+flat = true
+script = ExtResource( 1 )
+switch_option_time = 0.1
