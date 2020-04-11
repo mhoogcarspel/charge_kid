@@ -137,6 +137,8 @@ func load_display_options() -> void:
 	var dictionary:Dictionary = parse_json(file_string)
 	for key in dictionary.keys():
 		OS.set(key, dictionary[key])
+	OS.window_borderless = dictionary["window_borderless"]
+	OS.window_fullscreen = dictionary["window_fullscreen"]
 	OS.window_size.x = dictionary["window_size.x"]
 	OS.window_size.y = dictionary["window_size.y"]
 	file.close()
