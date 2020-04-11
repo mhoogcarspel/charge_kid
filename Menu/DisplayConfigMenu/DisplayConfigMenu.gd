@@ -3,6 +3,7 @@ extends Control
 
 onready var main: Node
 onready var pause_menu: bool
+onready var loaded: bool = false
 
 onready var windowed_button = $CenterContainer/Margin/Margin/Menu/Options/Windowed/ButtonModel
 onready var windowed_label = $CenterContainer/Margin/Margin/Menu/Options/Windowed/LabelBaseModel2
@@ -22,7 +23,8 @@ onready var screen_sizes = [Vector2(1024,576),
 							Vector2(1920,1080), # Full HD
 							Vector2(2560,1440), # 2k
 							Vector2(3840,2160), # QHD
-							Vector2(7680,4320)] # 8k
+							Vector2(7680,4320),
+							] # 8k
 
 onready var window_size: Vector2 = Vector2(1024,576)
 
@@ -66,6 +68,8 @@ func _process(_delta):
 	else:
 		fullscreen_label.set("custom_colors/font_color", Color("#f4f4e4"))
 	###################################################################################
+	
+	loaded = true
 
 
 
@@ -81,6 +85,7 @@ func _on_Windowed_pressed():
 	else:
 		OS.window_size = screen_sizes[0]
 	OS.center_window()
+	save_display_options()
 
 
 
@@ -104,10 +109,23 @@ func self_hide() -> void:
 func self_show() -> void:
 	$CenterContainer.show()
 
+func save_display_options() -> void:
+	if !loaded:
+		return
+	var options_dictionary: Dictionary = {}
+	options_dictionary["window_fullscreen"] = fullscreen_button.pressed
+	options_dictionary["window_borderless"] = borderless_window_button.pressed
+	options_dictionary["window_size.x"] = OS.window_size.x
+	options_dictionary["window_size.y"] = OS.window_size.y
+	var file = File.new()
+	file.open("user://display_config.conf", File.WRITE)
+	file.store_line(to_json(options_dictionary))
 
 func _on_Fullscreen_toggle(button_pressed):
 	OS.window_fullscreen = button_pressed
+	save_display_options()
 
 
 func _on_BorderlessWindow_toggle(button_pressed):
 	OS.window_borderless = button_pressed
+	save_display_options()
