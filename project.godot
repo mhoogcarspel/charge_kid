@@ -49,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Menu/ButtonsAndOptions/ButtonModel.gd"
 }, {
+"base": "MenuOption",
+"class": "CheckBoxModel",
+"language": "GDScript",
+"path": "res://Menu/ButtonsAndOptions/CheckBoxModel.gd"
+}, {
 "base": "PlayerBaseState",
 "class": "DyingState",
 "language": "GDScript",
@@ -113,6 +118,11 @@ _global_script_classes=[ {
 "class": "OnAirState",
 "language": "GDScript",
 "path": "res://Actors/Player/States/OnAirState.gd"
+}, {
+"base": "MenuOption",
+"class": "OptionButtonModel",
+"language": "GDScript",
+"path": "res://Menu/ButtonsAndOptions/OptionButtonModel.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Player",
@@ -188,6 +198,7 @@ _global_script_class_icons={
 "BulletBoostingState": "",
 "ButtonGetter": "",
 "ButtonModel": "",
+"CheckBoxModel": "",
 "DyingState": "",
 "FileHandler": "",
 "FinishLine": "",
@@ -201,6 +212,7 @@ _global_script_class_icons={
 "MenuOption": "",
 "MovingState": "",
 "OnAirState": "",
+"OptionButtonModel": "",
 "Player": "",
 "PlayerBaseState": "",
 "PlayerBullet": "",
