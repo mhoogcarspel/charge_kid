@@ -52,7 +52,7 @@ _global_script_classes=[ {
 "base": "MenuOption",
 "class": "CheckBoxModel",
 "language": "GDScript",
-"path": "res://Menu/ButtonsAndOptions/CheckBoxModel.gd"
+"path": "res://Menu/ButtonsAndOptions/CheckBox.gd"
 }, {
 "base": "PlayerBaseState",
 "class": "DyingState",
@@ -98,6 +98,11 @@ _global_script_classes=[ {
 "class": "Main",
 "language": "GDScript",
 "path": "res://Common/Main.gd"
+}, {
+"base": "HBoxContainer",
+"class": "MenuCheckBox",
+"language": "GDScript",
+"path": "res://Menu/ButtonsAndOptions/MenuCheckBox.gd"
 }, {
 "base": "ButtonModel",
 "class": "MenuHSlider",
@@ -208,6 +213,7 @@ _global_script_class_icons={
 "JumpingState": "",
 "LabelBaseModel": "",
 "Main": "",
+"MenuCheckBox": "",
 "MenuHSlider": "",
 "MenuOption": "",
 "MovingState": "",

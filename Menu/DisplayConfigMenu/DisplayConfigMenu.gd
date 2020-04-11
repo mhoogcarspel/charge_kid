@@ -9,6 +9,8 @@ onready var windowed_label = $CenterContainer/Margin/Margin/Menu/Options/Windowe
 onready var windowed_size_label = $CenterContainer/Margin/Margin/Menu/Options/Windowed/LabelBaseModel
 onready var fullscreen_button = $CenterContainer/Margin/Margin/Menu/Options/Fullscreen/CheckBox
 onready var fullscreen_label = $CenterContainer/Margin/Margin/Menu/Options/Fullscreen/LabelBaseModel
+onready var borderless_window_button = $CenterContainer/Margin/Margin/Menu/Options/BorderlessWindow/CheckBox
+onready var borderless_window_label = $CenterContainer/Margin/Margin/Menu/Options/BorderlessWindow/LabelBaseModel
 onready var return_button = $CenterContainer/Margin/Margin/Menu/Return
 
 # These screen sizes are 16:9 aspect ratio, the game's aspect ratio.
@@ -27,20 +29,23 @@ onready var window_size: Vector2 = Vector2(1024,576)
 
 
 func _ready():
+	fullscreen_button.pressed = OS.window_borderless
 	get_tree().paused = true
 	if !get_tree().get_nodes_in_group("main").empty():
 		main = get_tree().get_nodes_in_group("main")[0]
 	refocus()
 
 func _process(_delta):
+	borderless_window_button.pressed = OS.window_borderless
 	windowed_button.disabled = $CenterContainer/Margin/Margin/Menu/Options/Fullscreen/CheckBox.pressed
+	borderless_window_button.disabled = $CenterContainer/Margin/Margin/Menu/Options/Fullscreen/CheckBox.pressed
 	if windowed_button.disabled:
 		fullscreen_button.focus_neighbour_bottom = return_button.get_path()
 		return_button.focus_neighbour_top = fullscreen_button.get_path()
 		windowed_label.set("custom_colors/font_color", Color("#7f7f76"))
 		windowed_size_label.set("custom_colors/font_color", Color("#7f7f76"))
 	else:
-		fullscreen_button.focus_neighbour_bottom = windowed_button.get_path()
+		fullscreen_button.focus_neighbour_bottom = borderless_window_button.get_path()
 		return_button.focus_neighbour_top = windowed_button.get_path()
 	window_size = OS.window_size
 	if screen_sizes.has(window_size):
@@ -99,5 +104,9 @@ func self_show() -> void:
 	$CenterContainer.show()
 
 
-func _on_CheckBox_toggled(button_pressed):
+func _on_Fullscreen_toggle(button_pressed):
 	OS.window_fullscreen = button_pressed
+
+
+func _on_BorderlessWindow_toggle(button_pressed):
+	OS.window_borderless = button_pressed

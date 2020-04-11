@@ -5,7 +5,7 @@
 [ext_resource path="res://Menu/LabelBaseModel.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Menu/ReturnShortcut.tres" type="ShortCut" id=4]
 [ext_resource path="res://Menu/DisplayConfigMenu/DisplayConfigMenu.gd" type="Script" id=5]
-[ext_resource path="res://Menu/ButtonsAndOptions/CheckBoxModel.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Menu/ButtonsAndOptions/MenuCheckBox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Menu/DisplayConfigMenu/FullscreenCheckBox.gd" type="Script" id=7]
 
 [sub_resource type="StyleBoxEmpty" id=1]
@@ -24,25 +24,27 @@ __meta__ = {
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 3.8689
-margin_right = 3.8689
+margin_left = 5.41644
+margin_top = 0.773773
+margin_right = 5.4165
+margin_bottom = 0.773804
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Margin" type="MarginContainer" parent="CenterContainer"]
 margin_left = 318.0
-margin_top = 201.0
+margin_top = 187.0
 margin_right = 706.0
-margin_bottom = 375.0
+margin_bottom = 389.0
 
 [node name="MenuPanel" parent="CenterContainer/Margin" instance=ExtResource( 2 )]
 margin_right = 388.0
-margin_bottom = 174.0
+margin_bottom = 202.0
 
 [node name="Margin" type="MarginContainer" parent="CenterContainer/Margin"]
 margin_right = 388.0
-margin_bottom = 174.0
+margin_bottom = 202.0
 custom_constants/margin_right = 12
 custom_constants/margin_top = 12
 custom_constants/margin_left = 12
@@ -52,7 +54,7 @@ custom_constants/margin_bottom = 12
 margin_left = 12.0
 margin_top = 12.0
 margin_right = 376.0
-margin_bottom = 162.0
+margin_bottom = 190.0
 alignment = 1
 
 [node name="LabelBaseModel" parent="CenterContainer/Margin/Margin/Menu" instance=ExtResource( 3 )]
@@ -71,7 +73,7 @@ custom_constants/separation = 38
 [node name="Options" type="VBoxContainer" parent="CenterContainer/Margin/Margin/Menu"]
 margin_top = 62.0
 margin_right = 364.0
-margin_bottom = 112.0
+margin_bottom = 140.0
 
 [node name="Fullscreen" parent="CenterContainer/Margin/Margin/Menu/Options" instance=ExtResource( 6 )]
 anchor_top = 0.0
@@ -91,14 +93,34 @@ text = "Fullscreen"
 margin_left = 252.0
 margin_right = 276.0
 focus_neighbour_top = NodePath("../../../Return")
-focus_neighbour_bottom = NodePath("../../Windowed/ButtonModel")
+focus_neighbour_bottom = NodePath("../../BorderlessWindow/CheckBox")
 script = ExtResource( 7 )
-switch_option_time = 0.0
 
-[node name="Windowed" type="HBoxContainer" parent="CenterContainer/Margin/Margin/Menu/Options"]
+[node name="BorderlessWindow" parent="CenterContainer/Margin/Margin/Menu/Options" instance=ExtResource( 6 )]
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 28.0
 margin_right = 364.0
-margin_bottom = 50.0
+margin_bottom = 52.0
+grow_horizontal = 2
+
+[node name="LabelBaseModel" parent="CenterContainer/Margin/Margin/Menu/Options/BorderlessWindow" index="0"]
+margin_left = 32.0
+margin_right = 304.0
+text = "Borderless Window"
+
+[node name="CheckBox" parent="CenterContainer/Margin/Margin/Menu/Options/BorderlessWindow" index="1"]
+margin_left = 308.0
+margin_right = 332.0
+focus_neighbour_top = NodePath("../../Fullscreen/CheckBox")
+focus_neighbour_bottom = NodePath("../../Windowed/ButtonModel")
+script = ExtResource( 7 )
+
+[node name="Windowed" type="HBoxContainer" parent="CenterContainer/Margin/Margin/Menu/Options"]
+margin_top = 56.0
+margin_right = 364.0
+margin_bottom = 78.0
 custom_constants/separation = 48
 
 [node name="LabelBaseModel2" parent="CenterContainer/Margin/Margin/Menu/Options/Windowed" instance=ExtResource( 3 )]
@@ -111,7 +133,7 @@ text = "Windowed"
 margin_left = 176.0
 margin_right = 188.0
 margin_bottom = 22.0
-focus_neighbour_top = NodePath("../../Fullscreen/CheckBox")
+focus_neighbour_top = NodePath("../../BorderlessWindow/CheckBox")
 focus_neighbour_bottom = NodePath("../../../Return")
 
 [node name="LabelBaseModel" parent="CenterContainer/Margin/Margin/Menu/Options/Windowed" instance=ExtResource( 3 )]
@@ -123,23 +145,26 @@ text = "1024x576"
 align = 2
 
 [node name="HSeparator2" type="HSeparator" parent="CenterContainer/Margin/Margin/Menu"]
-margin_top = 116.0
+margin_top = 144.0
 margin_right = 364.0
-margin_bottom = 124.0
+margin_bottom = 152.0
 custom_styles/separator = SubResource( 2 )
 custom_constants/separation = 8
 
 [node name="Return" parent="CenterContainer/Margin/Margin/Menu" instance=ExtResource( 1 )]
 margin_left = 128.0
-margin_top = 128.0
+margin_top = 156.0
 margin_right = 236.0
-margin_bottom = 150.0
+margin_bottom = 178.0
 focus_neighbour_top = NodePath("../Options/Windowed/ButtonModel")
 focus_neighbour_bottom = NodePath("../Options/Fullscreen/CheckBox")
 shortcut = ExtResource( 4 )
 text = "Return"
-[connection signal="toggled" from="CenterContainer/Margin/Margin/Menu/Options/Fullscreen/CheckBox" to="." method="_on_CheckBox_toggled"]
+[connection signal="toggle" from="CenterContainer/Margin/Margin/Menu/Options/Fullscreen" to="." method="_on_Fullscreen_toggle"]
+[connection signal="toggle" from="CenterContainer/Margin/Margin/Menu/Options/BorderlessWindow" to="." method="_on_BorderlessWindow_toggle"]
 [connection signal="pressed" from="CenterContainer/Margin/Margin/Menu/Options/Windowed/ButtonModel" to="." method="_on_Windowed_pressed"]
 [connection signal="pressed" from="CenterContainer/Margin/Margin/Menu/Return" to="." method="_on_Return_pressed"]
 
 [editable path="CenterContainer/Margin/Margin/Menu/Options/Fullscreen"]
+
+[editable path="CenterContainer/Margin/Margin/Menu/Options/BorderlessWindow"]

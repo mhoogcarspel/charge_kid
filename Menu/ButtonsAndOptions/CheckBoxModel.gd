@@ -1,2 +1,0 @@
-extends MenuOption
-class_name CheckBoxModel
