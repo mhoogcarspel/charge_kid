@@ -131,6 +131,8 @@ func load_display_options() -> void:
 	file.open("user://display_config.conf", File.READ)
 	var file_string = file.get_line()
 	var validate: bool = file_handler.check_file_integrity(file_string, dictionary_model, "user://display_config.conf")
+	if !validate:
+		file_handler.make_backup_file("user://display_config.conf",file_string, dictionary_model)
 	var dictionary:Dictionary = parse_json(file_string)
 	for key in dictionary.keys():
 		OS.set(key, dictionary[key])

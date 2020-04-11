@@ -85,12 +85,11 @@ margin_bottom = 24.0
 grow_horizontal = 2
 
 [node name="LabelBaseModel" parent="CenterContainer/Margin/Margin/Menu/Options/Fullscreen" index="0"]
-margin_left = 88.0
-margin_right = 248.0
+margin_left = 0.0
 text = "Fullscreen"
 
 [node name="CheckBox" parent="CenterContainer/Margin/Margin/Menu/Options/Fullscreen" index="1"]
-margin_left = 252.0
+margin_left = 308.0
 margin_right = 276.0
 focus_neighbour_top = NodePath("../../../Return")
 focus_neighbour_bottom = NodePath("../../BorderlessWindow/CheckBox")
@@ -106,7 +105,7 @@ margin_bottom = 52.0
 grow_horizontal = 2
 
 [node name="LabelBaseModel" parent="CenterContainer/Margin/Margin/Menu/Options/BorderlessWindow" index="0"]
-margin_left = 32.0
+margin_left = 0.0
 margin_right = 304.0
 text = "Borderless Window"
 
