@@ -32,7 +32,7 @@ onready var window_size: Vector2 = Vector2(1024,576)
 
 func _ready():
 	fullscreen_button.pressed = OS.window_borderless
-	get_tree().paused = true
+#	get_tree().paused = true
 	if !get_tree().get_nodes_in_group("main").empty():
 		main = get_tree().get_nodes_in_group("main")[0]
 	refocus()
