@@ -32,14 +32,16 @@ onready var window_size: Vector2 = Vector2(1024,576)
 
 func _ready():
 	fullscreen_button.pressed = OS.window_borderless
+	if fullscreen_button.pressed or !OS.window_borderless:
+		borderless_window_button.pressed = false
+	else:
+		borderless_window_button.pressed = true
 	get_tree().paused = true
 	if !get_tree().get_nodes_in_group("main").empty():
 		main = get_tree().get_nodes_in_group("main")[0]
 	refocus()
 
 func _process(_delta):
-	if fullscreen_button.pressed or !OS.window_borderless:
-		borderless_window_button.pressed = false
 	windowed_button.disabled = $CenterContainer/Margin/Margin/Menu/Options/Fullscreen/CheckBox.pressed
 	borderless_window_button.disabled = $CenterContainer/Margin/Margin/Menu/Options/Fullscreen/CheckBox.pressed
 	if windowed_button.disabled:
@@ -123,10 +125,12 @@ func save_display_options() -> void:
 	file.close()
 
 func _on_Fullscreen_toggle(button_pressed):
-	OS.window_fullscreen = button_pressed
-	save_display_options()
+	if button_pressed != OS.window_fullscreen:
+		OS.window_fullscreen = button_pressed
+		save_display_options()
 
 
 func _on_BorderlessWindow_toggle(button_pressed):
-	OS.window_borderless = button_pressed
-	save_display_options()
+	if button_pressed != OS.window_borderless:
+		OS.window_borderless = button_pressed
+		save_display_options()
