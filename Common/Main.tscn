@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Common/Main.gd" type="Script" id=1]
 [ext_resource path="res://Menu/StartMenu/StartMenu.tscn" type="PackedScene" id=2]
@@ -30,6 +30,7 @@
 [ext_resource path="res://Assets/Spritesheets/ugd-splash-screen.png" type="Texture" id=28]
 [ext_resource path="res://Assets/ShaderEffects/Transition/map.png" type="Texture" id=29]
 [ext_resource path="res://Common/SplashScreen.gd" type="Script" id=30]
+[ext_resource path="res://Menu/DisplayConfigMenu/DisplayConfigMenu.tscn" type="PackedScene" id=31]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -106,6 +107,7 @@ pause_menu = ExtResource( 3 )
 debugger_layer = ExtResource( 4 )
 controls_menu = ExtResource( 5 )
 sound_menu = ExtResource( 6 )
+display_menu = ExtResource( 31 )
 level_select = ExtResource( 7 )
 settings_menu = ExtResource( 9 )
 sound_config = "audio_settings"

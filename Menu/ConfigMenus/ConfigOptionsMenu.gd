@@ -22,13 +22,20 @@ func _on_Return_pressed():
 		self.queue_free()
 
 
+
+func _on_DisplayOptions_pressed():
+	self_hide()
+	self.add_child(prepare_scene(main.display_menu))
+
 func _on_SoundOptions_pressed():
 	self_hide()
 	self.add_child(prepare_scene(main.sound_menu))
 
-
 func _on_Controls_pressed():
+	self_hide()
 	self.add_child(prepare_scene(main.controls_menu))
+
+
 
 func prepare_scene(settings_menu: PackedScene) -> Control:
 	self.pause_mode = PAUSE_MODE_STOP
@@ -37,11 +44,16 @@ func prepare_scene(settings_menu: PackedScene) -> Control:
 		settings_window.pause_menu = true
 	return settings_window
 
+
+
 func refocus() -> void:
-	$CenterContainer/MarginContainer/MarginContainer/Options/VBoxContainer/SoundOptions.grab_focus()
+	$CenterContainer/MarginContainer/MarginContainer/Options/VBoxContainer/DisplayOptions.grab_focus()
 
 func self_hide() -> void:
 	$CenterContainer.hide()
 
 func self_show() -> void:
 	$CenterContainer.show()
+
+
+

@@ -6,6 +6,7 @@ export(PackedScene) var pause_menu
 export(PackedScene) var debugger_layer
 export(PackedScene) var controls_menu
 export(PackedScene) var sound_menu
+export(PackedScene) var display_menu
 export(PackedScene) var level_select
 export(PackedScene) var settings_menu
 export(String) var sound_config

@@ -25,22 +25,16 @@ func enter():
 	relative_position_to_bullet = (bullet.position - owner.position)
 	
 	if relative_position_to_bullet.length()/owner.boost_time < owner.boost_speed:
-		print("First BulletBoosting Case")
 		boost_velocity = relative_position_to_bullet.normalized()*owner.boost_speed
 		boost_time = relative_position_to_bullet.length()/owner.boost_speed
 	elif relative_position_to_bullet.length()/owner.boost_time < 2*owner.boost_speed:
-		print("Second BulletBoosting Case")
 		boost_velocity = relative_position_to_bullet/owner.boost_time
 		boost_time = owner.boost_time
 	elif relative_position_to_bullet.length()/owner.boost_time >= 2*owner.boost_speed:
-		print("Third BulletBoosting Case")
 		boost_velocity = 2*owner.boost_speed*relative_position_to_bullet.normalized()
 		boost_time = relative_position_to_bullet.length()/(2*owner.boost_speed)
-		print(relative_position_to_bullet.length())
-		print(2*owner.boost_speed)
 	
 	boosting_particles(true)
-	print(boost_time)
 	owner.velocity = boost_velocity
 	boost_speed = boost_velocity.length()
 

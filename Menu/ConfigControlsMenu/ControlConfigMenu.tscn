@@ -15,6 +15,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 button_model = ExtResource( 2 )
 return_shortcut = ExtResource( 3 )
 
@@ -24,9 +27,9 @@ anchor_bottom = 1.0
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
 margin_left = 364.0
-margin_top = 308.0
+margin_top = 224.0
 margin_right = 660.0
-margin_bottom = 460.0
+margin_bottom = 376.0
 
 [node name="MenuPanel" parent="CenterContainer/MarginContainer" instance=ExtResource( 4 )]
 margin_right = 296.0

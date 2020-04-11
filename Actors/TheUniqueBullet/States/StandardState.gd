@@ -28,7 +28,6 @@ func track_distance(delta: float) -> void:
 func check_for_collisions_with_blocks() -> bool:
 	for body in owner.get_node("HitBox").get_overlapping_bodies():
 		if body.is_in_group("blocks"):
-			print("Collision with block: true")
 			return true
 	return false
 
