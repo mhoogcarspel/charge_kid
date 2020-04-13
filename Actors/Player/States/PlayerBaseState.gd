@@ -25,24 +25,23 @@ func jump_input_pressed() -> bool:
 	return false
 
 func boost_input_pressed() -> bool:
-	var timer = owner.get_node("BunnyBoostTimer")
+	var timer = owner.get_node("BoostBuffer")
 	if Input.is_action_just_pressed("ui_boost"):
 		timer.start()
-	if Input.is_action_pressed("ui_boost") && !timer.is_stopped() && owner.can_boost:
+	if !timer.is_stopped() && owner.can_boost:
 		owner.change_state("BoostingState")
 		timer.stop()
 		return true
 	return false
 
 func bullet_boost_input_pressed() -> bool:
-	var timer = owner.get_node("BunnyBoostTimer")
+	var timer = owner.get_node("BoostBuffer")
 	if Input.is_action_just_pressed("ui_bullet_boost"):
 		timer.start()
-	if Input.is_action_pressed("ui_bullet_boost") && !timer.is_stopped():
-		if is_holding_bullet() && owner.can_boost:
-			owner.change_state("BulletBoostingState")
-			timer.stop()
-			return true
+	if !timer.is_stopped() && is_holding_bullet() && owner.can_boost:
+		owner.change_state("BulletBoostingState")
+		timer.stop()
+		return true
 	return false
 
 func is_holding_bullet() -> bool:

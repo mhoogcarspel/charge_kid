@@ -567,7 +567,7 @@ ripple_effect = ExtResource( 32 )
 wait_time = 0.1
 one_shot = true
 
-[node name="BunnyBoostTimer" type="Timer" parent="."]
+[node name="BoostBuffer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
 
