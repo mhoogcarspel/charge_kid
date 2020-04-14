@@ -1,7 +1,7 @@
 extends Control
 
 
-onready var main: Node
+onready var main: Main
 onready var pause_menu: bool
 onready var loaded: bool = false
 
@@ -96,7 +96,7 @@ func _on_Fullscreen_toggle(button_pressed):
 	if button_pressed != OS.window_fullscreen:
 		OS.window_fullscreen = button_pressed
 		window_size = OS.window_size
-		save_display_options()
+		save_propety("window_fullscreen")
 
 
 
@@ -137,6 +137,30 @@ func save_display_options() -> void:
 	options_dictionary["window_size.x"] = window_size.x
 	options_dictionary["window_size.y"] = window_size.y
 	var file = File.new()
+	file.open("user://display_config.conf", File.WRITE)
+	file.store_line(to_json(options_dictionary))
+	file.close()
+
+func save_propety(property: String) -> void:
+	var file = File.new()
+	var options_dictionary: Dictionary
+	if !file.file_exists("user://display_config.conf"):
+		save_display_options()
+		
+	file.open("user://display_config.conf", File.READ)
+	options_dictionary = parse_json(file.get_line())
+	file.close()
+	match property:
+		"window_fullscreen":
+			options_dictionary["window_fullscreen"] = fullscreen_button.pressed
+		"window_borderless":
+			options_dictionary["window_borderless"] = borderless_window_button.pressed
+		"window_size.x":
+			options_dictionary["window_size.x"] = window_size.x
+		"window_size.y":
+			options_dictionary["window_size.y"] = window_size.y
+		_:
+			print("ERROR: nonexistante property in save_property()")
 	file.open("user://display_config.conf", File.WRITE)
 	file.store_line(to_json(options_dictionary))
 	file.close()
