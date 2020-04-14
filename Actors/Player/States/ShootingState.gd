@@ -8,7 +8,6 @@ var sfx : AudioStreamPlayer
 func _init(owner: KinematicBody2D):
 	self.owner = owner
 	self.animation_player = owner.get_node("AnimationPlayer")
-#	sfx = owner.get_node("SFX/Shoot")
 	owner.get_node("SFX/Shoot").pitch_scale = rand_range(0.9, 1.6)
 	owner.get_node("SFX/Shoot").set_stream(owner.get_node("PlayerSprite").shoot_sounds[randi()%3])
 	owner.get_node("SFX/Shoot").get_stream().set_loop(false)
@@ -18,7 +17,6 @@ func _init(owner: KinematicBody2D):
 
 func enter():
 	animation_player.play("Shooting")
-#	sfx.play()
 	owner.get_node("SFX/Shoot").play()
 	
 	## If gravity is not aplied when the owner is on floor 
