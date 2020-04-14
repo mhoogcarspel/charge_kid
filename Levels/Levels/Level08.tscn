@@ -187,7 +187,7 @@ gate_height = 5
 position = Vector2( 304, 168 )
 
 [node name="Switch" parent="." index="15" instance=ExtResource( 15 )]
-position = Vector2( 113.2, 26.7502 )
+position = Vector2( 112, 36 )
 nodes = [ NodePath("../EnergyGate2"), NodePath("../Gate2") ]
 wires = [ NodePath("../EnergyWire"), NodePath("../EnergyWire2") ]
 
@@ -212,7 +212,7 @@ position = Vector2( 64, 14 )
 active = false
 
 [node name="Wire" parent="EnergyWire2" index="0"]
-tile_data = PoolIntArray( 65539, 0, 262144, 65540, 0, 393218, 131072, 0, 262144, 131073, 0, 327680, 131074, 0, 393218, 131076, 0, 196608, 196610, 0, 524288, 196611, 0, 327680, 196612, 0, 524290 )
+tile_data = PoolIntArray( 65539, 0, 262144, 65540, 0, 393218, 131072, 0, 262144, 131073, 0, 393218, 131076, 0, 196608, 196609, 0, 524288, 196610, 0, 327680, 196611, 0, 327680, 196612, 0, 524290 )
 
 [node name="Props" parent="EnergyWire2" index="1"]
 tile_data = PoolIntArray( 65540, 18, 0, 131072, 9, 0 )
