@@ -8,6 +8,8 @@ onready var menu = get_node("CenterContainer/MarginContainer/MarginContainer/VBo
 
 func _ready():
 	menu.get_children()[0].grab_focus()
+	if main.get_node("SpeedrunMode").is_active():
+		menu.get_node("LevelList").disabled = true
 
 func close_pause_menu() -> void:
 	get_tree().paused = false

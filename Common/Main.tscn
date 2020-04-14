@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Common/Main.gd" type="Script" id=1]
 [ext_resource path="res://Menu/StartMenu/StartMenu.tscn" type="PackedScene" id=2]
@@ -31,6 +31,8 @@
 [ext_resource path="res://Assets/ShaderEffects/Transition/map.png" type="Texture" id=29]
 [ext_resource path="res://Common/SplashScreen.gd" type="Script" id=30]
 [ext_resource path="res://Menu/DisplayConfigMenu/DisplayConfigMenu.tscn" type="PackedScene" id=31]
+[ext_resource path="res://Common/SpeedrunMode.gd" type="Script" id=32]
+[ext_resource path="res://Menu/LabelBaseModel.tscn" type="PackedScene" id=33]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -116,6 +118,33 @@ sound_config = "audio_settings"
 
 [node name="HudContainer" type="CanvasLayer" parent="."]
 
+[node name="Box" type="MarginContainer" parent="HudContainer" groups=[
+"speedrun_timer",
+]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 16
+custom_constants/margin_bottom = 16
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Box" type="VBoxContainer" parent="HudContainer/Box"]
+margin_right = 1008.0
+margin_bottom = 560.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpeedrunTimer" parent="HudContainer/Box/Box" instance=ExtResource( 33 )]
+visible = false
+margin_top = 544.0
+margin_right = 1008.0
+margin_bottom = 560.0
+text = "0:00.00"
+align = 2
+
 [node name="PauseTimer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
@@ -123,6 +152,9 @@ one_shot = true
 [node name="Scene" type="Node" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="SpeedrunMode" type="Node" parent="."]
+script = ExtResource( 32 )
 
 [node name="MenuNavigation" type="Node" parent="."]
 script = ExtResource( 8 )
@@ -156,6 +188,8 @@ script = ExtResource( 26 )
 material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 0.584778
+margin_right = 0.584717
 expand = true
 script = ExtResource( 30 )
 __meta__ = {

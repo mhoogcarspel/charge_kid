@@ -66,8 +66,11 @@ func change_scene(next_scene: PackedScene):
 		else:
 			$Scene.remove_child(scene)
 	for scene in $HudContainer.get_children():
-		scene.queue_free()
+		if not scene.is_in_group("speedrun_timer"):
+			scene.queue_free()
 	var scene_instance = next_scene.instance()
+	if $SpeedrunMode.is_active() and scene_instance is BaseLevel:
+		scene_instance.get_node("ScreenTransition").active = false
 	$Scene.call_deferred("add_child", scene_instance)
 	actual_scene = next_scene
 	return scene_instance
