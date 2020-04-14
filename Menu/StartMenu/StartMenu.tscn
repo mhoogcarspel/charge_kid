@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Menu/StartMenu/StartMenu.gd" type="Script" id=1]
 [ext_resource path="res://Levels/Tilemaps/Background.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Menu/LevelSelectMenu/LevelSelectMenu.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Menu/StartMenu/Particles.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Menu/SpeedrunScreens/SpeedrunStart.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Menu/StartMenu/SpeedrunTimes.gd" type="Script" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -22,10 +23,19 @@ font_data = ExtResource( 6 )
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 6 )
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
 [node name="StartMenu" type="MarginContainer"]
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 16
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 16
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -37,14 +47,16 @@ speedrun_start = ExtResource( 11 )
 button_group = ExtResource( 5 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-margin_right = 1024.0
-margin_bottom = 576.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 1008.0
+margin_bottom = 560.0
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 260.0
-margin_top = 110.0
-margin_right = 764.0
-margin_bottom = 466.0
+margin_left = 244.0
+margin_top = 94.0
+margin_right = 748.0
+margin_bottom = 450.0
 custom_constants/separation = 32
 alignment = 1
 
@@ -175,6 +187,100 @@ margin_bottom = 356.0
 custom_styles/separator = SubResource( 3 )
 custom_constants/separation = 64
 
+[node name="SpeedrunTimes" type="VBoxContainer" parent="."]
+visible = false
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 256.0
+margin_bottom = 560.0
+size_flags_horizontal = 0
+custom_constants/separation = 8
+alignment = 2
+script = ExtResource( 12 )
+
+[node name="Label" type="Label" parent="SpeedrunTimes"]
+margin_top = 392.0
+margin_right = 240.0
+margin_bottom = 408.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
+text = "Speedrun Times:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator" type="HSeparator" parent="SpeedrunTimes"]
+margin_top = 416.0
+margin_right = 240.0
+margin_bottom = 424.0
+custom_styles/separator = SubResource( 5 )
+custom_constants/separation = 8
+
+[node name="First" type="Label" parent="SpeedrunTimes"]
+margin_top = 432.0
+margin_right = 240.0
+margin_bottom = 448.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
+text = "0:00.00"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Second" type="Label" parent="SpeedrunTimes"]
+margin_top = 456.0
+margin_right = 240.0
+margin_bottom = 472.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
+text = "0:00.00"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Third" type="Label" parent="SpeedrunTimes"]
+margin_top = 480.0
+margin_right = 240.0
+margin_bottom = 496.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
+text = "0:00.00"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fourth" type="Label" parent="SpeedrunTimes"]
+margin_top = 504.0
+margin_right = 240.0
+margin_bottom = 520.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
+text = "0:00.00"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fifth" type="Label" parent="SpeedrunTimes"]
+margin_top = 528.0
+margin_right = 240.0
+margin_bottom = 544.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
+text = "0:00.00"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="SpeedrunTimes"]
+wait_time = 0.01
+one_shot = true
+autostart = true
+
 [node name="Background" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, -96 )
 scale = Vector2( 2, 2 )
@@ -208,6 +314,7 @@ tile_data = PoolIntArray( 4, 2, 0, 65540, 2, 0, 131076, 1, 0, 196612, 0, 0, 2621
 [connection signal="pressed" from="CenterContainer/VBoxContainer3/VBoxContainer3/Settings" to="." method="_on_Settings_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer3/VBoxContainer3/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer3/VBoxContainer3/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="timeout" from="SpeedrunTimes/Timer" to="SpeedrunTimes" method="_on_Timer_timeout"]
 
 [editable path="Background"]
 
