@@ -12,7 +12,7 @@ func _ready():
 	var result: Dictionary = speedrun_mode.time()
 	
 	### Saving the new time ########################################################
-	if save_file.progress["times"] == null:
+	if save_file.progress["times"] == []:
 		save_file.progress["times"] = [result]
 	else:
 		

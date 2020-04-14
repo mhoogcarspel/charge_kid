@@ -9,7 +9,7 @@ onready var file_handler:FileHandler = get_parent().get_node("FileHandler")
 var progress: Dictionary = {
 	"levels": 0,
 	"end": false,
-	"times": null
+	"times": []
 }
 
 var model = progress.duplicate()
