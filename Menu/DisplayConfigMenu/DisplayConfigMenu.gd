@@ -86,8 +86,25 @@ func _on_Windowed_pressed():
 			OS.window_size = screen_sizes[0]
 	else:
 		OS.window_size = screen_sizes[0]
+	window_size = OS.window_size
 	OS.center_window()
 	save_display_options()
+
+
+
+func _on_Fullscreen_toggle(button_pressed):
+	if button_pressed != OS.window_fullscreen:
+		OS.window_fullscreen = button_pressed
+		window_size = OS.window_size
+		save_display_options()
+
+
+
+func _on_BorderlessWindow_toggle(button_pressed):
+	if button_pressed != OS.window_borderless:
+		OS.window_borderless = button_pressed
+		window_size = OS.window_size
+		save_display_options()
 
 
 
@@ -117,24 +134,14 @@ func save_display_options() -> void:
 	var options_dictionary: Dictionary = {}
 	options_dictionary["window_fullscreen"] = fullscreen_button.pressed
 	options_dictionary["window_borderless"] = borderless_window_button.pressed
-	options_dictionary["window_size.x"] = OS.window_size.x
-	options_dictionary["window_size.y"] = OS.window_size.y
+	options_dictionary["window_size.x"] = window_size.x
+	options_dictionary["window_size.y"] = window_size.y
 	var file = File.new()
 	file.open("user://display_config.conf", File.WRITE)
 	file.store_line(to_json(options_dictionary))
 	file.close()
 
-func _on_Fullscreen_toggle(button_pressed):
-	if button_pressed != OS.window_fullscreen:
-		OS.window_fullscreen = button_pressed
-		save_display_options()
 
-
-
-func _on_BorderlessWindow_toggle(button_pressed):
-	if button_pressed != OS.window_borderless:
-		OS.window_borderless = button_pressed
-		save_display_options()
 
 
 
