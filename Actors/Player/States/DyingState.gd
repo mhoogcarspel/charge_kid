@@ -11,6 +11,7 @@ func _init(owner: KinematicBody2D):
 func enter():
 	owner.velocity = Vector2.ZERO
 	owner.get_node("SFX/Death").play()
+	owner.main.get_node("BackgroundAndMusicHandler").death_effect()
 	owner.get_node("PlayerSprite").kill()
 	owner.get_node("AnimationPlayer").play("Airborne")
 	for particle in owner.get_node("DeathParticles").get_children():
@@ -53,6 +54,7 @@ func enter():
 	next_player.checkpoint = owner.checkpoint
 	
 	owner.get_parent().add_child(next_player)
+	owner.main.get_node("BackgroundAndMusicHandler").respawn_effect()
 	var ripple = next_player.shader_effects("Ripple")
 	ripple.position = next_player.position
 	ripple.speed = 400

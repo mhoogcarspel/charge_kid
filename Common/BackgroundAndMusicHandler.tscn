@@ -15,12 +15,12 @@ bgm_starting_volume = 0.7
 sfx_starting_volume = 0.7
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-volume_db = 18.2
+volume_db = 18.0
 bus = "MUS"
 
 [node name="Background" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
-volume_db = 9.0
+volume_db = 15.0
 autoplay = true
 bus = "MUS"
 

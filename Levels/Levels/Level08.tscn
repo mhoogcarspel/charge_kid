@@ -57,7 +57,6 @@ extents = Vector2( 24, 88 )
 
 [node name="Level07" instance=ExtResource( 1 )]
 level = 8
-bgm_1 = true
 bgm_2 = true
 bgm_3 = true
 
@@ -220,10 +219,7 @@ tile_data = PoolIntArray( 65540, 18, 0, 131072, 9, 0 )
 [node name="Gate2" parent="." index="19" instance=ExtResource( 14 )]
 position = Vector2( 472, 72 )
 gate_height = 12
-gap_size = 0
 active = true
-close_in_inverse_order = false
-direction = ""
 
 [node name="FuelTank3" parent="." index="20" instance=ExtResource( 7 )]
 position = Vector2( 536, 264 )

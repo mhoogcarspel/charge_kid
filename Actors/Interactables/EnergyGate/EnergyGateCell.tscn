@@ -4,7 +4,8 @@
 [ext_resource path="res://Actors/Interactables/EnergyGate/HitParticles.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Spritesheets/robot.v1.png" type="Texture" id=3]
 [ext_resource path="res://Actors/Interactables/EnergyGate/Sprite.gd" type="Script" id=4]
-[ext_resource path="res://Assets/SFX/laser_gate.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Assets/SFX/Gate/laser_gate.ogg" type="AudioStream" id=5]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )

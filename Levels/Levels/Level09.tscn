@@ -15,10 +15,8 @@
 
 [node name="Level08" instance=ExtResource( 1 )]
 level = 9
-bgm_1 = true
 bgm_2 = true
 bgm_3 = true
-bgm_4 = true
 
 [node name="ScreenTransition" parent="." index="0"]
 opening_text = "Level 9

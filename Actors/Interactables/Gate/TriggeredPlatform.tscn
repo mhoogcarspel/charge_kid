@@ -2,8 +2,9 @@
 
 [ext_resource path="res://Actors/Interactables/Gate/TriggeredPlatform.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Spritesheets/industrial.v2.png" type="Texture" id=2]
-[ext_resource path="res://Assets/SFX/openGate.ogg" type="AudioStream" id=3]
-[ext_resource path="res://Assets/SFX/closeGate.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Assets/SFX/Gate/openGate.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Assets/SFX/Gate/closeGate.ogg" type="AudioStream" id=4]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "Activate"

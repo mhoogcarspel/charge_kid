@@ -11,7 +11,7 @@ onready var file_handler: FileHandler = get_parent().get_node("FileHandler")
 onready var mus = AudioServer.get_bus_index("MUS")
 onready var LowPassFilter:AudioEffectFilter
 export var max_freq = 22000
-export var min_freq = 450
+export var min_freq = 150
 
 onready var player:KinematicBody2D
 
@@ -37,14 +37,14 @@ func set_volume_bgm(list:Array):
 func death_effect():
 	LowPassFilter = AudioServer.get_bus_effect(mus, 0)
 	
-	$FadeInOut.interpolate_property(LowPassFilter, "cutoff_hz", max_freq, min_freq, 0.2, 
+	$FadeInOut.interpolate_property(LowPassFilter, "cutoff_hz", max_freq, min_freq, 1.5, 
 										Tween.TRANS_EXPO, Tween.EASE_OUT)
 	$FadeInOut.start()
 	print(LowPassFilter.get_cutoff())
 
 func respawn_effect():
 	$FadeInOut.reset_all()
-	$FadeInOut.interpolate_property(LowPassFilter, "cutoff_hz", min_freq, max_freq, 3, 
+	$FadeInOut.interpolate_property(LowPassFilter, "cutoff_hz", min_freq, max_freq, 1.5, 
 									Tween.TRANS_EXPO, Tween.EASE_OUT)
 	$FadeInOut.start()
 

@@ -10,8 +10,8 @@
 [ext_resource path="res://Common/MenuNavigation.gd" type="Script" id=8]
 [ext_resource path="res://Menu/ConfigMenus/ConfigOptionsMenu.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Common/BackgroundAndMusicHandler.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Assets/SFX/270322__littlerobotsoundfactory__menu-navigate-02.wav" type="AudioStream" id=11]
-[ext_resource path="res://Assets/SFX/270324__littlerobotsoundfactory__menu-navigate-00.wav" type="AudioStream" id=12]
+[ext_resource path="res://Assets/SFX/UI/navigationMenu.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Assets/SFX/UI/acceptMenu.ogg" type="AudioStream" id=12]
 [ext_resource path="res://Common/SaveFileHandler.gd" type="Script" id=13]
 [ext_resource path="res://Levels/Levels/Level10.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Levels/Levels/Level12.tscn" type="PackedScene" id=15]
@@ -161,12 +161,10 @@ script = ExtResource( 8 )
 
 [node name="MenuNavigate" type="AudioStreamPlayer" parent="MenuNavigation"]
 stream = ExtResource( 11 )
-volume_db = -18.0
 bus = "SFX"
 
 [node name="MenuAccept" type="AudioStreamPlayer" parent="MenuNavigation"]
 stream = ExtResource( 12 )
-volume_db = -18.0
 bus = "SFX"
 
 [node name="MenuNavTimer" type="Timer" parent="MenuNavigation"]

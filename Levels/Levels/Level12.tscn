@@ -13,7 +13,6 @@
 
 [node name="BaseLevel" instance=ExtResource( 6 )]
 level = 12
-bgm_1 = true
 bgm_2 = true
 bgm_3 = true
 bgm_4 = true
