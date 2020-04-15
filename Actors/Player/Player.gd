@@ -140,7 +140,7 @@ func vertical_move(delta: float, fac: float = 1):
 
 
 func jump():
-	get_node("SFX/Jump").pitch_scale = rand_range(1,1.3)
+	get_node("SFX/Jump").pitch_scale = rand_range(1,1.1)
 	get_node("SFX/Jump").set_stream($PlayerSprite.jump_sounds[randi()%3])
 	get_node("SFX/Jump").get_stream().set_loop(false)
 	get_node("SFX/Jump").play()

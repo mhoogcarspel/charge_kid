@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/Spritesheets/industrial.v2.png" type="Texture" id=2]
 [ext_resource path="res://Actors/Interactables/Switch/AuxiliaryScript.gd" type="Script" id=3]
 [ext_resource path="res://Actors/Interactables/Switch/HitParticles.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/SFX/270302__littlerobotsoundfactory__collect-point-02.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/SFX/Switch/activateSwitch.ogg" type="AudioStream" id=5]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -92,7 +92,6 @@ anims/Activate = SubResource( 4 )
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
-volume_db = -12.0
 bus = "SFX"
 
 [node name="Timer" type="Timer" parent="."]
