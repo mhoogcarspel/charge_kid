@@ -35,7 +35,7 @@
 [ext_resource path="res://Assets/SFX/Jump/jump0.ogg" type="AudioStream" id=33]
 [ext_resource path="res://Assets/SFX/Jump/superjump0-teste1.ogg" type="AudioStream" id=34]
 [ext_resource path="res://Assets/SFX/Shoot/shoot0.ogg" type="AudioStream" id=35]
-[ext_resource path="res://Assets/SFX/270340__littlerobotsoundfactory__pickup-01.wav" type="AudioStream" id=36]
+[ext_resource path="res://Assets/SFX/Bullet Pickup/bulletPickup.ogg" type="AudioStream" id=36]
 [ext_resource path="res://Assets/SFX/Fuel Pickup/fuelPickup0.ogg" type="AudioStream" id=37]
 [ext_resource path="res://Assets/SFX/Death/death.ogg" type="AudioStream" id=38]
 [ext_resource path="res://Assets/SFX/Jump/jump2.ogg" type="AudioStream" id=39]
@@ -607,7 +607,7 @@ bus = "SFX"
 
 [node name="BulletPickup" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 36 )
-volume_db = -9.0
+volume_db = -3.0
 bus = "SFX"
 
 [node name="FuelPickup" type="AudioStreamPlayer" parent="SFX"]

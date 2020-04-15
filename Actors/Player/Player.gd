@@ -165,7 +165,7 @@ func is_on_blocks() -> bool:
 func hit(projectile: PhysicsBody2D) -> void:
 	match projectile.get_state():
 		"StandingState":
-			fuel_pickup_sound()
+			$SFX/BulletPickup.play()
 		"FuelChargeState":
 			recharge_fuel()
 		
@@ -175,7 +175,7 @@ func hit(projectile: PhysicsBody2D) -> void:
 		$BoostTimer.stop()
 		_on_BoostTimer_timeout()
 	projectile.destroy()
-
+	
 func fuel_pickup_sound():
 	get_node("SFX/FuelPickup").set_stream(get_node("PlayerSprite").fuel_pickup_sounds[randi()%3])
 	get_node("SFX/FuelPickup").get_stream().set_loop(false)
