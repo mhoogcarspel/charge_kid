@@ -2,6 +2,5 @@
 
 [ext_resource path="res://Actors/Interactables/LogicGate/BaseLogicGate.gd" type="Script" id=1]
 
-
 [node name="BaseLogicGate" type="Node"]
 script = ExtResource( 1 )

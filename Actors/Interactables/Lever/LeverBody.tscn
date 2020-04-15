@@ -3,7 +3,7 @@
 [ext_resource path="res://Actors/Interactables/Lever/Lever.gd" type="Script" id=1]
 [ext_resource path="res://Actors/Interactables/Lever/HitParticles.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Actors/Interactables/Lever/Lever.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/SFX/270309__littlerobotsoundfactory__craft-00.wav" type="AudioStream" id=4]
+[ext_resource path="res://Assets/SFX/Gate/lever.ogg" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6.92253, 5.11762 )
@@ -30,7 +30,8 @@ shape = SubResource( 1 )
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-bus = "SFX"
+volume_db = -3.0
+bus = "REVERB"
 
 [node name="PlayerHitbox" type="Area2D" parent="."]
 visible = false
