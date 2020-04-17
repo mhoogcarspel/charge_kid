@@ -43,5 +43,5 @@ func _on_focus_entered():
 		switch_option_timer.start(switch_option_time)
 
 func _on_focus_exited():
-	if not main.get_node("MenuNavigation/MenuAccept").is_playing():
+	if main.get_node("MenuNavigation/MenuAcceptTimer").is_stopped():
 		main.get_node("MenuNavigation/MenuNavigate").play()
