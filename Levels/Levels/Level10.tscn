@@ -167,13 +167,14 @@ message = "Second charge skip!"
 message_time = 4.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lv9SpMessage" index="0"]
+position = Vector2( -8, 16 )
 polygon = PoolVector2Array( 0, 8, 0, -8, 32, -8, 32, 8 )
 
 [node name="SubArea" type="Area2D" parent="Lv9SpMessage" index="1"]
 position = Vector2( -168, 64 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lv9SpMessage/SubArea" index="0"]
-polygon = PoolVector2Array( 24, 8, 24, -24, -88, -24, -88, 8 )
+polygon = PoolVector2Array( 24, 8, 24, -56, -56, -56, -56, 8 )
 [connection signal="body_entered" from="Lv9SpMessage" to="Lv9SpMessage" method="on_body_entered"]
 [connection signal="body_exited" from="Lv9SpMessage/SubArea" to="Lv9SpMessage" method="_on_SubArea_body_exited"]
 

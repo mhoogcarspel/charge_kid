@@ -13,6 +13,9 @@ onready var save_file = main.get_node("SaveFileHandler")
 
 
 func _ready():
+	main.get_node("BackgroundAndMusicHandler/Background").playing = true
+	main.get_node("BackgroundAndMusicHandler").zero_all_bgm()
+	
 	var button_list = $CenterContainer/VBoxContainer3/VBoxContainer3
 	save_file.load_progress()
 	var progress = save_file.progress

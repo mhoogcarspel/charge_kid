@@ -127,6 +127,8 @@ func is_using_controller() -> bool:
 		return false
 ###################################################################################
 
+
+
 func load_display_options() -> void:
 	var file = File.new()
 	if !file.file_exists("user://display_config.conf"):
@@ -147,3 +149,5 @@ func load_display_options() -> void:
 	file.close()
 	if not OS.window_fullscreen:
 		OS.center_window()
+
+
