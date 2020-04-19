@@ -19,8 +19,6 @@ export(float) var boost_distance
 export(float) var boost_time
 onready var boost_speed: float = boost_distance/boost_time
 
-export(float) var coyote_time
-export(float) var bunny_time
 export(float) var jump_height
 export(float) var gravity
 
@@ -88,7 +86,7 @@ func _physics_process(delta):
 	if get_state() != "DyingState" and get_state() != "StatelessState":
 		velocity = move_and_slide(velocity, Vector2(0, -1))
 		if is_on_floor():
-			$CoyoteTimer.start(coyote_time)
+			$CoyoteTimer.start()
 
 
 

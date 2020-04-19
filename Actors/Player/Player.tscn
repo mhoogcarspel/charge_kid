@@ -391,8 +391,6 @@ friction = 900.0
 air_friction = 150.0
 boost_distance = 60.0
 boost_time = 0.4
-coyote_time = 0.1
-bunny_time = 0.1
 jump_height = 40.0
 gravity = 500.0
 
@@ -564,7 +562,7 @@ script = ExtResource( 31 )
 ripple_effect = ExtResource( 32 )
 
 [node name="BunnyTimer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.2
 one_shot = true
 
 [node name="BoostBuffer" type="Timer" parent="."]
@@ -572,6 +570,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.1
 one_shot = true
 
 [node name="BoostTimer" type="Timer" parent="."]
