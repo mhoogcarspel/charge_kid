@@ -21,7 +21,9 @@ onready var actions: Dictionary = {
 	"right": "Right",
 	"up": "Up",
 	"down": "Down",
-	"ui_pause": "Pause"
+	"ui_pause": "Pause",
+	"ui_accept": "Menu Accept",
+	"ui_cancel": "Menu Cancel"
 	}
 
 onready var control_handler = ButtonGetter.new(actions)
