@@ -52,10 +52,16 @@ func compare_dictionaries_from_files(file_json: Dictionary, model: Dictionary, f
 
 func make_backup_file(file_path: String, file_string: String, model: Dictionary) -> void:
 	var file : = File.new()
-	file.open(file_path + ".backup", File.WRITE)
+	var backup_file_path = file_path + ".backup"
+	if file.file_exists(backup_file_path):
+		var i = 0
+		while(file.file_exists(backup_file_path + str(i))):
+			i += 1
+		backup_file_path += str(i)
+	file.open(backup_file_path, File.WRITE)
 	file.store_line(file_string)
 	file.close()
 	file.open(file_path, File.WRITE)
 	file.store_line(to_json(model))
 	file.close()
-	print(file_path + " backup saved as " + file_path + ".backup and file rewritten to standard")
+	print(file_path + " backup saved as " + backup_file_path + " and file rewritten to standard")
