@@ -20,7 +20,7 @@ func check_file_integrity(file_string: String, model: Dictionary, file_path: Str
 
 func compare_dictionaries_from_files(file_json: Dictionary, model: Dictionary, file_path: String) -> bool:
 	if file_json.keys().size() != model.keys().size():
-		print("ERROR: key numbers different in" + file_path)
+		print("ERROR: key numbers different in " + file_path)
 		emit_signal("done")
 		return false
 	
@@ -52,10 +52,10 @@ func compare_dictionaries_from_files(file_json: Dictionary, model: Dictionary, f
 
 func make_backup_file(file_path: String, file_string: String, model: Dictionary) -> void:
 	var file : = File.new()
-	file.open("user://" + file_path + ".backup", File.WRITE)
+	file.open(file_path + ".backup", File.WRITE)
 	file.store_line(file_string)
 	file.close()
-	file.open("user://" + file_path, File.WRITE)
+	file.open(file_path, File.WRITE)
 	file.store_line(to_json(model))
 	file.close()
 	print(file_path + " backup saved as " + file_path + ".backup and file rewritten to standard")
