@@ -278,6 +278,11 @@ func get_directional_input(device = 0, get_from_sticks = L_STICK) -> Vector2:
 		return digital
 ###################################################################################
 
-
+func any_button_action_is_pressed(event: InputEvent) -> bool:
+	if event is InputEventKey or event is InputEventJoypadButton:
+		for action in actions_list:
+			if event.is_action(action) and Input.is_action_just_pressed(action):
+				return true
+	return false
 
 
