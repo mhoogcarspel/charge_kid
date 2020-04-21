@@ -138,7 +138,7 @@ func get_controller_button_name(action: String, model: String = "Microsoft") -> 
 func is_keyboard_or_gamepad_key(event: InputEvent) -> bool:
 	return event is InputEventKey or event is InputEventJoypadButton
 
-func just_pressed(event:InputEvent) -> bool:
+func just_pressed(event: InputEvent) -> bool:
 	return event.is_pressed() and !event.is_echo()
 
 func equalize_equivalent_keys(action1: String, action2: String):
@@ -259,7 +259,7 @@ func get_r_stick_directional(device = 0) -> Vector2:
 ### DIRECTIONAL INPUTS ############################################################
 enum {L_STICK, R_STICK, BOTH_STICKS, NONE}
 
-func get_directional_input(device = 0, get_from_sticks = L_STICK) -> Vector2:
+func get_directional_input(menu: bool = false, device = 0, get_from_sticks = L_STICK) -> Vector2:
 	# Getting from sticks:
 	var analog: Vector2 = Vector2.ZERO
 	if get_from_sticks == R_STICK or get_from_sticks == BOTH_STICKS:
@@ -269,14 +269,20 @@ func get_directional_input(device = 0, get_from_sticks = L_STICK) -> Vector2:
 	
 	# Getting from D-Pad or keyboard:
 	var digital: Vector2 = Vector2.ZERO
-	digital.x = Input.get_action_strength("right") - Input.get_action_strength("left")
-	digital.y = Input.get_action_strength("down") - Input.get_action_strength("up")
+	if menu == false:
+		digital.x = Input.get_action_strength("right") - Input.get_action_strength("left")
+		digital.y = Input.get_action_strength("down") - Input.get_action_strength("up")
+	else:
+		digital.x = Input.get_action_strength("menu_right") - Input.get_action_strength("menu_left")
+		digital.y = Input.get_action_strength("menu_down") - Input.get_action_strength("menu_up")
 	
 	if digital == Vector2.ZERO:
 		return analog
 	else:
 		return digital
 ###################################################################################
+
+
 
 func any_button_action_is_pressed(event: InputEvent) -> bool:
 	if event is InputEventKey or event is InputEventJoypadButton:

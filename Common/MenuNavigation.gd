@@ -7,12 +7,12 @@ var control_handler
 func _process(_delta):
 	if get_tree().paused:
 		control_handler = get_parent().control_handler
-		actual_dir_input = control_handler.get_directional_input()
+		actual_dir_input = control_handler.get_directional_input(true)
 		if actual_dir_input.y != 0 and old_dir_input.y == 0:
 			$MenuNavTimer/Timer.start()
 		if actual_dir_input.y == 0 and old_dir_input.y != 0:
 			$MenuNavTimer.stop()
-		old_dir_input = control_handler.get_directional_input()
+		old_dir_input = control_handler.get_directional_input(true)
 
 func _on_Timer_timeout():
 	$MenuNavTimer.start()

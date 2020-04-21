@@ -22,15 +22,15 @@ func _process(_delta):
 	
 	if has_focus():
 		if switch_option_timer.is_stopped() and main.get_node("MenuNavigation/MenuNavTimer").is_stopped():
-			if main.control_handler.get_directional_input().y == 1:
+			if main.control_handler.get_directional_input(true).y == 1:
 				check_and_grab_focus(focus_neighbour_bottom)
-			elif main.control_handler.get_directional_input().y == -1:
+			elif main.control_handler.get_directional_input(true).y == -1:
 				check_and_grab_focus(focus_neighbour_top)
-			elif main.control_handler.get_directional_input().x == 1:
+			elif main.control_handler.get_directional_input(true).x == 1:
 				check_and_grab_focus(focus_neighbour_right)
-			elif main.control_handler.get_directional_input().x == -1:
+			elif main.control_handler.get_directional_input(true).x == -1:
 				check_and_grab_focus(focus_neighbour_left)
-		if main.control_handler.get_directional_input() == Vector2.ZERO and not switch_option_timer.is_stopped():
+		if main.control_handler.get_directional_input(true) == Vector2.ZERO and not switch_option_timer.is_stopped():
 			switch_option_timer.stop()
 
 func check_and_grab_focus(path :NodePath):
