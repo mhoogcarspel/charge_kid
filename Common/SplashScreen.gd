@@ -10,7 +10,6 @@ func _process(_delta):
 func _input(event):
 	if $AnimationPlayer.is_playing():
 		if main.control_handler.any_button_action_is_pressed(event):
-			print("Skipping SplahScreen...")
 			skip_splash_screen()
 
 func skip_splash_screen() -> void:
