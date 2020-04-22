@@ -39,19 +39,18 @@ func enter():
 
 
 func update(delta):
-	if animation_player.current_animation == "Shooting":
-		if owner.is_on_floor():
-			owner.vertical_move(delta)
-			if jump_input_pressed():
-				return
-		
-		if boost_input_pressed():
+	if owner.is_on_floor():
+		owner.vertical_move(delta)
+		if jump_input_pressed():
 			return
-		
-		if bullet_boost_input_pressed():
-			return
-		
-	else:
+	
+	if boost_input_pressed():
+		return
+	
+	if bullet_boost_input_pressed():
+		return
+	
+	if animation_player.current_animation != "Shooting":
 		owner.reset_states_machine()
 
 
