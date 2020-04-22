@@ -50,7 +50,7 @@ func update(delta):
 	if bullet_boost_input_pressed():
 		return
 	
-	if animation_player.current_animation != "Shooting":
+	if animation_player.current_animation != "Shooting" and owner.get_state() == "ShootingState":
 		owner.reset_states_machine()
 
 
