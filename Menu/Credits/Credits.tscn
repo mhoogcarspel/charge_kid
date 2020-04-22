@@ -1,10 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Menu/Credits/Credits.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]
-size = 48
+size = 40
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
@@ -37,10 +37,15 @@ font_data = ExtResource( 2 )
 [sub_resource type="DynamicFont" id=10]
 font_data = ExtResource( 2 )
 
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="DynamicFont" id=12]
+font_data = ExtResource( 2 )
+
 [node name="Credits" type="MarginContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/margin_top = 64
+custom_constants/margin_top = 40
 custom_constants/margin_left = 64
 script = ExtResource( 1 )
 __meta__ = {
@@ -49,22 +54,22 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 64.0
-margin_top = 64.0
-margin_right = 1024.0
+margin_top = 40.0
+margin_right = 1072.0
 margin_bottom = 576.0
-custom_constants/separation = 48
+custom_constants/separation = 32
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_right = 960.0
-margin_bottom = 48.0
+margin_right = 1008.0
+margin_bottom = 40.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
-text = "Game by"
+text = "Charge Kid"
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_top = 96.0
-margin_right = 960.0
-margin_bottom = 411.0
+margin_top = 72.0
+margin_right = 1008.0
+margin_bottom = 471.0
 custom_constants/margin_left = 48
 __meta__ = {
 "_edit_use_anchors_": false
@@ -72,8 +77,8 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
 margin_left = 48.0
-margin_right = 960.0
-margin_bottom = 315.0
+margin_right = 1008.0
+margin_bottom = 399.0
 alignment = 1
 
 [node name="Ayrton" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
@@ -100,7 +105,7 @@ __meta__ = {
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer/MarginContainer/VBoxContainer"]
 margin_top = 48.0
-margin_right = 912.0
+margin_right = 960.0
 margin_bottom = 64.0
 custom_styles/separator = SubResource( 4 )
 custom_constants/separation = 16
@@ -128,7 +133,7 @@ __meta__ = {
 
 [node name="HSeparator2" type="HSeparator" parent="VBoxContainer/MarginContainer/VBoxContainer"]
 margin_top = 116.0
-margin_right = 912.0
+margin_right = 960.0
 margin_bottom = 132.0
 custom_styles/separator = SubResource( 4 )
 custom_constants/separation = 16
@@ -155,28 +160,52 @@ text = "   Sound effects, music"
 
 [node name="HSeparator3" type="HSeparator" parent="VBoxContainer/MarginContainer/VBoxContainer"]
 margin_top = 184.0
-margin_right = 912.0
-margin_bottom = 248.0
+margin_right = 960.0
+margin_bottom = 232.0
 custom_styles/separator = SubResource( 4 )
-custom_constants/separation = 64
+custom_constants/separation = 48
 
 [node name="0x72" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
-margin_top = 252.0
+margin_top = 236.0
 margin_right = 504.0
-margin_bottom = 276.0
+margin_bottom = 260.0
 size_flags_horizontal = 0
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "https://0x72.itch.io/"
 
 [node name="0x722" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
-margin_top = 280.0
-margin_right = 912.0
-margin_bottom = 315.0
+margin_top = 264.0
+margin_right = 960.0
+margin_bottom = 299.0
 custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "   industrial.v2.png and robot.v1.png by 0x72
    are licensed under CC-0."
+
+[node name="HSeparator4" type="HSeparator" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+margin_top = 303.0
+margin_right = 960.0
+margin_bottom = 351.0
+custom_styles/separator = SubResource( 11 )
+custom_constants/separation = 48
+
+[node name="Repository" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+margin_top = 355.0
+margin_right = 624.0
+margin_bottom = 379.0
+size_flags_horizontal = 0
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
+text = "Charge Kid is open source!"
+
+[node name="Repository2" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+margin_top = 383.0
+margin_right = 960.0
+margin_bottom = 399.0
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
+text = "   https://gitlab.com/uspgamedev/charge_kid"
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

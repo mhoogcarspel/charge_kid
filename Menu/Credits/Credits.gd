@@ -2,6 +2,8 @@ extends MarginContainer
 
 onready var main = get_tree().get_nodes_in_group("main")[0]
 
+
+
 func _ready():
 	if get_tree().get_nodes_in_group("main").size() > 0:
 		main = get_tree().get_nodes_in_group("main")[0]
@@ -9,8 +11,8 @@ func _ready():
 		main = null
 
 func _input(event):
-	if (event is InputEventKey or event is InputEventJoypadButton) and $Timer.is_stopped():
-		if main == null:
-			get_tree().quit()
-		else:
+	if event is InputEvent and $Timer.is_stopped():
+		if event.is_action("ui_accept") or event.is_action("ui_cancel"):
 			main.back_to_start()
+
+
