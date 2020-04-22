@@ -58,5 +58,6 @@ func _ready():
 
 
 func _input(event):
-	if event is InputEventJoypadButton or event is InputEventJoypadMotion or event is InputEventKey and $Timer.is_stopped():
-		main.back_to_start()
+	if event is InputEvent and $Timer.is_stopped():
+		if event.is_action("ui_accept") or event.is_action("ui_cancel"):
+			main.back_to_start()
