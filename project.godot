@@ -122,7 +122,7 @@ _global_script_classes=[ {
 "base": "NinePatchRect",
 "class": "MessageBox",
 "language": "GDScript",
-"path": "res://MessageScreen.gd"
+"path": "res://Tests/MessageScreen.gd"
 }, {
 "base": "PlayerBaseState",
 "class": "MovingState",

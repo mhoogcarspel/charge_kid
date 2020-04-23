@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Common/Main.gd" type="Script" id=1]
 [ext_resource path="res://Menu/StartMenu/StartMenu.tscn" type="PackedScene" id=2]
@@ -34,7 +34,13 @@
 [ext_resource path="res://Common/SpeedrunMode.gd" type="Script" id=32]
 [ext_resource path="res://Menu/LabelBaseModel.tscn" type="PackedScene" id=33]
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+font_data = SubResource( 1 )
+
+[sub_resource type="Shader" id=3]
 code = "shader_type canvas_item;
 
 uniform sampler2D map;
@@ -52,13 +58,12 @@ void fragment() {
 
 "
 
-[sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
 shader_param/reveal = 1.1
 shader_param/map = ExtResource( 29 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "Transition"
+[sub_resource type="Animation" id=5]
 length = 8.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:transition_phase")
@@ -142,6 +147,7 @@ visible = false
 margin_top = 544.0
 margin_right = 1008.0
 margin_bottom = 560.0
+custom_fonts/font = SubResource( 2 )
 text = "0:00.00"
 align = 2
 
@@ -187,7 +193,7 @@ levels = [ ExtResource( 24 ), ExtResource( 16 ), ExtResource( 25 ), ExtResource(
 script = ExtResource( 26 )
 
 [node name="SplashScreen" type="TextureRect" parent="."]
-material = SubResource( 2 )
+material = SubResource( 4 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 0.584778
@@ -199,7 +205,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SplashScreen"]
-anims/Transition = SubResource( 3 )
+anims/Transition = SubResource( 5 )
 [connection signal="timeout" from="MenuNavigation/MenuNavTimer/Timer" to="MenuNavigation" method="_on_Timer_timeout"]
 
 [editable path="BackgroundAndMusicHandler"]
