@@ -94,6 +94,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Menu/LabelBaseModel.gd"
 }, {
+"base": "LabelBaseModel",
+"class": "LabelMessageScreen",
+"language": "GDScript",
+"path": "res://Menu/LabelMessageScreen.gd"
+}, {
 "base": "Node",
 "class": "Main",
 "language": "GDScript",
@@ -113,6 +118,11 @@ _global_script_classes=[ {
 "class": "MenuOption",
 "language": "GDScript",
 "path": "res://Menu/ButtonsAndOptions/BaseMenuOption.gd"
+}, {
+"base": "NinePatchRect",
+"class": "MessageBox",
+"language": "GDScript",
+"path": "res://MessageScreen.gd"
 }, {
 "base": "PlayerBaseState",
 "class": "MovingState",
@@ -212,10 +222,12 @@ _global_script_class_icons={
 "IdleState": "",
 "JumpingState": "",
 "LabelBaseModel": "",
+"LabelMessageScreen": "",
 "Main": "",
 "MenuCheckBox": "",
 "MenuHSlider": "",
 "MenuOption": "",
+"MessageBox": "",
 "MovingState": "",
 "OnAirState": "",
 "OptionButtonModel": "",
