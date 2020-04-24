@@ -14,13 +14,14 @@ func _ready():
 	else:
 		main = null
 
+
+
 func _input(event):
-	if (event is InputEventKey or event is InputEventJoypadButton) and $Timer.is_stopped():
-		if main == null:
-			get_tree().quit()
-		else:
-			main.change_scene(credits)
-
-
+	if event is InputEvent and $Timer.is_stopped():
+		if event.is_action("ui_accept") or event.is_action("ui_cancel"):
+			if main == null:
+				get_tree().quit()
+			else:
+				main.change_scene(credits)
 
 
