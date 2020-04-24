@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Menu/ButtonsAndOptions/ButtonModel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Menu/MenuPanel.tscn" type="PackedScene" id=2]
@@ -8,9 +8,39 @@
 [ext_resource path="res://Menu/ButtonsAndOptions/MenuCheckBox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Menu/DisplayConfigMenu/FullscreenCheckBox.gd" type="Script" id=7]
 
-[sub_resource type="StyleBoxEmpty" id=1]
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf"
 
-[sub_resource type="StyleBoxEmpty" id=2]
+[sub_resource type="DynamicFont" id=2]
+font_data = SubResource( 1 )
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="DynamicFontData" id=4]
+font_path = "res://Assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf"
+
+[sub_resource type="DynamicFont" id=5]
+font_data = SubResource( 4 )
+
+[sub_resource type="DynamicFontData" id=6]
+font_path = "res://Assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf"
+
+[sub_resource type="DynamicFont" id=7]
+font_data = SubResource( 6 )
+
+[sub_resource type="DynamicFontData" id=8]
+font_path = "res://Assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf"
+
+[sub_resource type="DynamicFont" id=9]
+font_data = SubResource( 8 )
+
+[sub_resource type="DynamicFontData" id=10]
+font_path = "res://Assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf"
+
+[sub_resource type="DynamicFont" id=11]
+font_data = SubResource( 10 )
+
+[sub_resource type="StyleBoxEmpty" id=12]
 
 [node name="DisplayConfigMenu" type="Control"]
 pause_mode = 2
@@ -60,6 +90,7 @@ alignment = 1
 [node name="LabelBaseModel" parent="CenterContainer/Margin/Margin/Menu" instance=ExtResource( 3 )]
 margin_right = 364.0
 margin_bottom = 16.0
+custom_fonts/font = SubResource( 2 )
 text = "Display"
 align = 1
 
@@ -67,7 +98,7 @@ align = 1
 margin_top = 20.0
 margin_right = 364.0
 margin_bottom = 58.0
-custom_styles/separator = SubResource( 1 )
+custom_styles/separator = SubResource( 3 )
 custom_constants/separation = 38
 
 [node name="Options" type="VBoxContainer" parent="CenterContainer/Margin/Margin/Menu"]
@@ -86,6 +117,7 @@ alignment = 0
 
 [node name="LabelBaseModel" parent="CenterContainer/Margin/Margin/Menu/Options/Fullscreen" index="0"]
 margin_right = 336.0
+custom_fonts/font = SubResource( 5 )
 text = "Fullscreen"
 
 [node name="CheckBox" parent="CenterContainer/Margin/Margin/Menu/Options/Fullscreen" index="1"]
@@ -106,6 +138,7 @@ grow_horizontal = 2
 
 [node name="LabelBaseModel" parent="CenterContainer/Margin/Margin/Menu/Options/BorderlessWindow" index="0"]
 margin_right = 336.0
+custom_fonts/font = SubResource( 7 )
 text = "Borderless Window"
 
 [node name="CheckBox" parent="CenterContainer/Margin/Margin/Menu/Options/BorderlessWindow" index="1"]
@@ -126,6 +159,7 @@ custom_constants/separation = 48
 margin_top = 3.0
 margin_right = 128.0
 margin_bottom = 19.0
+custom_fonts/font = SubResource( 9 )
 text = "Windowed"
 
 [node name="ButtonModel" parent="CenterContainer/Margin/Margin/Menu/Options/Windowed" instance=ExtResource( 1 )]
@@ -140,6 +174,7 @@ margin_left = 236.0
 margin_top = 3.0
 margin_right = 364.0
 margin_bottom = 19.0
+custom_fonts/font = SubResource( 11 )
 text = "1024x576"
 align = 2
 
@@ -147,7 +182,7 @@ align = 2
 margin_top = 144.0
 margin_right = 364.0
 margin_bottom = 152.0
-custom_styles/separator = SubResource( 2 )
+custom_styles/separator = SubResource( 12 )
 custom_constants/separation = 8
 
 [node name="Return" parent="CenterContainer/Margin/Margin/Menu" instance=ExtResource( 1 )]

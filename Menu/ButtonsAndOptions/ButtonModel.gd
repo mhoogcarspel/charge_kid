@@ -1,6 +1,7 @@
 extends MenuOption
 class_name ButtonModel
 
+
 func _process(_delta):
 	if has_focus() and self.disabled:
 		set("custom_colors/font_color_disabled", Color("#535e69"))
