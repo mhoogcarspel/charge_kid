@@ -14,9 +14,11 @@ func ready() -> void:
 	screen_timer.text = "0:00.00"
 	screen_timer.visible = true
 
+
 func go() -> void:
 	active = true
-
+	owner.get_node("BackgroundAndMusicHandler").music_pitch_shift()
+	$Start.play()
 
 
 func _physics_process(delta):
@@ -44,6 +46,7 @@ func _physics_process(delta):
 
 func time() -> Dictionary:
 	active = false
+	owner.get_node("BackgroundAndMusicHandler").music_pitch_normal()
 	screen_timer.visible = false
 	return { "string": screen_timer.text , "float": minutes*60 + seconds}
 

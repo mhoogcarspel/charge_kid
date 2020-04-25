@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Common/Main.gd" type="Script" id=1]
 [ext_resource path="res://Menu/StartMenu/StartMenu.tscn" type="PackedScene" id=2]
@@ -33,6 +33,7 @@
 [ext_resource path="res://Menu/DisplayConfigMenu/DisplayConfigMenu.tscn" type="PackedScene" id=31]
 [ext_resource path="res://Common/SpeedrunMode.gd" type="Script" id=32]
 [ext_resource path="res://Menu/LabelBaseModel.tscn" type="PackedScene" id=33]
+[ext_resource path="res://Assets/SFX/Speedrun/speedrun.ogg" type="AudioStream" id=34]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://Assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf"
@@ -121,6 +122,10 @@ sound_config = "audio_settings"
 
 [node name="BackgroundAndMusicHandler" parent="." instance=ExtResource( 10 )]
 
+[node name="Background" parent="BackgroundAndMusicHandler" index="1"]
+volume_db = 9.0
+bus = "Master"
+
 [node name="HudContainer" type="CanvasLayer" parent="."]
 
 [node name="Box" type="MarginContainer" parent="HudContainer" groups=[
@@ -161,6 +166,9 @@ one_shot = true
 
 [node name="SpeedrunMode" type="Node" parent="."]
 script = ExtResource( 32 )
+
+[node name="Start" type="AudioStreamPlayer" parent="SpeedrunMode"]
+stream = ExtResource( 34 )
 
 [node name="MenuNavigation" type="Node" parent="."]
 script = ExtResource( 8 )
