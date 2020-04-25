@@ -1,9 +1,13 @@
-[gd_resource type="AudioBusLayout" load_steps=8 format=2]
+[gd_resource type="AudioBusLayout" load_steps=9 format=2]
 
 [sub_resource type="AudioEffectReverb" id=1]
 resource_name = "Reverb"
 room_size = 0.6
 wet = 0.22
+
+[sub_resource type="AudioEffectLimiter" id=8]
+resource_name = "Limiter"
+ceiling_db = -0.3
 
 [sub_resource type="AudioEffectLowPassFilter" id=2]
 resource_name = "LowPassFilter"
@@ -40,6 +44,8 @@ bus/1/volume_db = 0.0
 bus/1/send = "Master"
 bus/1/effect/0/effect = SubResource( 1 )
 bus/1/effect/0/enabled = false
+bus/1/effect/1/effect = SubResource( 8 )
+bus/1/effect/1/enabled = true
 bus/2/name = "MUS"
 bus/2/solo = false
 bus/2/mute = false
