@@ -14,6 +14,7 @@ onready var mus = AudioServer.get_bus_index("MUS")
 onready var low_pass_filter: AudioEffectFilter
 export var max_freq = 22000
 export var min_freq = 150
+onready var pitch_shift: AudioEffectFilter
 
 onready var player:KinematicBody2D
 
@@ -49,7 +50,9 @@ func set_volume_bgm(list:Array):
 											Tween.TRANS_LINEAR, Tween.EASE_IN)
 			$FadeInOut.start()
 
-
+func pitch_shift():
+	pitch_shift = AudioServer.get_bus_effect(mus, 1)
+	pitch_shift.pitch_scale = 1.5
 
 func death_effect():
 	low_pass_filter = AudioServer.get_bus_effect(mus, 0)
