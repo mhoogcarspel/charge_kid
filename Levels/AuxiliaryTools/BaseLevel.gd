@@ -28,7 +28,8 @@ func _ready():
 	
 	if get_tree().get_nodes_in_group("sound_control").size() > 0:
 		var sound_control = get_tree().get_nodes_in_group("sound_control")[0]
-		sound_control.set_volume_bgm([bgm_1, bgm_2, bgm_3, bgm_4])
+		if self.level != 1:
+			sound_control.set_volume_bgm([bgm_1, bgm_2, bgm_3, bgm_4])
 	
 	if get_tree().get_nodes_in_group("main").size() > 0:
 		var file_save = get_tree().get_nodes_in_group("main")[0].get_node("SaveFileHandler")

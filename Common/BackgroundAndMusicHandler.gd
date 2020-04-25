@@ -14,7 +14,7 @@ onready var mus = AudioServer.get_bus_index("MUS")
 onready var low_pass_filter: AudioEffectFilter
 export var max_freq = 22000
 export var min_freq = 150
-onready var music_pitch_shift: AudioEffect
+onready var pitch_shift: AudioEffect
 
 onready var player:KinematicBody2D
 
@@ -40,9 +40,8 @@ func zero_all_bgm() -> void:
 func set_volume_bgm(list:Array):
 	for i in range(list.size()):
 		var bgm = $BGM.get_children()[i]
-		var value = linear2db(bgm_volume_value)
 		if list[i] == true:
-			$FadeInOut.interpolate_property(bgm, "volume_db", null, value, 2.0,
+			$FadeInOut.interpolate_property(bgm, "volume_db", null, 0, 2.0,
 											Tween.TRANS_LINEAR, Tween.EASE_IN)
 			$FadeInOut.start()
 		else:
@@ -50,14 +49,20 @@ func set_volume_bgm(list:Array):
 											Tween.TRANS_LINEAR, Tween.EASE_IN)
 			$FadeInOut.start()
 
+
+
 func music_pitch_shift():
-	music_pitch_shift = AudioServer.get_bus_effect(mus, 1)
-	music_pitch_shift.pitch_scale = 1.5
-	
+	pitch_shift = AudioServer.get_bus_effect(mus, 1)
+	pitch_shift.pitch_scale = 1.5
+
+
+
 func music_pitch_normal():
-	music_pitch_shift = AudioServer.get_bus_effect(mus, 1)
-	music_pitch_shift.pitch_scale = 1
-	
+	pitch_shift = AudioServer.get_bus_effect(mus, 1)
+	pitch_shift.pitch_scale = 1
+
+
+
 func death_effect():
 	low_pass_filter = AudioServer.get_bus_effect(mus, 0)
 	$FadeInOut.interpolate_property(low_pass_filter, "cutoff_hz", max_freq, min_freq, 0.5, 

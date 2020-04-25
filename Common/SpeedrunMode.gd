@@ -2,6 +2,7 @@ extends Node
 
 onready var save_file: Node = get_parent().get_node("SaveFileHandler")
 onready var screen_timer: Label = get_parent().get_node("HudContainer/Box/Box/SpeedrunTimer")
+onready var sound_control: SoundControl = get_parent().get_node("BackgroundAndMusicHandler")
 onready var active: bool = false
 onready var seconds: float = 0.0
 onready var minutes: int = 0
@@ -17,9 +18,9 @@ func ready() -> void:
 
 func go() -> void:
 	active = true
-	owner.get_node("BackgroundAndMusicHandler").music_pitch_shift()
 	$Start.play()
-	owner.get_node("BackgroundAndMusicHandler/BGM/BGM1").volume_db = 0
+	sound_control.music_pitch_shift()
+	sound_control.set_volume_bgm([true, false, false, false])
 
 
 
@@ -48,7 +49,8 @@ func _physics_process(delta):
 
 func time() -> Dictionary:
 	active = false
-	owner.get_node("BackgroundAndMusicHandler").music_pitch_normal()
+	sound_control.music_pitch_normal()
+	sound_control.zero_all_bgm()
 	screen_timer.visible = false
 	return { "string": screen_timer.text , "float": minutes*60 + seconds}
 
