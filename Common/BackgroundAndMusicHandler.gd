@@ -42,7 +42,7 @@ func set_volume_bgm(list:Array):
 		var bgm = $BGM.get_children()[i]
 		var value = linear2db(bgm_volume_value)
 		if list[i] == true:
-			$FadeInOut.interpolate_property(bgm, "volume_db", null, value, 0.0, 2.0,
+			$FadeInOut.interpolate_property(bgm, "volume_db", null, value, 2.0,
 											Tween.TRANS_LINEAR, Tween.EASE_IN)
 			$FadeInOut.start()
 		else:

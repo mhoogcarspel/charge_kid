@@ -19,6 +19,8 @@ func go() -> void:
 	active = true
 	owner.get_node("BackgroundAndMusicHandler").music_pitch_shift()
 	$Start.play()
+	owner.get_node("BackgroundAndMusicHandler/BGM/BGM1").volume_db = 0
+
 
 
 func _physics_process(delta):
