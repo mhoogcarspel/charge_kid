@@ -124,7 +124,6 @@ sound_config = "audio_settings"
 
 [node name="Background" parent="BackgroundAndMusicHandler" index="1"]
 volume_db = 9.0
-bus = "Master"
 
 [node name="HudContainer" type="CanvasLayer" parent="."]
 
