@@ -114,12 +114,14 @@ shape = SubResource( 3 )
 
 [node name="OpenGate" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
+volume_db = -4.0
 max_distance = 1500.0
 attenuation = 5.46416
 bus = "REVERB"
 
 [node name="CloseGate" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
+volume_db = -4.0
 max_distance = 1500.0
 attenuation = 5.46416
 bus = "REVERB"
