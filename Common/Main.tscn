@@ -169,6 +169,7 @@ script = ExtResource( 32 )
 
 [node name="Start" type="AudioStreamPlayer" parent="SpeedrunMode"]
 stream = ExtResource( 34 )
+bus = "SFX"
 
 [node name="MenuNavigation" type="Node" parent="."]
 script = ExtResource( 8 )

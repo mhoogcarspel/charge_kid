@@ -13,6 +13,7 @@ func _on_Timer_timeout():
 	if time > 1:
 		time -= 1
 		countdown.text = String(time)
+		$CountdownSound.play()
 		$Timer.start()
 	else:
 		speedrun_mode.go()
