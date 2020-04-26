@@ -11,11 +11,11 @@
 [ext_resource path="res://Menu/SoundConfigMenu/SFXSlider.gd" type="Script" id=9]
 [ext_resource path="res://Menu/SoundConfigMenu/Default.gd" type="Script" id=10]
 
-[sub_resource type="DynamicFontData" id=5]
+[sub_resource type="DynamicFontData" id=1]
 font_path = "res://Assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf"
 
-[sub_resource type="DynamicFont" id=6]
-font_data = SubResource( 5 )
+[sub_resource type="DynamicFont" id=2]
+font_data = SubResource( 1 )
 
 [sub_resource type="DynamicFontData" id=3]
 font_path = "res://Assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf"
@@ -73,7 +73,7 @@ alignment = 1
 [node name="LabelBaseModel" parent="CenterContainer/MarginContainer/MarginContainer/Options" instance=ExtResource( 4 )]
 margin_right = 384.0
 margin_bottom = 16.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 2 )
 text = "Audio"
 align = 1
 
