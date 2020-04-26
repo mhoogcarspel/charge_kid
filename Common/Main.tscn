@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Common/Main.gd" type="Script" id=1]
 [ext_resource path="res://Menu/StartMenu/StartMenu.tscn" type="PackedScene" id=2]
@@ -34,6 +34,7 @@
 [ext_resource path="res://Common/SpeedrunMode.gd" type="Script" id=32]
 [ext_resource path="res://Menu/LabelBaseModel.tscn" type="PackedScene" id=33]
 [ext_resource path="res://Assets/SFX/Speedrun/speedrun.ogg" type="AudioStream" id=34]
+[ext_resource path="res://Common/AudioServerSentinel.tscn" type="PackedScene" id=35]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://Assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf"
@@ -214,6 +215,8 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SplashScreen"]
 anims/Transition = SubResource( 5 )
+
+[node name="AudioServerSentinel" parent="." instance=ExtResource( 35 )]
 [connection signal="timeout" from="MenuNavigation/MenuNavTimer/Timer" to="MenuNavigation" method="_on_Timer_timeout"]
 
 [editable path="BackgroundAndMusicHandler"]
