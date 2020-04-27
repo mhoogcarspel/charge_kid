@@ -122,6 +122,8 @@ settings_menu = ExtResource( 9 )
 sound_config = "audio_settings"
 
 [node name="BackgroundAndMusicHandler" parent="." instance=ExtResource( 10 )]
+bgm_starting_volume = 0.35
+sfx_starting_volume = 0.35
 
 [node name="Background" parent="BackgroundAndMusicHandler" index="1"]
 volume_db = 9.0
