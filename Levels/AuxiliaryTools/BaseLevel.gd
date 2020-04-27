@@ -26,15 +26,19 @@ func _ready():
 			last_tile = tile.x
 	level_length = last_tile*16
 	
-	if get_tree().get_nodes_in_group("sound_control").size() > 0:
-		var sound_control = get_tree().get_nodes_in_group("sound_control")[0]
-		if self.level != 1:
-			sound_control.set_volume_bgm([bgm_1, bgm_2, bgm_3, bgm_4])
-	
 	if get_tree().get_nodes_in_group("main").size() > 0:
-		var file_save = get_tree().get_nodes_in_group("main")[0].get_node("SaveFileHandler")
-		file_save.progress["levels"] = max(level, file_save.progress["levels"])
-		file_save.save_progress()
+		var main = get_tree().get_nodes_in_group("main")[0]
+		var sound_control = main.get_node("BackgroundAndMusicHandler")
+		var speedrun_mode = main.get_node("SpeedrunMode")
+		var save_file = main.get_node("SaveFileHandler")
+		
+		if not speedrun_mode.is_active():
+			sound_control.set_volume_bgm([bgm_1, bgm_2, bgm_3, bgm_4])
+		
+		save_file.progress["levels"] = max(level, save_file.progress["levels"])
+		save_file.save_progress()
+
+
 
 func _process(delta):
 	var player = get_tree().get_nodes_in_group("player")[0]

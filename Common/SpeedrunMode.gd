@@ -20,7 +20,7 @@ func go() -> void:
 	active = true
 	$Start.play()
 	sound_control.accelerate_music(1.5)
-	sound_control.set_volume_bgm([true, false, false, false])
+	sound_control.set_volume_bgm([false, true, true, false])
 
 
 
