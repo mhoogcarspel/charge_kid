@@ -19,7 +19,7 @@ func ready() -> void:
 func go() -> void:
 	active = true
 	$Start.play()
-	sound_control.music_pitch_shift()
+	sound_control.accelerate_music(1.5)
 	sound_control.set_volume_bgm([true, false, false, false])
 
 
@@ -49,7 +49,7 @@ func _physics_process(delta):
 
 func time() -> Dictionary:
 	active = false
-	sound_control.music_pitch_normal()
+	sound_control.accelerate_music(1.0)
 	sound_control.zero_all_bgm()
 	screen_timer.visible = false
 	return { "string": screen_timer.text , "float": minutes*60 + seconds}

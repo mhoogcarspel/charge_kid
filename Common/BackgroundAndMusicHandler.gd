@@ -51,31 +51,27 @@ func set_volume_bgm(list:Array):
 
 
 
-func music_pitch_shift():
-	pitch_shift = AudioServer.get_bus_effect(mus, 1)
-	pitch_shift.pitch_scale = 1.5
+func accelerate_music(scale: float):
+	if scale > 0:
+		AudioServer.get_bus_effect(mus, 1).pitch_scale = 1/scale
+		for bgm in $BGM.get_children():
+			bgm.pitch_scale = scale
 
 
 
-func music_pitch_normal():
-	pitch_shift = AudioServer.get_bus_effect(mus, 1)
-	pitch_shift.pitch_scale = 1
-
-
-
-func death_effect():
-	low_pass_filter = AudioServer.get_bus_effect(mus, 0)
-	$FadeInOut.interpolate_property(low_pass_filter, "cutoff_hz", max_freq, min_freq, 0.5, 
-										Tween.TRANS_EXPO, Tween.EASE_OUT)
-	$FadeInOut.start()
-
-
-
-func respawn_effect():
-	low_pass_filter = AudioServer.get_bus_effect(mus, 0)
-	$FadeInOut.interpolate_property(low_pass_filter, "cutoff_hz", min_freq, max_freq, 1.5, 
-									Tween.TRANS_EXPO, Tween.EASE_OUT)
-	$FadeInOut.start()
+#func death_effect():
+#	low_pass_filter = AudioServer.get_bus_effect(mus, 0)
+#	$FadeInOut.interpolate_property(low_pass_filter, "cutoff_hz", max_freq, min_freq, 0.5, 
+#										Tween.TRANS_EXPO, Tween.EASE_OUT)
+#	$FadeInOut.start()
+#
+#
+#
+#func respawn_effect():
+#	low_pass_filter = AudioServer.get_bus_effect(mus, 0)
+#	$FadeInOut.interpolate_property(low_pass_filter, "cutoff_hz", min_freq, max_freq, 1.5, 
+#									Tween.TRANS_EXPO, Tween.EASE_OUT)
+#	$FadeInOut.start()
 
 
 
