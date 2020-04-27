@@ -271,6 +271,7 @@ gdscript/warnings/return_value_discarded=false
 [display]
 
 window/size/height=576
+window/size/resizable=false
 window/stretch/mode="viewport"
 
 [importer_defaults]
