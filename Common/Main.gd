@@ -1,16 +1,17 @@
 extends Node
 class_name Main
 
-export(PackedScene) var start_scene
-export(PackedScene) var pause_menu
-export(PackedScene) var debugger_layer
-export(PackedScene) var controls_menu
-export(PackedScene) var sound_menu
-export(PackedScene) var display_menu
-export(PackedScene) var level_select
-export(PackedScene) var settings_menu
-export(String) var sound_config
-export(bool) var debugging
+export (PackedScene) var start_scene
+export (PackedScene) var pause_menu
+export (PackedScene) var debugger_layer
+export (PackedScene) var controls_menu
+export (PackedScene) var sound_menu
+export (PackedScene) var display_menu
+export (PackedScene) var level_select
+export (PackedScene) var settings_menu
+export (String) var sound_config
+export (bool) var enable_save
+export (bool) var debugging
 
 onready var actions: Dictionary = {
 	"ui_jump": "Jump",
@@ -132,24 +133,25 @@ func is_using_controller() -> bool:
 
 
 func load_display_options() -> void:
-	var file = File.new()
-	if !file.file_exists("user://display_config.conf"):
-		return
-	file.open("user://display_config.conf", File.READ)
-	var file_string = file.get_line()
-	var validate: bool = file_handler.check_file_integrity(file_string, display_dictionary_model,
-															"user://display_config.conf")
-	if !validate:
-		file_handler.make_backup_file("user://display_config.conf",file_string, display_dictionary_model)
-	var dictionary:Dictionary = parse_json(file_string)
-	for key in dictionary.keys():
-		OS.set(key, dictionary[key])
-	OS.window_borderless = dictionary["window_borderless"]
-	OS.window_fullscreen = dictionary["window_fullscreen"]
-	OS.window_size.x = dictionary["window_size.x"]
-	OS.window_size.y = dictionary["window_size.y"]
-	file.close()
-	if not OS.window_fullscreen:
-		OS.center_window()
+	if enable_save:
+		var file = File.new()
+		if !file.file_exists("user://display_config.conf"):
+			return
+		file.open("user://display_config.conf", File.READ)
+		var file_string = file.get_line()
+		var validate: bool = file_handler.check_file_integrity(file_string, display_dictionary_model,
+																"user://display_config.conf")
+		if !validate:
+			file_handler.make_backup_file("user://display_config.conf",file_string, display_dictionary_model)
+		var dictionary:Dictionary = parse_json(file_string)
+		for key in dictionary.keys():
+			OS.set(key, dictionary[key])
+		OS.window_borderless = dictionary["window_borderless"]
+		OS.window_fullscreen = dictionary["window_fullscreen"]
+		OS.window_size.x = dictionary["window_size.x"]
+		OS.window_size.y = dictionary["window_size.y"]
+		file.close()
+		if not OS.window_fullscreen:
+			OS.center_window()
 
 

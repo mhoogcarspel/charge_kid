@@ -5,7 +5,8 @@ onready var map_model: Dictionary
 onready var gamepad_map: Dictionary
 onready var actions_dictionary: Dictionary
 onready var actions_list: Array
-onready var file_handler: FileHandler = get_parent().get_node("FileHandler")
+onready var main = get_parent()
+onready var file_handler: FileHandler = main.get_node("FileHandler")
 
 signal done
 
@@ -148,32 +149,34 @@ func equalize_equivalent_keys(action1: String, action2: String):
 		InputMap.action_add_event(action2, event)
 
 func initialize_inputmap(filename: String = "inputmap") -> void:
-	var input_save := File.new()
-	if input_save.file_exists("user://" + filename + ".conf"):
-		input_save.open("user://" + filename + ".conf", File.READ)
-		var file_string: String = input_save.get_line()
-		if !file_handler.check_file_integrity(file_string, map_model, input_save.get_path()):
-			file_handler.make_backup_file(input_save.get_path(), file_string, map_model)
+	if main.enable_save:
+		var input_save := File.new()
+		if input_save.file_exists("user://" + filename + ".conf"):
 			input_save.open("user://" + filename + ".conf", File.READ)
-			file_string = input_save.get_line()
-		var inputmap_dictionary: Dictionary = parse_json(file_string)
-		for action in actions_list:
-			InputMap.action_erase_events(action)
-			var input_key = InputEventKey.new()
-			input_key.scancode = inputmap_dictionary[action]["Keyboard"]["scancode"]
-			input_key.device = inputmap_dictionary[action]["Keyboard"]["device"]
-			InputMap.action_add_event(action, input_key)
-			var input_button = InputEventJoypadButton.new()
-			input_button.button_index = inputmap_dictionary[action]["JoypadButtons"]["button_index"]
-			input_button.device = inputmap_dictionary[action]["JoypadButtons"]["device"]
-			InputMap.action_add_event(action, input_button)
+			var file_string: String = input_save.get_line()
+			if !file_handler.check_file_integrity(file_string, map_model, input_save.get_path()):
+				file_handler.make_backup_file(input_save.get_path(), file_string, map_model)
+				input_save.open("user://" + filename + ".conf", File.READ)
+				file_string = input_save.get_line()
+			var inputmap_dictionary: Dictionary = parse_json(file_string)
+			for action in actions_list:
+				InputMap.action_erase_events(action)
+				var input_key = InputEventKey.new()
+				input_key.scancode = inputmap_dictionary[action]["Keyboard"]["scancode"]
+				input_key.device = inputmap_dictionary[action]["Keyboard"]["device"]
+				InputMap.action_add_event(action, input_key)
+				var input_button = InputEventJoypadButton.new()
+				input_button.button_index = inputmap_dictionary[action]["JoypadButtons"]["button_index"]
+				input_button.device = inputmap_dictionary[action]["JoypadButtons"]["device"]
+				InputMap.action_add_event(action, input_button)
 
 func save_inputmap(filename: String = "inputmap") -> void:
-	var inputmap_dictionary: Dictionary = make_inputmap_dictionary()
-	var save_file := File.new()
-	save_file.open("user://" + filename + ".conf", File.WRITE)
-	save_file.store_line(to_json(inputmap_dictionary))
-	save_file.close()
+	if main.enable_save:
+		var inputmap_dictionary: Dictionary = make_inputmap_dictionary()
+		var save_file := File.new()
+		save_file.open("user://" + filename + ".conf", File.WRITE)
+		save_file.store_line(to_json(inputmap_dictionary))
+		save_file.close()
 
 func make_inputmap_dictionary() -> Dictionary:
 	var inputmap_dictionary: Dictionary = {}

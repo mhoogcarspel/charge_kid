@@ -23,8 +23,8 @@ onready var screen_sizes = [Vector2(1024,576),
 							Vector2(1920,1080), # Full HD
 							Vector2(2560,1440), # 2k
 							Vector2(3840,2160), # QHD
-							Vector2(7680,4320),
-							] # 8k
+							Vector2(7680,4320), # 8k
+							]
 
 onready var window_size: Vector2 = Vector2(1024,576)
 
@@ -40,6 +40,8 @@ func _ready():
 	if !get_tree().get_nodes_in_group("main").empty():
 		main = get_tree().get_nodes_in_group("main")[0]
 	refocus()
+
+
 
 func _process(_delta):
 	windowed_button.disabled = $CenterContainer/Margin/Margin/Menu/Options/Fullscreen/CheckBox.pressed
@@ -129,41 +131,43 @@ func self_show() -> void:
 	$CenterContainer.show()
 
 func save_display_options() -> void:
-	if !loaded:
-		return
-	var options_dictionary: Dictionary = {}
-	options_dictionary["window_fullscreen"] = fullscreen_button.pressed
-	options_dictionary["window_borderless"] = borderless_window_button.pressed
-	options_dictionary["window_size.x"] = window_size.x
-	options_dictionary["window_size.y"] = window_size.y
-	var file = File.new()
-	file.open("user://display_config.conf", File.WRITE)
-	file.store_line(to_json(options_dictionary))
-	file.close()
+	if main.enable_save:
+		if !loaded:
+			return
+		var options_dictionary: Dictionary = {}
+		options_dictionary["window_fullscreen"] = fullscreen_button.pressed
+		options_dictionary["window_borderless"] = borderless_window_button.pressed
+		options_dictionary["window_size.x"] = window_size.x
+		options_dictionary["window_size.y"] = window_size.y
+		var file = File.new()
+		file.open("user://display_config.conf", File.WRITE)
+		file.store_line(to_json(options_dictionary))
+		file.close()
 
 func save_propety(property: String) -> void:
-	var file = File.new()
-	var options_dictionary: Dictionary
-	if !file.file_exists("user://display_config.conf"):
-		save_display_options()
-		
-	file.open("user://display_config.conf", File.READ)
-	options_dictionary = parse_json(file.get_line())
-	file.close()
-	match property:
-		"window_fullscreen":
-			options_dictionary["window_fullscreen"] = fullscreen_button.pressed
-		"window_borderless":
-			options_dictionary["window_borderless"] = borderless_window_button.pressed
-		"window_size.x":
-			options_dictionary["window_size.x"] = window_size.x
-		"window_size.y":
-			options_dictionary["window_size.y"] = window_size.y
-		_:
-			print("ERROR: nonexistante property in save_property()")
-	file.open("user://display_config.conf", File.WRITE)
-	file.store_line(to_json(options_dictionary))
-	file.close()
+	if main.enable_save:
+		var file = File.new()
+		var options_dictionary: Dictionary
+		if !file.file_exists("user://display_config.conf"):
+			save_display_options()
+			
+		file.open("user://display_config.conf", File.READ)
+		options_dictionary = parse_json(file.get_line())
+		file.close()
+		match property:
+			"window_fullscreen":
+				options_dictionary["window_fullscreen"] = fullscreen_button.pressed
+			"window_borderless":
+				options_dictionary["window_borderless"] = borderless_window_button.pressed
+			"window_size.x":
+				options_dictionary["window_size.x"] = window_size.x
+			"window_size.y":
+				options_dictionary["window_size.y"] = window_size.y
+			_:
+				print("ERROR: nonexistante property in save_property()")
+		file.open("user://display_config.conf", File.WRITE)
+		file.store_line(to_json(options_dictionary))
+		file.close()
 
 
 

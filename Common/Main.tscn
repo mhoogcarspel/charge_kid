@@ -120,6 +120,7 @@ display_menu = ExtResource( 31 )
 level_select = ExtResource( 7 )
 settings_menu = ExtResource( 9 )
 sound_config = "audio_settings"
+enable_save = true
 
 [node name="BackgroundAndMusicHandler" parent="." instance=ExtResource( 10 )]
 bgm_starting_volume = 0.45
