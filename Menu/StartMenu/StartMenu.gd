@@ -7,6 +7,9 @@ export (PackedScene) var button_model
 export (PackedScene) var speedrun_start
 export (ButtonGroup) var button_group
 
+export (PackedScene) var tear_shader
+export (float) var tear_frequency
+
 onready var main = get_tree().get_nodes_in_group("main")[0]
 onready var save_file = main.get_node("SaveFileHandler")
 
@@ -16,7 +19,7 @@ func _ready():
 	main.get_node("BackgroundAndMusicHandler/Background").playing = true
 	main.get_node("BackgroundAndMusicHandler").zero_all_bgm()
 	
-	var button_list = $CenterContainer/VBoxContainer3/VBoxContainer3
+	var button_list = $CenterContainer/VBoxContainer/Menu
 	save_file.load_progress()
 	var progress = save_file.progress
 	
@@ -54,6 +57,31 @@ func _ready():
 	
 	if main.get_node("SpeedrunMode").is_active():
 		main.get_node("SpeedrunMode").time()
+	
+	for i in range(50):
+		generate_tear(10)
+
+
+
+func _physics_process(delta):
+	var rng = randi()%1000
+	if rng > 1000 - tear_frequency/delta:
+		generate_tear(tear_frequency)
+	
+	if tear_frequency > 0.5:
+		tear_frequency = clamp(tear_frequency - delta*10, 0.5, 10.0)
+
+
+
+func generate_tear(multiplier: float = 1.0):
+	var tear = tear_shader.instance()
+	tear.duration = 0.1 + float(randi()%11)/100
+	tear.tear_distance = float(randi()%101)*multiplier/10000
+	tear.tear_size = float(randi()%201)/1000
+	tear.position.x = get_viewport().size.x/2
+	tear.position.y = randi()%(get_viewport().size.y as int)
+	self.add_child(tear)
+
 
 
 func _on_Continue_pressed():
@@ -87,4 +115,4 @@ func _on_Quit_pressed():
 
 
 func _on_Timer_timeout():
-	$CenterContainer/VBoxContainer3/VBoxContainer2/TextureRect/CPUParticles2D.emitting = true
+	$CenterContainer/VBoxContainer/Title/PinkParticles.emitting = true

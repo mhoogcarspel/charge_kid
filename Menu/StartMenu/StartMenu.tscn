@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Menu/StartMenu/StartMenu.gd" type="Script" id=1]
 [ext_resource path="res://Levels/Tilemaps/Background.tscn" type="PackedScene" id=2]
@@ -6,20 +6,254 @@
 [ext_resource path="res://Menu/ButtonsAndOptions/ButtonModel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Menu/StartMenu/StartMenu.tres" type="ButtonGroup" id=5]
 [ext_resource path="res://Assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://icon.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Spritesheets/Title.png" type="Texture" id=7]
 [ext_resource path="res://Menu/ReturnShortcut.tres" type="ShortCut" id=8]
 [ext_resource path="res://Menu/LevelSelectMenu/LevelSelectMenu.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Menu/StartMenu/Particles.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Menu/SpeedrunScreens/SpeedrunStart.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Menu/StartMenu/SpeedrunTimes.gd" type="Script" id=12]
+[ext_resource path="res://Menu/StartMenu/Title.gd" type="Script" id=13]
+[ext_resource path="res://Assets/ShaderEffects/Tear/Tear.tscn" type="PackedScene" id=14]
 
-[sub_resource type="DynamicFont" id=1]
-size = 48
-font_data = ExtResource( 6 )
+[sub_resource type="Shader" id=6]
+code = "shader_type canvas_item;
 
-[sub_resource type="DynamicFont" id=2]
-size = 48
-font_data = ExtResource( 6 )
+uniform float tear_top;
+uniform float tear_bot;
+uniform float tear_dist;
+uniform bool tear_outside;
+
+void fragment() {
+	vec2 uv = UV;
+	if (uv.y > tear_top && uv.y < tear_bot) {
+		uv.x += tear_dist;
+	}
+	else if (tear_outside) {
+		uv.x -= tear_dist;
+	}
+	uv.x = clamp(uv.x, 0.0, 1.0);
+	COLOR = texture(TEXTURE, uv);
+}
+
+"
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = SubResource( 6 )
+shader_param/tear_top = 0.0
+shader_param/tear_bot = 0.0
+shader_param/tear_dist = 0.0
+shader_param/tear_outside = false
+
+[sub_resource type="Animation" id=8]
+resource_name = "0"
+length = 0.5
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:shader_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:shader_bot")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0.55, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:shader_dist")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0.01, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:shader_outside")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "2"
+length = 0.5
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:shader_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0.4, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:shader_bot")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0.55, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:shader_dist")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ -0.02, 0.0, -0.02, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:shader_outside")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "2"
+length = 0.35
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:shader_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0.36, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:shader_bot")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0.7, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:shader_dist")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ -0.02, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:shader_outside")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "3"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:shader_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0.36, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:shader_bot")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:shader_dist")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0.015, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:shader_outside")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
@@ -45,6 +279,8 @@ credits = ExtResource( 3 )
 button_model = ExtResource( 4 )
 speedrun_start = ExtResource( 11 )
 button_group = ExtResource( 5 )
+tear_shader = ExtResource( 14 )
+tear_frequency = 10.0
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 margin_left = 16.0
@@ -52,44 +288,27 @@ margin_top = 16.0
 margin_right = 1008.0
 margin_bottom = 560.0
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 244.0
-margin_top = 94.0
-margin_right = 748.0
-margin_bottom = 450.0
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 224.0
+margin_top = 86.0
+margin_right = 768.0
+margin_bottom = 458.0
+size_flags_horizontal = 3
 custom_constants/separation = 32
 alignment = 1
 
-[node name="VBoxContainer2" type="HBoxContainer" parent="CenterContainer/VBoxContainer3"]
-margin_right = 504.0
-margin_bottom = 64.0
-
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer3/VBoxContainer2"]
-margin_top = 8.0
-margin_right = 288.0
-margin_bottom = 56.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
-text = "Charge"
-
-[node name="Particles" parent="CenterContainer/VBoxContainer3/VBoxContainer2/Label" instance=ExtResource( 10 )]
-
-[node name="Particles2" parent="CenterContainer/VBoxContainer3/VBoxContainer2/Label" instance=ExtResource( 10 )]
-position = Vector2( 108, 24 )
-
-[node name="Particles3" parent="CenterContainer/VBoxContainer3/VBoxContainer2/Label" instance=ExtResource( 10 )]
-position = Vector2( 180, 24 )
-
-[node name="Particles4" parent="CenterContainer/VBoxContainer3/VBoxContainer2/Label" instance=ExtResource( 10 )]
-position = Vector2( 252, 24 )
-
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer3/VBoxContainer2"]
-margin_left = 292.0
-margin_right = 356.0
-margin_bottom = 64.0
+[node name="Title" type="TextureRect" parent="CenterContainer/VBoxContainer"]
+material = SubResource( 7 )
+margin_right = 544.0
+margin_bottom = 80.0
 texture = ExtResource( 7 )
+script = ExtResource( 13 )
+shader_top = 0.3
+shader_bot = 0.65
+shader_dist = -0.02
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="CenterContainer/VBoxContainer3/VBoxContainer2/TextureRect"]
+[node name="PinkParticles" type="CPUParticles2D" parent="CenterContainer/VBoxContainer/Title"]
+position = Vector2( 318, 15 )
 emitting = false
 amount = 128
 lifetime = 10.0
@@ -105,74 +324,89 @@ initial_velocity_random = 1.0
 scale_amount = 2.0
 color = Color( 1, 0.309804, 0.470588, 1 )
 
-[node name="Timer" type="Timer" parent="CenterContainer/VBoxContainer3/VBoxContainer2/TextureRect"]
+[node name="Timer" type="Timer" parent="CenterContainer/VBoxContainer/Title/PinkParticles"]
 wait_time = 0.2
 one_shot = true
 autostart = true
 
-[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer3/VBoxContainer2"]
-margin_left = 360.0
-margin_top = 8.0
-margin_right = 504.0
-margin_bottom = 56.0
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
-text = "Kid"
+[node name="Particles" parent="CenterContainer/VBoxContainer/Title" instance=ExtResource( 10 )]
+position = Vector2( 48, 36 )
 
-[node name="Particles" parent="CenterContainer/VBoxContainer3/VBoxContainer2/Label2" instance=ExtResource( 10 )]
+[node name="Particles2" parent="CenterContainer/VBoxContainer/Title" instance=ExtResource( 10 )]
+position = Vector2( 120, 37 )
 
-[node name="Particles2" parent="CenterContainer/VBoxContainer3/VBoxContainer2/Label2" instance=ExtResource( 10 )]
-position = Vector2( 108, 24 )
+[node name="Particles3" parent="CenterContainer/VBoxContainer/Title" instance=ExtResource( 10 )]
+position = Vector2( 194, 36 )
 
-[node name="HSeparator" type="HSeparator" parent="CenterContainer/VBoxContainer3"]
-margin_top = 96.0
-margin_right = 504.0
-margin_bottom = 128.0
+[node name="Particles4" parent="CenterContainer/VBoxContainer/Title" instance=ExtResource( 10 )]
+position = Vector2( 266, 38 )
+
+[node name="Particles5" parent="CenterContainer/VBoxContainer/Title" instance=ExtResource( 10 )]
+position = Vector2( 439, 38 )
+
+[node name="Particles6" parent="CenterContainer/VBoxContainer/Title" instance=ExtResource( 10 )]
+position = Vector2( 492, 36 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer/VBoxContainer/Title"]
+anims/0 = SubResource( 8 )
+anims/1 = SubResource( 9 )
+anims/2 = SubResource( 10 )
+anims/3 = SubResource( 11 )
+
+[node name="Timer" type="Timer" parent="CenterContainer/VBoxContainer/Title/AnimationPlayer"]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/VBoxContainer"]
+margin_top = 112.0
+margin_right = 544.0
+margin_bottom = 144.0
 custom_styles/separator = SubResource( 3 )
 custom_constants/separation = 32
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="CenterContainer/VBoxContainer3"]
-margin_top = 160.0
-margin_right = 504.0
-margin_bottom = 260.0
+[node name="Menu" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 176.0
+margin_right = 544.0
+margin_bottom = 276.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NewGame" parent="CenterContainer/VBoxContainer3/VBoxContainer3" instance=ExtResource( 4 )]
-margin_left = 182.0
-margin_right = 322.0
+[node name="NewGame" parent="CenterContainer/VBoxContainer/Menu" instance=ExtResource( 4 )]
+margin_left = 202.0
+margin_right = 342.0
 margin_bottom = 22.0
 focus_neighbour_top = NodePath("../Quit")
 focus_neighbour_bottom = NodePath("../Settings")
 group = ExtResource( 5 )
 text = "New Game"
 
-[node name="Settings" parent="CenterContainer/VBoxContainer3/VBoxContainer3" instance=ExtResource( 4 )]
-margin_left = 182.0
+[node name="Settings" parent="CenterContainer/VBoxContainer/Menu" instance=ExtResource( 4 )]
+margin_left = 202.0
 margin_top = 26.0
-margin_right = 322.0
+margin_right = 342.0
 margin_bottom = 48.0
 focus_neighbour_top = NodePath("../NewGame")
 focus_neighbour_bottom = NodePath("../Credits")
 group = ExtResource( 5 )
 text = "Settings"
 
-[node name="Credits" parent="CenterContainer/VBoxContainer3/VBoxContainer3" instance=ExtResource( 4 )]
-margin_left = 190.0
+[node name="Credits" parent="CenterContainer/VBoxContainer/Menu" instance=ExtResource( 4 )]
+margin_left = 210.0
 margin_top = 52.0
-margin_right = 314.0
+margin_right = 334.0
 margin_bottom = 74.0
 focus_neighbour_top = NodePath("../Settings")
 focus_neighbour_bottom = NodePath("../Quit")
 group = ExtResource( 5 )
 text = "Credits"
 
-[node name="Quit" parent="CenterContainer/VBoxContainer3/VBoxContainer3" instance=ExtResource( 4 )]
-margin_left = 214.0
+[node name="Quit" parent="CenterContainer/VBoxContainer/Menu" instance=ExtResource( 4 )]
+margin_left = 234.0
 margin_top = 78.0
-margin_right = 290.0
+margin_right = 310.0
 margin_bottom = 100.0
 focus_neighbour_top = NodePath("../Credits")
 focus_neighbour_bottom = NodePath("../NewGame")
@@ -180,10 +414,10 @@ shortcut = ExtResource( 8 )
 group = ExtResource( 5 )
 text = "Quit"
 
-[node name="HSeparator2" type="HSeparator" parent="CenterContainer/VBoxContainer3"]
-margin_top = 292.0
-margin_right = 504.0
-margin_bottom = 356.0
+[node name="HSeparator2" type="HSeparator" parent="CenterContainer/VBoxContainer"]
+margin_top = 308.0
+margin_right = 544.0
+margin_bottom = 372.0
 custom_styles/separator = SubResource( 3 )
 custom_constants/separation = 64
 
@@ -286,10 +520,13 @@ position = Vector2( 0, -96 )
 scale = Vector2( 2, 2 )
 
 [node name="Props1" parent="Background/WallProps" index="0"]
-tile_data = PoolIntArray( 196632, 10, 0, 196635, 9, 0, 196637, 11, 0, 327708, 1, 0 )
+tile_data = PoolIntArray( 196635, 9, 0, 196637, 11, 0, 262152, 1, 0, 262172, 1, 0 )
 
 [node name="Boilers1" parent="Background/Boilers" index="0"]
 tile_data = PoolIntArray( 1, 2, 0, 65537, 1, 0, 131073, 2, 0, 196609, 2, 0, 262145, 2, 0, 327681, 2, 0, 393217, 2, 0, 458753, 0, 0, 524289, 1, 0, 589825, 2, 0, 655361, 2, 0, 720897, 2, 0, 786433, 2, 0, 851969, 2, 0, 917505, 2, 0, 983041, 2, 0, 1048577, 2, 0, 1114113, 2, 0, 1114140, 2, 0, 1179649, 0, 0, 1179676, 2, 0, 1245185, 2, 0, 1245212, 2, 0, 1310721, 2, 0, 1310748, 2, 0, 1376257, 2, 0, 1441793, 2, 0, 1507329, 2, 0 )
+
+[node name="Pillars1" parent="Background/Pillars" index="0"]
+tile_data = PoolIntArray( 655360, 1, 0, 655361, 1, 0, 655362, 1, 0, 655363, 1, 0, 655364, 1, 0, 655365, 1, 0, 655366, 1, 0, 655367, 1, 0, 655368, 1, 0, 655369, 1, 0, 655370, 1, 0, 655371, 1, 0, 655372, 1, 0, 655373, 1, 0, 655374, 1, 0, 655375, 1, 0, 655376, 1, 0, 655377, 1, 0, 655378, 1, 0, 655379, 1, 0, 655380, 1, 0, 655381, 1, 0, 655382, 1, 0, 655383, 1, 0, 655384, 1, 0, 655385, 1, 0, 655386, 1, 0, 655387, 1, 0, 655388, 1, 0, 655389, 1, 0, 655390, 1, 0, 655391, 1, 0, 851968, 1, 0, 851969, 1, 0, 851970, 1, 0, 851971, 1, 0, 851972, 1, 0, 851973, 1, 0, 851974, 1, 0, 851975, 1, 0, 851976, 1, 0, 851977, 1, 0, 851978, 1, 0, 851979, 1, 0, 851980, 1, 0, 851981, 1, 0, 851982, 1, 0, 851983, 1, 0, 851984, 1, 0, 851985, 1, 0, 851986, 1, 0, 851987, 1, 0, 851988, 1, 0, 851989, 1, 0, 851990, 1, 0, 851991, 1, 0, 851992, 1, 0, 851993, 1, 0, 851994, 1, 0, 851995, 1, 0, 851996, 1, 0, 851997, 1, 0, 851998, 1, 0, 851999, 1, 0 )
 
 [node name="Background2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, -168 )
@@ -308,12 +545,16 @@ tile_data = PoolIntArray( 1179670, 0, 393216, 1179671, 0, 196608, 1179672, 0, 19
 tile_data = PoolIntArray( 851975, 5, 0, 917512, 9, 0, 1114115, 5, 0, 1114124, 5, 0, 1179656, 6, 0, 1179658, 5, 0, 1179661, 9, 0, 1179671, 6, 0, 1245191, 9, 0, 1245195, 9, 0, 1245205, 6, 0, 1245206, 9, 0, 1245210, 5, 0, 1310729, 6, 0, 1310740, 10, 0, 1310743, 5, 0, 1310748, 6, 0, 1376266, 5, 0, 1376269, 8, 0, 1376275, 5, 0, 1376280, 9, 0, 1441806, 6, 0, 1441821, 5, 0, 1507358, 9, 0 )
 
 [node name="Boilers1" parent="Background2/Boilers" index="0"]
-tile_data = PoolIntArray( 4, 2, 0, 65540, 2, 0, 131076, 1, 0, 196612, 0, 0, 262148, 2, 0, 327684, 2, 0, 393220, 2, 0, 458756, 2, 0, 524292, 2, 0, 589828, 2, 0, 655364, 2, 0, 720900, 0, 0, 786436, 2, 0, 851972, 1, 0, 851996, 4, 0, 917508, 2, 0, 917532, 3, 0, 983044, 2, 0, 983068, 1, 0, 1048580, 2, 0, 1048604, 2, 0, 1114116, 2, 0, 1114140, 2, 0, 1179652, 2, 0, 1179676, 2, 0, 1245188, 2, 0, 1245212, 0, 0, 1310724, 2, 0, 1376260, 1, 0, 1441796, 2, 0, 1507332, 2, 0 )
-[connection signal="timeout" from="CenterContainer/VBoxContainer3/VBoxContainer2/TextureRect/Timer" to="." method="_on_Timer_timeout"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer3/VBoxContainer3/NewGame" to="." method="_on_StartGame_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer3/VBoxContainer3/Settings" to="." method="_on_Settings_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer3/VBoxContainer3/Credits" to="." method="_on_Credits_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer3/VBoxContainer3/Quit" to="." method="_on_Quit_pressed"]
+tile_data = PoolIntArray( 4, 2, 0, 65540, 2, 0, 131076, 1, 0, 196612, 0, 0, 262148, 2, 0, 327684, 2, 0, 393220, 2, 0, 458756, 2, 0, 524292, 2, 0, 589828, 2, 0, 655364, 2, 0, 720900, 0, 0, 786433, 2, 0, 786436, 2, 0, 851972, 1, 0, 851996, 4, 0, 917508, 2, 0, 917532, 3, 0, 983044, 2, 0, 983068, 1, 0, 1048580, 2, 0, 1048604, 2, 0, 1114116, 2, 0, 1114140, 2, 0, 1179652, 2, 0, 1179676, 2, 0, 1245188, 2, 0, 1245212, 0, 0, 1310724, 2, 0, 1376260, 1, 0, 1441796, 2, 0, 1507332, 2, 0 )
+
+[node name="Props1" parent="Background2/HangingProps" index="0"]
+tile_data = PoolIntArray( 327699, 0, 0, 327700, 0, 0, 327703, 0, 0, 327705, 0, 0, 393235, 0, 0, 393236, 0, 0, 393239, 0, 0, 393241, 0, 0, 458771, 0, 0, 458772, 0, 0, 458775, 0, 0, 458777, 0, 0, 524307, 0, 0, 524308, 0, 0, 524311, 0, 0, 524313, 0, 0, 589843, 0, 0, 589844, 0, 0, 589847, 1, 0, 589849, 0, 0, 655379, 0, 0, 655380, 0, 0, 655385, 0, 0, 720915, 1, 0, 720916, 0, 0, 720921, 0, 0, 786452, 0, 0, 786457, 1, 0, 851988, 0, 0, 917524, 0, 0, 983060, 0, 0, 1048596, 1, 0 )
+[connection signal="timeout" from="CenterContainer/VBoxContainer/Title/PinkParticles/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="CenterContainer/VBoxContainer/Title/AnimationPlayer/Timer" to="CenterContainer/VBoxContainer/Title" method="_on_Timer_timeout"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Menu/NewGame" to="." method="_on_StartGame_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Menu/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Menu/Credits" to="." method="_on_Credits_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Menu/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="timeout" from="SpeedrunTimes/Timer" to="SpeedrunTimes" method="_on_Timer_timeout"]
 
 [editable path="Background"]
