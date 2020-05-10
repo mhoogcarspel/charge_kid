@@ -66,7 +66,10 @@ func _ready():
 func _physics_process(delta):
 	var rng = randi()%1000
 	if rng > 1000 - tear_frequency/delta:
-		generate_tear(tear_frequency)
+		if tear_frequency > 0.5:
+			generate_tear(10)
+		else:
+			generate_tear()
 	
 	if tear_frequency > 0.5:
 		tear_frequency = clamp(tear_frequency - delta*10, 0.5, 10.0)

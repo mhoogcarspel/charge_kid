@@ -15,7 +15,7 @@
 [ext_resource path="res://Menu/StartMenu/Title.gd" type="Script" id=13]
 [ext_resource path="res://Assets/ShaderEffects/Tear/Tear.tscn" type="PackedScene" id=14]
 
-[sub_resource type="Shader" id=6]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
 uniform float tear_top;
@@ -37,14 +37,14 @@ void fragment() {
 
 "
 
-[sub_resource type="ShaderMaterial" id=7]
-shader = SubResource( 6 )
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 shader_param/tear_top = 0.0
 shader_param/tear_bot = 0.0
 shader_param/tear_dist = 0.0
 shader_param/tear_outside = false
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=3]
 resource_name = "0"
 length = 0.5
 step = 0.02
@@ -97,7 +97,7 @@ tracks/3/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=4]
 resource_name = "2"
 length = 0.5
 step = 0.02
@@ -150,7 +150,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=5]
 resource_name = "2"
 length = 0.35
 step = 0.01
@@ -203,7 +203,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=6]
 resource_name = "3"
 length = 0.4
 tracks/0/type = "value"
@@ -255,12 +255,12 @@ tracks/3/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="StyleBoxEmpty" id=3]
+[sub_resource type="StyleBoxEmpty" id=7]
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=8]
 font_data = ExtResource( 6 )
 
-[sub_resource type="StyleBoxEmpty" id=5]
+[sub_resource type="StyleBoxEmpty" id=9]
 
 [node name="StartMenu" type="MarginContainer"]
 pause_mode = 2
@@ -298,7 +298,7 @@ custom_constants/separation = 32
 alignment = 1
 
 [node name="Title" type="TextureRect" parent="CenterContainer/VBoxContainer"]
-material = SubResource( 7 )
+material = SubResource( 2 )
 margin_right = 544.0
 margin_bottom = 80.0
 texture = ExtResource( 7 )
@@ -348,10 +348,10 @@ position = Vector2( 439, 38 )
 position = Vector2( 492, 36 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer/VBoxContainer/Title"]
-anims/0 = SubResource( 8 )
-anims/1 = SubResource( 9 )
-anims/2 = SubResource( 10 )
-anims/3 = SubResource( 11 )
+anims/0 = SubResource( 3 )
+anims/1 = SubResource( 4 )
+anims/2 = SubResource( 5 )
+anims/3 = SubResource( 6 )
 
 [node name="Timer" type="Timer" parent="CenterContainer/VBoxContainer/Title/AnimationPlayer"]
 wait_time = 0.5
@@ -362,7 +362,7 @@ autostart = true
 margin_top = 112.0
 margin_right = 544.0
 margin_bottom = 144.0
-custom_styles/separator = SubResource( 3 )
+custom_styles/separator = SubResource( 7 )
 custom_constants/separation = 32
 
 [node name="Menu" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
@@ -418,7 +418,7 @@ text = "Quit"
 margin_top = 308.0
 margin_right = 544.0
 margin_bottom = 372.0
-custom_styles/separator = SubResource( 3 )
+custom_styles/separator = SubResource( 7 )
 custom_constants/separation = 64
 
 [node name="SpeedrunTimes" type="VBoxContainer" parent="."]
@@ -436,7 +436,7 @@ script = ExtResource( 12 )
 margin_top = 392.0
 margin_right = 240.0
 margin_bottom = 408.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "Speedrun Times:"
 __meta__ = {
@@ -447,14 +447,14 @@ __meta__ = {
 margin_top = 416.0
 margin_right = 240.0
 margin_bottom = 424.0
-custom_styles/separator = SubResource( 5 )
+custom_styles/separator = SubResource( 9 )
 custom_constants/separation = 8
 
 [node name="First" type="Label" parent="SpeedrunTimes"]
 margin_top = 432.0
 margin_right = 240.0
 margin_bottom = 448.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "0:00.00"
 align = 1
@@ -466,7 +466,7 @@ __meta__ = {
 margin_top = 456.0
 margin_right = 240.0
 margin_bottom = 472.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "0:00.00"
 align = 1
@@ -478,7 +478,7 @@ __meta__ = {
 margin_top = 480.0
 margin_right = 240.0
 margin_bottom = 496.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "0:00.00"
 align = 1
@@ -490,7 +490,7 @@ __meta__ = {
 margin_top = 504.0
 margin_right = 240.0
 margin_bottom = 520.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "0:00.00"
 align = 1
@@ -502,7 +502,7 @@ __meta__ = {
 margin_top = 528.0
 margin_right = 240.0
 margin_bottom = 544.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "0:00.00"
 align = 1
