@@ -41,6 +41,8 @@ func load_progress() -> void:
 				progress = parse_json(file_string)
 				print("ERROR: 'levels' number is greater than the real number of levels or negative")
 				file.close()
+			if progress["levels"] < levels.size() and progress["end"]:
+				progress["end"] = false
 
 func erase_progress() -> void:
 	if main.enable_save:
