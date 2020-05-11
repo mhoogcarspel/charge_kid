@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Levels/Tilemaps/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Actors/Player/Player.tscn" type="PackedScene" id=2]
@@ -7,9 +7,8 @@
 [ext_resource path="res://Levels/Tilemaps/Spikes.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/AuxiliaryTools/BaseLevel.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Actors/Interactables/FuelTank/FuelTank.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Menu/FinalScreen/FinalScreen.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Levels/AuxiliaryTools/LastFinishLine.gd" type="Script" id=9]
-[ext_resource path="res://Menu/SpeedrunScreens/SpeedrunFinish.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Levels/AuxiliaryTools/FinishLine.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Levels/Levels/Level13.tscn" type="PackedScene" id=9]
 
 [node name="BaseLevel" instance=ExtResource( 6 )]
 level = 12
@@ -84,19 +83,10 @@ position = Vector2( 24, 280 )
 [node name="FuelTank" parent="." index="10" instance=ExtResource( 7 )]
 position = Vector2( 56, 280 )
 
-[node name="FinishLine" type="Area2D" parent="." index="11"]
+[node name="FinishLine" parent="." index="11" instance=ExtResource( 8 )]
 visible = false
 position = Vector2( 504, 40 )
-script = ExtResource( 9 )
-__meta__ = {
-"_edit_group_": true
-}
-end_scene = ExtResource( 8 )
-speedrun_finish = ExtResource( 10 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FinishLine" index="0"]
-polygon = PoolVector2Array( 8, 8, 8, -8, -8, -8, -8, 8 )
-[connection signal="body_entered" from="FinishLine" to="FinishLine" method="_on_FinishLine_body_entered"]
+next_stage = ExtResource( 9 )
 
 [editable path="Background2"]
 
