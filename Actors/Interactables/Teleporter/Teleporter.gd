@@ -33,7 +33,7 @@ func is_active() -> bool:
 
 
 func hit(bullet: PlayerBullet) -> void:
-	if animation_player.current_animation == "Ready":
+	if animation_player.current_animation == "Ready" and bullet.get_state() != "FuelChargeState":
 		animation_player.play("Hit")
 		
 		if not get_tree().get_nodes_in_group("player").empty():
@@ -65,7 +65,7 @@ func hit(bullet: PlayerBullet) -> void:
 func swap_positions(bullet: PlayerBullet, player: Player) -> void:
 	var dummy = player.position
 	bullet.disable_enable_hitbox(false)
-	player.position = self.position + Vector2(0,16)
+	player.position = self.position + Vector2(0,-16)
 	bullet.position = dummy
 
 
