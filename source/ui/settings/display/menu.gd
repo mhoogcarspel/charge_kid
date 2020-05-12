@@ -12,7 +12,7 @@ onready var fullscreen_button = $CenterContainer/Margin/Margin/Menu/Options/Full
 onready var fullscreen_label = $CenterContainer/Margin/Margin/Menu/Options/Fullscreen/Label
 onready var borderless_window_button = $CenterContainer/Margin/Margin/Menu/Options/BorderlessWindow/CheckBox
 onready var borderless_window_label = $CenterContainer/Margin/Margin/Menu/Options/BorderlessWindow/Label
-onready var return_button = $CenterContainer/Margin/Margin/Menu/Return
+onready var return_button = $CenterContainer/Margin/Margin/Menu/Options/Return
 
 # These screen sizes are 16:9 aspect ratio, the game's aspect ratio.
 onready var screen_sizes = [Vector2(1024,576),

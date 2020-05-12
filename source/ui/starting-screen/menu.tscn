@@ -15,40 +15,6 @@
 [ext_resource path="res://ui/starting-screen/title.gd" type="Script" id=13]
 [ext_resource path="res://assets/shader-effects/tear/tear.tscn" type="PackedScene" id=14]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 

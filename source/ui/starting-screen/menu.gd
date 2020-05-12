@@ -58,28 +58,28 @@ func _ready():
 	if main.get_node("SpeedrunMode").is_active():
 		main.get_node("SpeedrunMode").time()
 	
-	for i in range(50):
+	for i in range(20):
 		generate_tear(10)
 
 
 
 func _physics_process(delta):
-	var rng = randi()%1000
-	if rng > 1000 - tear_frequency/delta:
-		if tear_frequency > 0.5:
-			generate_tear(10)
-		else:
-			generate_tear()
-	
-	if tear_frequency > 0.5:
-		tear_frequency = clamp(tear_frequency - delta*10, 0.5, 10.0)
+	if tear_frequency > 0:
+		var rng = randi()%1000
+		if rng > 1000 - tear_frequency/delta:
+			if tear_frequency > 5:
+				generate_tear(10)
+			else:
+				generate_tear(5)
+		
+		tear_frequency -= delta*10
 
 
 
 func generate_tear(multiplier: float = 1.0):
 	var tear = tear_shader.instance()
 	tear.duration = 0.1 + float(randi()%11)/100
-	tear.tear_distance = float(randi()%101)*multiplier/10000
+	tear.tear_distance = float(randi()%51)*multiplier/10000 + 0.005
 	tear.tear_size = float(randi()%201)/1000
 	tear.position.x = get_viewport().size.x/2
 	tear.position.y = randi()%(get_viewport().size.y as int)
