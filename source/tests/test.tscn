@@ -1,0 +1,98 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://levels/base-nodes/tilemaps/background.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/textures/industrial.v2.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/blank.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/icon.png" type="Texture" id=4]
+
+
+
+
+
+
+
+
+
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float time;
+uniform float radius;
+uniform sampler2D bg;
+uniform float dist;
+uniform float ratio;
+uniform vec2 velocity;
+
+uniform vec4 black: hint_color;
+uniform vec4 white: hint_color;
+
+void fragment () {
+	vec2 center = vec2(0.5);
+	float x = length(UV - center);
+	vec4 color;
+	vec2 uv;
+	
+	if (length(COLOR - black) < 0.1) {
+		uv = UV + velocity*time;
+		uv.x += dist*ratio;
+		uv = mod(uv,vec2(1.0));
+		color = texture(bg, uv);
+	}
+	else if (length(COLOR - white) < 0.1) {
+		color = white;
+	}
+	
+	COLOR = color;
+}
+
+
+"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/time = 0.4
+shader_param/radius = 0.2
+shader_param/dist = 0.7
+shader_param/ratio = 1.0
+shader_param/velocity = Vector2( 0.3, 0.1 )
+shader_param/black = Color( 0, 0, 0, 1 )
+shader_param/white = Color( 0.956863, 0.956863, 0.894118, 1 )
+shader_param/bg = ExtResource( 4 )
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 256, 256 )
+
+[node name="Background" parent="." instance=ExtResource( 1 )]
+visible = false
+position = Vector2( 8, 0 )
+
+[node name="Tube1" parent="Background/Tubes" index="0"]
+tile_data = PoolIntArray( -983049, 0, 196609, -917513, 0, 327680, -851977, 0, 327680, -786441, 0, 327680, -720905, 0, 327680, -655369, 0, 327680, -589833, 0, 327680, -524297, 0, 327680, -458761, 0, 327680, -393225, 0, 327680, -327689, 0, 327680, -262153, 0, 327680, -196617, 0, 327680, -131081, 0, 327680, -65545, 0, 327680, -9, 0, 327680, 65527, 0, 327680, 131063, 0, 327680, 196599, 0, 327680, 262135, 0, 327680, 327671, 0, 327680, 393207, 0, 327680, 458743, 0, 327680, 524279, 0, 327680, 589815, 0, 327680, 655351, 0, 327681 )
+
+[node name="Tube2" parent="Background/Tubes" index="2"]
+tile_data = PoolIntArray( -262166, 0, 262144, -262165, 0, 196608, -262164, 0, 196608, -262163, 0, 196608, -262162, 0, 196608, -262161, 0, 196608, -262160, 0, 196608, -262159, 0, 196608, -262158, 0, 196608, -262157, 0, 196608, -262156, 0, 196608, -262155, 0, 196608, -262154, 0, 196608, -262153, 0, 196608, -262152, 0, 196608, -262151, 0, 196608, -262150, 0, 196608, -262149, 0, 196608, -262148, 0, 196608, -262147, 0, 196608, -262146, 0, 196608, -262145, 0, 196608, -327680, 0, 196608, -327679, 0, 196608, -327678, 0, 196608, -327677, 0, 196608, -327676, 0, 196608, -327675, 0, 262146 )
+
+[node name="Background2" parent="." instance=ExtResource( 1 )]
+visible = false
+position = Vector2( -4, -4 )
+rotation = 0.785398
+
+[node name="Tube1" parent="Background2/Tubes" index="0"]
+tile_data = PoolIntArray( 196583, 0, 262144, 196584, 0, 196608, 196585, 0, 196608, 196586, 0, 196608, 196587, 0, 196608, 196588, 0, 196608, 196589, 0, 196608, 196590, 0, 196608, 196591, 0, 196608, 196592, 0, 196608, 196593, 0, 196608, 196594, 0, 196608, 196595, 0, 196608, 196596, 0, 196608, 196597, 0, 196608, 196598, 0, 196608, 196599, 0, 196608, 196600, 0, 196608, 196601, 0, 196608, 196602, 0, 196608, 196603, 0, 196608, 196604, 0, 196608, 196605, 0, 196608, 196606, 0, 196608, 196607, 0, 196608, 131072, 0, 196608, 131073, 0, 196608, 131074, 0, 196608, 131075, 0, 196608, 131076, 0, 196608, 131077, 0, 196608, 131078, 0, 196608, 131079, 0, 196608, 131080, 0, 196608, 131081, 0, 196608, 131082, 0, 196608, 131083, 0, 196608, 131084, 0, 262146 )
+
+[node name="Tube2" parent="Background2/Tubes" index="2"]
+tile_data = PoolIntArray( -786441, 0, 196609, -720905, 0, 327680, -655369, 0, 327680, -589833, 0, 327680, -524297, 0, 327680, -458761, 0, 327680, -393225, 0, 327680, -327689, 0, 327680, -262153, 0, 327680, -196617, 0, 327680, -131081, 0, 327680, -65545, 0, 327680, -9, 0, 327680, 65527, 0, 327680, 131063, 0, 327680, 196599, 0, 327680, 262135, 0, 327680, 327671, 0, 327680, 393207, 0, 327680, 458743, 0, 327680, 524279, 0, 327680, 589815, 0, 327680, 655351, 0, 327680, 720887, 0, 327680, 786423, 0, 327680, 851959, 0, 327680, 917495, 0, 327680, 983031, 0, 327680, 1048567, 0, 327680, 1114103, 0, 327680, 1179639, 0, 327681 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Shader" type="Sprite" parent="."]
+material = SubResource( 2 )
+position = Vector2( -128, 0 )
+scale = Vector2( 128, 128 )
+texture = ExtResource( 3 )
+
+[editable path="Background"]
+
+[editable path="Background2"]

@@ -1,6 +1,3 @@
-.import
-export_presets.cfg
-save_progress.save
-audio_settings.conf
-inputmap.conf
-*.backup
+source/.import
+source/export_presets.cfg
+

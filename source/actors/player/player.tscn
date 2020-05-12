@@ -1,0 +1,701 @@
+[gd_scene load_steps=65 format=2]
+
+[ext_resource path="res://actors/player/player.gd" type="Script" id=1]
+[ext_resource path="res://actors/player/particles/one-shot-shoot-particles.gd" type="Script" id=2]
+[ext_resource path="res://assets/sound-effects/steps/step6.ogg" type="AudioStream" id=3]
+[ext_resource path="res://actors/player/particles/charged-step-particles.tscn" type="PackedScene" id=4]
+[ext_resource path="res://actors/player/particles/player-sparks.tscn" type="PackedScene" id=5]
+[ext_resource path="res://actors/player/particles/charged-player-sparks.tscn" type="PackedScene" id=6]
+[ext_resource path="res://actors/player/shader-effects.gd" type="Script" id=7]
+[ext_resource path="res://assets/shader-effects/ripple/ripple.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/sound-effects/death/death.ogg" type="AudioStream" id=9]
+[ext_resource path="res://assets/sound-effects/jump/jump2.ogg" type="AudioStream" id=10]
+[ext_resource path="res://assets/sound-effects/jump/jump0.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/sound-effects/boost/boost0-test1.ogg" type="AudioStream" id=12]
+[ext_resource path="res://assets/sound-effects/boost/boost2.ogg" type="AudioStream" id=13]
+[ext_resource path="res://assets/sound-effects/shoot/shoot1.ogg" type="AudioStream" id=14]
+[ext_resource path="res://assets/sound-effects/charge/pickup2.ogg" type="AudioStream" id=15]
+[ext_resource path="res://assets/sound-effects/boost/boost0.ogg" type="AudioStream" id=16]
+[ext_resource path="res://actors/player/particles/death-particles0.tscn" type="PackedScene" id=17]
+[ext_resource path="res://actors/player/particles/respawn-particles.tscn" type="PackedScene" id=18]
+[ext_resource path="res://assets/sound-effects/shoot/shoot0.ogg" type="AudioStream" id=19]
+[ext_resource path="res://assets/sound-effects/bullet-pickup/bullet-pickup.ogg" type="AudioStream" id=20]
+[ext_resource path="res://assets/sound-effects/steps/step1.ogg" type="AudioStream" id=21]
+[ext_resource path="res://assets/particles/particle1.png" type="Texture" id=22]
+[ext_resource path="res://assets/textures/industrial.v2.png" type="Texture" id=23]
+[ext_resource path="res://actors/player/sprite.gd" type="Script" id=24]
+[ext_resource path="res://actors/player/particles/step-particles.tscn" type="PackedScene" id=25]
+[ext_resource path="res://actors/player/particles/boost-particles.tscn" type="PackedScene" id=26]
+[ext_resource path="res://assets/sound-effects/steps/step7.ogg" type="AudioStream" id=27]
+[ext_resource path="res://assets/sound-effects/landing/landing1.ogg" type="AudioStream" id=28]
+[ext_resource path="res://assets/sound-effects/landing/landing2.ogg" type="AudioStream" id=29]
+[ext_resource path="res://assets/sound-effects/steps/step4.ogg" type="AudioStream" id=30]
+[ext_resource path="res://assets/sound-effects/steps/step5.ogg" type="AudioStream" id=31]
+[ext_resource path="res://actors/player/particles/one-shot-boost-particles.gd" type="Script" id=32]
+[ext_resource path="res://assets/sound-effects/landing/landing0.ogg" type="AudioStream" id=33]
+[ext_resource path="res://assets/sound-effects/steps/step9.ogg" type="AudioStream" id=34]
+[ext_resource path="res://actors/player/particles/shoot-particles.tscn" type="PackedScene" id=35]
+[ext_resource path="res://assets/sound-effects/steps/step8.ogg" type="AudioStream" id=36]
+[ext_resource path="res://assets/sound-effects/steps/step3.ogg" type="AudioStream" id=37]
+[ext_resource path="res://assets/sound-effects/steps/step0.ogg" type="AudioStream" id=38]
+[ext_resource path="res://assets/particles/particle2.png" type="Texture" id=39]
+[ext_resource path="res://assets/sound-effects/steps/step2.ogg" type="AudioStream" id=40]
+[ext_resource path="res://actors/projectile/projectile.tscn" type="PackedScene" id=41]
+[ext_resource path="res://actors/player/particles/death-particles1.tscn" type="PackedScene" id=42]
+[ext_resource path="res://assets/sound-effects/jump/jump1.ogg" type="AudioStream" id=43]
+[ext_resource path="res://assets/sound-effects/boost/boost1.ogg" type="AudioStream" id=44]
+[ext_resource path="res://assets/sound-effects/charge/pickup0.ogg" type="AudioStream" id=45]
+[ext_resource path="res://assets/sound-effects/shoot/shoot2.ogg" type="AudioStream" id=46]
+[ext_resource path="res://assets/sound-effects/charge/pickup1.ogg" type="AudioStream" id=47]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform bool activate;
+uniform bool erase;
+uniform bool fuel;
+uniform vec4 color_1: hint_color;
+uniform vec4 color_2: hint_color;
+uniform vec4 color_3: hint_color;
+uniform vec4 color_4: hint_color;
+
+void fragment ()
+{
+	COLOR = texture(TEXTURE , UV);
+	if (activate == true)
+		COLOR.rgb = color_1.rgb;
+	if (erase == true)
+		COLOR.a = 0.0;
+	if (fuel == true && length(COLOR.rgb - color_1.rgb) <= 0.1)
+		COLOR.rgb = color_2.rgb;
+	if (fuel == true && length(COLOR.rgb - color_3.rgb) <= 0.1)
+		COLOR.rgb = color_4.rgb;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/activate = false
+shader_param/erase = false
+shader_param/fuel = false
+shader_param/color_1 = Color( 0.956863, 0.956863, 0.894118, 1 )
+shader_param/color_2 = Color( 1, 0.309804, 0.470588, 1 )
+shader_param/color_3 = Color( 0.490196, 0.490196, 0.490196, 1 )
+shader_param/color_4 = Color( 0, 0, 0, 1 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 4.5, 6 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 4.1541, 0.483639 )
+
+[sub_resource type="Animation" id=6]
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 1.35
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 0.65, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 2 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("PlayerSprite")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "standing"
+}, {
+"args": [  ],
+"method": "standing"
+}, {
+"args": [  ],
+"method": "standing"
+}, {
+"args": [  ],
+"method": "standing"
+} ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Landing"
+length = 0.16
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.02, 0.04, 0.06, 0.08, 0.1, 0.12, 0.14 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("PlayerSprite")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "land"
+} ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.12
+step = 0.06
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.06 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 16, 17 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("PlayerSprite")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "shoot_particles"
+} ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "TeleportInLeft"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, -1 ), Vector2( 1, -1 ), Vector2( 6, 0 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 6, 0 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "TeleportOutLeft"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -12 ), Vector2( 0.5, -4 ), Vector2( 1, -1 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 12 ), Vector2( 0.5, 4 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+length = 0.64
+loop = true
+step = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 11, 12, 13, 14, 15 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("PlayerSprite")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48, 0.52, 0.56, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "steps"
+}, {
+"args": [  ],
+"method": "steps"
+}, {
+"args": [  ],
+"method": "steps"
+}, {
+"args": [  ],
+"method": "steps"
+}, {
+"args": [  ],
+"method": "steps"
+}, {
+"args": [  ],
+"method": "steps"
+}, {
+"args": [  ],
+"method": "steps"
+}, {
+"args": [  ],
+"method": "steps"
+}, {
+"args": [  ],
+"method": "steps"
+}, {
+"args": [  ],
+"method": "steps"
+}, {
+"args": [  ],
+"method": "steps"
+}, {
+"args": [  ],
+"method": "steps"
+}, {
+"args": [  ],
+"method": "steps"
+}, {
+"args": [  ],
+"method": "steps"
+}, {
+"args": [  ],
+"method": "steps"
+}, {
+"args": [  ],
+"method": "steps"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("PlayerSprite")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.16, 0.48 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "step_sound"
+}, {
+"args": [  ],
+"method": "step_sound"
+} ]
+}
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 5.5, 7 )
+
+[sub_resource type="RectangleShape2D" id=16]
+extents = Vector2( 1, 1 )
+
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 1, 1 )
+
+[node name="Player" type="KinematicBody2D" groups=[
+"player",
+]]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource( 1 )
+bullet = ExtResource( 41 )
+label_time = 2.0
+factor = 1.0
+has_bullet = true
+acceleration = 600.0
+speed = 100.0
+friction = 900.0
+air_friction = 150.0
+boost_distance = 60.0
+boost_time = 0.4
+jump_height = 40.0
+gravity = 500.0
+
+[node name="PlayerSprite" type="Sprite" parent="."]
+material = SubResource( 2 )
+texture = ExtResource( 23 )
+vframes = 4
+hframes = 8
+region_enabled = true
+region_rect = Rect2( 0, 256, 128, 64 )
+script = ExtResource( 24 )
+uncharged_step_particles = ExtResource( 25 )
+charged_step_particles = ExtResource( 4 )
+uncharged_player_sparks = ExtResource( 5 )
+charged_player_sparks = ExtResource( 6 )
+step_sounds = [ ExtResource( 38 ), ExtResource( 21 ), ExtResource( 40 ), ExtResource( 37 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 3 ), ExtResource( 27 ), ExtResource( 36 ), ExtResource( 34 ) ]
+land_sounds = [ ExtResource( 33 ), ExtResource( 28 ), ExtResource( 29 ) ]
+jump_sounds = [ ExtResource( 11 ), ExtResource( 43 ), ExtResource( 10 ) ]
+boost_sounds = [ ExtResource( 16 ), ExtResource( 44 ), ExtResource( 13 ) ]
+shoot_sounds = [ ExtResource( 19 ), ExtResource( 14 ), ExtResource( 46 ) ]
+fuel_pickup_sounds = [ ExtResource( 45 ), ExtResource( 47 ), ExtResource( 15 ) ]
+
+[node name="ProjectileParticles" type="CPUParticles2D" parent="PlayerSprite"]
+position = Vector2( 5, 2 )
+z_index = -1
+emitting = false
+amount = 12
+lifetime = 0.2
+local_coords = false
+texture = ExtResource( 22 )
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+gravity = Vector2( 0, -500 )
+scale_amount = 0.2
+scale_amount_random = 0.2
+scale_amount_curve = SubResource( 3 )
+
+[node name="Timer" type="Timer" parent="PlayerSprite"]
+wait_time = 0.05
+one_shot = true
+
+[node name="Timer2" type="Timer" parent="PlayerSprite"]
+wait_time = 0.5
+one_shot = true
+
+[node name="PlayerSparksTimer" type="Timer" parent="PlayerSprite"]
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( -0.5, 2 )
+shape = SubResource( 4 )
+
+[node name="PlatformSentinel" type="Area2D" parent="."]
+visible = false
+position = Vector2( -0.5, 7.5 )
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformSentinel"]
+position = Vector2( 0, 0.5 )
+shape = SubResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Airborne = SubResource( 6 )
+anims/Idle = SubResource( 7 )
+anims/Landing = SubResource( 8 )
+anims/Shooting = SubResource( 9 )
+anims/TeleportInLeft = SubResource( 10 )
+anims/TeleportInRight = SubResource( 11 )
+anims/TeleportOutLeft = SubResource( 12 )
+anims/TeleportOutRight = SubResource( 13 )
+anims/Walking = SubResource( 14 )
+
+[node name="FuelParticles" type="Node2D" parent="."]
+
+[node name="Particles1" type="CPUParticles2D" parent="FuelParticles"]
+position = Vector2( 0, 8 )
+rotation = -0.174533
+emitting = false
+amount = 20
+lifetime = 0.5
+local_coords = false
+spread = 10.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 75.0
+initial_velocity_random = 1.0
+damping = 50.0
+color = Color( 1, 0.309804, 0.470588, 1 )
+
+[node name="Particles2" type="CPUParticles2D" parent="FuelParticles"]
+position = Vector2( 0, 8 )
+rotation = -2.96706
+emitting = false
+amount = 20
+lifetime = 0.5
+local_coords = false
+spread = 10.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 75.0
+initial_velocity_random = 1.0
+damping = 50.0
+color = Color( 1, 0.309804, 0.470588, 1 )
+
+[node name="Particles3" type="CPUParticles2D" parent="FuelParticles"]
+position = Vector2( 0, 8 )
+rotation = -1.5708
+emitting = false
+amount = 20
+lifetime = 0.5
+local_coords = false
+spread = 80.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 50.0
+initial_velocity_random = 1.0
+damping = 50.0
+color = Color( 1, 0.309804, 0.470588, 1 )
+
+[node name="Particles4" type="CPUParticles2D" parent="FuelParticles"]
+position = Vector2( 0, 8 )
+rotation = -1.5708
+emitting = false
+amount = 1
+lifetime = 1.5
+local_coords = false
+gravity = Vector2( 0, 40 )
+initial_velocity = 60.0
+initial_velocity_random = 0.5
+scale_amount = 2.0
+color = Color( 1, 0.309804, 0.470588, 1 )
+
+[node name="ShootParticles" type="Node2D" parent="."]
+
+[node name="OneShotShootParticles" type="Node2D" parent="ShootParticles"]
+script = ExtResource( 2 )
+particles = [ ExtResource( 35 ) ]
+
+[node name="BoostParticles" type="Node2D" parent="."]
+
+[node name="Particles1" type="CPUParticles2D" parent="BoostParticles"]
+z_index = -2
+emitting = false
+amount = 9
+lifetime = 0.5
+local_coords = false
+texture = ExtResource( 39 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+
+[node name="OneShotBoostParticles" type="Node2D" parent="BoostParticles"]
+script = ExtResource( 32 )
+particles = [ ExtResource( 26 ) ]
+
+[node name="DeathParticles" type="Node2D" parent="."]
+
+[node name="OneShotDeathParticles" type="Node2D" parent="DeathParticles"]
+script = ExtResource( 32 )
+particles = [ ExtResource( 17 ), ExtResource( 42 ) ]
+
+[node name="RespawnParticles" type="Node2D" parent="."]
+
+[node name="OneShotParticles" type="Node2D" parent="RespawnParticles"]
+script = ExtResource( 32 )
+particles = [ ExtResource( 18 ) ]
+
+[node name="ShaderEffects" type="Node2D" parent="."]
+script = ExtResource( 7 )
+ripple_effect = ExtResource( 8 )
+
+[node name="BunnyTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="BoostBuffer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="BoostTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DropTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="SpikesSentinel" type="Area2D" parent="."]
+visible = false
+position = Vector2( -0.5, 2 )
+collision_layer = 12
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikesSentinel"]
+shape = SubResource( 15 )
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="Jump" type="AudioStreamPlayer" parent="SFX"]
+volume_db = -3.0
+bus = "SFX"
+
+[node name="Boost" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 12 )
+volume_db = -3.0
+bus = "SFX"
+
+[node name="Shoot" type="AudioStreamPlayer" parent="SFX"]
+volume_db = -3.0
+pitch_scale = 0.9
+bus = "SFX"
+
+[node name="BulletPickup" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 20 )
+volume_db = -3.0
+bus = "SFX"
+
+[node name="FuelPickup" type="AudioStreamPlayer" parent="SFX"]
+volume_db = -3.0
+bus = "SFX"
+
+[node name="Step" type="AudioStreamPlayer" parent="SFX"]
+volume_db = -12.0
+pitch_scale = 2.3
+bus = "REVERB"
+
+[node name="Land" type="AudioStreamPlayer" parent="SFX"]
+volume_db = -18.0
+pitch_scale = 2.0
+bus = "SFX"
+
+[node name="Death" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 9 )
+pitch_scale = 1.1
+bus = "DEATH FILTER"
+
+[node name="RightLedgeDetector" type="Area2D" parent="."]
+visible = false
+position = Vector2( 16, 8 )
+collision_layer = 0
+collision_mask = 19
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightLedgeDetector"]
+shape = SubResource( 16 )
+
+[node name="LeftLedgeDetector" type="Area2D" parent="."]
+visible = false
+position = Vector2( -16, 8 )
+collision_layer = 0
+collision_mask = 19
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftLedgeDetector"]
+shape = SubResource( 17 )
+[connection signal="timeout" from="PlayerSprite/Timer2" to="PlayerSprite" method="_on_Timer2_timeout"]
+[connection signal="timeout" from="PlayerSprite/PlayerSparksTimer" to="PlayerSprite" method="_on_PlayerSparksTimer_timeout"]
+[connection signal="timeout" from="BoostTimer" to="." method="_on_BoostTimer_timeout"]
+[connection signal="timeout" from="DropTimer" to="." method="_on_DropTimer_timeout"]
+[connection signal="body_entered" from="SpikesSentinel" to="." method="_on_SpikesSentinel_body_entered"]

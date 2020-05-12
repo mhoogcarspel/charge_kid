@@ -1,2 +1,0 @@
-extends LabelBaseModel
-class_name LabelMessageScreen
