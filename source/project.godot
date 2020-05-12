@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Control",
 "class": "BaseControlsConfigMenu",
 "language": "GDScript",
-"path": "res://menu/settings/controls/menu.gd"
+"path": "res://ui/settings/controls/menu.gd"
 }, {
 "base": "Node2D",
 "class": "BaseLevel",
@@ -42,7 +42,7 @@ _global_script_classes=[ {
 "base": "MenuOption",
 "class": "ButtonModel",
 "language": "GDScript",
-"path": "res://menu/base-nodes/button-model.gd"
+"path": "res://ui/base-nodes/button-model.gd"
 }, {
 "base": "PlayerBaseState",
 "class": "DyingState",
@@ -87,17 +87,17 @@ _global_script_classes=[ {
 "base": "HBoxContainer",
 "class": "MenuCheckBox",
 "language": "GDScript",
-"path": "res://menu/base-nodes/checkbox.gd"
+"path": "res://ui/base-nodes/checkbox.gd"
 }, {
 "base": "MenuOption",
 "class": "MenuHSlider",
 "language": "GDScript",
-"path": "res://menu/base-nodes/slider.gd"
+"path": "res://ui/base-nodes/slider.gd"
 }, {
 "base": "Control",
 "class": "MenuOption",
 "language": "GDScript",
-"path": "res://menu/base-nodes/base-menu-option.gd"
+"path": "res://ui/base-nodes/base-menu-option.gd"
 }, {
 "base": "NinePatchRect",
 "class": "MessageBox",
@@ -229,6 +229,7 @@ config/windows_native_icon="res://assets/textures/icon.ico"
 
 [audio]
 
+default_bus_layout="res://common/default_bus_layout.tres"
 driver=""
 
 [debug]
