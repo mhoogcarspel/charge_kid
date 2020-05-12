@@ -1,11 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Menu/PauseMenu/PauseMenu.gd" type="Script" id=1]
 [ext_resource path="res://Menu/MenuPanel.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://Menu/LabelBaseModel.gd" type="Script" id=5]
+[ext_resource path="res://assets/fonts/press-start-2p.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Menu/ButtonsAndOptions/ButtonModel.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Menu/ReturnShortcut.tres" type="ShortCut" id=7]
+
+
+
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 4 )
@@ -70,7 +72,6 @@ custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "Pause Menu"
 align = 1
-script = ExtResource( 5 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer"]
 margin_top = 54.0

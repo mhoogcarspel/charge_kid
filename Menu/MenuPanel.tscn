@@ -1,6 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Assets/Spritesheets/MenuBorders.png" type="Texture" id=1]
+[ext_resource path="res://assets/textures/MenuBorders.png" type="Texture" id=1]
+
+
 
 [node name="MenuPanel" type="NinePatchRect"]
 margin_right = 244.0

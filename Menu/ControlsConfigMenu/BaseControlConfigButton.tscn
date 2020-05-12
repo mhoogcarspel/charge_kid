@@ -1,9 +1,13 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Menu/ButtonsAndOptions/ButtonModel.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/fonts/press-start-2p.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Menu/ControlsConfigMenu/BaseControlConfigButton.gd" type="Script" id=5]
 [ext_resource path="res://Menu/ControlsConfigMenu/ChangeKeyDialog.tscn" type="PackedScene" id=7]
+
+
+
+
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 2 )

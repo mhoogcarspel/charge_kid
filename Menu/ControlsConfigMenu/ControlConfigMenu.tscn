@@ -5,9 +5,9 @@
 [ext_resource path="res://Menu/ReturnShortcut.tres" type="ShortCut" id=3]
 [ext_resource path="res://Menu/MenuPanel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Menu/ControlsConfigMenu/Box.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Menu/ControlsConfigMenu/MenuSeparator.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Menu/ButtonsAndOptions/ButtonModel.tscn" type="PackedScene" id=7]
 
+[sub_resource type="StyleBoxEmpty" id=1]
 
 [node name="ControlConfigMenu" type="Control"]
 pause_mode = 2
@@ -28,17 +28,17 @@ anchor_bottom = 1.0
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
 margin_left = 364.0
-margin_top = 224.0
+margin_top = 218.0
 margin_right = 660.0
-margin_bottom = 376.0
+margin_bottom = 358.0
 
 [node name="MenuPanel" parent="CenterContainer/MarginContainer" instance=ExtResource( 4 )]
 margin_right = 296.0
-margin_bottom = 152.0
+margin_bottom = 140.0
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MarginContainer"]
 margin_right = 296.0
-margin_bottom = 152.0
+margin_bottom = 140.0
 custom_constants/margin_right = 12
 custom_constants/margin_top = 12
 custom_constants/margin_left = 12
@@ -48,7 +48,7 @@ custom_constants/margin_bottom = 12
 margin_left = 12.0
 margin_top = 12.0
 margin_right = 284.0
-margin_bottom = 140.0
+margin_bottom = 128.0
 
 [node name="Map" type="VBoxContainer" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer"]
 margin_right = 272.0
@@ -56,45 +56,39 @@ margin_right = 272.0
 [node name="OtherButtons" type="VBoxContainer" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer"]
 margin_top = 4.0
 margin_right = 272.0
-margin_bottom = 128.0
+margin_bottom = 116.0
 
 [node name="Box" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/OtherButtons" instance=ExtResource( 5 )]
 margin_right = 272.0
 alignment = 0
 
-[node name="HSeparator" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/OtherButtons" instance=ExtResource( 6 )]
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/OtherButtons"]
+margin_top = 26.0
 margin_right = 272.0
-
-[node name="HSeparator2" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/OtherButtons" instance=ExtResource( 6 )]
-margin_top = 34.0
-margin_right = 272.0
-margin_bottom = 38.0
-
-[node name="HSeparator3" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/OtherButtons" instance=ExtResource( 6 )]
-margin_top = 42.0
-margin_right = 272.0
-margin_bottom = 46.0
+margin_bottom = 34.0
+custom_styles/separator = SubResource( 1 )
+custom_constants/separation = 8
 
 [node name="Model" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/OtherButtons" instance=ExtResource( 7 )]
 margin_left = 130.0
-margin_top = 50.0
+margin_top = 38.0
 margin_right = 142.0
-margin_bottom = 72.0
+margin_bottom = 60.0
 focus_neighbour_bottom = NodePath("../Change")
 
 [node name="Change" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/OtherButtons" instance=ExtResource( 7 )]
 margin_left = 74.0
-margin_top = 76.0
+margin_top = 64.0
 margin_right = 198.0
-margin_bottom = 98.0
+margin_bottom = 86.0
 focus_neighbour_bottom = NodePath("../Return")
 text = "Change "
 
 [node name="Return" parent="CenterContainer/MarginContainer/MarginContainer/VBoxContainer/OtherButtons" instance=ExtResource( 7 )]
 margin_left = 82.0
-margin_top = 102.0
+margin_top = 90.0
 margin_right = 190.0
-margin_bottom = 124.0
+margin_bottom = 112.0
 focus_neighbour_top = NodePath("../Change")
 shortcut = ExtResource( 3 )
 text = "Return"

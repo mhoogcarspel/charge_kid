@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/fuelPickup0.ogg-a3f6c9a7a1794590ba0d31cb510ab3ad.oggstr"
+
+[deps]
+
+source_file="res://assets/sound-effects/Fuel Pickup/fuelPickup0.ogg"
+dest_files=[ "res://.import/fuelPickup0.ogg-a3f6c9a7a1794590ba0d31cb510ab3ad.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

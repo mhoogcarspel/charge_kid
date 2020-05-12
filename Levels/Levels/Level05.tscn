@@ -6,13 +6,14 @@
 [ext_resource path="res://Levels/Tilemaps/Blocks.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/Tilemaps/Platforms.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/Tilemaps/Spikes.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Actors/Player/Player.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Actors/Interactables/FuelTank/FuelTank.tscn" type="PackedScene" id=8]
+[ext_resource path="res://actors/Player/Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://actors/Interactables/FuelTank/FuelTank.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Levels/Messages/HoldMessage.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Levels/AuxiliaryTools/CameraLimiter.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Levels/AuxiliaryTools/FinishLine.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Levels/Levels/Level06.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Levels/Messages/HoldAgainMessage.tscn" type="PackedScene" id=14]
+
 
 [node name="Level04" instance=ExtResource( 1 )]
 level = 5

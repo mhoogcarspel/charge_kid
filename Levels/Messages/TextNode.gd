@@ -1,9 +1,5 @@
 extends Label
 
-
-
-
-
 func write(message: String) -> void:
 	var time = message.length()*0.03
 	percent_visible = 0

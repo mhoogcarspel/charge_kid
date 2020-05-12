@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Menu/SoundConfigMenu/SoundConfigMenu.gd" type="Script" id=1]
 [ext_resource path="res://Menu/MenuPanel.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Menu/ControlsConfigMenu/MenuSeparator.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Menu/LabelBaseModel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/fonts/press-start-2p.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Menu/ButtonsAndOptions/MenuHSlider.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Menu/SoundConfigMenu/BGMSlider.gd" type="Script" id=6]
 [ext_resource path="res://Menu/ButtonsAndOptions/ButtonModel.tscn" type="PackedScene" id=7]
@@ -11,18 +10,14 @@
 [ext_resource path="res://Menu/SoundConfigMenu/SFXSlider.gd" type="Script" id=9]
 [ext_resource path="res://Menu/SoundConfigMenu/Default.gd" type="Script" id=10]
 
-[sub_resource type="DynamicFontData" id=1]
-font_path = "res://Assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf"
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=2]
-font_data = SubResource( 1 )
-
-[sub_resource type="DynamicFontData" id=3]
-font_path = "res://Assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf"
-
-[sub_resource type="DynamicFont" id=4]
 resource_local_to_scene = true
-font_data = SubResource( 3 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxEmpty" id=3]
 
 [node name="SoundConfigMenu" type="Control"]
 pause_mode = 2
@@ -70,12 +65,16 @@ grow_vertical = 2
 custom_constants/separation = 38
 alignment = 1
 
-[node name="LabelBaseModel" parent="CenterContainer/MarginContainer/MarginContainer/Options" instance=ExtResource( 4 )]
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/MarginContainer/Options"]
 margin_right = 384.0
 margin_bottom = 16.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "Audio"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Buttons" type="VBoxContainer" parent="CenterContainer/MarginContainer/MarginContainer/Options"]
 margin_top = 54.0
@@ -146,7 +145,7 @@ script = ExtResource( 10 )
 margin_top = 3.0
 margin_right = 256.0
 margin_bottom = 19.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "Restore Defaults"
 __meta__ = {
@@ -162,10 +161,11 @@ focus_neighbour_bottom = NodePath("../../Return")
 size_flags_horizontal = 3
 align = 0
 
-[node name="HSeparator" parent="CenterContainer/MarginContainer/MarginContainer/Options/Buttons" instance=ExtResource( 3 )]
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/MarginContainer/MarginContainer/Options/Buttons"]
 margin_top = 66.0
 margin_right = 384.0
 margin_bottom = 74.0
+custom_styles/separator = SubResource( 3 )
 custom_constants/separation = 8
 
 [node name="Return" parent="CenterContainer/MarginContainer/MarginContainer/Options/Buttons" instance=ExtResource( 7 )]

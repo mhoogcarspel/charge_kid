@@ -6,12 +6,12 @@ onready var pause_menu: bool
 onready var loaded: bool = false
 
 onready var windowed_button = $CenterContainer/Margin/Margin/Menu/Options/Windowed/ButtonModel
-onready var windowed_label = $CenterContainer/Margin/Margin/Menu/Options/Windowed/LabelBaseModel2
-onready var windowed_size_label = $CenterContainer/Margin/Margin/Menu/Options/Windowed/LabelBaseModel
+onready var windowed_label = $CenterContainer/Margin/Margin/Menu/Options/Windowed/Windowed
+onready var windowed_size_label = $CenterContainer/Margin/Margin/Menu/Options/Windowed/Resolution
 onready var fullscreen_button = $CenterContainer/Margin/Margin/Menu/Options/Fullscreen/CheckBox
-onready var fullscreen_label = $CenterContainer/Margin/Margin/Menu/Options/Fullscreen/LabelBaseModel
+onready var fullscreen_label = $CenterContainer/Margin/Margin/Menu/Options/Fullscreen/Label
 onready var borderless_window_button = $CenterContainer/Margin/Margin/Menu/Options/BorderlessWindow/CheckBox
-onready var borderless_window_label = $CenterContainer/Margin/Margin/Menu/Options/BorderlessWindow/LabelBaseModel
+onready var borderless_window_label = $CenterContainer/Margin/Margin/Menu/Options/BorderlessWindow/Label
 onready var return_button = $CenterContainer/Margin/Margin/Menu/Return
 
 # These screen sizes are 16:9 aspect ratio, the game's aspect ratio.
@@ -112,7 +112,7 @@ func _on_BorderlessWindow_toggle(button_pressed):
 
 func _on_Return_pressed():
 	if not pause_menu:
-		main.back_to_start()
+		main.change_scene(main.settings_menu)
 	else:
 		get_parent().pause_mode = PAUSE_MODE_PROCESS
 		get_parent().self_show()

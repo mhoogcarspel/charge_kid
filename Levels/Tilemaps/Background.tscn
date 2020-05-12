@@ -1,8 +1,10 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Assets/Spritesheets/Backgrounds.png" type="Texture" id=1]
-[ext_resource path="res://Assets/Spritesheets/Wires.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Spritesheets/Tubes.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/Backgrounds.png" type="Texture" id=1]
+[ext_resource path="res://assets/textures/Wires.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/Tubes.png" type="Texture" id=3]
+
+
 
 
 

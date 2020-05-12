@@ -1,7 +1,11 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/fonts/press-start-2p.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Menu/SpeedrunScreens/SpeedrunFinish.gd" type="Script" id=2]
+
+
+
+
 
 [sub_resource type="DynamicFont" id=1]
 resource_local_to_scene = true

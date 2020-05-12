@@ -1,4 +1,4 @@
-extends LabelBaseModel
+extends Label
 
 func _ready():
 	self.set("modulate", Color(1,1,1,0))

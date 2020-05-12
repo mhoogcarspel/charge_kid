@@ -5,8 +5,9 @@
 [ext_resource path="res://Levels/Tilemaps/LevelLimits.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/Messages/TextNode.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/AuxiliaryTools/PlayerCamera.gd" type="Script" id=5]
-[ext_resource path="res://Actors/Player/Player.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Assets/ShaderEffects/Tear/Tear.tscn" type="PackedScene" id=7]
+[ext_resource path="res://actors/Player/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/shader-effects/Tear/Tear.tscn" type="PackedScene" id=7]
+
 
 [node name="BaseLevel" type="Node2D" groups=[
 "level",

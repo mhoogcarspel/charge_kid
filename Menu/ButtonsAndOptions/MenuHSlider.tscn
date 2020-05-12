@@ -1,21 +1,19 @@
 [gd_scene load_steps=9 format=2]
 
+[ext_resource path="res://assets/fonts/press-start-2p.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Menu/ButtonsAndOptions/MenuHSlider.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Spritesheets/Grabber.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Spritesheets/SelectedGrabber.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Spritesheets/Slider.png" type="Texture" id=5]
+[ext_resource path="res://assets/textures/Grabber.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/SelectedGrabber.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/Slider.png" type="Texture" id=5]
 
-[sub_resource type="DynamicFontData" id=1]
-font_path = "res://Assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf"
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=2]
-font_data = SubResource( 1 )
-
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 9, 4 )
 
-[sub_resource type="StyleBoxEmpty" id=4]
+[sub_resource type="StyleBoxEmpty" id=3]
 
 [node name="ButtonModel" type="HBoxContainer"]
 margin_left = -97.0
@@ -38,7 +36,7 @@ margin_top = 3.0
 margin_right = 80.0
 margin_bottom = 19.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "Label"
 __meta__ = {
@@ -58,8 +56,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 1
 custom_icons/grabber_highlight = ExtResource( 4 )
 custom_icons/grabber = ExtResource( 3 )
-custom_styles/slider = SubResource( 3 )
-custom_styles/grabber_area = SubResource( 4 )
+custom_styles/slider = SubResource( 2 )
+custom_styles/grabber_area = SubResource( 3 )
 max_value = 0.7
 step = 0.05
 value = 0.5
@@ -72,7 +70,7 @@ __meta__ = {
 margin_top = 3.0
 margin_right = 128.0
 margin_bottom = 19.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "        "
 __meta__ = {

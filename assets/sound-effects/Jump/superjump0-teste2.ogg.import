@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/superjump0-teste2.ogg-8ae7158d56cb69f490faaf059ef28838.oggstr"
+
+[deps]
+
+source_file="res://assets/sound-effects/Jump/superjump0-teste2.ogg"
+dest_files=[ "res://.import/superjump0-teste2.ogg-8ae7158d56cb69f490faaf059ef28838.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

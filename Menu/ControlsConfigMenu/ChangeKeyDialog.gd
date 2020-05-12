@@ -47,15 +47,15 @@ func _input(event):
 		configured = true
 
 func error_message_1() -> void:
-	$LabelBaseModel.text = "Button already mapped,\n try another one."
+	$Label.text = "Button already mapped,\n try another one."
 	error = true
 	$Timer.start()
 
 func error_message_2() -> void:
 	if type == InputEventKey:
-		$LabelBaseModel.text = "Non keyboard button pressed,\n try another one."
+		$Labell.text = "Non keyboard button pressed,\n try another one."
 	elif type == InputEventJoypadButton:
-		$LabelBaseModel.text = "Non controller button pressed,\n try another one."
+		$Label.text = "Non controller button pressed,\n try another one."
 	error = true
 	$Timer.start()
 

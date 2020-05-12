@@ -1,8 +1,12 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Menu/FinalScreen/FinalScreen.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Fonts/codeman38_press-start-2p/PressStart2P.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/fonts/press-start-2p.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Menu/Credits/Credits.tscn" type="PackedScene" id=3]
+
+
+
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 48

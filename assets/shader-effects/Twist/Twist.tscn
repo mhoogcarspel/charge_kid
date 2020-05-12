@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/shader-effects/Twist/Twist.gd" type="Script" id=1]
+[ext_resource path="res://assets/textures/blank.png" type="Texture" id=2]
+
+
+
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec2 scale;
+uniform float radius;
+uniform float torsion;
+
+vec2 rotate (vec2 vector, float angle)  {
+	return vec2(vector.x*cos(angle) - vector.y*sin(angle),
+				vector.y*cos(angle) + vector.x*sin(angle));
+}
+
+void fragment() {
+	float PI = 3.14159265359;
+	vec2 origin = vec2(0.5);
+	
+	vec2 pos = (UV - origin)*scale;
+	float x = clamp(length(pos), 0.0, radius)/radius;
+	
+	if (x < 1.0) {
+		vec2 new_pos = rotate(pos, TIME);
+		vec2 uv_mod = (new_pos - pos)/scale;
+		COLOR = texture(SCREEN_TEXTURE, SCREEN_UV + uv_mod);
+	}
+	else {
+		COLOR = texture(SCREEN_TEXTURE, SCREEN_UV);
+	}
+}
+
+"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/scale = null
+shader_param/radius = null
+shader_param/torsion = null
+
+[node name="Twist" type="Node2D"]
+script = ExtResource( 1 )
+radius = 64.0
+torsion = 0.2
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+copy_mode = 2
+
+[node name="Shader" type="Sprite" parent="."]
+material = SubResource( 2 )
+texture = ExtResource( 2 )
