@@ -144,6 +144,3 @@ func sfx_point_on_center() -> void:
 	var x_center: float = (column_number*16 + column_gap*(column_number - 1))/2
 	var y_center: float = (gate_height*16)/2
 	$SFX.position = Vector2(x_center, y_center)
-
-func _process(delta):
-	print($SFX/AudioStreamPlayer2D.is_playing())
