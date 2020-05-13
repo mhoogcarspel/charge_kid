@@ -102,7 +102,7 @@ func _process(delta):
 	
 	# Unpausing
 	if Input.is_action_just_pressed("ui_pause"):
-		if not get_tree().get_nodes_in_group("player").empty() and get_tree().paused:
+		if not get_tree().get_nodes_in_group("player").empty() and get_tree().paused and not get_tree().get_nodes_in_group("pause_menu").empty():
 			if $PauseTimer.is_stopped():
 				get_tree().paused = false
 				get_tree().get_nodes_in_group("pause_menu")[0].queue_free()
