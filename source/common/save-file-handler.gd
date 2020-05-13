@@ -43,6 +43,7 @@ func load_progress() -> void:
 				file.close()
 			if progress["levels"] < levels.size() and progress["end"]:
 				progress["end"] = false
+				progress["levels"] += 1
 
 func erase_progress() -> void:
 	if main.enable_save:
