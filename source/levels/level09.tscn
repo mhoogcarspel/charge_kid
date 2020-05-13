@@ -13,35 +13,6 @@
 [ext_resource path="res://levels/level10.tscn" type="PackedScene" id=11]
 [ext_resource path="res://levels/base-nodes/camera-limiter/camera-limiter.tscn" type="PackedScene" id=12]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 [node name="Level08" instance=ExtResource( 1 )]
 level = 9
 bgm_2 = true

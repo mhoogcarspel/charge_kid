@@ -23,7 +23,7 @@ func set_column_number(new_value : int) -> void:
 	column_number = new_value
 	if Engine.editor_hint:
 		for column_cell in self.get_children():
-			if column_cell.name != "ColumnCell":
+			if column_cell.name != "ColumnCell" and column_cell.name != "SFX":
 				self.remove_child(column_cell)
 		for i in range(1, column_number):
 			var new_column = $ColumnCell.duplicate()
@@ -33,9 +33,11 @@ func set_column_number(new_value : int) -> void:
 func initial_value(new_value : bool) -> void:
 	active = new_value
 	for column_cell in self.get_children():
-		for cell in column_cell.get_children():
-			if cell.name != "Sparks":
-				cell.set_active( new_value )
+		if column_cell.name != "SFX":
+			print(column_cell.name)
+			for cell in column_cell.get_children():
+				if cell.name != "Sparks":
+					cell.set_active( new_value )
 
 func initialize_gate(new_value: int) -> void:
 	if new_value < 1:
@@ -43,18 +45,19 @@ func initialize_gate(new_value: int) -> void:
 	gate_height = new_value
 	if Engine.editor_hint:
 		for column_cell in self.get_children():
-			column_cell.get_node("Sparks/BottomEnd").position.y = gate_height*16
-			var source_node
-			source_node = column_cell.get_node("EnergyGateCell")
-			column_cell.get_node("Sparks/Hitbox/CollisionShape2D").shape.extents = Vector2(2,gate_height*8 + 8)
-			column_cell.get_node("Sparks/Hitbox/CollisionShape2D").position.y = gate_height*8 - 8
-			for child in column_cell.get_children():
-				if child.name != "EnergyGateCell" and child.name != "Sparks":
-					column_cell.remove_child(child)
-			for i in range(1, gate_height):
-				var new_cell = source_node.duplicate()
-				new_cell.position.y = i*16
-				column_cell.add_child(new_cell)
+			if column_cell.name != "SFX":
+				column_cell.get_node("Sparks/BottomEnd").position.y = gate_height*16
+				var source_node
+				source_node = column_cell.get_node("EnergyGateCell")
+				column_cell.get_node("Sparks/Hitbox/CollisionShape2D").shape.extents = Vector2(2,gate_height*8 + 8)
+				column_cell.get_node("Sparks/Hitbox/CollisionShape2D").position.y = gate_height*8 - 8
+				for child in column_cell.get_children():
+					if child.name != "EnergyGateCell" and child.name != "Sparks":
+						column_cell.remove_child(child)
+				for i in range(1, gate_height):
+					var new_cell = source_node.duplicate()
+					new_cell.position.y = i*16
+					column_cell.add_child(new_cell)
 
 func initial_position(new_value: String) -> void:
 	if Engine.editor_hint:
@@ -74,10 +77,14 @@ func add_cells() -> void:
 		self.add_child(new_column)
 	var source_node = get_node("ColumnCell/EnergyGateCell")
 	for column_cell in self.get_children():
-		for i in range(1, gate_height):
-			var new_cell = source_node.duplicate()
-			new_cell.position.y = i*16
-			column_cell.add_child(new_cell)
+		if column_cell.name != "SFX":
+			for i in range(1, gate_height):
+				var new_cell = source_node.duplicate()
+				new_cell.position.y = i*16
+				column_cell.add_child(new_cell)
+				var hitbox:Area2D = column_cell.get_node("Sparks/Hitbox")
+				hitbox.connect("body_entered", self, "on_hitbox_body_entered")
+				hitbox.connect("area_entered", self, "on_hitbox_area_entered")
 
 func activate() -> void:
 	self.active = not active
@@ -93,9 +100,12 @@ func is_active() -> bool:
 
 func _ready():
 	add_cells()
+	sfx_point_on_center()
+	desynchronize_sfx()
 	for column_cell in self.get_children():
-		column_cell.get_node("Sparks/Hitbox/CollisionShape2D").shape.extents = Vector2(2,gate_height*8 + 8)
-		column_cell.get_node("Sparks/Hitbox/CollisionShape2D").position.y = gate_height*8 - 8
+		if column_cell.name != "SFX":
+			column_cell.get_node("Sparks/Hitbox/CollisionShape2D").shape.extents = Vector2(2,gate_height*8 + 8)
+			column_cell.get_node("Sparks/Hitbox/CollisionShape2D").position.y = gate_height*8 - 8
 
 
 func on_hitbox_body_entered(body):
@@ -115,6 +125,23 @@ func spawn_particles(spawn_point: Vector2) -> void:
 	particles.position = spawn_point
 	level.add_child(particles)
 
+func desynchronize_sfx() -> void:
+	var number_of_sound_sources = min(column_number, 4)
+	var alternate: int = 1
+	var j = 1
+	for i in range(1, number_of_sound_sources):
+		if i % 2 == 0:
+			j += 1
+		var duplicate = $SFX/AudioStreamPlayer2D.duplicate()
+		$SFX.add_child(duplicate)
+		duplicate.position.x += alternate*8*j
+	if not Engine.editor_hint:
+		for audio_stream in get_node("SFX").get_children():
+			audio_stream.play(randf()*0.7)
 
+func sfx_point_on_center() -> void:
+	var x_center: float = (column_number*16 + column_gap*(column_number - 1))/2
+	var y_center: float = (gate_height*16)/2
+	$SFX.position = Vector2(x_center, y_center)
 
 

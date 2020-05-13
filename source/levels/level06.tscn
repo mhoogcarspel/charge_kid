@@ -191,7 +191,6 @@ tile_data = PoolIntArray( 131067, 16, 0 )
 [node name="EnergyWire2" parent="." index="15" instance=ExtResource( 13 )]
 material = SubResource( 3 )
 position = Vector2( 824, 248 )
-active = false
 
 [node name="Wire" parent="EnergyWire2" index="0"]
 tile_data = PoolIntArray( -65538, 0, 393216, -65537, 0, 262146, -131072, 0, 262144, -131071, 0, 2, -11, 0, 393216, -10, 0, 327680, -9, 0, 327680, -8, 0, 327680, -7, 0, 327680, -6, 0, 327680, -5, 0, 327680, -4, 0, 327680, -3, 0, 327680, -2, 0, 524290, 65525, 0, 196608, 131061, 0, 131072 )
@@ -207,7 +206,6 @@ tile_data = PoolIntArray( 983088, 0, 393218, 1048624, 0, 65538, 1114160, 0, 6553
 [node name="EnergyWire4" parent="." index="17" instance=ExtResource( 13 )]
 material = SubResource( 5 )
 position = Vector2( 856, 240 )
-active = false
 
 [node name="Wire" parent="EnergyWire4" index="0"]
 tile_data = PoolIntArray( -1, 0, 65538, 65535, 0, 65538, 131071, 0, 131074 )
@@ -219,7 +217,6 @@ nodes = [ NodePath("../EnergyWire5"), NodePath("../EnergyWire7"), NodePath("../G
 [node name="EnergyWire5" parent="." index="19" instance=ExtResource( 13 )]
 material = SubResource( 6 )
 position = Vector2( 712, 136 )
-active = false
 
 [node name="Wire" parent="EnergyWire5" index="0"]
 tile_data = PoolIntArray( 131070, 0, 196608, 196606, 0, 196608, 262142, 0, 196608, 327678, 0, 131072, 327679, 0, 327680 )
@@ -227,7 +224,6 @@ tile_data = PoolIntArray( 131070, 0, 196608, 196606, 0, 196608, 262142, 0, 19660
 [node name="EnergyWire7" parent="." index="20" instance=ExtResource( 13 )]
 material = SubResource( 7 )
 position = Vector2( 712, 128 )
-active = false
 
 [node name="Wire" parent="EnergyWire7" index="0"]
 tile_data = PoolIntArray( -65538, 0, 0, -2, 0, 655360, 65534, 0, 655360, 131070, 0, 655360 )

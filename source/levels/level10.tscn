@@ -15,7 +15,6 @@
 [ext_resource path="res://levels/base-nodes/messages/momentum.tscn" type="PackedScene" id=13]
 [ext_resource path="res://levels/base-nodes/messages/lv10-unique.gd" type="Script" id=14]
 
-
 [node name="BaseLevel" instance=ExtResource( 1 )]
 level = 10
 bgm_2 = true

@@ -12,31 +12,6 @@
 [ext_resource path="res://levels/base-nodes/tilemaps/parallax.gd" type="Script" id=10]
 [ext_resource path="res://levels/base-nodes/camera-limiter/camera-limiter.tscn" type="PackedScene" id=11]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 [node name="Level10" instance=ExtResource( 1 )]
 level = 11
 bgm_2 = true
