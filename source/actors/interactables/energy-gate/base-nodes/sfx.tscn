@@ -7,3 +7,4 @@ position = Vector2( 8, 32 )
 
 [node name="AudioStreamPlayer2D" parent="." instance=ExtResource( 2 )]
 position = Vector2( -8.51405, -10.5574 )
+volume_db = 5.0

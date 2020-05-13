@@ -15,7 +15,6 @@ func set_column_gap(new_value: int) -> void:
 	column_gap = new_value
 	if Engine.editor_hint:
 		set_column_number(column_number)
-	pass
 
 func set_column_number(new_value : int) -> void:
 	if new_value < 1:
@@ -78,13 +77,13 @@ func add_cells() -> void:
 	var source_node = get_node("ColumnCell/EnergyGateCell")
 	for column_cell in self.get_children():
 		if column_cell.name != "SFX":
+			var hitbox:Area2D = column_cell.get_node("Sparks/Hitbox")
+			hitbox.connect("body_entered", self, "on_hitbox_body_entered")
+			hitbox.connect("area_entered", self, "on_hitbox_area_entered")
 			for i in range(1, gate_height):
 				var new_cell = source_node.duplicate()
 				new_cell.position.y = i*16
 				column_cell.add_child(new_cell)
-				var hitbox:Area2D = column_cell.get_node("Sparks/Hitbox")
-				hitbox.connect("body_entered", self, "on_hitbox_body_entered")
-				hitbox.connect("area_entered", self, "on_hitbox_area_entered")
 
 func activate() -> void:
 	self.active = not active
@@ -126,7 +125,7 @@ func spawn_particles(spawn_point: Vector2) -> void:
 	level.add_child(particles)
 
 func desynchronize_sfx() -> void:
-	var number_of_sound_sources = min(column_number, 4)
+	var number_of_sound_sources = min(column_number, 3)
 	var alternate: int = 1
 	var j = 1
 	for i in range(1, number_of_sound_sources):
@@ -136,12 +135,15 @@ func desynchronize_sfx() -> void:
 		$SFX.add_child(duplicate)
 		duplicate.position.x += alternate*8*j
 	if not Engine.editor_hint:
+		var i = 1
 		for audio_stream in get_node("SFX").get_children():
-			audio_stream.play(randf()*0.7)
+			audio_stream.play(0.05*(i-1))
+			i+=1
 
 func sfx_point_on_center() -> void:
 	var x_center: float = (column_number*16 + column_gap*(column_number - 1))/2
 	var y_center: float = (gate_height*16)/2
 	$SFX.position = Vector2(x_center, y_center)
 
-
+func _process(delta):
+	print($SFX/AudioStreamPlayer2D.is_playing())
