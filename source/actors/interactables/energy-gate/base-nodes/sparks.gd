@@ -1,7 +1,7 @@
 extends CPUParticles2D
 
 
-onready var gate = get_parent().get_parent()
+onready var gate = get_parent().get_parent().get_parent()
 
 func _ready():
 	emission_rect_extents.y = gate.gate_height*8

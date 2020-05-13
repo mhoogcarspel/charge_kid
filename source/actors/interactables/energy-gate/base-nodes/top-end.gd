@@ -2,7 +2,7 @@ extends StaticBody2D
 
 
 
-onready var gate = get_parent().get_parent()
+onready var gate = get_parent().get_parent().get_parent()
 
 func _process(delta):
 	if not Engine.editor_hint:

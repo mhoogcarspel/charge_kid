@@ -6,20 +6,6 @@
 [ext_resource path="res://actors/interactables/energy-gate/base-nodes/sprite.gd" type="Script" id=4]
 [ext_resource path="res://assets/sound-effects/gate/energy-gate.ogg" type="AudioStream" id=5]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
 
@@ -29,6 +15,7 @@ script = ExtResource( 1 )
 hit_particles = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 position = Vector2( -1, 0 )
 texture = ExtResource( 3 )
 hframes = 3
@@ -43,7 +30,6 @@ one_shot = true
 autostart = true
 
 [node name="CheckpointBlocker" type="Area2D" parent="."]
-editor/display_folded = true
 visible = false
 collision_layer = 8
 collision_mask = 8

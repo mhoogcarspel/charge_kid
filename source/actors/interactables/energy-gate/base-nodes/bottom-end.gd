@@ -2,7 +2,7 @@ extends StaticBody2D
 
 
 
-onready var gate = get_parent().get_parent()
+onready var gate = get_parent().get_parent().get_parent()
 
 func _ready():
 	position.y = gate.gate_height*16

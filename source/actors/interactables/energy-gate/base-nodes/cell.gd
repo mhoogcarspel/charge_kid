@@ -48,7 +48,7 @@ func is_active():
 func _ready():
 	if not Engine.editor_hint:
 		ready = true
-		set_active(get_parent().is_active())
+		set_active(get_parent().get_parent().is_active())
 		$Sprite.frame = randi()%3
 		$Sprite/Timer.start()
 

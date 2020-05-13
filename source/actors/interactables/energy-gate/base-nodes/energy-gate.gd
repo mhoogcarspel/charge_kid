@@ -2,33 +2,59 @@ tool
 extends Node
 
 
-
+export (int) var column_number setget set_column_number
+export (int) var column_gap setget set_column_gap
 export (int) var gate_height setget initialize_gate
 export (bool) var active setget initial_value
 export (String, "Vertical", "Horizontal") var direction setget initial_position
 export (PackedScene) var hit_particles
 
+func set_column_gap(new_value: int) -> void:
+	if new_value < 0:
+		new_value = 0
+	column_gap = new_value
+	if Engine.editor_hint:
+		set_column_number(column_number)
+	pass
+
+func set_column_number(new_value : int) -> void:
+	if new_value < 1:
+		new_value = 1
+	column_number = new_value
+	if Engine.editor_hint:
+		for column_cell in self.get_children():
+			if column_cell.name != "ColumnCell":
+				self.remove_child(column_cell)
+		for i in range(1, column_number):
+			var new_column = $ColumnCell.duplicate()
+			new_column.position.x = i*16 + column_gap*i
+			self.add_child(new_column)
+
 func initial_value(new_value : bool) -> void:
 	active = new_value
-	for cell in self.get_children():
-		if cell.name != "Sparks":
-			cell.active = new_value
+	for column_cell in self.get_children():
+		for cell in column_cell.get_children():
+			if cell.name != "Sparks":
+				cell.set_active( new_value )
 
 func initialize_gate(new_value: int) -> void:
+	if new_value < 1:
+		new_value = 1
 	gate_height = new_value
 	if Engine.editor_hint:
-		get_node("Sparks/BottomEnd").position.y = gate_height*16
-		var source_node
-		source_node = get_node("EnergyGateCell")
-		$Sparks/Hitbox/CollisionShape2D.shape.extents = Vector2(2,gate_height*8 + 8)
-		$Sparks/Hitbox/CollisionShape2D.position.y = gate_height*8 - 8
-		for child in self.get_children():
-			if child.name != "EnergyGateCell" and child.name != "Sparks":
-				self.remove_child(child)
-		for i in range(1, gate_height):
-			var new_cell = source_node.duplicate()
-			new_cell.position.y = i*16
-			self.add_child(new_cell)
+		for column_cell in self.get_children():
+			column_cell.get_node("Sparks/BottomEnd").position.y = gate_height*16
+			var source_node
+			source_node = column_cell.get_node("EnergyGateCell")
+			column_cell.get_node("Sparks/Hitbox/CollisionShape2D").shape.extents = Vector2(2,gate_height*8 + 8)
+			column_cell.get_node("Sparks/Hitbox/CollisionShape2D").position.y = gate_height*8 - 8
+			for child in column_cell.get_children():
+				if child.name != "EnergyGateCell" and child.name != "Sparks":
+					column_cell.remove_child(child)
+			for i in range(1, gate_height):
+				var new_cell = source_node.duplicate()
+				new_cell.position.y = i*16
+				column_cell.add_child(new_cell)
 
 func initial_position(new_value: String) -> void:
 	if Engine.editor_hint:
@@ -42,11 +68,16 @@ func initial_position(new_value: String) -> void:
 
 
 func add_cells() -> void:
-	var source_node = get_node("EnergyGateCell")
-	for i in range(1, gate_height):
+	for i in range(1, column_number):
+		var new_column = $ColumnCell.duplicate()
+		new_column.position.x = i*16 + column_gap*i
+		self.add_child(new_column)
+	var source_node = get_node("ColumnCell/EnergyGateCell")
+	for column_cell in self.get_children():
+		for i in range(1, gate_height):
 			var new_cell = source_node.duplicate()
 			new_cell.position.y = i*16
-			self.add_child(new_cell)
+			column_cell.add_child(new_cell)
 
 func activate() -> void:
 	self.active = not active
@@ -62,8 +93,9 @@ func is_active() -> bool:
 
 func _ready():
 	add_cells()
-	$Sparks/Hitbox/CollisionShape2D.shape.extents = Vector2(2,gate_height*8 + 8)
-	$Sparks/Hitbox/CollisionShape2D.position.y = gate_height*8 - 8
+	for column_cell in self.get_children():
+		column_cell.get_node("Sparks/Hitbox/CollisionShape2D").shape.extents = Vector2(2,gate_height*8 + 8)
+		column_cell.get_node("Sparks/Hitbox/CollisionShape2D").position.y = gate_height*8 - 8
 
 
 func on_hitbox_body_entered(body):
