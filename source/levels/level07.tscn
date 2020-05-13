@@ -12,32 +12,7 @@
 [ext_resource path="res://levels/base-nodes/camera-limiter/camera-limiter.tscn" type="PackedScene" id=12]
 [ext_resource path="res://levels/base-nodes/tilemaps/spikes.tscn" type="PackedScene" id=13]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-[node name="Level06" instance=ExtResource( 1 )]
+[node name="BaseLevel" instance=ExtResource( 1 )]
 level = 7
 bgm_2 = true
 bgm_3 = true

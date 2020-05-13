@@ -9,39 +9,12 @@
 [ext_resource path="res://actors/player/player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://actors/interactables/charge-tank/charge-tank.tscn" type="PackedScene" id=8]
 [ext_resource path="res://levels/base-nodes/camera-limiter/camera-limiter.tscn" type="PackedScene" id=9]
-[ext_resource path="res://levels/base-nodes/messages/lv2-unique.gd" type="Script" id=10]
+[ext_resource path="res://levels/base-nodes/messages/lv02-unique.gd" type="Script" id=10]
 [ext_resource path="res://levels/base-nodes/finish-line/finish-line.tscn" type="PackedScene" id=11]
 [ext_resource path="res://levels/level03.tscn" type="PackedScene" id=12]
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-[node name="Level02" instance=ExtResource( 1 )]
+[node name="BaseLevel" instance=ExtResource( 1 )]
 level = 2
 bgm_1 = true
 
@@ -148,7 +121,7 @@ polygon = PoolVector2Array( 224, 272, -192, 272, -192, -96, 224, -96 )
 [node name="CollisionPolygon2D" parent="CameraLimiter" index="1"]
 polygon = PoolVector2Array( -168, -96, 192, -96, 192, 272, -168, 272 )
 
-[node name="Message" type="Area2D" parent="." index="15"]
+[node name="Lv02Unique" type="Area2D" parent="." index="15"]
 visible = false
 position = Vector2( 416, 56 )
 script = ExtResource( 10 )
@@ -158,10 +131,10 @@ __meta__ = {
 message = "Skip it all!"
 message_time = 4.0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Message" index="0"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lv02Unique" index="0"]
 polygon = PoolVector2Array( -40, 24, -40, -40, 32, -40, 32, 24 )
 
-[node name="Timer" type="Timer" parent="Message" index="1"]
+[node name="Timer" type="Timer" parent="Lv02Unique" index="1"]
 wait_time = 2.0
 one_shot = true
 
@@ -169,7 +142,7 @@ one_shot = true
 visible = false
 position = Vector2( 1016, 104 )
 next_stage = ExtResource( 12 )
-[connection signal="body_entered" from="Message" to="Message" method="_on_body_entered"]
+[connection signal="body_entered" from="Lv02Unique" to="Lv02Unique" method="_on_body_entered"]
 
 [editable path="Background"]
 

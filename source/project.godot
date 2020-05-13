@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Control",
 "class": "BaseControlsConfigMenu",
 "language": "GDScript",
-"path": "res://ui/settings/controls/menu.gd"
+"path": "res://ui/settings/controls/controls-settings.gd"
 }, {
 "base": "Node2D",
 "class": "BaseLevel",

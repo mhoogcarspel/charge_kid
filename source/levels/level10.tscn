@@ -13,42 +13,10 @@
 [ext_resource path="res://levels/level11.tscn" type="PackedScene" id=11]
 [ext_resource path="res://levels/base-nodes/camera-limiter/camera-limiter.tscn" type="PackedScene" id=12]
 [ext_resource path="res://levels/base-nodes/messages/momentum.tscn" type="PackedScene" id=13]
-[ext_resource path="res://levels/base-nodes/messages/lv9-unique.gd" type="Script" id=14]
+[ext_resource path="res://levels/base-nodes/messages/lv10-unique.gd" type="Script" id=14]
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-[node name="Level09" instance=ExtResource( 1 )]
+[node name="BaseLevel" instance=ExtResource( 1 )]
 level = 10
 bgm_2 = true
 bgm_3 = true
@@ -192,24 +160,24 @@ margin_top = 48.0
 margin_right = 0.0
 margin_bottom = 62.0
 
-[node name="Lv9SpMessage" type="Area2D" parent="." index="17"]
+[node name="Lv10SpMessage" type="Area2D" parent="." index="17"]
 visible = false
 position = Vector2( 384, 40 )
 script = ExtResource( 14 )
 message = "Second charge skip!"
 message_time = 4.0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lv9SpMessage" index="0"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lv10SpMessage" index="0"]
 position = Vector2( -8, 16 )
 polygon = PoolVector2Array( 0, 8, 0, -8, 32, -8, 32, 8 )
 
-[node name="SubArea" type="Area2D" parent="Lv9SpMessage" index="1"]
+[node name="SubArea" type="Area2D" parent="Lv10SpMessage" index="1"]
 position = Vector2( -168, 64 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lv9SpMessage/SubArea" index="0"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lv10SpMessage/SubArea" index="0"]
 polygon = PoolVector2Array( 24, 8, 24, -56, -56, -56, -56, 8 )
-[connection signal="body_entered" from="Lv9SpMessage" to="Lv9SpMessage" method="on_body_entered"]
-[connection signal="body_exited" from="Lv9SpMessage/SubArea" to="Lv9SpMessage" method="_on_SubArea_body_exited"]
+[connection signal="body_entered" from="Lv10SpMessage" to="Lv10SpMessage" method="on_body_entered"]
+[connection signal="body_exited" from="Lv10SpMessage/SubArea" to="Lv10SpMessage" method="_on_SubArea_body_exited"]
 
 [editable path="Background"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=2]
 
-[ext_resource path="res://ui/starting-screen/menu.gd" type="Script" id=1]
+[ext_resource path="res://ui/starting-screen/start-menu.gd" type="Script" id=1]
 [ext_resource path="res://levels/base-nodes/tilemaps/background.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ui/credits/credits0.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ui/base-nodes/button-model.tscn" type="PackedScene" id=4]
@@ -8,12 +8,14 @@
 [ext_resource path="res://assets/fonts/press-start-2p.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://assets/textures/title.png" type="Texture" id=7]
 [ext_resource path="res://ui/base-nodes/return-shortcut.tres" type="ShortCut" id=8]
-[ext_resource path="res://ui/level-select/menu.tscn" type="PackedScene" id=9]
+[ext_resource path="res://ui/level-select/level-select.tscn" type="PackedScene" id=9]
 [ext_resource path="res://ui/starting-screen/particles.tscn" type="PackedScene" id=10]
 [ext_resource path="res://ui/speedrun-screens/start.tscn" type="PackedScene" id=11]
 [ext_resource path="res://ui/starting-screen/speedrun-times.gd" type="Script" id=12]
 [ext_resource path="res://ui/starting-screen/title.gd" type="Script" id=13]
 [ext_resource path="res://assets/shader-effects/tear/tear.tscn" type="PackedScene" id=14]
+
+
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;

@@ -12,51 +12,11 @@
 [ext_resource path="res://levels/base-nodes/tilemaps/parallax.gd" type="Script" id=10]
 [ext_resource path="res://levels/base-nodes/camera-limiter/camera-limiter.tscn" type="PackedScene" id=11]
 [ext_resource path="res://actors/interactables/energy-gate/energy-gate.tscn" type="PackedScene" id=12]
-[ext_resource path="res://levels/base-nodes/messages/lv6-unique.gd" type="Script" id=13]
+[ext_resource path="res://levels/base-nodes/messages/lv08-unique.gd" type="Script" id=13]
 [ext_resource path="res://actors/interactables/gate/double-gate.tscn" type="PackedScene" id=14]
 [ext_resource path="res://actors/interactables/switch/switch.tscn" type="PackedScene" id=15]
 [ext_resource path="res://actors/interactables/energy-wire/energy-wire.tscn" type="PackedScene" id=16]
 [ext_resource path="res://levels/base-nodes/messages/bullet-boost.tscn" type="PackedScene" id=17]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -95,7 +55,7 @@ shader_param/active = false
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 24, 88 )
 
-[node name="Level07" instance=ExtResource( 1 )]
+[node name="BaseLevel" instance=ExtResource( 1 )]
 level = 8
 bgm_2 = true
 bgm_3 = true
@@ -259,7 +219,10 @@ tile_data = PoolIntArray( 65540, 18, 0, 131072, 9, 0 )
 [node name="Gate2" parent="." index="19" instance=ExtResource( 14 )]
 position = Vector2( 472, 72 )
 gate_height = 12
+gap_size = 0
 active = true
+close_in_inverse_order = false
+direction = ""
 
 [node name="FuelTank3" parent="." index="20" instance=ExtResource( 7 )]
 position = Vector2( 536, 264 )
@@ -280,16 +243,16 @@ visible = false
 position = Vector2( 952, 184 )
 next_stage = ExtResource( 9 )
 
-[node name="Lv6SpMessage" type="Area2D" parent="." index="23"]
+[node name="Lv08Unique" type="Area2D" parent="." index="23"]
 visible = false
 script = ExtResource( 13 )
 message = "Trick shot!"
 message_time = 4.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Lv6SpMessage" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lv08Unique" index="0"]
 position = Vector2( 24, 88 )
 shape = SubResource( 4 )
-[connection signal="body_entered" from="Lv6SpMessage" to="Lv6SpMessage" method="_on_Lv6SpMessage_body_entered"]
+[connection signal="body_entered" from="Lv08Unique" to="Lv08Unique" method="_on_Lv6SpMessage_body_entered"]
 
 [editable path="Background3"]
 

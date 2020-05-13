@@ -4,8 +4,9 @@
 [ext_resource path="res://ui/base-nodes/menu-panel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/fonts/press-start-2p.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://ui/base-nodes/return-shortcut.tres" type="ShortCut" id=4]
-[ext_resource path="res://ui/settings/display/menu.gd" type="Script" id=5]
+[ext_resource path="res://ui/settings/display/display-settings.gd" type="Script" id=5]
 [ext_resource path="res://ui/base-nodes/checkbox.tscn" type="PackedScene" id=6]
+
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 3 )

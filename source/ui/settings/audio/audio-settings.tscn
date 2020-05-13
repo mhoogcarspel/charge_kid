@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://ui/settings/audio/menu.gd" type="Script" id=1]
+[ext_resource path="res://ui/settings/audio/audio-settings.gd" type="Script" id=1]
 [ext_resource path="res://ui/base-nodes/menu-panel.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/fonts/press-start-2p.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://ui/base-nodes/slider.tscn" type="PackedScene" id=5]
@@ -9,6 +9,7 @@
 [ext_resource path="res://ui/base-nodes/return-shortcut.tres" type="ShortCut" id=8]
 [ext_resource path="res://ui/settings/audio/sfx-slider.gd" type="Script" id=9]
 [ext_resource path="res://ui/settings/audio/default.gd" type="Script" id=10]
+
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 3 )

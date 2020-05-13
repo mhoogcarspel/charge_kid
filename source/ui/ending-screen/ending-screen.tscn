@@ -1,91 +1,10 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/fonts/press-start-2p.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://ui/ending-screen/ending-screen.gd" type="Script" id=2]
+[ext_resource path="res://ui/credits/credits0.tscn" type="PackedScene" id=3]
 
-[sub_resource type="GDScript" id=1]
-script/source = "extends MarginContainer
-
-onready var main = get_tree().get_nodes_in_group(\"main\")[0]
-
-
-
-func _ready():
-	if get_tree().get_nodes_in_group(\"main\").size() > 0:
-		main = get_tree().get_nodes_in_group(\"main\")[0]
-	else:
-		main = null
-
-func _input(event):
-	if event is InputEvent and $Timer.is_stopped():
-		if event.is_action(\"ui_accept\") or event.is_action(\"ui_cancel\"):
-			main.back_to_start()
-
-
-"
-
-[sub_resource type="DynamicFont" id=2]
-size = 40
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 24
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=4]
-font_data = ExtResource( 1 )
-
-[sub_resource type="StyleBoxEmpty" id=5]
-
-[sub_resource type="DynamicFont" id=6]
-size = 24
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=7]
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=8]
-size = 24
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=9]
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=10]
-size = 24
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=11]
-font_data = ExtResource( 1 )
-
-[sub_resource type="StyleBoxEmpty" id=12]
-
-[sub_resource type="DynamicFont" id=13]
-font_data = ExtResource( 1 )
-
-[sub_resource type="PackedScene" id=14]
-_bundled = {
-"conn_count": 0,
-"conns": PoolIntArray(  ),
-"editable_instances": [  ],
-"names": PoolStringArray( "Credits", "MarginContainer", "anchor_right", "anchor_bottom", "custom_constants/margin_top", "custom_constants/margin_left", "script", "__meta__", "VBoxContainer", "VBoxContainer", "margin_left", "margin_top", "margin_right", "margin_bottom", "custom_constants/separation", "Label", "Label", "margin_right", "margin_bottom", "custom_fonts/font", "custom_colors/font_color", "text", "MarginContainer", "MarginContainer", "margin_top", "margin_right", "margin_bottom", "custom_constants/margin_left", "__meta__", "VBoxContainer", "VBoxContainer", "margin_left", "margin_right", "margin_bottom", "alignment", "Ayrton", "Label", "margin_right", "margin_bottom", "size_flags_horizontal", "size_flags_vertical", "custom_fonts/font", "custom_colors/font_color", "text", "Ayrton2", "Label", "margin_top", "margin_right", "margin_bottom", "size_flags_horizontal", "size_flags_vertical", "custom_fonts/font", "custom_colors/font_color", "text", "__meta__", "HSeparator", "HSeparator", "margin_top", "margin_right", "margin_bottom", "custom_styles/separator", "custom_constants/separation", "Rafael", "Label", "margin_top", "margin_right", "margin_bottom", "size_flags_horizontal", "custom_fonts/font", "custom_colors/font_color", "text", "Rafael2", "Label", "margin_top", "margin_right", "margin_bottom", "size_flags_horizontal", "custom_fonts/font", "custom_colors/font_color", "text", "__meta__", "HSeparator2", "HSeparator", "margin_top", "margin_right", "margin_bottom", "custom_styles/separator", "custom_constants/separation", "Vicente", "Label", "margin_top", "margin_right", "margin_bottom", "size_flags_horizontal", "size_flags_vertical", "custom_fonts/font", "custom_colors/font_color", "text", "Vicente2", "Label", "margin_top", "margin_right", "margin_bottom", "size_flags_horizontal", "size_flags_vertical", "custom_fonts/font", "custom_colors/font_color", "text", "HSeparator3", "HSeparator", "margin_top", "margin_right", "margin_bottom", "custom_styles/separator", "custom_constants/separation", "0x72", "Label", "margin_top", "margin_right", "margin_bottom", "size_flags_horizontal", "custom_fonts/font", "custom_colors/font_color", "text", "0x722", "Label", "margin_top", "margin_right", "margin_bottom", "custom_fonts/font", "custom_colors/font_color", "text", "HSeparator4", "HSeparator", "margin_top", "margin_right", "margin_bottom", "custom_styles/separator", "custom_constants/separation", "Repository", "Label", "margin_top", "margin_right", "margin_bottom", "size_flags_horizontal", "custom_fonts/font", "custom_colors/font_color", "text", "Repository2", "Label", "margin_top", "margin_right", "margin_bottom", "custom_fonts/font", "custom_colors/font_color", "text", "Timer", "Timer", "one_shot", "autostart" ),
-"node_count": 20,
-"node_paths": [ NodePath("."), NodePath("./VBoxContainer"), NodePath("./VBoxContainer"), NodePath("./VBoxContainer/MarginContainer"), NodePath("./VBoxContainer/MarginContainer/VBoxContainer"), NodePath("./VBoxContainer/MarginContainer/VBoxContainer"), NodePath("./VBoxContainer/MarginContainer/VBoxContainer"), NodePath("./VBoxContainer/MarginContainer/VBoxContainer"), NodePath("./VBoxContainer/MarginContainer/VBoxContainer"), NodePath("./VBoxContainer/MarginContainer/VBoxContainer"), NodePath("./VBoxContainer/MarginContainer/VBoxContainer"), NodePath("./VBoxContainer/MarginContainer/VBoxContainer"), NodePath("./VBoxContainer/MarginContainer/VBoxContainer"), NodePath("./VBoxContainer/MarginContainer/VBoxContainer"), NodePath("./VBoxContainer/MarginContainer/VBoxContainer"), NodePath("./VBoxContainer/MarginContainer/VBoxContainer"), NodePath("./VBoxContainer/MarginContainer/VBoxContainer"), NodePath("./VBoxContainer/MarginContainer/VBoxContainer"), NodePath(".") ],
-"nodes": PoolIntArray( -1, -1, 1, 0, -1, 6, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 0, 1073741824, 0, 9, 8, -1, 5, 10, 6, 11, 7, 12, 8, 13, 9, 14, 10, 0, 1073741825, 0, 16, 15, -1, 5, 17, 11, 18, 12, 19, 13, 20, 14, 21, 15, 0, 1073741826, 0, 23, 22, -1, 5, 24, 16, 25, 17, 26, 18, 27, 19, 28, 20, 0, 1073741827, 0, 30, 29, -1, 4, 31, 21, 32, 22, 33, 23, 34, 24, 0, 1073741828, 0, 36, 35, -1, 7, 37, 25, 38, 26, 39, 27, 40, 28, 41, 29, 42, 30, 43, 31, 0, 1073741829, 0, 45, 44, -1, 9, 46, 32, 47, 33, 48, 34, 49, 35, 50, 36, 51, 37, 52, 38, 53, 39, 54, 40, 0, 1073741830, 0, 56, 55, -1, 5, 57, 41, 58, 42, 59, 43, 60, 44, 61, 45, 0, 1073741831, 0, 63, 62, -1, 7, 64, 46, 65, 47, 66, 48, 67, 49, 68, 50, 69, 51, 70, 52, 0, 1073741832, 0, 72, 71, -1, 8, 73, 53, 74, 54, 75, 55, 76, 56, 77, 57, 78, 58, 79, 59, 80, 60, 0, 1073741833, 0, 82, 81, -1, 5, 83, 61, 84, 62, 85, 63, 86, 64, 87, 65, 0, 1073741834, 0, 89, 88, -1, 8, 90, 66, 91, 67, 92, 68, 93, 69, 94, 70, 95, 71, 96, 72, 97, 73, 0, 1073741835, 0, 99, 98, -1, 8, 100, 74, 101, 75, 102, 76, 103, 77, 104, 78, 105, 79, 106, 80, 107, 81, 0, 1073741836, 0, 109, 108, -1, 5, 110, 82, 111, 83, 112, 84, 113, 85, 114, 86, 0, 1073741837, 0, 116, 115, -1, 7, 117, 87, 118, 88, 119, 89, 120, 90, 121, 91, 122, 92, 123, 93, 0, 1073741838, 0, 125, 124, -1, 6, 126, 94, 127, 95, 128, 96, 129, 97, 130, 98, 131, 99, 0, 1073741839, 0, 133, 132, -1, 5, 134, 100, 135, 101, 136, 102, 137, 103, 138, 104, 0, 1073741840, 0, 140, 139, -1, 7, 141, 105, 142, 106, 143, 107, 144, 108, 145, 109, 146, 110, 147, 111, 0, 1073741841, 0, 149, 148, -1, 6, 150, 112, 151, 113, 152, 114, 153, 115, 154, 116, 155, 117, 0, 1073741842, 0, 157, 156, -1, 2, 158, 118, 159, 119, 0 ),
-"variants": [ 1.0, 1.0, 40, 64, SubResource( 1 ), {
-"_edit_use_anchors_": false
-}, 64.0, 40.0, 1072.0, 576.0, 32, 1008.0, 40.0, SubResource( 2 ), Color( 0.956863, 0.956863, 0.894118, 1 ), "Charge Kid", 72.0, 1008.0, 471.0, 48, {
-"_edit_use_anchors_": false
-}, 48.0, 1008.0, 399.0, 1, 624.0, 24.0, 0, 1, SubResource( 3 ), Color( 0.956863, 0.956863, 0.894118, 1 ), "Ayrton Makoto Euzebio Sato", 28.0, 224.0, 44.0, 0, 1, SubResource( 4 ), Color( 0.956863, 0.956863, 0.894118, 1 ), "   Programming", {
-"_edit_use_anchors_": false
-}, 48.0, 960.0, 64.0, SubResource( 5 ), 16, 68.0, 528.0, 92.0, 0, SubResource( 6 ), Color( 0.956863, 0.956863, 0.894118, 1 ), "Rafael de Lima Bordoni", 96.0, 688.0, 112.0, 0, SubResource( 7 ), Color( 0.956863, 0.956863, 0.894118, 1 ), "   Game design, programming, animation, art", {
-"_edit_use_anchors_": false
-}, 116.0, 960.0, 132.0, SubResource( 5 ), 16, 136.0, 672.0, 160.0, 0, 1, SubResource( 8 ), Color( 0.956863, 0.956863, 0.894118, 1 ), "Vicente Reis de Souza Farias", 164.0, 368.0, 180.0, 0, 1, SubResource( 9 ), Color( 0.956863, 0.956863, 0.894118, 1 ), "   Sound effects, music", 184.0, 960.0, 232.0, SubResource( 5 ), 48, 236.0, 504.0, 260.0, 0, SubResource( 10 ), Color( 0.956863, 0.956863, 0.894118, 1 ), "https://0x72.itch.io/", 264.0, 960.0, 299.0, SubResource( 11 ), Color( 0.956863, 0.956863, 0.894118, 1 ), "   industrial.v2.png and robot.v1.png by 0x72
-   are licensed under CC-0.", 303.0, 960.0, 351.0, SubResource( 12 ), 48, 355.0, 624.0, 379.0, 0, SubResource( 10 ), Color( 0.956863, 0.956863, 0.894118, 1 ), "Charge Kid is open source!", 383.0, 960.0, 399.0, SubResource( 13 ), Color( 0.956863, 0.956863, 0.894118, 1 ), "   https://gitlab.com/uspgamedev/charge_kid", true, true ],
-"version": 2
-}
-
-[sub_resource type="DynamicFont" id=15]
+[sub_resource type="DynamicFont" id=1]
 size = 48
 font_data = ExtResource( 1 )
 
@@ -96,7 +15,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-credits = SubResource( 14 )
+credits = ExtResource( 3 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 margin_right = 1024.0
@@ -110,7 +29,7 @@ margin_left = 32.0
 margin_top = 264.0
 margin_right = 992.0
 margin_bottom = 312.0
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "Thanks for playing!!"
 
