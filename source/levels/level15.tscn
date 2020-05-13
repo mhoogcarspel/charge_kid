@@ -308,7 +308,7 @@ __meta__ = {
 polygon = PoolVector2Array( -16, 8, -16, -24, 24, -24, 24, 8 )
 
 [node name="Timer" type="Timer" parent="Lv15Unique" index="2"]
-wait_time = 2.0
+wait_time = 5.0
 one_shot = true
 [connection signal="body_entered" from="Lv15Unique" to="Lv15Unique" method="_on_Lv15Unique_body_entered"]
 [connection signal="body_exited" from="Lv15Unique/SubArea" to="Lv15Unique" method="_on_SubArea_body_exited"]
