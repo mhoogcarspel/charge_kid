@@ -137,7 +137,7 @@ func desynchronize_sfx() -> void:
 	if not Engine.editor_hint:
 		var i = 1
 		for audio_stream in get_node("SFX").get_children():
-			audio_stream.play(0.05*(i-1))
+			audio_stream.play(randf() * 0.6)
 			i+=1
 
 func sfx_point_on_center() -> void:
