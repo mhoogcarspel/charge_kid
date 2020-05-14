@@ -33,7 +33,6 @@ func initial_value(new_value : bool) -> void:
 	active = new_value
 	for column_cell in self.get_children():
 		if column_cell.name != "SFX":
-			print(column_cell.name)
 			for cell in column_cell.get_children():
 				if cell.name != "Sparks":
 					cell.set_active( new_value )

@@ -13,7 +13,6 @@ func _init(owner: KinematicBody2D):
 	self.animation_player = owner.get_node("AnimationPlayer")
 
 func enter():
-#	owner.get_node("SFX/SuperJump").play()
 	owner.get_node("SFX/Boost").pitch_scale = rand_range(1.0, 1.3)
 	owner.get_node("SFX/Boost").set_stream(owner.get_node("PlayerSprite").boost_sounds[randi()%3])
 	owner.get_node("SFX/Boost").get_stream().set_loop(false)
@@ -24,15 +23,18 @@ func enter():
 	bullet = owner.get_tree().get_nodes_in_group("bullet")[0]
 	relative_position_to_bullet = (bullet.position - owner.position)
 	
-	if relative_position_to_bullet.length()/owner.boost_time < owner.boost_speed:
-		boost_velocity = relative_position_to_bullet.normalized()*owner.boost_speed
-		boost_time = relative_position_to_bullet.length()/owner.boost_speed
-	elif relative_position_to_bullet.length()/owner.boost_time < 2*owner.boost_speed:
-		boost_velocity = relative_position_to_bullet/owner.boost_time
-		boost_time = owner.boost_time
-	elif relative_position_to_bullet.length()/owner.boost_time >= 2*owner.boost_speed:
-		boost_velocity = 2*owner.boost_speed*relative_position_to_bullet.normalized()
-		boost_time = relative_position_to_bullet.length()/(2*owner.boost_speed)
+#	if relative_position_to_bullet.length()/owner.boost_time < owner.boost_speed:
+#		boost_velocity = relative_position_to_bullet.normalized()*owner.boost_speed
+#		boost_time = relative_position_to_bullet.length()/owner.boost_speed
+#	elif relative_position_to_bullet.length()/owner.boost_time < 2*owner.boost_speed:
+#		boost_velocity = relative_position_to_bullet/owner.boost_time
+#		boost_time = owner.boost_time
+#	elif relative_position_to_bullet.length()/owner.boost_time >= 2*owner.boost_speed:
+#		boost_velocity = 2*owner.boost_speed*relative_position_to_bullet.normalized()
+#		boost_time = relative_position_to_bullet.length()/(2*owner.boost_speed)
+	
+	boost_velocity = 2*owner.boost_speed*relative_position_to_bullet.normalized()
+	boost_time = relative_position_to_bullet.length()/owner.boost_speed
 	
 	boosting_particles(true)
 	owner.velocity = boost_velocity
