@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://levels/base-nodes/tilemaps/background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/base-nodes/tilemaps/spikes.tscn" type="PackedScene" id=2]
@@ -17,7 +17,8 @@
 [ext_resource path="res://levels/base-nodes/camera-limiter/camera-limiter.tscn" type="PackedScene" id=15]
 [ext_resource path="res://levels/base-nodes/finish-line/finish-line.tscn" type="PackedScene" id=16]
 [ext_resource path="res://levels/level16.tscn" type="PackedScene" id=17]
-[ext_resource path="res://levels/base-nodes/messages/lv15-unique.gd" type="Script" id=18]
+[ext_resource path="res://levels/base-nodes/unique-scripts/lv15-message.gd" type="Script" id=18]
+[ext_resource path="res://levels/base-nodes/unique-scripts/lv15-lever.gd" type="Script" id=19]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -310,8 +311,17 @@ polygon = PoolVector2Array( -16, 8, -16, -24, 24, -24, 24, 8 )
 [node name="Timer" type="Timer" parent="Lv15Unique" index="2"]
 wait_time = 5.0
 one_shot = true
+
+[node name="Lv15Lever" type="Area2D" parent="." index="27"]
+visible = false
+position = Vector2( 120, 112 )
+script = ExtResource( 19 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lv15Lever" index="0"]
+polygon = PoolVector2Array( 56, 136, 56, 40, 248, 40, 248, -72, -104, -72, -104, 136 )
 [connection signal="body_entered" from="Lv15Unique" to="Lv15Unique" method="_on_Lv15Unique_body_entered"]
 [connection signal="body_exited" from="Lv15Unique/SubArea" to="Lv15Unique" method="_on_SubArea_body_exited"]
+[connection signal="body_exited" from="Lv15Lever" to="Lv15Lever" method="_on_Lv15Lever_body_exited"]
 
 [editable path="Background"]
 

@@ -16,40 +16,6 @@
 [ext_resource path="res://levels/base-nodes/finish-line/finish-line.tscn" type="PackedScene" id=14]
 [ext_resource path="res://levels/level14.tscn" type="PackedScene" id=15]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 render_mode unshaded;
@@ -341,7 +307,7 @@ position = Vector2( 720, 72 )
 position = Vector2( 720, 160 )
 
 [node name="OneEnd" parent="Portal3" index="0"]
-position = Vector2( 64, -56 )
+position = Vector2( 72, -56 )
 
 [node name="OtherEnd" parent="Portal3" index="1"]
 position = Vector2( -48, 40 )

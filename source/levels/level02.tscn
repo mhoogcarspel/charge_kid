@@ -9,9 +9,11 @@
 [ext_resource path="res://actors/player/player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://actors/interactables/charge-tank/charge-tank.tscn" type="PackedScene" id=8]
 [ext_resource path="res://levels/base-nodes/camera-limiter/camera-limiter.tscn" type="PackedScene" id=9]
-[ext_resource path="res://levels/base-nodes/messages/lv02-unique.gd" type="Script" id=10]
+[ext_resource path="res://levels/base-nodes/unique-scripts/lv02-message.gd" type="Script" id=10]
 [ext_resource path="res://levels/base-nodes/finish-line/finish-line.tscn" type="PackedScene" id=11]
 [ext_resource path="res://levels/level03.tscn" type="PackedScene" id=12]
+
+
 
 
 [node name="BaseLevel" instance=ExtResource( 1 )]

@@ -12,11 +12,13 @@
 [ext_resource path="res://levels/base-nodes/tilemaps/parallax.gd" type="Script" id=10]
 [ext_resource path="res://levels/base-nodes/camera-limiter/camera-limiter.tscn" type="PackedScene" id=11]
 [ext_resource path="res://actors/interactables/energy-gate/energy-gate.tscn" type="PackedScene" id=12]
-[ext_resource path="res://levels/base-nodes/messages/lv08-unique.gd" type="Script" id=13]
+[ext_resource path="res://levels/base-nodes/unique-scripts/lv08-message.gd" type="Script" id=13]
 [ext_resource path="res://actors/interactables/gate/double-gate.tscn" type="PackedScene" id=14]
 [ext_resource path="res://actors/interactables/switch/switch.tscn" type="PackedScene" id=15]
 [ext_resource path="res://actors/interactables/energy-wire/energy-wire.tscn" type="PackedScene" id=16]
 [ext_resource path="res://levels/base-nodes/messages/bullet-boost.tscn" type="PackedScene" id=17]
+
+
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
