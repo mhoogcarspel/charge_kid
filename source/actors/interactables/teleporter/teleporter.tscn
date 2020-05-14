@@ -4,12 +4,6 @@
 [ext_resource path="res://assets/textures/robot.v1.png" type="Texture" id=2]
 [ext_resource path="res://actors/interactables/teleporter/hit-particles.tscn" type="PackedScene" id=3]
 
-
-
-
-
-
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
 

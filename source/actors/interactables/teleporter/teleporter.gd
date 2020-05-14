@@ -38,25 +38,26 @@ func hit(bullet: PlayerBullet) -> void:
 		
 		if not get_tree().get_nodes_in_group("player").empty():
 			var player = get_tree().get_nodes_in_group("player")[0] as Player
-			player.change_state("StatelessState")
-			if player.facing > 0:
-				player.animation_player.play("TeleportInRight")
-			else:
-				player.animation_player.play("TeleportInLeft")
-			bullet.animation_player.play("TeleportIn")
-			
-			yield(player.animation_player, "animation_finished")
-			swap_positions(bullet, player)
-			get_parent().get_node("PlayerCamera").shake_screen(16)
-			if player.facing > 0:
-				player.animation_player.play("TeleportOutRight")
-			else:
-				player.animation_player.play("TeleportOutLeft")
-			bullet.animation_player.play("TeleportOut")
-			
-			yield(player.animation_player, "animation_finished")
-			player.change_state("IdleState")
-			bullet.disable_enable_hitbox(true)
+			if player.get_state() != "DyingState":
+				player.change_state("StatelessState")
+				if player.facing > 0:
+					player.animation_player.play("TeleportInRight")
+				else:
+					player.animation_player.play("TeleportInLeft")
+				bullet.animation_player.play("TeleportIn")
+				
+				yield(player.animation_player, "animation_finished")
+				swap_positions(bullet, player)
+				get_parent().get_node("PlayerCamera").shake_screen(16)
+				if player.facing > 0:
+					player.animation_player.play("TeleportOutRight")
+				else:
+					player.animation_player.play("TeleportOutLeft")
+				bullet.animation_player.play("TeleportOut")
+				
+				yield(player.animation_player, "animation_finished")
+				player.change_state("IdleState")
+				bullet.disable_enable_hitbox(true)
 	else:
 		bullet.change_state("ReturnState")
 
