@@ -17,6 +17,7 @@ func enter():
 	owner.get_node("SFX/Boost").set_stream(owner.get_node("PlayerSprite").boost_sounds[randi()%3])
 	owner.get_node("SFX/Boost").get_stream().set_loop(false)
 	owner.get_node("SFX/Boost").play()
+	owner.set_collision_mask_bit(1, false)
 	owner.can_boost = false
 	boost_time = 0
 	boost_timer = 0
@@ -58,6 +59,7 @@ func update(delta):
 
 
 func exit():
+	owner.set_collision_mask_bit(1, true)
 	boosting_particles(false)
 
 
