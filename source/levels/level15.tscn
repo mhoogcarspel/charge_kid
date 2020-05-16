@@ -166,15 +166,6 @@ tile_data = PoolIntArray( 25, -1610612717, 0, 26, -1610612718, 0, 27, 21, 0, 28,
 [node name="BlockProps" parent="Blocks" index="3"]
 tile_data = PoolIntArray( 196664, 6, 0, 196665, 8, 0, 196670, 6, 0, 196671, 7, 0, 196672, 7, 0, 196673, 8, 0, 524295, 6, 0, 524296, 8, 0, 524297, 7, 0, 524298, 7, 0, 524299, 7, 0, 524300, 6, 0, 524301, 7, 0, 524302, 7, 0, 524303, 7, 0, 524304, 7, 0, 524305, 7, 0, 524306, 7, 0, 524307, 7, 0, 524308, 7, 0, 524309, 7, 0, 524310, 7, 0, 524311, 8, 0, 655367, 1073741828, 0, 655368, 2, 0, 655372, 1, 0, 655373, 2, 0, 655374, 3, 0, 655375, 1, 0, 655376, 0, 0, 655377, 536870914, 0, 655378, 536870915, 0, 655379, 1073741828, 0, 655380, 1, 0, 655381, 2, 0, 655382, 536870913, 0, 655383, 0, 0, 786462, 6, 0, 786463, 7, 0, 786464, 8, 0, 851970, 5, 0, 851971, 1073741824, 0, 851972, 1073741826, 0, 851973, 4, 0, 851974, 5, 0, 851975, 1073741824, 0, 851976, 4, 0, 851980, 536870916, 0, 851981, 1073741824, 0, 851982, 1073741826, 0, 851983, 1073741827, 0, 851984, 4, 0, 851985, 5, 0, 851986, 4, 0, 851987, 1073741826, 0, 851988, 1073741827, 0, 851989, 1073741825, 0, 851997, 6, 0, 851998, 7, 0, 851999, 7, 0, 852000, 7, 0, 852001, 8, 0, 983038, 7, 0, 983039, 7, 0, 917504, 7, 0, 917505, 7, 0, 917506, 7, 0, 917507, 7, 0, 917508, 7, 0, 917509, 7, 0, 917510, 7, 0, 917511, 6, 0, 917512, 8, 0, 917516, 6, 0, 917517, 8, 0, 917518, 7, 0, 917519, 7, 0, 917520, 7, 0, 917521, 7, 0, 917522, 7, 0, 917523, 6, 0, 917524, 7, 0, 917525, 8, 0, 917528, 6, 0, 917529, 8, 0, 917530, 7, 0, 917531, 7, 0, 917532, 7, 0, 1048585, 3, 0, 1048586, 1, 0, 1048587, 2, 0 )
 
-[node name="Tubes1" parent="Blocks" index="4"]
-tile_data = PoolIntArray( 1048600, 0, 196609, 1114136, 0, 327681 )
-
-[node name="Tubes2" parent="Blocks" index="6"]
-tile_data = PoolIntArray( 1048601, 0, 196609, 1114137, 0, 327681 )
-
-[node name="TubeProps2" parent="Blocks" index="7"]
-tile_data = PoolIntArray( 1048600, 8, 0, 1048601, 8, 0 )
-
 [node name="Platforms" parent="." index="8" instance=ExtResource( 3 )]
 
 [node name="Pillars" parent="Platforms" index="0"]
@@ -223,7 +214,6 @@ nodes = [ NodePath("../Gate"), NodePath("../Gate2"), NodePath("../EnergyWire"), 
 [node name="EnergyWire" parent="." index="17" instance=ExtResource( 11 )]
 material = SubResource( 2 )
 position = Vector2( 328, 128 )
-active = false
 
 [node name="Wire" parent="EnergyWire" index="0"]
 tile_data = PoolIntArray( 196607, 0, 327680, 131072, 0, 327680, 131073, 0, 327680, 131074, 0, 2, 196610, 0, 65537, 262146, 0, 65537, 327682, 0, 65537, 393218, 0, 131073 )
@@ -231,7 +221,6 @@ tile_data = PoolIntArray( 196607, 0, 327680, 131072, 0, 327680, 131073, 0, 32768
 [node name="EnergyWire2" parent="." index="18" instance=ExtResource( 11 )]
 material = SubResource( 3 )
 position = Vector2( 331, 128 )
-active = false
 
 [node name="Wire" parent="EnergyWire2" index="0"]
 tile_data = PoolIntArray( 131070, 0, 196609, 196606, 0, 131072, 196607, 0, 262144 )
@@ -242,7 +231,6 @@ tile_data = PoolIntArray( 131070, 17, 0 )
 [node name="EnergyWire3" parent="." index="19" instance=ExtResource( 11 )]
 material = SubResource( 4 )
 position = Vector2( 240, 120 )
-active = false
 
 [node name="Wire" parent="EnergyWire3" index="0"]
 tile_data = PoolIntArray( 196596, 0, 131072, 196597, 0, 131073, 196598, 0, 131073, 196599, 0, 131073, 196600, 0, 327680, 196601, 0, 327680, 196602, 0, 327680, 196603, 0, 327680, 196604, 0, 327680, 196605, 0, 327680, 196606, 0, 327680, 196607, 0, 327680, 131072, 0, 327680, 131073, 0, 327680, 131074, 0, 262146 )
@@ -250,7 +238,6 @@ tile_data = PoolIntArray( 196596, 0, 131072, 196597, 0, 131073, 196598, 0, 13107
 [node name="EnergyWire4" parent="." index="20" instance=ExtResource( 11 )]
 material = SubResource( 5 )
 position = Vector2( 248, 120 )
-active = false
 
 [node name="Wire" parent="EnergyWire4" index="0"]
 position = Vector2( -2, 0 )
@@ -259,7 +246,6 @@ tile_data = PoolIntArray( 131074, 0, 262146, 131075, 0, 131074 )
 [node name="EnergyWire5" parent="." index="21" instance=ExtResource( 11 )]
 material = SubResource( 6 )
 position = Vector2( 262, 110 )
-active = false
 
 [node name="Wire" parent="EnergyWire5" index="0"]
 tile_data = PoolIntArray( 131074, 0, 196609 )

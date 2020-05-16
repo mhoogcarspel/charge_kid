@@ -93,9 +93,6 @@ tile_data = PoolIntArray( 983121, 1073741840, 0, 983122, 1073741840, 0, 983123, 
 [node name="BlockProps" parent="Blocks" index="3"]
 tile_data = PoolIntArray( 327756, 6, 0, 327757, 7, 0, 327758, 7, 0, 327759, 7, 0, 327760, 7, 0, 327761, 6, 0, 327762, 7, 0, 327763, 7, 0, 327764, 7, 0, 393289, 6, 0, 393290, 7, 0, 393291, 8, 0, 589849, 6, 0, 589850, 7, 0, 589851, 8, 0, 720924, 7, 0, 720925, 7, 0, 720926, 7, 0, 720927, 7, 0, 720928, 8, 0, 786463, 0, 0, 786464, 536870915, 0, 1048582, 6, 0, 1048583, 7, 0, 1048584, 8, 0, 1114112, 4, 0, 1114113, 5, 0, 1114114, 4, 0, 1114115, 1073741827, 0, 1114116, 4, 0, 1114161, 6, 0, 1114162, 7, 0, 1114163, 7, 0, 1114164, 7, 0, 1114165, 7, 0, 1114166, 7, 0, 1114167, 7, 0, 1114168, 7, 0, 1114169, 8, 0, 1245181, 7, 0, 1245182, 7, 0, 1245183, 7, 0, 1179648, 7, 0, 1179649, 7, 0, 1179650, 7, 0, 1179651, 7, 0, 1179652, 7, 0, 1179653, 8, 0, 1310793, 0, 0 )
 
-[node name="TubeProps3" parent="Blocks" index="9"]
-tile_data = PoolIntArray( 1507356, 6, 0 )
-
 [node name="Platforms" parent="." index="7" instance=ExtResource( 5 )]
 
 [node name="Pillars" parent="Platforms" index="0"]
@@ -118,10 +115,12 @@ position = Vector2( 488, 72 )
 
 [node name="EnergyGate2" parent="." index="12" instance=ExtResource( 9 )]
 position = Vector2( 632, 56 )
+column_gap = 0
 gate_height = 5
 
 [node name="EnergyGate3" parent="." index="13" instance=ExtResource( 9 )]
 position = Vector2( 744, 200 )
+column_gap = 0
 gate_height = 5
 
 [node name="CameraLimiter" parent="." index="14" instance=ExtResource( 12 )]
@@ -157,12 +156,14 @@ next_stage = ExtResource( 11 )
 [node name="EnergyGate4" parent="." index="18" instance=ExtResource( 9 )]
 position = Vector2( 760, 120 )
 rotation = -1.5708
+column_gap = 0
 gate_height = 26
 direction = "Horizontal"
 
 [node name="EnergyGate" parent="." index="19" instance=ExtResource( 9 )]
 position = Vector2( 184, 168 )
 rotation = -1.5708
+column_gap = 0
 gate_height = 14
 direction = "Horizontal"
 
