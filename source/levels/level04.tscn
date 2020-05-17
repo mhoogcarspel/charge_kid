@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://levels/base-nodes/base-level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/base-nodes/tilemaps/background.tscn" type="PackedScene" id=2]
@@ -15,45 +15,6 @@
 [ext_resource path="res://actors/interactables/gate/standard-gate.tscn" type="PackedScene" id=13]
 [ext_resource path="res://levels/base-nodes/finish-line/finish-line.tscn" type="PackedScene" id=14]
 [ext_resource path="res://levels/level05.tscn" type="PackedScene" id=15]
-
-[sub_resource type="Shader" id=1]
-code = "shader_type canvas_item;
-render_mode unshaded;
-
-uniform vec4 base_color: hint_color;
-uniform vec4 active_color: hint_color;
-uniform vec4 inactive_color: hint_color;
-uniform bool active;
-
-void fragment ()
-{
-	COLOR = texture(TEXTURE , UV);
-	if (active == false && length(COLOR.rgb - base_color.rgb) <= 0.01)
-		COLOR.rgb = inactive_color.rgb;
-	if (active == true && length(COLOR.rgb - base_color.rgb) <= 0.01)
-		COLOR.rgb = active_color.rgb;
-}"
-
-[sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
-shader_param/base_color = Color( 0.141176, 0.164706, 0.231373, 1 )
-shader_param/active_color = Color( 0.956863, 0.956863, 0.894118, 1 )
-shader_param/inactive_color = Color( 0.490196, 0.490196, 0.490196, 1 )
-shader_param/active = false
-
-[sub_resource type="ShaderMaterial" id=3]
-shader = SubResource( 1 )
-shader_param/base_color = Color( 0.141176, 0.164706, 0.231373, 1 )
-shader_param/active_color = Color( 0.956863, 0.956863, 0.894118, 1 )
-shader_param/inactive_color = Color( 0.490196, 0.490196, 0.490196, 1 )
-shader_param/active = false
-
-[sub_resource type="ShaderMaterial" id=4]
-shader = SubResource( 1 )
-shader_param/base_color = Color( 0.141176, 0.164706, 0.231373, 1 )
-shader_param/active_color = Color( 0.956863, 0.956863, 0.894118, 1 )
-shader_param/inactive_color = Color( 0.490196, 0.490196, 0.490196, 1 )
-shader_param/active = false
 
 [node name="BaseLevel" instance=ExtResource( 1 )]
 level = 4
@@ -122,9 +83,7 @@ position = Vector2( 56, 200 )
 position = Vector2( 264, 280 )
 
 [node name="EnergyWire2" parent="." index="10" instance=ExtResource( 9 )]
-material = SubResource( 2 )
 position = Vector2( 88, 16 )
-active = false
 
 [node name="Wire" parent="EnergyWire2" index="0"]
 tile_data = PoolIntArray( 393235, 0, 2, 524285, 0, 196609, 458771, 0, 65538, 589821, 0, 524288, 589822, 0, 327680, 589823, 0, 327680, 524288, 0, 327680, 524289, 0, 327680, 524290, 0, 393218, 524307, 0, 65538, 589826, 0, 196608, 589843, 0, 65538, 655362, 0, 524288, 655363, 0, 327680, 655364, 0, 327680, 655365, 0, 327680, 655366, 0, 327680, 655367, 0, 327680, 655368, 0, 327680, 655369, 0, 327680, 655370, 0, 327680, 655371, 0, 327680, 655372, 0, 327680, 655373, 0, 327680, 655374, 0, 327680, 655375, 0, 327680, 655376, 0, 327680, 655377, 0, 327680, 655378, 0, 262146, 655379, 0, 131074 )
@@ -158,9 +117,7 @@ close_in_inverse_order = false
 direction = ""
 
 [node name="EnergyWire" parent="." index="15" instance=ExtResource( 9 )]
-material = SubResource( 3 )
 position = Vector2( 696, 112 )
-active = false
 
 [node name="Wire" parent="EnergyWire" index="0"]
 tile_data = PoolIntArray( -393219, 0, 524289, -327683, 0, 917504, -262147, 0, 917504, -196611, 0, 917504, -131075, 0, 917504, -65539, 0, 917504, -3, 0, 917504, 65533, 0, 917504, 131069, 0, 851969, 196601, 0, 196609, 196605, 0, 196608, 262137, 0, 524288, 262138, 0, 327680, 262139, 0, 327680, 262140, 0, 327680, 262141, 0, 524290 )
@@ -169,9 +126,7 @@ tile_data = PoolIntArray( -393219, 0, 524289, -327683, 0, 917504, -262147, 0, 91
 position = Vector2( 680, 72 )
 
 [node name="EnergyWire3" parent="." index="17" instance=ExtResource( 9 )]
-material = SubResource( 4 )
 position = Vector2( 720, 144 )
-active = false
 
 [node name="Wire" parent="EnergyWire3" index="0"]
 tile_data = PoolIntArray( -458751, 0, 262146, -458749, 0, 2, -393213, 0, 196608, -327677, 0, 196608, -262141, 0, 196608, -196605, 0, 196608, -131069, 0, 196608, -65533, 0, 327681, 3, 0, 327681, 65539, 0, 327681, 131075, 0, 327681, 262147, 0, 262145, 327683, 0, 262145, 393219, 0, 262145, 458755, 0, 262145, 524291, 0, 131073 )

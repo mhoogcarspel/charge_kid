@@ -4,13 +4,6 @@
 [ext_resource path="res://assets/textures/tileset-tubes.png" type="Texture" id=2]
 [ext_resource path="res://actors/interactables/energy-wire/energy-wire.gd" type="Script" id=3]
 
-
-
-
-
-
-
-
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 render_mode unshaded;
@@ -32,7 +25,7 @@ void fragment ()
 [sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true
 shader = SubResource( 1 )
-shader_param/base_color = Color( 0.141176, 0.164706, 0.231373, 1 )
+shader_param/base_color = Color( 0.133333, 0.14902, 0.203922, 1 )
 shader_param/active_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 shader_param/inactive_color = Color( 0.490196, 0.490196, 0.490196, 1 )
 shader_param/active = false

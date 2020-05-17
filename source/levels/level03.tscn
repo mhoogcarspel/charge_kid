@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://levels/base-nodes/base-level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://actors/player/player.tscn" type="PackedScene" id=2]
@@ -14,32 +14,6 @@
 [ext_resource path="res://levels/base-nodes/camera-limiter/camera-limiter.tscn" type="PackedScene" id=12]
 [ext_resource path="res://levels/base-nodes/finish-line/finish-line.tscn" type="PackedScene" id=13]
 [ext_resource path="res://levels/level04.tscn" type="PackedScene" id=14]
-
-[sub_resource type="Shader" id=1]
-code = "shader_type canvas_item;
-render_mode unshaded;
-
-uniform vec4 base_color: hint_color;
-uniform vec4 active_color: hint_color;
-uniform vec4 inactive_color: hint_color;
-uniform bool active;
-
-void fragment ()
-{
-	COLOR = texture(TEXTURE , UV);
-	if (active == false && length(COLOR.rgb - base_color.rgb) <= 0.01)
-		COLOR.rgb = inactive_color.rgb;
-	if (active == true && length(COLOR.rgb - base_color.rgb) <= 0.01)
-		COLOR.rgb = active_color.rgb;
-}"
-
-[sub_resource type="ShaderMaterial" id=2]
-resource_local_to_scene = true
-shader = SubResource( 1 )
-shader_param/base_color = Color( 0.141176, 0.164706, 0.231373, 1 )
-shader_param/active_color = Color( 0.956863, 0.956863, 0.894118, 1 )
-shader_param/inactive_color = Color( 0.490196, 0.490196, 0.490196, 1 )
-shader_param/active = false
 
 [node name="BaseLevel" instance=ExtResource( 1 )]
 level = 3
@@ -160,9 +134,7 @@ close_in_inverse_order = false
 direction = ""
 
 [node name="EnergyWire" parent="." index="18" instance=ExtResource( 9 )]
-material = SubResource( 2 )
 position = Vector2( 848, 192 )
-active = false
 
 [node name="Wire" parent="EnergyWire" index="0"]
 tile_data = PoolIntArray( -131072, 0, 131072, -131071, 0, 131073, -131070, 0, 65537, -131069, 0, 131073, -131068, 0, 131073, -131067, 0, 131073, -131066, 0, 131074, -65534, 0, 196609, 2, 0, 196608, 65538, 0, 196608, 131074, 0, 196608 )

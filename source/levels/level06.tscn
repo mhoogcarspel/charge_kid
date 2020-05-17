@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://levels/base-nodes/base-level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/base-nodes/tilemaps/background.tscn" type="PackedScene" id=2]
@@ -14,80 +14,6 @@
 [ext_resource path="res://actors/interactables/gate/standard-gate.tscn" type="PackedScene" id=12]
 [ext_resource path="res://actors/interactables/energy-wire/energy-wire.tscn" type="PackedScene" id=13]
 [ext_resource path="res://levels/base-nodes/finish-line/finish-line.tscn" type="PackedScene" id=15]
-
-[sub_resource type="Shader" id=1]
-code = "shader_type canvas_item;
-render_mode unshaded;
-
-uniform vec4 base_color: hint_color;
-uniform vec4 active_color: hint_color;
-uniform vec4 inactive_color: hint_color;
-uniform bool active;
-
-void fragment ()
-{
-	COLOR = texture(TEXTURE , UV);
-	if (active == false && length(COLOR.rgb - base_color.rgb) <= 0.01)
-		COLOR.rgb = inactive_color.rgb;
-	if (active == true && length(COLOR.rgb - base_color.rgb) <= 0.01)
-		COLOR.rgb = active_color.rgb;
-}"
-
-[sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
-shader_param/base_color = Color( 0.141176, 0.164706, 0.231373, 1 )
-shader_param/active_color = Color( 0.956863, 0.956863, 0.894118, 1 )
-shader_param/inactive_color = Color( 0.490196, 0.490196, 0.490196, 1 )
-shader_param/active = true
-
-[sub_resource type="ShaderMaterial" id=3]
-shader = SubResource( 1 )
-shader_param/base_color = Color( 0.141176, 0.164706, 0.231373, 1 )
-shader_param/active_color = Color( 0.956863, 0.956863, 0.894118, 1 )
-shader_param/inactive_color = Color( 0.490196, 0.490196, 0.490196, 1 )
-shader_param/active = false
-
-[sub_resource type="ShaderMaterial" id=4]
-shader = SubResource( 1 )
-shader_param/base_color = Color( 0.141176, 0.164706, 0.231373, 1 )
-shader_param/active_color = Color( 0.956863, 0.956863, 0.894118, 1 )
-shader_param/inactive_color = Color( 0.490196, 0.490196, 0.490196, 1 )
-shader_param/active = true
-
-[sub_resource type="ShaderMaterial" id=5]
-shader = SubResource( 1 )
-shader_param/base_color = Color( 0.141176, 0.164706, 0.231373, 1 )
-shader_param/active_color = Color( 0.956863, 0.956863, 0.894118, 1 )
-shader_param/inactive_color = Color( 0.490196, 0.490196, 0.490196, 1 )
-shader_param/active = false
-
-[sub_resource type="ShaderMaterial" id=6]
-shader = SubResource( 1 )
-shader_param/base_color = Color( 0.141176, 0.164706, 0.231373, 1 )
-shader_param/active_color = Color( 0.956863, 0.956863, 0.894118, 1 )
-shader_param/inactive_color = Color( 0.490196, 0.490196, 0.490196, 1 )
-shader_param/active = false
-
-[sub_resource type="ShaderMaterial" id=7]
-shader = SubResource( 1 )
-shader_param/base_color = Color( 0.141176, 0.164706, 0.231373, 1 )
-shader_param/active_color = Color( 0.956863, 0.956863, 0.894118, 1 )
-shader_param/inactive_color = Color( 0.490196, 0.490196, 0.490196, 1 )
-shader_param/active = false
-
-[sub_resource type="ShaderMaterial" id=8]
-shader = SubResource( 1 )
-shader_param/base_color = Color( 0.141176, 0.164706, 0.231373, 1 )
-shader_param/active_color = Color( 0.956863, 0.956863, 0.894118, 1 )
-shader_param/inactive_color = Color( 0.490196, 0.490196, 0.490196, 1 )
-shader_param/active = true
-
-[sub_resource type="ShaderMaterial" id=9]
-shader = SubResource( 1 )
-shader_param/base_color = Color( 0.141176, 0.164706, 0.231373, 1 )
-shader_param/active_color = Color( 0.956863, 0.956863, 0.894118, 1 )
-shader_param/inactive_color = Color( 0.490196, 0.490196, 0.490196, 1 )
-shader_param/active = true
 
 [node name="BaseLevel" instance=ExtResource( 1 )]
 level = 6
@@ -178,7 +104,6 @@ position = Vector2( 664, 264 )
 nodes = [ NodePath("../Gate"), NodePath("../Gate2"), NodePath("../EnergyWire"), NodePath("../EnergyWire2"), NodePath("../EnergyWire3"), NodePath("../EnergyWire4") ]
 
 [node name="EnergyWire" parent="." index="14" instance=ExtResource( 13 )]
-material = SubResource( 2 )
 position = Vector2( 736, 248 )
 active = true
 
@@ -189,15 +114,12 @@ tile_data = PoolIntArray( 131068, 0, 262144, 131069, 0, 393218, 65538, 0, 196608
 tile_data = PoolIntArray( 131067, 16, 0 )
 
 [node name="EnergyWire2" parent="." index="15" instance=ExtResource( 13 )]
-material = SubResource( 3 )
 position = Vector2( 824, 248 )
-active = false
 
 [node name="Wire" parent="EnergyWire2" index="0"]
 tile_data = PoolIntArray( -65538, 0, 393216, -65537, 0, 262146, -131072, 0, 262144, -131071, 0, 2, -11, 0, 393216, -10, 0, 327680, -9, 0, 327680, -8, 0, 327680, -7, 0, 327680, -6, 0, 327680, -5, 0, 327680, -4, 0, 327680, -3, 0, 327680, -2, 0, 524290, 65525, 0, 196608, 131061, 0, 131072 )
 
 [node name="EnergyWire3" parent="." index="16" instance=ExtResource( 13 )]
-material = SubResource( 4 )
 position = Vector2( 0, -16 )
 active = true
 
@@ -205,9 +127,7 @@ active = true
 tile_data = PoolIntArray( 983088, 0, 393218, 1048624, 0, 65538, 1114160, 0, 65538 )
 
 [node name="EnergyWire4" parent="." index="17" instance=ExtResource( 13 )]
-material = SubResource( 5 )
 position = Vector2( 856, 240 )
-active = false
 
 [node name="Wire" parent="EnergyWire4" index="0"]
 tile_data = PoolIntArray( -1, 0, 65538, 65535, 0, 65538, 131071, 0, 131074 )
@@ -217,17 +137,13 @@ position = Vector2( 712, 200 )
 nodes = [ NodePath("../EnergyWire5"), NodePath("../EnergyWire7"), NodePath("../Gate3"), NodePath("../EnergyWire8"), NodePath("../EnergyWire6"), NodePath("../Gate4") ]
 
 [node name="EnergyWire5" parent="." index="19" instance=ExtResource( 13 )]
-material = SubResource( 6 )
 position = Vector2( 712, 136 )
-active = false
 
 [node name="Wire" parent="EnergyWire5" index="0"]
 tile_data = PoolIntArray( 131070, 0, 196608, 196606, 0, 196608, 262142, 0, 196608, 327678, 0, 131072, 327679, 0, 327680 )
 
 [node name="EnergyWire7" parent="." index="20" instance=ExtResource( 13 )]
-material = SubResource( 7 )
 position = Vector2( 712, 128 )
-active = false
 
 [node name="Wire" parent="EnergyWire7" index="0"]
 tile_data = PoolIntArray( -65538, 0, 0, -2, 0, 655360, 65534, 0, 655360, 131070, 0, 655360 )
@@ -243,7 +159,6 @@ close_in_inverse_order = false
 direction = ""
 
 [node name="EnergyWire8" parent="." index="22" instance=ExtResource( 13 )]
-material = SubResource( 8 )
 position = Vector2( 792, 128 )
 active = true
 
@@ -251,7 +166,6 @@ active = true
 tile_data = PoolIntArray( -65538, 0, 393216, -2, 0, 655360, 65534, 0, 655360, 131070, 0, 655360 )
 
 [node name="EnergyWire6" parent="." index="23" instance=ExtResource( 13 )]
-material = SubResource( 9 )
 position = Vector2( 760, 136 )
 active = true
 

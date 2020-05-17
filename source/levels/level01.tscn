@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://levels/base-nodes/base-level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/base-nodes/tilemaps/background.tscn" type="PackedScene" id=2]
@@ -18,38 +18,6 @@
 [ext_resource path="res://levels/base-nodes/messages/message.tscn" type="PackedScene" id=16]
 [ext_resource path="res://levels/base-nodes/finish-line/finish-line.tscn" type="PackedScene" id=17]
 [ext_resource path="res://levels/level02.tscn" type="PackedScene" id=18]
-
-[sub_resource type="Shader" id=1]
-code = "shader_type canvas_item;
-render_mode unshaded;
-
-uniform vec4 base_color: hint_color;
-uniform vec4 active_color: hint_color;
-uniform vec4 inactive_color: hint_color;
-uniform bool active;
-
-void fragment ()
-{
-	COLOR = texture(TEXTURE , UV);
-	if (active == false && length(COLOR.rgb - base_color.rgb) <= 0.01)
-		COLOR.rgb = inactive_color.rgb;
-	if (active == true && length(COLOR.rgb - base_color.rgb) <= 0.01)
-		COLOR.rgb = active_color.rgb;
-}"
-
-[sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
-shader_param/base_color = Color( 0.141176, 0.164706, 0.231373, 1 )
-shader_param/active_color = Color( 0.956863, 0.956863, 0.894118, 1 )
-shader_param/inactive_color = Color( 0.490196, 0.490196, 0.490196, 1 )
-shader_param/active = false
-
-[sub_resource type="ShaderMaterial" id=3]
-shader = SubResource( 1 )
-shader_param/base_color = Color( 0.141176, 0.164706, 0.231373, 1 )
-shader_param/active_color = Color( 0.956863, 0.956863, 0.894118, 1 )
-shader_param/inactive_color = Color( 0.490196, 0.490196, 0.490196, 1 )
-shader_param/active = false
 
 [node name="Level01" instance=ExtResource( 1 )]
 level = 1
@@ -126,9 +94,7 @@ tile_data = PoolIntArray( 786451, 10, 0, 917527, 4, 0, 917528, 1, 0, 917529, 11,
 tile_data = PoolIntArray( 917574, 22, 0 )
 
 [node name="EnergyWire" parent="." index="5" instance=ExtResource( 4 )]
-material = SubResource( 2 )
 position = Vector2( 120, 64 )
-active = false
 
 [node name="Wire" parent="EnergyWire" index="0"]
 tile_data = PoolIntArray( -196607, 0, 393216, -196606, 0, 327680, -196605, 0, 327680, -196604, 0, 327680, -196603, 0, 327680, -196602, 0, 393218, -65537, 0, 393216, -131072, 0, 327680, -131071, 0, 524290, -131066, 0, 196608, -131056, 0, 393216, -131055, 0, 327680, -131054, 0, 327680, -131053, 0, 327680, -131052, 0, 327680, -131051, 0, 327680, -131050, 0, 327680, -131049, 0, 393218, -1, 0, 196608, -65530, 0, 524288, -65529, 0, 327680, -65528, 0, 327680, -65527, 0, 327680, -65526, 0, 327680, -65525, 0, 327680, -65524, 0, 327680, -65523, 0, 327680, -65522, 0, 327680, -65521, 0, 327680, -65520, 0, 524290, -65513, 0, 196608, 65535, 0, 196608, 23, 0, 327681, 131071, 0, 196608, 65559, 0, 851968, 196607, 0, 327681, 131095, 0, 851968, 196631, 0, 851968, 262167, 0, 851968, 327703, 0, 851968, 393239, 0, 851968, 458775, 0, 131073 )
@@ -184,9 +150,7 @@ direction = ""
 position = Vector2( 936, 248 )
 
 [node name="EnergyWire2" parent="." index="13" instance=ExtResource( 4 )]
-material = SubResource( 3 )
 position = Vector2( 1016, 16 )
-active = false
 
 [node name="Wire" parent="EnergyWire2" index="0"]
 tile_data = PoolIntArray( 327680, 0, 196609, 393216, 0, 458753, 458752, 0, 458753, 524288, 0, 458753, 589824, 0, 393217 )

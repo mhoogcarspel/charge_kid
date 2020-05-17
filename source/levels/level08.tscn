@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://levels/base-nodes/base-level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/base-nodes/tilemaps/background.tscn" type="PackedScene" id=2]
@@ -18,41 +18,7 @@
 [ext_resource path="res://actors/interactables/energy-wire/energy-wire.tscn" type="PackedScene" id=16]
 [ext_resource path="res://levels/base-nodes/messages/bullet-boost.tscn" type="PackedScene" id=17]
 
-[sub_resource type="Shader" id=1]
-code = "shader_type canvas_item;
-render_mode unshaded;
-
-uniform vec4 base_color: hint_color;
-uniform vec4 active_color: hint_color;
-uniform vec4 inactive_color: hint_color;
-uniform bool active;
-
-void fragment ()
-{
-	COLOR = texture(TEXTURE , UV);
-	if (active == false && length(COLOR.rgb - base_color.rgb) <= 0.01)
-		COLOR.rgb = inactive_color.rgb;
-	if (active == true && length(COLOR.rgb - base_color.rgb) <= 0.01)
-		COLOR.rgb = active_color.rgb;
-}"
-
-[sub_resource type="ShaderMaterial" id=2]
-resource_local_to_scene = true
-shader = SubResource( 1 )
-shader_param/base_color = Color( 0.141176, 0.164706, 0.231373, 1 )
-shader_param/active_color = Color( 0.956863, 0.956863, 0.894118, 1 )
-shader_param/inactive_color = Color( 0.490196, 0.490196, 0.490196, 1 )
-shader_param/active = false
-
-[sub_resource type="ShaderMaterial" id=3]
-resource_local_to_scene = true
-shader = SubResource( 1 )
-shader_param/base_color = Color( 0.141176, 0.164706, 0.231373, 1 )
-shader_param/active_color = Color( 0.956863, 0.956863, 0.894118, 1 )
-shader_param/inactive_color = Color( 0.490196, 0.490196, 0.490196, 1 )
-shader_param/active = false
-
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 88 )
 
 [node name="BaseLevel" instance=ExtResource( 1 )]
@@ -177,6 +143,7 @@ position = Vector2( 40, 279.5 )
 
 [node name="EnergyGate" parent="." index="13" instance=ExtResource( 12 )]
 position = Vector2( 136, 216 )
+column_gap = 0
 gate_height = 5
 
 [node name="FuelTank2" parent="." index="14" instance=ExtResource( 7 )]
@@ -189,12 +156,11 @@ wires = [ NodePath("../EnergyWire"), NodePath("../EnergyWire2") ]
 
 [node name="EnergyGate2" parent="." index="16" instance=ExtResource( 12 )]
 position = Vector2( 56, 72 )
+column_gap = 0
 
 [node name="EnergyWire" parent="." index="17" instance=ExtResource( 16 )]
-material = SubResource( 2 )
 position = Vector2( 200, 16 )
 z_index = -6
-active = false
 
 [node name="Wire" parent="EnergyWire" index="0"]
 tile_data = PoolIntArray( 65531, 0, 327680, 65532, 0, 327680, 65533, 0, 327680, 65534, 0, 327680, 65535, 0, 327680, 0, 0, 327680, 1, 0, 327680, 2, 0, 327680, 3, 0, 327680, 4, 0, 327680, 5, 0, 327680, 6, 0, 327680, 7, 0, 327680, 8, 0, 327680, 9, 0, 327680, 10, 0, 393218, 65546, 0, 524288, 65547, 0, 327680, 65548, 0, 327680, 65549, 0, 327680, 65550, 0, 327680, 65551, 0, 327680, 65552, 0, 327680, 65553, 0, 393218, 131089, 0, 196608, 196625, 0, 196608, 262161, 0, 917504, 327697, 0, 917504, 393233, 0, 917504, 458769, 0, 917504, 524305, 0, 917504, 589841, 0, 917504, 655377, 0, 917504, 720913, 0, 917504, 786449, 0, 917504, 851985, 0, 917504, 917521, 0, 786432 )
@@ -203,9 +169,7 @@ tile_data = PoolIntArray( 65531, 0, 327680, 65532, 0, 327680, 65533, 0, 327680, 
 tile_data = PoolIntArray( 65531, 16, 0, 196625, 6, 0 )
 
 [node name="EnergyWire2" parent="." index="18" instance=ExtResource( 16 )]
-material = SubResource( 3 )
 position = Vector2( 64, 14 )
-active = false
 
 [node name="Wire" parent="EnergyWire2" index="0"]
 tile_data = PoolIntArray( 65539, 0, 262144, 65540, 0, 393218, 131072, 0, 262144, 131073, 0, 393218, 131076, 0, 196608, 196609, 0, 524288, 196610, 0, 327680, 196611, 0, 327680, 196612, 0, 524290 )
@@ -248,7 +212,7 @@ message_time = 4.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lv08Unique" index="0"]
 position = Vector2( 24, 88 )
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 [connection signal="body_entered" from="Lv08Unique" to="Lv08Unique" method="_on_Lv6SpMessage_body_entered"]
 
 [editable path="Background3"]
