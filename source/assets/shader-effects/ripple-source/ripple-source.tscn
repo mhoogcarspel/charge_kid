@@ -23,9 +23,13 @@ void fragment()  {
 	float cur_amp = amplitude*cos(x*PI/2.0)*sin(x*2.0*PI*pulses - time*2.0*PI*speed);
 	
 	vec2 dir = normalize(pos);
-	vec2 mod_uv = dir*cur_amp/scale;
+	vec2 mod_uv = dir*cur_amp;
 	
-	COLOR = texture(SCREEN_TEXTURE, SCREEN_UV + mod_uv);
+	mod_uv = vec2(ivec2(mod_uv));
+	vec2 screen_uv = vec2(ivec2(SCREEN_UV*scale));
+	vec2 uv = (screen_uv + mod_uv + vec2(0.5))/scale;
+	
+	COLOR = texture(SCREEN_TEXTURE, uv);
 }
 
 "
@@ -41,6 +45,7 @@ shader_param/pulses = null
 shader_param/scale = null
 
 [node name="RippleSource" type="Node2D"]
+z_index = 5
 script = ExtResource( 2 )
 
 [node name="BackBufferCopy" type="BackBufferCopy" parent="."]

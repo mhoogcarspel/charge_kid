@@ -13,6 +13,7 @@ func _ready():
 	$Shader.scale = get_viewport().size
 	$Shader.scale.y *= tear_size
 	shader.set_shader_param("dist", tear_distance)
+	shader.set_shader_param("scale", scale)
 
 
 

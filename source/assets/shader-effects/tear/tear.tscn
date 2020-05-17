@@ -8,11 +8,13 @@ code = "shader_type canvas_item;
 render_mode unshaded;
 
 uniform float dist;
+uniform vec2 scale;
 
 void fragment() {
 	vec2 uv = vec2(0.0);
 	uv.x = mod(SCREEN_UV.x + dist, 1.0);
 	uv.y = SCREEN_UV.y;
+	
 	COLOR = texture(SCREEN_TEXTURE, uv);
 }"
 
@@ -20,6 +22,7 @@ void fragment() {
 resource_local_to_scene = true
 shader = SubResource( 1 )
 shader_param/dist = null
+shader_param/scale = Vector2( 1, 1 )
 
 [node name="Tear" type="Node2D"]
 z_index = 10

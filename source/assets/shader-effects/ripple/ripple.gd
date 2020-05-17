@@ -14,14 +14,15 @@ onready var shader = $Shader.get_material()
 
 
 func _ready():
-	shader.set_shader_param("speed", speed)
-	shader.set_shader_param("wave_length", wave_length)
-	shader.set_shader_param("length_increase", length_increase)
-	shader.set_shader_param("amplitude", amplitude)
-	shader.set_shader_param("amplitude_decrease", amplitude_decrease)
+	shader.set_shader_param("speed", speed/2)
+	shader.set_shader_param("wave_length", wave_length/2)
+	shader.set_shader_param("length_increase", length_increase/2)
+	shader.set_shader_param("amplitude", amplitude/2)
+	shader.set_shader_param("amplitude_decrease", amplitude_decrease/2)
 	shader.set_shader_param("pulses", pulses)
-	shader.set_shader_param("scale", get_viewport().size*2)
+	shader.set_shader_param("scale", get_viewport().size)
 	$Shader.scale = get_viewport().size
+	self.position = Vector2(int(position.x) + 0.5, int(position.y) + 0.5)
 
 func _process(delta):
 	shader.set_shader_param("time", 5 - $Timer.time_left)

@@ -14,5 +14,5 @@ func _process(delta):
 	shader.set_shader_param("radius", radius)
 	shader.set_shader_param("amplitude", amplitude)
 	shader.set_shader_param("pulses", pulses)
-	shader.set_shader_param("scale", get_viewport().size*2)
+	shader.set_shader_param("scale", get_viewport().size)
 	$Shader.scale = get_viewport().size

@@ -20,10 +20,17 @@ hit_particles = ExtResource( 5 )
 
 [node name="ColumnCell" parent="." instance=ExtResource( 1 )]
 
+[node name="RippleSource" parent="ColumnCell/Sparks/TopEnd" index="4"]
+radius = 24.0
+
+[node name="RippleSource" parent="ColumnCell/Sparks/BottomEnd" index="4"]
+radius = 24.0
+
 [node name="CollisionShape2D" parent="ColumnCell/Sparks/Hitbox" index="0"]
 shape = SubResource( 1 )
 
 [node name="SFX" type="Node2D" parent="."]
+position = Vector2( 8, 32 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource( 2 )

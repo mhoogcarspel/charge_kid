@@ -25,9 +25,13 @@ void fragment()  {
 	float wave_pos = mod(clamp(length(pos) - time*speed, 0.0, wave_length), wave_length);
 	vec2 dir = normalize(pos);
 	float x = wave_pos*PI*2.0/current_length;
-	vec2 mod_uv = dir*current_amplitude*sin(x*float(pulses))/scale;
+	vec2 mod_uv = dir*current_amplitude*sin(x*float(pulses));
 	
-	COLOR = texture(SCREEN_TEXTURE, SCREEN_UV + mod_uv);
+	mod_uv = vec2(ivec2(mod_uv));
+	vec2 screen_uv = vec2(ivec2(SCREEN_UV*scale));
+	vec2 uv = (screen_uv + mod_uv + vec2(0.5))/scale;
+	
+	COLOR = texture(SCREEN_TEXTURE, uv);
 }
 
 
