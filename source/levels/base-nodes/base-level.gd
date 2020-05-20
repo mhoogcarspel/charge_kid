@@ -43,11 +43,17 @@ func _ready():
 func _process(delta):
 	var player = get_tree().get_nodes_in_group("player")[0]
 	if player != null:
-		var pos: Vector2 = player.position + Vector2(0,-36) - message.rect_size/2
+		var pos: Vector2 = player.position - Vector2(message.rect_size.x/2, 0)
+		if player.position.y <= 32 + $PlayerCamera.limit_top:
+			pos += Vector2(0,18 + message.rect_size.y/2)
+		else:
+			pos -= Vector2(0,36 + message.rect_size.y/2)
+		
 		var screen_center: Vector2 = $PlayerCamera.get_camera_screen_center()
 		var screen_size: Vector2 = get_viewport().size/2
 		screen_size.x *= $PlayerCamera.zoom.x
 		screen_size.y *= $PlayerCamera.zoom.y
+		
 		message.rect_position.x = clamp(pos.x,  screen_center.x - screen_size.x,
 												screen_center.x + screen_size.x -
 												message.rect_size.x)
