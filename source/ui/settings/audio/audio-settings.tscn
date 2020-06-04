@@ -10,7 +10,6 @@
 [ext_resource path="res://ui/settings/audio/sfx-slider.gd" type="Script" id=9]
 [ext_resource path="res://ui/settings/audio/default.gd" type="Script" id=10]
 
-
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 3 )
 
@@ -28,6 +27,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+return_shortcut = ExtResource( 8 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
