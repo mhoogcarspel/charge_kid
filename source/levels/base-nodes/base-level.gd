@@ -9,6 +9,7 @@ export (bool) var bgm_1
 export (bool) var bgm_2
 export (bool) var bgm_3
 export (bool) var bgm_4
+export (bool) var bgm_5
 
 export (PackedScene) var player_scene
 
@@ -33,7 +34,7 @@ func _ready():
 		var save_file = main.get_node("SaveFileHandler")
 		
 		if not speedrun_mode.is_active():
-			sound_control.set_volume_bgm([bgm_1, bgm_2, bgm_3, bgm_4])
+			sound_control.set_volume_bgm([bgm_1, bgm_2, bgm_3, bgm_4, bgm_5])
 		
 		save_file.progress["levels"] = max(level, save_file.progress["levels"])
 		save_file.save_progress()
