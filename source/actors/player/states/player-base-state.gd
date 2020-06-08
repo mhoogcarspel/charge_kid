@@ -50,7 +50,7 @@ func bullet_boost_input_pressed() -> bool:
 func is_holding_bullet() -> bool:
 	if owner.get_tree().get_nodes_in_group("bullet").size() > 0:
 		var bullet = owner.get_tree().get_nodes_in_group("bullet")[0]
-		if bullet.stack[0] == "HoldState":
+		if bullet.get_state() == "HoldState" or bullet.get_state() == "ReturnState":
 			return true
 		else:
 			return false
