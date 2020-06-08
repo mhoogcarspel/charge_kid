@@ -9,6 +9,7 @@
 [ext_resource path="res://levels/base-nodes/tilemaps/spikes.tscn" type="PackedScene" id=7]
 
 [node name="BaseLevel" instance=ExtResource( 2 )]
+level = 17
 
 [node name="Background" parent="." index="4" instance=ExtResource( 1 )]
 script = ExtResource( 4 )
@@ -25,7 +26,7 @@ tile_data = PoolIntArray( 1114109, 37, 0, 1114110, 31, 0, 1114111, 37, 0, 104857
 [node name="Spikes" parent="." index="8" instance=ExtResource( 7 )]
 
 [node name="Player" parent="." index="9" instance=ExtResource( 3 )]
-position = Vector2( 120, 232 )
+position = Vector2( 120, 248 )
 
 [editable path="Background"]
 

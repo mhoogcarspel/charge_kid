@@ -67,7 +67,7 @@ func back_to_start():
 
 
 
-func change_scene(next_scene: PackedScene):
+func change_scene(next_scene: PackedScene, spawn_point: int = 0):
 	get_tree().paused = false
 	for scene in $Scene.get_children():
 		if not scene.is_in_group("constant"):
@@ -77,9 +77,14 @@ func change_scene(next_scene: PackedScene):
 	for scene in $HudContainer.get_children():
 		if not scene.is_in_group("speedrun_timer"):
 			scene.queue_free()
+	
 	var scene_instance = next_scene.instance()
 	if $SpeedrunMode.is_active() and scene_instance is BaseLevel:
 		scene_instance.get_node("ScreenTransition").active = false
+	if spawn_point > 0:
+		scene_instance.get_node("ScreenTransition").active = false
+		scene_instance.respawn_point = spawn_point
+	
 	$Scene.call_deferred("add_child", scene_instance)
 	actual_scene = next_scene
 	return scene_instance

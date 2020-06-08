@@ -14,10 +14,13 @@ export (float) var tear_frequency
 
 
 func _ready():
-	var player = get_tree().get_nodes_in_group("player")[0]
-	followed_node = player
-	yield(get_tree(), "physics_frame")
-	limit_right = get_tree().get_nodes_in_group("level")[0].level_length
+	if get_parent().auto_scroller:
+		followed_node = get_parent().get_node("Autoscroller")
+	else:
+		var player = get_tree().get_nodes_in_group("player")[0]
+		followed_node = player
+		yield(get_tree(), "physics_frame")
+		limit_right = get_tree().get_nodes_in_group("level")[0].level_length
 
 
 

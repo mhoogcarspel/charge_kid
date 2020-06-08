@@ -14,7 +14,7 @@ func _ready():
 		self.queue_free()
 
 func _input(event):
-	if event is InputEventJoypadButton or event is InputEventJoypadMotion or event is InputEventKey and $PityTimer.is_stopped() and not event.is_echo() and event.is_pressed():
+	if event is InputEvent and $PityTimer.is_stopped():
 		_on_Timer_timeout()
 
 func _on_Timer_timeout():

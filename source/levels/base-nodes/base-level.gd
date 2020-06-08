@@ -11,6 +11,10 @@ export (bool) var bgm_3
 export (bool) var bgm_4
 export (bool) var bgm_5
 
+export (bool) var auto_scroller
+export (Array, NodePath) var checkpoints
+var respawn_point: int = 0
+
 export (PackedScene) var player_scene
 
 onready var message = $MessageLabel
@@ -38,6 +42,25 @@ func _ready():
 		
 		save_file.progress["levels"] = max(level, save_file.progress["levels"])
 		save_file.save_progress()
+	
+	if auto_scroller and respawn_point > 0:
+		var player = get_tree().get_nodes_in_group("player")[0]
+		var checkpoint = get_node(checkpoints[respawn_point - 1])
+		player.position = checkpoint.position
+		$Autoscroller.position = checkpoint.position + checkpoint.get_node("CameraRespawnPoint").position
+		$PlayerCamera.align()
+		
+		var ripple = player.shader_effects("Ripple")
+		ripple.position = player.position
+		ripple.speed = 400
+		ripple.wave_length = 120
+		ripple.length_increase = 0
+		ripple.amplitude = 20
+		ripple.amplitude_decrease = 80
+		ripple.pulses = 4
+		self.add_child(ripple)
+		for particle in player.get_node("RespawnParticles").get_children():
+			particle.emitting = true
 
 
 
