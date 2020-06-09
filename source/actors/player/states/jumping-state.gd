@@ -10,6 +10,7 @@ func _init(owner: KinematicBody2D):
 
 func enter():
 	owner.jump()
+	owner.get_node("CoyoteTimer").stop()
 
 func update(delta):
 	owner.horizontal_move(get_directional_inputs(), delta)
