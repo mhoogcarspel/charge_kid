@@ -44,12 +44,12 @@ func _ready():
 		save_file.save_progress()
 	
 	if auto_scroller and respawn_point > 0:
-		var player = get_tree().get_nodes_in_group("player")[0]
 		var checkpoint = get_node(checkpoints[respawn_point - 1])
-		player.position = checkpoint.position
+		$Player.position = checkpoint.position
 		$Autoscroller.position = checkpoint.position + checkpoint.get_node("CameraRespawnPoint").position
 		$PlayerCamera.align()
 		
+		var player = $Player
 		var ripple = player.shader_effects("Ripple")
 		ripple.position = player.position
 		ripple.speed = 400

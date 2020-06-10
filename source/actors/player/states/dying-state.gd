@@ -45,10 +45,9 @@ func enter():
 	owner.add_child(timer)
 	timer.start(1)
 	yield(timer, "timeout")
-	owner.queue_free()
 	
 	if owner.get_parent().auto_scroller:
-		if owner.get_tree().get_nodes_in_group("main").size > 0:
+		if owner.get_tree().get_nodes_in_group("main").size() > 0:
 			var main = owner.get_tree().get_nodes_in_group("main")[0]
 			var level = owner.get_parent().level
 			var level_scene = main.get_node("SaveFileHandler").levels[level - 1]
@@ -57,6 +56,7 @@ func enter():
 		else:
 			owner.get_tree().reload_current_scene()
 	else:
+		owner.queue_free()
 		var level = owner.get_tree().get_nodes_in_group("level")[0]
 		var next_player = level.player_scene.instance()
 		next_player.position = owner.checkpoint
