@@ -58,7 +58,7 @@ func _ready():
 		ripple.amplitude = 20
 		ripple.amplitude_decrease = 80
 		ripple.pulses = 4
-		self.add_child(ripple)
+		player.get_parent().add_child(ripple)
 		for particle in player.get_node("RespawnParticles").get_children():
 			particle.emitting = true
 

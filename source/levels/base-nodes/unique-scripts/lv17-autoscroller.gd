@@ -8,6 +8,7 @@ onready var checkpoint_3_event_part: int = 0
 onready var camera_placement = get_parent().get_node("Checkpoint3/CameraRespawnPoint")
 onready var top_gate = get_parent().get_node("EnergyGate7")
 onready var bottom_gate = get_parent().get_node("EnergyGate6")
+onready var camera = get_parent().get_node("PlayerCamera")
 
 
 
@@ -37,11 +38,13 @@ func _on_Checkpoint3_body_entered(body):
 func _on_Tween_tween_completed(object, key):
 	if object == self:
 		$PauseTimer.start(2)
+		camera.shake_screen(24)
 	elif object == top_gate and checkpoint_3_event_part == 1:
 		checkpoint_3_event_part = 2
 		$Tween.interpolate_property(top_gate, "position", null, Vector2(2248, 360), 6.0,
 										Tween.TRANS_LINEAR, Tween.EASE_IN)
 		$Tween.start()
+		camera.shake_screen(24)
 	elif object == top_gate and checkpoint_3_event_part == 2:
 		checkpoint_3_event_part = 3
 		$PauseTimer.start(3)
@@ -50,6 +53,7 @@ func _on_Tween_tween_completed(object, key):
 		$Tween.interpolate_property(bottom_gate, "position", null, Vector2(2248, -40), 6.0,
 										Tween.TRANS_LINEAR, Tween.EASE_IN)
 		$Tween.start()
+		camera.shake_screen(24)
 	elif object == bottom_gate and checkpoint_3_event_part == 4:
 		checkpoint_3_event_part = 5
 		$PauseTimer.start(0.5)
@@ -59,6 +63,8 @@ func _on_Tween_tween_completed(object, key):
 
 func _on_PauseTimer_timeout():
 	match checkpoint_3_event_part:
+		0:
+			camera.shake_screen(24)
 		1:
 			$Tween.interpolate_property(top_gate, "position", null, Vector2(2248, 56), 2.0,
 										Tween.TRANS_LINEAR, Tween.EASE_IN)
@@ -73,5 +79,7 @@ func _on_PauseTimer_timeout():
 			get_parent().get_node("EnergyWire3").activate()
 			$PauseTimer.start(2)
 			active = true
+		6:
+			camera.shake_screen(24)
 
 
