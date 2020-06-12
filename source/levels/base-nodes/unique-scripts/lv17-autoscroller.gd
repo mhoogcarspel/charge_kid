@@ -4,6 +4,7 @@ export (float) var speed
 
 onready var active: bool = true
 onready var checkpoint_3_event_part: int = 0
+onready var end_of_level: bool = false
 
 onready var camera_placement = get_parent().get_node("Checkpoint3/CameraRespawnPoint")
 onready var top_gate = get_parent().get_node("EnergyGate7")
@@ -19,6 +20,10 @@ func _physics_process(delta):
 			if self.position.x < get_parent().level_length - 256:
 				self.position.x = clamp(self.position.x + speed*delta, 0, get_parent().level_length - 256)
 			else:
+				if not end_of_level:
+					camera.shake_screen(30, 2)
+					self.speed *= 3
+					end_of_level = true
 				$EnergyGate.position.x += speed*delta
 
 
@@ -38,7 +43,7 @@ func _on_Checkpoint3_body_entered(body):
 func _on_Tween_tween_completed(object, key):
 	if object == self:
 		$PauseTimer.start(2)
-		camera.shake_screen(24)
+		camera.shake_screen(30, 3)
 	elif object == top_gate and checkpoint_3_event_part == 1:
 		checkpoint_3_event_part = 2
 		$Tween.interpolate_property(top_gate, "position", null, Vector2(2248, 360), 6.0,
@@ -64,7 +69,7 @@ func _on_Tween_tween_completed(object, key):
 func _on_PauseTimer_timeout():
 	match checkpoint_3_event_part:
 		0:
-			camera.shake_screen(24)
+			camera.shake_screen(30, 3)
 		1:
 			$Tween.interpolate_property(top_gate, "position", null, Vector2(2248, 56), 2.0,
 										Tween.TRANS_LINEAR, Tween.EASE_IN)
@@ -80,6 +85,6 @@ func _on_PauseTimer_timeout():
 			$PauseTimer.start(2)
 			active = true
 		6:
-			camera.shake_screen(24)
+			camera.shake_screen(30, 3)
 
 

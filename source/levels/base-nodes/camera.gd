@@ -62,10 +62,10 @@ func screen_shake_routine(delta: float) -> void:
 	elif offset.x != 0:
 		offset.x = 0.0
 
-func shake_screen(magnitude: float) -> void:
+func shake_screen(magnitude: float, magnitude_dissipation: float = 4) -> void:
 	shake_direction = 1
 	shake_amplitude = magnitude
-	dissipation = magnitude*4
+	dissipation = magnitude*magnitude_dissipation
 
 
 

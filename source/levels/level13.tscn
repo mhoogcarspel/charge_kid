@@ -76,9 +76,7 @@ shader_param/active = false
 
 [node name="BaseLevel" instance=ExtResource( 5 )]
 level = 13
-bgm_2 = true
-bgm_3 = true
-bgm_4 = true
+bgm_5 = true
 
 [node name="ScreenTransition" parent="." index="0"]
 opening_text = "Level 13
@@ -166,10 +164,8 @@ wires = [ NodePath("../EnergyWire") ]
 [node name="Gate" parent="." index="11" instance=ExtResource( 9 )]
 position = Vector2( 168, 72 )
 gate_height = 10
-gap_size = 0
 active = true
 close_in_inverse_order = true
-direction = ""
 
 [node name="EnergyWire" parent="." index="12" instance=ExtResource( 6 )]
 material = SubResource( 2 )
@@ -204,18 +200,12 @@ wires = [ NodePath("../EnergyWire3") ]
 [node name="Gate2" parent="." index="16" instance=ExtResource( 13 )]
 position = Vector2( 424, 96 )
 gate_height = 12
-gap_size = 0
 active = true
-close_in_inverse_order = false
-direction = ""
 
 [node name="Gate3" parent="." index="17" instance=ExtResource( 13 )]
 position = Vector2( 448, 96 )
 gate_height = 12
-gap_size = 0
 active = true
-close_in_inverse_order = false
-direction = ""
 
 [node name="EnergyWire2" parent="." index="18" instance=ExtResource( 6 )]
 material = SubResource( 3 )
@@ -279,10 +269,7 @@ position = Vector2( -48, 40 )
 [node name="Gate4" parent="." index="26" instance=ExtResource( 13 )]
 position = Vector2( 824, 104 )
 gate_height = 12
-gap_size = 0
 active = true
-close_in_inverse_order = false
-direction = ""
 
 [node name="EnergyWire5" parent="." index="27" instance=ExtResource( 6 )]
 material = SubResource( 6 )

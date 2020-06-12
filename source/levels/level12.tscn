@@ -12,9 +12,7 @@
 
 [node name="BaseLevel" instance=ExtResource( 6 )]
 level = 12
-bgm_2 = true
-bgm_3 = true
-bgm_4 = true
+bgm_5 = true
 
 [node name="ScreenTransition" parent="." index="0"]
 opening_text = "Level 12
