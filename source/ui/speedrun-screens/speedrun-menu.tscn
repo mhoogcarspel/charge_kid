@@ -144,6 +144,7 @@ margin_right = 228.0
 margin_bottom = 152.0
 focus_neighbour_top = NodePath("../Erase")
 focus_neighbour_bottom = NodePath("../AnyPercent")
+shortcut = ExtResource( 5 )
 text = "Return"
 
 [node name="Any%Times" type="MarginContainer" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://common/main.gd" type="Script" id=1]
 [ext_resource path="res://ui/starting-screen/start-menu.tscn" type="PackedScene" id=2]
@@ -42,6 +42,7 @@
 [ext_resource path="res://levels/level17.tscn" type="PackedScene" id=40]
 [ext_resource path="res://ui/credits/credits0.tscn" type="PackedScene" id=41]
 [ext_resource path="res://ui/speedrun-screens/speedrun-menu.tscn" type="PackedScene" id=42]
+[ext_resource path="res://ui/speedrun-screens/erase-times-menu.tscn" type="PackedScene" id=43]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 38 )
@@ -124,6 +125,7 @@ display_menu = ExtResource( 31 )
 level_select = ExtResource( 7 )
 settings_menu = ExtResource( 9 )
 speedrun_menu = ExtResource( 42 )
+erase_times_menu = ExtResource( 43 )
 credits = ExtResource( 41 )
 sound_config = "audio_settings"
 enable_save = true

@@ -26,13 +26,7 @@ func _ready():
 
 
 func _on_Return_pressed():
-	if not pause_menu:
-		main.back_to_start()
-	else:
-		get_parent().pause_mode = PAUSE_MODE_PROCESS
-		get_parent().self_show()
-		get_parent().refocus()
-		self.queue_free()
+	main.back_to_start()
 
 
 
@@ -40,6 +34,8 @@ func _on_Any_pressed():
 	main.get_node("SpeedrunMode").category = "Any%"
 	main.get_node("SpeedrunMode").ready()
 	main.change_scene(speedrun_start)
+
+
 
 func _on_Secret_pressed():
 	main.get_node("SpeedrunMode").category = "Secret%"
@@ -55,30 +51,12 @@ func _on_FasterSidescrollers_toggle(button_pressed):
 
 
 func _on_Erase_pressed():
-	self_hide()
-	self.add_child(prepare_scene(main.erase_times_menu))
-
-
-
-func prepare_scene(settings_menu: PackedScene) -> Control:
-	self.pause_mode = PAUSE_MODE_STOP
-	var settings_window = settings_menu.instance()
-	if pause_menu:
-		settings_window.pause_menu = true
-	return settings_window
+	main.change_scene(main.erase_times_menu)
 
 
 
 func refocus() -> void:
 	$CenterContainer/MarginContainer/MarginContainer/Menu/Options/AnyPercent.grab_focus()
-
-func self_hide() -> void:
-	$CenterContainer.hide()
-
-func self_show() -> void:
-	$CenterContainer.show()
-
-
 
 
 
