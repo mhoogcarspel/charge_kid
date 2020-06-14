@@ -252,6 +252,7 @@ position = Vector2( 528, 48 )
 script = ExtResource( 18 )
 message = "Open the gate?
 Who cares?"
+message_time = 4.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="UniqueMessage" index="0"]
 position = Vector2( 24, 0 )
