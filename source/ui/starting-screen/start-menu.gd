@@ -1,10 +1,6 @@
 extends MarginContainer
 
-export (PackedScene) var game_scene
-export (PackedScene) var level_select
-export (PackedScene) var credits
 export (PackedScene) var button_model
-export (PackedScene) var speedrun_start
 export (ButtonGroup) var button_group
 
 export (PackedScene) var tear_shader
@@ -92,12 +88,11 @@ func _on_Continue_pressed():
 
 
 func _on_Speedrun_pressed():
-	main.get_node("SpeedrunMode").ready()
-	main.change_scene(speedrun_start)
+	main.change_scene(main.speedrun_menu)
 
 
 func _on_LevelSelect_pressed():
-	main.change_scene(level_select)
+	main.change_scene(main.level_select)
 
 
 func _on_StartGame_pressed():
@@ -110,7 +105,7 @@ func _on_Settings_pressed():
 
 
 func _on_Credits_pressed():
-	main.change_scene(credits)
+	main.change_scene(main.credits)
 
 
 func _on_Quit_pressed():

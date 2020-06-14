@@ -6,19 +6,6 @@
 [ext_resource path="res://ui/base-nodes/button-model.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ui/base-nodes/return-shortcut.tres" type="ShortCut" id=7]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 4 )
 
@@ -38,23 +25,17 @@ __meta__ = {
 }
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -512.0
-margin_top = -384.0
-margin_right = 512.0
-margin_bottom = 384.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
 margin_left = 390.0
-margin_top = 263.0
+margin_top = 167.0
 margin_right = 634.0
-margin_bottom = 505.0
+margin_bottom = 409.0
 
 [node name="MenuPanel" parent="CenterContainer/MarginContainer" instance=ExtResource( 3 )]
 margin_bottom = 242.0

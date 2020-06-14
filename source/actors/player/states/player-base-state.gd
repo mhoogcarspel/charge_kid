@@ -75,7 +75,7 @@ func boost_input_pressed() -> bool:
 				return true
 			else:
 				buffer.start()
-		
+	
 		if Input.is_action_pressed("ui_jump") and not buffer.is_stopped() and owner.can_boost:
 			owner.change_state("BoostingState")
 			buffer.stop()

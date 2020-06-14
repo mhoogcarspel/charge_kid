@@ -1,6 +1,7 @@
 extends Node
 
 onready var save_file: Node = get_parent().get_node("SaveFileHandler")
+onready var category: String = ""
 onready var screen_timer: Label = get_parent().get_node("HudContainer/Box/Box/SpeedrunTimer")
 onready var sound_control: SoundControl = get_parent().get_node("BackgroundAndMusicHandler")
 onready var active: bool = false

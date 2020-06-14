@@ -122,7 +122,7 @@ func get_controller_button_name(action: String, model: String = "Microsoft") -> 
 	if button_list.empty():
 		return ""
 	
-	button_string = Input.get_joy_button_string(get_type_button_list(action, InputEventJoypadButton)[0].button_index)
+	button_string = Input.get_joy_button_string(get_type_button_list(action,InputEventJoypadButton)[0].button_index)
 	
 	match model:
 		"Microsoft":

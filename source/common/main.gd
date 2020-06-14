@@ -9,6 +9,9 @@ export (PackedScene) var sound_menu
 export (PackedScene) var display_menu
 export (PackedScene) var level_select
 export (PackedScene) var settings_menu
+export (PackedScene) var speedrun_menu
+export (PackedScene) var speedrun_times
+export (PackedScene) var credits
 export (String) var sound_config
 export (bool) var enable_save
 export (bool) var debugging

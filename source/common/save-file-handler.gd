@@ -10,7 +10,10 @@ onready var main = get_parent()
 var progress: Dictionary = {
 	"levels": 0,
 	"end": false,
-	"times": []
+	"secrets": [false, false, false, false, false, false],
+	"times": [],
+	"secret_times": [],
+	"faster_sidescrollers": false
 }
 
 var model = progress.duplicate()
