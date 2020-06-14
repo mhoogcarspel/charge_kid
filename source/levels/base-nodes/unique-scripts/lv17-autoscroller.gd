@@ -13,6 +13,16 @@ onready var camera = get_parent().get_node("PlayerCamera")
 
 
 
+func _ready():
+	if get_tree().get_nodes_in_group("main").size() > 0:
+		var main = get_tree().get_nodes_in_group("main")[0]
+		var save_file = main.get_node("SaveFileHandler")
+		var speedrun_mode = main.get_node("SpeedrunMode")
+		if save_file.progress["faster_autoscrollers"] == true and speedrun_mode.is_active():
+			speed *= 1.5
+
+
+
 func _physics_process(delta):
 	if get_tree().get_nodes_in_group("player").size() > 0:
 		var player = get_tree().get_nodes_in_group("player")[0]

@@ -13,7 +13,7 @@ var progress: Dictionary = {
 	"secrets": [false, false, false, false, false, false],
 	"times": [],
 	"secret_times": [],
-	"faster_sidescrollers": false
+	"faster_autoscrollers": false
 }
 
 var model = progress.duplicate()

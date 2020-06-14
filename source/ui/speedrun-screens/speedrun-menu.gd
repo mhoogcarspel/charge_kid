@@ -19,8 +19,8 @@ func _ready():
 		
 		var secret_percent = $CenterContainer/MarginContainer/MarginContainer/Menu/Options/SecretPercent
 		var checkbox = $CenterContainer/MarginContainer/MarginContainer/Menu/Options/FasterSidescrollers/CheckBox
-		checkbox.pressed = save_file.progress["faster_sidescrollers"]
-		secret_percent.disabled = not save_file.progress["secrets"][5]
+		checkbox.pressed = save_file.progress["faster_autoscrollers"]
+		secret_percent.disabled = not save_file.progress["secrets"].back()
 	refocus()
 
 
@@ -43,7 +43,7 @@ func _on_Secret_pressed():
 
 
 func _on_FasterSidescrollers_toggle(button_pressed):
-	save_file.progress["faster_sidescrollers"] = button_pressed
+	save_file.progress["faster_autoscrollers"] = button_pressed
 	save_file.save_progress()
 
 
