@@ -177,7 +177,10 @@ wires = [ NodePath("../EnergyWire") ]
 [node name="Gate" parent="." index="11" instance=ExtResource( 10 )]
 position = Vector2( 488, 88 )
 gate_height = 7
+gap_size = 0
 active = true
+close_in_inverse_order = false
+direction = ""
 
 [node name="FuelTank" parent="." index="12" instance=ExtResource( 11 )]
 position = Vector2( 936, 248 )
@@ -196,7 +199,10 @@ tile_data = PoolIntArray( 327680, 15, 0 )
 [node name="Gate2" parent="." index="14" instance=ExtResource( 10 )]
 position = Vector2( 1016, 120 )
 gate_height = 4
+gap_size = 0
 active = true
+close_in_inverse_order = false
+direction = ""
 
 [node name="FuelTank2" parent="." index="15" instance=ExtResource( 11 )]
 position = Vector2( 984, 168 )
@@ -249,7 +255,7 @@ z_index = -1
 
 [node name="CollisionPolygon2D" parent="BoostMessage" index="0"]
 position = Vector2( -192, -143 )
-polygon = PoolVector2Array( 8, 135, 288, 135, 288, 183, 8, 183 )
+polygon = PoolVector2Array( 8, 103, 288, 103, 288, 183, 8, 183 )
 
 [node name="Text" parent="BoostMessage" index="1"]
 margin_left = -32.0
