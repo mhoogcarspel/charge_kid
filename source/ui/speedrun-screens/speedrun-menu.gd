@@ -31,15 +31,13 @@ func _on_Return_pressed():
 
 
 func _on_Any_pressed():
-	main.get_node("SpeedrunMode").category = "Any%"
-	main.get_node("SpeedrunMode").ready()
+	main.get_node("SpeedrunMode").ready("times")
 	main.change_scene(speedrun_start)
 
 
 
 func _on_Secret_pressed():
-	main.get_node("SpeedrunMode").category = "Secret%"
-	main.get_node("SpeedrunMode").ready()
+	main.get_node("SpeedrunMode").ready("secret_times")
 	main.change_scene(speedrun_start)
 
 

@@ -8,6 +8,7 @@ export (PackedScene) var credits
 func _ready():
 	if get_tree().get_nodes_in_group("main").size() > 0:
 		main = get_tree().get_nodes_in_group("main")[0]
+		main.get_node("BackgroundAndMusicHandler").zero_all_bgm()
 		var save_file = main.get_node("SaveFileHandler")
 		save_file.progress["end"] = true
 		save_file.save_progress()

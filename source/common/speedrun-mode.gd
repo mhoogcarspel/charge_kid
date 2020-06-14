@@ -10,7 +10,8 @@ onready var minutes: int = 0
 
 
 
-func ready() -> void:
+func ready(cat: String) -> void:
+	category = cat
 	seconds = 0
 	minutes = 0
 	screen_timer.text = "0:00.00"
@@ -21,7 +22,7 @@ func go() -> void:
 	active = true
 	$Start.play()
 	sound_control.accelerate_music(1.5)
-	sound_control.set_volume_bgm([false, true, true, false])
+	sound_control.set_volume_bgm([false, true, true, false, false])
 
 
 
