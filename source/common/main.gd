@@ -73,10 +73,7 @@ func back_to_start():
 func change_scene(next_scene: PackedScene, spawn_point: int = 0):
 	get_tree().paused = false
 	for scene in $Scene.get_children():
-		if not scene.is_in_group("constant"):
-			scene.queue_free()
-		else:
-			$Scene.remove_child(scene)
+		scene.queue_free()
 	for scene in $HudContainer.get_children():
 		if not scene.is_in_group("speedrun_timer"):
 			scene.queue_free()
@@ -110,8 +107,8 @@ func _process(delta):
 	
 	# Unpausing
 	if Input.is_action_just_pressed("ui_pause"):
-		if not get_tree().get_nodes_in_group("player").empty() and get_tree().paused and not get_tree().get_nodes_in_group("pause_menu").empty():
-			if $PauseTimer.is_stopped():
+		if not get_tree().get_nodes_in_group("player").empty() and get_tree().paused:
+			if $PauseTimer.is_stopped() and not get_tree().get_nodes_in_group("pause_menu").empty():
 				get_tree().paused = false
 				get_tree().get_nodes_in_group("pause_menu")[0].queue_free()
 				$PauseTimer.start()

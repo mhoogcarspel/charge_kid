@@ -19,12 +19,15 @@ var progress: Dictionary = {
 var model = progress.duplicate()
 
 
+
 func save_progress() -> void:
 	if main.enable_save:
 		var file = File.new()
 		file.open("user://save_progress.save", File.WRITE)
 		file.store_line(to_json(progress))
 		file.close()
+
+
 
 func load_progress() -> void:
 	if main.enable_save:
@@ -44,9 +47,8 @@ func load_progress() -> void:
 				progress = parse_json(file_string)
 				print("ERROR: 'levels' number is greater than the real number of levels or negative")
 				file.close()
-			if progress["levels"] < levels.size() and progress["end"]:
-				progress["end"] = false
-				progress["levels"] += 1
+
+
 
 func erase_progress() -> void:
 	if main.enable_save:
@@ -56,3 +58,5 @@ func erase_progress() -> void:
 		progress["end"] = false
 		file.store_line(to_json(progress))
 		file.close()
+
+

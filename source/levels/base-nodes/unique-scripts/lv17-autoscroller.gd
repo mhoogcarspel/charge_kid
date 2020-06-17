@@ -29,6 +29,8 @@ func _physics_process(delta):
 		if $PauseTimer.is_stopped() and active and player.get_state() != "DyingState":
 			if self.position.x < get_parent().level_length - 256:
 				self.position.x = clamp(self.position.x + speed*delta, 0, get_parent().level_length - 256)
+				if player.position.x - self.position.x > 128:
+					self.position.x = clamp(self.position.x + speed*delta*2, 0, get_parent().level_length - 256)
 			else:
 				if not end_of_level:
 					camera.shake_screen(30, 2)
