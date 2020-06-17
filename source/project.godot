@@ -226,6 +226,10 @@ config/windows_native_icon="res://assets/textures/icon.ico"
 default_bus_layout="res://common/default_bus_layout.tres"
 driver=""
 
+[autoload]
+
+AchievementsAndStatsObserver="*res://common/achievements_and_stats_observer.tscn"
+
 [debug]
 
 settings/fps/force_fps=60
