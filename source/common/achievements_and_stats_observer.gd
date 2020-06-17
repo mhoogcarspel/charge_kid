@@ -23,7 +23,7 @@ func reset_all_stat(achievements_too:bool) -> void:
 	#For debugging reasons you call this to clear all stats,
 	#and it clear all the achievements if the value of
 	#achievements_too is true
-	emit_signal("reset_all_stats", achievements_too)
+	emit_signal("reset_all_stat", achievements_too)
 
 func set_stat(stat_api_name:String, value) -> void:
 	#Some achievements are directly linked to some stats
