@@ -19,7 +19,6 @@ export (bool) var debugging
 onready var actions: Dictionary = {
 	"ui_jump": "Jump/Boost",
 	"ui_shoot": "Shoot",
-	"ui_boost": "Boost",
 	"ui_bullet_boost": "Bullet Boost",
 	"left": "Left",
 	"right": "Right",
