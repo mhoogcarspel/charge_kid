@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://levels/base-nodes/unique-scripts/secret-level-segments/segment.gd" type="Script" id=1]
+[ext_resource path="res://actors/interactables/energy-gate/energy-gate.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/base-nodes/tilemaps/blocks.tscn" type="PackedScene" id=3]
+[ext_resource path="res://levels/base-nodes/tilemaps/platforms.tscn" type="PackedScene" id=4]
+[ext_resource path="res://levels/base-nodes/tilemaps/spikes.tscn" type="PackedScene" id=5]
+
+[node name="Segment" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Blocks" parent="." instance=ExtResource( 3 )]
+
+[node name="Blocks1" parent="Blocks" index="0"]
+tile_data = PoolIntArray( 66, 52, 0, 67, 52, 2, 72, 1073741846, 0, 65602, 52, 131072, 65603, 52, 131074, 65608, 1073741846, 0, 131144, 1073741846, 0, 196680, 1073741846, 0, 262216, 1073741846, 0, 327752, 1073741846, 0, 393288, 1073741846, 0, 458824, 1073741846, 0, 524364, 4, 0, 524365, 4, 1, 524366, 4, 2, 589900, 4, 131072, 589901, 4, 131073, 589902, 4, 131074, 655426, 9, 0, 655427, 15, 0, 655436, 1073741846, 0, 655438, 1073741846, 0, 720962, 8, 0, 720963, 14, 0, 720972, 1073741846, 0, 720974, 1073741846, 0, 786498, 4, 0, 786499, 4, 2, 786508, 1073741846, 0, 786510, 1073741846, 0, 852034, 4, 65536, 852035, 4, 65538, 852044, 1073741846, 0, 852046, 1073741846, 0, 917570, 4, 65536, 917571, 4, 65538, 917580, 1073741846, 0, 917582, 1073741846, 0, 983106, 4, 65536, 983107, 4, 65538, 983116, 1073741846, 0, 983118, 1073741846, 0, 1048642, 4, 65536, 1048643, 4, 65538, 1048652, 1073741846, 0, 1048654, 1073741846, 0, 1114178, 4, 131072, 1114179, 4, 131074, 1114184, 1073741873, 0, 1114188, 1073741846, 0, 1114190, 1073741846, 0 )
+
+[node name="BlockProps" parent="Blocks" index="3"]
+tile_data = PoolIntArray( 524364, 6, 0, 524365, 7, 0, 524366, 8, 0 )
+
+[node name="Platforms" parent="." instance=ExtResource( 4 )]
+
+[node name="Platforms" parent="Platforms" index="1"]
+tile_data = PoolIntArray( 589898, 6, 0, 589899, 11, 0 )
+
+[node name="Spikes" parent="." instance=ExtResource( 5 )]
+tile_data = PoolIntArray( 131138, 1073741824, 0, 131139, 1073741824, 0, 589890, 0, 0, 589891, 0, 0 )
+
+[node name="EnergyGate" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1072, 56 )
+gate_height = 6
+
+[node name="EnergyGate2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1160, 152 )
+gate_height = 7
+
+[editable path="Blocks"]
+
+[editable path="Platforms"]

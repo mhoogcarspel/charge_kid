@@ -8,23 +8,21 @@ onready var factor: float = 1.0
 onready var second_part: int = 0
 onready var third_part_sequence: Array = []
 onready var end_of_level: bool = false
+onready var available_segments: Array = []
 
 onready var camera = get_parent().get_node("PlayerCamera")
+onready var level = get_parent()
 
 
 
 func _ready():
+	available_segments = segments.duplicate(true)
 	if get_tree().get_nodes_in_group("main").size() > 0:
 		var main = get_tree().get_nodes_in_group("main")[0]
 		var save_file = main.get_node("SaveFileHandler")
 		var speedrun_mode = main.get_node("SpeedrunMode")
 		if save_file.progress["faster_autoscrollers"] == true and speedrun_mode.is_active():
 			factor = 1.5
-			speed *= factor
-	
-	third_part_sequence = segments
-	third_part_sequence.shuffle()
-	third_part_sequence.resize(5)
 
 
 
@@ -33,16 +31,16 @@ func _physics_process(delta):
 		var player = get_tree().get_nodes_in_group("player")[0]
 		
 		if $PauseTimer.is_stopped() and active and player.get_state() != "DyingState":
-			if self.position.x < get_parent().level_length - 256:
-				self.position.x = clamp(self.position.x + speed*delta, 0, get_parent().level_length - 256)
-				if player.position.x - self.position.x > 128 and second_part <= 0:
-					self.position.x = clamp(self.position.x + speed*delta*2, 0, get_parent().level_length - 256)
+			if self.position.x < level.level_length - 256:
+				self.position.x = clamp(self.position.x + speed*factor*delta, 0, level.level_length - 256)
+				if player.position.x - self.position.x > 160 and second_part <= 0:
+					self.position.x = clamp(self.position.x + speed*factor*delta*2, 0, level.level_length - 256)
 			else:
 				if not end_of_level:
 					camera.shake_screen(30, 2)
 					self.speed *= 3
 					end_of_level = true
-				$EnergyGate.position.x += speed*delta
+				$EnergyGate.position.x += speed*factor*delta
 		
 		if self.position.x >= 1798 and self.position.x <= 2400 and second_part == 0:
 			second_part += 1
@@ -65,11 +63,14 @@ func _on_Accelerator_body_entered(body):
 
 
 func _on_tween_all_completed():
-	if second_part > 0 and second_part < 6:
+	if second_part > 0 and second_part < 6/factor:
 		second_part += 1
 		generate_gate_challenge()
 	elif second_part != 0:
 		second_part = -1
+
+
+
 
 
 ##### SECOND PART CODE ##############################################################
@@ -77,10 +78,13 @@ func _on_tween_all_completed():
 var last_challenge = null
 
 func generate_gate_challenge():
-	var next = randi()%4
-	if last_challenge != null:
+	var next
+	if last_challenge == null:
+		next = randi()%4
+	else:
+		next = randi()%3
 		if next >= last_challenge:
-			next = (next + 1)%4
+			next += 1
 	
 	last_challenge = next
 	match next:
@@ -95,25 +99,25 @@ func generate_gate_challenge():
 
 func up_to_down_gate():
 	$HGate.position.y = -184
-	$Tween.interpolate_property($HGate, "position", null, Vector2(-280,184), 6/factor,
+	$Tween.interpolate_property($HGate, "position", null, Vector2(-280,184), 6,
 								Tween.TRANS_LINEAR, Tween.EASE_IN)
 	$Tween.start()
 
 func down_to_up_gate():
 	$HGate.position.y = 184
-	$Tween.interpolate_property($HGate, "position", null, Vector2(-280,-184), 6/factor,
+	$Tween.interpolate_property($HGate, "position", null, Vector2(-280,-184), 6,
 								Tween.TRANS_LINEAR, Tween.EASE_IN)
 	$Tween.start()
 
 func left_to_right_gate():
 	$VGate.position.x = -296
-	$Tween.interpolate_property($VGate, "position", null, Vector2(296,-184), 6/factor,
+	$Tween.interpolate_property($VGate, "position", null, Vector2(296,-184), 6,
 								Tween.TRANS_LINEAR, Tween.EASE_IN)
 	$Tween.start()
 
 func right_to_left_gate():
 	$VGate.position.x = 296
-	$Tween.interpolate_property($VGate, "position", null, Vector2(-296,-184), 6/factor,
+	$Tween.interpolate_property($VGate, "position", null, Vector2(-296,-184), 6,
 								Tween.TRANS_LINEAR, Tween.EASE_IN)
 	$Tween.start()
 
@@ -123,12 +127,15 @@ func reset_challenge():
 #####################################################################################
 
 
+
+
+
 ##### THIRD PART CODE ###############################################################
 
 func pick_a_segment() -> PackedScene:
-	var rng = randi()%segments.size()
-	var segment = segments[rng]
-	segments.remove(rng)
+	var rng = randi()%available_segments.size()
+	var segment = available_segments[rng]
+	available_segments.remove(rng)
 	return segment
 
 #####################################################################################

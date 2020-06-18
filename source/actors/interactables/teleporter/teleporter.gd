@@ -6,6 +6,7 @@ export (PackedScene) var particle_effects
 export (bool) var active
 
 onready var animation_player = $AnimationPlayer
+onready var level = get_tree().get_nodes_in_group("level")[0]
 
 
 
@@ -48,7 +49,7 @@ func hit(bullet: PlayerBullet) -> void:
 				
 				yield(player.animation_player, "animation_finished")
 				swap_positions(bullet, player)
-				get_parent().get_node("PlayerCamera").shake_screen(16)
+				level.get_node("PlayerCamera").shake_screen(16)
 				if player.facing > 0:
 					player.animation_player.play("TeleportOutRight")
 				else:
