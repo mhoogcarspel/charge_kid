@@ -3,6 +3,7 @@ class_name SaveHandler
 
 
 export (Array, PackedScene) var levels
+export (Array, PackedScene) var secret_levels
 
 onready var file_handler:FileHandler = get_parent().get_node("FileHandler")
 onready var main = get_parent()

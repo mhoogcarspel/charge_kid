@@ -26,6 +26,11 @@ func _ready():
 			button.pause_menu = true
 		level_list.add_child(button)
 	
+	if secret_level_unlocked():
+		var button = level_button.instance()
+		button.level = -1
+		level_list.add_child(button)
+	
 	# Setting level buttons' neighbors
 	for level in range(progress):
 		if level > 0:
@@ -54,4 +59,9 @@ func _on_Return_pressed():
 		get_parent().self_show()
 		self.queue_free()
 
-
+func secret_level_unlocked() -> bool:
+	var keys = save_file.progress["secrets"]
+	var result: bool = true
+	for i in range(keys.size() - 1):
+		result = result and keys[i]
+	return result
