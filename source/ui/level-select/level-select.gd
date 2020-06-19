@@ -30,6 +30,7 @@ func _ready():
 		var button = level_button.instance()
 		button.level = -1
 		level_list.add_child(button)
+		progress += 1
 	
 	# Setting level buttons' neighbors
 	for level in range(progress):
