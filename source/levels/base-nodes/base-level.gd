@@ -82,7 +82,6 @@ func _process(delta):
 												screen_center.y + screen_size.y)
 
 
-
 func write(text: String, time: float) -> void:
 	message.write(text)
 	message_timer.start(time)
@@ -90,6 +89,13 @@ func write(text: String, time: float) -> void:
 func _on_Timer_timeout():
 	message.clear()
 
-
-
-
+func unlock_secret_key(n: int):
+	if get_tree().get_nodes_in_group("main").size() > 0:
+		var save_handler:SaveHandler = get_tree().get_nodes_in_group("main")[0].get_node("SaveFileHandler")
+		if n < save_handler.progress["secrets"].size() - 1: #The last index is reserved for the secret stage
+			save_handler.progress["secret"][n] = true
+		else:
+			print("ERROR: Invalid value of n in unlock_secret_key(n: int)")
+			return
+	else:
+		print("No Main node found")
