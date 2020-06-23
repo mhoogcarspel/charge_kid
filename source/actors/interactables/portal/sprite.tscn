@@ -5,14 +5,6 @@
 [ext_resource path="res://assets/textures/portal-bg2.png" type="Texture" id=3]
 [ext_resource path="res://assets/textures/portal-bg1.png" type="Texture" id=4]
 
-
-
-
-
-
-
-
-
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
@@ -64,7 +56,7 @@ shader_param/ratio_1 = 0.5
 shader_param/velocity_1 = Vector2( 0.01, 0.004 )
 shader_param/ratio_2 = 0.25
 shader_param/velocity_2 = Vector2( 0.005, 0.002 )
-shader_param/black = null
+shader_param/black = Color( 0.113725, 0.129412, 0.176471, 1 )
 shader_param/white = Color( 0.956863, 0.956863, 0.894118, 1 )
 shader_param/bg_1 = ExtResource( 4 )
 shader_param/bg_2 = ExtResource( 3 )

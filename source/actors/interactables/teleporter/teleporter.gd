@@ -6,7 +6,7 @@ export (PackedScene) var particle_effects
 export (bool) var active
 
 onready var animation_player = $AnimationPlayer
-onready var level = get_tree().get_nodes_in_group("level")[0]
+onready var level = get_parent()
 
 
 

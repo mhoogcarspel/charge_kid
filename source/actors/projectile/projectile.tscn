@@ -4,10 +4,6 @@
 [ext_resource path="res://assets/particles/particle1.png" type="Texture" id=2]
 [ext_resource path="res://assets/particles/particle3.png" type="Texture" id=3]
 
-
-
-
-
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 

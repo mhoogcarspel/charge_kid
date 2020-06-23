@@ -61,3 +61,20 @@ func erase_progress() -> void:
 		file.close()
 
 
+
+func has_all_secrets() -> bool:
+	for i in range(progress["secrets"].size() - 1):
+		if progress["secrets"][i] == false:
+			return false
+	return true
+
+
+
+func found_keys() -> int:
+	var keys: int = 0
+	for i in range(progress["secrets"].size() - 1):
+		if progress["secrets"][i] == true:
+			keys += 1
+	return keys
+
+

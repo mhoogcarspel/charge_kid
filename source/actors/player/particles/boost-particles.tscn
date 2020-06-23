@@ -2,14 +2,12 @@
 
 [ext_resource path="res://assets/particles/one-shot-particles.gd" type="Script" id=1]
 
-
-
-
 [node name="BoostParticles" type="CPUParticles2D"]
 emitting = false
 lifetime = 0.6
 one_shot = true
 explosiveness = 1.0
+lifetime_randomness = 0.5
 local_coords = false
 spread = 30.0
 gravity = Vector2( 0, 0 )
@@ -26,6 +24,7 @@ emitting = false
 lifetime = 0.6
 one_shot = true
 explosiveness = 1.0
+lifetime_randomness = 0.5
 local_coords = false
 spread = 30.0
 gravity = Vector2( 0, 0 )
@@ -40,6 +39,7 @@ amount = 12
 lifetime = 0.9
 one_shot = true
 explosiveness = 1.0
+lifetime_randomness = 0.5
 local_coords = false
 spread = 180.0
 gravity = Vector2( 0, 0 )
@@ -55,6 +55,7 @@ amount = 40
 lifetime = 2.0
 one_shot = true
 explosiveness = 1.0
+lifetime_randomness = 0.5
 local_coords = false
 spread = 180.0
 gravity = Vector2( 0, 160 )

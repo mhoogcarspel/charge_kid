@@ -69,7 +69,7 @@ func back_to_start():
 
 
 
-func change_scene(next_scene: PackedScene, spawn_point: int = 0):
+func change_scene(next_scene: PackedScene, spawn_point: int = 0, next_level: int = 0):
 	get_tree().paused = false
 	for scene in $Scene.get_children():
 		scene.queue_free()
@@ -83,6 +83,8 @@ func change_scene(next_scene: PackedScene, spawn_point: int = 0):
 	if spawn_point > 0:
 		scene_instance.get_node("ScreenTransition").active = false
 		scene_instance.respawn_point = spawn_point
+	if next_level > 0:
+		scene_instance.next_level = next_level
 	
 	$Scene.call_deferred("add_child", scene_instance)
 	actual_scene = next_scene

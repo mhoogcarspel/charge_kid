@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://common/main.gd" type="Script" id=1]
 [ext_resource path="res://ui/starting-screen/start-menu.tscn" type="PackedScene" id=2]
@@ -43,6 +43,7 @@
 [ext_resource path="res://ui/credits/credits0.tscn" type="PackedScene" id=41]
 [ext_resource path="res://ui/speedrun-screens/speedrun-menu.tscn" type="PackedScene" id=42]
 [ext_resource path="res://ui/speedrun-screens/erase-times-menu.tscn" type="PackedScene" id=43]
+[ext_resource path="res://levels/level17.tscn" type="PackedScene" id=44]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 38 )
@@ -207,7 +208,7 @@ one_shot = true
 
 [node name="SaveFileHandler" type="Node" parent="."]
 script = ExtResource( 13 )
-levels = [ ExtResource( 24 ), ExtResource( 16 ), ExtResource( 25 ), ExtResource( 17 ), ExtResource( 19 ), ExtResource( 21 ), ExtResource( 23 ), ExtResource( 20 ), ExtResource( 22 ), ExtResource( 14 ), ExtResource( 18 ), ExtResource( 15 ), ExtResource( 36 ), ExtResource( 35 ), ExtResource( 37 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 40 ) ]
+levels = [ ExtResource( 24 ), ExtResource( 16 ), ExtResource( 25 ), ExtResource( 17 ), ExtResource( 19 ), ExtResource( 21 ), ExtResource( 23 ), ExtResource( 20 ), ExtResource( 22 ), ExtResource( 14 ), ExtResource( 18 ), ExtResource( 15 ), ExtResource( 36 ), ExtResource( 35 ), ExtResource( 37 ), ExtResource( 39 ), ExtResource( 44 ) ]
 secret_levels = [ ExtResource( 40 ) ]
 
 [node name="FileHandler" type="Node" parent="."]
@@ -217,8 +218,7 @@ script = ExtResource( 26 )
 material = SubResource( 3 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 0.584778
-margin_right = 0.584717
+margin_right = -6.10352e-05
 expand = true
 script = ExtResource( 30 )
 __meta__ = {
