@@ -9,7 +9,10 @@ var pause_menu: bool
 
 
 func _ready():
-	self.text = "Level " + String(level)
+	if level > 0:
+		self.text = "Level " + String(level)
+	else:
+		self.text = "Secret Level" 
 
 func _on_LevelButton_pressed():
 	if level < 0:
