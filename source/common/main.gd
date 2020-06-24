@@ -47,6 +47,7 @@ var actual_scene: PackedScene
 
 
 func _ready():
+	AchievementsAndStatsObserver.set_achievement("open_the_game")
 	if debugging:
 		$HudContainer.add_child(debugger_layer.instance())
 	self.add_child(control_handler)
