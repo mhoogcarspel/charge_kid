@@ -14,6 +14,11 @@ func _ready():
 	var result: Dictionary = speedrun_mode.time()
 	category = speedrun_mode.category
 	
+	###################Achievement Stuff#############################
+	if speedrun_mode.minutes < 8:
+		AchievementsAndStatsObserver.set_achievement("normal_speedrun_achievement")
+	##################################################################
+	
 	### Saving the new time ########################################################
 	if save_file.progress[category] == []:
 		save_file.progress[category] = [result]
