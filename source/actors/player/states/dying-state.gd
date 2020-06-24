@@ -50,7 +50,11 @@ func enter():
 		if owner.get_tree().get_nodes_in_group("main").size() > 0:
 			var main = owner.get_tree().get_nodes_in_group("main")[0]
 			var level = owner.get_parent().level
-			var level_scene = main.get_node("SaveFileHandler").levels[level - 1]
+			var level_scene
+			if level == 18:
+				level_scene = main.get_node("SaveFileHandler").secret_levels[0]
+			else:
+				level_scene = main.get_node("SaveFileHandler").levels[level - 1]
 			var checkpoint = owner.get_parent().respawn_point
 			main.change_scene(level_scene, checkpoint)
 		else:

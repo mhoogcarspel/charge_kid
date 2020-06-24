@@ -40,8 +40,9 @@ func _ready():
 		if not speedrun_mode.is_active():
 			sound_control.set_volume_bgm([bgm_1, bgm_2, bgm_3, bgm_4, bgm_5])
 		
-		save_file.progress["levels"] = max(level, save_file.progress["levels"])
-		save_file.save_progress()
+		if level != 18:
+			save_file.progress["levels"] = max(level, save_file.progress["levels"])
+			save_file.save_progress()
 	
 	if auto_scroller and respawn_point > 0:
 		var checkpoint = get_node(checkpoints[respawn_point - 1])

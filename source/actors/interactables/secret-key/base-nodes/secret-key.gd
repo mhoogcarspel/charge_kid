@@ -8,6 +8,7 @@ export (PackedScene) var black_transition
 
 export (PackedScene) var secret_keys_scene
 export (PackedScene) var end_scene
+export (PackedScene) var secret_end_scene
 export (PackedScene) var speedrun_finish
 
 onready var state: int = 0
@@ -92,28 +93,37 @@ func go_to_next_level():
 	if get_tree().get_nodes_in_group("main").size() > 0:
 		var main = get_tree().get_nodes_in_group("main")[0]
 		var save_file = main.get_node("SaveFileHandler")
+		var level = get_tree().get_nodes_in_group("level")[0].level
+		var speedrun_mode = main.get_node("SpeedrunMode")
 		
 		if not save_file.has_all_secrets():
+			if save_file.progress["secrets"][key_number] == false and speedrun_mode.is_active():
+				speedrun_finish.time()
 			save_file.progress["secrets"][key_number] = true
 			save_file.save_progress()
 			if save_file.has_all_secrets():
 				main.change_scene(save_file.secret_levels[0])
 				return
+		elif get_parent().level == 18 and save_file.progress["secrets"][key_number] == false:
+			save_file.progress["secrets"][key_number] = true
+			save_file.save_progress()
+			main.change_scene(secret_end_scene)
+			return
 		
-		var level = get_tree().get_nodes_in_group("level")[0].level
-		var speedrun_mode = main.get_node("SpeedrunMode")
-		if level < 17:
-			if not speedrun_mode.is_active():
+		if not speedrun_mode.is_active():
+			if level < 18:
 				main.change_scene(secret_keys_scene, 0, level)
 			else:
-				main.change_scene(save_file.levels[level])
+				main.change_scene(end_scene)
 		else:
-			if speedrun_mode.is_active() and speedrun_mode.category == "times":
+			if level < 17:
+				main.change_scene(save_file.levels[level])
+			elif level == 17 and speedrun_mode.category == "times":
 				main.change_scene(speedrun_finish)
-			elif not speedrun_mode.is_active():
-				main.change_scene(secret_keys_scene, 0, level)
-			else:
+			elif level == 17 and speedrun_mode.category == "secret_times":
 				main.change_scene(save_file.secret_levels[0])
+			elif level == 18:
+				main.change_scene(speedrun_finish)
 
 
 

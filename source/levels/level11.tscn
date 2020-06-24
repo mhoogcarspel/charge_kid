@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://levels/base-nodes/base-level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/base-nodes/tilemaps/blocks.tscn" type="PackedScene" id=2]
@@ -11,8 +11,7 @@
 [ext_resource path="res://actors/interactables/secret-key/secret-key.tscn" type="PackedScene" id=9]
 [ext_resource path="res://levels/base-nodes/tilemaps/parallax.gd" type="Script" id=10]
 [ext_resource path="res://levels/base-nodes/camera-limiter/camera-limiter.tscn" type="PackedScene" id=11]
-[ext_resource path="res://levels/base-nodes/unique-scripts/lv11-secret-room.gd" type="Script" id=12]
-[ext_resource path="res://levels/base-nodes/tilemaps/false-blocks.tscn" type="PackedScene" id=13]
+[ext_resource path="res://levels/base-nodes/secret-room/secret-room.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -156,23 +155,15 @@ position = Vector2( 880, 296 )
 position = Vector2( 376, 264 )
 key_number = 3
 
-[node name="SecretRoom" type="Area2D" parent="." index="16"]
-position = Vector2( 496, 192 )
-script = ExtResource( 12 )
+[node name="SecretRoom" parent="." index="16" instance=ExtResource( 12 )]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SecretRoom" index="0"]
-visible = false
-polygon = PoolVector2Array( 24, -16, 24, 16, -16, 16, -16, -16 )
-
-[node name="FalseBlocks" parent="SecretRoom" index="1" instance=ExtResource( 13 )]
+[node name="FalseBlocks" parent="SecretRoom" index="0"]
 material = SubResource( 2 )
 tile_data = PoolIntArray( -196619, 1, 0, -196618, 1, 1, -196617, 1, 1, -196616, 1, 1, -196615, 1, 2, -196614, 2, 0, -196613, 2, 2, -196612, 1, 0, -196611, 1, 1, -196610, 1, 2, -131083, 1, 65536, -131082, 1, 65537, -131081, 1, 65537, -131080, 1, 65537, -131079, 1, 65538, -131078, 2, 131072, -131077, 2, 131074, -131076, 1, 65536, -131075, 1, 65537, -131074, 1, 65538, -65547, 1, 65536, -65546, 1, 65537, -65545, 1, 65537, -65544, 1, 65537, -65543, 1, 65538, -65542, 4, 0, -65541, 4, 2, -65540, 1, 65536, -65539, 1, 65537, -65538, 1, 65538, -11, 1, 65536, -10, 1, 65537, -9, 1, 65537, -8, 1, 65537, -7, 1, 65538, -6, 536870934, 0, -5, 22, 0, -4, 1, 65536, -3, 1, 65537, -2, 1, 65538, -1, 536870912, 0, 65525, 1, 131072, 65526, 1, 131073, 65527, 1, 131073, 65528, 1, 131073, 65529, 1, 131074, 65530, 536870935, 0, 65531, 23, 0, 65532, 1, 65536, 65533, 1, 65537, 65534, 1, 65538, 131061, 14, 0, 131062, 16, 0, 131063, 16, 0, 131064, 15, 0, 131065, 15, 0, 131066, 15, 0, 131067, 17, 0, 131068, 1, 131072, 131069, 1, 131073, 131070, 1, 131074, 196597, 2, 0, 196598, 2, 1, 196599, 2, 1, 196600, 2, 1, 196601, 2, 1, 196602, 2, 1, 196603, 2, 1, 196604, 2, 1, 196605, 2, 1, 196606, 2, 2, 262133, 2, 65536, 262134, 2, 65537, 262135, 2, 65537, 262136, 2, 65537, 262137, 2, 65537, 262138, 2, 65537, 262139, 2, 65537, 262140, 2, 65537, 262141, 2, 65537, 262142, 2, 65538, 327669, 2, 65536, 327670, 2, 65537, 327671, 2, 65537, 327672, 2, 65537, 327673, 2, 65537, 327674, 2, 65537, 327675, 2, 65537, 327676, 2, 65537, 327677, 2, 65537, 327678, 2, 65538, 393205, 2, 131072, 393206, 2, 131073, 393207, 2, 131073, 393208, 2, 131073, 393209, 2, 131073, 393210, 2, 131073, 393211, 2, 131073, 393212, 2, 131073, 393213, 2, 131073, 393214, 2, 131074 )
 
-[node name="Timer" type="Timer" parent="SecretRoom" index="2"]
-wait_time = 0.2
-one_shot = true
-[connection signal="body_entered" from="SecretRoom" to="SecretRoom" method="_on_SecretRoom_body_entered"]
-[connection signal="timeout" from="SecretRoom/Timer" to="SecretRoom" method="_on_Timer_timeout"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SecretRoom" index="2"]
+visible = false
+polygon = PoolVector2Array( 24, -16, 24, 16, -8, 16, -8, -16, 24, -16 )
 
 [editable path="Background2"]
 
@@ -183,3 +174,5 @@ one_shot = true
 [editable path="Blocks"]
 
 [editable path="CameraLimiter"]
+
+[editable path="SecretRoom"]

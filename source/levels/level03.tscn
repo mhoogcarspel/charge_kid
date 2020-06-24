@@ -211,7 +211,7 @@ polygon = PoolVector2Array( 24, 0, -24, 0, -24, -16, 24, -16 )
 
 [node name="SecretKey" parent="." index="24" instance=ExtResource( 14 )]
 position = Vector2( 872, 8 )
-key_number = 2
+key_number = 1
 [connection signal="body_entered" from="SecretRoomCamera" to="SecretRoomCamera" method="_on_SecretRoomCamera_body_entered"]
 
 [editable path="Background"]

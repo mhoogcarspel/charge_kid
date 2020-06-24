@@ -22,7 +22,7 @@ func _ready():
 func _input(event):
 	if event is InputEvent and $Timer.is_stopped():
 		if event.is_action("ui_accept") or event.is_action("ui_cancel"):
-				if next_level == 17:
+				if next_level >= 17:
 					main.change_scene(end_scene)
 				else:
 					main.change_scene(save_file.levels[next_level])
