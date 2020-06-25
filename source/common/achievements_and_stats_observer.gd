@@ -1,6 +1,6 @@
 extends Node
 
-onready var return_value
+onready var return_value = 0
 
 signal set_achievement(achievement_api_name)
 signal clear_achievement(achievement_api_name)
