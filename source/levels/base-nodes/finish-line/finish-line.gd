@@ -20,7 +20,6 @@ func _on_FinishLine_body_entered(body):
 			if not level_scene.player_died:
 				AchievementsAndStatsObserver.set_achievement("secret_clutch")
 		
-		var speedrun_mode = main.get_node("SpeedrunMode")
 		if speedrun_mode.is_active() and speedrun_mode.category == "secret_times":
 			if level == 3 or level == 7 or level == 11 or level == 13 or level == 17:
 				return
