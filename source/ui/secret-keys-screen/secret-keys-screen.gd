@@ -16,6 +16,7 @@ func _ready():
 	var label = $CenterContainer/Label
 	var keys = String(save_file.found_keys()) + "/" + String(save_file.progress["secrets"].size() - 1)
 	label.text = keys + " keys broken."
+	AchievementsAndStatsObserver.set_achievement("key" + String(save_file.found_keys()))
 
 
 
