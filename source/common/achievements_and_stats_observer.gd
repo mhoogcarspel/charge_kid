@@ -33,6 +33,12 @@ signal get_stat(
 	emitter
 )
 
+signal get_achievement(
+	achievement_name,
+	variable_name,
+	emiter
+)
+
 func set_achievement(achievement_name: String) -> void:
 	#Use this function to comunicate that a 
 	#condition for an achievement has been achieved (hahaha)
@@ -66,4 +72,8 @@ func indicate_achievement_progress(achievement_name_api: String, current_progres
 
 func get_stat(stat_name: String) -> int:
 	emit_signal("get_stat", return_value, self)
+	return return_value
+
+func get_achievement(achievement_name: String) -> int:
+	emit_signal("get_achievement", return_value, self)
 	return return_value
