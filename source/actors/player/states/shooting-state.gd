@@ -17,8 +17,8 @@ func _init(owner: KinematicBody2D):
 
 
 func enter():
-	number_of_shots += 1
-	AchievementsAndStatsObserver.set_stat("shots", number_of_shots)
+#	number_of_shots += 1
+#	AchievementsAndStatsObserver.set_stat("shots", number_of_shots)
 	animation_player.play("Shooting")
 	owner.get_node("SFX/Shoot").play()
 	
