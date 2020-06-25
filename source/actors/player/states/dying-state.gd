@@ -9,6 +9,7 @@ func _init(owner: KinematicBody2D):
 	self.animation_player = owner.get_node("AnimationPlayer")
 
 func enter():
+	owner.get_tree().get_nodes_in_group("level")[0].player_died = true
 	owner.velocity = Vector2.ZERO
 	owner.get_node("SFX/Death").play()
 	owner.get_node("PlayerSprite").kill()

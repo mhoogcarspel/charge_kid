@@ -19,6 +19,7 @@ export (PackedScene) var player_scene
 
 onready var message = $MessageLabel
 onready var message_timer = get_node("MessageLabel/Timer")
+onready var player_died:bool = false
 
 var level_length: float
 
@@ -66,6 +67,7 @@ func _ready():
 
 
 func _process(delta):
+	print(player_died)
 	var player = get_tree().get_nodes_in_group("player")[0]
 	if player != null:
 		var pos: Vector2 = player.position - Vector2(message.rect_size.x/2, 0)
