@@ -12,7 +12,7 @@ func _on_FinishLine_body_entered(body):
 			var level: int = get_tree().get_nodes_in_group("level")[0].level
 			AchievementsAndStatsObserver.set_stat("main_levels_finished", level)
 			if level == 10:
-				AchievementsAndStatsObserver.indicate_achievement_progress("finish_main_game", level, 17)
+				AchievementsAndStatsObserver.indicate_achievement_progress("beat_the_game", level, 17)
 			############################################################
 			
 			var speedrun_mode = main.get_node("SpeedrunMode")
