@@ -180,6 +180,10 @@ func fuel_pickup_sound():
 	get_node("SFX/FuelPickup").play()
 
 func recharge_fuel() -> void:
+	if can_boost == false:
+		var numbers_of_charges = AchievementsAndStatsObserver.get_stat("charges")
+		numbers_of_charges += 1
+		AchievementsAndStatsObserver.set_stat("charges", numbers_of_charges)
 	fuel_pickup_sound()
 	can_boost = true
 	for particle in $FuelParticles.get_children():
