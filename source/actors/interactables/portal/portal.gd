@@ -53,6 +53,8 @@ func on_one_end_body_entered(body):
 	if (body.is_in_group("player") or body.is_in_group("bullet")) and $Timer.is_stopped():
 		var dif = body.position - one_position
 		body.position = other_position + dif
+		$SFX.set_pitch_scale(rand_range(1.5,1.9))
+		$SFX.play()
 		$Timer.start()
 		
 		let_out_ripples($OneEnd)
@@ -62,6 +64,8 @@ func on_other_end_body_entered(body):
 	if (body.is_in_group("player") or body.is_in_group("bullet")) and $Timer.is_stopped():
 		var dif = body.position - other_position
 		body.position = one_position + dif
+		$SFX.set_pitch_scale(rand_range(1.5,1.9))
+		$SFX.play()
 		$Timer.start()
 		
 		let_out_ripples($OneEnd)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://actors/interactables/teleporter/teleporter.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/robot.v1.png" type="Texture" id=2]
 [ext_resource path="res://actors/interactables/teleporter/hit-particles.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/sound-effects/teleport/teleport0.ogg" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -135,6 +136,7 @@ active = true
 texture = ExtResource( 2 )
 vframes = 2
 hframes = 6
+frame = 4
 region_enabled = true
 region_rect = Rect2( 48, 240, 96, 32 )
 
@@ -147,4 +149,8 @@ anims/Hit = SubResource( 2 )
 anims/Inactive = SubResource( 3 )
 anims/Ready = SubResource( 4 )
 anims/Recharging = SubResource( 5 )
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = 3.0
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="on_animation_finished"]

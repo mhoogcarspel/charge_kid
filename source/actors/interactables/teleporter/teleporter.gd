@@ -36,6 +36,8 @@ func is_active() -> bool:
 func hit(bullet: PlayerBullet) -> void:
 	if animation_player.current_animation == "Ready" and bullet.get_state() != "FuelChargeState":
 		animation_player.play("Hit")
+		$SFX.set_pitch_scale(rand_range(0.8,1.2))
+		$SFX.play()
 		
 		if not get_tree().get_nodes_in_group("player").empty():
 			var player = get_tree().get_nodes_in_group("player")[0] as Player

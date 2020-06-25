@@ -6,16 +6,6 @@
 [ext_resource path="res://assets/sound-effects/charge/charge-tank.ogg" type="AudioStream" id=4]
 [ext_resource path="res://actors/interactables/charge-tank/charge-tank.gd" type="Script" id=5]
 
-
-
-
-
-
-
-
-
-
-
 [sub_resource type="Animation" id=1]
 resource_name = "Empty"
 length = 0.7
