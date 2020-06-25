@@ -71,9 +71,9 @@ func indicate_achievement_progress(achievement_name_api: String, current_progres
 	emit_signal("indicate_achievement_progress", achievement_name_api, current_progress, max_progress)
 
 func get_stat(stat_name: String) -> int:
-	emit_signal("get_stat", return_value, self)
+	emit_signal("get_stat", "return_value", self)
 	return return_value
 
-func get_achievement(achievement_name: String) -> int:
-	emit_signal("get_achievement", return_value, self)
+func get_achievement(achievement_name: String) -> bool:
+	emit_signal("get_achievement", "return_value", self)
 	return return_value
