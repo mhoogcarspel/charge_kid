@@ -143,6 +143,7 @@ func load_display_options() -> void:
 	if enable_save:
 		var file = File.new()
 		if !file.file_exists("user://display_config.conf"):
+			OS.window_fullscreen = true
 			return
 		file.open("user://display_config.conf", File.READ)
 		var file_string = file.get_line()
