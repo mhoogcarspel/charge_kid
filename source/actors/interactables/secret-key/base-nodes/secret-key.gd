@@ -96,7 +96,7 @@ func go_to_next_level():
 		var level = get_tree().get_nodes_in_group("level")[0].level
 		var speedrun_mode = main.get_node("SpeedrunMode")
 		
-		AchievementsAndStatsObserver.set_achievement("key"+str(save_file.found_keys))
+#		AchievementsAndStatsObserver.set_achievement("key"+str(save_file.found_keys))
 		
 		if not save_file.has_all_secrets():
 			if save_file.progress["secrets"][key_number] == false and speedrun_mode.is_active():
