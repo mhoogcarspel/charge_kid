@@ -2,6 +2,23 @@ extends Node
 
 onready var return_value = 0
 
+onready var achievements: Array = [ "beat_the_game",
+									"any_percent",
+									"secret_percent",
+									"shoot",
+									"charge",
+									"clutch",
+									"secret_clutch",
+									"beat_the_secret",
+									"key1",
+									"key2",
+									"key3",
+									"key4",
+									"key5",
+									"death",
+									"platinum"
+]
+
 signal set_achievement(achievement_api_name)
 signal clear_achievement(achievement_api_name)
 signal reset_all_stat(achievements_too)
@@ -48,6 +65,5 @@ func indicate_achievement_progress(achievement_name_api: String, current_progres
 	emit_signal("indicate_achievement_progress", achievement_name_api, current_progress, max_progress)
 
 func get_stat(stat_name: String) -> int:
-	return_value = 0
 	emit_signal("get_stat", return_value, self)
 	return return_value
