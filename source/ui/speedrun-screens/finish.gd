@@ -16,7 +16,7 @@ func _ready():
 	
 	###################Achievement Stuff#############################
 	if speedrun_mode.minutes < 8:
-		AchievementsAndStatsObserver.set_achievement("normal_speedrun_achievement")
+		AchievementsAndStatsObserver.set_achievement("any_percent")
 	##################################################################
 	
 	### Saving the new time ########################################################
