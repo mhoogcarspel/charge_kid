@@ -15,12 +15,6 @@ func _on_FinishLine_body_entered(body):
 			if level == 17:
 				if not level_scene.player_died:
 					AchievementsAndStatsObserver.set_achievement("clutch")
-		
-			if level == 18:
-				AchievementsAndStatsObserver.set_achievement("beat_the_secret")
-				if not level_scene.player_died:
-					AchievementsAndStatsObserver.set_achievement("secret_clutch")
-
 			############################################################
 			
 			var speedrun_mode = main.get_node("SpeedrunMode")

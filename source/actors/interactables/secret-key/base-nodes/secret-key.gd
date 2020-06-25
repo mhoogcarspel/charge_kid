@@ -114,11 +114,16 @@ func go_to_next_level():
 			if level < 18:
 				main.change_scene(secret_keys_scene, 0, level)
 				AchievementsAndStatsObserver.set_stat("main_levels_finished", level)
-				if level == 10:
-					AchievementsAndStatsObserver.indicate_achievement_progress("finish_main_game", level, 17)
+				if level == 17:
+					save_file.progress["end"] = true
+					save_file.save_progress()
+					if not get_parent().player_died:
+						AchievementsAndStatsObserver.set_achievement("clutch")
 			else:
 				main.change_scene(end_scene)
 				AchievementsAndStatsObserver.set_achievement("beat_the_secret")
+				if not get_parent().player_died:
+					AchievementsAndStatsObserver.set_achievement("secret_clutch")
 		else:
 			if level < 17:
 				main.change_scene(save_file.levels[level])
