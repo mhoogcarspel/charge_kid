@@ -9,10 +9,18 @@ func _on_FinishLine_body_entered(body):
 			var main = get_tree().get_nodes_in_group("main")[0]
 			
 			############## Achievment Stuff ############################
-			var level: int = get_tree().get_nodes_in_group("level")[0].level
+			var level_scene = get_tree().get_nodes_in_group("level")[0]
+			var level: int = level_scene.level
 			AchievementsAndStatsObserver.set_stat("main_levels_finished", level)
-			if level == 10:
-				AchievementsAndStatsObserver.indicate_achievement_progress("finish_main_game", level, 17)
+			if level == 17:
+				if not level_scene.player_died:
+					AchievementsAndStatsObserver.set_achievement("clutch")
+		
+			if level == 18:
+				AchievementsAndStatsObserver.set_achievement("beat_the_secret")
+				if not level_scene.player_died:
+					AchievementsAndStatsObserver.set_achievement("secret_clutch")
+
 			############################################################
 			
 			var speedrun_mode = main.get_node("SpeedrunMode")

@@ -2,13 +2,17 @@ extends PlayerBaseState
 class_name DyingState
 
 
-
+var number_of_deaths
 
 func _init(owner: KinematicBody2D):
 	self.owner = owner
 	self.animation_player = owner.get_node("AnimationPlayer")
+	number_of_deaths = AchievementsAndStatsObserver.get_stat("deaths")
 
 func enter():
+	number_of_deaths += 1
+	AchievementsAndStatsObserver.set_stat("deaths", number_of_deaths)
+	owner.get_tree().get_nodes_in_group("level")[0].player_died = true
 	owner.velocity = Vector2.ZERO
 	owner.get_node("SFX/Death").play()
 	owner.get_node("PlayerSprite").kill()

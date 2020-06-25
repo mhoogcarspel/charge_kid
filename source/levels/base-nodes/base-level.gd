@@ -19,6 +19,7 @@ export (PackedScene) var player_scene
 
 onready var message = $MessageLabel
 onready var message_timer = get_node("MessageLabel/Timer")
+onready var player_died:bool = false
 
 var level_length: float
 

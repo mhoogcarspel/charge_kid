@@ -15,9 +15,13 @@ func _ready():
 	category = speedrun_mode.category
 	
 	###################Achievement Stuff#############################
-	if speedrun_mode.minutes < 8:
-		AchievementsAndStatsObserver.set_achievement("normal_speedrun_achievement")
+	if speedrun_mode.minutes < 8 and speedrun_mode.category == "times":
+		AchievementsAndStatsObserver.set_achievement("any_percent")
+		
+	elif speedrun_mode.minutes < 12 and speedrun_mode.category == "secret_times":
+		AchievementsAndStatsObserver.set_achievement("secret_percent")
 	##################################################################
+	
 	
 	### Saving the new time ########################################################
 	if save_file.progress[category] == []:
