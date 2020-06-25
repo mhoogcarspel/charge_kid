@@ -47,6 +47,6 @@ func indicate_achievement_progress(achievement_name_api: String, current_progres
 	#he is halfway, so you call this function when it reachs 5
 	emit_signal("indicate_achievement_progress", achievement_name_api, current_progress, max_progress)
 
-func get_stat(stat_name: String, variable_name: String, emitter: Node) -> int:
-	emit_signal("get_stat", stat_name, variable_name, emitter)
+func get_stat(stat_name: String) -> int:
+	emit_signal("get_stat", return_value, self)
 	return return_value
