@@ -1,5 +1,7 @@
 extends Node
 
+onready var return_value
+
 signal set_achievement(achievement_api_name)
 signal clear_achievement(achievement_api_name)
 signal reset_all_stat(achievements_too)
@@ -8,6 +10,11 @@ signal indicate_achievement_progress(
 	achievement_name_api, 
 		current_progress, 
 			max_progress)
+signal get_stat(
+	stat_name,
+	variable_name,
+	emitter
+)
 
 func set_achievement(achievement_name: String) -> void:
 	#Use this function to comunicate that a 
@@ -39,3 +46,7 @@ func indicate_achievement_progress(achievement_name_api: String, current_progres
 	#(on 10 it is achieved) but you want the player to notice when 
 	#he is halfway, so you call this function when it reachs 5
 	emit_signal("indicate_achievement_progress", achievement_name_api, current_progress, max_progress)
+
+func get_stat(stat_name: String, variable_name: String, emitter: Node) -> int:
+	emit_signal("get_stat", stat_name, variable_name, emitter)
+	return return_value
