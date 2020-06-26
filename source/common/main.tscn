@@ -185,7 +185,7 @@ script = ExtResource( 32 )
 stream = ExtResource( 34 )
 bus = "SFX"
 
-[node name="CountDown" type="AudioStreamPlayer" parent="SpeedrunMode"]
+[node name="Countdown" type="AudioStreamPlayer" parent="SpeedrunMode"]
 stream = ExtResource( 45 )
 bus = "SFX"
 
