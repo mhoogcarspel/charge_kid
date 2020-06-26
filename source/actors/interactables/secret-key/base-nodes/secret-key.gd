@@ -98,7 +98,7 @@ func go_to_next_level():
 		
 		if not save_file.has_all_secrets():
 			if save_file.progress["secrets"][key_number] == false and speedrun_mode.is_active():
-				speedrun_finish.time()
+				speedrun_mode.time()
 			save_file.progress["secrets"][key_number] = true
 			save_file.save_progress()
 			if save_file.has_all_secrets():
