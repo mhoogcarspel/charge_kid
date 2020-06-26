@@ -6,7 +6,7 @@ Charge Kid is a puzzle-platformer game with the MIT license. All our assets and 
 
 ## Prerequisites
 
-You will need the Godot game engine, version 3.2.1 to run and modify the code. Godot is an open-source game engine. Download it [here](https://godotengine.org/download). You don't need to install it, it is a self contained app.
+You will need the Godot game engine, version 3.2.1 to run and modify the code. Godot is an open-source game engine. Download it [here](https://downloads.tuxfamily.org/godotengine/3.2.1/). You don't need to install it, it is a self contained app.
 
 
 
