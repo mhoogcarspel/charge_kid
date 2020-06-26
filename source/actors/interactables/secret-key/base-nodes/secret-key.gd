@@ -13,13 +13,18 @@ export (PackedScene) var speedrun_finish
 
 onready var state: int = 0
 
-
+var phase_1_called:bool = false
 
 func _ready():
 	$AnimationPlayer.play("Anim0")
 	$Sprite/EnergyRays.hide()
 	
-
+func start_phase_1():
+	if phase_1_called == false:
+		$PHASE1A.play()
+		$PARTICLES.set_volume_db(-24)
+		$PARTICLES.play()
+	phase_1_called = true
 
 func start_phase_2():
 	$Sprite/EnergyRays.position.y = -1
@@ -29,6 +34,10 @@ func start_phase_2():
 	if get_tree().get_nodes_in_group("sound_control").size()>0:
 		var bgm = get_tree().get_nodes_in_group("sound_control")[0]
 		bgm.music_filter_down(-6)
+		$PHASE2A.play()
+		$PARTICLES.set_volume_db(-18)
+		
+#		
 	
 	for node in $Sprite/Phase2BottomParticles.get_children():
 		node.emitting = true
@@ -45,6 +54,9 @@ func start_phase_3():
 	if get_tree().get_nodes_in_group("sound_control").size()>0:
 		var bgm = get_tree().get_nodes_in_group("sound_control")[0]
 		bgm.music_filter_down(-12)
+		$PHASE3A.play()
+		$PARTICLES.set_volume_db(-12)
+
 	
 	for node in $Sprite/Phase2TopParticles.get_children():
 		node.emitting = false
@@ -63,6 +75,9 @@ func start_phase_4():
 	if get_tree().get_nodes_in_group("sound_control").size()>0:
 		var bgm = get_tree().get_nodes_in_group("sound_control")[0]
 		bgm.music_filter_down(-24)
+		$PHASE4A.play()
+		$PARTICLES.set_volume_db(-6)
+
 	
 	for node in $Sprite/Phase4BottomParticles.get_children():
 		node.emitting = true
@@ -90,7 +105,19 @@ func spawn_white_transition():
 	if get_tree().get_nodes_in_group("sound_control").size()>0:
 		var bgm = get_tree().get_nodes_in_group("sound_control")[0]
 		bgm.zero_all_bgm()
-
+		$FINAL.play()
+		$FadeOut.interpolate_property($PARTICLES, "volume_db", 0, -80, 1, 
+										Tween.TRANS_EXPO, Tween.EASE_OUT)
+		$FadeOut.interpolate_property($PHASE1B, "volume_db", 0, -80, 0.4, 
+										Tween.TRANS_EXPO, Tween.EASE_OUT)
+		$FadeOut.interpolate_property($PHASE2B, "volume_db", 0, -80, 0.4, 
+										Tween.TRANS_EXPO, Tween.EASE_OUT)
+		$FadeOut.interpolate_property($PHASE3B, "volume_db", 0, -80, 0.4, 
+										Tween.TRANS_EXPO, Tween.EASE_OUT)
+		$FadeOut.interpolate_property($PHASE4B, "volume_db", 0, -80, 0.4, 
+										Tween.TRANS_EXPO, Tween.EASE_OUT)
+		$FadeOut.start()
+		
 
 
 func spawn_black_transition():
@@ -202,3 +229,19 @@ func hit(bullet: PlayerBullet):
 
 
 
+
+
+func _on_PHASE1A_finished():
+	$PHASE1B.play()
+
+
+func _on_PHASE2A_finished():
+	$PHASE2B.play()
+
+
+func _on_PHASE3A_finished():
+	$PHASE3B.play()
+
+
+func _on_PHASE4A_finished():
+	$PHASE4B.play()

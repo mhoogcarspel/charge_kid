@@ -615,7 +615,7 @@ volume_db = -3.0
 bus = "SFX"
 
 [node name="Step" type="AudioStreamPlayer" parent="SFX"]
-volume_db = -12.0
+volume_db = -9.0
 pitch_scale = 2.3
 bus = "REVERB"
 

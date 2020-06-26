@@ -70,11 +70,11 @@ func music_filter_down(final_value):
 
 
 func music_filter_up():
-	low_pass_filter = AudioServer.get_bus_effect(mus, 0)
-	$FadeInOut.interpolate_property(low_pass_filter, "cutoff_hz", null, 22000, 1.5, 
-									Tween.TRANS_EXPO, Tween.EASE_OUT)
-	$FadeInOut.start()
-
+#	low_pass_filter = AudioServer.get_bus_effect(mus, 0)
+#	$FadeInOut.interpolate_property(low_pass_filter, "cutoff_hz", null, 22000, 1.5, 
+#									Tween.TRANS_EXPO, Tween.EASE_OUT)
+#	$FadeInOut.start()
+	AudioServer.set_bus_volume_db(mus, 0) #no lugar de zero, deveria ser o som definido pelo usuário, né?
 
 
 ### Functions Related to Volume control #########################################
