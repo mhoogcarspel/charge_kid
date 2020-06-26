@@ -22,6 +22,7 @@ onready var other_shader = $OtherEnd/RippleSource
 func _ready():
 	one_position = self.position + $OneEnd.position
 	other_position = self.position + $OtherEnd.position
+	$PROX.play()
 
 func _physics_process(delta):
 	if get_tree().get_nodes_in_group("player").size() > 0:
@@ -39,6 +40,8 @@ func _physics_process(delta):
 	one_sprite.time_to_change_frame = 0.2 - x*0.175
 	other_sprite.time_to_change_frame = 0.2 - x*0.175
 	
+	$PROX.volume_db = linear2db(x)
+	
 	if dist_to_one.length() <= dist_to_other.length():
 		one_shader.speed = -(2 + x_one*6)
 		other_shader.speed = -one_shader.speed
@@ -53,7 +56,7 @@ func on_one_end_body_entered(body):
 	if (body.is_in_group("player") or body.is_in_group("bullet")) and $Timer.is_stopped():
 		var dif = body.position - one_position
 		body.position = other_position + dif
-		$SFX.set_pitch_scale(rand_range(1.5,1.9))
+		$SFX.set_pitch_scale(rand_range(1.8,2.1))
 		$SFX.play()
 		$Timer.start()
 		
@@ -64,7 +67,7 @@ func on_other_end_body_entered(body):
 	if (body.is_in_group("player") or body.is_in_group("bullet")) and $Timer.is_stopped():
 		var dif = body.position - other_position
 		body.position = one_position + dif
-		$SFX.set_pitch_scale(rand_range(1.5,1.9))
+		$SFX.set_pitch_scale(rand_range(1.8,2.1))
 		$SFX.play()
 		$Timer.start()
 		
