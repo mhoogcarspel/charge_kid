@@ -18,6 +18,7 @@ func ready(cat: String) -> void:
 	screen_timer.visible = true
 
 
+
 func go() -> void:
 	active = true
 	$Start.play()

@@ -25,7 +25,9 @@ func _input(event):
 		if event.is_action("ui_accept") or event.is_action("ui_cancel"):
 				if next_level >= 17:
 					main.change_scene(end_scene)
-				else:
+				elif next_level >= 1:
 					main.change_scene(save_file.levels[next_level])
+				else:
+					main.back_to_start()
 
 

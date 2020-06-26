@@ -102,49 +102,81 @@ func spawn_black_transition():
 
 
 func go_to_next_level():
+	
+	# Check if there is something going on with the player node.
+	if get_tree().get_nodes_in_group("player").size() > 0:
+		var player = get_tree().get_nodes_in_group("player")[0] as Player
+		if player.get_state() == "DyingState":
+			return
+	else:
+		return
+	
 	if get_tree().get_nodes_in_group("main").size() > 0:
 		var main = get_tree().get_nodes_in_group("main")[0]
 		var save_file = main.get_node("SaveFileHandler")
 		var level = get_tree().get_nodes_in_group("level")[0].level
 		var speedrun_mode = main.get_node("SpeedrunMode")
 		
-		if not save_file.has_all_secrets():
-			if save_file.progress["secrets"][key_number] == false and speedrun_mode.is_active():
-				speedrun_mode.time()
-			save_file.progress["secrets"][key_number] = true
-			save_file.save_progress()
-			if save_file.has_all_secrets():
-				main.change_scene(save_file.secret_levels[0])
-				return
-		elif get_parent().level == 18 and save_file.progress["secrets"][key_number] == false:
-			save_file.progress["secrets"][key_number] = true
-			save_file.save_progress()
-			main.change_scene(secret_end_scene)
-			return
-		
+		# We're gonna break down in many possible cases to know where
+		# to send the player to. Let's start when speedrun mode is off.
 		if not speedrun_mode.is_active():
-			if level < 18:
+			
+			if level != 17 and level != 18:
 				main.change_scene(secret_keys_scene, 0, level)
 				AchievementsAndStatsObserver.set_stat("main_levels_finished", level)
-				if level == 17:
-					save_file.progress["end"] = true
-					save_file.save_progress()
-					if not get_parent().player_died:
-						AchievementsAndStatsObserver.set_achievement("clutch")
-			else:
-				main.change_scene(end_scene)
+				
+			elif level == 17:
+				main.change_scene(secret_keys_scene, 0, level)
+				# Do stuff done at the last finish line too.
+				save_file.progress["end"] = true
+				save_file.save_progress()
+				AchievementsAndStatsObserver.set_stat("main_levels_finished", level)
+				if not get_parent().player_died:
+					AchievementsAndStatsObserver.set_achievement("clutch")
+					
+			elif level == 18:
+				# If it's the first time the secret level is beaten, send the
+				# player to the special end screen.
+				if save_file.progress["secrets"][key_number] == false:
+					main.change_scene(secret_end_scene)
+				else:
+					main.change_scene(end_scene)
 				AchievementsAndStatsObserver.set_achievement("beat_the_secret")
 				if not get_parent().player_died:
 					AchievementsAndStatsObserver.set_achievement("secret_clutch")
+			
+			# We save these for last so we can know if it's the first time
+			# the key is being broken at the secret level.
+			save_file.progress["secrets"][key_number] = true
+			save_file.save_progress()
+		
+		# Now, the cases where the player is at speedrun mode.
 		else:
-			if level < 17:
+			
+			# If it's the first time the key is being broken,
+			# stop the speedrun and send them back to the main menu.
+			if save_file.progress["secrets"][key_number] == false:
+				speedrun_mode.time()
+				save_file.progress["secrets"][key_number] = true
+				save_file.save_progress()
+				main.change_scene(secret_keys_scene, 0, -1)
+				if level == 17:
+					if not get_parent().player_died:
+						AchievementsAndStatsObserver.set_achievement("clutch")
+				return
+			
+			if level != 17 and level != 18:
 				main.change_scene(save_file.levels[level])
+				
 			elif level == 17 and speedrun_mode.category == "times":
 				main.change_scene(speedrun_finish)
+				if not get_parent().player_died:
+					AchievementsAndStatsObserver.set_achievement("clutch")
+				
 			elif level == 17 and speedrun_mode.category == "secret_times":
 				main.change_scene(save_file.secret_levels[0])
-			elif level == 18:
-				main.change_scene(speedrun_finish)
+				if not get_parent().player_died:
+					AchievementsAndStatsObserver.set_achievement("secret_clutch")
 
 
 
