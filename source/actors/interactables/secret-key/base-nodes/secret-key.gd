@@ -18,7 +18,7 @@ onready var state: int = 0
 func _ready():
 	$AnimationPlayer.play("Anim0")
 	$Sprite/EnergyRays.hide()
-
+	
 
 
 func start_phase_2():
@@ -26,6 +26,9 @@ func start_phase_2():
 	$Sprite/EnergyRays/LeftRay.position.x = -4
 	$Sprite/EnergyRays/RightRay.position.x = 4
 	$Sprite/EnergyRays.show()
+	if get_tree().get_nodes_in_group("sound_control").size()>0:
+		var bgm = get_tree().get_nodes_in_group("sound_control")[0]
+		bgm.music_filter_down(-6)
 	
 	for node in $Sprite/Phase2BottomParticles.get_children():
 		node.emitting = true
@@ -39,6 +42,9 @@ func start_phase_2():
 
 func start_phase_3():
 	$Sprite/EnergyRays.position.y = 2
+	if get_tree().get_nodes_in_group("sound_control").size()>0:
+		var bgm = get_tree().get_nodes_in_group("sound_control")[0]
+		bgm.music_filter_down(-12)
 	
 	for node in $Sprite/Phase2TopParticles.get_children():
 		node.emitting = false
@@ -54,6 +60,9 @@ func start_phase_4():
 	$Sprite/EnergyRays.position.y = 0
 	$Sprite/EnergyRays/LeftRay.position.x = -8
 	$Sprite/EnergyRays/RightRay.position.x = 8
+	if get_tree().get_nodes_in_group("sound_control").size()>0:
+		var bgm = get_tree().get_nodes_in_group("sound_control")[0]
+		bgm.music_filter_down(-24)
 	
 	for node in $Sprite/Phase4BottomParticles.get_children():
 		node.emitting = true
@@ -78,6 +87,9 @@ func spawn_white_transition():
 	var transition = white_transition.instance()
 	transition.position = self.position
 	get_parent().add_child(transition)
+	if get_tree().get_nodes_in_group("sound_control").size()>0:
+		var bgm = get_tree().get_nodes_in_group("sound_control")[0]
+		bgm.zero_all_bgm()
 
 
 

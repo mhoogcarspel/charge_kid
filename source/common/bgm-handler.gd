@@ -59,19 +59,21 @@ func accelerate_music(scale: float):
 
 
 
-#func death_effect():
+func music_filter_down(final_value):
+	AudioServer.set_bus_volume_db(mus, final_value)
 #	low_pass_filter = AudioServer.get_bus_effect(mus, 0)
-#	$FadeInOut.interpolate_property(low_pass_filter, "cutoff_hz", max_freq, min_freq, 0.5, 
-#										Tween.TRANS_EXPO, Tween.EASE_OUT)
-#	$FadeInOut.start()
-#
-#
-#
-#func respawn_effect():
-#	low_pass_filter = AudioServer.get_bus_effect(mus, 0)
-#	$FadeInOut.interpolate_property(low_pass_filter, "cutoff_hz", min_freq, max_freq, 1.5, 
-#									Tween.TRANS_EXPO, Tween.EASE_OUT)
-#	$FadeInOut.start()
+##	$FadeInOut.interpolate_property(low_pass_filter, "cutoff_hz", null, final_value, 0.5, 
+##										Tween.TRANS_EXPO, Tween.EASE_OUT)
+##	$FadeInOut.start()
+#	low_pass_filter.cutoff_hz = final_value
+
+
+
+func music_filter_up():
+	low_pass_filter = AudioServer.get_bus_effect(mus, 0)
+	$FadeInOut.interpolate_property(low_pass_filter, "cutoff_hz", null, 22000, 1.5, 
+									Tween.TRANS_EXPO, Tween.EASE_OUT)
+	$FadeInOut.start()
 
 
 
