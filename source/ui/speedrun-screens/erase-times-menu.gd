@@ -13,7 +13,7 @@ func _ready():
 
 
 func _on_Return_pressed():
-	main.back_to_start()
+	main.change_scene(main.speedrun_menu)
 
 
 

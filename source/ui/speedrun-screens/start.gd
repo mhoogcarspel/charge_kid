@@ -9,6 +9,9 @@ onready var countdown = $VBoxContainer/Countdown
 
 
 
+func _ready():
+	speedrun_mode.get_node("Countdown").play()
+
 func _on_Timer_timeout():
 	if time > 1:
 		time -= 1
