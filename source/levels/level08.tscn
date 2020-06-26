@@ -176,7 +176,6 @@ position = Vector2( 48, 280 )
 
 [node name="EnergyGate" parent="." index="13" instance=ExtResource( 12 )]
 position = Vector2( 136, 216 )
-column_gap = 0
 gate_height = 5
 
 [node name="FuelTank2" parent="." index="14" instance=ExtResource( 7 )]
@@ -189,7 +188,6 @@ wires = [ NodePath("../EnergyWire"), NodePath("../EnergyWire2") ]
 
 [node name="EnergyGate2" parent="." index="16" instance=ExtResource( 12 )]
 position = Vector2( 56, 72 )
-column_gap = 0
 
 [node name="EnergyWire" parent="." index="17" instance=ExtResource( 16 )]
 material = SubResource( 2 )
@@ -217,10 +215,7 @@ tile_data = PoolIntArray( 65540, 18, 0, 131072, 9, 0 )
 [node name="Gate2" parent="." index="19" instance=ExtResource( 14 )]
 position = Vector2( 472, 72 )
 gate_height = 12
-gap_size = 0
 active = true
-close_in_inverse_order = false
-direction = ""
 
 [node name="FuelTank3" parent="." index="20" instance=ExtResource( 7 )]
 position = Vector2( 536, 264 )

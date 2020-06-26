@@ -143,10 +143,7 @@ wires = [ NodePath("../EnergyWire2") ]
 [node name="Gate" parent="." index="12" instance=ExtResource( 11 )]
 position = Vector2( 648, 8 )
 gate_height = 9
-gap_size = 0
-active = false
 close_in_inverse_order = true
-direction = ""
 
 [node name="LeverBody" parent="." index="13" instance=ExtResource( 12 )]
 position = Vector2( 592, 136 )
@@ -155,10 +152,7 @@ nodes = [ NodePath("../EnergyWire"), NodePath("../Gate") ]
 [node name="Gate2" parent="." index="14" instance=ExtResource( 13 )]
 position = Vector2( 392, 120 )
 gate_height = 5
-gap_size = 0
 active = true
-close_in_inverse_order = false
-direction = ""
 
 [node name="EnergyWire" parent="." index="15" instance=ExtResource( 9 )]
 material = SubResource( 3 )
@@ -191,8 +185,6 @@ position = Vector2( 762, 216 )
 gate_height = 5
 gap_size = 12
 active = true
-close_in_inverse_order = false
-direction = ""
 
 [node name="Switch2" parent="." index="20" instance=ExtResource( 10 )]
 position = Vector2( 720, 40 )

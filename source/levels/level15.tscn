@@ -179,7 +179,6 @@ position = Vector2( 88, 232 )
 
 [node name="EnergyGate" parent="." index="11" instance=ExtResource( 9 )]
 position = Vector2( 168, 184 )
-column_gap = 0
 
 [node name="Teleporter" parent="." index="12" instance=ExtResource( 10 )]
 position = Vector2( 232, 232 )
@@ -190,18 +189,12 @@ position = Vector2( 280, 232 )
 [node name="Gate" parent="." index="14" instance=ExtResource( 13 )]
 position = Vector2( 360, 184 )
 gate_height = 4
-gap_size = 0
 active = true
-close_in_inverse_order = false
-direction = ""
 
 [node name="Gate2" parent="." index="15" instance=ExtResource( 12 )]
 position = Vector2( 104, 152 )
 rotation = 1.5708
 gate_height = 4
-gap_size = 0
-active = false
-close_in_inverse_order = false
 direction = "Up"
 
 [node name="LeverBody" parent="." index="16" instance=ExtResource( 14 )]

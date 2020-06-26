@@ -41,7 +41,7 @@ func set_volume_bgm(list:Array):
 	for i in range(list.size()):
 		var bgm = $BGM.get_children()[i]
 		if list[i] == true:
-			$FadeInOut.interpolate_property(bgm, "volume_db", null, 0, 2.0,
+			$FadeInOut.interpolate_property(bgm, "volume_db", null, -3, 2.0,
 											Tween.TRANS_LINEAR, Tween.EASE_IN)
 			$FadeInOut.start()
 		else:

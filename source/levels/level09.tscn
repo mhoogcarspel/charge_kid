@@ -114,12 +114,10 @@ position = Vector2( 488, 72 )
 
 [node name="EnergyGate2" parent="." index="12" instance=ExtResource( 9 )]
 position = Vector2( 632, 56 )
-column_gap = 0
 gate_height = 5
 
 [node name="EnergyGate3" parent="." index="13" instance=ExtResource( 9 )]
 position = Vector2( 744, 200 )
-column_gap = 0
 gate_height = 5
 
 [node name="CameraLimiter" parent="." index="14" instance=ExtResource( 12 )]
@@ -154,14 +152,12 @@ position = Vector2( 1288, 72 )
 [node name="EnergyGate4" parent="." index="18" instance=ExtResource( 9 )]
 position = Vector2( 760, 120 )
 rotation = -1.5708
-column_gap = 0
 gate_height = 26
 direction = "Horizontal"
 
 [node name="EnergyGate" parent="." index="19" instance=ExtResource( 9 )]
 position = Vector2( 184, 168 )
 rotation = -1.5708
-column_gap = 0
 gate_height = 14
 direction = "Horizontal"
 

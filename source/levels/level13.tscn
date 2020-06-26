@@ -17,7 +17,7 @@
 [ext_resource path="res://actors/interactables/secret-key/secret-key.tscn" type="PackedScene" id=15]
 [ext_resource path="res://levels/base-nodes/secret-room/secret-room.tscn" type="PackedScene" id=16]
 
-[sub_resource type="Shader" id=9]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 render_mode unshaded;
 
@@ -35,39 +35,39 @@ void fragment ()
 		COLOR.rgb = active_color.rgb;
 }"
 
-[sub_resource type="ShaderMaterial" id=10]
+[sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true
-shader = SubResource( 9 )
+shader = SubResource( 1 )
 shader_param/base_color = Color( 0.133333, 0.14902, 0.203922, 1 )
 shader_param/active_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 shader_param/inactive_color = Color( 0.490196, 0.490196, 0.490196, 1 )
 shader_param/active = false
 
-[sub_resource type="ShaderMaterial" id=11]
+[sub_resource type="ShaderMaterial" id=3]
 resource_local_to_scene = true
-shader = SubResource( 9 )
+shader = SubResource( 1 )
 shader_param/base_color = Color( 0.133333, 0.14902, 0.203922, 1 )
 shader_param/active_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 shader_param/inactive_color = Color( 0.490196, 0.490196, 0.490196, 1 )
 shader_param/active = false
 
-[sub_resource type="ShaderMaterial" id=12]
+[sub_resource type="ShaderMaterial" id=4]
 resource_local_to_scene = true
-shader = SubResource( 9 )
+shader = SubResource( 1 )
 shader_param/base_color = Color( 0.133333, 0.14902, 0.203922, 1 )
 shader_param/active_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 shader_param/inactive_color = Color( 0.490196, 0.490196, 0.490196, 1 )
 shader_param/active = false
 
-[sub_resource type="ShaderMaterial" id=13]
+[sub_resource type="ShaderMaterial" id=5]
 resource_local_to_scene = true
-shader = SubResource( 9 )
+shader = SubResource( 1 )
 shader_param/base_color = Color( 0.133333, 0.14902, 0.203922, 1 )
 shader_param/active_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 shader_param/inactive_color = Color( 0.490196, 0.490196, 0.490196, 1 )
 shader_param/active = false
 
-[sub_resource type="Shader" id=2]
+[sub_resource type="Shader" id=6]
 code = "shader_type canvas_item;
 render_mode unshaded;
 
@@ -87,13 +87,13 @@ void fragment ()
 
 [sub_resource type="ShaderMaterial" id=7]
 resource_local_to_scene = true
-shader = SubResource( 2 )
+shader = SubResource( 6 )
 shader_param/base_color = Color( 0.133333, 0.14902, 0.203922, 1 )
 shader_param/active_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 shader_param/inactive_color = Color( 0.490196, 0.490196, 0.490196, 1 )
 shader_param/active = false
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id=8]
 code = "shader_type canvas_item;
 
 uniform int reveal;
@@ -115,14 +115,15 @@ void fragment() {
 
 "
 
-[sub_resource type="ShaderMaterial" id=8]
+[sub_resource type="ShaderMaterial" id=9]
 resource_local_to_scene = true
-shader = SubResource( 1 )
+shader = SubResource( 8 )
 shader_param/reveal = 0
 
 [node name="BaseLevel" instance=ExtResource( 5 )]
 level = 13
-bgm_5 = true
+bgm_3 = true
+bgm_4 = true
 
 [node name="ScreenTransition" parent="." index="0"]
 opening_text = "Level 13
@@ -210,13 +211,11 @@ wires = [ NodePath("../EnergyWire") ]
 [node name="Gate" parent="." index="11" instance=ExtResource( 9 )]
 position = Vector2( 168, 72 )
 gate_height = 10
-gap_size = 0
 active = true
 close_in_inverse_order = true
-direction = ""
 
 [node name="EnergyWire" parent="." index="12" instance=ExtResource( 6 )]
-material = SubResource( 10 )
+material = SubResource( 2 )
 position = Vector2( 232, 32 )
 active = false
 
@@ -248,21 +247,15 @@ wires = [ NodePath("../EnergyWire3") ]
 [node name="Gate2" parent="." index="16" instance=ExtResource( 13 )]
 position = Vector2( 424, 96 )
 gate_height = 12
-gap_size = 0
 active = true
-close_in_inverse_order = false
-direction = ""
 
 [node name="Gate3" parent="." index="17" instance=ExtResource( 13 )]
 position = Vector2( 448, 96 )
 gate_height = 12
-gap_size = 0
 active = true
-close_in_inverse_order = false
-direction = ""
 
 [node name="EnergyWire2" parent="." index="18" instance=ExtResource( 6 )]
-material = SubResource( 11 )
+material = SubResource( 3 )
 position = Vector2( 248, 96 )
 active = false
 
@@ -273,7 +266,7 @@ tile_data = PoolIntArray( -327679, 0, 393216, -327678, 0, 327680, -327677, 0, 32
 tile_data = PoolIntArray( -327679, 15, 0 )
 
 [node name="EnergyWire3" parent="." index="19" instance=ExtResource( 6 )]
-material = SubResource( 12 )
+material = SubResource( 4 )
 position = Vector2( 448, 56 )
 active = false
 
@@ -284,7 +277,7 @@ tile_data = PoolIntArray( 65532, 0, 196609, 131068, 0, 524288, 131069, 0, 327680
 tile_data = PoolIntArray( -5, 15, 0, 65532, 15, 0 )
 
 [node name="EnergyWire4" parent="." index="20" instance=ExtResource( 6 )]
-material = SubResource( 13 )
+material = SubResource( 5 )
 position = Vector2( 248, 88 )
 active = false
 
@@ -323,10 +316,7 @@ position = Vector2( -48, 40 )
 [node name="Gate4" parent="." index="26" instance=ExtResource( 13 )]
 position = Vector2( 824, 104 )
 gate_height = 12
-gap_size = 0
 active = true
-close_in_inverse_order = false
-direction = ""
 
 [node name="EnergyWire5" parent="." index="27" instance=ExtResource( 6 )]
 material = SubResource( 7 )
@@ -347,7 +337,7 @@ position = Vector2( 1176, 40 )
 position = Vector2( 960, 128 )
 
 [node name="FalseBlocks" parent="SecretRoom" index="0"]
-material = SubResource( 8 )
+material = SubResource( 9 )
 tile_data = PoolIntArray( -1, 0, 0, -65535, 1, 0, -65534, 1, 1, -65533, 1, 1, -65532, 1, 2, -65531, -1610612713, 0, -65530, -1610612714, 0, 1, 1, 65536, 2, 1, 65537, 3, 1, 65537, 4, 1, 65538, 5, -1610612713, 0, 6, -1610612714, 0, 65537, 1, 65536, 65538, 1, 65537, 65539, 1, 65537, 65540, 1, 65538, 65541, -536870889, 0, 65542, -536870890, 0, 131073, 1, 65536, 131074, 1, 65537, 131075, 1, 65537, 131076, 1, 65538, 131077, -536870889, 0, 131078, -536870890, 0, 196609, 1, 131072, 196610, 1, 131073, 196611, 1, 131073, 196612, 1, 131074, 196613, 14, 0, 196614, 17, 0, 262145, 10, 0, 262146, 10, 0, 262147, 2, 0, 262148, 2, 1, 262149, 2, 1, 262150, 2, 2, 327681, 3, 65536, 327682, 3, 65536, 327683, 2, 65536, 327684, 2, 65537, 327685, 2, 65537, 327686, 2, 65538, 393217, 3, 131072, 393218, 3, 131072, 393219, 2, 65536, 393220, 2, 65537, 393221, 2, 65537, 393222, 2, 65538, 458753, 1, 0, 458754, 1, 2, 458755, 2, 65536, 458756, 2, 65537, 458757, 2, 65537, 458758, 2, 65538, 524289, 1, 131072, 524290, 1, 131074, 524291, 2, 131072, 524292, 2, 131073, 524293, 2, 131073, 524294, 2, 131074 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SecretRoom" index="2"]

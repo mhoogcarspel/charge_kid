@@ -16,8 +16,8 @@
 
 [node name="BaseLevel" instance=ExtResource( 1 )]
 level = 10
-bgm_2 = true
 bgm_3 = true
+bgm_4 = true
 
 [node name="ScreenTransition" parent="." index="0"]
 opening_text = "Level 10
@@ -109,7 +109,6 @@ position = Vector2( 408, 56 )
 [node name="EnergyGate" parent="." index="12" instance=ExtResource( 9 )]
 position = Vector2( 584, 184 )
 rotation = -1.5708
-column_gap = 0
 gate_height = 16
 direction = "Horizontal"
 

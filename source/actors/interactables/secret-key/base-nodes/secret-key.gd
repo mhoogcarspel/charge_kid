@@ -75,6 +75,7 @@ func start_phase_4():
 	if get_tree().get_nodes_in_group("sound_control").size()>0:
 		var bgm = get_tree().get_nodes_in_group("sound_control")[0]
 		bgm.music_filter_down(-24)
+		$PHASE4A.set_volume_db(5)
 		$PHASE4A.play()
 		$PARTICLES.set_volume_db(-6)
 

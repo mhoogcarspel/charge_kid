@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://common/main.gd" type="Script" id=1]
 [ext_resource path="res://ui/starting-screen/start-menu.tscn" type="PackedScene" id=2]
@@ -44,6 +44,7 @@
 [ext_resource path="res://ui/speedrun-screens/speedrun-menu.tscn" type="PackedScene" id=42]
 [ext_resource path="res://ui/speedrun-screens/erase-times-menu.tscn" type="PackedScene" id=43]
 [ext_resource path="res://levels/level17.tscn" type="PackedScene" id=44]
+[ext_resource path="res://assets/sound-effects/speedrun/count_down.ogg" type="AudioStream" id=45]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 38 )
@@ -135,6 +136,9 @@ enable_save = true
 bgm_starting_volume = 0.8
 sfx_starting_volume = 0.8
 
+[node name="Music" parent="BackgroundAndMusicHandler" index="0"]
+volume_db = 12.0
+
 [node name="Background" parent="BackgroundAndMusicHandler" index="1"]
 volume_db = 9.0
 
@@ -181,6 +185,10 @@ script = ExtResource( 32 )
 
 [node name="Start" type="AudioStreamPlayer" parent="SpeedrunMode"]
 stream = ExtResource( 34 )
+bus = "SFX"
+
+[node name="CountDown" type="AudioStreamPlayer" parent="SpeedrunMode"]
+stream = ExtResource( 45 )
 bus = "SFX"
 
 [node name="MenuNavigation" type="Node" parent="."]

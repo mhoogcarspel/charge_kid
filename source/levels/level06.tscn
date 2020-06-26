@@ -98,8 +98,8 @@ shader_param/active = true
 
 [node name="BaseLevel" instance=ExtResource( 1 )]
 level = 6
-bgm_1 = true
 bgm_2 = true
+bgm_3 = true
 
 [node name="ScreenTransition" parent="." index="0"]
 opening_text = "Level 6
@@ -167,18 +167,11 @@ position = Vector2( 88, 104 )
 [node name="Gate" parent="." index="11" instance=ExtResource( 12 )]
 position = Vector2( 768, 232 )
 gate_height = 3
-gap_size = 0
 active = true
-close_in_inverse_order = false
-direction = ""
 
 [node name="Gate2" parent="." index="12" instance=ExtResource( 12 )]
 position = Vector2( 840, 232 )
 gate_height = 3
-gap_size = 0
-active = false
-close_in_inverse_order = false
-direction = ""
 
 [node name="LeverBody" parent="." index="13" instance=ExtResource( 11 )]
 position = Vector2( 664, 264 )
@@ -244,10 +237,6 @@ position = Vector2( 696, 104 )
 rotation = -3.14159
 scale = Vector2( 1, -1 )
 gate_height = 4
-gap_size = 0
-active = false
-close_in_inverse_order = false
-direction = ""
 
 [node name="EnergyWire8" parent="." index="22" instance=ExtResource( 13 )]
 material = SubResource( 8 )
@@ -270,10 +259,7 @@ position = Vector2( 776, 104 )
 rotation = -3.14159
 scale = Vector2( 1, -1 )
 gate_height = 4
-gap_size = 0
 active = true
-close_in_inverse_order = false
-direction = ""
 
 [node name="Message" parent="." index="25" instance=ExtResource( 10 )]
 visible = false
