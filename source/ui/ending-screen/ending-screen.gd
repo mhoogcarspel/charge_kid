@@ -1,4 +1,4 @@
-extends MarginContainer
+extends Control
 
 var main
 export (PackedScene) var credits

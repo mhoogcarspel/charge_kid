@@ -1,6 +1,24 @@
 extends Node
 
-onready var return_value = 0
+onready var return_int = 0
+onready var return_bool = false
+
+onready var achievements: Array = [ "beat_the_game",
+									"any_percent",
+									"secret_percent",
+									"shoot",
+									"charge",
+									"clutch",
+									"secret_clutch",
+									"beat_the_secret",
+									"key1",
+									"key2",
+									"key3",
+									"key4",
+									"key5",
+									"death",
+									"platinum"
+]
 
 signal set_achievement(achievement_api_name)
 signal clear_achievement(achievement_api_name)
@@ -15,6 +33,16 @@ signal get_stat(
 	variable_name,
 	emitter
 )
+
+signal get_achievement(
+	achievement_name,
+	variable_name,
+	emiter
+)
+
+func _process(delta):
+	if all_achievements_unlocked():
+		set_achievement("platinum")
 
 func set_achievement(achievement_name: String) -> void:
 	#Use this function to comunicate that a 
@@ -48,6 +76,15 @@ func indicate_achievement_progress(achievement_name_api: String, current_progres
 	emit_signal("indicate_achievement_progress", achievement_name_api, current_progress, max_progress)
 
 func get_stat(stat_name: String) -> int:
-	return_value = 0
-	emit_signal("get_stat", return_value, self)
-	return return_value
+	emit_signal("get_stat", stat_name, "return_int", self)
+	return return_int
+
+func get_achievement(achievement_name: String) -> bool:
+	emit_signal("get_achievement",achievement_name, "return_bool", self)
+	return return_bool
+
+func all_achievements_unlocked() -> bool:
+	for i in range(achievements.size()-1):
+		if not get_achievement(achievements[i]):
+			return false
+	return true

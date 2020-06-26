@@ -58,6 +58,7 @@ tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -6
 [node name="PlayerCamera" parent="." index="3"]
 limit_top = 48
 limit_bottom = 336
+limit_smoothed = true
 
 [node name="Background" parent="." index="4" instance=ExtResource( 4 )]
 script = ExtResource( 3 )
@@ -195,7 +196,7 @@ limit = 480
 polygon = PoolVector2Array( 328, 232, -152, 232, -152, -104, 328, -104 )
 
 [node name="CollisionPolygon2D" parent="CameraLimiter" index="1"]
-polygon = PoolVector2Array( -120, -104, 328, -104, 328, -8, 184, -8, 184, -24, -120, -24 )
+polygon = PoolVector2Array( -120, -88, 328, -88, 328, -8, 184, -8, 184, -24, -120, -24 )
 
 [node name="FinishLine" parent="." index="21" instance=ExtResource( 13 )]
 visible = false
@@ -207,12 +208,19 @@ position = Vector2( 776, 32 )
 script = ExtResource( 15 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SecretRoomCamera" index="0"]
+position = Vector2( 0, 8 )
 polygon = PoolVector2Array( 24, 0, -24, 0, -24, -16, 24, -16 )
+
+[node name="Exit" type="Area2D" parent="SecretRoomCamera" index="1"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SecretRoomCamera/Exit" index="0"]
+polygon = PoolVector2Array( 16, 24, -16, 24, -16, 32, 16, 32 )
 
 [node name="SecretKey" parent="." index="24" instance=ExtResource( 14 )]
 position = Vector2( 872, 8 )
 key_number = 1
 [connection signal="body_entered" from="SecretRoomCamera" to="SecretRoomCamera" method="_on_SecretRoomCamera_body_entered"]
+[connection signal="body_entered" from="SecretRoomCamera/Exit" to="SecretRoomCamera" method="_on_Exit_body_entered"]
 
 [editable path="Background"]
 
