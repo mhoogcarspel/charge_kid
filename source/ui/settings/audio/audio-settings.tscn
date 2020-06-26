@@ -103,6 +103,7 @@ margin_bottom = 16.0
 
 [node name="HSlider" parent="CenterContainer/MarginContainer/MarginContainer/Options/Buttons/BGM/SliderContainer" index="0"]
 margin_bottom = 16.0
+max_value = 0.7
 
 [node name="SliderSize" parent="CenterContainer/MarginContainer/MarginContainer/Options/Buttons/BGM/SliderContainer" index="1"]
 margin_top = 0.0
@@ -130,6 +131,7 @@ margin_bottom = 16.0
 
 [node name="HSlider" parent="CenterContainer/MarginContainer/MarginContainer/Options/Buttons/SFX/SliderContainer" index="0"]
 margin_bottom = 16.0
+max_value = 0.7
 
 [node name="SliderSize" parent="CenterContainer/MarginContainer/MarginContainer/Options/Buttons/SFX/SliderContainer" index="1"]
 margin_top = 0.0

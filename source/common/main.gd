@@ -70,7 +70,7 @@ func back_to_start():
 
 
 
-func change_scene(next_scene: PackedScene, spawn_point: int = 0, next_level: int = 0, player_died:bool = false):
+func change_scene(next_scene: PackedScene, spawn_point: int = 0, next_level: int = 0, player_died: bool = false):
 	get_tree().paused = false
 	for scene in $Scene.get_children():
 		scene.queue_free()

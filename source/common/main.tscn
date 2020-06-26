@@ -133,8 +133,6 @@ sound_config = "audio_settings"
 enable_save = true
 
 [node name="BackgroundAndMusicHandler" parent="." instance=ExtResource( 10 )]
-bgm_starting_volume = 0.8
-sfx_starting_volume = 0.8
 
 [node name="Music" parent="BackgroundAndMusicHandler" index="0"]
 volume_db = 12.0
