@@ -31,13 +31,13 @@ func start_phase_2():
 	$Sprite/EnergyRays/LeftRay.position.x = -4
 	$Sprite/EnergyRays/RightRay.position.x = 4
 	$Sprite/EnergyRays.show()
+	
 	if get_tree().get_nodes_in_group("sound_control").size()>0:
 		var bgm = get_tree().get_nodes_in_group("sound_control")[0]
 		bgm.music_filter_down(-6)
-		$PHASE2A.play()
-		$PARTICLES.set_volume_db(-18)
-		
-#		
+	
+	$PHASE2A.play()
+	$PARTICLES.set_volume_db(-18)
 	
 	for node in $Sprite/Phase2BottomParticles.get_children():
 		node.emitting = true
