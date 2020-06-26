@@ -81,5 +81,6 @@ func enter():
 		next_player.get_parent().add_child(ripple)
 		for particle in next_player.get_node("RespawnParticles").get_children():
 			particle.emitting = true
+		level.player_died = true
 
 
