@@ -38,6 +38,8 @@ func _physics_process(delta):
 			else:
 				if not end_of_level:
 					camera.shake_screen(30, 2)
+					$SFX.set_pitch_scale(rand_range(1,1.3))
+					$SFX.play()
 					self.speed *= 3
 					end_of_level = true
 				$EnergyGate.position.x += speed*factor*delta
@@ -50,6 +52,8 @@ func _physics_process(delta):
 
 func _on_PauseTimer_timeout():
 	camera.shake_screen(30, 3)
+	$SFX.set_pitch_scale(rand_range(1,1.3))
+	$SFX.play()
 
 
 
