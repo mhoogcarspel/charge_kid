@@ -19,7 +19,8 @@ export (PackedScene) var player_scene
 
 onready var message = $MessageLabel
 onready var message_timer = get_node("MessageLabel/Timer")
-onready var player_died:bool = false
+
+var player_died:bool = false
 
 var level_length: float
 
@@ -67,6 +68,7 @@ func _ready():
 
 
 func _process(delta):
+	print(player_died)
 	var player = get_tree().get_nodes_in_group("player")[0]
 	if player != null:
 		var pos: Vector2 = player.position - Vector2(message.rect_size.x/2, 0)
@@ -101,3 +103,7 @@ func unlock_secret_key(n: int):
 			return
 	else:
 		print("No Main node found")
+
+func set_player_died(variable :bool = true) -> void:
+	yield(self, "tree_entered")
+	player_died = true

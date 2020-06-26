@@ -12,7 +12,6 @@ func _init(owner: KinematicBody2D):
 func enter():
 	number_of_deaths += 1
 	AchievementsAndStatsObserver.set_stat("deaths", number_of_deaths)
-	owner.get_tree().get_nodes_in_group("level")[0].player_died = true
 	owner.velocity = Vector2.ZERO
 	owner.get_node("SFX/Death").play()
 	owner.get_node("PlayerSprite").kill()
@@ -60,7 +59,7 @@ func enter():
 			else:
 				level_scene = main.get_node("SaveFileHandler").levels[level - 1]
 			var checkpoint = owner.get_parent().respawn_point
-			main.change_scene(level_scene, checkpoint)
+			var level_instance = main.change_scene(level_scene, checkpoint, 0, true)
 		else:
 			owner.get_tree().reload_current_scene()
 	else:
