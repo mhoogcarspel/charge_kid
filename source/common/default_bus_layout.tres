@@ -2,7 +2,8 @@
 
 [sub_resource type="AudioEffectLimiter" id=1]
 resource_name = "Limiter"
-ceiling_db = -0.3
+ceiling_db = -0.5
+threshold_db = -6.0
 
 [sub_resource type="AudioEffectReverb" id=2]
 resource_name = "Reverb"
