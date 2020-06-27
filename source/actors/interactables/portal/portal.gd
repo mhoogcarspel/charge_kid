@@ -40,7 +40,7 @@ func _physics_process(delta):
 	one_sprite.time_to_change_frame = 0.2 - x*0.175
 	other_sprite.time_to_change_frame = 0.2 - x*0.175
 	
-	$PROX.volume_db = linear2db(x)
+	$PROX.volume_db = linear2db(x*0.7)
 	
 	if dist_to_one.length() <= dist_to_other.length():
 		one_shader.speed = -(2 + x_one*6)

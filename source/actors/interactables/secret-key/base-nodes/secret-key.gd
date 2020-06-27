@@ -34,7 +34,7 @@ func start_phase_2():
 	
 	if get_tree().get_nodes_in_group("sound_control").size()>0:
 		var bgm = get_tree().get_nodes_in_group("sound_control")[0]
-		bgm.music_filter_down(-6)
+		bgm.music_filter_down(-9)
 	
 	$PHASE2A.play()
 	$PARTICLES.set_volume_db(-18)
@@ -53,7 +53,7 @@ func start_phase_3():
 	$Sprite/EnergyRays.position.y = 2
 	if get_tree().get_nodes_in_group("sound_control").size()>0:
 		var bgm = get_tree().get_nodes_in_group("sound_control")[0]
-		bgm.music_filter_down(-12)
+		bgm.music_filter_down(-15)
 		$PHASE3A.play()
 		$PARTICLES.set_volume_db(-12)
 
@@ -75,9 +75,9 @@ func start_phase_4():
 	if get_tree().get_nodes_in_group("sound_control").size()>0:
 		var bgm = get_tree().get_nodes_in_group("sound_control")[0]
 		bgm.music_filter_down(-24)
-		$PHASE4A.set_volume_db(5)
+		$PHASE4A.set_volume_db(0)
 		$PHASE4A.play()
-		$PARTICLES.set_volume_db(-6)
+		$PARTICLES.set_volume_db(-9)
 
 	
 	for node in $Sprite/Phase4BottomParticles.get_children():

@@ -592,26 +592,26 @@ shape = SubResource( 15 )
 [node name="SFX" type="Node" parent="."]
 
 [node name="Jump" type="AudioStreamPlayer" parent="SFX"]
-volume_db = -3.0
+volume_db = -6.0
 bus = "SFX"
 
 [node name="Boost" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 12 )
-volume_db = -3.0
+volume_db = -9.0
 bus = "SFX"
 
 [node name="Shoot" type="AudioStreamPlayer" parent="SFX"]
-volume_db = -3.0
+volume_db = -10.0
 pitch_scale = 0.9
 bus = "SFX"
 
 [node name="BulletPickup" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 20 )
-volume_db = -3.0
+volume_db = -10.0
 bus = "SFX"
 
 [node name="FuelPickup" type="AudioStreamPlayer" parent="SFX"]
-volume_db = -3.0
+volume_db = -10.0
 bus = "SFX"
 
 [node name="Step" type="AudioStreamPlayer" parent="SFX"]
@@ -626,6 +626,7 @@ bus = "SFX"
 
 [node name="Death" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 9 )
+volume_db = -6.0
 pitch_scale = 1.1
 bus = "DEATH FILTER"
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://common/main.gd" type="Script" id=1]
 [ext_resource path="res://ui/starting-screen/start-menu.tscn" type="PackedScene" id=2]
@@ -9,7 +9,7 @@
 [ext_resource path="res://ui/level-select/level-select.tscn" type="PackedScene" id=7]
 [ext_resource path="res://common/menu-navigation.gd" type="Script" id=8]
 [ext_resource path="res://ui/settings/settings-menu.tscn" type="PackedScene" id=9]
-[ext_resource path="res://common/bgm-handler.tscn" type="PackedScene" id=10]
+[ext_resource path="res://common/bgm-handler.gd" type="Script" id=10]
 [ext_resource path="res://assets/sound-effects/ui/navigate.ogg" type="AudioStream" id=11]
 [ext_resource path="res://assets/sound-effects/ui/accept.ogg" type="AudioStream" id=12]
 [ext_resource path="res://common/save-file-handler.gd" type="Script" id=13]
@@ -45,6 +45,15 @@
 [ext_resource path="res://ui/speedrun-screens/erase-times-menu.tscn" type="PackedScene" id=43]
 [ext_resource path="res://levels/level17.tscn" type="PackedScene" id=44]
 [ext_resource path="res://assets/sound-effects/speedrun/count_down.ogg" type="AudioStream" id=45]
+[ext_resource path="res://assets/music/music1.ogg" type="AudioStream" id=46]
+[ext_resource path="res://assets/music/music3.ogg" type="AudioStream" id=47]
+[ext_resource path="res://assets/music/music4.ogg" type="AudioStream" id=48]
+[ext_resource path="res://assets/music/music5.ogg" type="AudioStream" id=49]
+[ext_resource path="res://assets/music/music8.ogg" type="AudioStream" id=50]
+[ext_resource path="res://assets/music/music6.ogg" type="AudioStream" id=51]
+[ext_resource path="res://assets/music/music7.ogg" type="AudioStream" id=52]
+[ext_resource path="res://assets/background/background.ogg" type="AudioStream" id=53]
+[ext_resource path="res://assets/music/music2.ogg" type="AudioStream" id=54]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 38 )
@@ -132,13 +141,73 @@ credits = ExtResource( 41 )
 sound_config = "audio_settings"
 enable_save = true
 
-[node name="BackgroundAndMusicHandler" parent="." instance=ExtResource( 10 )]
+[node name="BackgroundAndMusicHandler" type="Node" parent="." groups=[
+"sound_control",
+]]
+script = ExtResource( 10 )
+bgm_starting_volume = 0.7
+sfx_starting_volume = 0.7
 
-[node name="Music" parent="BackgroundAndMusicHandler" index="0"]
-volume_db = 12.0
+[node name="Background" type="AudioStreamPlayer" parent="BackgroundAndMusicHandler"]
+stream = ExtResource( 53 )
+volume_db = -3.0
+bus = "MUS"
 
-[node name="Background" parent="BackgroundAndMusicHandler" index="1"]
-volume_db = 9.0
+[node name="Timer" type="Timer" parent="BackgroundAndMusicHandler"]
+wait_time = 5.0
+autostart = true
+
+[node name="FadeInOut" type="Tween" parent="BackgroundAndMusicHandler"]
+
+[node name="BGM" type="Node" parent="BackgroundAndMusicHandler"]
+
+[node name="BGM1" type="AudioStreamPlayer" parent="BackgroundAndMusicHandler/BGM"]
+stream = ExtResource( 46 )
+volume_db = -80.0
+autoplay = true
+bus = "MUS"
+
+[node name="BGM2" type="AudioStreamPlayer" parent="BackgroundAndMusicHandler/BGM"]
+stream = ExtResource( 54 )
+volume_db = -80.0
+autoplay = true
+bus = "MUS"
+
+[node name="BGM3" type="AudioStreamPlayer" parent="BackgroundAndMusicHandler/BGM"]
+stream = ExtResource( 47 )
+volume_db = -80.0
+autoplay = true
+bus = "MUS"
+
+[node name="BGM4" type="AudioStreamPlayer" parent="BackgroundAndMusicHandler/BGM"]
+stream = ExtResource( 48 )
+volume_db = -80.0
+autoplay = true
+bus = "MUS"
+
+[node name="BGM5" type="AudioStreamPlayer" parent="BackgroundAndMusicHandler/BGM"]
+stream = ExtResource( 49 )
+volume_db = -80.0
+autoplay = true
+bus = "MUS"
+
+[node name="BGM6" type="AudioStreamPlayer" parent="BackgroundAndMusicHandler/BGM"]
+stream = ExtResource( 51 )
+volume_db = -80.0
+autoplay = true
+bus = "MUS"
+
+[node name="BGM7" type="AudioStreamPlayer" parent="BackgroundAndMusicHandler/BGM"]
+stream = ExtResource( 52 )
+volume_db = -80.0
+autoplay = true
+bus = "MUS"
+
+[node name="BGM8" type="AudioStreamPlayer" parent="BackgroundAndMusicHandler/BGM"]
+stream = ExtResource( 50 )
+volume_db = -80.0
+autoplay = true
+bus = "MUS"
 
 [node name="HudContainer" type="CanvasLayer" parent="."]
 
@@ -183,12 +252,12 @@ script = ExtResource( 32 )
 
 [node name="Start" type="AudioStreamPlayer" parent="SpeedrunMode"]
 stream = ExtResource( 34 )
-volume_db = -3.0
+volume_db = -6.0
 bus = "SFX"
 
 [node name="Countdown" type="AudioStreamPlayer" parent="SpeedrunMode"]
 stream = ExtResource( 45 )
-volume_db = -3.0
+volume_db = -6.0
 bus = "SFX"
 
 [node name="MenuNavigation" type="Node" parent="."]
@@ -196,10 +265,12 @@ script = ExtResource( 8 )
 
 [node name="MenuNavigate" type="AudioStreamPlayer" parent="MenuNavigation"]
 stream = ExtResource( 11 )
+volume_db = -9.0
 bus = "SFX"
 
 [node name="MenuAccept" type="AudioStreamPlayer" parent="MenuNavigation"]
 stream = ExtResource( 12 )
+volume_db = -9.0
 bus = "SFX"
 
 [node name="MenuNavTimer" type="Timer" parent="MenuNavigation"]
@@ -236,5 +307,3 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SplashScreen"]
 anims/Transition = SubResource( 4 )
 [connection signal="timeout" from="MenuNavigation/MenuNavTimer/Timer" to="MenuNavigation" method="_on_Timer_timeout"]
-
-[editable path="BackgroundAndMusicHandler"]
