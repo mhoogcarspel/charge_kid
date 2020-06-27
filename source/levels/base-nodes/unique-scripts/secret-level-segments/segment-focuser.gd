@@ -9,7 +9,7 @@ func on_body_entered(body):
 		if autoscroller.position.x < self.position.x and not tween.is_active():
 			if pause_timer:
 				var timer = autoscroller.get_node("PauseTimer")
-				timer.start(1 + 9/autoscroller.factor)
+				timer.start(1 + 12/autoscroller.factor)
 			tween.interpolate_property(autoscroller, "position", null, self.position, 1.0,
 										Tween.TRANS_LINEAR, Tween.EASE_IN)
 			tween.start()

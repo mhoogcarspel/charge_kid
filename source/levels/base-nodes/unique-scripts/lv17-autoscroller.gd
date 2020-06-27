@@ -43,12 +43,11 @@ func _physics_process(delta):
 
 
 
-func _on_Checkpoint3_body_entered(body):
+func _on_3rdPartEventStarter_body_entered(body):
 	if body.is_in_group("player") and checkpoint_3_event_part == 0:
 		active = false
 		checkpoint_3_event_part = 1
-		var final_pos = get_parent().get_node("Checkpoint3").position
-		final_pos += get_parent().get_node("Checkpoint3/CameraRespawnPoint").position
+		var final_pos = get_parent().get_node("3rdPartEventStarter").position
 		$Tween.interpolate_property(self, "position", null, final_pos, 2.0, 
 									Tween.TRANS_LINEAR, Tween.EASE_IN)
 		$Tween.start()
@@ -66,7 +65,7 @@ func _on_Tween_tween_completed(object, key):
 		$Tween.interpolate_property(top_gate, "position", null, Vector2(2248, 360), 6.0,
 										Tween.TRANS_LINEAR, Tween.EASE_IN)
 		$Tween.start()
-		camera.shake_screen(24)
+		camera.shake_screen(30,3)
 		$SFX.set_pitch_scale(rand_range(1,1.3))
 		$SFX.play()
 	elif object == top_gate and checkpoint_3_event_part == 2:
@@ -77,7 +76,7 @@ func _on_Tween_tween_completed(object, key):
 		$Tween.interpolate_property(bottom_gate, "position", null, Vector2(2248, -40), 6.0,
 										Tween.TRANS_LINEAR, Tween.EASE_IN)
 		$Tween.start()
-		camera.shake_screen(24)
+		camera.shake_screen(30,3)
 		$SFX.set_pitch_scale(rand_range(1,1.3))
 		$SFX.play()
 	elif object == bottom_gate and checkpoint_3_event_part == 4:
@@ -112,5 +111,6 @@ func _on_PauseTimer_timeout():
 			camera.shake_screen(30, 3)
 			$SFX.set_pitch_scale(rand_range(1,1.3))
 			$SFX.play()
+
 
 

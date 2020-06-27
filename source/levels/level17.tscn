@@ -134,6 +134,7 @@ speed = 24.0
 [node name="EnergyGate" parent="Autoscroller" index="0" instance=ExtResource( 9 )]
 position = Vector2( -232, -168 )
 z_index = 0
+column_gap = 0
 gate_height = 22
 
 [node name="Blocks" parent="Autoscroller" index="1" instance=ExtResource( 5 )]
@@ -271,7 +272,10 @@ wires = [ NodePath("../EnergyWire") ]
 [node name="Gate" parent="." index="16" instance=ExtResource( 12 )]
 position = Vector2( 464, 64 )
 gate_height = 11
+gap_size = 0
 active = true
+close_in_inverse_order = false
+direction = ""
 
 [node name="EnergyWire" parent="." index="17" instance=ExtResource( 10 )]
 material = SubResource( 2 )
@@ -295,7 +299,10 @@ wires = [ NodePath("../EnergyWire2") ]
 [node name="Gate2" parent="." index="20" instance=ExtResource( 12 )]
 position = Vector2( 776, 176 )
 gate_height = 8
+gap_size = 0
 active = true
+close_in_inverse_order = false
+direction = ""
 
 [node name="EnergyWire2" parent="." index="21" instance=ExtResource( 10 )]
 material = SubResource( 3 )
@@ -345,10 +352,12 @@ position = Vector2( 1576, 120 )
 
 [node name="EnergyGate2" parent="." index="30" instance=ExtResource( 9 )]
 position = Vector2( 1648, 72 )
+column_gap = 0
 gate_height = 14
 
 [node name="EnergyGate3" parent="." index="31" instance=ExtResource( 9 )]
 position = Vector2( 1776, 64 )
+column_gap = 0
 gate_height = 13
 
 [node name="Teleporter2" parent="." index="32" instance=ExtResource( 15 )]
@@ -374,6 +383,7 @@ position = Vector2( 2096, 240 )
 
 [node name="EnergyGate5" parent="." index="37" instance=ExtResource( 9 )]
 position = Vector2( 2168, 120 )
+column_gap = 0
 gate_height = 11
 
 [node name="FuelTank10" parent="." index="38" instance=ExtResource( 8 )]
@@ -383,7 +393,10 @@ position = Vector2( 2456, 184 )
 position = Vector2( 2712, 24 )
 z_index = -3
 gate_height = 18
+gap_size = 0
 active = true
+close_in_inverse_order = false
+direction = ""
 
 [node name="EnergyWire3" parent="." index="40" instance=ExtResource( 10 )]
 material = SubResource( 5 )
@@ -397,25 +410,27 @@ tile_data = PoolIntArray( -262141, 0, 196609, -196605, 0, 65537, -131069, 0, 655
 [node name="EnergyGate6" parent="." index="41" instance=ExtResource( 9 )]
 position = Vector2( 2248, 296 )
 rotation = -1.5708
+column_gap = 0
 gate_height = 32
 direction = "Horizontal"
 
 [node name="EnergyGate7" parent="." index="42" instance=ExtResource( 9 )]
 position = Vector2( 2248, 24 )
 rotation = -1.5708
+column_gap = 0
 gate_height = 32
 direction = "Horizontal"
 
 [node name="Checkpoint3" parent="." index="43" instance=ExtResource( 13 )]
 visible = false
-position = Vector2( 2336, 248 )
+position = Vector2( 2800, 88 )
 checkpoint_number = 3
 
 [node name="CameraRespawnPoint" parent="Checkpoint3" index="0"]
-position = Vector2( 160, -88 )
+position = Vector2( 144, 72 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Checkpoint3" index="1"]
-polygon = PoolVector2Array( -80, 8, -80, -232, 144, -232, 144, 8 )
+polygon = PoolVector2Array( -24, 8, -24, -72, 24, -72, 24, 8 )
 
 [node name="Portal2" parent="." index="44" instance=ExtResource( 14 )]
 position = Vector2( 2968, 112 )
@@ -443,12 +458,15 @@ position = Vector2( 3344, 72 )
 
 [node name="EnergyGate8" parent="." index="48" instance=ExtResource( 9 )]
 position = Vector2( 3384, 40 )
+column_gap = 0
 
 [node name="EnergyGate9" parent="." index="49" instance=ExtResource( 9 )]
 position = Vector2( 3448, 40 )
+column_gap = 0
 
 [node name="EnergyGate10" parent="." index="50" instance=ExtResource( 9 )]
 position = Vector2( 3512, 40 )
+column_gap = 0
 gate_height = 14
 
 [node name="LastFinishLine" parent="." index="51" instance=ExtResource( 17 )]
@@ -463,7 +481,10 @@ wires = [ NodePath("../EnergyWire4") ]
 [node name="Gate4" parent="." index="53" instance=ExtResource( 12 )]
 position = Vector2( 1440, 72 )
 gate_height = 6
+gap_size = 0
 active = true
+close_in_inverse_order = false
+direction = ""
 
 [node name="EnergyWire4" parent="." index="54" instance=ExtResource( 10 )]
 material = SubResource( 7 )
@@ -478,10 +499,18 @@ tile_data = PoolIntArray( 65533, 15, 0 )
 
 [node name="SecretKey" parent="." index="55" instance=ExtResource( 19 )]
 position = Vector2( 3456, 232 )
+
+[node name="3rdPartEventStarter" type="Area2D" parent="." index="56"]
+visible = false
+position = Vector2( 2496, 160 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="3rdPartEventStarter" index="0"]
+position = Vector2( -128, 32 )
+polygon = PoolVector2Array( 104, 64, 104, -176, -104, -176, -104, 64 )
 [connection signal="timeout" from="Autoscroller/PauseTimer" to="Autoscroller" method="_on_PauseTimer_timeout"]
 [connection signal="tween_completed" from="Autoscroller/Tween" to="Autoscroller" method="_on_Tween_tween_completed"]
 [connection signal="body_entered" from="UniqueMessage" to="UniqueMessage" method="_on_UniqueMessage_body_entered"]
-[connection signal="body_entered" from="Checkpoint3" to="Autoscroller" method="_on_Checkpoint3_body_entered"]
+[connection signal="body_entered" from="3rdPartEventStarter" to="Autoscroller" method="_on_3rdPartEventStarter_body_entered"]
 
 [editable path="Autoscroller/Blocks"]
 
