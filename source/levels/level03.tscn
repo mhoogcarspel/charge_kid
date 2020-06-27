@@ -45,7 +45,8 @@ shader_param/active = false
 
 [node name="BaseLevel" instance=ExtResource( 1 )]
 level = 3
-bgm_1 = true
+bgm_playing = [ true, false, false, false, false, false, false, false ]
+speedrun_bgm_playing = [ false, false, true, true, false, false, false, false ]
 
 [node name="ScreenTransition" parent="." index="0"]
 opening_text = "Level 3
@@ -172,10 +173,6 @@ wires = [ NodePath("../EnergyWire") ]
 position = Vector2( 952, 152 )
 rotation = 1.5708
 gate_height = 7
-gap_size = 0
-active = false
-close_in_inverse_order = false
-direction = ""
 
 [node name="EnergyWire" parent="." index="19" instance=ExtResource( 9 )]
 material = SubResource( 2 )

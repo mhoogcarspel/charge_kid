@@ -79,7 +79,8 @@ shader_param/active = false
 
 [node name="BaseLevel" instance=ExtResource( 5 )]
 level = 15
-bgm_5 = true
+bgm_playing = [ false, false, false, false, true, false, true, false ]
+speedrun_bgm_playing = [ false, false, false, false, true, true, true, false ]
 
 [node name="ScreenTransition" parent="." index="0"]
 opening_text = "Level 15
