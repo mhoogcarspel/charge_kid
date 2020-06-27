@@ -7,7 +7,6 @@ var sfx : AudioStreamPlayer
 
 func _init(owner: KinematicBody2D):
 	self.owner = owner
-	number_of_shots = AchievementsAndStatsObserver.get_stat("shots")
 	self.animation_player = owner.get_node("AnimationPlayer")
 	owner.get_node("SFX/Shoot").pitch_scale = rand_range(0.9, 1.6)
 	owner.get_node("SFX/Shoot").set_stream(owner.get_node("PlayerSprite").shoot_sounds[randi()%3])
@@ -17,9 +16,9 @@ func _init(owner: KinematicBody2D):
 
 
 func enter():
-	if owner.get_tree().get_nodes_in_groups("main").size() > 0:
-		owner.get_tree().get_nodes_in_groups("main").get_node("SaveFileHandler").progress["shots"] += 1
-		if owner.get_tree().get_nodes_in_groups("main").get_node("SaveFileHandler").progress["shots"] >= 100:
+	if !self.owner.get_tree().get_nodes_in_group("main").empty():
+		self.owner.get_tree().get_nodes_in_group("main")[0].get_node("SaveFileHandler").progress["shots"] += 1
+		if self.owner.get_tree().get_nodes_in_group("main")[0].get_node("SaveFileHandler").progress["shots"] >= 100:
 			AchievementsAndStatsObserver.set_achievement("shoot")
 	animation_player.play("Shooting")
 	owner.get_node("SFX/Shoot").play()
