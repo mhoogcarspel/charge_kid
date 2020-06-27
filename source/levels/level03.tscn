@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://levels/base-nodes/base-level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://actors/player/player.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://levels/base-nodes/finish-line/finish-line.tscn" type="PackedScene" id=13]
 [ext_resource path="res://actors/interactables/secret-key/secret-key.tscn" type="PackedScene" id=14]
 [ext_resource path="res://levels/base-nodes/unique-scripts/lv03-secret-room.gd" type="Script" id=15]
+[ext_resource path="res://assets/sound-effects/secret-key/passage.ogg" type="AudioStream" id=16]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -171,6 +172,10 @@ wires = [ NodePath("../EnergyWire") ]
 position = Vector2( 952, 152 )
 rotation = 1.5708
 gate_height = 7
+gap_size = 0
+active = false
+close_in_inverse_order = false
+direction = ""
 
 [node name="EnergyWire" parent="." index="19" instance=ExtResource( 9 )]
 material = SubResource( 2 )
@@ -211,6 +216,12 @@ polygon = PoolVector2Array( 24, 0, -24, 0, -24, -16, 24, -16 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SecretRoomCamera/Exit" index="0"]
 polygon = PoolVector2Array( 16, 24, -16, 24, -16, 32, 16, 32 )
+
+[node name="SFX" type="AudioStreamPlayer" parent="SecretRoomCamera" index="2"]
+stream = ExtResource( 16 )
+volume_db = -6.0
+mix_target = 2
+bus = "REVERB"
 
 [node name="SecretKey" parent="." index="24" instance=ExtResource( 14 )]
 position = Vector2( 872, 8 )

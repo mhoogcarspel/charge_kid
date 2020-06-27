@@ -1,7 +1,6 @@
 extends Control
 
 var main
-export (PackedScene) var credits
 
 
 
@@ -23,6 +22,6 @@ func _input(event):
 			if main == null:
 				get_tree().quit()
 			else:
-				main.change_scene(credits)
+				main.change_scene(main.credits)
 
 
