@@ -9,9 +9,9 @@ func _init(owner: KinematicBody2D):
 	self.animation_player = owner.get_node("AnimationPlayer")
 
 func enter():
-	if owner.get_tree().get_nodes_in_group("main").size() > 0:
-		owner.get_tree().get_nodes_in_group("main")[0].get_node("SaveFileHandler").progress["deaths"] += 1
-		if owner.get_tree().get_nodes_in_group("main")[0].get_node("SaveFileHandler").progress["deaths"] >= 20:
+	if self.owner.get_tree().get_nodes_in_group("main").size() > 0:
+		self.owner.get_tree().get_nodes_in_group("main")[0].get_node("SaveFileHandler").progress["deaths"] += 1
+		if self.owner.get_tree().get_nodes_in_group("main")[0].get_node("SaveFileHandler").progress["deaths"] >= 20:
 			AchievementsAndStatsObserver.set_achievement("death")
 	
 	AchievementsAndStatsObserver.set_stat("deaths", number_of_deaths)

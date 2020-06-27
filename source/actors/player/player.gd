@@ -180,10 +180,10 @@ func fuel_pickup_sound():
 	get_node("SFX/FuelPickup").play()
 
 func recharge_fuel() -> void:
-	if can_boost == false:
-		if owner.get_tree().get_nodes_in_group("main").size() > 0:
-			owner.get_tree().get_nodes_in_group("main")[0].get_node("SaveFileHandler").progress["charge"] += 1
-			if owner.get_tree().get_nodes_in_group("main")[0].get_node("SaveFileHandler").progress["charge"] >= 100:
+	if can_boost == false and self.owner != null:
+		if self.owner.get_tree().get_nodes_in_group("main").size() > 0:
+			self.owner.get_tree().get_nodes_in_group("main")[0].get_node("SaveFileHandler").progress["charges"] += 1
+			if self.owner.get_tree().get_nodes_in_group("main")[0].get_node("SaveFileHandler").progress["charges"] >= 100:
 				AchievementsAndStatsObserver.set_achievement("charge")
 	fuel_pickup_sound()
 	can_boost = true
