@@ -5,11 +5,8 @@ class_name BaseLevel
 
 export (int) var level
 
-export (bool) var bgm_1
-export (bool) var bgm_2
-export (bool) var bgm_3
-export (bool) var bgm_4
-export (bool) var bgm_5
+export (Array, bool) var bgm_playing
+export (Array, bool) var speedrun_bgm_playing
 
 export (bool) var auto_scroller
 export (Array, NodePath) var checkpoints
@@ -40,7 +37,9 @@ func _ready():
 		var save_file = main.get_node("SaveFileHandler")
 		
 		if not speedrun_mode.is_active():
-			sound_control.set_volume_bgm([bgm_1, bgm_2, bgm_3, bgm_4, bgm_5])
+			sound_control.set_volume_bgm(bgm_playing)
+		else:
+			sound_control.set_volume_bgm(speedrun_bgm_playing)
 		
 		if level != 18:
 			save_file.progress["levels"] = max(level, save_file.progress["levels"])
