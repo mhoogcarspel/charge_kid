@@ -156,8 +156,9 @@ func go_to_next_level():
 					main.change_scene(save_file.secret_levels[0])
 					save_file.progress["secrets"][key_number] = true
 					save_file.save_progress()
-					AchievementsAndStatsObserver.set_stat("main_levels_finished", level)
+					AchievementsAndStatsObserver.set_achievement("key5")
 					if level == 17:
+						AchievementsAndStatsObserver.set_achievement("beat_the_game")
 						if not get_parent().player_died:
 							AchievementsAndStatsObserver.set_achievement("clutch")
 					return
@@ -167,14 +168,12 @@ func go_to_next_level():
 			if not save_file.has_all_secrets():
 				if level != 17 and level != 18:
 					main.change_scene(secret_keys_scene, 0, level)
-					AchievementsAndStatsObserver.set_stat("main_levels_finished", level)
-					
 				elif level == 17:
 					main.change_scene(secret_keys_scene, 0, level)
 					# Do stuff done at the last finish line too.
 					save_file.progress["end"] = true
 					save_file.save_progress()
-					AchievementsAndStatsObserver.set_stat("main_levels_finished", level)
+					AchievementsAndStatsObserver.set_achievement("beat_the_game")
 					if not get_parent().player_died:
 						AchievementsAndStatsObserver.set_achievement("clutch")
 				
@@ -191,6 +190,7 @@ func go_to_next_level():
 					
 				elif level == 17:
 					main.change_scene(end_scene)
+					AchievementsAndStatsObserver.set_achievement("beat_the_game")
 					if not get_parent().player_died:
 						AchievementsAndStatsObserver.set_achievement("clutch")
 					
@@ -202,6 +202,8 @@ func go_to_next_level():
 						save_file.progress["secrets"][key_number] = true
 						save_file.save_progress()
 						AchievementsAndStatsObserver.set_achievement("beat_the_secret")
+						if not get_parent().player_died:
+							AchievementsAndStatsObserver.set_achievement("secret_clutch")
 					else:
 						main.change_scene(end_scene)
 					if not get_parent().player_died:
@@ -218,8 +220,8 @@ func go_to_next_level():
 				save_file.progress["secrets"][key_number] = true
 				save_file.save_progress()
 				if level == 17:
-						if not get_parent().player_died:
-							AchievementsAndStatsObserver.set_achievement("clutch")
+					if not get_parent().player_died:
+						AchievementsAndStatsObserver.set_achievement("clutch")
 				if not save_file.has_all_secrets():
 					main.change_scene(secret_keys_scene, 0, -1)
 				else:
@@ -236,6 +238,11 @@ func go_to_next_level():
 				
 			elif level == 17 and speedrun_mode.category == "secret_times":
 				main.change_scene(save_file.secret_levels[0])
+				if not get_parent().player_died:
+					AchievementsAndStatsObserver.set_achievement("clutch")
+			
+			elif level == 18:
+				main.change_scene(speedrun_finish)
 				if not get_parent().player_died:
 					AchievementsAndStatsObserver.set_achievement("secret_clutch")
 

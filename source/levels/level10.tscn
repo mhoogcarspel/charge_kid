@@ -109,6 +109,7 @@ position = Vector2( 408, 56 )
 [node name="EnergyGate" parent="." index="12" instance=ExtResource( 9 )]
 position = Vector2( 584, 184 )
 rotation = -1.5708
+column_gap = 0
 gate_height = 16
 direction = "Horizontal"
 

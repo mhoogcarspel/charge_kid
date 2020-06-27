@@ -22,7 +22,6 @@ func _ready():
 		AchievementsAndStatsObserver.set_achievement("secret_percent")
 	##################################################################
 	
-	
 	### Saving the new time ########################################################
 	if save_file.progress[category] == []:
 		save_file.progress[category] = [result]
