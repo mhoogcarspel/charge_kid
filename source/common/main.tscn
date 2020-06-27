@@ -183,10 +183,12 @@ script = ExtResource( 32 )
 
 [node name="Start" type="AudioStreamPlayer" parent="SpeedrunMode"]
 stream = ExtResource( 34 )
+volume_db = -3.0
 bus = "SFX"
 
 [node name="Countdown" type="AudioStreamPlayer" parent="SpeedrunMode"]
 stream = ExtResource( 45 )
+volume_db = -3.0
 bus = "SFX"
 
 [node name="MenuNavigation" type="Node" parent="."]
