@@ -11,11 +11,16 @@ func _init(owner: KinematicBody2D):
 	owner.get_node("SFX/Shoot").pitch_scale = rand_range(0.9, 1.6)
 	owner.get_node("SFX/Shoot").set_stream(owner.get_node("PlayerSprite").shoot_sounds[randi()%3])
 	owner.get_node("SFX/Shoot").get_stream().set_loop(false)
+	number_of_shots = AchievementsAndStatsObserver.get_stat("shots")
 	
 
 
 
 func enter():
+	number_of_shots += 1
+	AchievementsAndStatsObserver.set_stat("shots", number_of_shots)
+	
+	
 	if !self.owner.get_tree().get_nodes_in_group("main").empty():
 		self.owner.get_tree().get_nodes_in_group("main")[0].get_node("SaveFileHandler").progress["shots"] += 1
 		if self.owner.get_tree().get_nodes_in_group("main")[0].get_node("SaveFileHandler").progress["shots"] >= 100:
