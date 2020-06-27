@@ -11,8 +11,8 @@ func _on_FinishLine_body_entered(body):
 			############## Achievment Stuff ############################
 			var level_scene = get_tree().get_nodes_in_group("level")[0]
 			var level: int = level_scene.level
-			AchievementsAndStatsObserver.set_stat("main_levels_finished", level)
 			if level == 17:
+				AchievementsAndStatsObserver.set_stat("main_levels_finished", level)
 				if not level_scene.player_died:
 					AchievementsAndStatsObserver.set_achievement("clutch")
 			############################################################

@@ -181,9 +181,10 @@ func fuel_pickup_sound():
 
 func recharge_fuel() -> void:
 	if can_boost == false:
-		var numbers_of_charges = AchievementsAndStatsObserver.get_stat("charges")
-		numbers_of_charges += 1
-		AchievementsAndStatsObserver.set_stat("charges", numbers_of_charges)
+		if owner.get_tree().get_nodes_in_groups("main").size() > 0:
+			owner.get_tree().get_nodes_in_groups("main").get_node("SaveFileHandler").progress["charge"] += 1
+			if owner.get_tree().get_nodes_in_groups("main").get_node("SaveFileHandler").progress["charge"] >= 100:
+				AchievementsAndStatsObserver.set_achievement("charge")
 	fuel_pickup_sound()
 	can_boost = true
 	for particle in $FuelParticles.get_children():

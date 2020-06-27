@@ -17,8 +17,10 @@ func _init(owner: KinematicBody2D):
 
 
 func enter():
-	number_of_shots += 1
-	AchievementsAndStatsObserver.set_stat("shots", number_of_shots)
+	if owner.get_tree().get_nodes_in_groups("main").size() > 0:
+		owner.get_tree().get_nodes_in_groups("main").get_node("SaveFileHandler").progress["shots"] += 1
+		if owner.get_tree().get_nodes_in_groups("main").get_node("SaveFileHandler").progress["shots"] >= 100:
+			AchievementsAndStatsObserver.set_achievement("shoot")
 	animation_player.play("Shooting")
 	owner.get_node("SFX/Shoot").play()
 	

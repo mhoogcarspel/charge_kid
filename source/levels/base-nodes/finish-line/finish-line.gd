@@ -8,7 +8,6 @@ func _on_FinishLine_body_entered(body):
 		var speedrun_mode = main.get_node("SpeedrunMode")
 		var level_scene = get_tree().get_nodes_in_group("level")[0]
 		var level = level_scene.level
-		AchievementsAndStatsObserver.set_stat("main_levels_finished", level)
 		
 		if level == 17:
 			if not level_scene.player_died:

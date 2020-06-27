@@ -7,10 +7,13 @@ var number_of_deaths
 func _init(owner: KinematicBody2D):
 	self.owner = owner
 	self.animation_player = owner.get_node("AnimationPlayer")
-	number_of_deaths = AchievementsAndStatsObserver.get_stat("deaths")
 
 func enter():
-	number_of_deaths += 1
+	if owner.get_tree().get_nodes_in_groups("main").size() > 0:
+		owner.get_tree().get_nodes_in_groups("main").get_node("SaveFileHandler").progress["deaths"] += 1
+		if owner.get_tree().get_nodes_in_groups("main").get_node("SaveFileHandler").progress["deaths"] >= 20:
+			AchievementsAndStatsObserver.set_achievement("death")
+	
 	AchievementsAndStatsObserver.set_stat("deaths", number_of_deaths)
 	owner.velocity = Vector2.ZERO
 	owner.get_node("SFX/Death").play()
