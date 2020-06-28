@@ -620,7 +620,7 @@ pitch_scale = 2.3
 bus = "REVERB"
 
 [node name="Land" type="AudioStreamPlayer" parent="SFX"]
-volume_db = -18.0
+volume_db = -12.0
 pitch_scale = 2.0
 bus = "SFX"
 
