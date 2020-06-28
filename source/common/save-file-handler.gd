@@ -60,6 +60,7 @@ func erase_progress() -> void:
 		file.open("user://save_progress.save", File.WRITE)
 		progress["levels"] = 0
 		progress["end"] = false
+		progress["secrets"] = [false, false, false, false, false, false]
 		file.store_line(to_json(progress))
 		file.close()
 
