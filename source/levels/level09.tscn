@@ -128,10 +128,10 @@ position = Vector2( 584, 152 )
 limit = 352
 
 [node name="CollisionPolygon2D" parent="CameraLimiter/Exit" index="0"]
-polygon = PoolVector2Array( 248, 232, -176, 232, -176, -152, 248, -152 )
+polygon = PoolVector2Array( 176, 152, -176, 152, -176, -136, 176, -136 )
 
 [node name="CollisionPolygon2D" parent="CameraLimiter" index="1"]
-polygon = PoolVector2Array( -120, -152, 216, -152, 216, 232, -120, 232 )
+polygon = PoolVector2Array( -120, -136, 120, -136, 120, 152, -120, 152 )
 
 [node name="FuelTank3" parent="." index="15" instance=ExtResource( 8 )]
 position = Vector2( 912, 248 )
@@ -142,10 +142,10 @@ position = Vector2( 1056, 184 )
 limit = 784
 
 [node name="CollisionPolygon2D" parent="CameraLimiter2/Exit" index="0"]
-polygon = PoolVector2Array( 288, 200, -240, 200, -240, -184, 288, -184 )
+polygon = PoolVector2Array( 288, 120, -264, 120, -264, -168, 288, -168 )
 
 [node name="CollisionPolygon2D" parent="CameraLimiter2" index="1"]
-polygon = PoolVector2Array( -208, -184, 240, -184, 240, 200, -208, 200 )
+polygon = PoolVector2Array( -208, -168, 240, -168, 240, 120, -208, 120 )
 
 [node name="FinishLine" parent="." index="17" instance=ExtResource( 10 )]
 visible = false
