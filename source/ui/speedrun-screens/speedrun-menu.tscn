@@ -378,8 +378,8 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-any_percent_rules = "Any%: Get to the end of final level by any means."
-secret_percent_rules = "Secret%: Activate all the keys and beat
+any_percent_rules = "Any%: Beat the final level by any means."
+secret_percent_rules = "Secret%: Break all the keys and beat
 the secret level by any means."
 
 [node name="Rules" type="Label" parent="CategoryRules"]

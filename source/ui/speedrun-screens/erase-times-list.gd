@@ -26,8 +26,10 @@ func _ready():
 							$SecretPercent/Fifth]
 		
 		for i in range(5):
-			any_times[i].focus_neighbour_right = secret_times[i]
-			secret_times[i].focus_neighbour_left = any_times[i]
+			any_times[i].focus_neighbour_right = secret_times[i].get_path()
+			any_times[i].focus_neighbour_left = secret_times[i].get_path()
+			secret_times[i].focus_neighbour_right = any_times[i].get_path()
+			secret_times[i].focus_neighbour_left = any_times[i].get_path()
 
 
 

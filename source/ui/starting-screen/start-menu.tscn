@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://ui/starting-screen/start-menu.gd" type="Script" id=1]
 [ext_resource path="res://levels/base-nodes/tilemaps/background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/fonts/press-start-2p.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://ui/base-nodes/button-model.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ui/starting-screen/start-menu.tres" type="ButtonGroup" id=5]
 [ext_resource path="res://assets/textures/title.png" type="Texture" id=7]
@@ -252,7 +253,17 @@ tracks/3/keys = {
 
 [sub_resource type="StyleBoxEmpty" id=7]
 
-[node name="StartMenu" type="MarginContainer"]
+[sub_resource type="DynamicFont" id=8]
+font_data = ExtResource( 3 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartMenu" type="MarginContainer" parent="."]
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -269,13 +280,13 @@ button_group = ExtResource( 5 )
 tear_shader = ExtResource( 14 )
 tear_frequency = 10.0
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="StartMenu"]
 margin_left = 16.0
 margin_top = 16.0
 margin_right = 1008.0
 margin_bottom = 560.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="StartMenu/CenterContainer"]
 margin_left = 224.0
 margin_top = 86.0
 margin_right = 768.0
@@ -284,7 +295,7 @@ size_flags_horizontal = 3
 custom_constants/separation = 32
 alignment = 1
 
-[node name="Title" type="TextureRect" parent="CenterContainer/VBoxContainer"]
+[node name="Title" type="TextureRect" parent="StartMenu/CenterContainer/VBoxContainer"]
 material = SubResource( 2 )
 margin_right = 544.0
 margin_bottom = 80.0
@@ -294,7 +305,7 @@ shader_top = 0.3
 shader_bot = 0.65
 shader_dist = -0.02
 
-[node name="PinkParticles" type="CPUParticles2D" parent="CenterContainer/VBoxContainer/Title"]
+[node name="PinkParticles" type="CPUParticles2D" parent="StartMenu/CenterContainer/VBoxContainer/Title"]
 position = Vector2( 318, 15 )
 emitting = false
 amount = 128
@@ -312,48 +323,48 @@ initial_velocity_random = 1.0
 scale_amount = 2.0
 color = Color( 1, 0.309804, 0.470588, 1 )
 
-[node name="Timer" type="Timer" parent="CenterContainer/VBoxContainer/Title/PinkParticles"]
+[node name="Timer" type="Timer" parent="StartMenu/CenterContainer/VBoxContainer/Title/PinkParticles"]
 wait_time = 0.2
 one_shot = true
 autostart = true
 
-[node name="Particles" parent="CenterContainer/VBoxContainer/Title" instance=ExtResource( 10 )]
+[node name="Particles" parent="StartMenu/CenterContainer/VBoxContainer/Title" instance=ExtResource( 10 )]
 position = Vector2( 48, 36 )
 
-[node name="Particles2" parent="CenterContainer/VBoxContainer/Title" instance=ExtResource( 10 )]
+[node name="Particles2" parent="StartMenu/CenterContainer/VBoxContainer/Title" instance=ExtResource( 10 )]
 position = Vector2( 120, 37 )
 
-[node name="Particles3" parent="CenterContainer/VBoxContainer/Title" instance=ExtResource( 10 )]
+[node name="Particles3" parent="StartMenu/CenterContainer/VBoxContainer/Title" instance=ExtResource( 10 )]
 position = Vector2( 194, 36 )
 
-[node name="Particles4" parent="CenterContainer/VBoxContainer/Title" instance=ExtResource( 10 )]
+[node name="Particles4" parent="StartMenu/CenterContainer/VBoxContainer/Title" instance=ExtResource( 10 )]
 position = Vector2( 266, 38 )
 
-[node name="Particles5" parent="CenterContainer/VBoxContainer/Title" instance=ExtResource( 10 )]
+[node name="Particles5" parent="StartMenu/CenterContainer/VBoxContainer/Title" instance=ExtResource( 10 )]
 position = Vector2( 439, 38 )
 
-[node name="Particles6" parent="CenterContainer/VBoxContainer/Title" instance=ExtResource( 10 )]
+[node name="Particles6" parent="StartMenu/CenterContainer/VBoxContainer/Title" instance=ExtResource( 10 )]
 position = Vector2( 492, 36 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer/VBoxContainer/Title"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StartMenu/CenterContainer/VBoxContainer/Title"]
 anims/0 = SubResource( 3 )
 anims/1 = SubResource( 4 )
 anims/2 = SubResource( 5 )
 anims/3 = SubResource( 6 )
 
-[node name="Timer" type="Timer" parent="CenterContainer/VBoxContainer/Title/AnimationPlayer"]
+[node name="Timer" type="Timer" parent="StartMenu/CenterContainer/VBoxContainer/Title/AnimationPlayer"]
 wait_time = 0.5
 one_shot = true
 autostart = true
 
-[node name="HSeparator" type="HSeparator" parent="CenterContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="StartMenu/CenterContainer/VBoxContainer"]
 margin_top = 112.0
 margin_right = 544.0
 margin_bottom = 144.0
 custom_styles/separator = SubResource( 7 )
 custom_constants/separation = 32
 
-[node name="Menu" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+[node name="Menu" type="VBoxContainer" parent="StartMenu/CenterContainer/VBoxContainer"]
 margin_top = 176.0
 margin_right = 544.0
 margin_bottom = 276.0
@@ -362,7 +373,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NewGame" parent="CenterContainer/VBoxContainer/Menu" instance=ExtResource( 4 )]
+[node name="NewGame" parent="StartMenu/CenterContainer/VBoxContainer/Menu" instance=ExtResource( 4 )]
 margin_left = 202.0
 margin_right = 342.0
 margin_bottom = 22.0
@@ -371,7 +382,7 @@ focus_neighbour_bottom = NodePath("../Settings")
 group = ExtResource( 5 )
 text = "New Game"
 
-[node name="Settings" parent="CenterContainer/VBoxContainer/Menu" instance=ExtResource( 4 )]
+[node name="Settings" parent="StartMenu/CenterContainer/VBoxContainer/Menu" instance=ExtResource( 4 )]
 margin_left = 202.0
 margin_top = 26.0
 margin_right = 342.0
@@ -381,7 +392,7 @@ focus_neighbour_bottom = NodePath("../Credits")
 group = ExtResource( 5 )
 text = "Settings"
 
-[node name="Credits" parent="CenterContainer/VBoxContainer/Menu" instance=ExtResource( 4 )]
+[node name="Credits" parent="StartMenu/CenterContainer/VBoxContainer/Menu" instance=ExtResource( 4 )]
 margin_left = 210.0
 margin_top = 52.0
 margin_right = 334.0
@@ -391,7 +402,7 @@ focus_neighbour_bottom = NodePath("../Quit")
 group = ExtResource( 5 )
 text = "Credits"
 
-[node name="Quit" parent="CenterContainer/VBoxContainer/Menu" instance=ExtResource( 4 )]
+[node name="Quit" parent="StartMenu/CenterContainer/VBoxContainer/Menu" instance=ExtResource( 4 )]
 margin_left = 234.0
 margin_top = 78.0
 margin_right = 310.0
@@ -402,12 +413,37 @@ shortcut = ExtResource( 8 )
 group = ExtResource( 5 )
 text = "Quit"
 
-[node name="HSeparator2" type="HSeparator" parent="CenterContainer/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="StartMenu/CenterContainer/VBoxContainer"]
 margin_top = 308.0
 margin_right = 544.0
 margin_bottom = 372.0
 custom_styles/separator = SubResource( 7 )
 custom_constants/separation = 64
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -48.0
+margin_right = 112.0
+custom_constants/margin_left = 32
+custom_constants/margin_bottom = 32
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelBaseModel" type="Label" parent="MarginContainer"]
+margin_left = 32.0
+margin_right = 112.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
+text = "1.0.1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Background" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, -96 )
@@ -443,12 +479,12 @@ tile_data = PoolIntArray( 4, 2, 0, 65540, 2, 0, 131076, 1, 0, 196612, 0, 0, 2621
 
 [node name="Props1" parent="Background2/HangingProps" index="0"]
 tile_data = PoolIntArray( 327699, 0, 0, 327700, 0, 0, 327703, 0, 0, 327705, 0, 0, 393235, 0, 0, 393236, 0, 0, 393239, 0, 0, 393241, 0, 0, 458771, 0, 0, 458772, 0, 0, 458775, 0, 0, 458777, 0, 0, 524307, 0, 0, 524308, 0, 0, 524311, 0, 0, 524313, 0, 0, 589843, 0, 0, 589844, 0, 0, 589847, 1, 0, 589849, 0, 0, 655379, 0, 0, 655380, 0, 0, 655385, 0, 0, 720915, 1, 0, 720916, 0, 0, 720921, 0, 0, 786452, 0, 0, 786457, 1, 0, 851988, 0, 0, 917524, 0, 0, 983060, 0, 0, 1048596, 1, 0 )
-[connection signal="timeout" from="CenterContainer/VBoxContainer/Title/PinkParticles/Timer" to="." method="_on_Timer_timeout"]
-[connection signal="timeout" from="CenterContainer/VBoxContainer/Title/AnimationPlayer/Timer" to="CenterContainer/VBoxContainer/Title" method="_on_Timer_timeout"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Menu/NewGame" to="." method="_on_StartGame_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Menu/Settings" to="." method="_on_Settings_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Menu/Credits" to="." method="_on_Credits_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Menu/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="timeout" from="StartMenu/CenterContainer/VBoxContainer/Title/PinkParticles/Timer" to="StartMenu" method="_on_Timer_timeout"]
+[connection signal="timeout" from="StartMenu/CenterContainer/VBoxContainer/Title/AnimationPlayer/Timer" to="StartMenu/CenterContainer/VBoxContainer/Title" method="_on_Timer_timeout"]
+[connection signal="pressed" from="StartMenu/CenterContainer/VBoxContainer/Menu/NewGame" to="StartMenu" method="_on_StartGame_pressed"]
+[connection signal="pressed" from="StartMenu/CenterContainer/VBoxContainer/Menu/Settings" to="StartMenu" method="_on_Settings_pressed"]
+[connection signal="pressed" from="StartMenu/CenterContainer/VBoxContainer/Menu/Credits" to="StartMenu" method="_on_Credits_pressed"]
+[connection signal="pressed" from="StartMenu/CenterContainer/VBoxContainer/Menu/Quit" to="StartMenu" method="_on_Quit_pressed"]
 
 [editable path="Background"]
 
