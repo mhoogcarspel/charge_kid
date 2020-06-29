@@ -420,7 +420,7 @@ margin_bottom = 372.0
 custom_styles/separator = SubResource( 7 )
 custom_constants/separation = 64
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="VersionContainer" type="MarginContainer" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -48.0
@@ -431,15 +431,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LabelBaseModel" type="Label" parent="MarginContainer"]
+[node name="VersionLabel" type="Label" parent="VersionContainer"]
 margin_left = 32.0
-margin_right = 112.0
+margin_right = 192.0
 margin_bottom = 16.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
-text = "1.0.1"
+text = "Ver. 1.0.1"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
