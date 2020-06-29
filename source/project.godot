@@ -235,7 +235,6 @@ driver=""
 [autoload]
 
 AchievementsAndStatsObserver="*res://common/achievements_and_stats_observer.tscn"
-SoundDebugger="*res://common/sound_debugger.gd"
 
 [debug]
 
