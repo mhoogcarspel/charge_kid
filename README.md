@@ -12,7 +12,7 @@ You will need the Godot game engine, version 3.2.1 to run and modify the code. G
 
 ## Getting Started
 
-After cloning/downloading the repo, run Godot, click Scan and select the **source** folder where you downloaded the repository. Then, just open the project and you're good to go.
+After cloning/downloading the repo, run Godot, click Scan and select the *source* folder where you downloaded the repository. Then, just open the project and you're good to go.
 
 If you don't know anything about development and just want to play the game, you can press F5 to play it. You can also make a build by going into Project, Export, and choosing your platform. Godot will build an app you can run freely and without Godot.
 
