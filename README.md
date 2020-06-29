@@ -20,9 +20,9 @@ If you don't know anything about development and just want to play the game, you
 
 ## Authors
 
-- Ayrton Makoto Euzebio Sato
+- Ayrton Makoto Euzebio Sato (@Castu)
 - Rafael de Lima Bordoni (@eldskald)
-- Vicente Reis de Souza Farias
+- Vicente Reis de Souza Farias (@vicentersfa)
 
 
 
