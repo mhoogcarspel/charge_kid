@@ -158,6 +158,8 @@ func go_to_next_level():
 					save_file.save_progress()
 					AchievementsAndStatsObserver.set_achievement("key5")
 					if level == 17:
+						save_file.progress["end"] = true
+						save_file.save_progress()
 						AchievementsAndStatsObserver.set_achievement("beat_the_game")
 						if not get_parent().player_died:
 							AchievementsAndStatsObserver.set_achievement("clutch")
