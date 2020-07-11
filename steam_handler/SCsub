@@ -1,0 +1,21 @@
+#!python
+Import('env')
+
+path_to_module = '#modules/steam_handler/'
+
+steamworks_api_souce_files = path_to_module + 'extract_sdk_inside_here/sdk/public/steam/'
+steamworks_api_redistributable_bins = path_to_module + 'extract_sdk_inside_here/sdk/redistributable_bin/'
+
+if env['platform'] == 'x11':
+	env.Append(RPATH=['.'])
+	env.Append(LIBPATH=[steamworks_api_redistributable_bins + 'linux64/'])
+	env.Append(LIBS = ['steam_api'])
+elif env['platform'] == 'windows':
+	env.Append(LIBPATH=[steamworks_api_redistributable_bins + 'win64/'])
+	env.Append(LIBS = ['steam_api64'])
+elif env['platform'] == 'osx':
+	env.Append(LIBPATH=[steamworks_api_redistributable_bins + 'osx/'])
+	env.Append(LIBS = ['steam_api'])
+
+env.Append(CPPPATH=[steamworks_api_souce_files])
+env.add_source_files(env.modules_sources, "*.cpp")
