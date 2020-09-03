@@ -22,7 +22,8 @@ onready var other_shader = $OtherEnd/RippleSource
 func _ready():
 	one_position = self.position + $OneEnd.position
 	other_position = self.position + $OtherEnd.position
-	$PROX.play()
+
+
 
 func _physics_process(delta):
 	if get_tree().get_nodes_in_group("player").size() > 0:
@@ -40,7 +41,7 @@ func _physics_process(delta):
 	one_sprite.time_to_change_frame = 0.2 - x*0.175
 	other_sprite.time_to_change_frame = 0.2 - x*0.175
 	
-	$PROX.volume_db = linear2db(x*0.5)
+	$PROX.volume_db = linear2db(x*0.7)
 	
 	if dist_to_one.length() <= dist_to_other.length():
 		one_shader.speed = -(2 + x_one*6)
@@ -48,7 +49,6 @@ func _physics_process(delta):
 	else:
 		other_shader.speed = -(2 + x_other*6)
 		one_shader.speed = -other_shader.speed
-	
 
 
 
@@ -62,6 +62,8 @@ func on_one_end_body_entered(body):
 		
 		let_out_ripples($OneEnd)
 		let_out_ripples($OtherEnd)
+
+
 
 func on_other_end_body_entered(body):
 	if (body.is_in_group("player") or body.is_in_group("bullet")) and $Timer.is_stopped():
@@ -86,5 +88,10 @@ func let_out_ripples(end):
 	shader.pulses = 1
 	shader.position = end.position + self.position
 	get_parent().add_child(shader)
+
+
+
+func _on_Timer_timeout():
+	$PROX.play()
 
 
