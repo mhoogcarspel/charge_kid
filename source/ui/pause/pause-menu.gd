@@ -23,7 +23,6 @@ func _on_RestartLevel_pressed():
 	get_tree().paused = false
 	self.queue_free()
 	if get_tree().get_nodes_in_group("main").size() > 0:
-		var main = get_tree().get_nodes_in_group("main")[0]
 		var level = main.get_level().level
 		main.change_scene(main.get_node("SaveFileHandler").levels[level - 1])
 	else:

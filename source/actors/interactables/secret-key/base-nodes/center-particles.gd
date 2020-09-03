@@ -14,9 +14,9 @@ func turn_on():
 
 
 func accelerate():
-	for particle in get_children():
-		particle.amount = 6
-		particle.speed_scale = 3
+	for particles in get_children():
+		particles.amount = 6
+		particles.speed_scale = 3
 
 
 func add_particle(dir: Vector2):
