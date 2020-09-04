@@ -3,8 +3,10 @@ class_name SoundControl
 
 
 
+export(float) var master_starting_volume
 export(float) var bgm_starting_volume
 export(float) var sfx_starting_volume
+onready var master_volume_value: float
 onready var bgm_volume_value: float
 onready var sfx_volume_value: float
 
@@ -70,6 +72,7 @@ func music_filter_down(final_value):
 func load_sound_config():
 	if main.enable_save:
 		var config_model = {
+			"Master": master_starting_volume,
 			"MUS": bgm_starting_volume,
 			"SFX": sfx_starting_volume
 		}
@@ -88,10 +91,15 @@ func load_sound_config():
 				AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus), linear2db(sound_cfg[bus]))
 			file.close()
 		else:
+			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear2db(master_starting_volume))
 			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("MUS"), linear2db(bgm_starting_volume))
 			AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear2db(sfx_starting_volume))
+		master_volume_value = db2linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")))
 		bgm_volume_value = db2linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("MUS")))
 		sfx_volume_value = db2linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")))
+
+func change_master_volume_value(linear_value: float) -> void:
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear2db(linear_value))
 
 func change_bgm_volume_value(linear_value: float) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("MUS"), linear2db(linear_value))

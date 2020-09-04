@@ -10,8 +10,10 @@ func _init(owner: KinematicBody2D):
 
 func enter():
 	if self.owner.get_tree().get_nodes_in_group("main").size() > 0:
-		self.owner.get_tree().get_nodes_in_group("main")[0].get_node("SaveFileHandler").progress["deaths"] += 1
-		if self.owner.get_tree().get_nodes_in_group("main")[0].get_node("SaveFileHandler").progress["deaths"] >= 20:
+		var save = self.owner.get_tree().get_nodes_in_group("main")[0].get_node("SaveFileHandler")
+		if save.progress["deaths"] < 20:
+			save.progress["deaths"] += 1
+		else:
 			AchievementsAndStatsObserver.set_achievement("death")
 	
 	AchievementsAndStatsObserver.set_stat("deaths", number_of_deaths)

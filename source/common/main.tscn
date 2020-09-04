@@ -145,8 +145,9 @@ enable_save = true
 "sound_control",
 ]]
 script = ExtResource( 10 )
-bgm_starting_volume = 0.7
-sfx_starting_volume = 0.7
+master_starting_volume = 0.8
+bgm_starting_volume = 0.8
+sfx_starting_volume = 0.8
 
 [node name="Background" type="AudioStreamPlayer" parent="BackgroundAndMusicHandler"]
 stream = ExtResource( 53 )

@@ -20,11 +20,14 @@ func enter():
 	number_of_shots += 1
 	AchievementsAndStatsObserver.set_stat("shots", number_of_shots)
 	
-	
 	if !self.owner.get_tree().get_nodes_in_group("main").empty():
-		self.owner.get_tree().get_nodes_in_group("main")[0].get_node("SaveFileHandler").progress["shots"] += 1
-		if self.owner.get_tree().get_nodes_in_group("main")[0].get_node("SaveFileHandler").progress["shots"] >= 100:
+		var save = self.owner.get_tree().get_nodes_in_group("main")[0].get_node("SaveFileHandler")
+		
+		if save.progress["shots"] < 100:
+			save.progress["shots"] += 1
+		else:
 			AchievementsAndStatsObserver.set_achievement("shoot")
+	
 	animation_player.play("Shooting")
 	owner.get_node("SFX/Shoot").play()
 	
