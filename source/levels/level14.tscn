@@ -111,30 +111,35 @@ position = Vector2( 216, 24 )
 position = Vector2( 280, 200.254 )
 rotation = -1.5708
 column_number = 4
+column_gap = 0
 gate_height = 7
 direction = "Horizontal"
 
 [node name="EnergyGate13" parent="." index="15" instance=ExtResource( 8 )]
 position = Vector2( 600, 196 )
 rotation = -1.5708
+column_gap = 0
 gate_height = 8
 direction = "Horizontal"
 
 [node name="EnergyGate14" parent="." index="16" instance=ExtResource( 8 )]
 position = Vector2( 600, 180 )
 rotation = -1.5708
+column_gap = 0
 gate_height = 8
 direction = "Horizontal"
 
 [node name="EnergyGate15" parent="." index="17" instance=ExtResource( 8 )]
 position = Vector2( 600, 164 )
 rotation = -1.5708
+column_gap = 0
 gate_height = 8
 direction = "Horizontal"
 
 [node name="EnergyGate16" parent="." index="18" instance=ExtResource( 8 )]
 position = Vector2( 600, 148 )
 rotation = -1.5708
+column_gap = 0
 gate_height = 8
 direction = "Horizontal"
 
