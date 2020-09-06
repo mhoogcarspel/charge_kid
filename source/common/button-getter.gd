@@ -34,8 +34,8 @@ func _init(actions_dictionary_0: Dictionary):
 	"L3": ["L-Stick", "L3", "L-Stick"],
 	"R3": ["R-Stick", "R3", "R-Stick"],
 	
-	"Start": ["Start", "Start", "+"],
-	"Select": ["Back", "Select", "-"],
+	"Start": ["Start", "Options", "+"],
+	"Select": ["Back", "Share", "-"],
 	}
 
 func _ready():
