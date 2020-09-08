@@ -197,6 +197,13 @@ func make_inputmap_dictionary() -> Dictionary:
 		inputmap_dictionary[action] = action_keys.duplicate()
 	return inputmap_dictionary
 
+func search_actions_by_key(key: InputEvent, type, exception: Array) -> Array:
+	var return_list: Array
+	for action in actions_list:
+		if not action in exception and key_in_list(key, InputMap.get_action_list(action)):
+			return_list.append(action) 
+	return return_list
+
 
 
 ### THUMBSTICK INPUTS #############################################################
