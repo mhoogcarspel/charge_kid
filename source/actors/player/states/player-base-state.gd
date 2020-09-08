@@ -19,7 +19,7 @@ func get_directional_inputs() -> Vector2:
 
 
 func shoot_input_pressed() -> bool:
-	if Input.is_action_just_pressed("ui_shoot") and owner.has_bullet:
+	if Input.is_action_just_pressed("action_shoot") and owner.has_bullet:
 		owner.change_state("ShootingState")
 		return true
 	return false
@@ -30,7 +30,7 @@ func jump_input_pressed() -> bool:
 	var coyote = owner.get_node("CoyoteTimer")
 	var bunny = owner.get_node("BunnyTimer")
 	
-	if Input.is_action_just_pressed("ui_jump"):
+	if Input.is_action_just_pressed("action_jump"):
 		if not coyote.is_stopped():
 			owner.change_state("JumpingState")
 			coyote.stop()
@@ -39,7 +39,7 @@ func jump_input_pressed() -> bool:
 			bunny.start()
 			return false
 	
-	if Input.is_action_pressed("ui_jump") and owner.is_on_floor() and not bunny.is_stopped():
+	if Input.is_action_pressed("action_jump") and owner.is_on_floor() and not bunny.is_stopped():
 		owner.change_state("JumpingState")
 		bunny.stop()
 		return true
@@ -51,13 +51,13 @@ func jump_input_pressed() -> bool:
 #func boost_input_pressed() -> bool:
 #	var timer = owner.get_node("BoostBuffer")
 #
-#	if Input.is_action_just_pressed("ui_boost") and owner.can_boost:
+#	if Input.is_action_just_pressed("action_boost") and owner.can_boost:
 #		owner.change_state("BoostingState")
 #		return true
-#	elif Input.is_action_just_pressed("ui_boost") and not owner.can_boost:
+#	elif Input.is_action_just_pressed("action_boost") and not owner.can_boost:
 #		timer.start()
 #
-#	if Input.is_action_pressed("ui_boost") and not timer.is_stopped() and owner.can_boost:
+#	if Input.is_action_pressed("action_boost") and not timer.is_stopped() and owner.can_boost:
 #		owner.change_state("BoostingState")
 #		timer.stop()
 #		return true
@@ -69,14 +69,14 @@ func boost_input_pressed() -> bool:
 	var coyote = owner.get_node("CoyoteTimer")
 	
 	if coyote.is_stopped():
-		if Input.is_action_just_pressed("ui_jump"):
+		if Input.is_action_just_pressed("action_jump"):
 			if owner.can_boost:
 				owner.change_state("BoostingState")
 				return true
 			else:
 				buffer.start()
 	
-		if Input.is_action_pressed("ui_jump") and not buffer.is_stopped() and owner.can_boost:
+		if Input.is_action_pressed("action_jump") and not buffer.is_stopped() and owner.can_boost:
 			owner.change_state("BoostingState")
 			buffer.stop()
 			return true
@@ -87,7 +87,7 @@ func boost_input_pressed() -> bool:
 
 func bullet_boost_input_pressed() -> bool:
 	var timer = owner.get_node("BoostBuffer")
-	if Input.is_action_just_pressed("ui_bullet_boost"):
+	if Input.is_action_just_pressed("action_bullet_boost"):
 		timer.start()
 	if !timer.is_stopped() and is_holding_bullet() and owner.can_boost:
 		owner.change_state("BulletBoostingState")
