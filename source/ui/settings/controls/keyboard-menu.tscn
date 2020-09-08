@@ -24,17 +24,17 @@ __meta__ = {
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_left = 364.0
-margin_top = 218.0
+margin_top = 231.0
 margin_right = 660.0
-margin_bottom = 358.0
+margin_bottom = 345.0
 
 [node name="MenuPanel" parent="MarginContainer" instance=ExtResource( 1 )]
 margin_right = 296.0
-margin_bottom = 140.0
+margin_bottom = 114.0
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
 margin_right = 296.0
-margin_bottom = 140.0
+margin_bottom = 114.0
 custom_constants/margin_right = 12
 custom_constants/margin_top = 12
 custom_constants/margin_left = 12
@@ -44,7 +44,7 @@ custom_constants/margin_bottom = 12
 margin_left = 12.0
 margin_top = 12.0
 margin_right = 284.0
-margin_bottom = 128.0
+margin_bottom = 102.0
 
 [node name="Map" type="VBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
 margin_right = 272.0
@@ -52,7 +52,7 @@ margin_right = 272.0
 [node name="OtherButtons" type="VBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
 margin_top = 4.0
 margin_right = 272.0
-margin_bottom = 116.0
+margin_bottom = 90.0
 
 [node name="Box" parent="MarginContainer/MarginContainer/VBoxContainer/OtherButtons" instance=ExtResource( 7 )]
 margin_right = 272.0
@@ -64,20 +64,11 @@ margin_bottom = 34.0
 custom_styles/separator = SubResource( 1 )
 custom_constants/separation = 8
 
-[node name="Model" parent="MarginContainer/MarginContainer/VBoxContainer/OtherButtons" instance=ExtResource( 3 )]
-margin_left = 130.0
-margin_top = 38.0
-margin_right = 142.0
-margin_bottom = 60.0
-focus_neighbour_bottom = NodePath("../Change")
-custom_styles/focus = SubResource( 2 )
-custom_fonts/font = SubResource( 3 )
-
 [node name="Change" parent="MarginContainer/MarginContainer/VBoxContainer/OtherButtons" instance=ExtResource( 3 )]
 margin_left = 26.0
-margin_top = 64.0
+margin_top = 38.0
 margin_right = 246.0
-margin_bottom = 86.0
+margin_bottom = 60.0
 focus_neighbour_bottom = NodePath("../Return")
 custom_styles/focus = SubResource( 2 )
 custom_fonts/font = SubResource( 3 )
@@ -85,9 +76,9 @@ text = "Change Layout"
 
 [node name="Return" parent="MarginContainer/MarginContainer/VBoxContainer/OtherButtons" instance=ExtResource( 3 )]
 margin_left = 82.0
-margin_top = 90.0
+margin_top = 64.0
 margin_right = 190.0
-margin_bottom = 112.0
+margin_bottom = 86.0
 focus_neighbour_top = NodePath("../Change")
 custom_styles/focus = SubResource( 2 )
 custom_fonts/font = SubResource( 3 )
