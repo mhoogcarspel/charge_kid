@@ -8,9 +8,9 @@ func _process(delta):
 		var main
 		main = get_tree().get_nodes_in_group("main")[0]
 		if main.is_using_keyboard():
-			button = main.control_handler.get_keyboard_key_name("ui_jump")
+			button = main.control_handler.get_keyboard_key_name("action_jump")
 		elif main.is_using_controller():
-			button = main.control_handler.get_controller_button_name("ui_jump", main.controller_layout)
+			button = main.control_handler.get_controller_button_name("action_jump", main.controller_layout)
 	else:
 		button = "Z"
 	
