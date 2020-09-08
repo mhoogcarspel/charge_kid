@@ -40,11 +40,11 @@ func _ready():
 	defaults_button.focus_neighbour_top = map.get_children()[-1].get_node("Button").get_path()
 	map.get_children()[-1].get_node("Button").focus_neighbour_bottom = defaults_button.get_path()
 	#############################################################################################################
-	match type:
-		"Keyboard":
-			change_button.text = "Controller Bindings"
-		"Controller":
-			change_button.text = "Keyboard Bindings"
+#	match type:
+#		"Keyboard":
+#			change_button.text = "Controller Bindings"
+#		"Controller":
+#			change_button.text = "Keyboard Bindings"
 	
 	add_remove_model_buttton()
 	defaults_button.connect("pressed", self, "_on_Defaults_pressed")
