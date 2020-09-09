@@ -41,6 +41,14 @@ func _on_Model_pressed():
 			main.controller_layout = "Microsoft"
 #	set_model()
 
-
-
-
+func change_layout() -> void:
+	get_child(0).queue_free()
+	match mode:
+		"Keyboard":
+			var controller_menu_instance = controller_menu.instance()
+			self.add_child(controller_menu_instance)
+			mode = "Controller"
+		"Controller":
+			var keyboard_menu_instance = keyboard_menu.instance()
+			self.add_child(keyboard_menu_instance)
+			mode = "Keyboard"

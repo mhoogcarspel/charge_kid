@@ -87,4 +87,5 @@ custom_styles/focus = SubResource( 2 )
 custom_fonts/font = SubResource( 3 )
 shortcut = ExtResource( 5 )
 text = "Return"
+[connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/OtherButtons/Change" to="." method="_on_Change_pressed"]
 [connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/OtherButtons/Return" to="." method="_on_Return_pressed"]
