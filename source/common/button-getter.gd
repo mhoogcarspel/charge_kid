@@ -165,10 +165,10 @@ func initialize_inputmap(filename: String = "inputmap") -> void:
 				input_key.scancode = inputmap_dictionary[action]["Keyboard"]["scancode"]
 				input_key.device = inputmap_dictionary[action]["Keyboard"]["device"]
 				InputMap.action_add_event(action, input_key)
-				var input_button = InputEventJoypadButton.new()
-				input_button.button_index = inputmap_dictionary[action]["JoypadButtons"]["button_index"]
-				input_button.device = inputmap_dictionary[action]["JoypadButtons"]["device"]
-				InputMap.action_add_event(action, input_button)
+#				var input_button = InputEventJoypadButton.new()
+#				input_button.button_index = inputmap_dictionary[action]["JoypadButtons"]["button_index"]
+#				input_button.device = inputmap_dictionary[action]["JoypadButtons"]["device"]
+#				InputMap.action_add_event(action, input_button)
 
 func save_inputmap(filename: String = "inputmap") -> void:
 	if main.enable_save:
