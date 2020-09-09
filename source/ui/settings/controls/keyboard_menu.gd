@@ -8,11 +8,13 @@ onready var control_handler = main.control_handler
 
 onready var map = get_node("MarginContainer/MarginContainer/VBoxContainer/Map")
 onready var defaults_button = get_node("MarginContainer/MarginContainer/VBoxContainer/OtherButtons/Box/Defaults")
-onready var model_button = get_node("MarginContainer/MarginContainer/VBoxContainer/OtherButtons/Model")
 onready var change_button = get_node("MarginContainer/MarginContainer/VBoxContainer/OtherButtons/Change")
 onready var return_button = get_node("MarginContainer/MarginContainer/VBoxContainer/OtherButtons/Return")
 
+var pause_menu: bool
+
 func _ready():
+	pause_menu = get_parent().pause_menu
 	get_tree().paused = true
 	var previous_button: Button = null
 	for key in control_handler.actions_dictionary.keys():
@@ -38,3 +40,20 @@ func _ready():
 	change_button.focus_neighbour_top = defaults_button.get_path()
 	defaults_button.connect("pressed", self, "_on_Defaults_pressed")
 	map.get_children()[0].get_node("Button").grab_focus()
+
+func _on_Return_pressed():
+	if not pause_menu:
+		main.change_scene(main.settings_menu)
+	else:
+		get_parent().pause_mode = PAUSE_MODE_PROCESS
+		get_parent().refocus()
+		get_parent().self_show()
+		self.queue_free()
+
+func _on_Defaults_pressed():
+	InputMap.load_from_globals()
+	control_handler.save_inputmap()
+
+func add_popup(dialog_box: PopupDialog, menu: Control = self) -> void:
+	dialog_box.menu = self
+	add_child(dialog_box)
