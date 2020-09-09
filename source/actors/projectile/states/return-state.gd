@@ -15,12 +15,12 @@ func enter():
 	owner.get_node("PhysicalCollider").set_deferred("disabled", false)
 	speed = 0
 	for body in hitbox.get_overlapping_bodies():
-		if body.is_in_group("player") and not Input.is_action_pressed("ui_shoot"):
+		if body.is_in_group("player") and not Input.is_action_pressed("action_shoot"):
 			body.hit(owner)
 			owner.destroy()
 
 func update(delta):
-	if  Input.is_action_pressed("ui_shoot"):
+	if  Input.is_action_pressed("action_shoot"):
 		owner.change_state("HoldState")
 	else:
 		direction = (player.position - owner.position).normalized()
