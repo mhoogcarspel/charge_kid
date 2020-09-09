@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://ui/base-nodes/menu-panel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/base-nodes/button-model.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ui/base-nodes/return-shortcut.tres" type="ShortCut" id=3]
 [ext_resource path="res://assets/textures/controller-sony.png" type="Texture" id=4]
 [ext_resource path="res://ui/settings/controls/controller-menu.gd" type="Script" id=5]
+[ext_resource path="res://ui/settings/controls/controller-menu-button.tscn" type="PackedScene" id=6]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -56,16 +57,15 @@ margin_right = 76.0
 margin_bottom = 224.0
 custom_constants/separation = 10
 
-[node name="L2" parent="Center/Margin/Menu/Menu/Scheme/LeftList" instance=ExtResource( 2 )]
+[node name="L2" parent="Center/Margin/Menu/Menu/Scheme/LeftList" instance=ExtResource( 6 )]
 margin_right = 76.0
 margin_bottom = 22.0
 focus_neighbour_left = NodePath("../../RightList/R2")
 focus_neighbour_top = NodePath("../../../Return")
 focus_neighbour_right = NodePath("../../RightList/R2")
 focus_neighbour_bottom = NodePath("../L1")
-text = "None"
 
-[node name="L1" parent="Center/Margin/Menu/Menu/Scheme/LeftList" instance=ExtResource( 2 )]
+[node name="L1" parent="Center/Margin/Menu/Menu/Scheme/LeftList" instance=ExtResource( 6 )]
 margin_top = 32.0
 margin_right = 76.0
 margin_bottom = 54.0
@@ -73,49 +73,49 @@ focus_neighbour_left = NodePath("../../RightList/R1")
 focus_neighbour_top = NodePath("../L2")
 focus_neighbour_right = NodePath("../../RightList/R1")
 focus_neighbour_bottom = NodePath("../Up")
-text = "None"
+button = "L"
 
-[node name="Up" parent="Center/Margin/Menu/Menu/Scheme/LeftList" instance=ExtResource( 2 )]
+[node name="Up" parent="Center/Margin/Menu/Menu/Scheme/LeftList" instance=ExtResource( 6 )]
 margin_top = 64.0
 margin_right = 76.0
 margin_bottom = 86.0
-focus_neighbour_left = NodePath("../../RightList/Triangle")
+focus_neighbour_left = NodePath("../../RightList/Up Button")
 focus_neighbour_top = NodePath("../L1")
-focus_neighbour_right = NodePath("../../RightList/Triangle")
+focus_neighbour_right = NodePath("../../RightList/Up Button")
 focus_neighbour_bottom = NodePath("../Right")
-text = "None"
+button = "DPAD Up"
 
-[node name="Right" parent="Center/Margin/Menu/Menu/Scheme/LeftList" instance=ExtResource( 2 )]
+[node name="Right" parent="Center/Margin/Menu/Menu/Scheme/LeftList" instance=ExtResource( 6 )]
 margin_top = 96.0
 margin_right = 76.0
 margin_bottom = 118.0
-focus_neighbour_left = NodePath("../../RightList/Square")
+focus_neighbour_left = NodePath("../../RightList/Right Button")
 focus_neighbour_top = NodePath("../Up")
-focus_neighbour_right = NodePath("../../RightList/Square")
+focus_neighbour_right = NodePath("../../RightList/Right Button")
 focus_neighbour_bottom = NodePath("../Left")
-text = "None"
+button = "DPAD Right"
 
-[node name="Left" parent="Center/Margin/Menu/Menu/Scheme/LeftList" instance=ExtResource( 2 )]
+[node name="Left" parent="Center/Margin/Menu/Menu/Scheme/LeftList" instance=ExtResource( 6 )]
 margin_top = 128.0
 margin_right = 76.0
 margin_bottom = 150.0
-focus_neighbour_left = NodePath("../../RightList/Circle")
+focus_neighbour_left = NodePath("../../RightList/Left Button")
 focus_neighbour_top = NodePath("../Right")
-focus_neighbour_right = NodePath("../../RightList/Circle")
+focus_neighbour_right = NodePath("../../RightList/Left Button")
 focus_neighbour_bottom = NodePath("../Down")
-text = "None"
+button = "DPAD Left"
 
-[node name="Down" parent="Center/Margin/Menu/Menu/Scheme/LeftList" instance=ExtResource( 2 )]
+[node name="Down" parent="Center/Margin/Menu/Menu/Scheme/LeftList" instance=ExtResource( 6 )]
 margin_top = 160.0
 margin_right = 76.0
 margin_bottom = 182.0
-focus_neighbour_left = NodePath("../../RightList/Cross")
+focus_neighbour_left = NodePath("../../RightList/Down Button")
 focus_neighbour_top = NodePath("../Left")
-focus_neighbour_right = NodePath("../../RightList/Cross")
+focus_neighbour_right = NodePath("../../RightList/Down Button")
 focus_neighbour_bottom = NodePath("../Select")
-text = "None"
+button = "DPAD Down"
 
-[node name="Select" parent="Center/Margin/Menu/Menu/Scheme/LeftList" instance=ExtResource( 2 )]
+[node name="Select" parent="Center/Margin/Menu/Menu/Scheme/LeftList" instance=ExtResource( 6 )]
 margin_top = 192.0
 margin_right = 76.0
 margin_bottom = 214.0
@@ -123,7 +123,7 @@ focus_neighbour_left = NodePath("../../RightList/Start")
 focus_neighbour_top = NodePath("../Down")
 focus_neighbour_right = NodePath("../../RightList/Start")
 focus_neighbour_bottom = NodePath("../../../MenuAccept")
-text = "None"
+button = "Select"
 
 [node name="Sprite" type="TextureRect" parent="Center/Margin/Menu/Menu/Scheme"]
 margin_left = 80.0
@@ -138,74 +138,74 @@ margin_right = 544.0
 margin_bottom = 224.0
 custom_constants/separation = 10
 
-[node name="R2" parent="Center/Margin/Menu/Menu/Scheme/RightList" instance=ExtResource( 2 )]
+[node name="R2" parent="Center/Margin/Menu/Menu/Scheme/RightList" instance=ExtResource( 6 )]
 margin_right = 76.0
 margin_bottom = 22.0
 focus_neighbour_left = NodePath("../../LeftList/L2")
 focus_neighbour_top = NodePath("../../../Return")
 focus_neighbour_right = NodePath("../../LeftList/L2")
 focus_neighbour_bottom = NodePath("../R1")
-text = "None"
+button = "R2"
 
-[node name="R1" parent="Center/Margin/Menu/Menu/Scheme/RightList" instance=ExtResource( 2 )]
+[node name="R1" parent="Center/Margin/Menu/Menu/Scheme/RightList" instance=ExtResource( 6 )]
 margin_top = 32.0
 margin_right = 76.0
 margin_bottom = 54.0
 focus_neighbour_left = NodePath("../../LeftList/L1")
 focus_neighbour_top = NodePath("../R2")
 focus_neighbour_right = NodePath("../../LeftList/L1")
-focus_neighbour_bottom = NodePath("../Triangle")
-text = "None"
+focus_neighbour_bottom = NodePath("../Up Button")
+button = "R"
 
-[node name="Triangle" parent="Center/Margin/Menu/Menu/Scheme/RightList" instance=ExtResource( 2 )]
+[node name="Up Button" parent="Center/Margin/Menu/Menu/Scheme/RightList" instance=ExtResource( 6 )]
 margin_top = 64.0
 margin_right = 76.0
 margin_bottom = 86.0
 focus_neighbour_left = NodePath("../../LeftList/Up")
 focus_neighbour_top = NodePath("../R1")
 focus_neighbour_right = NodePath("../../LeftList/Up")
-focus_neighbour_bottom = NodePath("../Square")
-text = "None"
+focus_neighbour_bottom = NodePath("../Right Button")
+button = "Face Button Top"
 
-[node name="Square" parent="Center/Margin/Menu/Menu/Scheme/RightList" instance=ExtResource( 2 )]
+[node name="Right Button" parent="Center/Margin/Menu/Menu/Scheme/RightList" instance=ExtResource( 6 )]
 margin_top = 96.0
 margin_right = 76.0
 margin_bottom = 118.0
 focus_neighbour_left = NodePath("../../LeftList/Right")
-focus_neighbour_top = NodePath("../Triangle")
+focus_neighbour_top = NodePath("../Up Button")
 focus_neighbour_right = NodePath("../../LeftList/Right")
-focus_neighbour_bottom = NodePath("../Circle")
-text = "None"
+focus_neighbour_bottom = NodePath("../Left Button")
+button = "Face Button Left"
 
-[node name="Circle" parent="Center/Margin/Menu/Menu/Scheme/RightList" instance=ExtResource( 2 )]
+[node name="Left Button" parent="Center/Margin/Menu/Menu/Scheme/RightList" instance=ExtResource( 6 )]
 margin_top = 128.0
 margin_right = 76.0
 margin_bottom = 150.0
 focus_neighbour_left = NodePath("../../LeftList/Left")
-focus_neighbour_top = NodePath("../Square")
+focus_neighbour_top = NodePath("../Right Button")
 focus_neighbour_right = NodePath("../../LeftList/Left")
-focus_neighbour_bottom = NodePath("../Cross")
-text = "None"
+focus_neighbour_bottom = NodePath("../Down Button")
+button = "Face Button Right"
 
-[node name="Cross" parent="Center/Margin/Menu/Menu/Scheme/RightList" instance=ExtResource( 2 )]
+[node name="Down Button" parent="Center/Margin/Menu/Menu/Scheme/RightList" instance=ExtResource( 6 )]
 margin_top = 160.0
 margin_right = 76.0
 margin_bottom = 182.0
 focus_neighbour_left = NodePath("../../LeftList/Down")
-focus_neighbour_top = NodePath("../Circle")
+focus_neighbour_top = NodePath("../Left Button")
 focus_neighbour_right = NodePath("../../LeftList/Down")
 focus_neighbour_bottom = NodePath("../Start")
-text = "None"
+button = "Face Button Bottom"
 
-[node name="Start" parent="Center/Margin/Menu/Menu/Scheme/RightList" instance=ExtResource( 2 )]
+[node name="Start" parent="Center/Margin/Menu/Menu/Scheme/RightList" instance=ExtResource( 6 )]
 margin_top = 192.0
 margin_right = 76.0
 margin_bottom = 214.0
 focus_neighbour_left = NodePath("../../LeftList/Select")
-focus_neighbour_top = NodePath("../Cross")
+focus_neighbour_top = NodePath("../Down Button")
 focus_neighbour_right = NodePath("../../LeftList/Select")
 focus_neighbour_bottom = NodePath("../../../MenuAccept")
-text = "None"
+button = "Start"
 
 [node name="MenuAccept" parent="Center/Margin/Menu/Menu" instance=ExtResource( 2 )]
 margin_top = 228.0
