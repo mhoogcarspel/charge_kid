@@ -17,5 +17,4 @@ __meta__ = {
 }
 button_model = ExtResource( 2 )
 return_shortcut = ExtResource( 3 )
-
-[node name="KeyboardMenu" parent="." instance=ExtResource( 4 )]
+keyboard_menu = ExtResource( 4 )
