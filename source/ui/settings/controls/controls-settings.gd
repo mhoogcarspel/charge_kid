@@ -25,6 +25,7 @@ func _ready():
 			self.add_child(controller_menu_instance)
 		_:
 			pass
+	get_child(0).settings_menu = self
 
 
 func add_popup(dialog_box: PopupDialog, menu: Control = self) -> void:
@@ -52,3 +53,19 @@ func change_layout() -> void:
 			var keyboard_menu_instance = keyboard_menu.instance()
 			self.add_child(keyboard_menu_instance)
 			mode = "Keyboard"
+
+func _process(delta):
+	get_child(0).settings_menu = self
+
+func quit() -> void:
+	if not pause_menu:
+		main.change_scene(main.settings_menu)
+	else:
+		get_parent().pause_mode = PAUSE_MODE_PROCESS
+		get_parent().refocus()
+		get_parent().self_show()
+		self.queue_free()
+
+func load_defaults():
+	InputMap.load_from_globals()
+	control_handler.save_inputmap()

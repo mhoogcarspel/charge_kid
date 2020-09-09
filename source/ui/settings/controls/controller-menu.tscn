@@ -83,6 +83,7 @@ focus_neighbour_left = NodePath("../../RightList/Up Button")
 focus_neighbour_top = NodePath("../L1")
 focus_neighbour_right = NodePath("../../RightList/Up Button")
 focus_neighbour_bottom = NodePath("../Right")
+disabled = true
 button = "DPAD Up"
 
 [node name="Right" parent="Center/Margin/Menu/Menu/Scheme/LeftList" instance=ExtResource( 6 )]
@@ -93,6 +94,7 @@ focus_neighbour_left = NodePath("../../RightList/Right Button")
 focus_neighbour_top = NodePath("../Up")
 focus_neighbour_right = NodePath("../../RightList/Right Button")
 focus_neighbour_bottom = NodePath("../Left")
+disabled = true
 button = "DPAD Right"
 
 [node name="Left" parent="Center/Margin/Menu/Menu/Scheme/LeftList" instance=ExtResource( 6 )]
@@ -103,6 +105,7 @@ focus_neighbour_left = NodePath("../../RightList/Left Button")
 focus_neighbour_top = NodePath("../Right")
 focus_neighbour_right = NodePath("../../RightList/Left Button")
 focus_neighbour_bottom = NodePath("../Down")
+disabled = true
 button = "DPAD Left"
 
 [node name="Down" parent="Center/Margin/Menu/Menu/Scheme/LeftList" instance=ExtResource( 6 )]
@@ -113,6 +116,7 @@ focus_neighbour_left = NodePath("../../RightList/Down Button")
 focus_neighbour_top = NodePath("../Left")
 focus_neighbour_right = NodePath("../../RightList/Down Button")
 focus_neighbour_bottom = NodePath("../Select")
+disabled = true
 button = "DPAD Down"
 
 [node name="Select" parent="Center/Margin/Menu/Menu/Scheme/LeftList" instance=ExtResource( 6 )]
@@ -278,5 +282,6 @@ focus_neighbour_top = NodePath("../ChangeLayout")
 focus_neighbour_bottom = NodePath("../Scheme/RightList/R2")
 shortcut = ExtResource( 3 )
 text = "Return"
+[connection signal="pressed" from="Center/Margin/Menu/Menu/Defaults" to="." method="_on_Defaults_pressed"]
 [connection signal="pressed" from="Center/Margin/Menu/Menu/ChangeLayout" to="." method="_on_ChangeLayout_pressed"]
 [connection signal="pressed" from="Center/Margin/Menu/Menu/Return" to="." method="_on_Return_pressed"]
