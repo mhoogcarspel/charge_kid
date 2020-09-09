@@ -57,3 +57,6 @@ func _on_Defaults_pressed():
 func add_popup(dialog_box: PopupDialog, menu: Control = self) -> void:
 	dialog_box.menu = self
 	add_child(dialog_box)
+
+func _on_Change_pressed():
+	get_parent().change_layout()

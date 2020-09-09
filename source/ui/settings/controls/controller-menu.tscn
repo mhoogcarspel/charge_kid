@@ -1,15 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://ui/base-nodes/menu-panel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/base-nodes/button-model.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ui/base-nodes/return-shortcut.tres" type="ShortCut" id=3]
 [ext_resource path="res://assets/textures/controller-sony.png" type="Texture" id=4]
+[ext_resource path="res://ui/settings/controls/controller-menu.gd" type="Script" id=5]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -276,3 +278,5 @@ focus_neighbour_top = NodePath("../ChangeLayout")
 focus_neighbour_bottom = NodePath("../Scheme/RightList/R2")
 shortcut = ExtResource( 3 )
 text = "Return"
+[connection signal="pressed" from="Center/Margin/Menu/Menu/ChangeLayout" to="." method="_on_ChangeLayout_pressed"]
+[connection signal="pressed" from="Center/Margin/Menu/Menu/Return" to="." method="_on_Return_pressed"]
