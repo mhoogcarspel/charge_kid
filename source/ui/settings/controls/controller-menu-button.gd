@@ -1,5 +1,5 @@
 extends ButtonModel
-class_name ControllerSettings
+class_name ControllerSettingsButton
 
 export(int) var device
 export(String, "DPAD Up", "DPAD Down", "DPAD Left", "DPAD Right", "Face Button Bottom", 
@@ -32,6 +32,7 @@ onready var gamepad_index = {
 
 var action: String
 var input_event: InputEventJoypadButton
+var menu: Node
 
 func _ready():
 	input_event = InputEventJoypadButton.new()
@@ -47,3 +48,7 @@ func _ready():
 
 func _process(delta):
 	self.text = action
+
+func _on_ButtonModel_pressed():
+	._on_ButtonModel_pressed()
+	menu.open_dialog_box(input_event, button)
