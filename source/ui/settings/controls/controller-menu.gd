@@ -23,6 +23,7 @@ func open_dialog_box(key: InputEventJoypadButton, key_name: String,
 	dialog_box_instance.parent = self
 	dialog_box_instance.key = key
 	dialog_box_instance.key_name = key_name
+	dialog_box_instance.control_handler = button_getter
 	self.add_child(dialog_box_instance)
 
 func _on_Defaults_pressed():
