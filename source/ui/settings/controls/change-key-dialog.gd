@@ -35,11 +35,20 @@ func _input(event):
 #			else:
 #				error_message_1()
 			
-			if event is type:
+			if event is InputEventKey:
 				var action2: String = control_handler.find_and_return_another_action_with_same_key(action , event, type)
 				var key2: InputEvent = control_handler.get_type_button_list(action, type)[0]
 				control_handler.swap_keys(action, key2, action2, event, type)
 				configured = true
+			elif event is InputEventJoypadButton:
+				if not event.button_index in [10, 11, 12, 13, 14, 15]: #Remove directionals ans Start and select buttons by their button_index
+					var action2: String = control_handler.find_and_return_another_action_with_same_key(action , event, type)
+					var key2: InputEvent = control_handler.get_type_button_list(action, type)[0]
+					control_handler.swap_keys(action, key2, action2, event, type)
+					configured = true
+				else:
+					print("No directionals or start and select buttons permitted")
+				pass
 			
 		else:
 			error_message_2()
