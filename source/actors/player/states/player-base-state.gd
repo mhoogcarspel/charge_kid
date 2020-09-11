@@ -48,22 +48,6 @@ func jump_input_pressed() -> bool:
 
 
 
-#func boost_input_pressed() -> bool:
-#	var timer = owner.get_node("BoostBuffer")
-#
-#	if Input.is_action_just_pressed("ui_boost") and owner.can_boost:
-#		owner.change_state("BoostingState")
-#		return true
-#	elif Input.is_action_just_pressed("ui_boost") and not owner.can_boost:
-#		timer.start()
-#
-#	if Input.is_action_pressed("ui_boost") and not timer.is_stopped() and owner.can_boost:
-#		owner.change_state("BoostingState")
-#		timer.stop()
-#		return true
-#
-#	return false
-
 func boost_input_pressed() -> bool:
 	var buffer = owner.get_node("BoostBuffer")
 	var coyote = owner.get_node("CoyoteTimer")

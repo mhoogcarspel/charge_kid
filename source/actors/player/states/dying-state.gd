@@ -20,7 +20,7 @@ func enter():
 	owner.velocity = Vector2.ZERO
 	owner.get_node("SFX/Death").play()
 	owner.get_node("PlayerSprite").kill()
-	owner.get_node("AnimationPlayer").play("Airborne")
+	owner.get_node("AnimationPlayer").play("Falling0")
 	for particle in owner.get_node("DeathParticles").get_children():
 		particle.emitting = true
 	owner.can_boost = false

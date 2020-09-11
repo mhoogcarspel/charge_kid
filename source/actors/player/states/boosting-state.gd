@@ -16,11 +16,11 @@ func enter():
 	owner.get_node("SFX/Boost").get_stream().set_loop(false)
 	owner.get_node("SFX/Boost").play()
 	owner.set_collision_mask_bit(1, false)
+	animation_player.play("Spinning")
 	boosting_particles(true)
 
 func update(delta):
 	boosting_time += delta
-	animation_player.play("Airborne")
 	
 	if shoot_input_pressed():
 		return
@@ -37,6 +37,13 @@ func update(delta):
 func exit():
 	owner.set_collision_mask_bit(1, true)
 	boosting_particles(false)
+	var list = []
+	if abs(owner.velocity.x) <= owner.speed/2:
+		list = ["Jumping0", "Jumping1", "Spinning"]
+		animation_player.play(list[randi()%list.size()])
+	else:
+		list = ["Reaching0", "Flipping", "Rolling"]
+		animation_player.play(list[randi()%list.size()])
 
 
 

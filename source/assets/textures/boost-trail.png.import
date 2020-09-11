@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/particle4.png-215b0906b37eda54cadd67b0b8df994f.stex"
+path="res://.import/boost-trail.png-d584b16f97ed9e3dda9f7f3ce8fbc184.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/particles/particle4.png"
-dest_files=[ "res://.import/particle4.png-215b0906b37eda54cadd67b0b8df994f.stex" ]
+source_file="res://assets/textures/boost-trail.png"
+dest_files=[ "res://.import/boost-trail.png-d584b16f97ed9e3dda9f7f3ce8fbc184.stex" ]
 
 [params]
 
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

@@ -45,7 +45,7 @@ onready var stack: Array = []
 onready var animation_player = $AnimationPlayer
 
 onready var can_boost: bool
-onready var facing: float = 1.0
+onready var facing: float = 1.0 setget change_facing
 
 var checkpoint: Vector2
 
@@ -102,7 +102,12 @@ func pop_state():
 	stack.pop_front()
 
 func reset_states_machine():
-	change_state("IdleState")
+	if not is_on_floor():
+		change_state("OnAirState")
+	elif self.velocity.x != 0:
+			change_state("MovingState")
+	else:
+		change_state("IdleState")
 
 func get_state() -> String:
 	return stack[0]
@@ -143,6 +148,19 @@ func jump():
 	get_node("SFX/Jump").get_stream().set_loop(false)
 	get_node("SFX/Jump").play()
 	self.velocity.y = -jump_speed
+
+
+
+func change_facing(new_value):
+	if new_value != facing:
+		if self.is_on_floor():
+			if abs(self.velocity.x) >= speed/2:
+				$AnimationPlayer.play("Braking1")
+			else:
+				$AnimationPlayer.play("Turning0")
+		else:
+			$AnimationPlayer.play("Turning1")
+	facing = new_value
 
 
 

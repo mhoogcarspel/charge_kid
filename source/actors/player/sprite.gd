@@ -108,7 +108,6 @@ func kill() -> void:
 func death_sound() -> void:
 	player.get_node("SFX/Death").pitch_scale = rand_range(1.1,1.3)
 	player.get_node("SFX/Death").get_stream().set_loop(false)
-#	player.get_node("SFX/Death").play()
 
 func _on_Timer2_timeout():
 	self.get_material().set_shader_param("erase", true)
@@ -120,5 +119,12 @@ func _on_PlayerSparksTimer_timeout():
 	var rand = randi()%15
 	$PlayerSparksTimer.start(rand/10)
 
+
+
+func _on_IdleTimer_timeout():
+	var list = ["Waving0", "Waving1"]
+	player.get_node("AnimationPlayer").play(list[randi()%list.size()])
+	player.get_node("AnimationPlayer").queue("TooIdle")
+	player.get_node("IdleTimer").start(3.0)
 
 

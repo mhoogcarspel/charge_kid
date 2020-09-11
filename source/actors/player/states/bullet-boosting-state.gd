@@ -24,25 +24,15 @@ func enter():
 	bullet = owner.get_tree().get_nodes_in_group("bullet")[0]
 	relative_position_to_bullet = (bullet.position - owner.position)
 	
-#	if relative_position_to_bullet.length()/owner.boost_time < owner.boost_speed:
-#		boost_velocity = relative_position_to_bullet.normalized()*owner.boost_speed
-#		boost_time = relative_position_to_bullet.length()/owner.boost_speed
-#	elif relative_position_to_bullet.length()/owner.boost_time < 2*owner.boost_speed:
-#		boost_velocity = relative_position_to_bullet/owner.boost_time
-#		boost_time = owner.boost_time
-#	elif relative_position_to_bullet.length()/owner.boost_time >= 2*owner.boost_speed:
-#		boost_velocity = 2*owner.boost_speed*relative_position_to_bullet.normalized()
-#		boost_time = relative_position_to_bullet.length()/(2*owner.boost_speed)
-	
 	boost_velocity = 2*owner.boost_speed*relative_position_to_bullet.normalized()
 	boost_time = relative_position_to_bullet.length()/owner.boost_speed
 	
+	animation_player.play("Rolling")
 	boosting_particles(true)
 	owner.velocity = boost_velocity
 	boost_speed = boost_velocity.length()
 
 func update(delta):
-	animation_player.play("Airborne")
 	boost_timer += delta
 	
 	if boost_input_pressed():
@@ -61,6 +51,13 @@ func update(delta):
 func exit():
 	owner.set_collision_mask_bit(1, true)
 	boosting_particles(false)
+	var list = []
+	if abs(owner.velocity.x) <= owner.speed/2:
+		list = ["Jumping0", "Jumping1", "Spinning"]
+		animation_player.play(list[randi()%list.size()])
+	else:
+		list = ["Reaching0", "Flipping", "Rolling"]
+		animation_player.play(list[randi()%list.size()])
 
 
 

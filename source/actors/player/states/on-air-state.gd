@@ -5,14 +5,25 @@ var coyote
 var bunny
 var post_bullet_boost
 
+
+
 func _init(owner: KinematicBody2D):
 	self.owner = owner
 	self.animation_player = owner.get_node("AnimationPlayer")
 	self.bunny = owner.get_node("BunnyTimer")
 	self.coyote = owner.get_node("CoyoteTimer")
 
+
+
 func enter():
 	post_bullet_boost = abs(owner.velocity.x)/owner.air_friction
+	
+	var list = ["Reaching0", "Reaching1", "Rolling", "Flipping", "Spinning"]
+	if not list.has(animation_player.current_animation):
+		list = ["Falling0", "Falling1"]
+		animation_player.play(list[randi()%list.size()])
+
+
 
 func update(delta):
 	if owner.get_previous_state() == "BoostingState" and owner.velocity.y < 0:
@@ -29,7 +40,13 @@ func update(delta):
 		owner.horizontal_move(get_directional_inputs(), delta)
 	
 	if not owner.is_on_floor():
-		animation_player.play("Airborne")
+		var list = ["Reaching0", "Reaching1", "Rolling", "Flipping"]
+		if list.has(animation_player.current_animation) and abs(owner.velocity.x) < owner.speed/2:
+			list = ["Falling0", "Falling1"]
+			animation_player.play(list[randi()%list.size()])
+		elif animation_player.current_animation == "Spinning" and abs(owner.velocity.x) > owner.speed/2:
+			list = ["Falling0", "Falling1"]
+			animation_player.play(list[randi()%list.size()])
 		
 		################# Checking for any inputs ########################
 		if jump_input_pressed():
@@ -43,11 +60,11 @@ func update(delta):
 		##################################################################
 		
 	elif owner.is_on_floor() and owner.velocity.y > 0:
-		animation_player.play("Landing")
+		var list = ["Reaching0", "Reaching1", "Flipping", "Rolling"]
+		if list.has(animation_player.current_animation):
+			animation_player.play("Landing1")
+		else:
+			animation_player.play("Landing0")
 		owner.reset_states_machine()
-	
-
-
-
 
 

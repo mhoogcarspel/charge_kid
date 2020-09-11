@@ -8,14 +8,23 @@ func _init(owner: KinematicBody2D):
 	self.owner = owner
 	self.animation_player = owner.get_node("AnimationPlayer")
 
+
+
 func enter():
 	owner.jump()
 	owner.get_node("CoyoteTimer").stop()
+	if abs(owner.velocity.x) < owner.speed:
+		var list = ["Jumping0", "Jumping1", "Spinning", "Rolling"]
+		animation_player.play(list[randi()%list.size()])
+	else:
+		var list = ["Reaching0", "Flipping", "Rolling"]
+		animation_player.play(list[randi()%list.size()])
+
+
 
 func update(delta):
 	owner.horizontal_move(get_directional_inputs(), delta)
 	owner.vertical_move(delta)
-	animation_player.play("Airborne")
 	
 	################# Checking for any inputs ########################
 	if shoot_input_pressed():
