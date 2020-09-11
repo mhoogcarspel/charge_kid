@@ -109,8 +109,8 @@ shader_param/active = false
 
 [node name="BaseLevel" instance=ExtResource( 2 )]
 level = 17
-bgm_playing = [ false, false, false, false, true, true, true, false ]
-speedrun_bgm_playing = [ false, false, false, false, true, true, true, false ]
+bgm_playing = [ false, false, false, false, false, false, true, true ]
+speedrun_bgm_playing = [ false, false, false, false, false, false, true, true ]
 auto_scroller = true
 checkpoints = [ NodePath("Checkpoint"), NodePath("Checkpoint2"), NodePath("Checkpoint3") ]
 

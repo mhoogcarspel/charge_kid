@@ -15,8 +15,8 @@
 
 [node name="BaseLevel" instance=ExtResource( 4 )]
 level = 16
-bgm_playing = [ false, false, false, false, true, true, true, false ]
-speedrun_bgm_playing = [ false, false, false, false, true, true, true, false ]
+bgm_playing = [ false, false, false, false, false, false, true, true ]
+speedrun_bgm_playing = [ false, false, false, false, false, false, true, true ]
 
 [node name="ScreenTransition" parent="." index="0"]
 opening_text = "Level 16

@@ -55,7 +55,7 @@ shader_param/active = false
 [node name="Level01" instance=ExtResource( 1 )]
 level = 1
 bgm_playing = [ false, false, false, false, false, false, false, false ]
-speedrun_bgm_playing = [ false, false, true, true, false, false, false, false ]
+speedrun_bgm_playing = [ false, false, true, false, false, false, false, false ]
 
 [node name="ScreenTransition" parent="." index="0"]
 opening_text = "Level 1
@@ -178,7 +178,10 @@ wires = [ NodePath("../EnergyWire") ]
 [node name="Gate" parent="." index="11" instance=ExtResource( 10 )]
 position = Vector2( 488, 88 )
 gate_height = 7
+gap_size = 0
 active = true
+close_in_inverse_order = false
+direction = ""
 
 [node name="FuelTank" parent="." index="12" instance=ExtResource( 11 )]
 position = Vector2( 936, 248 )
@@ -197,7 +200,10 @@ tile_data = PoolIntArray( 327680, 15, 0 )
 [node name="Gate2" parent="." index="14" instance=ExtResource( 10 )]
 position = Vector2( 1016, 120 )
 gate_height = 4
+gap_size = 0
 active = true
+close_in_inverse_order = false
+direction = ""
 
 [node name="FuelTank2" parent="." index="15" instance=ExtResource( 11 )]
 position = Vector2( 984, 168 )
