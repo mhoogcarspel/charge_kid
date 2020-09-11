@@ -37,7 +37,7 @@ func update(delta):
 		return
 	##################################################################
 	
-	if Input.is_action_just_released("ui_jump") && owner.velocity.y < 0:
+	if Input.is_action_just_released("action_jump") && owner.velocity.y < 0:
 		owner.velocity.y /= 3
 		owner.change_state("OnAirState")
 	

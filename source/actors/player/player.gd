@@ -57,10 +57,10 @@ func _ready():
 		control_handler = main.control_handler
 	else:
 		var actions: Dictionary = {
-		"ui_jump": "Jump",
-		"ui_shoot": "Shoot",
-		"ui_boost": "Boost",
-		"ui_bullet_boost": "Bullet Boost",
+		"action_jump": "Jump",
+		"action_shoot": "Shoot",
+		"action_boost": "Boost",
+		"action_bullet_boost": "Bullet Boost",
 		"left": "Left",
 		"right": "Right",
 		"up": "Up",
