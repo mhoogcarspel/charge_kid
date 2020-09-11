@@ -51,4 +51,4 @@ func _process(delta):
 
 func _on_ButtonModel_pressed():
 	._on_ButtonModel_pressed()
-	menu.open_dialog_box(input_event, button)
+	menu.open_dialog_box(input_event, button, self)
