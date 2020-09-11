@@ -10,6 +10,7 @@ onready var control_handler: ButtonGetter
 onready var buttons = $CenterContainer/MarginContainer/CenterContainer/VBoxContainer/VBoxContainer
 
 var command_list: Array
+var button_node: ButtonModel
 
 func _ready():
 	parent.pause_mode = PAUSE_MODE_STOP
@@ -38,15 +39,17 @@ func _ready():
 func receive_command(command: String) -> void:
 	var old_command: String
 	for command in command_list:
-		if control_handler.key_in_list(key, InputMap.get_action_list(command)):
+		if control_handler.key_in_list(key, control_handler.get_type_button_list(command, InputEventJoypadButton)):
 			old_command = command
 	if old_command != command:
 		InputMap.action_erase_event(old_command, key)
 		InputMap.action_add_event(command, key)
-	exit()
+	exit(command)
 
-func exit() -> void:
+func exit(command: String) -> void:
 	parent.pause_mode = PAUSE_MODE_PROCESS
 	self.pause_mode = PAUSE_MODE_INHERIT
 	control_handler.save_inputmap()
 	self.queue_free()
+	button_node.action = main.actions[command]
+	button_node.grab_focus()
