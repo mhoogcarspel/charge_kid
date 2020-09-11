@@ -15,7 +15,3 @@ func _on_ButtonModel_pressed():
 		main.get_node("MenuNavigation/MenuAcceptTimer").start()
 		if main.get_node("MenuNavigation/MenuNavigate").is_playing():
 			main.get_node("MenuNavigation/MenuNavigate").stop()
-
-
-
-

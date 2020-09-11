@@ -30,6 +30,23 @@ func _ready():
 			previous_button.focus_neighbour_bottom = button_model_instance.get_path()
 			button_model_instance.focus_neighbour_top = previous_button.get_path()
 		previous_button = button_model_instance
+		button_model_instance.connect("send_command", self, "receive_command")
 	previous_button.focus_neighbour_bottom = buttons.get_child(0).get_path()
 	buttons.get_child(0).focus_neighbour_top = previous_button.get_path()
 	buttons.get_child(0).grab_focus()
+
+func receive_command(command: String) -> void:
+	var old_command: String
+	for command in command_list:
+		if control_handler.key_in_list(key, InputMap.get_action_list(command)):
+			old_command = command
+	if old_command != command:
+		InputMap.action_erase_event(old_command, key)
+		InputMap.action_add_event(command, key)
+	exit()
+
+func exit() -> void:
+	parent.pause_mode = PAUSE_MODE_PROCESS
+	self.pause_mode = PAUSE_MODE_INHERIT
+	control_handler.save_inputmap()
+	self.queue_free()
