@@ -41,3 +41,13 @@ func parse_info() -> void:
 	for button in right_buttons:
 		if button is ControllerSettingsButton:
 			button.menu = self
+	var key_name = main.control_handler.get_controller_button_name("ui_accept", "Microsoft")
+	$Center/Margin/Menu/Menu/MenuAccept/Button.parse(self, "ui_accept", 
+														main.control_handler.actions_dictionary["ui_accept"], main.control_handler, "Controller")
+	key_name = main.control_handler.get_controller_button_name("ui_cancel", "Microsoft")
+	$Center/Margin/Menu/Menu/MenuCancel/Button.parse(self, "ui_cancel", 
+														main.control_handler.actions_dictionary["ui_cancel"], main.control_handler, "Controller")
+
+func add_popup(dialog_popup: PopupDialog, menu: Control = self) -> void:
+	dialog_popup.menu = menu
+	add_child(dialog_box)
