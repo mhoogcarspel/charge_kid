@@ -31,6 +31,8 @@ func open_dialog_box(key: InputEventJoypadButton, key_name: String, button_node:
 
 func _on_Defaults_pressed():
 	settings_menu.load_defaults()
+	for button in right_buttons + left_buttons:
+		button.reload_button()
 
 func parse_info() -> void:
 	for button in left_buttons:

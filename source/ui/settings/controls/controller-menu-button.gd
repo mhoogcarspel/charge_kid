@@ -52,3 +52,12 @@ func _process(delta):
 func _on_ButtonModel_pressed():
 	._on_ButtonModel_pressed()
 	menu.open_dialog_box(input_event, button, self)
+
+func reload_button() -> void:
+	for command in button_getter.actions_list:
+		if button_getter.key_in_list(input_event, button_getter.get_type_button_list(command, InputEventJoypadButton)):
+			if !command.begins_with("ui_") or command == "ui_pause":
+				action = main.actions[command]
+				break
+		action = "None"
+	pass
