@@ -3,6 +3,7 @@ class_name ButtonGetter
 
 onready var map_model: Dictionary
 onready var gamepad_map: Dictionary
+onready var gamepad_map_priority: Dictionary
 onready var actions_dictionary: Dictionary
 onready var buttons_order: Dictionary
 onready var actions_list: Array
@@ -39,7 +40,7 @@ func _init(actions_dictionary_0: Dictionary):
 	"Select": ["Back", "Share", "-"],
 	}
 	
-	self.gamepad_map = {
+	self.gamepad_map_priority = {
 	"DPAD Up": 0,
 	"DPAD Down": 1,
 	"DPAD Left": 2,
@@ -51,7 +52,7 @@ func _init(actions_dictionary_0: Dictionary):
 	"Face Button Top": 7,
 	
 	"R": 8,
-	"R1": 9,
+	"R2": 9,
 	"L": 10,
 	"L2": 11,
 	
@@ -189,10 +190,11 @@ func initialize_inputmap(filename: String = "inputmap") -> void:
 				input_key.scancode = inputmap_dictionary[action]["Keyboard"]["scancode"]
 				input_key.device = inputmap_dictionary[action]["Keyboard"]["device"]
 				InputMap.action_add_event(action, input_key)
-#				var input_button = InputEventJoypadButton.new()
-#				input_button.button_index = inputmap_dictionary[action]["JoypadButtons"]["button_index"]
-#				input_button.device = inputmap_dictionary[action]["JoypadButtons"]["device"]
-#				InputMap.action_add_event(action, input_button)
+				for button in inputmap_dictionary[action]["JoypadButtons"]:
+					var input_button = InputEventJoypadButton.new()
+					input_button.button_index = button["button_index"]
+					input_button.device = button["device"]
+					InputMap.action_add_event(action, input_button)
 
 func save_inputmap(filename: String = "inputmap") -> void:
 	if main.enable_save:
@@ -206,6 +208,7 @@ func make_inputmap_dictionary() -> Dictionary:
 	var inputmap_dictionary: Dictionary = {}
 	for action in actions_list:
 		var action_keys: Dictionary = {}
+		action_keys["JoypadButtons"] = []
 		for event in InputMap.get_action_list(action):
 			if event is InputEventKey:
 				action_keys["Keyboard"] = {
@@ -213,10 +216,10 @@ func make_inputmap_dictionary() -> Dictionary:
 					"scancode" : event.scancode
 				}
 			elif event is InputEventJoypadButton:
-				action_keys["JoypadButtons"] = {
+				action_keys["JoypadButtons"].append({
 					"device" : event.device,
 					"button_index" : event.button_index
-				}
+				})
 		
 		inputmap_dictionary[action] = action_keys.duplicate()
 	return inputmap_dictionary
