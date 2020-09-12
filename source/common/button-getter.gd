@@ -4,6 +4,7 @@ class_name ButtonGetter
 onready var map_model: Dictionary
 onready var gamepad_map: Dictionary
 onready var actions_dictionary: Dictionary
+onready var buttons_order: Dictionary
 onready var actions_list: Array
 onready var main = get_parent()
 onready var file_handler: FileHandler = main.get_node("FileHandler")
@@ -36,6 +37,29 @@ func _init(actions_dictionary_0: Dictionary):
 	
 	"Start": ["Start", "Options", "+"],
 	"Select": ["Back", "Share", "-"],
+	}
+	
+	self.gamepad_map = {
+	"DPAD Up": 0,
+	"DPAD Down": 1,
+	"DPAD Left": 2,
+	"DPAD Right": 3,
+	
+	"Face Button Bottom": 4,
+	"Face Button Right": 5,
+	"Face Button Left": 6,
+	"Face Button Top": 7,
+	
+	"R": 8,
+	"R1": 9,
+	"L": 10,
+	"L2": 11,
+	
+	"R3": 12,
+	"L3": 13,
+	
+	"Start": 14,
+	"Select": 15,
 	}
 
 func _ready():
