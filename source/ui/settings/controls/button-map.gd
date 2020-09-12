@@ -7,12 +7,12 @@ onready var type: String
 onready var model: String
 onready var key: String
 onready var action: String
-onready var menu: Control
+onready var menu: Node
 
 onready var white: Color = Color("#f6f6e6")
 onready var pink: Color = Color("#ff4c7b")
 
-func parse(menu_0: Control, key_0: String, action_0: String, control_handler_0: ButtonGetter, type_0: String = ""):
+func parse(menu_0: Node, key_0: String, action_0: String, control_handler_0: ButtonGetter, type_0: String = ""):
 	self.menu = menu_0
 	self.key = key_0
 	self.action  = action_0
@@ -20,7 +20,6 @@ func parse(menu_0: Control, key_0: String, action_0: String, control_handler_0: 
 	self.type = type_0
 
 func _process(delta):
-	self.type = menu.type
 	if type == "Keyboard":
 		get_parent().get_node("Action").text = action + ":"
 		get_parent().get_node("Key").text = control_handler.get_keyboard_key_name(key)

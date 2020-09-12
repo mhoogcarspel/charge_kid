@@ -27,7 +27,7 @@ func parse(action_0: String, control_handler_0: ButtonGetter, type_0: String):
 
 func _input(event):
 	if control_handler.just_pressed(event) and not configured and not error:
-		if event is type or event is type_b:
+		if event is type:            # or event is type_b:
 			
 #			if !control_handler.find_another_action_with_same_key(action, event, type):
 #				control_handler.change_key_binding(action, event, type)
@@ -35,16 +35,39 @@ func _input(event):
 #			else:
 #				error_message_1()
 			
-			if event is type:
+			if event is InputEventKey:
 				var action2: String = control_handler.find_and_return_another_action_with_same_key(action , event, type)
 				var key2: InputEvent = control_handler.get_type_button_list(action, type)[0]
 				control_handler.swap_keys(action, key2, action2, event, type)
 				configured = true
+			elif event is InputEventJoypadButton:
+				if not event.button_index in [10, 11, 12, 13, 14, 15]: #Remove directionals ans Start and select buttons by their button_index
+					var action2: String
+					
+					if action == "ui_accept":
+						action2 = "ui_cancel"
+					else:
+						action2 = "ui_accept"
+					
+					if !control_handler.key_in_list(event, control_handler.get_type_button_list(action2, InputEventJoypadButton)):
+						action2 = ""
+					
+					var key2: InputEvent = control_handler.get_type_button_list(action, type)[0]
+					control_handler.swap_keys(action, key2, action2, event, type)
+					configured = true
+				else:
+					error_message_3()
+				pass
 			
 		else:
 			error_message_2()
 	elif error and $Timer.is_stopped():
 		configured = true
+
+func error_message_3() -> void:
+	$Label.text = "No directionals or start and select buttons permitted"
+	error = true
+	$Timer.start()
 
 func error_message_1() -> void:
 	$Label.text = "Button already mapped,\n try another one."
