@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://ui/base-nodes/menu-panel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/base-nodes/button-model.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://ui/settings/controls/controller-menu.gd" type="Script" id=5]
 [ext_resource path="res://ui/settings/controls/controller-menu-button.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ui/settings/controls/change-key-dialog-controller.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ui/settings/controls/button-map.tscn" type="PackedScene" id=8]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -134,7 +135,7 @@ margin_bottom = 214.0
 focus_neighbour_left = NodePath("../../RightList/Start")
 focus_neighbour_top = NodePath("../Down")
 focus_neighbour_right = NodePath("../../RightList/Start")
-focus_neighbour_bottom = NodePath("../../../MenuAccept")
+focus_neighbour_bottom = NodePath("../../../MenuAccept/Button")
 disabled = true
 text = "Pause"
 button = "Select"
@@ -224,30 +225,46 @@ margin_bottom = 214.0
 focus_neighbour_left = NodePath("../../LeftList/Select")
 focus_neighbour_top = NodePath("../Down Button")
 focus_neighbour_right = NodePath("../../LeftList/Select")
-focus_neighbour_bottom = NodePath("../../../MenuAccept")
+focus_neighbour_bottom = NodePath("../../../MenuAccept/Button")
 disabled = true
 text = "Pause"
 button = "Start"
 
-[node name="MenuAccept" parent="Center/Margin/Menu/Menu" instance=ExtResource( 2 )]
+[node name="MenuAccept" parent="Center/Margin/Menu/Menu" instance=ExtResource( 8 )]
 margin_top = 228.0
 margin_right = 576.0
 margin_bottom = 250.0
-focus_neighbour_top = NodePath("../Scheme/RightList/Start")
-focus_neighbour_bottom = NodePath("../MenuCancel")
-size_flags_horizontal = 5
-text = "Menu Accept:"
-align = 0
 
-[node name="MenuCancel" parent="Center/Margin/Menu/Menu" instance=ExtResource( 2 )]
+[node name="Action" parent="Center/Margin/Menu/Menu/MenuAccept" index="0"]
+margin_right = 218.0
+
+[node name="Button" parent="Center/Margin/Menu/Menu/MenuAccept" index="1"]
+margin_left = 282.0
+margin_right = 294.0
+focus_neighbour_top = NodePath("../../Scheme/RightList/Start")
+focus_neighbour_bottom = NodePath("../../MenuCancel/Button")
+
+[node name="Key" parent="Center/Margin/Menu/Menu/MenuAccept" index="2"]
+margin_left = 358.0
+margin_right = 576.0
+
+[node name="MenuCancel" parent="Center/Margin/Menu/Menu" instance=ExtResource( 8 )]
 margin_top = 254.0
 margin_right = 576.0
 margin_bottom = 276.0
-focus_neighbour_top = NodePath("../MenuAccept")
-focus_neighbour_bottom = NodePath("../Defaults")
-size_flags_horizontal = 5
-text = "Menu Cancel:"
-align = 0
+
+[node name="Action" parent="Center/Margin/Menu/Menu/MenuCancel" index="0"]
+margin_right = 218.0
+
+[node name="Button" parent="Center/Margin/Menu/Menu/MenuCancel" index="1"]
+margin_left = 282.0
+margin_right = 294.0
+focus_neighbour_top = NodePath("../../MenuAccept/Button")
+focus_neighbour_bottom = NodePath("../../Defaults")
+
+[node name="Key" parent="Center/Margin/Menu/Menu/MenuCancel" index="2"]
+margin_left = 358.0
+margin_right = 576.0
 
 [node name="HSeparator" type="HSeparator" parent="Center/Margin/Menu/Menu"]
 margin_top = 280.0
@@ -260,7 +277,7 @@ custom_constants/separation = 8
 margin_top = 292.0
 margin_right = 576.0
 margin_bottom = 314.0
-focus_neighbour_top = NodePath("../MenuCancel")
+focus_neighbour_top = NodePath("../MenuCancel/Button")
 focus_neighbour_bottom = NodePath("../Model")
 size_flags_horizontal = 5
 text = "Restore Defaults"
@@ -303,3 +320,7 @@ text = "Return"
 [connection signal="pressed" from="Center/Margin/Menu/Menu/Defaults" to="." method="_on_Defaults_pressed"]
 [connection signal="pressed" from="Center/Margin/Menu/Menu/ChangeLayout" to="." method="_on_ChangeLayout_pressed"]
 [connection signal="pressed" from="Center/Margin/Menu/Menu/Return" to="." method="_on_Return_pressed"]
+
+[editable path="Center/Margin/Menu/Menu/MenuAccept"]
+
+[editable path="Center/Margin/Menu/Menu/MenuCancel"]
