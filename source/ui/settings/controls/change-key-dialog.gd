@@ -49,8 +49,8 @@ func _input(event):
 					else:
 						action2 = "ui_accept"
 					
-					if !control_handler.key_in_list(event, InputMap.get_action_list(action2)):
-						action = ""
+					if !control_handler.key_in_list(event, control_handler.get_type_button_list(action2, InputEventJoypadButton)):
+						action2 = ""
 					
 					var key2: InputEvent = control_handler.get_type_button_list(action, type)[0]
 					control_handler.swap_keys(action, key2, action2, event, type)

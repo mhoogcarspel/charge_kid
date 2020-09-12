@@ -50,4 +50,4 @@ func parse_info() -> void:
 
 func add_popup(dialog_popup: PopupDialog, menu: Control = self) -> void:
 	dialog_popup.menu = menu
-	add_child(dialog_box)
+	add_child(dialog_popup)
