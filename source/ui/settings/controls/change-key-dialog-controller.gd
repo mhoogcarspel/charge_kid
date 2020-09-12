@@ -7,7 +7,7 @@ onready var parent: Node
 onready var key: InputEventJoypadButton
 onready var key_name: String
 onready var control_handler: ButtonGetter
-onready var buttons = $CenterContainer/MarginContainer/CenterContainer/VBoxContainer/VBoxContainer
+onready var buttons = $Center/Margin/Margin/VBoxContainer/VBoxContainer
 
 var command_list: Array
 var button_node: ButtonModel
@@ -18,7 +18,7 @@ func _ready():
 	for command in main.actions.keys():
 		if command.begins_with("action_"):
 			command_list.append(command)
-	$CenterContainer/MarginContainer/CenterContainer/VBoxContainer/Label.text = "Choose a action for " + key_name
+	$Center/Margin/Margin/VBoxContainer/Label.text = "Choose an action for " + key_name
 	
 	
 	var previous_button: ButtonModel

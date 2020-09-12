@@ -68,6 +68,7 @@ focus_neighbour_left = NodePath("../../RightList/R2")
 focus_neighbour_top = NodePath("../../../Return")
 focus_neighbour_right = NodePath("../../RightList/R2")
 focus_neighbour_bottom = NodePath("../L1")
+align = 2
 
 [node name="L1" parent="Center/Margin/Menu/Menu/Scheme/LeftList" instance=ExtResource( 6 )]
 margin_left = 8.0
@@ -78,6 +79,7 @@ focus_neighbour_left = NodePath("../../RightList/R1")
 focus_neighbour_top = NodePath("../L2")
 focus_neighbour_right = NodePath("../../RightList/R1")
 focus_neighbour_bottom = NodePath("../Up")
+align = 2
 button = "L"
 
 [node name="Up" parent="Center/Margin/Menu/Menu/Scheme/LeftList" instance=ExtResource( 6 )]
@@ -90,6 +92,7 @@ focus_neighbour_top = NodePath("../L1")
 focus_neighbour_right = NodePath("../../RightList/Up Button")
 focus_neighbour_bottom = NodePath("../Right")
 disabled = true
+align = 2
 button = "DPAD Up"
 
 [node name="Right" parent="Center/Margin/Menu/Menu/Scheme/LeftList" instance=ExtResource( 6 )]
@@ -102,6 +105,7 @@ focus_neighbour_top = NodePath("../Up")
 focus_neighbour_right = NodePath("../../RightList/Right Button")
 focus_neighbour_bottom = NodePath("../Left")
 disabled = true
+align = 2
 button = "DPAD Right"
 
 [node name="Left" parent="Center/Margin/Menu/Menu/Scheme/LeftList" instance=ExtResource( 6 )]
@@ -114,6 +118,7 @@ focus_neighbour_top = NodePath("../Right")
 focus_neighbour_right = NodePath("../../RightList/Left Button")
 focus_neighbour_bottom = NodePath("../Down")
 disabled = true
+align = 2
 button = "DPAD Left"
 
 [node name="Down" parent="Center/Margin/Menu/Menu/Scheme/LeftList" instance=ExtResource( 6 )]
@@ -126,6 +131,7 @@ focus_neighbour_top = NodePath("../Left")
 focus_neighbour_right = NodePath("../../RightList/Down Button")
 focus_neighbour_bottom = NodePath("../Select")
 disabled = true
+align = 2
 button = "DPAD Down"
 
 [node name="Select" parent="Center/Margin/Menu/Menu/Scheme/LeftList" instance=ExtResource( 6 )]
@@ -138,6 +144,7 @@ focus_neighbour_right = NodePath("../../RightList/Start")
 focus_neighbour_bottom = NodePath("../../../MenuAccept/Button")
 disabled = true
 text = "Pause"
+align = 2
 button = "Select"
 
 [node name="Sprite" type="TextureRect" parent="Center/Margin/Menu/Menu/Scheme"]
@@ -161,6 +168,7 @@ focus_neighbour_left = NodePath("../../LeftList/L2")
 focus_neighbour_top = NodePath("../../../Return")
 focus_neighbour_right = NodePath("../../LeftList/L2")
 focus_neighbour_bottom = NodePath("../R1")
+align = 0
 button = "R2"
 
 [node name="R1" parent="Center/Margin/Menu/Menu/Scheme/RightList" instance=ExtResource( 6 )]
@@ -172,6 +180,7 @@ focus_neighbour_left = NodePath("../../LeftList/L1")
 focus_neighbour_top = NodePath("../R2")
 focus_neighbour_right = NodePath("../../LeftList/L1")
 focus_neighbour_bottom = NodePath("../Up Button")
+align = 0
 button = "R"
 
 [node name="Up Button" parent="Center/Margin/Menu/Menu/Scheme/RightList" instance=ExtResource( 6 )]
@@ -183,6 +192,7 @@ focus_neighbour_left = NodePath("../../LeftList/Up")
 focus_neighbour_top = NodePath("../R1")
 focus_neighbour_right = NodePath("../../LeftList/Up")
 focus_neighbour_bottom = NodePath("../Right Button")
+align = 0
 button = "Face Button Top"
 
 [node name="Right Button" parent="Center/Margin/Menu/Menu/Scheme/RightList" instance=ExtResource( 6 )]
@@ -194,6 +204,7 @@ focus_neighbour_left = NodePath("../../LeftList/Right")
 focus_neighbour_top = NodePath("../Up Button")
 focus_neighbour_right = NodePath("../../LeftList/Right")
 focus_neighbour_bottom = NodePath("../Left Button")
+align = 0
 button = "Face Button Left"
 
 [node name="Left Button" parent="Center/Margin/Menu/Menu/Scheme/RightList" instance=ExtResource( 6 )]
@@ -205,6 +216,7 @@ focus_neighbour_left = NodePath("../../LeftList/Left")
 focus_neighbour_top = NodePath("../Right Button")
 focus_neighbour_right = NodePath("../../LeftList/Left")
 focus_neighbour_bottom = NodePath("../Down Button")
+align = 0
 button = "Face Button Right"
 
 [node name="Down Button" parent="Center/Margin/Menu/Menu/Scheme/RightList" instance=ExtResource( 6 )]
@@ -216,6 +228,7 @@ focus_neighbour_left = NodePath("../../LeftList/Down")
 focus_neighbour_top = NodePath("../Left Button")
 focus_neighbour_right = NodePath("../../LeftList/Down")
 focus_neighbour_bottom = NodePath("../Start")
+align = 0
 button = "Face Button Bottom"
 
 [node name="Start" parent="Center/Margin/Menu/Menu/Scheme/RightList" instance=ExtResource( 6 )]
@@ -228,6 +241,7 @@ focus_neighbour_right = NodePath("../../LeftList/Select")
 focus_neighbour_bottom = NodePath("../../../MenuAccept/Button")
 disabled = true
 text = "Pause"
+align = 0
 button = "Start"
 
 [node name="MenuAccept" parent="Center/Margin/Menu/Menu" instance=ExtResource( 8 )]
