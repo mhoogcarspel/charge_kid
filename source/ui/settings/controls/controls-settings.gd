@@ -1,6 +1,8 @@
 extends Control
 class_name BaseControlsConfigMenu
 
+
+
 export (PackedScene) var button_model
 export (ShortCut) var return_shortcut
 export (PackedScene) var keyboard_menu
@@ -15,6 +17,8 @@ onready var RED: String = "#ff0000"
 onready var PINK: String = "#ff4f78"
 onready var pause_menu: bool
 
+
+
 func _ready():
 	match mode:
 		"Keyboard":
@@ -23,16 +27,17 @@ func _ready():
 		"Controller":
 			var controller_menu_instance = controller_menu.instance()
 			self.add_child(controller_menu_instance)
-		_:
-			pass
 	get_child(0).settings_menu = self
+
 
 
 func add_popup(dialog_box: PopupDialog, menu: Control = self) -> void:
 	dialog_box.menu = self
 	add_child(dialog_box)
 
-func _on_Model_pressed():
+
+
+func change_layout():
 	match main.controller_layout:
 		"Microsoft":
 			main.controller_layout = "Sony"
@@ -40,9 +45,10 @@ func _on_Model_pressed():
 			main.controller_layout = "Nintendo"
 		"Nintendo":
 			main.controller_layout = "Microsoft"
-#	set_model()
 
-func change_layout() -> void:
+
+
+func change_device() -> void:
 	get_child(0).queue_free()
 	match mode:
 		"Keyboard":
@@ -54,8 +60,12 @@ func change_layout() -> void:
 			self.add_child(keyboard_menu_instance)
 			mode = "Keyboard"
 
+
+
 func _process(delta):
 	get_child(0).settings_menu = self
+
+
 
 func quit() -> void:
 	if not pause_menu:
@@ -66,6 +76,10 @@ func quit() -> void:
 		get_parent().self_show()
 		self.queue_free()
 
+
+
 func load_defaults():
 	InputMap.load_from_globals()
 	control_handler.save_inputmap()
+
+

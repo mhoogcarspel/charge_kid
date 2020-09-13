@@ -1,9 +1,12 @@
 extends ButtonModel
 class_name ControllerSettingsButton
 
+
+
 export(int) var device
-export(String, "DPAD Up", "DPAD Down", "DPAD Left", "DPAD Right", "Face Button Bottom", 
-				"Face Button Right", "Face Button Left", "Face Button Top", "L", "R", "L2", "R2", 
+export(String, "DPAD Up", "DPAD Down", "DPAD Left", "DPAD Right",
+				"Face Button Bottom", "Face Button Right", "Face Button Left",
+				"Face Button Top", "L", "R", "L2", "R2", 
 				"L3", "R3", "Start", "Select") var button
 
 onready var button_getter: ButtonGetter = main.control_handler
@@ -34,6 +37,8 @@ var action: String
 var input_event: InputEventJoypadButton
 var menu: Node
 
+
+
 func _ready():
 	input_event = InputEventJoypadButton.new()
 	input_event.button_index = gamepad_index[button]
@@ -42,15 +47,22 @@ func _ready():
 	find_and_set_button_action()
 
 
+
 func _process(delta):
 	self.text = action
+
+
 
 func _on_ButtonModel_pressed():
 	._on_ButtonModel_pressed()
 	menu.open_dialog_box(input_event, button, self)
 
+
+
 func reload_button() -> void:
 	find_and_set_button_action()
+
+
 
 func find_and_set_button_action() -> void:
 	for command in button_getter.actions_list:
@@ -59,4 +71,5 @@ func find_and_set_button_action() -> void:
 				action = main.actions[command]
 				break
 		action = "None"
-	pass
+
+
