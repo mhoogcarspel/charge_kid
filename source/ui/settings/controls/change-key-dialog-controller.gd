@@ -7,6 +7,7 @@ onready var parent: Node
 onready var key: InputEventJoypadButton
 onready var key_name: String
 onready var control_handler: ButtonGetter
+onready var cancel_button = $Center/Margin/Margin/VBoxContainer/CancelButton
 onready var buttons = $Center/Margin/Margin/VBoxContainer/VBoxContainer
 
 var command_list: Array
@@ -33,11 +34,15 @@ func _ready():
 			button_model_instance.focus_neighbour_top = previous_button.get_path()
 		previous_button = button_model_instance
 		button_model_instance.connect("send_command", self, "receive_command")
-	previous_button.focus_neighbour_bottom = buttons.get_child(0).get_path()
-	buttons.get_child(0).focus_neighbour_top = previous_button.get_path()
+	
+	################ Setting the remaining buttons neighbours####################
+	previous_button.focus_neighbour_bottom = cancel_button.get_path()
+	cancel_button.focus_neighbour_top = previous_button.get_path()
+	cancel_button.focus_neighbour_bottom = buttons.get_child(0).get_path()
+	buttons.get_child(0).focus_neighbour_top = cancel_button.get_path()
+	#############################################################################
+	
 	buttons.get_child(0).grab_focus()
-
-
 
 func receive_command(command: String) -> void:
 	var old_command: String
@@ -47,17 +52,21 @@ func receive_command(command: String) -> void:
 	if old_command != command:
 		InputMap.action_erase_event(old_command, key)
 		InputMap.action_add_event(command, key)
-	exit(command)
+	button_node.action = main.actions[command]
+	exit()
 
 
 
-func exit(command: String) -> void:
+func exit() -> void:
 	parent.pause_mode = PAUSE_MODE_PROCESS
 	self.pause_mode = PAUSE_MODE_INHERIT
 	control_handler.save_inputmap()
 	self.queue_free()
-	button_node.action = main.actions[command]
 	button_node.grab_focus()
 
 
 
+
+
+func _on_ReturnButton_pressed():
+	exit()
