@@ -59,8 +59,7 @@ func _ready():
 		var actions: Dictionary = {
 		"action_jump": "Jump",
 		"action_shoot": "Shoot",
-		"action_boost": "Boost",
-		"action_bullet_boost": "Bullet Boost",
+		"action_bullet_boost": "Boost",
 		"left": "Left",
 		"right": "Right",
 		"up": "Up",
