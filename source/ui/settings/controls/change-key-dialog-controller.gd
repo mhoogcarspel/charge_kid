@@ -12,6 +12,8 @@ onready var buttons = $Center/Margin/Margin/VBoxContainer/VBoxContainer
 var command_list: Array
 var button_node: ButtonModel
 
+
+
 func _ready():
 	parent.pause_mode = PAUSE_MODE_STOP
 	self.pause_mode = PAUSE_MODE_PROCESS
@@ -19,7 +21,6 @@ func _ready():
 		if command.begins_with("action_"):
 			command_list.append(command)
 	$Center/Margin/Margin/VBoxContainer/Label.text = "Choose an action for " + key_name
-	
 	
 	var previous_button: ButtonModel
 	for command in command_list:
@@ -36,6 +37,8 @@ func _ready():
 	buttons.get_child(0).focus_neighbour_top = previous_button.get_path()
 	buttons.get_child(0).grab_focus()
 
+
+
 func receive_command(command: String) -> void:
 	var old_command: String
 	for command in command_list:
@@ -46,6 +49,8 @@ func receive_command(command: String) -> void:
 		InputMap.action_add_event(command, key)
 	exit(command)
 
+
+
 func exit(command: String) -> void:
 	parent.pause_mode = PAUSE_MODE_PROCESS
 	self.pause_mode = PAUSE_MODE_INHERIT
@@ -53,3 +58,6 @@ func exit(command: String) -> void:
 	self.queue_free()
 	button_node.action = main.actions[command]
 	button_node.grab_focus()
+
+
+

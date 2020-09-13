@@ -30,9 +30,9 @@ layouts = {
 
 [node name="Center" type="CenterContainer" parent="."]
 margin_left = 212.0
-margin_top = 109.0
+margin_top = 76.0
 margin_right = 812.0
-margin_bottom = 533.0
+margin_bottom = 500.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
