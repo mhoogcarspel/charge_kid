@@ -45,6 +45,7 @@ func change_layout():
 			main.controller_layout = "Nintendo"
 		"Nintendo":
 			main.controller_layout = "Microsoft"
+	control_handler.save_inputmap()
 
 
 

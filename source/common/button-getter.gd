@@ -184,6 +184,7 @@ func initialize_inputmap(filename: String = "inputmap") -> void:
 				input_save.open("user://" + filename + ".conf", File.READ)
 				file_string = input_save.get_line()
 			var inputmap_dictionary: Dictionary = parse_json(file_string)
+			main.controller_layout = inputmap_dictionary["Controller Layout"]
 			for action in actions_list:
 				InputMap.action_erase_events(action)
 				var input_key = InputEventKey.new()
@@ -222,6 +223,7 @@ func make_inputmap_dictionary() -> Dictionary:
 				})
 		
 		inputmap_dictionary[action] = action_keys.duplicate()
+		inputmap_dictionary["Controller Layout"] = main.controller_layout
 	return inputmap_dictionary
 
 func search_actions_by_key(key: InputEvent, type, exception: Array) -> Array:
