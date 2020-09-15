@@ -6,7 +6,7 @@ Charge Kid is a puzzle-platformer game with the MIT license. All our assets and 
 
 ## Prerequisites
 
-You will need the Godot game engine, version 3.2.1 to run and modify the code. Godot is an open-source game engine. Download it [here](https://downloads.tuxfamily.org/godotengine/3.2.1/). You don't need to install it, it is a self contained app.
+You will need the Godot game engine, version 3.2.2 to run and modify the code. Godot is an open-source game engine. Download it [here](https://downloads.tuxfamily.org/godotengine/3.2.2/). You don't need to install it, it is a self contained app. For versions prior to 1.1.0, we used Godot 3.2.1 (download [here](https://downloads.tuxfamily.org/godotengine/3.2.1/)).
 
 
 
@@ -35,7 +35,7 @@ If you don't know anything about development and just want to play the game, you
 
 ## Known Issues
 
-- Audio Clipping. You might hear crackling sounds, and sometimes, the whole audio might shutdown and the game goes mute. We tried a lot of things, but we could never get fully rid of this problem. If the audio turned off, you'll have to restart the game.
+- Audio shutting down. The audio might shut down in some very rare occasions. Prior to version 1.1.0, this bug was more common, now it is very rare. We do not know what causes it.
 - There is a rare bug in which the player character snaps into platforms when jumping from beneath them. It is very rare, and we have not found its cause.
 - There is a rare bug in which boost inputs get eaten when you do them right after shooting. It is also rare, and we have not found its cause.
 
