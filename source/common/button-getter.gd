@@ -3,9 +3,9 @@ class_name ButtonGetter
 
 onready var map_model: Dictionary
 onready var gamepad_map: Dictionary
-onready var gamepad_map_priority: Dictionary
 onready var actions_dictionary: Dictionary
 onready var buttons_order: Dictionary
+onready var buttons_index: Array
 onready var actions_list: Array
 onready var main = get_parent()
 onready var file_handler: FileHandler = main.get_node("FileHandler")
@@ -40,7 +40,7 @@ func _init(actions_dictionary_0: Dictionary):
 	"Select": ["Back", "Share", "-"],
 	}
 	
-	self.gamepad_map_priority = {
+	self.buttons_order = {
 	"DPAD Up": 0,
 	"DPAD Down": 1,
 	"DPAD Left": 2,
@@ -62,6 +62,13 @@ func _init(actions_dictionary_0: Dictionary):
 	"Start": 14,
 	"Select": 15,
 	}
+	
+	self.buttons_index = [
+	"Face Button Bottom", "Face Button Right", "Face Button Left", "Face Button Top",
+	"L", "R", "L2", "R2", "L3", "R3",
+	"Select", "Start",
+	"DPAD Up", "DPAD Down", "DPAD Left", "DPAD Right"
+	]
 
 func _ready():
 	self.map_model = make_inputmap_dictionary()
@@ -85,7 +92,6 @@ func swap_keys(action1:String, key1: InputEvent, action2:String, key2:InputEvent
 	change_key_binding(action1, key2, type)
 	if action2 != "":
 		change_key_binding(action2, key1, type)
-	pass
 
 func find_and_erase_another_action_with_same_key(exception: String, key: InputEvent):
 	for action in actions_list:
@@ -141,13 +147,16 @@ func get_keyboard_key_name(action: String) -> String:
 	return button_string
 
 func get_controller_button_name(action: String, model: String = "Microsoft") -> String:
-	var button_string: String
+	var button_string = "Select"
 	var button_list: Array = get_type_button_list(action, InputEventJoypadButton)
 	
 	if button_list.empty():
 		return ""
 	
-	button_string = Input.get_joy_button_string(get_type_button_list(action,InputEventJoypadButton)[0].button_index)
+	for i in range(button_list.size()):
+		var button = buttons_index[button_list[i].button_index]
+		if buttons_order[button_string] > buttons_order[button]:
+			button_string = button
 	
 	match model:
 		"Microsoft":

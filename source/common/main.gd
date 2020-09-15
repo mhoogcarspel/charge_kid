@@ -17,14 +17,14 @@ export (bool) var enable_save
 export (bool) var debugging
 
 onready var actions: Dictionary = {
-	"action_jump": "Jump",
+	"action_jump": "Jump/Boost",
 	"action_shoot": "Shoot",
-	"action_bullet_boost": "Boost",
+	"action_bullet_boost": "Bullet Boost",
 	"left": "Left",
 	"right": "Right",
 	"up": "Up",
 	"down": "Down",
-	"ui_pause": "Pause",
+	"ui_pause": "Pause/Unpause",
 	"ui_accept": "Menu Accept",
 	"ui_cancel": "Menu Cancel"
 	}

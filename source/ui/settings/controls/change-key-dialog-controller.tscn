@@ -13,8 +13,8 @@ font_data = ExtResource( 2 )
 [sub_resource type="StyleBoxEmpty" id=2]
 
 [node name="ControllerControlsDialog" type="Control"]
-margin_right = 513.0
-margin_bottom = 65.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource( 3 )
@@ -27,6 +27,9 @@ button_model = ExtResource( 4 )
 margin_right = 40.0
 margin_bottom = 40.0
 use_top_left = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Margin" type="MarginContainer" parent="Center"]
 margin_left = -180.0

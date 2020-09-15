@@ -10,6 +10,7 @@ onready var pause_menu : bool = get_parent().pause_menu
 onready var settings_menu: Node
 onready var left_buttons: Array = $Center/Margin/Menu/Menu/Scheme/LeftList.get_children()
 onready var right_buttons: Array = $Center/Margin/Menu/Menu/Scheme/RightList.get_children()
+onready var menu_nav_button = $Center/Margin/Menu/Menu/MenuNav
 
 
 
@@ -68,22 +69,10 @@ func parse_info() -> void:
 	for button in right_buttons:
 		if button is ControllerSettingsButton:
 			button.menu = self
-	
-	var key_name = main.control_handler.get_controller_button_name("ui_accept",
-																main.controller_layout)
-	$Center/Margin/Menu/Menu/MenuAccept.parse(self, "ui_accept", 
-					main.control_handler.actions_dictionary["ui_accept"],
-					main.control_handler, "Controller")
-	
-	key_name = main.control_handler.get_controller_button_name("ui_cancel",
-																main.controller_layout)
-	$Center/Margin/Menu/Menu/MenuCancel.parse(self, "ui_cancel", 
-					main.control_handler.actions_dictionary["ui_cancel"],
-					main.control_handler, "Controller")
 
 
 
-func add_popup(dialog_popup: PopupDialog, menu: Control = self) -> void:
+func add_popup(dialog_popup: Control, menu: Control = self) -> void:
 	dialog_popup.menu = menu
 	add_child(dialog_popup)
 

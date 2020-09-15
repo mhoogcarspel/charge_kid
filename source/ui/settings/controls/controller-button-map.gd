@@ -1,37 +1,20 @@
 extends ButtonModel
 
-
-
-export(PackedScene) var dialog_popup
-
-onready var control_handler: ButtonGetter
-onready var type: String
-onready var model: String
-onready var key: String
-onready var action: String
-onready var menu: Node
-
-
-
-func parse(menu_0: Node, key_0: String, action_0: String, control_handler_0: ButtonGetter, type_0: String = ""):
-	self.menu = menu_0
-	self.key = key_0
-	self.action  = action_0
-	self.control_handler = control_handler_0
-	self.type = type_0
+onready var control_handler = main.control_handler
 
 
 
 func _on_ButtonModel_pressed():
 	._on_ButtonModel_pressed()
-	var popup = dialog_popup.instance()
-	popup.parse(key, control_handler, type)
-	menu.add_popup(popup)
+	var but_a = control_handler.get_type_button_list("ui_accept", InputEventJoypadButton)[0]
+	var but_b = control_handler.get_type_button_list("ui_cancel", InputEventJoypadButton)[0]
+	control_handler.swap_keys("ui_accept", but_a, "ui_cancel", but_b, InputEventJoypadButton)
 
 
 
 func _process(_delta):
-	self.text = action + ": " + control_handler.get_controller_button_name(key,
-																main.controller_layout)
+	var accept = control_handler.get_controller_button_name("ui_accept", main.controller_layout)
+	var cancel = control_handler.get_controller_button_name("ui_cancel", main.controller_layout)
+	self.text = "Menu Navigation: " + accept + " accepts, " + cancel + " cancels"
 
 
