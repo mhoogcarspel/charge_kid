@@ -46,14 +46,14 @@
 [ext_resource path="res://levels/level17.tscn" type="PackedScene" id=44]
 [ext_resource path="res://assets/sound-effects/speedrun/count_down.ogg" type="AudioStream" id=45]
 [ext_resource path="res://assets/music/music1.ogg" type="AudioStream" id=46]
-[ext_resource path="res://assets/music/music3.ogg" type="AudioStream" id=47]
-[ext_resource path="res://assets/music/music4.ogg" type="AudioStream" id=48]
-[ext_resource path="res://assets/music/music5.ogg" type="AudioStream" id=49]
+[ext_resource path="res://assets/music/hammock-10.ogg" type="AudioStream" id=47]
+[ext_resource path="res://assets/music/TheBigCrunchpart2-03.ogg" type="AudioStream" id=48]
+[ext_resource path="res://assets/music/Abandoned-09.ogg" type="AudioStream" id=49]
 [ext_resource path="res://assets/music/music8.ogg" type="AudioStream" id=50]
-[ext_resource path="res://assets/music/music6.ogg" type="AudioStream" id=51]
-[ext_resource path="res://assets/music/music7.ogg" type="AudioStream" id=52]
+[ext_resource path="res://assets/music/hammock-08.ogg" type="AudioStream" id=51]
+[ext_resource path="res://assets/music/Abandoned-20.ogg" type="AudioStream" id=52]
 [ext_resource path="res://assets/background/background.ogg" type="AudioStream" id=53]
-[ext_resource path="res://assets/music/music2.ogg" type="AudioStream" id=54]
+[ext_resource path="res://assets/music/Abandoned-01.ogg" type="AudioStream" id=54]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 38 )
@@ -163,31 +163,31 @@ autostart = true
 [node name="BGM" type="Node" parent="BackgroundAndMusicHandler"]
 
 [node name="BGM1" type="AudioStreamPlayer" parent="BackgroundAndMusicHandler/BGM"]
-stream = ExtResource( 46 )
-volume_db = -80.0
-autoplay = true
-bus = "MUS"
-
-[node name="BGM2" type="AudioStreamPlayer" parent="BackgroundAndMusicHandler/BGM"]
 stream = ExtResource( 54 )
 volume_db = -80.0
 autoplay = true
 bus = "MUS"
 
+[node name="BGM2" type="AudioStreamPlayer" parent="BackgroundAndMusicHandler/BGM"]
+stream = ExtResource( 49 )
+volume_db = -80.0
+autoplay = true
+bus = "MUS"
+
 [node name="BGM3" type="AudioStreamPlayer" parent="BackgroundAndMusicHandler/BGM"]
-stream = ExtResource( 47 )
+stream = ExtResource( 52 )
 volume_db = -80.0
 autoplay = true
 bus = "MUS"
 
 [node name="BGM4" type="AudioStreamPlayer" parent="BackgroundAndMusicHandler/BGM"]
-stream = ExtResource( 48 )
+stream = ExtResource( 47 )
 volume_db = -80.0
 autoplay = true
 bus = "MUS"
 
 [node name="BGM5" type="AudioStreamPlayer" parent="BackgroundAndMusicHandler/BGM"]
-stream = ExtResource( 49 )
+stream = ExtResource( 48 )
 volume_db = -80.0
 autoplay = true
 bus = "MUS"
@@ -199,7 +199,7 @@ autoplay = true
 bus = "MUS"
 
 [node name="BGM7" type="AudioStreamPlayer" parent="BackgroundAndMusicHandler/BGM"]
-stream = ExtResource( 52 )
+stream = ExtResource( 46 )
 volume_db = -80.0
 autoplay = true
 bus = "MUS"

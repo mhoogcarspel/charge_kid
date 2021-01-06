@@ -12,8 +12,10 @@ onready var save_file = main.get_node("SaveFileHandler")
 
 
 func _ready():
-	main.get_node("BackgroundAndMusicHandler/Background").playing = true
-	main.get_node("BackgroundAndMusicHandler").zero_all_bgm()
+	var bgm = main.get_node("BackgroundAndMusicHandler")
+	bgm.get_node("Background").playing = true
+	bgm.zero_all_bgm()
+	bgm.set_volume_bgm([false, false, false, false, false, false, true, false])
 	
 	var button_list = $CenterContainer/VBoxContainer/Menu
 	save_file.load_progress()

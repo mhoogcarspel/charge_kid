@@ -11,6 +11,7 @@ onready var countdown = $VBoxContainer/Countdown
 
 func _ready():
 	speedrun_mode.get_node("Countdown").play()
+	main.get_node("BackgroundAndMusicHandler").zero_all_bgm()
 
 func _on_Timer_timeout():
 	if time > 1:

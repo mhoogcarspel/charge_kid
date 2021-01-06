@@ -42,8 +42,8 @@ shader_param/reveal = 0
 
 [node name="Level10" instance=ExtResource( 1 )]
 level = 11
-bgm_playing = [ false, false, false, false, true, false, false, false ]
-speedrun_bgm_playing = [ false, false, false, false, true, false, false, false ]
+bgm_playing = [ true, false, false, false, false, false, false, false ]
+speedrun_bgm_playing = [ true, false, false, false, false, false, false, false ]
 
 [node name="ScreenTransition" parent="." index="0"]
 opening_text = "Level 11
