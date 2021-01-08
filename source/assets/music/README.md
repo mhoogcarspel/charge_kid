@@ -1,4 +1,4 @@
-#Music Credits
+# Music Credits
 
 ## The following music were made by Vicente Reis de Souza Farias and are licensed under CC-0
 - music1.ogg
