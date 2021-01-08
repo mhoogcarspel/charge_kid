@@ -1,6 +1,6 @@
 # Charge Kid
 
-Charge Kid is a puzzle-platformer game with the MIT license. All our assets and code are under the CC-0 license, you can clone this repo and use it however you want.
+Charge Kid is a puzzle-platformer game with the MIT license. All assets and code are under the CC(0 or BY-3.0) license, you can clone this repo and use it however you want.
 
 
 
