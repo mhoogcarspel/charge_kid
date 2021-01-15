@@ -66,7 +66,7 @@ text = "Charge Kid"
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 margin_top = 88.0
 margin_right = 960.0
-margin_bottom = 522.0
+margin_bottom = 503.0
 custom_constants/margin_left = 48
 __meta__ = {
 "_edit_use_anchors_": false
@@ -75,7 +75,7 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
 margin_left = 48.0
 margin_right = 960.0
-margin_bottom = 434.0
+margin_bottom = 415.0
 alignment = 1
 
 [node name="Ayrton" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
@@ -189,21 +189,20 @@ custom_constants/separation = 48
 
 [node name="SteviaSphere" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
 margin_top = 371.0
-margin_right = 312.0
+margin_right = 816.0
 margin_bottom = 395.0
 size_flags_horizontal = 0
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
-text = "Stevia Sphere"
+text = "https://steviasphere.bandcamp.com/"
 
 [node name="SteviaSphere2" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
 margin_top = 399.0
 margin_right = 912.0
-margin_bottom = 434.0
+margin_bottom = 415.0
 custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
-text = "   Stevia Sphere and Pineapple Works contributed
-   with more soundtracks licensed under CC-3."
+text = "   Music by Stevia Sphere licensed under CC BY 3.0."
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

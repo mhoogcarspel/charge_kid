@@ -4,7 +4,8 @@
 - music1.ogg
 - music8.ogg
 
-## The following music were made by Stevia Sphere from Pineapple Works and are licensed under CC-BY-3.0
+## The following music were made by Stevia Sphere and are licensed under CC-BY-3.0
+## https://steviasphere.bandcamp.com/
 - Abandoned-01.ogg
 - Abandoned-09.ogg
 - Abandoned-20.ogg
