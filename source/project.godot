@@ -99,11 +99,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://ui/base-nodes/base-menu-option.gd"
 }, {
-"base": "NinePatchRect",
-"class": "MessageBox",
-"language": "GDScript",
-"path": "res://tests/message-screen.gd"
-}, {
 "base": "PlayerBaseState",
 "class": "MovingState",
 "language": "GDScript",
@@ -203,7 +198,6 @@ _global_script_class_icons={
 "MenuCheckBox": "",
 "MenuHSlider": "",
 "MenuOption": "",
-"MessageBox": "",
 "MovingState": "",
 "OnAirState": "",
 "Player": "",
