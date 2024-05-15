@@ -38,6 +38,7 @@ onready var file_handler: FileHandler = $FileHandler
 onready var display_dictionary_model: Dictionary = {
 		"window_fullscreen" : true,
 		"window_borderless" : true,
+		"integer_scaling" : true,
 		"window_size.x" : OS.window_size.x,
 		"window_size.y" : OS.window_size.y
 		}

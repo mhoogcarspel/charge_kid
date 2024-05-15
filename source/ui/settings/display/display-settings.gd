@@ -15,7 +15,8 @@ onready var borderless_window_label = $CenterContainer/Margin/Margin/Menu/Option
 onready var return_button = $CenterContainer/Margin/Margin/Menu/Options/Return
 
 # These screen sizes are 16:9 aspect ratio, the game's aspect ratio.
-onready var screen_sizes = [Vector2(1024,576),
+onready var screen_sizes = [Vector2(640,360),
+							Vector2(1024,576),
 							Vector2(1152,648),
 							Vector2(1280,720),
 							Vector2(1366,768),
@@ -108,6 +109,11 @@ func _on_BorderlessWindow_toggle(button_pressed):
 		window_size = OS.window_size
 		save_display_options()
 
+func _on_IntergerScaling_toggle(button_pressed):
+	if button_pressed != OS.window_borderless:
+		OS.window_borderless = button_pressed
+		window_size = OS.window_size
+		save_display_options()
 
 
 func _on_Return_pressed():

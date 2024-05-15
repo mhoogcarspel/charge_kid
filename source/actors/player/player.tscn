@@ -1319,7 +1319,7 @@ one_shot = true
 one_shot = true
 
 [node name="DropTimer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.3
 one_shot = true
 
 [node name="IdleTimer" type="Timer" parent="."]

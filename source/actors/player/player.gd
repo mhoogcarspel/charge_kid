@@ -220,7 +220,7 @@ func _on_BoostTimer_timeout():
 
 func drop() -> void:
 	if control_handler.get_directional_input().y == 1 && $DropTimer.is_stopped() && is_on_floor() && is_on_platform():
-		self.set_collision_mask_bit(1,false)
+		#self.set_collision_mask_bit(1,false)
 		$DropTimer.start()
 
 func _on_DropTimer_timeout():

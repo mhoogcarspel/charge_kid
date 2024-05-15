@@ -7,14 +7,13 @@
 [ext_resource path="res://ui/settings/display/display-settings.gd" type="Script" id=5]
 [ext_resource path="res://ui/base-nodes/checkbox.tscn" type="PackedScene" id=6]
 
-
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 3 )
 
-[sub_resource type="StyleBoxEmpty" id=4]
+[sub_resource type="StyleBoxEmpty" id=3]
 
 [node name="DisplayConfigMenu" type="Control"]
 pause_mode = 2
@@ -113,6 +112,16 @@ margin_right = 364.0
 focus_neighbour_top = NodePath("../../Fullscreen/CheckBox")
 focus_neighbour_bottom = NodePath("../../Windowed/ButtonModel")
 
+[node name="IntegerScaling" parent="CenterContainer/Margin/Margin/Menu/Options" instance=ExtResource( 6 )]
+visible = false
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 48.0
+margin_right = 364.0
+margin_bottom = 72.0
+grow_horizontal = 2
+
 [node name="Windowed" type="HBoxContainer" parent="CenterContainer/Margin/Margin/Menu/Options"]
 margin_top = 48.0
 margin_right = 364.0
@@ -124,7 +133,7 @@ custom_constants/separation = 48
 margin_top = 3.0
 margin_right = 128.0
 margin_bottom = 19.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "Windowed"
 __meta__ = {
@@ -143,7 +152,7 @@ margin_left = 236.0
 margin_top = 3.0
 margin_right = 364.0
 margin_bottom = 19.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
 text = "1024x576"
 align = 2
@@ -155,7 +164,7 @@ __meta__ = {
 margin_top = 70.0
 margin_right = 364.0
 margin_bottom = 86.0
-custom_styles/separator = SubResource( 4 )
+custom_styles/separator = SubResource( 3 )
 custom_constants/separation = 16
 
 [node name="Return" parent="CenterContainer/Margin/Margin/Menu/Options" instance=ExtResource( 1 )]
@@ -169,6 +178,7 @@ shortcut = ExtResource( 4 )
 text = "Return"
 [connection signal="toggle" from="CenterContainer/Margin/Margin/Menu/Options/Fullscreen" to="." method="_on_Fullscreen_toggle"]
 [connection signal="toggle" from="CenterContainer/Margin/Margin/Menu/Options/BorderlessWindow" to="." method="_on_BorderlessWindow_toggle"]
+[connection signal="toggle" from="CenterContainer/Margin/Margin/Menu/Options/IntegerScaling" to="." method="_on_BorderlessWindow_toggle"]
 [connection signal="pressed" from="CenterContainer/Margin/Margin/Menu/Options/Windowed/ButtonModel" to="." method="_on_Windowed_pressed"]
 [connection signal="pressed" from="CenterContainer/Margin/Margin/Menu/Options/Return" to="." method="_on_Return_pressed"]
 

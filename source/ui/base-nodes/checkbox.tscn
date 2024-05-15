@@ -30,7 +30,7 @@ margin_bottom = 20.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.956863, 0.956863, 0.894118, 1 )
-text = "Text"
+text = "Integer Scaling"
 __meta__ = {
 "_edit_use_anchors_": false
 }

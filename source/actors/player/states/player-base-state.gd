@@ -30,6 +30,11 @@ func jump_input_pressed() -> bool:
 	var coyote = owner.get_node("CoyoteTimer")
 	var bunny = owner.get_node("BunnyTimer")
 	
+	if Input.is_action_pressed("action_jump") and owner.is_on_floor() and owner.is_on_platform() and owner.control_handler.get_directional_input().y == 1:
+		owner.set_collision_mask_bit(1,false)
+		owner.change_state("OnAirState")
+		return true
+	
 	if Input.is_action_just_pressed("action_jump"):
 		if not coyote.is_stopped():
 			owner.change_state("JumpingState")
